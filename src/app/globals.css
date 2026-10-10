@@ -6,38 +6,31 @@
 @tailwind utilities;
 
 /*
- * AURORA GLASS — light, airy, medical-grade blue. Zero pink.
- *   --bg #FFFFFF · --bg-subtle #F5F7FA · --surface rgba(255,255,255,.72) · --surface-solid #FFFFFF
- *   --border rgba(15,23,42,.08) · --border-strong rgba(15,23,42,.14)
- *   --text #0F172A · --text-secondary #64748B · --text-muted #94A3B8
- *   --accent #2563EB · --accent-soft #3B82F6 · --accent-glow rgba(37,99,235,.18) · --accent-light #EFF6FF
- *   --navy #0B1530 · --teal #0F9D8F (AI/live) · --gold #B8873B (brand, tiny accents)
- * AI patterns: scroll neural line · AI status HUD (Scanning → Synthesizing → Ready) · data-reveal blur-in ·
- *   data-scan sweep · cursor edge light on .card · neural tap pulse · ambient signal field ·
- *   shine borders on AI CTAs · number tickers · progress rings · aurora / dia / animate text.
+ * CHAMPAGNE — premium light theme. Ivory surfaces, warm charcoal ink, champagne-bronze accent, sage secondary.
+ * No dark blocks: "feature surfaces" (.bg-navy) are warm champagne panels with ink text.
  */
 :root {
-  --bg: #ffffff;
-  --bg-subtle: #f5f7fa;
-  --surface: rgba(255, 255, 255, 0.72);
+  --bg: #fffdf9;
+  --bg-subtle: #faf6ef;
+  --surface: rgba(255, 253, 249, 0.78);
   --surface-solid: #ffffff;
-  --border: rgba(15, 23, 42, 0.08);
-  --border-strong: rgba(15, 23, 42, 0.14);
-  --ink: #0b1530;
-  --muted: #4b5876;
-  --faint: #8a94ab;
-  --navy: #0b1530;
-  --teal: #0f9d8f;
-  --gold: #b8873b;
-  --accent: #2563eb;
-  --accent-soft: #3b82f6;
-  --accent-glow: rgba(37, 99, 235, 0.18);
-  --accent-light: #eff6ff;
-  --warm-1: #f59e0b;
-  --warm-2: #fb923c;
+  --border: rgba(60, 44, 20, 0.08);
+  --border-strong: rgba(60, 44, 20, 0.14);
+  --ink: #221d16;
+  --muted: #6b6155;
+  --faint: #a39889;
+  --navy: #f4ecdf;
+  --teal: #5e7f62;
+  --gold: #c2a16a;
+  --accent: #97703f;
+  --accent-soft: #b8925c;
+  --accent-glow: rgba(151, 112, 63, 0.18);
+  --accent-light: #f7efe3;
+  --warm-1: #c2a16a;
+  --warm-2: #c9895b;
   --violet: var(--accent);
   --canvas: var(--bg-subtle);
-  --iri: linear-gradient(90deg, #1e3a8a, #2563eb 50%, #0f9d8f);
+  --iri: linear-gradient(90deg, #8a6a3a, #b08a55 50%, #7fa083);
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --mx: 50vw;
@@ -53,7 +46,7 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
-::selection { background: rgba(37, 99, 235, 0.16); color: var(--ink); }
+::selection { background: rgba(151, 112, 63, 0.16); color: var(--ink); }
 :focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; border-radius: 8px; }
 
 @layer components {
@@ -66,7 +59,7 @@ body {
   .card:hover { @apply border-accent/30 shadow-glow; }
   .glass { @apply border border-ink/[0.08] bg-white/[0.72] backdrop-blur-[22px] backdrop-saturate-[1.6]; }
   .btn { @apply inline-flex h-11 items-center justify-center gap-2 rounded-full px-5 text-[15px] font-medium transition-all duration-300 active:scale-[0.97]; }
-  .btn-dark { @apply btn bg-accent text-white shadow-[0_6px_20px_rgba(37,99,235,.28)] hover:bg-[#1D4ED8] hover:shadow-[0_10px_28px_rgba(37,99,235,.38)]; }
+  .btn-dark { @apply btn bg-accent text-white shadow-[0_6px_20px_rgba(151,112,63,.28)] hover:bg-[#7E5C31] hover:shadow-[0_10px_28px_rgba(151,112,63,.38)]; }
   .btn-light { @apply btn border border-ink/[0.10] bg-white/[0.72] text-ink backdrop-blur-xl hover:border-accent/40 hover:text-accent; }
   .chip { @apply inline-flex h-9 items-center gap-1.5 rounded-full border px-3.5 text-[14px] font-medium transition-colors; }
   .text-iri { background: var(--iri); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -76,7 +69,7 @@ body {
 [data-scan] { position: relative; overflow: hidden; isolation: isolate; }
 [data-scan]::after {
   content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
-  background: linear-gradient(100deg, transparent 30%, rgba(0,229,192,.14) 45%, rgba(61,139,255,.14) 55%, transparent 70%);
+  background: linear-gradient(100deg, transparent 30%, rgba(194,161,106,.14) 45%, rgba(151,112,63,.14) 55%, transparent 70%);
   transform: translateX(-120%);
 }
 [data-scan].is-scanned::after { animation: scan 1.4s cubic-bezier(.4,0,.2,1) 1; }
@@ -101,7 +94,7 @@ body {
 /* Cursor-tracked edge light on cards (set by AIInteractionLayer) */
 .card::before {
   content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0; opacity: 0;
-  background: radial-gradient(420px circle at var(--cx, 50%) var(--cy, 50%), rgba(61,139,255,.16), transparent 45%);
+  background: radial-gradient(420px circle at var(--cx, 50%) var(--cy, 50%), rgba(151,112,63,.16), transparent 45%);
   transition: opacity .4s;
 }
 .card:hover::before { opacity: 1; }
@@ -117,3 +110,11 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 @keyframes sweep { 0% { transform: translateX(-100%); } 60%, 100% { transform: translateX(100%); } }
 @keyframes flow { to { stroke-dashoffset: -40; } }
 @media (prefers-reduced-motion: reduce) { [class*="animate-"], [style*="animation"] { animation: none !important; } }
+
+/* Feature surfaces — warm champagne panels. Light-on-dark utilities inside them are re-mapped to ink. */
+.bg-navy { background-image: linear-gradient(160deg, #fbf6ec 0%, #f4ecdf 60%, #efe4d1 100%); color: var(--ink); border: 1px solid rgba(151, 112, 63, 0.14); }
+.bg-navy .text-white:not([class*="bg-"]), .bg-navy.text-white { color: var(--ink); }
+.bg-navy [class*="text-white\/"]:not([class*="bg-"]) { color: var(--muted); }
+.bg-navy [class*="bg-white\/5"], .bg-navy [class*="bg-white\/10"] { background-color: rgba(255, 255, 255, 0.7); }
+.bg-navy [class*="ring-white"], .bg-navy [class*="border-white"] { --tw-ring-color: rgba(151, 112, 63, 0.15); border-color: rgba(151, 112, 63, 0.15); }
+.bg-navy .text-teal-soft { color: var(--teal); }
