@@ -13,7 +13,7 @@ export function VideoText({ text, src, poster, className }: { text: string; src?
         {src ? (
           <video className="h-full w-full object-cover" src={src} poster={poster} autoPlay muted loop playsInline />
         ) : (
-          <div className="h-full w-full animate-shine" style={{ background: "linear-gradient(110deg,#00E5C0,#22C3E6,#3D8BFF,#3D8BFF,#3D8BFF,#00E5C0) 0 0/200% 100%" }} />
+          <div className="h-full w-full animate-shine" style={{ background: "linear-gradient(110deg,#06B6D4,#3B82F6,#2563EB,#2563EB,#2563EB,#06B6D4) 0 0/200% 100%" }} />
         )}
       </div>
     </div>
