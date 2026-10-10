@@ -1,39 +1,40 @@
 import Link from "next/link";
-import { NAV, CONTACTS } from "@/data/site";
+import { NAV } from "@/data/site";
 import { DEPARTMENTS } from "@/data/health";
+import { OFFICES } from "@/data/clinic";
+import { Logo } from "@/components/ui/Logo";
 
 export function Footer() {
+  const links = NAV.flatMap((n) => (n.menu && n.id !== "precision" ? n.menu : n.href ? [{ href: n.href, label: n.label }] : []));
   return (
-    <footer className="relative z-[1] border-t border-white/[0.06] bg-night/80 backdrop-blur">
+    <footer className="relative z-[1] border-t border-ink/[0.06] bg-canvas/80 backdrop-blur">
       <div className="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <div className="text-[19px] font-semibold tracking-tight">Biongevity</div>
-          <p className="mt-2 text-[14px] leading-relaxed text-muted">Precision health and longevity medicine. Part of BioAro, Calgary.</p>
-          <div className="mt-4 space-y-1 text-[13px] text-muted">
-            <a className="block hover:text-ink" href={CONTACTS.labs.tel}>Labs · {CONTACTS.labs.phone}</a>
-            <a className="block hover:text-ink" href={`mailto:${CONTACTS.labs.email}`}>{CONTACTS.labs.email}</a>
-            <a className="block hover:text-ink" href={`mailto:${CONTACTS.drugs.email}`}>{CONTACTS.drugs.email}</a>
+          <Logo size={26} />
+          <p className="mt-3 text-[14px] leading-relaxed text-muted">Precision health. Shared longevity. Part of BioAro.</p>
+          <div className="mt-4 space-y-3 text-[13px] text-muted">
+            {OFFICES.map((o) => <div key={o.city}><div className="font-semibold text-ink">{o.city}</div><a href={o.tel} className="hover:text-accent">{o.phone}</a>{o.email && <> · <a href={`mailto:${o.email}`} className="hover:text-accent">{o.email}</a></>}</div>)}
           </div>
         </div>
         <div>
           <div className="text-[13px] font-semibold">Explore</div>
-          <div className="mt-3 grid gap-2">{NAV.map((n) => <Link key={n.href} href={n.href} className="text-[14px] text-muted hover:text-ink">{n.label}</Link>)}</div>
+          <div className="mt-3 grid gap-2">{links.map((l) => <Link key={l.href} href={l.href} className="text-[14px] text-muted hover:text-accent">{l.label}</Link>)}</div>
         </div>
         <div>
-          <div className="text-[13px] font-semibold">Departments</div>
-          <div className="mt-3 grid gap-2">{DEPARTMENTS.map((d) => <Link key={d.id} href={`/precision-health/${d.id}/`} className="text-[14px] text-muted hover:text-ink">{d.short}</Link>)}</div>
+          <div className="text-[13px] font-semibold">Precision Health</div>
+          <div className="mt-3 grid gap-2">{DEPARTMENTS.map((d) => <Link key={d.id} href={`/precision-health/${d.id}/`} className="text-[14px] text-muted hover:text-accent">{d.short}</Link>)}</div>
         </div>
         <div>
-          <div className="text-[13px] font-semibold">Shop</div>
+          <div className="text-[13px] font-semibold">Store</div>
           <div className="mt-3 grid gap-2">
-            <a href="https://bioarolabs.com/shop" target="_blank" rel="noopener" className="text-[14px] text-muted hover:text-ink">BioAro Labs ↗</a>
-            <a href="https://bioarodrugs.com/us/shop" target="_blank" rel="noopener" className="text-[14px] text-muted hover:text-ink">BioAro Drugs ↗</a>
-            <Link href="/#products" className="text-[14px] text-muted hover:text-ink">AI product match</Link>
+            <a href="https://bioarolabs.com/shop" target="_blank" rel="noopener" className="text-[14px] text-muted hover:text-accent">BioAro Labs ↗</a>
+            <a href="https://bioarodrugs.com/us/shop" target="_blank" rel="noopener" className="text-[14px] text-muted hover:text-accent">BioAro Drugs ↗</a>
+            <a href="https://biongevity.com/longevity-packages/" target="_blank" rel="noopener" className="text-[14px] text-muted hover:text-accent">Longevity packages ↗</a>
           </div>
-          <p className="mt-6 text-[12px] leading-relaxed text-faint">Company and product copy from biongevity.com, bioarolabs.com and bioarodrugs.com. Dashboard data is illustrative. AI answers are labelled live or prepared.</p>
+          <p className="mt-6 text-[12px] leading-relaxed text-faint">Content from biongevity.com, bioarolabs.com and bioarodrugs.com. Dashboard data is illustrative. AI answers are labelled live or prepared.</p>
         </div>
       </div>
-      <div className="border-t border-white/[0.06] py-5 pb-safe text-center text-[12px] text-faint">© {new Date().getFullYear()} Biongevity · BioAro Inc. Educational information, not medical advice.</div>
+      <div className="border-t border-ink/[0.06] py-5 text-center text-[12px] text-faint">© {new Date().getFullYear()} Biongevity · BioAro Inc. Educational information, not medical advice.</div>
     </footer>
   );
 }
