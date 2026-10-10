@@ -5,6 +5,7 @@ import { Triage } from "@/components/pages/Triage";
 import { Icon } from "@/components/ui/Icon";
 import { AuroraText } from "@/components/fx/AuroraText";
 import { DEPARTMENTS } from "@/data/health";
+import { DisciplineExplorer } from "@/components/home/DisciplineExplorer";
 
 export const metadata: Metadata = { title: "Precision Health" };
 
@@ -13,7 +14,8 @@ export default function PrecisionHealthPage() {
     <>
       <PageHero eyebrow="Precision Health" title={<>Care built on <AuroraText>your biology.</AuroraText></>}
         lede="Nine precision disciplines — each combining genomics, microbiome and epigenetic insight with specialist care, all feeding one BioELR record." />
-      <Section ai="AI triage" className="!pt-0"><div className="container-x max-w-[900px]"><Triage /></div></Section>
+      <Section ai="Find a department" className="!pt-0"><div className="container-x max-w-[900px]"><Triage /></div></Section>
+      <Section ai="Evidence" className="!pt-0"><div className="container-x"><h2 className="text-[28px] font-semibold tracking-tight">Why each discipline matters</h2><p className="mt-1 text-[15px] text-muted">Hover a discipline for the evidence behind it.</p><div className="mt-6"><DisciplineExplorer /></div></div></Section>
       <Section ai="Departments" className="!pt-0">
         <div className="container-x grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {DEPARTMENTS.map((d, i) => (
