@@ -1,21 +1,14 @@
 /**
- * MEDIA SLOTS — drop files into /public/media and set the paths here.
- * Every slot renders a labelled placeholder until a src is provided.
- * Videos: use .mp4 (H.264) + optional poster .jpg. Keep hero videos < 8 MB.
+ * MEDIA SLOTS — files live in /public/media. Set `video` / `image` to use them.
+ * Any slot without a src renders a labelled placeholder.
  */
 export interface MediaSlot { label: string; video?: string; image?: string; poster?: string }
 
 export const MEDIA: Record<string, MediaSlot> = {
-  heroVideo: { label: "Hero film · Biongevity brand video" },
-  videoText: { label: "Video Text fill · abstract cells / DNA footage" },
-  labsVideo: { label: "BioAro Labs · lab process film" },
-  drugsVideo: { label: "BioAro Drugs · sachet / product film" },
-  clinicHero: { label: "Clinic interior" },
-  appVideo: { label: "ELR App · screen recording" },
-  homeLabs: { label: "Lab or test kit image" },
-  homeDrugs: { label: "Product photography" },
-  lifeHome: { label: "Home setting" },
-  lifeOffice: { label: "Office setting" },
-  lifeTravel: { label: "Travel setting" },
+  brandFilm: { label: "Biongevity · brand film", video: "/media/brand-film.mp4", poster: "/media/brand-film.jpg" },
+  brandLoop: { label: "Biongevity · brand loop", video: "/media/brand-loop.mp4", poster: "/media/brand-film.jpg" },
+  clinicFilm: { label: "Biongevity Clinic Dubai", video: "/media/clinic-film.mp4", poster: "/media/clinic-film.jpg" },
+  clinicLoop: { label: "Biongevity Clinic Dubai", video: "/media/clinic-loop.mp4", poster: "/media/clinic-film.jpg" },
+  appVideo: { label: "Biongevity App · screen recording" },
   founder: { label: "Founder portrait · approved image only" },
 };
