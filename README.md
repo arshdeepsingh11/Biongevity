@@ -1,52 +1,74 @@
 # ◐ Biongevity
 
-> Precision health. Shared longevity. — an AI-native interface for BioAro.
+> Precision health. Shared longevity. An AI-native interface for BioAro.
 
 ```
-status   ▸ online
-theme    ▸ aurora-glass · light · blue · zero pink
-stack    ▸ next 15 · react 19 · typescript · tailwind · gsap · three · webgl
+theme    ▸ aurora-glass · rich · navy / blue / teal / gold · light only
+stack    ▸ next 15 (static export) · react 19 · typescript · tailwind · framer-motion · gsap · lucide
 targets  ▸ web · ios · android (capacitor)
-backend  ▸ none — store links resolve to bioarolabs.com · bioarodrugs.com · biongevity.com
+backend  ▸ none. shopify hosts checkout · xevyo hosts AI · everything else is static
 ```
 
 ## ▸ Boot
 
 ```bash
 npm install
-npm run dev        # → localhost:3000
-npm run build      # → ./out (static)
+cp .env.example .env.local   # optional
+npm run dev                  # → localhost:3000
+npm run build                # → ./out (static)
 ```
 
 ## ▸ Map
 
-| Route | Signal |
+| Route | What's there |
 |---|---|
-| `/` | Hero · brand film · 360° signal · disciplines · **store + AI match** · stories · BioELR · global clinic · programs |
-| `/precision-health/[9]` | Internal Medicine · Cardiology · Dermatology · Dental · Women's · Men's · Gut · Gastroenterology · Mental Health |
-| `/clinic/[3]` | Longevity Journey · Virtual Clinic · UAE Precision Clinic |
-| `/packages` | Core $369 · Precision $699 · Elite $999 |
-| `/life` · `/app` · `/insights` · `/about` · `/contact` · `/dashboard` | Discover |
+| `/` | Hero · data-stream explorer · discipline explorer · shop + quiz · stories · BioELR · interactive world map · programs |
+| `/precision-health/[9]` | Tabs: Overview · Care & tests · Evidence · Lab tests · Self-check · Specialist & FAQ |
+| `/clinic/journey` | The journey · Biological age · What you get · Programs |
+| `/clinic/virtual` | How it works · Virtual or in person · Remote BP program (7-day tracker) · Join |
+| `/clinic/uae` | Overview · Assessments (radar) · Departments · Visit |
+| `/shop` | Programs · Lab tests · Formulas · Find my match (`?tab=`) |
+| `/life` `/app` `/insights` `/about` `/contact` `/dashboard` | Discover |
 
-Navigation is a **Sparkle Navbar** fixed bottom-centre. Hovering Precision or Clinic opens a live preview of each page.
+## ▸ Xevyo (in-house AI)
 
-## ▸ Intelligence layer
+No answers live in the frontend. The chat sits bottom-right and shows **not connected** until `NEXT_PUBLIC_XEVYO_URL` is set.
 
-- **⌘K assistant**, grounded on site data · live model via `NEXT_PUBLIC_AI_ENDPOINT`
-- **Status HUD**: Scanning → Synthesizing → Ready, follows scroll
-- **Ambient signal field** · **neural tap pulse** · **cursor edge light** on glass cards
-- **Text**: Text Animate · Aurora · Dia Reveal · Morphing · 3D Flip · Decode
-- **Data**: Number Ticker · Progress Ring · Animated List · Signal Convergence · Terminal
+```http
+POST $NEXT_PUBLIC_XEVYO_URL
+Authorization: Bearer $NEXT_PUBLIC_XEVYO_PUBLIC_KEY   # optional, publishable
+Content-Type: application/json
 
-## ▸ Palette
+{ "message": "…", "history": [{ "role": "user|assistant", "content": "…" }],
+  "context": { "page": "shop" }, "sessionId": "…" }
+```
 
-`#FFFFFF` bg · `#F5F7FA` subtle · `#0F172A` text · `#64748B` secondary
-`#2563EB` accent · `#3B82F6` soft · `#EFF6FF` tint · `#F59E0B` / `#FB923C` warm (tiny)
+Reply with JSON `{ "reply": "…", "sources": [{ "title", "url" }] }`, or stream `text/event-stream` (`data: token` … `data: [DONE]`) / chunked `text/plain`. Client: `src/lib/xevyo.ts`.
 
-## ▸ Media
+## ▸ Shopify
 
-`public/media/` — brand film, clinic film, three stories (web-encoded H.264).
-Slots wired in `src/config/media.ts` and `src/data/clinic.ts`.
+Buy buttons call `buyUrl()` in `src/lib/commerce.ts`:
+
+- `NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN` set **and** a variant id in `src/config/shopify.ts` → Shopify cart permalink (`/cart/{variant}:1`). Shopify hosts checkout.
+- Otherwise → the official product page on bioarolabs.com, bioarodrugs.com or biongevity.com.
+
+Quiz results can open a multi-item cart with `bundleUrl()`. No server, no secrets.
+
+## ▸ Data
+
+| File | Holds |
+|---|---|
+| `data/health.ts` | 9 departments · packages · pillars |
+| `data/care.ts` | When to see us · care & tests · FAQ · self-check per department |
+| `data/stats.ts` | Cited figures (WHO, GLOBOCAN, Hypertension Canada…) behind every chart |
+| `data/labs.ts` · `data/drugs.ts` | BioAro Labs tests · BioAro Drugs formulas |
+| `lib/quiz.ts` | Deterministic, on-device match scoring |
+
+Figures carry their source. Anything marked *illustrative* is a teaching example, not member data.
+
+## ▸ Env
+
+Static export: every variable is public. **Never put secrets in `.env`.** See `.env.example`.
 
 ## ▸ Mobile
 
@@ -56,4 +78,4 @@ npm run cap:sync
 ```
 
 ---
-`BioAro Inc. · Calgary · Dubai · Almelo` — educational information, not medical advice.
+`BioAro Inc. · Calgary · Dubai · Almelo`. Educational information, not medical advice.
