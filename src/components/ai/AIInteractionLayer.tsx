@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { DEPARTMENTS } from "@/data/health";
+import { AmbientField } from "@/components/fx/AmbientField";
 
 /**
  * The "AI on every touch and scroll" layer:
@@ -15,7 +16,7 @@ export function AIInteractionLayer() {
   const path = usePathname();
 
   useEffect(() => {
-    const calm = path.startsWith("/clinic") || DEPARTMENTS.some((d) => d.calm && path.includes(d.id));
+    const calm = DEPARTMENTS.some((d) => d.calm && path.includes(d.id));
     document.documentElement.classList.toggle("fx-calm", calm);
   }, [path]);
 
@@ -43,6 +44,9 @@ export function AIInteractionLayer() {
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
     const move = (e: PointerEvent) => {
+      // edge light: cursor position inside the hovered card
+      const card = (e.target as Element | null)?.closest?.(".card") as HTMLElement | null;
+      if (card) { const r = card.getBoundingClientRect(); card.style.setProperty("--cx", `${e.clientX - r.left}px`); card.style.setProperty("--cy", `${e.clientY - r.top}px`); }
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => { root.style.setProperty("--mx", `${e.clientX}px`); root.style.setProperty("--my", `${e.clientY}px`); });
     };
@@ -50,10 +54,10 @@ export function AIInteractionLayer() {
       if (reduced || root.classList.contains("fx-calm")) return;
       const r = document.createElement("span");
       r.className = "pointer-events-none fixed z-[200] rounded-full";
-      Object.assign(r.style, { left: `${e.clientX}px`, top: `${e.clientY}px`, width: "8px", height: "8px", transform: "translate(-50%,-50%)", border: "1.5px solid rgba(155,107,255,.8)", boxShadow: "0 0 18px rgba(106,92,255,.5)" });
+      Object.assign(r.style, { left: `${e.clientX}px`, top: `${e.clientY}px`, width: "8px", height: "8px", transform: "translate(-50%,-50%)", border: "1.5px solid rgba(0,229,192,.85)", boxShadow: "0 0 22px rgba(0,229,192,.45)" });
       document.body.appendChild(r);
       r.animate([{ width: "8px", height: "8px", opacity: 1 }, { width: "84px", height: "84px", opacity: 0 }], { duration: 650, easing: "cubic-bezier(.2,.7,.2,1)" }).onfinish = () => r.remove();
-      const cols = ["#FF8A3D", "#FF4D8D", "#9B6BFF", "#3D8BFF"];
+      const cols = ["#00E5C0", "#22C3E6", "#3D8BFF", "#8FB8FF"];
       for (let i = 0; i < 6; i++) {
         const s = document.createElement("span"), a = (i / 6) * Math.PI * 2 + Math.random();
         s.className = "pointer-events-none fixed z-[200] rounded-full";
@@ -73,8 +77,9 @@ export function AIInteractionLayer() {
 
   return (
     <>
+      <AmbientField />
       <div aria-hidden data-ai-fx className="pointer-events-none fixed inset-0 z-0 hidden lg:block"
-        style={{ background: "radial-gradient(600px circle at var(--mx) var(--my), rgba(155,107,255,.07), transparent 60%)" }} />
+        style={{ background: "radial-gradient(600px circle at var(--mx) var(--my), rgba(61,139,255,.08), transparent 60%)" }} />
     </>
   );
 }
