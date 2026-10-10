@@ -4,7 +4,7 @@ import Link from "next/link";
 import { BeamFlow } from "@/components/fx/BeamFlow";
 import { MorphingText } from "@/components/fx/MorphingText";
 import { KeywordStream } from "@/components/fx/KeywordStream";
-import { Text3DFlip } from "@/components/fx/Text3DFlip";
+
 import { TextAnimate } from "@/components/fx/TextAnimate";
 import { AuroraText } from "@/components/fx/AuroraText";
 import { DiaTextReveal } from "@/components/fx/DiaTextReveal";
@@ -34,8 +34,8 @@ export function Hero() {
   const { setOpen } = useAI();
   return (
     <section data-ai="Hero" className="relative z-[1] grid min-h-[100svh] place-items-center overflow-hidden pt-[calc(60px+var(--safe-top))]">
-      <div aria-hidden className="absolute inset-0 bg-[radial-gradient(60%_50%_at_20%_10%,rgba(59,130,246,.16),transparent_60%),radial-gradient(50%_45%_at_85%_20%,rgba(15,157,143,.12),transparent_60%),radial-gradient(40%_40%_at_60%_95%,rgba(184,135,59,.08),transparent_60%)]" />
-      <div aria-hidden className="absolute inset-0 opacity-[0.35] [background-image:linear-gradient(rgba(15,23,42,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,.05)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(70%_60%_at_50%_40%,#000,transparent)]" />
+      <div aria-hidden className="absolute inset-0 bg-[radial-gradient(60%_50%_at_20%_10%,rgba(184,146,92,.16),transparent_60%),radial-gradient(50%_45%_at_85%_20%,rgba(94,127,98,.12),transparent_60%),radial-gradient(40%_40%_at_60%_95%,rgba(184,135,59,.08),transparent_60%)]" />
+      <div aria-hidden className="absolute inset-0 opacity-[0.35] [background-image:linear-gradient(rgba(60,44,20,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(60,44,20,.05)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(70%_60%_at_50%_40%,#000,transparent)]" />
       <div className="absolute inset-0 opacity-50"><BeamFlow /></div>
       <div className="container-x relative py-16 text-center">
         <div data-reveal className="glass mx-auto inline-flex items-center gap-2 rounded-full py-1 pl-1 pr-3.5 text-[13px] shadow-card">
@@ -56,7 +56,7 @@ export function Hero() {
           </button>
         </div>
         <div data-reveal className="mx-auto mt-14 grid max-w-[820px] grid-cols-2 gap-3 sm:grid-cols-4">
-          {([[LAB_TESTS.length, "lab tests", "/shop/?tab=tests"], [DRUG_PRODUCTS.length, "bioactive formulas", "/shop/?tab=formulas"], [DEPARTMENTS.length, "precision disciplines", "/precision-health/"], [OFFICES.length, "global offices", "/clinic/"]] as const).map(([n, l, h]) => (
+          {([[LAB_TESTS.length, "lab tests", "/precision-health/bioaro-labs/"], [DRUG_PRODUCTS.length, "bioactive formulas", "/precision-health/bioaro-drugs/"], [DEPARTMENTS.length, "departments", "/precision-health/"], [OFFICES.length, "global offices", "/clinic/"]] as const).map(([n, l, h]) => (
             <Link key={l} href={h} className="card p-4 hover:-translate-y-1">
               <div className="text-[30px] font-semibold tracking-tight sm:text-[36px]"><NumberTicker value={n} /></div>
               <div className="text-[13px] text-muted">{l}</div>
@@ -95,7 +95,7 @@ export function ThreeSixty() {
     <Section ai="360° view" className="bg-canvas/60">
       <div className="container-x">
         <Eyebrow>A 360° view of your health</Eyebrow>
-        <h2 className="h-section mt-3 max-w-[20ch]"><Text3DFlip text="Five data streams." /> <span className="text-muted">One </span><AuroraText>intelligence.</AuroraText></h2>
+        <h2 className="h-section mt-3 max-w-[20ch]"><TextAnimate animation="blurIn">{"Five data streams."}</TextAnimate> <span className="text-muted">One </span><AuroraText>intelligence.</AuroraText></h2>
         <p data-reveal className="lede mt-4 max-w-[60ch]">Tap or hover a stream to see what it measures, the numbers behind it and how it shows up in your record.</p>
         <div className="mt-10"><DataStreamExplorer /></div>
       </div>
@@ -107,7 +107,7 @@ export function Disciplines() {
   return (
     <Section ai="Precision Health">
       <div className="container-x flex flex-wrap items-end justify-between gap-4">
-        <div><Eyebrow>Precision Health</Eyebrow><h2 className="h-section mt-3"><Text3DFlip text="Nine disciplines." /> <span className="text-muted">One record.</span></h2><p data-reveal className="lede mt-3 max-w-[56ch]">Tap or hover a discipline — see why it matters, the evidence and what we measure.</p></div>
+        <div><Eyebrow>Precision Health</Eyebrow><h2 className="h-section mt-3"><TextAnimate animation="blurIn">{"Fourteen departments."}</TextAnimate> <span className="text-muted">One record.</span></h2><p data-reveal className="lede mt-3 max-w-[56ch]">Tap or hover a department — see why it matters, the evidence and what we measure.</p></div>
         <Link href="/precision-health/" className="btn-light">All departments<Icon name="arrow-right" size={15} /></Link>
       </div>
       <div className="container-x mt-10"><DisciplineExplorer /></div>
@@ -134,7 +134,7 @@ export function AILayer() {
   return (
     <Section ai="BioELR intelligence">
       <div className="container-x">
-        <div className="relative overflow-hidden rounded-5xl border border-ink/[0.06] bg-gradient-to-br from-accent-light via-white to-[#ECFEFF] p-6 sm:p-12">
+        <div className="relative overflow-hidden rounded-5xl border border-ink/[0.06] bg-gradient-to-br from-accent-light via-white to-[#F3F7F1] p-6 sm:p-12">
           <ShineBorder radius={32} width={1} />
           <div className="relative grid gap-10 lg:grid-cols-2">
             <div className="min-w-0">
@@ -228,7 +228,7 @@ export function StoreTeaser() {
       <div className="container-x">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div><Eyebrow>Shop · BioAro Labs × BioAro Drugs</Eyebrow><h2 className="h-section mt-3 max-w-[18ch]">Measure your biology. Then act on it.</h2></div>
-          <Link href="/shop/?tab=tests" className="btn-light">Browse {LAB_TESTS.length} tests & {DRUG_PRODUCTS.length} formulas<Icon name="arrow-right" size={15} /></Link>
+          <Link href="/precision-health/bioaro-labs/" className="btn-light">Browse {LAB_TESTS.length} tests & {DRUG_PRODUCTS.length} formulas<Icon name="arrow-right" size={15} /></Link>
         </div>
         <div className="mt-10 grid gap-5 lg:grid-cols-[1.1fr_1fr]">
           <div className="relative overflow-hidden rounded-[28px] bg-navy p-7 text-white shadow-lift sm:p-9">
