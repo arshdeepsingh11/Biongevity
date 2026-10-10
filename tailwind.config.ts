@@ -1,32 +1,34 @@
 import type { Config } from "tailwindcss";
 
+/** Neural Noir — 2040 AI palette. Cold, precise, luminous. Zero pink. */
 export default {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
-      fontFamily: { sans: ["'DM Sans Variable'", "'DM Sans'", "system-ui", "sans-serif"] },
+      fontFamily: { sans: ["'DM Sans Variable'", "'DM Sans'", "sans-serif"] },
       colors: {
-        ink: "#1D1D1F",
-        muted: "#6E6E73",
-        faint: "#86868B",
-        canvas: "#F5F5F7",
-        pearl: "#FBFBFD",
-        night: "#0A0A0C",
-        violet: { DEFAULT: "#6A5CFF", soft: "#9B6BFF" },
-        coral: "#FF8A3D",
-        rose: "#FF4D8D",
+        night: "#05060A",     // --bg-deep
+        pearl: "#0A0C12",     // --bg
+        surface: "#11141C",   // --surface
+        canvas: "#181C28",    // --surface-2 (inputs, chips, inner fills)
+        ink: "#F2F4F8",       // --text
+        muted: "#8B93A7",     // --text-secondary
+        faint: "#5C6578",     // --text-muted
+        violet: { DEFAULT: "#3D8BFF", soft: "#00E5C0" }, // accent / accent-2
         sky: "#3D8BFF",
-        warn: "#C2410C",
+        aqua: "#00E5C0",
+        indigo: "#1A1F3A",
+        warn: "#FFB020",
       },
       backgroundImage: {
-        iri: "linear-gradient(135deg,#FF8A3D,#FF4D8D 35%,#9B6BFF 70%,#3D8BFF)",
-        "iri-x": "linear-gradient(90deg,#FF8A3D,#FF4D8D 33%,#9B6BFF 66%,#3D8BFF)",
+        iri: "linear-gradient(135deg,#00E5C0,#3D8BFF 55%,#1A1F3A)",
+        "iri-x": "linear-gradient(90deg,#00E5C0,#3D8BFF 60%,#1A1F3A)",
       },
-      borderRadius: { "4xl": "28px", "5xl": "36px" },
+      borderRadius: { "4xl": "28px", "5xl": "32px" },
       boxShadow: {
-        card: "0 1px 2px rgba(0,0,0,.04), 0 8px 30px rgba(0,0,0,.06)",
-        lift: "0 2px 6px rgba(0,0,0,.05), 0 24px 60px rgba(0,0,0,.10)",
-        glow: "0 0 0 1px rgba(106,92,255,.15), 0 12px 40px rgba(106,92,255,.25)",
+        card: "0 0 0 1px rgba(255,255,255,.06), 0 12px 32px rgba(0,0,0,.35)",
+        lift: "0 0 0 1px rgba(255,255,255,.10), 0 24px 64px rgba(0,0,0,.55)",
+        glow: "0 0 0 1px rgba(61,139,255,.35), 0 12px 40px rgba(61,139,255,.35)",
       },
       keyframes: {
         marquee: { from: { transform: "translateX(0)" }, to: { transform: "translateX(-50%)" } },
