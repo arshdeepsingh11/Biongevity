@@ -1,0 +1,22 @@
+import type { Metadata } from "next";
+import { PageHero, Section } from "@/components/ui/Section";
+import { AuroraText } from "@/components/fx/AuroraText";
+import { DrugsHub } from "@/components/bioaro/DrugsHub";
+import { JsonLd, breadcrumb } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "BioAro Drugs — AI-guided bioactive protocols",
+  description: "Transparent bioactive formulas — LONgevity+ NAD+ booster, glutathione, creatine and omega blends — matched to your goals by AI, with every ingredient and dose shown.",
+  alternates: { canonical: "/precision-health/bioaro-drugs/" },
+};
+
+export default function DrugsPage() {
+  return (
+    <>
+      <JsonLd data={breadcrumb([["Precision Health", "/precision-health/"], ["BioAro Drugs", "/precision-health/bioaro-drugs/"]])} />
+      <PageHero eyebrow="Precision Health · BioAro Drugs" title={<>Protocols built <AuroraText>by AI.</AuroraText></>}
+        lede="Tell the AI your goals and routine. Get a transparent, evidence-informed protocol — every ingredient, every dose, every reason." />
+      <Section ai="BioAro Drugs" className="!pt-0"><div className="container-x"><DrugsHub /></div></Section>
+    </>
+  );
+}
