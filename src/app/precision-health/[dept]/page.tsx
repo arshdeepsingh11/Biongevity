@@ -8,7 +8,7 @@ import { KeywordStream } from "@/components/fx/KeywordStream";
 import { DecodeText } from "@/components/fx/DecodeText";
 import { DEPARTMENTS } from "@/data/health";
 import { LAB_TESTS } from "@/data/labs";
-import { ProductCard } from "@/components/commerce/ProductCard";
+import { ProductCard } from "@/components/products/ProductCard";
 
 type P = { params: Promise<{ dept: string }> };
 
@@ -82,6 +82,7 @@ export default async function DeptPage({ params }: P) {
         <Section ai="Related tests" className="!pt-0">
           <div className="container-x">
             <h2 className="text-[26px] font-semibold tracking-tight">Related BioAro Labs tests</h2>
+            <p className="mt-1 text-[14px] text-muted">Opens the official test page on bioarolabs.com.</p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{tests.map((t) => <ProductCard key={t!.handle} p={t!} />)}</div>
           </div>
         </Section>
