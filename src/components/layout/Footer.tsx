@@ -4,7 +4,7 @@ import { DEPARTMENTS } from "@/data/health";
 
 export function Footer() {
   return (
-    <footer className="relative z-[1] border-t border-black/[0.06] bg-white">
+    <footer className="relative z-[1] border-t border-white/[0.06] bg-night/80 backdrop-blur">
       <div className="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="text-[19px] font-semibold tracking-tight">Biongevity</div>
@@ -26,15 +26,14 @@ export function Footer() {
         <div>
           <div className="text-[13px] font-semibold">Shop</div>
           <div className="mt-3 grid gap-2">
-            <Link href="/labs/tests/" className="text-[14px] text-muted hover:text-ink">All lab tests</Link>
-            <Link href="/drugs/shop/" className="text-[14px] text-muted hover:text-ink">All formulas</Link>
-            <Link href="/packages/" className="text-[14px] text-muted hover:text-ink">Longevity packages</Link>
-            <Link href="/cart/" className="text-[14px] text-muted hover:text-ink">Cart</Link>
+            <a href="https://bioarolabs.com/shop" target="_blank" rel="noopener" className="text-[14px] text-muted hover:text-ink">BioAro Labs ↗</a>
+            <a href="https://bioarodrugs.com/us/shop" target="_blank" rel="noopener" className="text-[14px] text-muted hover:text-ink">BioAro Drugs ↗</a>
+            <Link href="/#products" className="text-[14px] text-muted hover:text-ink">AI product match</Link>
           </div>
           <p className="mt-6 text-[12px] leading-relaxed text-faint">Company and product copy from biongevity.com, bioarolabs.com and bioarodrugs.com. Dashboard data is illustrative. AI answers are labelled live or prepared.</p>
         </div>
       </div>
-      <div className="border-t border-black/[0.06] py-5 pb-safe text-center text-[12px] text-faint">© {new Date().getFullYear()} Biongevity · BioAro Inc. Educational information, not medical advice.</div>
+      <div className="border-t border-white/[0.06] py-5 pb-safe text-center text-[12px] text-faint">© {new Date().getFullYear()} Biongevity · BioAro Inc. Educational information, not medical advice.</div>
     </footer>
   );
 }
