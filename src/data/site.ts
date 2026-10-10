@@ -1,32 +1,27 @@
 import type { IconName } from "@/components/ui/icons";
+import { DEPARTMENTS } from "./departments";
 
 export const SITE = {
   name: "Biongevity",
   tagline: "Precision health and longevity medicine",
   parent: "BioAro",
   description:
-    "A new way of living where longevity is enhanced through the power of biology. Crafted with leading technology, scientists and healthcare professionals, delivered anywhere, anytime.",
+    "Precision health and longevity medicine: cardiology with onsite exercise stress echo, internal medicine, endocrinology, whole genome sequencing, microbiome and biomarker testing, virtual care and AI-guided plans — Calgary, Dubai and Almelo.",
   url: "https://biongevity.com",
 };
 
-export interface NavLink { href: string; label: string; icon: IconName; desc?: string; external?: boolean }
+export interface NavLink { href: string; label: string; icon: IconName; desc?: string; external?: boolean; group?: string }
 export interface NavItem { id: string; label: string; icon: IconName; href?: string; menu?: NavLink[] }
 
-/** Bottom Sparkle Navbar. Groups mirror biongevity.com menus — hover opens a live preview panel. */
+/** Bottom Sparkle Navbar — hover opens a live preview panel. */
 export const NAV: NavItem[] = [
   { id: "home", label: "Home", icon: "home", href: "/" },
   {
     id: "precision", label: "Precision", icon: "stethoscope", href: "/precision-health/",
     menu: [
-      { href: "/precision-health/internal-medicine/", label: "Internal Medicine", icon: "stethoscope" },
-      { href: "/precision-health/cardiology/", label: "Cardiology", icon: "heart" },
-      { href: "/precision-health/dermatology/", label: "Dermatology", icon: "face" },
-      { href: "/precision-health/dental/", label: "Dental", icon: "tooth" },
-      { href: "/precision-health/womens-health/", label: "Women's Health", icon: "flower" },
-      { href: "/precision-health/mens-health/", label: "Men's Health", icon: "person" },
-      { href: "/precision-health/gut-health/", label: "Gut Health", icon: "salad" },
-      { href: "/precision-health/gastroenterology/", label: "Gastroenterology", icon: "microscope" },
-      { href: "/precision-health/mental-health/", label: "Mental Health", icon: "brain" },
+      ...DEPARTMENTS.map((d) => ({ href: `/precision-health/${d.id}/`, label: d.short, icon: d.icon, group: d.group })),
+      { href: "/precision-health/bioaro-labs/", label: "BioAro Labs", icon: "test-tubes", group: "BioAro", desc: "AI-connected lab tests" },
+      { href: "/precision-health/bioaro-drugs/", label: "BioAro Drugs", icon: "tablets", group: "BioAro", desc: "AI-guided protocols" },
     ],
   },
   {
@@ -41,8 +36,8 @@ export const NAV: NavItem[] = [
     id: "shop", label: "Shop", icon: "bag", href: "/shop/",
     menu: [
       { href: "/shop/?tab=programs", label: "Longevity programs", icon: "crown", desc: "Core, Precision and Elite — compared side by side." },
-      { href: "/shop/?tab=tests", label: "BioAro lab tests", icon: "test-tubes", desc: "Genomics, gut, skin, women's and men's health tests." },
-      { href: "/shop/?tab=formulas", label: "BioAro formulas", icon: "tablets", desc: "LONgevity+ and targeted bioactive formulas." },
+      { href: "/shop/?tab=packages", label: "Health packages", icon: "box", desc: "Heart, Executive, Longevity, Genomics and Metabolic." },
+      { href: "/precision-health/bioaro-labs/#catalog", label: "BioAro lab tests", icon: "test-tubes", desc: "47 tests — genome, microbiome, hormones and more." },
       { href: "/shop/?tab=match", label: "Find my match", icon: "target", desc: "A 2-minute quiz that ranks the tests and programs for you." },
     ],
   },
