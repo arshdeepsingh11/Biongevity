@@ -43,7 +43,7 @@ export function SparkleNav() {
     for (let i = 0; i < 7; i++) {
       const s = document.createElement("span");
       s.className = "absolute h-1 w-1 rounded-full";
-      s.style.background = i % 3 === 0 ? "#B8873B" : i % 2 ? "#0F9D8F" : "#2563EB";
+      s.style.background = i % 3 === 0 ? "#C2A16A" : i % 2 ? "#5E7F62" : "#97703F";
       s.style.left = `${x}px`; s.style.top = `${y}px`;
       layer.appendChild(s);
       const a = Math.random() * Math.PI * 2, d = 10 + Math.random() * 18;
@@ -82,13 +82,13 @@ export function SparkleNav() {
       <nav aria-label="Primary" onMouseEnter={() => clearTimeout(closeT.current)} onMouseLeave={leave} className="glass pointer-events-auto relative max-w-full rounded-full p-1.5 shadow-lift">
         <div ref={bar} className="no-scrollbar relative flex items-center overflow-x-auto">
           <span ref={line} aria-hidden className="pointer-events-none absolute left-0 top-0 z-20 h-[2px] w-0 rounded-full opacity-0"
-            style={{ background: "linear-gradient(90deg,#2563EB,#0F9D8F)", boxShadow: "0 0 8px rgba(37,99,235,.9), 0 0 18px rgba(15,157,143,.55)" }} />
+            style={{ background: "linear-gradient(90deg,#97703F,#5E7F62)", boxShadow: "0 0 8px rgba(151,112,63,.9), 0 0 18px rgba(94,127,98,.55)" }} />
           <div ref={sparkLayer} aria-hidden className="pointer-events-none absolute inset-0 z-30" />
           {NAV.map((n) => {
             const on = target === n.id, cur = active === n.id;
             const inner = (
               <>
-                <Icon name={n.icon} size={16} className={`shrink-0 transition-colors ${on ? "text-accent" : "text-faint"}`} />
+                <Icon name={n.icon} size={18} weight={on ? "duotone" : "regular"} className={`shrink-0 transition-colors ${on ? "text-accent" : "text-faint"}`} />
                 <span data-label className={`relative text-[10.5px] font-semibold transition-colors sm:text-[13px] ${on ? "text-accent" : "text-muted"}`}>{n.label}</span>
                 {n.menu && <Icon name="chevron-down" size={12} className={`hidden transition-transform sm:block ${open === n.id ? "rotate-180 text-accent" : "text-faint"}`} />}
               </>
@@ -127,23 +127,34 @@ function MenuPanel({ item, preview, setPreview }: { item: NavItem; preview: stri
   const p = dept ?? clinic;
   return (
     <div className="grid md:grid-cols-[260px_1fr]">
-      <div className="max-h-[46vh] overflow-y-auto border-b border-ink/[0.06] p-2 md:max-h-none md:border-b-0 md:border-r">
+      <div className="max-h-[46vh] overflow-y-auto border-b border-ink/[0.06] p-2 md:max-h-[62vh] md:border-b-0 md:border-r">
         <Link href={item.href!} className="mb-1 flex items-center justify-between rounded-xl px-3 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-faint hover:text-accent">
           {isPrecision ? "All precision health" : "Global clinic"}<Icon name="arrow-right" size={13} />
         </Link>
-        {item.menu!.map((m) => (
-          <Link key={m.href} href={m.href} onMouseEnter={() => setPreview(m.href)} onFocus={() => setPreview(m.href)}
-            className={`flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-[14px] font-medium transition-colors ${preview === m.href ? "bg-accent-light text-accent" : "text-ink hover:bg-ink/[0.04]"}`}>
-            <Icon name={m.icon} size={16} />{m.label}
-          </Link>
+        {item.menu!.map((m, k) => (
+          <div key={m.href}>
+            {m.group && m.group !== item.menu![k - 1]?.group && <div className="px-3 pb-1 pt-3 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-faint">{m.group}</div>}
+            <Link href={m.href} onMouseEnter={() => setPreview(m.href)} onFocus={() => setPreview(m.href)}
+              className={`flex items-center gap-2.5 rounded-xl px-3 py-2 text-[14px] font-medium transition-colors ${preview === m.href ? "bg-accent-light text-accent" : "text-ink hover:bg-ink/[0.04]"}`}>
+              <Icon name={m.icon} size={18} weight="duotone" />{m.label}
+            </Link>
+          </div>
         ))}
       </div>
+      {!p && isPrecision && (
+        <div className="hidden p-6 md:block">
+          <span className="grid h-12 w-12 place-items-center rounded-2xl bg-iri text-white shadow-glow"><Icon name={slug === "bioaro-drugs" ? "tablets" : "test-tubes"} size={24} weight="duotone" /></span>
+          <div className="mt-4 text-[22px] font-semibold tracking-tight">{slug === "bioaro-drugs" ? "BioAro Drugs" : "BioAro Labs"}</div>
+          <p className="mt-2 text-[14px] leading-relaxed text-muted">{slug === "bioaro-drugs" ? "AI-guided bioactive protocols — every ingredient and dose visible, matched to your goals and routine." : "47 advanced tests — genome, biomarkers and microbiome — connected by BioAro Intelligence and reviewed by clinicians."}</p>
+          <Link href={preview ?? "/precision-health/"} className="btn-dark mt-5 h-10 text-[14px]">Explore<Icon name="arrow-right" size={14} /></Link>
+        </div>
+      )}
       {p && (
         <AnimatePresence mode="wait">
           <motion.div key={slug} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} transition={{ duration: 0.22 }} className="hidden p-6 md:block">
             <div className="flex items-start gap-4">
               {clinic?.media ? <MediaSlot id="clinicLoop" className="h-24 w-36 shrink-0" rounded="rounded-2xl" />
-                : <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-iri text-white shadow-glow"><Icon name={p.icon} size={22} /></span>}
+                : <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-iri text-white shadow-glow"><Icon name={p.icon} size={24} weight="duotone" /></span>}
               <div><div className="text-[22px] font-semibold tracking-tight">{p.name}</div><div className="text-[14px] text-accent">{p.tag}</div></div>
             </div>
             <p className="mt-3 line-clamp-3 text-[14px] leading-relaxed text-muted">{p.summary}</p>
