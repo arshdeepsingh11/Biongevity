@@ -51,7 +51,7 @@ export const DEPARTMENTS: Department[] = [
     tests: ["hs-crp-high-sensitivity-c-reactive-protein", "pai-1-total-plasminogen-activator-inhibitor-1", "telomere-length-testing"], source: `${SITE_URL}/precision-cardiology/`,
   },
   {
-    id: "dermatology", icon: "sparkle", name: "Precision Dermatology", short: "Dermatology",
+    id: "dermatology", icon: "face", name: "Precision Dermatology", short: "Dermatology",
     tag: "Tailored care for your unique skin.",
     summary: "Advanced, personalized skin treatments — from acne to ageing — backed by science and your skin's own microbiome.",
     approach: ["Our experts analyse your skin microbiome — the community of microorganisms living on your skin — to treat acne, eczema, psoriasis and more.", "Great skin starts with the right diagnosis: the Skin Microbiome Test and Bio Skin Kit measure imbalances, hydration and texture to guide treatment."],
@@ -69,7 +69,7 @@ export const DEPARTMENTS: Department[] = [
     tests: ["biodental"], source: `${SITE_URL}/precision-dental/`,
   },
   {
-    id: "womens-health", icon: "users", name: "Precision Women's Health", short: "Women's Health",
+    id: "womens-health", icon: "flower", name: "Precision Women's Health", short: "Women's Health",
     tag: "Optimal health at every stage of life.",
     summary: "Genomic, microbiome and epigenetic testing for early detection of cancer, osteoporosis and hormonal imbalance — with fertility support and preventive screening.",
     approach: ["Genomic insights detect risks for breast cancer, ovarian cancer and osteoporosis, enabling early prevention.", "Microbiome analysis supports gut and vaginal health, fertility, pregnancy outcomes and hormonal balance; epigenetics shows how stress, diet and environment affect you."],
@@ -78,7 +78,7 @@ export const DEPARTMENTS: Department[] = [
     tests: ["hormone-health", "biofemme", "estradiol-e2"], source: `${SITE_URL}/precision-womens-health/`,
   },
   {
-    id: "mens-health", icon: "user", name: "Precision Men's Health", short: "Men's Health",
+    id: "mens-health", icon: "person", name: "Precision Men's Health", short: "Men's Health",
     tag: "Peak health at every stage.",
     summary: "Preventive care, early detection and optimized wellness — genetic markers for prostate cancer, cardiovascular health and hormone balance.",
     approach: ["Epigenetic analysis builds custom lifestyle plans for diet, exercise and stress.", "Prostate ultrasound, cardiac MRI and body composition scans track your health precisely; microbiome research supports hormones, mood and metabolism."],
@@ -87,7 +87,7 @@ export const DEPARTMENTS: Department[] = [
     tests: ["total-testosterone", "dht-dihydrotestosterone", "ultra-hormone-health"], source: `${SITE_URL}/precision-mens-health/`,
   },
   {
-    id: "gut-health", icon: "activity", name: "Precision Gut Health", short: "Gut Health",
+    id: "gut-health", icon: "salad", name: "Precision Gut Health", short: "Gut Health",
     tag: "The foundation of overall wellness.",
     summary: "A balanced gut microbiome influences digestion, immunity, mental clarity and longevity. We identify risks, monitor imbalances and build personalized plans.",
     approach: ["Gut microbiome analysis shows its influence on immune function, mental health and conditions like IBS and metabolic disorders.", "Endoscopy and colonoscopy help detect gastrointestinal issues early."],
@@ -96,7 +96,7 @@ export const DEPARTMENTS: Department[] = [
     tests: ["biogut"], source: `${SITE_URL}/precision-gut-health/`,
   },
   {
-    id: "gastroenterology", icon: "droplet", name: "Precision Gastroenterology", short: "Gastroenterology",
+    id: "gastroenterology", icon: "microscope", name: "Precision Gastroenterology", short: "Gastroenterology",
     tag: "Your unique digestive needs.",
     summary: "Advanced technology analyses your gut microbiome to personalize treatment for IBS, Crohn's and acid reflux — for a longer, healthier life.",
     approach: ["Treatment is tailored to your microbiome, symptoms and goals.", "Led by a consultant gastroenterologist with decades of experience in nutrition and cancer prevention."],
@@ -106,7 +106,7 @@ export const DEPARTMENTS: Department[] = [
     tests: ["biogut", "core-amino-acid-balance"], source: `${SITE_URL}/precision-gastroenterology/`,
   },
   {
-    id: "mental-health", icon: "leaf", name: "Precision Mental Health", short: "Mental Health", calm: true,
+    id: "mental-health", icon: "brain", name: "Precision Mental Health", short: "Mental Health", calm: true,
     tag: "Lasting emotional wellbeing.",
     summary: "Personalized mental health care using advanced diagnostics and holistic treatment — CBT, trauma-informed therapy and family counselling.",
     approach: ["Specializing in anxiety, depression, PTSD and ADHD.", "Mindfulness, lifestyle coaching and psychoeducation for lasting resilience."],
@@ -140,9 +140,9 @@ export function scoreDepartments(text: string): string[] {
 export const PILLARS: { t: string; icon: IconName; d: string }[] = [
   { t: "Genomics", icon: "dna", d: "Whole exome and genome assessment — genes guide how your cells, tissues and organs develop and function." },
   { t: "Epigenetics", icon: "layers", d: "Your DNA is influenced by factors you can change through lifestyle." },
-  { t: "Microbiome", icon: "activity", d: "Up to 50 trillion microorganisms that shape your wellbeing while in balance." },
+  { t: "Microbiome", icon: "gut", d: "Up to 50 trillion microorganisms that shape your wellbeing while in balance." },
   { t: "Biological age", icon: "hourglass", d: "Molecular, genetic and metabolic age indicators — your body's real clock." },
-  { t: "Clinical evaluations", icon: "stethoscope", d: "Cardiovascular, physical, digestive and cognitive assessments in one roadmap." },
+  { t: "Clinical evaluations", icon: "radar", d: "Cardiovascular, physical, digestive and cognitive assessments in one roadmap." },
 ];
 
 /** Longevity Journey steps (biongevity.com/journey). */
