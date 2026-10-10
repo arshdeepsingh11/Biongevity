@@ -1,105 +1,67 @@
-style(theme): aurora-glass light tokens — blue accent, tiny amber, zero pink|tailwind.config.ts
-style(theme): light glass globals, CSS variables, cursor edge light, cool selection|src/app/globals.css
-feat(brand): vector Biongevity logo mark and wordmark|src/components/ui/Logo.tsx
-feat(brand): add favicon from the new logo mark|src/app/icon.svg
-chore(env): AI and contact endpoints only|.env.example
-feat(data): link catalog products to official store pages|src/data/types.ts
-feat(data): link all 47 lab tests to bioarolabs.com|src/data/labs.ts
-feat(data): link all 8 formulas to bioarodrugs.com|src/data/drugs.ts
-feat(data): nine precision departments, journey steps and real packages from biongevity.com|src/data/health.ts
-feat(data): global clinic pages, offices, mission and stories|src/data/clinic.ts
-feat(data): grouped navigation with precision, clinic and discover menus|src/data/site.ts
-chore(data): rename ELR App to Biongevity App in demo data|src/data/dashboard.ts
-feat(media): wire brand, clinic and story videos into media slots|src/config/media.ts
-feat(media): add brand film|public/media/brand-film.mp4
-feat(media): add brand film loop|public/media/brand-loop.mp4
-feat(media): add brand film poster|public/media/brand-film.jpg
-feat(media): add clinic film|public/media/clinic-film.mp4
-feat(media): add clinic film loop|public/media/clinic-loop.mp4
-feat(media): add clinic film poster|public/media/clinic-film.jpg
-feat(media): add clinic testimonial story|public/media/story-clinic.mp4
-feat(media): add clinic story poster|public/media/story-clinic.jpg
-feat(media): add gut health story|public/media/story-gut.mp4
-feat(media): add gut story poster|public/media/story-gut.jpg
-feat(media): add skin microbiome story|public/media/story-skin.mp4
-feat(media): add skin story poster|public/media/story-skin.jpg
-feat(fx): add Text Animate (blur, slide, fade, scale by word or character)|src/components/fx/TextAnimate.tsx
-feat(fx): add Aurora Text|src/components/fx/AuroraText.tsx
-feat(fx): add Dia Text Reveal colour-band sweep|src/components/fx/DiaTextReveal.tsx
-feat(fx): add ambient signal field reacting to scroll|src/components/fx/AmbientField.tsx
-style(fx): blue beam flow shader for light hero|src/components/fx/BeamFlow.tsx
-style(fx): light globe with blue office markers|src/components/fx/Globe.tsx
-style(fx): blue planet atmosphere, WebGL-safe labels|src/components/fx/PlanetSystem.tsx
-style(fx): blue signal convergence, WebGL-safe labels|src/components/fx/SignalConvergence.tsx
-style(fx): blue shine border|src/components/fx/ShineBorder.tsx
-style(fx): blue progress ring|src/components/fx/ProgressRing.tsx
-style(fx): blue confetti|src/components/fx/Confetti.ts
-style(fx): light terminal window|src/components/fx/Terminal.tsx
-style(fx): light glass marquee icons|src/components/fx/FocusedMarquee.tsx
-style(fx): light glass dock icons|src/components/fx/AppleDock.tsx
-style(fx): light dynamic nav pill|src/components/fx/DynamicNav.tsx
-style(fx): light bento cells|src/components/fx/BentoGrid.tsx
-style(fx): light animated list|src/components/fx/AnimatedList.tsx
-style(fx): light evervault card|src/components/fx/EvervaultCard.tsx
-style(fx): light keyword stream|src/components/fx/KeywordStream.tsx
-style(fx): light sphere gallery cards|src/components/fx/ScrollSphereGallery.tsx
-style(fx): blue video text fill|src/components/fx/VideoText.tsx
-style(ui): light media slot|src/components/ui/MediaSlot.tsx
-feat(media): add cinematic film player|src/components/media/FilmPlayer.tsx
-feat(media): add 3D stories carousel with hover preview|src/components/media/Stories.tsx
-feat(store): add external product card|src/components/products/ProductCard.tsx
-feat(store): add AI match and store browser for labs and drugs|src/components/products/ProductHub.tsx
-feat(nav): add bottom Sparkle Navbar with GSAP strike-through and page previews|src/components/layout/SparkleNav.tsx
-feat(layout): glass header with logo, Ask AI and Book consult|src/components/layout/Header.tsx
-feat(layout): light footer with offices and store links|src/components/layout/Footer.tsx
-refactor(layout): remove mobile dock (replaced by Sparkle Navbar)|src/components/layout/MobileDock.tsx
-feat(ai): status HUD — Scanning, Synthesizing, Ready|src/components/ai/AIHud.tsx
-feat(ai): ambient field, edge light and blue neural pulse|src/components/ai/AIInteractionLayer.tsx
-style(ai): light assistant panel clear of bottom nav|src/components/ai/AIAssistant.tsx
-feat(ai): knowledge for real packages, offices and departments|src/components/ai/knowledge.ts
-refactor(app): remove cart provider|src/app/providers.tsx
-feat(app): light layout with Sparkle Navbar|src/app/layout.tsx
-feat(home): hero, brand film, stories, BioELR, global clinic and programs sections|src/components/home/HomeSections.tsx
-feat(home): compose home with store|src/app/page.tsx
-style(ui): light ask AI button|src/components/pages/AskButton.tsx
-style(health): light AI triage|src/components/pages/Triage.tsx
-feat(health): precision health overview|src/app/precision-health/page.tsx
-feat(health): rich department pages with services and specialists|src/app/precision-health/[dept]/page.tsx
-feat(clinic): global clinic overview with film and offices|src/app/clinic/page.tsx
-feat(clinic): journey, virtual and UAE clinic pages|src/app/clinic/[slug]/page.tsx
-feat(programs): real Core, Precision and Elite packages|src/app/packages/page.tsx
-feat(life): Biongevity Life spaces|src/app/life/page.tsx
-style(app-page): Biongevity App dock and signup|src/components/pages/AppDock.tsx
-feat(app-page): Biongevity App page|src/app/app/page.tsx
-feat(insights): insights page|src/app/insights/page.tsx
-refactor(insights): remove old journal route|src/app/journal/page.tsx
-style(insights): light journal list|src/components/pages/JournalList.tsx
-feat(about): mission, vision, leadership and reach|src/app/about/page.tsx
-feat(contact): real offices in Calgary, Dubai and Almelo|src/app/contact/page.tsx
-feat(contact): clinic interests in enquiry form|src/components/pages/ContactForm.tsx
-style(dashboard): light member dashboard|src/components/pages/Dashboard.tsx
-refactor(labs): remove labs page|src/app/labs/page.tsx
-refactor(labs): remove tests shop|src/app/labs/tests/page.tsx
-refactor(labs): remove test detail pages|src/app/labs/tests/[handle]/page.tsx
-refactor(labs): remove labs explorer|src/components/pages/LabsExplorer.tsx
-refactor(drugs): remove drugs page|src/app/drugs/page.tsx
-refactor(drugs): remove formulas shop|src/app/drugs/shop/page.tsx
-refactor(drugs): remove product detail pages|src/app/drugs/products/[handle]/page.tsx
-refactor(drugs): remove protocol builder|src/components/pages/ProtocolBuilder.tsx
-refactor(drugs): remove drugs sections|src/components/pages/DrugsSections.tsx
-refactor(clinic): remove journey route (now /clinic/journey)|src/app/journey/page.tsx
-refactor(commerce): remove cart page|src/app/cart/page.tsx
-refactor(commerce): remove cart view|src/components/pages/CartView.tsx
-refactor(commerce): remove cart drawer|src/components/commerce/CartDrawer.tsx
-refactor(commerce): remove add-to-cart|src/components/commerce/AddToCart.tsx
-refactor(commerce): remove catalog browser|src/components/commerce/CatalogBrowser.tsx
-refactor(commerce): remove product detail|src/components/commerce/ProductDetail.tsx
-refactor(commerce): remove internal product card|src/components/commerce/ProductCard.tsx
-refactor(commerce): remove cart provider|src/components/commerce/CartProvider.tsx
-refactor(shopify): remove catalog hook|src/hooks/useShopifyCatalog.ts
-refactor(shopify): remove storefront client|src/lib/shopify/client.ts
-refactor(shopify): remove storefront queries|src/lib/shopify/queries.ts
-refactor(shopify): remove storefront types|src/lib/shopify/types.ts
-refactor(shopify): remove storefront adapter|src/lib/shopify/index.ts
-docs: aurora-glass README|README.md
-docs: commit guide, plan, manifest and scripts|COMMITS.md scripts
+chore(deps): add lucide-react icon set, drop unused cobe globe|package.json package-lock.json
+feat(icons): Lucide-backed Icon with meaningful medical icons per department|src/components/ui/Icon.tsx src/components/ui/icons.ts
+style(theme): rich palette — navy, blue, teal and gold tokens with deeper shadows|tailwind.config.ts
+style(theme): rich CSS variables, 3D/orbit/sweep keyframes, reduced-motion guard|src/app/globals.css
+style(text): navy-blue-teal gradients for Aurora Text and Dia reveal|src/components/fx/AuroraText.tsx src/components/fx/DiaTextReveal.tsx
+feat(env): typed public env — Xevyo, Shopify, contact, site URL|src/lib/env.ts
+chore(env): document public-only variables, no secrets|.env.example
+feat(xevyo): client for Xevyo API with JSON and streaming replies|src/lib/xevyo.ts
+refactor(ai): provider talks only to Xevyo — no local or hard-coded answers|src/components/ai/AIProvider.tsx
+feat(fx): Border Beam light travelling around a border|src/components/fx/BorderBeam.tsx
+feat(xevyo): bottom-right Biongevity launcher and Xevyo chat panel|src/components/ai/AIAssistant.tsx
+chore(ai): remove scanning/ready status HUD|src/components/ai/AIHud.tsx
+chore(ai): remove hard-coded knowledge answers|src/components/ai/knowledge.ts
+refactor(layout): drop HUD mount from root layout|src/app/layout.tsx
+refactor(header): remove scroll progress bar and duplicate Ask AI button|src/components/layout/Header.tsx
+refactor(fx): remove scroll progress and ambient field from interaction layer|src/components/ai/AIInteractionLayer.tsx src/components/fx/AmbientField.tsx
+refactor(triage): keyword department match with Ask Xevyo follow-up|src/components/pages/Triage.tsx
+refactor(ui): Ask buttons open Xevyo|src/components/pages/AskButton.tsx src/components/pages/JournalList.tsx
+feat(charts): in-view hook for one-time chart animation|src/components/charts/useInView.ts
+feat(charts): SVG chart kit — line, bars, columns, donut, radar, gauge, waffle, stat|src/components/charts/Charts.tsx
+feat(data): cited evidence layer for streams and departments|src/data/stats.ts
+feat(charts): data-driven evidence chart with sources|src/components/charts/EvidenceChart.tsx
+feat(fx): CSS 3D DNA double helix|src/components/fx/DnaHelix.tsx
+feat(fx): Electric Border for recommended picks|src/components/fx/ElectricBorder.tsx
+feat(fx): Magic Card spotlight|src/components/fx/MagicCard.tsx
+feat(fx): Dot Pattern background|src/components/fx/DotPattern.tsx
+feat(fx): Orbiting Circles|src/components/fx/OrbitingCircles.tsx
+feat(fx): Shimmer Button with light variant|src/components/fx/ShimmerButton.tsx
+feat(home): data-stream explorer — hover swaps stats, helix, clocks, donut and radar|src/components/home/DataStreamExplorer.tsx
+feat(home): discipline explorer — hover swaps icon, evidence and chart|src/components/home/DisciplineExplorer.tsx
+feat(map): world map data (dotted projection, clinic pins)|src/data/worldmap.ts
+feat(map): interactive world map — pan, pinch, zoom, live routes and clinic clocks|src/components/fx/WorldMap.tsx
+chore(fx): retire signal convergence, focused marquee and globe|src/components/fx/SignalConvergence.tsx src/components/fx/FocusedMarquee.tsx src/components/fx/Globe.tsx
+feat(commerce): Shopify variant map|src/config/shopify.ts
+feat(commerce): buyUrl and bundleUrl — Shopify cart permalinks with store fallback|src/lib/commerce.ts
+refactor(products): product cards buy through the commerce layer|src/components/products/ProductCard.tsx
+style(labs): clearer category icons|src/data/labs.ts
+feat(quiz): deterministic on-device longevity match scoring|src/lib/quiz.ts
+feat(quiz): 8-step match quiz with radar, bars and electric-bordered picks|src/components/quiz/LongevityQuiz.tsx
+feat(shop): programs tab — cards, comparison matrix, price and feature charts|src/components/shop/ProgramsTab.tsx
+feat(shop): lab tests tab — category donut, price bars, filterable grid|src/components/shop/CatalogTab.tsx
+feat(shop): formulas tab — LONgevity+ ingredient chart, example day, personas|src/components/shop/FormulasTab.tsx
+feat(shop): tabbed shop shell with ?tab= deep links|src/components/shop/ShopTabs.tsx
+feat(shop): /shop page merging programs and store|src/app/shop/page.tsx
+chore(shop): retire home product hub and /packages page|src/components/products/ProductHub.tsx src/app/packages/page.tsx
+feat(nav): merge Programs and Store into Shop menu|src/data/site.ts
+feat(nav): compact mobile nav and teal sparkle line|src/components/layout/SparkleNav.tsx
+feat(home): explorers, world map, shop teaser and quiz entry|src/components/home/HomeSections.tsx
+feat(home): shop teaser replaces product hub|src/app/page.tsx
+fix(terminal): wrap long lines on mobile|src/components/fx/Terminal.tsx
+style(health): department and stream icons|src/data/health.ts
+feat(care): clinical detail per department from NEYU and Biongevity|src/data/care.ts
+feat(tools): self-check tools — BP, BMI, HbA1c, fibre, sleep, UV, oral, bone, bowel screening|src/components/tools/HealthTools.tsx
+feat(dept): department tabs — overview, care, evidence, labs, self-check, FAQ|src/components/dept/DeptTabs.tsx
+feat(dept): department pages use internal tabs|src/app/precision-health/[dept]/page.tsx
+feat(precision): evidence explorer on the precision index|src/app/precision-health/page.tsx
+feat(clinic): virtual flow, remote BP program and UAE assessment data|src/data/clinic.ts
+feat(clinic): 7-day home blood-pressure tracker|src/components/clinic/BPTracker.tsx
+feat(clinic): tabs for Journey, Virtual Clinic and UAE Precision Clinic|src/components/clinic/ClinicTabs.tsx
+feat(clinic): clinic pages use tabs|src/app/clinic/[slug]/page.tsx
+feat(clinic): world map replaces globe on clinic index|src/app/clinic/page.tsx
+feat(about): world map replaces globe|src/app/about/page.tsx
+refactor(contact): read endpoint from typed env|src/components/pages/ContactForm.tsx
+docs(footer): sources, partners and Xevyo note|src/components/layout/Footer.tsx
+docs: README — routes, Xevyo contract, Shopify, data|README.md
+docs: commit plan|COMMITS.md
+chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt scripts/commit-all.ps1 scripts/commit-all.sh

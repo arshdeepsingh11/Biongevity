@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Aurora Glass — one commit per change. Run from repo root: bash scripts/commit-all.sh
+# Biongevity — one commit per change. Run from repo root: bash scripts/commit-all.sh
 pruned=0
 while IFS= read -r f; do
   grep -qxF "$f" scripts/manifest.txt || { rm -f -- "$f"; pruned=$((pruned+1)); echo "- pruned $f"; }

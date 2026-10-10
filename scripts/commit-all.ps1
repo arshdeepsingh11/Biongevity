@@ -1,4 +1,4 @@
-# Aurora Glass — one commit per change.
+# Biongevity — one commit per change.
 # Run from repo root:  powershell -ExecutionPolicy Bypass -File scripts\commit-all.ps1
 # 1) prune: delete files in src/ that are not part of this version (scripts/manifest.txt)
 # 2) commit: one commit per line of scripts/commits.txt  (message|path path ...)
