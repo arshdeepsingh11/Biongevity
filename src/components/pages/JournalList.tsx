@@ -13,7 +13,7 @@ export function JournalList() {
   return (
     <>
       <div className="no-scrollbar flex gap-2 overflow-x-auto" role="tablist">
-        {JOURNAL_CATEGORIES.map((c) => <button key={c} role="tab" aria-selected={cat === c} onClick={() => setCat(c)} className={`chip shrink-0 ${cat === c ? "border-ink bg-ink text-white" : "border-black/10 bg-white"}`}>{c}</button>)}
+        {JOURNAL_CATEGORIES.map((c) => <button key={c} role="tab" aria-selected={cat === c} onClick={() => setCat(c)} className={`chip shrink-0 ${cat === c ? "border-ink bg-ink text-night" : "border-white/10 bg-surface"}`}>{c}</button>)}
       </div>
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((a) => (
@@ -26,9 +26,9 @@ export function JournalList() {
               {open === a.slug && <ul className="mt-4 space-y-1.5 rounded-2xl bg-canvas p-4 text-[14px]">{a.sum.map((s) => <li key={s}>· {s}</li>)}</ul>}
               <div className="flex-1" />
               <div className="mt-5 flex flex-wrap gap-2">
-                <button onClick={() => setOpen(open === a.slug ? null : a.slug)} className="chip border-black/10 bg-white">{open === a.slug ? "Hide key points" : "Key points"}</button>
-                <button onClick={() => ask(`Explain "${a.t}" simply`)} className="chip border-black/10 bg-white"><Icon name="sparkle" size={14} className="text-violet" />Ask AI</button>
-                {a.url && <a href={a.url} target="_blank" rel="noopener" className="chip border-black/10 bg-white">Read<Icon name="external" size={12} /></a>}
+                <button onClick={() => setOpen(open === a.slug ? null : a.slug)} className="chip border-white/10 bg-surface">{open === a.slug ? "Hide key points" : "Key points"}</button>
+                <button onClick={() => ask(`Explain "${a.t}" simply`)} className="chip border-white/10 bg-surface"><Icon name="sparkle" size={14} className="text-violet" />Ask AI</button>
+                {a.url && <a href={a.url} target="_blank" rel="noopener" className="chip border-white/10 bg-surface">Read<Icon name="external" size={12} /></a>}
               </div>
             </div>
           </article>
