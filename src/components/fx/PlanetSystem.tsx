@@ -20,16 +20,16 @@ void main(){
  vec3 N=normalize(vN);vec3 L=normalize(uLight);float d=max(dot(N,L),0.);
  vec3 V=normalize(cameraPosition-vW);vec3 H=normalize(L+V);float spec=pow(max(dot(N,H),0.),48.)*.6;
  float rim=pow(1.-max(dot(N,V),0.),3.);
- vec3 lit=col*(.25+.9*d)+spec+rim*vec3(.6,.5,1.)*.5;
+ vec3 lit=col*(.25+.9*d)+spec+rim*vec3(.2,.7,1.)*.5;
  gl_FragColor=vec4(lit,1.);}`;
 
 const ATMO_FRAG = `precision highp float;varying vec3 vN;varying vec3 vW;uniform vec3 uLight;
 void main(){vec3 V=normalize(cameraPosition-vW);float r=pow(1.-abs(dot(normalize(vN),V)),2.6);
  float lit=.45+.55*max(dot(normalize(vN),normalize(uLight)),0.);
- gl_FragColor=vec4(mix(vec3(1.,.55,.75),vec3(.45,.55,1.),r)*lit,r*.95);}`;
+ gl_FragColor=vec4(mix(vec3(0.,.9,.75),vec3(.24,.55,1.),r)*lit,r*.95);}`;
 
 const PALETTES: Record<PlanetType, [string, string, string]> = {
-  bio: ["#9B6BFF", "#3D8BFF", "#FF8A3D"],
+  bio: ["#3D8BFF", "#3D8BFF", "#00E5C0"],
   ocean: ["#1E5BFF", "#62D0FF", "#FFFFFF"],
   ice: ["#DCE6FF", "#9FB6FF", "#FFFFFF"],
 };
@@ -66,9 +66,9 @@ export function PlanetSystem({ moons, type = "bio", className }: { moons: string
     // Orbit rings + moons
     const moonObjs = moons.map((_, i) => {
       const radius = 2.4 + i * 0.42, incl = (i - moons.length / 2) * 0.12;
-      const ring = new THREE.Mesh(new THREE.TorusGeometry(radius, 0.004, 8, 160), new THREE.MeshBasicMaterial({ color: 0x9b6bff, transparent: true, opacity: 0.25 }));
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(radius, 0.004, 8, 160), new THREE.MeshBasicMaterial({ color: 0x3D8BFF, transparent: true, opacity: 0.25 }));
       ring.rotation.x = Math.PI / 2 + incl; scene.add(ring);
-      const m = new THREE.Mesh(new THREE.SphereGeometry(0.13 + (i % 2) * 0.04, 32, 32), new THREE.MeshStandardMaterial({ color: [0xff8a3d, 0xff4d8d, 0x3d8bff, 0x6a5cff][i % 4], roughness: 0.35, metalness: 0.1 }));
+      const m = new THREE.Mesh(new THREE.SphereGeometry(0.13 + (i % 2) * 0.04, 32, 32), new THREE.MeshStandardMaterial({ color: [0x00E5C0, 0x22C3E6, 0x3d8bff, 0x3D8BFF][i % 4], roughness: 0.35, metalness: 0.1 }));
       scene.add(m);
       return { m, radius, incl, speed: 0.35 / (1 + i * 0.4), phase: (i / moons.length) * Math.PI * 2 };
     });
@@ -109,9 +109,9 @@ export function PlanetSystem({ moons, type = "bio", className }: { moons: string
   }, [moons, type]);
 
   return (
-    <div ref={host} className={`relative aspect-square w-full touch-none ${className ?? ""}`}>
+    <div ref={host} className={`relative aspect-square w-full touch-none [&[data-nogl="1"]>span]:hidden ${className ?? ""}`}>
       {moons.map((m, i) => (
-        <span key={m} ref={(n) => { labels.current[i] = n; }} className="pointer-events-none absolute left-0 top-0 z-10 whitespace-nowrap rounded-full bg-white/90 px-2.5 py-1 text-[12px] font-semibold text-ink shadow-card ring-1 ring-black/5 backdrop-blur">
+        <span key={m} ref={(n) => { labels.current[i] = n; }} className="pointer-events-none absolute left-0 top-0 z-10 whitespace-nowrap rounded-full bg-surface/90 px-2.5 text-ink py-1 text-[12px] font-semibold text-ink shadow-card ring-1 ring-white/5 backdrop-blur">
           {m}
         </span>
       ))}
