@@ -6,31 +6,35 @@
 @tailwind utilities;
 
 /*
- * NEURAL NOIR — 2040 AI design tokens (zero pink)
- *   --bg-deep #05060A · --bg #0A0C12 · --surface #11141C · --surface-2 #181C28
- *   --text #F2F4F8 · --text-secondary #8B93A7 · --text-muted #5C6578
- *   --accent #3D8BFF · --accent-2 #00E5C0 · --warning #FFB020
- * AI patterns enabled: scroll neural track, AI status HUD (Scanning/Synthesizing/Ready),
- *   data-reveal decode, data-scan sweep, cursor-tracked edge light on .card,
- *   neural tap pulse, ambient signal field, shine borders on AI CTAs, live tickers.
+ * AURORA GLASS — light, airy, medical-grade blue. Zero pink.
+ *   --bg #FFFFFF · --bg-subtle #F5F7FA · --surface rgba(255,255,255,.72) · --surface-solid #FFFFFF
+ *   --border rgba(15,23,42,.08) · --border-strong rgba(15,23,42,.14)
+ *   --text #0F172A · --text-secondary #64748B · --text-muted #94A3B8
+ *   --accent #2563EB · --accent-soft #3B82F6 · --accent-glow rgba(37,99,235,.18) · --accent-light #EFF6FF
+ *   --warm-1 #F59E0B · --warm-2 #FB923C (tiny accents only)
+ * AI patterns: scroll neural line · AI status HUD (Scanning → Synthesizing → Ready) · data-reveal blur-in ·
+ *   data-scan sweep · cursor edge light on .card · neural tap pulse · ambient signal field ·
+ *   shine borders on AI CTAs · number tickers · progress rings · aurora / dia / animate text.
  */
 :root {
-  --bg-deep: #05060a;
-  --bg: #0a0c12;
-  --surface: #11141c;
-  --surface-2: #181c28;
-  --border: rgba(255, 255, 255, 0.06);
-  --border-strong: rgba(255, 255, 255, 0.12);
-  --ink: #f2f4f8;
-  --muted: #8b93a7;
-  --faint: #5c6578;
-  --violet: #3d8bff;
-  --accent: #3d8bff;
-  --accent-2: #00e5c0;
-  --accent-glow: rgba(61, 139, 255, 0.35);
-  --ai-glow: rgba(0, 229, 192, 0.25);
-  --canvas: var(--bg);
-  --iri: linear-gradient(90deg, #00e5c0, #3d8bff 55%, #8fb8ff);
+  --bg: #ffffff;
+  --bg-subtle: #f5f7fa;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-solid: #ffffff;
+  --border: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.14);
+  --ink: #0f172a;
+  --muted: #64748b;
+  --faint: #94a3b8;
+  --accent: #2563eb;
+  --accent-soft: #3b82f6;
+  --accent-glow: rgba(37, 99, 235, 0.18);
+  --accent-light: #eff6ff;
+  --warm-1: #f59e0b;
+  --warm-2: #fb923c;
+  --violet: var(--accent);
+  --canvas: var(--bg-subtle);
+  --iri: linear-gradient(90deg, #1d4ed8, #2563eb 45%, #0891b2);
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --mx: 50vw;
@@ -39,28 +43,28 @@
 
 html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
 body {
-  background: var(--canvas);
+  background: var(--bg);
   color: var(--ink);
   font-family: "DM Sans Variable", "DM Sans", sans-serif;
-  color-scheme: dark;
+  color-scheme: light;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
-::selection { background: rgba(0, 229, 192, 0.28); color: #fff; }
+::selection { background: rgba(37, 99, 235, 0.16); color: var(--ink); }
 :focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; border-radius: 8px; }
 
 @layer components {
   .container-x { @apply mx-auto w-full max-w-[1200px] px-4 sm:px-6; }
-  .eyebrow { @apply text-[12px] font-semibold uppercase tracking-[0.14em] text-violet; }
+  .eyebrow { @apply text-[12px] font-semibold uppercase tracking-[0.14em] text-accent; }
   .h-display { @apply text-[44px] font-semibold leading-[1.02] tracking-[-0.035em] sm:text-[64px] lg:text-[84px]; }
   .h-section { @apply text-[34px] font-semibold leading-[1.06] tracking-[-0.03em] sm:text-[48px] lg:text-[56px]; }
   .lede { @apply text-[17px] leading-[1.5] text-muted sm:text-[19px]; }
-  .card { @apply relative rounded-4xl border border-white/[0.06] bg-surface shadow-card transition-[transform,box-shadow,border-color] duration-500; }
-  .card:hover { @apply border-white/[0.12]; }
-  .glass { @apply border border-white/10 bg-surface/70 backdrop-blur-xl backdrop-saturate-150; }
+  .card { @apply relative rounded-4xl border border-ink/[0.08] bg-white/[0.72] shadow-card backdrop-blur-xl transition-[transform,box-shadow,border-color] duration-500; }
+  .card:hover { @apply border-accent/30 shadow-glow; }
+  .glass { @apply border border-ink/[0.08] bg-white/[0.72] backdrop-blur-[22px] backdrop-saturate-[1.6]; }
   .btn { @apply inline-flex h-11 items-center justify-center gap-2 rounded-full px-5 text-[15px] font-medium transition-all duration-300 active:scale-[0.97]; }
-  .btn-dark { @apply btn bg-ink text-night hover:bg-white hover:shadow-[0_0_24px_rgba(61,139,255,.45)]; }
-  .btn-light { @apply btn border border-white/10 bg-surface text-ink hover:border-aqua/40 hover:shadow-[0_0_20px_rgba(0,229,192,.18)]; }
+  .btn-dark { @apply btn bg-accent text-white shadow-[0_6px_20px_rgba(37,99,235,.28)] hover:bg-[#1D4ED8] hover:shadow-[0_10px_28px_rgba(37,99,235,.38)]; }
+  .btn-light { @apply btn border border-ink/[0.10] bg-white/[0.72] text-ink backdrop-blur-xl hover:border-accent/40 hover:text-accent; }
   .chip { @apply inline-flex h-9 items-center gap-1.5 rounded-full border px-3.5 text-[14px] font-medium transition-colors; }
   .text-iri { background: var(--iri); -webkit-background-clip: text; background-clip: text; color: transparent; }
 }
@@ -89,8 +93,7 @@ body {
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
-.pb-safe { padding-bottom: calc(var(--safe-bottom) + 84px); }
-@media (min-width: 1024px) { .pb-safe { padding-bottom: 0; } }
+.pb-safe { padding-bottom: calc(var(--safe-bottom) + 96px); }
 
 /* Cursor-tracked edge light on cards (set by AIInteractionLayer) */
 .card::before {
@@ -99,5 +102,8 @@ body {
   transition: opacity .4s;
 }
 .card:hover::before { opacity: 1; }
-.card > * { position: relative; z-index: 1; }
+.card > :not(.absolute):not(.fixed) { position: relative; z-index: 1; }
 .fx-calm .card::before { display: none; }
+
+/* Body clears the bottom sparkle navbar */
+body { padding-bottom: calc(var(--safe-bottom) + 88px); }
