@@ -3,14 +3,14 @@ import type { Metadata, Viewport } from "next";
 import { Providers } from "./providers";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { MobileDock } from "@/components/layout/MobileDock";
+import { SparkleNav } from "@/components/layout/SparkleNav";
 import { AIAssistant } from "@/components/ai/AIAssistant";
 import { AIHud } from "@/components/ai/AIHud";
 import { AIInteractionLayer } from "@/components/ai/AIInteractionLayer";
 import { SITE } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: { default: `${SITE.name} — ${SITE.tagline}`, template: `%s · ${SITE.name}` },
+  title: { default: `${SITE.name} — Precision Health. Shared Longevity.`, template: `%s · ${SITE.name}` },
   description: SITE.description,
   metadataBase: new URL(SITE.url),
   openGraph: { title: SITE.name, description: SITE.description, type: "website" },
@@ -18,19 +18,19 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#05060A",
+  width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#FFFFFF",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body>
         <Providers>
           <AIInteractionLayer />
           <Header />
           <main className="relative">{children}</main>
           <Footer />
-          <MobileDock />
+          <SparkleNav />
           <AIHud />
           <AIAssistant />
         </Providers>
