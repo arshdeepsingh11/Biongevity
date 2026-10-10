@@ -1,7 +1,7 @@
 "use client";
 import confetti from "canvas-confetti";
 
-const COLORS = ["#00E5C0", "#22C3E6", "#3D8BFF", "#3D8BFF", "#3D8BFF"];
+const COLORS = ["#06B6D4", "#3B82F6", "#2563EB", "#2563EB", "#2563EB"];
 
 /** Confetti — iridescent burst for moments that matter (add to cart, booking, form sent). */
 export function fireConfetti(origin?: { x: number; y: number }) {
