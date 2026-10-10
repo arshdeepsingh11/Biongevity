@@ -52,8 +52,8 @@ export function FocusedMarquee({ items, speed = 0.6 }: { items: MarqueeItem[]; s
       <div ref={belt} className="flex w-max gap-6 will-change-transform">
         {row.map((it, i) => (
           <Link key={i} href={it.href} className="flex w-[104px] flex-col items-center gap-3 will-change-transform" aria-label={it.label} tabIndex={i >= items.length ? -1 : 0}>
-            <span className="relative grid h-[88px] w-[88px] place-items-center rounded-[24px] bg-gradient-to-b from-white to-[#ECECF1] text-ink shadow-[0_1px_0_#fff_inset,0_-2px_0_rgba(0,0,0,.06)_inset,0_14px_30px_rgba(0,0,0,.12)] ring-1 ring-black/[0.06]">
-              <span className="absolute inset-x-3 top-1.5 h-6 rounded-full bg-white/70 blur-[2px]" />
+            <span className="relative grid h-[88px] w-[88px] place-items-center rounded-[24px] bg-gradient-to-b from-[#1E2433] to-[#11141C] text-ink shadow-[0_1px_0_rgba(255,255,255,.12)_inset,0_14px_30px_rgba(0,0,0,.5)] ring-1 ring-white/[0.06]">
+              <span className="absolute inset-x-3 top-1.5 h-6 rounded-full bg-surface/70 blur-[2px]" />
               <Icon name={it.icon} size={34} strokeWidth={1.5} />
             </span>
             <span className="whitespace-nowrap text-[13px] font-medium text-ink/80">{it.label}</span>
