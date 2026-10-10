@@ -27,7 +27,7 @@ export function JournalList() {
               <div className="flex-1" />
               <div className="mt-5 flex flex-wrap gap-2">
                 <button onClick={() => setOpen(open === a.slug ? null : a.slug)} className="chip border-ink/10 bg-surface">{open === a.slug ? "Hide key points" : "Key points"}</button>
-                <button onClick={() => ask(`Explain "${a.t}" simply`)} className="chip border-ink/10 bg-surface"><Icon name="sparkle" size={14} className="text-violet" />Ask AI</button>
+                <button onClick={() => ask(`Explain "${a.t}" simply`)} className="chip border-ink/10 bg-surface"><Icon name="bot" size={14} className="text-accent" />Ask Xevyo</button>
                 {a.url && <a href={a.url} target="_blank" rel="noopener" className="chip border-ink/10 bg-surface">Read<Icon name="external" size={12} /></a>}
               </div>
             </div>
