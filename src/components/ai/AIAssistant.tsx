@@ -19,14 +19,14 @@ export function AIAssistant() {
     <AnimatePresence>
       {open && (
         <>
-          <motion.div className="fixed inset-0 z-[90] bg-black/50 backdrop-blur-[2px] lg:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpen(false)} />
+          <motion.div className="fixed inset-0 z-[90] bg-ink/10 backdrop-blur-[2px] lg:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpen(false)} />
           <motion.aside aria-label="Biongevity AI" role="dialog"
             initial={{ opacity: 0, y: 40, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 40, scale: 0.98 }}
             transition={{ type: "spring", stiffness: 320, damping: 32 }}
-            className="fixed inset-x-2 bottom-2 z-[95] flex max-h-[82vh] flex-col overflow-hidden rounded-[26px] bg-surface/90 shadow-lift ring-1 ring-white/[0.08] backdrop-blur-2xl
-              lg:inset-x-auto lg:bottom-6 lg:right-6 lg:top-20 lg:max-h-none lg:w-[400px]">
+            className="fixed inset-x-2 bottom-2 z-[95] flex max-h-[82vh] flex-col overflow-hidden rounded-[26px] bg-surface/90 shadow-lift ring-1 ring-ink/[0.08] backdrop-blur-2xl
+              lg:inset-x-auto lg:bottom-24 lg:right-6 lg:top-20 lg:max-h-none lg:w-[400px]">
             <ShineBorder radius={26} width={1} />
-            <header className="flex items-center gap-3 border-b border-white/[0.06] px-4 py-3.5">
+            <header className="flex items-center gap-3 border-b border-ink/[0.06] px-4 py-3.5">
               <span className="grid h-9 w-9 place-items-center rounded-xl bg-iri text-white"><Icon name="sparkle" size={17} /></span>
               <div className="flex-1"><div className="text-[15px] font-semibold">Biongevity AI</div>
                 <div className="flex items-center gap-1.5 text-[12px] text-faint"><span className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-emerald-500" />{busy ? "Thinking…" : `Context: ${context}`}</div></div>
@@ -41,7 +41,7 @@ export function AIAssistant() {
               )}
               {msgs.map((m, i) => (
                 <div key={i} className={`flex flex-col ${m.role === "user" ? "items-end" : "items-start"}`}>
-                  <div className={`max-w-[88%] whitespace-pre-wrap rounded-2xl px-3.5 py-2.5 text-[14px] leading-relaxed ${m.role === "user" ? "bg-ink text-night" : "bg-canvas text-ink"}`}>
+                  <div className={`max-w-[88%] whitespace-pre-wrap rounded-2xl px-3.5 py-2.5 text-[14px] leading-relaxed ${m.role === "user" ? "bg-ink text-white" : "bg-canvas text-ink"}`}>
                     {m.text || <span className="inline-flex gap-1">{[0, 1, 2].map((k) => <span key={k} className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-violet" style={{ animationDelay: `${k * 0.2}s` }} />)}</span>}
                   </div>
                   {m.src && <div className="mt-1 px-1 text-[11px] text-faint">{m.src}</div>}
@@ -49,12 +49,12 @@ export function AIAssistant() {
               ))}
             </div>
             <div className="no-scrollbar flex gap-2 overflow-x-auto px-4 pb-2">
-              {sugg.map((q) => <button key={q} onClick={() => ask(q)} className="chip shrink-0 border-white/10 bg-surface text-[13px] hover:border-violet/40">{q}</button>)}
+              {sugg.map((q) => <button key={q} onClick={() => ask(q)} className="chip shrink-0 border-ink/10 bg-surface text-[13px] hover:border-violet/40">{q}</button>)}
             </div>
-            <div className="flex items-center gap-2 border-t border-white/[0.06] p-3 pb-[calc(12px+var(--safe-bottom))] lg:pb-3">
+            <div className="flex items-center gap-2 border-t border-ink/[0.06] p-3 pb-[calc(12px+var(--safe-bottom))] lg:pb-3">
               <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder="Message Biongevity AI"
-                aria-label="Message Biongevity AI" className="h-11 flex-1 rounded-full border border-white/10 bg-canvas px-4 text-[15px] outline-none focus:border-violet focus:bg-surface" />
-              <button onClick={send} aria-label="Send" disabled={busy} className="grid h-11 w-11 place-items-center rounded-full bg-ink text-night disabled:opacity-40"><Icon name="arrow-up" size={18} /></button>
+                aria-label="Message Biongevity AI" className="h-11 flex-1 rounded-full border border-ink/10 bg-canvas px-4 text-[15px] outline-none focus:border-violet focus:bg-surface" />
+              <button onClick={send} aria-label="Send" disabled={busy} className="grid h-11 w-11 place-items-center rounded-full bg-ink text-white disabled:opacity-40"><Icon name="arrow-up" size={18} /></button>
             </div>
           </motion.aside>
         </>
