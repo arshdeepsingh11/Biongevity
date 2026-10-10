@@ -4,7 +4,7 @@ import { useInView } from "./useInView";
 
 /* Biongevity chart kit — dependency-free SVG, animates once in view, accessible labels.
    Colours default to the brand palette. */
-export const PALETTE = ["#2563EB", "#0F9D8F", "#B8873B", "#1E3A8A", "#14B8A6", "#8A6420", "#3B82F6"];
+export const PALETTE = ["#97703F", "#7FA083", "#C2A16A", "#5E7F62", "#D8C3A0", "#8A6A3A", "#A3B79F"];
 
 type Pt = { label: string; value: number; color?: string; note?: string };
 
@@ -26,9 +26,9 @@ export function LineChart({ labels, series, height = 200, unit = "", min, max, r
     <div ref={ref} className={className}>
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label={series.map((s) => s.name).join(" vs ")}
         onMouseLeave={() => setHi(null)}>
-        {ticks.map((t) => <g key={t}><line x1={P.l} x2={W - P.r} y1={y(t)} y2={y(t)} stroke="#0B1530" strokeOpacity=".07" /><text x={P.l - 6} y={y(t) + 4} textAnchor="end" fontSize="10" fill="#8A94AB">{Math.round(t * 10) / 10}</text></g>)}
-        {labels.map((l, i) => (i % Math.ceil(labels.length / 7) === 0 || i === labels.length - 1) && <text key={l + i} x={x(i)} y={H - 6} textAnchor="middle" fontSize="10" fill="#8A94AB">{l}</text>)}
-        {refLine && <g><line x1={P.l} x2={W - P.r} y1={y(refLine.value)} y2={y(refLine.value)} stroke="#B8873B" strokeDasharray="4 4" /><text x={W - P.r} y={y(refLine.value) - 5} textAnchor="end" fontSize="10" fill="#8A6420" fontWeight="600">{refLine.label}</text></g>}
+        {ticks.map((t) => <g key={t}><line x1={P.l} x2={W - P.r} y1={y(t)} y2={y(t)} stroke="#221D16" strokeOpacity=".07" /><text x={P.l - 6} y={y(t) + 4} textAnchor="end" fontSize="10" fill="#A39889">{Math.round(t * 10) / 10}</text></g>)}
+        {labels.map((l, i) => (i % Math.ceil(labels.length / 7) === 0 || i === labels.length - 1) && <text key={l + i} x={x(i)} y={H - 6} textAnchor="middle" fontSize="10" fill="#A39889">{l}</text>)}
+        {refLine && <g><line x1={P.l} x2={W - P.r} y1={y(refLine.value)} y2={y(refLine.value)} stroke="#C2A16A" strokeDasharray="4 4" /><text x={W - P.r} y={y(refLine.value) - 5} textAnchor="end" fontSize="10" fill="#8A6A3A" fontWeight="600">{refLine.label}</text></g>}
         {series.map((s, si) => {
           const c = s.color ?? PALETTE[si];
           const d = s.values.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(" ");
@@ -45,10 +45,10 @@ export function LineChart({ labels, series, height = 200, unit = "", min, max, r
         })}
         {labels.map((_, i) => <rect key={i} x={x(i) - (W / labels.length) / 2} y={0} width={W / labels.length} height={H} fill="transparent" onMouseEnter={() => setHi(i)} onTouchStart={() => setHi(i)} />)}
         {hi !== null && <g pointerEvents="none">
-          <line x1={x(hi)} x2={x(hi)} y1={P.t} y2={H - P.b} stroke="#0B1530" strokeOpacity=".15" />
+          <line x1={x(hi)} x2={x(hi)} y1={P.t} y2={H - P.b} stroke="#221D16" strokeOpacity=".15" />
           {series.map((s, si) => <circle key={s.name} cx={x(hi)} cy={y(s.values[hi])} r="4" fill="#fff" stroke={s.color ?? PALETTE[si]} strokeWidth="2" />)}
           <g transform={`translate(${Math.min(x(hi) + 8, W - 130)},${P.t})`}>
-            <rect width="122" height={18 + series.length * 15} rx="8" fill="#0B1530" />
+            <rect width="122" height={18 + series.length * 15} rx="8" fill="#221D16" />
             <text x="8" y="14" fontSize="10" fill="#fff" fillOpacity=".6">{labels[hi]}</text>
             {series.map((s, si) => <text key={s.name} x="8" y={29 + si * 15} fontSize="11" fill="#fff"><tspan fill={s.color ?? PALETTE[si]}>●</tspan> {s.name}: {s.values[hi]}{unit}</text>)}
           </g>
@@ -90,7 +90,7 @@ export function Columns({ data, unit = "", height = 160, className, highlight }:
           return (
             <div key={d.label} className="group flex h-full flex-1 flex-col items-center justify-end gap-1">
               <span className="text-[11px] font-semibold tabular-nums text-ink opacity-0 transition-opacity group-hover:opacity-100" style={{ opacity: hot ? 1 : undefined }}>{d.value}{unit}</span>
-              <div className="w-full max-w-[44px] rounded-t-lg" style={{ height: on ? `${(d.value / m) * 100}%` : "2%", background: d.color ?? (hot ? "linear-gradient(180deg,#0F9D8F,#2563EB)" : "linear-gradient(180deg,#3B82F6,#1E3A8A)"), opacity: highlight && !hot ? 0.45 : 1, transition: `height 1s cubic-bezier(.2,.7,.2,1) ${i * 0.06}s` }} />
+              <div className="w-full max-w-[44px] rounded-t-lg" style={{ height: on ? `${(d.value / m) * 100}%` : "2%", background: d.color ?? (hot ? "linear-gradient(180deg,#5E7F62,#97703F)" : "linear-gradient(180deg,#B8925C,#8A6A3A)"), opacity: highlight && !hot ? 0.45 : 1, transition: `height 1s cubic-bezier(.2,.7,.2,1) ${i * 0.06}s` }} />
             </div>
           );
         })}
@@ -111,12 +111,12 @@ export function Donut({ data, size = 180, thickness = 22, center, sub, className
     <div ref={ref} className={`flex flex-col items-center gap-4 sm:flex-row ${className ?? ""}`}>
       <div className="relative shrink-0" style={{ width: size, height: size }}>
         <svg viewBox={`0 0 ${size} ${size}`} className="-rotate-90" role="img" aria-label={data.map((d) => `${d.label} ${d.value}`).join(", ")}>
-          <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#0B1530" strokeOpacity=".06" strokeWidth={thickness} />
+          <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#221D16" strokeOpacity=".06" strokeWidth={thickness} />
           {data.map((d, i) => {
             const len = (d.value / total) * C, off = acc; acc += len;
             return <circle key={d.label} cx={size / 2} cy={size / 2} r={r} fill="none" stroke={d.color ?? PALETTE[i % PALETTE.length]}
-              strokeWidth={hi === i ? thickness + 6 : thickness} strokeDasharray={`${on ? Math.max(0, len - 2) : 0} ${C}`} strokeDashoffset={-off}
-              onMouseEnter={() => setHi(i)} onMouseLeave={() => setHi(null)} style={{ transition: `stroke-dasharray 1.2s cubic-bezier(.2,.7,.2,1) ${i * 0.1}s, stroke-width .2s` }} />;
+              strokeWidth={thickness} strokeOpacity={hi === null || hi === i ? 1 : 0.35} strokeDasharray={`${on ? Math.max(0, len - 2) : 0} ${C}`} strokeDashoffset={-off}
+              onMouseEnter={() => setHi(i)} onMouseLeave={() => setHi(null)} style={{ transition: `stroke-dasharray 1.2s cubic-bezier(.2,.7,.2,1) ${i * 0.1}s, stroke-opacity .2s` }} />;
           })}
         </svg>
         <div className="absolute inset-0 grid place-items-center text-center">
@@ -143,8 +143,8 @@ export function Radar({ axes, series, size = 260, className }: { axes: string[];
   return (
     <div ref={ref} className={className}>
       <svg viewBox={`0 0 ${size} ${size}`} overflow="visible" className="mx-auto w-full max-w-[360px]" role="img" aria-label={`Radar: ${axes.join(", ")}`}>
-        {[0.25, 0.5, 0.75, 1].map((k) => <polygon key={k} points={axes.map((_, i) => pt(i, k).join(",")).join(" ")} fill="none" stroke="#0B1530" strokeOpacity={k === 1 ? 0.14 : 0.06} />)}
-        {axes.map((a, i) => { const [x, y] = pt(i, 1); const [lx, ly] = pt(i, 1.2); return <g key={a}><line x1={c} y1={c} x2={x} y2={y} stroke="#0B1530" strokeOpacity=".06" /><text x={lx} y={ly + 3} textAnchor={Math.abs(lx - c) < 8 ? "middle" : lx > c ? "start" : "end"} fontSize="10.5" fill="#4B5876" fontWeight="500">{a}</text></g>; })}
+        {[0.25, 0.5, 0.75, 1].map((k) => <polygon key={k} points={axes.map((_, i) => pt(i, k).join(",")).join(" ")} fill="none" stroke="#221D16" strokeOpacity={k === 1 ? 0.14 : 0.06} />)}
+        {axes.map((a, i) => { const [x, y] = pt(i, 1); const [lx, ly] = pt(i, 1.2); return <g key={a}><line x1={c} y1={c} x2={x} y2={y} stroke="#221D16" strokeOpacity=".06" /><text x={lx} y={ly + 3} textAnchor={Math.abs(lx - c) < 8 ? "middle" : lx > c ? "start" : "end"} fontSize="10.5" fill="#6B6155" fontWeight="500">{a}</text></g>; })}
         {series.map((s, si) => {
           const col = s.color ?? PALETTE[si];
           return (
@@ -174,9 +174,9 @@ export function Gauge({ value, min, max, zones, label, unit = "", size = 240 }: 
       <svg viewBox={`0 0 ${size} ${size / 2 + 16}`} className="mx-auto w-full max-w-[280px]" role="img" aria-label={`${label ?? ""} ${value}${unit}: ${zone.label}`}>
         {zones.map((z) => { const p = arc(ang(from), ang(z.to)); from = z.to; return <path key={z.label} d={p} stroke={z.color} strokeWidth="14" fill="none" strokeOpacity=".9" />; })}
         <g style={{ transform: `rotate(${(a * 180) / Math.PI}deg)`, transformOrigin: `${c}px ${c}px`, transition: "transform 1.2s cubic-bezier(.2,.9,.2,1)" }}>
-          <line x1={c} y1={c} x2={c + r - 22} y2={c} stroke="#0B1530" strokeWidth="3" strokeLinecap="round" />
+          <line x1={c} y1={c} x2={c + r - 22} y2={c} stroke="#221D16" strokeWidth="3" strokeLinecap="round" />
         </g>
-        <circle cx={c} cy={c} r="7" fill="#0B1530" />
+        <circle cx={c} cy={c} r="7" fill="#221D16" />
       </svg>
       <div className="-mt-1 text-[26px] font-semibold tracking-tight tabular-nums">{value}{unit}</div>
       <div className="text-[13px] font-semibold" style={{ color: zone.color }}>{zone.label}</div>
@@ -185,13 +185,13 @@ export function Gauge({ value, min, max, zones, label, unit = "", size = 240 }: 
 }
 
 /* ---------- Waffle (1 in N) ---------- */
-export function Waffle({ of, hit, label, color = "#2563EB" }: { of: number; hit: number; label: string; color?: string }) {
+export function Waffle({ of, hit, label, color = "#97703F" }: { of: number; hit: number; label: string; color?: string }) {
   const [ref, on] = useInView<HTMLDivElement>();
   return (
     <div ref={ref}>
       <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${Math.min(of, 10)}, minmax(0,1fr))` }}>
         {Array.from({ length: of }, (_, i) => (
-          <span key={i} className="aspect-square rounded-[4px]" style={{ background: i < hit && on ? color : "rgba(11,21,48,.08)", transition: `background .4s ${i * 0.04}s` }} />
+          <span key={i} className="aspect-square rounded-[4px]" style={{ background: i < hit && on ? color : "rgba(60,44,20,.08)", transition: `background .4s ${i * 0.04}s` }} />
         ))}
       </div>
       <div className="mt-2 text-[12px] text-muted">{label}</div>
