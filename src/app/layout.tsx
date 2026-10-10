@@ -5,7 +5,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SparkleNav } from "@/components/layout/SparkleNav";
 import { AIAssistant } from "@/components/ai/AIAssistant";
-import { AIHud } from "@/components/ai/AIHud";
 import { AIInteractionLayer } from "@/components/ai/AIInteractionLayer";
 import { SITE } from "@/data/site";
 
@@ -31,7 +30,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="relative">{children}</main>
           <Footer />
           <SparkleNav />
-          <AIHud />
           <AIAssistant />
         </Providers>
       </body>
