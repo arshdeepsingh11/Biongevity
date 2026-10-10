@@ -7,7 +7,6 @@ import { MobileDock } from "@/components/layout/MobileDock";
 import { AIAssistant } from "@/components/ai/AIAssistant";
 import { AIHud } from "@/components/ai/AIHud";
 import { AIInteractionLayer } from "@/components/ai/AIInteractionLayer";
-import { CartDrawer } from "@/components/commerce/CartDrawer";
 import { SITE } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -19,12 +18,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#F5F5F7",
+  width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#05060A",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body>
         <Providers>
           <AIInteractionLayer />
@@ -34,7 +33,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <MobileDock />
           <AIHud />
           <AIAssistant />
-          <CartDrawer />
         </Providers>
       </body>
     </html>
