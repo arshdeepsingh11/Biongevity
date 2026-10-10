@@ -11,7 +11,7 @@ float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
   return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
 float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p*=2.03;a*=.5;}return v;}
 vec3 iri(float x){
-  vec3 a=vec3(1.,.54,.24),b=vec3(1.,.30,.55),c=vec3(.61,.42,1.),d=vec3(.24,.55,1.);
+  vec3 a=vec3(0.,.9,.75),b=vec3(.13,.76,.9),c=vec3(.24,.55,1.),d=vec3(.36,.42,1.);
   x=fract(x);return x<.33?mix(a,b,x/.33):x<.66?mix(b,c,(x-.33)/.33):mix(c,d,(x-.66)/.34);}
 void main(){
   vec2 uv=gl_FragCoord.xy/r;vec2 q=uv-.5;q.x*=r.x/r.y;
