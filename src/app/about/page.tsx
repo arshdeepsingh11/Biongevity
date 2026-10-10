@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { PageHero, Section, Eyebrow } from "@/components/ui/Section";
-import { Text3DFlip } from "@/components/fx/Text3DFlip";
+
 import { DiaTextReveal } from "@/components/fx/DiaTextReveal";
 import { AuroraText } from "@/components/fx/AuroraText";
 import { WorldMap } from "@/components/fx/WorldMap";
+import { TextAnimate } from "@/components/fx/TextAnimate";
 import { Icon } from "@/components/ui/Icon";
 import { LogoMark } from "@/components/ui/Logo";
 import { ABOUT, OFFICES } from "@/data/clinic";
@@ -28,7 +29,7 @@ export default function AboutPage() {
       </Section>
       <Section ai="BioAro group" className="!pt-0">
         <div className="container-x grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {ABOUT_FACTS.map((f) => <div key={f.k} data-reveal className="card p-6"><div className="text-[13px] text-faint">{f.k}</div><div className="mt-2 text-[22px] font-semibold tracking-tight"><Text3DFlip text={f.v} /></div></div>)}
+          {ABOUT_FACTS.map((f) => <div key={f.k} data-reveal className="card p-6"><div className="text-[13px] text-faint">{f.k}</div><div className="mt-2 text-[22px] font-semibold tracking-tight"><TextAnimate animation="blurIn">{f.v}</TextAnimate></div></div>)}
         </div>
       </Section>
       <Section ai="Founder" className="!pt-0">
