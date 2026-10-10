@@ -11,12 +11,12 @@ const SLUGS: Record<string, string> = { "Whole Genome Sequencing 100X": "genome-
 export const LAB_COLLECTIONS: Collection[] = [
   { handle: "biological-aging-healthspan-panels", title: "Biological Aging & Healthspan Panels", description: "Panels that estimate biological ageing to compare over time.", icon: "hourglass" },
   { handle: "genome-sequencing", title: "Genome Sequencing", description: "Explore genetic insights for inherited traits and personalized health.", icon: "dna" },
-  { handle: "hormone-steroid-balance", title: "Hormone & Steroid Balance", description: "Explore hormones linked to energy, stress, metabolism, and reproductive health.", icon: "droplet" },
-  { handle: "inflammation-biological-aging", title: "Inflammation & Biological Aging", description: "Explore inflammation, cellular stress, and healthy aging.", icon: "shield" },
+  { handle: "hormone-steroid-balance", title: "Hormone & Steroid Balance", description: "Explore hormones linked to energy, stress, metabolism, and reproductive health.", icon: "test-tube" },
+  { handle: "inflammation-biological-aging", title: "Inflammation & Biological Aging", description: "Explore inflammation, cellular stress, and healthy aging.", icon: "flame" },
   { handle: "brain-aging-neurodegeneration", title: "Brain Aging & Neurodegeneration", description: "Explore biomarkers linked to brain aging and neurodegeneration.", icon: "brain" },
-  { handle: "microbiome", title: "Microbiome", description: "Explore your microbiome and its role in health and balance.", icon: "activity" },
-  { handle: "vitamin-nutritional-status", title: "Vitamin & Nutritional Status", description: "Explore key vitamins for immune, bone, and cellular health.", icon: "leaf" },
-  { handle: "amino-acids-metabolism", title: "Amino Acids & Metabolism", description: "Amino acid balance and metabolic pathways.", icon: "layers" },
+  { handle: "microbiome", title: "Microbiome", description: "Explore your microbiome and its role in health and balance.", icon: "gut" },
+  { handle: "vitamin-nutritional-status", title: "Vitamin & Nutritional Status", description: "Explore key vitamins for immune, bone, and cellular health.", icon: "sun" },
+  { handle: "amino-acids-metabolism", title: "Amino Acids & Metabolism", description: "Amino acid balance and metabolic pathways.", icon: "atom" },
   { handle: "vascular-organ-stress", title: "Vascular & Organ Stress", description: "Kidney, vascular and tissue-remodeling markers.", icon: "heart" },
 ];
 
