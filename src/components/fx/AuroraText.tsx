@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 export function AuroraText({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <span className={`relative inline-block animate-aurora bg-clip-text text-transparent ${className ?? ""}`}
-      style={{ backgroundImage: "linear-gradient(110deg,#1E3A8A 0%,#2563EB 25%,#0F9D8F 48%,#2563EB 66%,#B8873B 82%,#1E3A8A 100%)", backgroundSize: "260% 100%", WebkitBackgroundClip: "text" }}>
+      style={{ backgroundImage: "linear-gradient(110deg,#8A6A3A 0%,#97703F 25%,#5E7F62 48%,#97703F 66%,#C2A16A 82%,#8A6A3A 100%)", backgroundSize: "260% 100%", WebkitBackgroundClip: "text" }}>
       {children}
     </span>
   );

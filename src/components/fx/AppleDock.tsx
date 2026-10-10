@@ -23,8 +23,8 @@ function DockIcon({ item, mouseX, base, magnify }: { item: DockItem; mouseX: Mot
   const size = useSpring(useTransform(dist, [-150, 0, 150], [base, base * magnify, base]), { stiffness: 260, damping: 20, mass: 0.2 });
   return (
     <motion.button ref={ref} style={{ width: size, height: size }} onClick={item.onClick} aria-label={item.label} aria-pressed={item.active}
-      className={cn("group relative grid shrink-0 place-items-center rounded-[16px] shadow-[0_8px_20px_rgba(15,23,42,.10)] ring-1 ring-ink/[0.06]",
-        item.active ? "bg-iri text-white" : "bg-gradient-to-b from-white to-[#EEF2F7] text-ink")}>
+      className={cn("group relative grid shrink-0 place-items-center rounded-[16px] shadow-[0_8px_20px_rgba(60,44,20,.10)] ring-1 ring-ink/[0.06]",
+        item.active ? "bg-iri text-white" : "bg-gradient-to-b from-white to-[#F3EEE5] text-ink")}>
       <Icon name={item.icon} size={22} />
       <span className="pointer-events-none absolute -top-9 whitespace-nowrap rounded-lg bg-ink px-2 py-1 text-[11px] text-white opacity-0 transition-opacity group-hover:opacity-100">{item.label}</span>
       {item.active && <span className="absolute -bottom-2 h-1 w-1 rounded-full bg-ink" />}

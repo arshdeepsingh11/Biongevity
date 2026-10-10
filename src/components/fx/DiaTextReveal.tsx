@@ -11,7 +11,7 @@ export function DiaTextReveal({ text, className, duration = 1.6 }: { text: strin
     <span ref={ref} className={`relative inline-block ${className ?? ""}`} aria-label={text}>
       <span aria-hidden className="bg-clip-text text-transparent"
         style={{
-          backgroundImage: "linear-gradient(100deg, var(--ink) 0%, var(--ink) 40%, #2563EB 47%, #0F9D8F 50%, #B8873B 53%, rgba(11,21,48,.16) 60%, rgba(11,21,48,.16) 100%)",
+          backgroundImage: "linear-gradient(100deg, var(--ink) 0%, var(--ink) 40%, #97703F 47%, #5E7F62 50%, #C2A16A 53%, rgba(60,44,20,.16) 60%, rgba(60,44,20,.16) 100%)",
           backgroundSize: "300% 100%", WebkitBackgroundClip: "text",
           backgroundPosition: inView ? "0% 0" : "100% 0",
           transition: `background-position ${duration}s cubic-bezier(.65,0,.35,1)`,
