@@ -1,13 +1,13 @@
 # ◐ Biongevity
 
-> Precision health & longevity — an AI-native interface for BioAro.
+> Precision health. Shared longevity. — an AI-native interface for BioAro.
 
 ```
 status   ▸ online
-mode     ▸ neural-noir
-stack    ▸ next 15 · react 19 · typescript · tailwind · three · webgl
+theme    ▸ aurora-glass · light · blue · zero pink
+stack    ▸ next 15 · react 19 · typescript · tailwind · gsap · three · webgl
 targets  ▸ web · ios · android (capacitor)
-backend  ▸ none — products resolve to bioarolabs.com / bioarodrugs.com
+backend  ▸ none — store links resolve to bioarolabs.com · bioarodrugs.com · biongevity.com
 ```
 
 ## ▸ Boot
@@ -22,32 +22,31 @@ npm run build      # → ./out (static)
 
 | Route | Signal |
 |---|---|
-| `/` | Hero · 360° signal · **AI product match** · 47 tests · 8 formulas · BioELR |
-| `/precision-health` | 11 disciplines · AI triage |
-| `/packages` | Programs: Core · Plus · Elite |
-| `/care` | Journey · Anywhere · Clinics · ELR App |
-| `/insights` | Articles with AI key points |
-| `/about` · `/contact` · `/dashboard` | Company · enquiry · demo member |
+| `/` | Hero · brand film · 360° signal · disciplines · **store + AI match** · stories · BioELR · global clinic · programs |
+| `/precision-health/[9]` | Internal Medicine · Cardiology · Dermatology · Dental · Women's · Men's · Gut · Gastroenterology · Mental Health |
+| `/clinic/[3]` | Longevity Journey · Virtual Clinic · UAE Precision Clinic |
+| `/packages` | Core $369 · Precision $699 · Elite $999 |
+| `/life` · `/app` · `/insights` · `/about` · `/contact` · `/dashboard` | Discover |
 
-Products never check out here. Every card opens its official page:
-`bioarolabs.com/shop?test=<slug>` · `bioarodrugs.com/us/products/<handle>`
+Navigation is a **Sparkle Navbar** fixed bottom-centre. Hovering Precision or Clinic opens a live preview of each page.
 
 ## ▸ Intelligence layer
 
-- **⌘K assistant**, grounded on site data · optional live model via `NEXT_PUBLIC_AI_ENDPOINT`
-- **Status HUD** — Scanning → Synthesizing → Ready, follows scroll
-- **Ambient signal field** — particles stretch with scroll velocity
-- **Neural pulse** on every tap · **edge light** follows the cursor on cards
-- **Decode / scan / reveal** on every section · calm mode on Mental Health
+- **⌘K assistant**, grounded on site data · live model via `NEXT_PUBLIC_AI_ENDPOINT`
+- **Status HUD**: Scanning → Synthesizing → Ready, follows scroll
+- **Ambient signal field** · **neural tap pulse** · **cursor edge light** on glass cards
+- **Text**: Text Animate · Aurora · Dia Reveal · Morphing · 3D Flip · Decode
+- **Data**: Number Ticker · Progress Ring · Animated List · Signal Convergence · Terminal
 
-## ▸ Palette — zero pink
+## ▸ Palette
 
-`#05060A` deep · `#0A0C12` bg · `#11141C` surface · `#F2F4F8` text
-`#3D8BFF` accent · `#00E5C0` AI signal · `#1A1F3A` indigo · `#FFB020` alert
+`#FFFFFF` bg · `#F5F7FA` subtle · `#0F172A` text · `#64748B` secondary
+`#2563EB` accent · `#3B82F6` soft · `#EFF6FF` tint · `#F59E0B` / `#FB923C` warm (tiny)
 
 ## ▸ Media
 
-Drop files in `public/media/`, wire them in `src/config/media.ts`.
+`public/media/` — brand film, clinic film, three stories (web-encoded H.264).
+Slots wired in `src/config/media.ts` and `src/data/clinic.ts`.
 
 ## ▸ Mobile
 
@@ -57,4 +56,4 @@ npm run cap:sync
 ```
 
 ---
-`BioAro Inc. · Calgary` — educational information, not medical advice.
+`BioAro Inc. · Calgary · Dubai · Almelo` — educational information, not medical advice.
