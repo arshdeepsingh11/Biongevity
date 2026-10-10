@@ -25,13 +25,13 @@ export function Footer() {
           <div className="mt-3 grid gap-2">{DEPARTMENTS.map((d) => <Link key={d.id} href={`/precision-health/${d.id}/`} className="text-[14px] text-muted hover:text-accent">{d.short}</Link>)}</div>
         </div>
         <div>
-          <div className="text-[13px] font-semibold">Store</div>
+          <div className="text-[13px] font-semibold">Partners</div>
           <div className="mt-3 grid gap-2">
             <a href="https://bioarolabs.com/shop" target="_blank" rel="noopener" className="text-[14px] text-muted hover:text-accent">BioAro Labs ↗</a>
             <a href="https://bioarodrugs.com/us/shop" target="_blank" rel="noopener" className="text-[14px] text-muted hover:text-accent">BioAro Drugs ↗</a>
-            <a href="https://biongevity.com/longevity-packages/" target="_blank" rel="noopener" className="text-[14px] text-muted hover:text-accent">Longevity packages ↗</a>
+            <a href="https://neyuhealth.com" target="_blank" rel="noopener" className="text-[14px] text-muted hover:text-accent">NEYU Health ↗</a>
           </div>
-          <p className="mt-6 text-[12px] leading-relaxed text-faint">Content from biongevity.com, bioarolabs.com and bioarodrugs.com. Dashboard data is illustrative. AI answers are labelled live or prepared.</p>
+          <p className="mt-6 text-[12px] leading-relaxed text-faint">Content from biongevity.com, neyuhealth.com, bioarolabs.com and bioarodrugs.com. Figures cite their sources; dashboard data is illustrative. Answers in chat come from Xevyo.</p>
         </div>
       </div>
       <div className="border-t border-ink/[0.06] py-5 text-center text-[12px] text-faint">© {new Date().getFullYear()} Biongevity · BioAro Inc. Educational information, not medical advice.</div>
