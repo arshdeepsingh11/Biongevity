@@ -27,12 +27,12 @@ export function Triage() {
       <div className="mt-2 text-[24px] font-semibold tracking-tight sm:text-[28px]">Describe what you want to improve.</div>
       <div className="mt-5 flex flex-col gap-2 sm:flex-row">
         <input value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.key === "Enter" && run()} aria-label="Your goal"
-          placeholder="e.g. I sleep badly and my cholesterol is creeping up" className="h-12 flex-1 rounded-full border border-white/10 bg-canvas px-5 text-[15px] outline-none focus:border-violet focus:bg-surface" />
+          placeholder="e.g. I sleep badly and my cholesterol is creeping up" className="h-12 flex-1 rounded-full border border-ink/10 bg-canvas px-5 text-[15px] outline-none focus:border-violet focus:bg-surface" />
         <button onClick={run} className="btn-dark h-12 px-6">{busy ? "Thinking…" : "Suggest departments"}</button>
       </div>
       {res && (
         <div className="mt-5 rounded-2xl bg-canvas p-4">
-          <div className="flex flex-wrap gap-2">{res.ids.map((id) => { const d = deptById(id); return <Link key={id} href={`/precision-health/${id}/`} className="chip border-transparent bg-ink text-night"><Icon name={d.icon} size={15} />{d.name}</Link>; })}</div>
+          <div className="flex flex-wrap gap-2">{res.ids.map((id) => { const d = deptById(id); return <Link key={id} href={`/precision-health/${id}/`} className="chip border-transparent bg-ink text-white"><Icon name={d.icon} size={15} />{d.name}</Link>; })}</div>
           <p className="mt-3 text-[14px] leading-relaxed text-ink/80">{res.note}</p>
           <p className="mt-1 text-[11px] text-faint">{res.live ? "Live AI explanation" : "Prepared explanation"} · departments matched by keywords</p>
         </div>
