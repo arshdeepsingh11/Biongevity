@@ -2,155 +2,172 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { deptById } from "@/data/health";
-import { CARE } from "@/data/care";
+import { CARE_PATH, DEPARTMENTS, deptById } from "@/data/departments";
 import { DEPT_EVIDENCE } from "@/data/stats";
-import { LAB_TESTS } from "@/data/labs";
 import { Icon } from "@/components/ui/Icon";
 import { Stat } from "@/components/charts/Charts";
 import { EvidenceChart } from "@/components/charts/EvidenceChart";
-import { ProductCard } from "@/components/products/ProductCard";
-import { HealthTool } from "@/components/tools/HealthTools";
 import { MagicCard } from "@/components/fx/MagicCard";
-import { ElectricBorder } from "@/components/fx/ElectricBorder";
-import { useAI } from "@/components/ai/AIProvider";
+import { AIPanel } from "@/components/ai/AIPanel";
 
 const TABS = [
   { id: "overview", label: "Overview", icon: "eye" },
-  { id: "care", label: "Care & tests", icon: "stethoscope" },
+  { id: "conditions", label: "Conditions", icon: "clipboard" },
+  { id: "services", label: "Tests & services", icon: "microscope" },
+  { id: "path", label: "Care path", icon: "route" },
   { id: "evidence", label: "Evidence", icon: "bars" },
-  { id: "labs", label: "Lab tests", icon: "test-tubes" },
-  { id: "check", label: "Self-check", icon: "gauge" },
-  { id: "faq", label: "Specialist & FAQ", icon: "message" },
+  { id: "faq", label: "FAQ", icon: "message" },
 ] as const;
 type Tab = (typeof TABS)[number]["id"];
 
-/** Department internal tabs. Content: biongevity.com + neyuhealth.com (paraphrased), BioAro Labs, public evidence. */
+/** Department detail — six tabs of clinical content, cited evidence and an AI panel. */
 export function DeptTabs({ id }: { id: string }) {
-  const d = deptById(id), c = CARE[id], ev = DEPT_EVIDENCE[id];
-  const tests = d.tests.map((h) => LAB_TESTS.find((t) => t.handle === h)).filter((t) => t !== undefined);
+  const d = deptById(id), ev = DEPT_EVIDENCE[id];
   const [tab, setTab] = useState<Tab>("overview");
-  const { ask } = useAI();
   useEffect(() => { const h = location.hash.slice(1) as Tab; if (TABS.some((t) => t.id === h)) setTab(h); }, []);
   const go = (t: Tab) => { setTab(t); history.replaceState(null, "", `#${t}`); };
+  const related = DEPARTMENTS.filter((x) => x.id !== id && x.group === d.group).slice(0, 4);
 
   return (
     <div>
-      <div className="sticky top-[calc(64px+var(--safe-top))] z-20 -mx-4 bg-white/80 px-4 py-2 backdrop-blur-xl sm:mx-0 sm:rounded-full sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
+      <div className="sticky top-[calc(64px+var(--safe-top))] z-20 -mx-4 bg-pearl/85 px-4 py-2 backdrop-blur-xl sm:mx-0 sm:rounded-full sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
         <div role="tablist" aria-label={`${d.short} sections`} className="no-scrollbar flex gap-1 overflow-x-auto rounded-full bg-white p-1 shadow-card ring-1 ring-ink/[0.06] sm:inline-flex">
           {TABS.map((t) => (
             <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => go(t.id)} className="relative flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2.5 text-[13.5px] font-semibold">
-              {tab === t.id && <motion.span layoutId={`dt-${id}`} className="absolute inset-0 rounded-full bg-navy" transition={{ type: "spring", stiffness: 400, damping: 34 }} />}
-              <span className={`relative flex items-center gap-1.5 ${tab === t.id ? "text-white" : "text-muted hover:text-ink"}`}><Icon name={t.icon} size={15} />{t.label}</span>
+              {tab === t.id && <motion.span layoutId={`dt-${id}`} className="absolute inset-0 rounded-full bg-accent" transition={{ type: "spring", stiffness: 400, damping: 34 }} />}
+              <span className={`relative flex items-center gap-1.5 ${tab === t.id ? "text-white" : "text-muted hover:text-ink"}`}><Icon name={t.icon} size={16} />{t.label}</span>
             </button>
           ))}
         </div>
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div key={tab} role="tabpanel" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.22 }} className="mt-8">
-          {tab === "overview" && (
-            <div className="grid gap-5 lg:grid-cols-[1.2fr_1fr]">
+      <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <AnimatePresence mode="wait">
+          <motion.div key={tab} role="tabpanel" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.22 }} className="min-w-0">
+            {tab === "overview" && (
               <div className="space-y-5">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  <Stat v={String(d.areas.length)} l="areas of care" accent />
+                  <Stat v={String(d.services.length)} l="tests & services" />
+                  <Stat v="4" l="steps from referral to plan" />
+                  <Stat v="1" l="connected health record" />
+                </div>
                 <div className="rounded-[28px] bg-white p-6 shadow-card ring-1 ring-ink/[0.06]">
-                  <div className="text-[13px] font-semibold uppercase tracking-[0.12em] text-accent">Our approach</div>
+                  <div className="eyebrow">Our approach</div>
                   {d.approach.map((a) => <p key={a} className="mt-3 text-[16px] leading-relaxed text-ink/80">{a}</p>)}
                 </div>
-                <div className="rounded-[28px] bg-white p-6 shadow-card ring-1 ring-ink/[0.06]">
-                  <div className="text-[17px] font-semibold">When to see us</div>
-                  <ul className="mt-3 grid gap-2 sm:grid-cols-2">{c.when.map((w) => <li key={w} className="flex gap-2.5 rounded-xl bg-canvas p-3 text-[14px]"><Icon name="check" size={16} className="mt-0.5 shrink-0 text-teal" />{w}</li>)}</ul>
+                <div className="grid gap-5 md:grid-cols-2">
+                  <div className="rounded-[28px] bg-white p-6 shadow-card ring-1 ring-ink/[0.06]">
+                    <div className="text-[17px] font-semibold">When to see us</div>
+                    <ul className="mt-3 space-y-2">{d.when.map((w) => <li key={w} className="flex gap-2.5 text-[14.5px] text-ink/85"><Icon name="check" size={17} className="mt-0.5 shrink-0 text-teal" weight="bold" />{w}</li>)}</ul>
+                  </div>
+                  <div className="rounded-[28px] bg-navy p-6">
+                    <div className="text-[17px] font-semibold">What we look for</div>
+                    <div className="mt-3 flex flex-wrap gap-2">{d.signs.map((s) => <span key={s} className="rounded-full bg-white px-3 py-1.5 text-[13px] ring-1 ring-accent/15">{s}</span>)}</div>
+                    <div className="mt-5 grid grid-cols-2 gap-3">{ev.stats.map((s) => <div key={s.l}><div className="text-[24px] font-semibold text-accent">{s.v}</div><div className="text-[12px] text-muted">{s.l}</div></div>)}</div>
+                  </div>
                 </div>
+                {d.urgent && <div className="flex gap-3 rounded-2xl bg-[#FBF0EA] p-4 text-[14px] text-[#8A3B1E]"><Icon name="siren" size={19} className="mt-0.5 shrink-0" />{d.urgent}</div>}
               </div>
-              <div className="space-y-5">
-                <div className="rounded-[28px] bg-navy p-6 text-white shadow-lift">
-                  <div className="text-[13px] font-semibold uppercase tracking-[0.12em] text-teal-soft">What we look for</div>
-                  <div className="mt-4 flex flex-wrap gap-2">{c.signs.map((s) => <span key={s} className="rounded-full bg-white/10 px-3 py-1.5 text-[13px]">{s}</span>)}</div>
-                  <div className="mt-6 grid grid-cols-2 gap-3">{ev.stats.map((s) => <div key={s.l}><div className="text-[26px] font-semibold">{s.v}</div><div className="text-[12px] text-white/65">{s.l}</div></div>)}</div>
-                </div>
-                {c.urgent && <div className="flex gap-3 rounded-2xl bg-[#FEF2F2] p-4 text-[14px] text-[#991B1B]"><Icon name="siren" size={18} className="mt-0.5 shrink-0" />{c.urgent}</div>}
-                <div className="grid grid-cols-2 gap-3">
-                  <button onClick={() => go("check")} className="rounded-2xl bg-accent-light p-4 text-left transition-colors hover:bg-accent/15"><Icon name="gauge" size={18} className="text-accent" /><div className="mt-2 text-[14px] font-semibold">Try the self-check</div></button>
-                  <button onClick={() => go("care")} className="rounded-2xl bg-teal-light p-4 text-left transition-colors hover:bg-teal/15"><Icon name="stethoscope" size={18} className="text-teal" /><div className="mt-2 text-[14px] font-semibold">See care & tests</div></button>
-                </div>
-              </div>
-            </div>
-          )}
+            )}
 
-          {tab === "care" && (
-            <div className="space-y-8">
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {c.care.map((x, k) => (
-                  <MagicCard key={x.t} className="p-5">
-                    <div className="flex items-center justify-between"><span className="grid h-11 w-11 place-items-center rounded-2xl bg-iri text-white"><Icon name={x.icon} size={20} /></span><span className="text-[12px] font-semibold tabular-nums text-faint">{String(k + 1).padStart(2, "0")}</span></div>
-                    <div className="mt-4 text-[17px] font-semibold">{x.t}</div><div className="mt-1 text-[14px] leading-relaxed text-muted">{x.d}</div>
+            {tab === "conditions" && (
+              <div className="grid gap-4 sm:grid-cols-2">
+                {d.areas.map((a, k) => (
+                  <MagicCard key={a.t} className="h-full p-5">
+                    <div className="flex items-start gap-4">
+                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-accent-light text-accent"><Icon name={a.icon} size={24} weight="duotone" /></span>
+                      <div><div className="text-[12px] font-semibold tabular-nums text-faint">{String(k + 1).padStart(2, "0")}</div><div className="text-[17px] font-semibold">{a.t}</div><div className="mt-1 text-[14px] text-muted">{a.d}</div></div>
+                    </div>
                   </MagicCard>
                 ))}
               </div>
-              {d.services.length > 0 && (
-                <div className="rounded-[28px] bg-white p-6 shadow-card ring-1 ring-ink/[0.06]">
-                  <div className="text-[17px] font-semibold">At Biongevity</div>
-                  <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{d.services.map((s) => <div key={s.t} className="rounded-xl bg-canvas p-3"><div className="text-[14px] font-semibold">{s.t}</div><div className="mt-0.5 text-[13px] text-muted">{s.d}</div></div>)}</div>
-                </div>
-              )}
-              <div>
-                <div className="text-[17px] font-semibold">Your visit, step by step</div>
-                <div className="relative mt-5 grid gap-4 md:grid-cols-4">
-                  <div aria-hidden className="absolute left-0 right-0 top-5 hidden h-[2px] bg-gradient-to-r from-accent via-teal to-gold md:block" />
-                  {c.path.map((p, k) => <div key={p.t} className="relative"><span className="relative z-[1] grid h-10 w-10 place-items-center rounded-full bg-navy text-[14px] font-semibold text-white ring-4 ring-white">{k + 1}</span><div className="mt-3 text-[15px] font-semibold">{p.t}</div><div className="mt-1 text-[13px] text-muted">{p.d}</div></div>)}
-                </div>
-              </div>
-            </div>
-          )}
+            )}
 
-          {tab === "evidence" && (
-            <div className="grid gap-5 lg:grid-cols-[1fr_1.2fr]">
-              <div className="space-y-4">
-                <p className="text-[17px] leading-relaxed text-ink/80">{ev.why}</p>
-                <div className="grid grid-cols-2 gap-3">{ev.stats.map((s, k) => <Stat key={s.l} {...s} accent={k === 0} />)}</div>
-              </div>
-              <div className="rounded-[28px] bg-white p-6 shadow-card ring-1 ring-ink/[0.06]"><EvidenceChart spec={ev.chart} /></div>
-            </div>
-          )}
-
-          {tab === "labs" && (
-            <div>
-              <p className="text-[15px] text-muted">BioAro Labs tests relevant to {d.short.toLowerCase()}. Each opens its official page; a clinician can help you interpret results.</p>
-              <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {tests.map((t, k) => k === 0 ? <ElectricBorder key={t.handle} radius={24}><ProductCard p={t} reason="Most relevant starting test" /></ElectricBorder> : <ProductCard key={t.handle} p={t} />)}
-              </div>
-              <Link href="/shop/?tab=match" className="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-accent"><Icon name="target" size={15} />Not sure? Take the match quiz →</Link>
-            </div>
-          )}
-
-          {tab === "check" && <HealthTool id={c.tool} />}
-
-          {tab === "faq" && (
-            <div className="grid gap-5 lg:grid-cols-[1fr_1.3fr]">
-              <div className="space-y-4">
-                {d.specialist ? (
-                  <div className="rounded-[28px] bg-navy p-6 text-white shadow-lift"><span className="grid h-14 w-14 place-items-center rounded-full bg-white/10"><Icon name="user" size={26} /></span><div className="mt-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-teal-soft">Meet your specialist</div><div className="mt-1 text-[20px] font-semibold">{d.specialist.role}</div><p className="mt-2 text-[14px] text-white/70">{d.specialist.bio}</p></div>
-                ) : (
-                  <div className="rounded-[28px] bg-navy p-6 text-white shadow-lift"><Icon name="users" size={26} /><div className="mt-3 text-[18px] font-semibold">A dedicated care team</div><p className="mt-2 text-[14px] text-white/70">Specialists, nurses and care coordinators working from one shared longevity record.</p></div>
-                )}
-                <div className="rounded-[28px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]">
-                  <div className="text-[15px] font-semibold">Questions to bring</div>
-                  <div className="mt-3 space-y-2">{d.questions.map((q) => <button key={q} onClick={() => ask(q)} className="flex w-full items-center justify-between gap-2 rounded-xl bg-canvas px-3 py-2.5 text-left text-[14px] hover:text-accent">{q}<Icon name="bot" size={15} className="shrink-0 text-accent" /></button>)}</div>
-                  <p className="mt-2 text-[11px] text-faint">Tap a question to ask Xevyo.</p>
-                </div>
-              </div>
-              <div className="space-y-3">
-                {c.faq.map((f) => (
-                  <details key={f.q} className="group rounded-2xl bg-white p-5 shadow-card ring-1 ring-ink/[0.06] open:ring-accent/25">
-                    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-[16px] font-semibold">{f.q}<Icon name="plus" size={16} className="shrink-0 text-accent transition-transform group-open:rotate-45" /></summary>
-                    <p className="mt-3 text-[14.5px] leading-relaxed text-muted">{f.a}</p>
-                  </details>
+            {tab === "services" && (
+              <div className="grid gap-4 md:grid-cols-2">
+                {d.services.map((s) => (
+                  <div key={s.t} className="flex h-full flex-col rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]">
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="grid h-12 w-12 place-items-center rounded-2xl bg-iri text-white"><Icon name={s.icon} size={24} weight="duotone" /></span>
+                      {s.time && <span className="flex items-center gap-1 rounded-full bg-canvas px-2.5 py-1 text-[12px] font-semibold text-muted"><Icon name="clock" size={13} />{s.time}</span>}
+                    </div>
+                    <div className="mt-4 text-[17px] font-semibold">{s.t}</div>
+                    <p className="mt-1 text-[14px] leading-relaxed text-muted">{s.d}</p>
+                    {s.prep && (
+                      <div className="mt-4 rounded-2xl bg-canvas p-3.5">
+                        <div className="text-[12px] font-semibold uppercase tracking-[0.1em] text-accent">How to prepare</div>
+                        <ul className="mt-2 space-y-1.5">{s.prep.map((p) => <li key={p} className="flex gap-2 text-[13px] text-ink/80"><Icon name="check" size={14} className="mt-0.5 shrink-0 text-teal" weight="bold" />{p}</li>)}</ul>
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
-            </div>
-          )}
-        </motion.div>
-      </AnimatePresence>
-      <p className="mt-8 text-[11px] text-faint">Sources: {d.source.replace("https://", "")} · {c.source.replace("https://", "")} · evidence as cited. General information — services vary by location.</p>
+            )}
+
+            {tab === "path" && (
+              <div className="space-y-5">
+                <div className="relative grid gap-4 md:grid-cols-4">
+                  <div aria-hidden className="absolute left-0 right-0 top-6 hidden h-[2px] bg-iri-x md:block" />
+                  {CARE_PATH.map((p, k) => (
+                    <div key={p.t} className="relative rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]">
+                      <span className="relative z-[1] grid h-12 w-12 place-items-center rounded-2xl bg-iri text-white ring-4 ring-pearl"><Icon name={p.icon} size={22} weight="duotone" /></span>
+                      <div className="mt-3 text-[12px] font-semibold text-accent">Step {k + 1}</div>
+                      <div className="text-[16px] font-semibold">{p.t}</div>
+                      <div className="mt-1 text-[13px] text-muted">{p.d}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="grid gap-4 md:grid-cols-3">
+                  {[["video", "Virtual visits", "Follow-ups, results and medication reviews by secure video.", "/clinic/virtual/"], ["home", "At-home collection", "A trained collector visits your home or office; results flow to your record.", "/contact/?interest=at-home"], ["file", "Referral upload", "Scan or upload a referral and track it from intake to booking.", "/contact/?interest=referral"]].map(([i, t, x, h]) => (
+                    <Link key={t} href={h} className="group rounded-[24px] bg-navy p-5 transition-transform hover:-translate-y-0.5">
+                      <Icon name={i} size={24} weight="duotone" className="text-accent" />
+                      <div className="mt-3 text-[16px] font-semibold">{t}</div><div className="mt-1 text-[13px] text-muted">{x}</div>
+                      <div className="mt-3 text-[13px] font-semibold text-accent">Learn more →</div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {tab === "evidence" && (
+              <div className="grid gap-5 lg:grid-cols-[1fr_1.15fr]">
+                <div className="space-y-4">
+                  <p className="text-[17px] leading-relaxed text-ink/80">{ev.why}</p>
+                  <div className="grid grid-cols-2 gap-3">{ev.stats.map((s, k) => <Stat key={s.l} {...s} accent={k === 0} />)}</div>
+                </div>
+                <div className="rounded-[28px] bg-white p-6 shadow-card ring-1 ring-ink/[0.06]"><EvidenceChart spec={ev.chart} /></div>
+              </div>
+            )}
+
+            {tab === "faq" && (
+              <div className="space-y-3">
+                {d.faq.map((f, k) => (
+                  <details key={f.q} open={k === 0} className="group rounded-2xl bg-white p-5 shadow-card ring-1 ring-ink/[0.06] open:ring-accent/25">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-[16px] font-semibold">{f.q}<Icon name="plus" size={18} className="shrink-0 text-accent transition-transform group-open:rotate-45" /></summary>
+                    <p className="mt-3 text-[15px] leading-relaxed text-muted">{f.a}</p>
+                  </details>
+                ))}
+                {d.specialist && (
+                  <div className="flex items-start gap-4 rounded-[24px] bg-navy p-5">
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-accent"><Icon name="user" size={22} weight="duotone" /></span>
+                    <div><div className="text-[12px] font-semibold uppercase tracking-[0.12em] text-accent">Your specialist</div><div className="text-[17px] font-semibold">{d.specialist.role}</div><p className="mt-1 text-[14px] text-muted">{d.specialist.bio}</p></div>
+                  </div>
+                )}
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
+
+        <aside className="space-y-4 lg:sticky lg:top-[140px] lg:self-start">
+          <AIPanel title={`Ask about ${d.short}`} prompts={d.prompts} context={d.name} />
+          <div className="rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]">
+            <div className="text-[14px] font-semibold">Related care</div>
+            <div className="mt-3 space-y-1">{related.map((r) => <Link key={r.id} href={`/precision-health/${r.id}/`} className="flex items-center gap-3 rounded-xl px-2 py-2 text-[14px] hover:bg-canvas"><Icon name={r.icon} size={18} weight="duotone" className="text-accent" />{r.short}<Icon name="arrow-right" size={14} className="ml-auto text-faint" /></Link>)}</div>
+          </div>
+          <Link href={`/contact/?interest=${encodeURIComponent(d.name)}`} className="btn-dark w-full">Book {d.short}<Icon name="arrow-right" size={16} /></Link>
+        </aside>
+      </div>
     </div>
   );
 }
