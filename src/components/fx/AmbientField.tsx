@@ -32,17 +32,17 @@ export function AmbientField() {
         const a = pts[i], ax = a.x * w, ay = a.y * h;
         for (let j = i + 1; j < N; j++) {
           const b = pts[j], dx = ax - b.x * w, dy2 = ay - b.y * h, d = dx * dx + dy2 * dy2;
-          if (d < 140 * 140) { ctx.strokeStyle = `rgba(61,139,255,${0.09 * (1 - Math.sqrt(d) / 140)})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(b.x * w, b.y * h); ctx.stroke(); }
+          if (d < 140 * 140) { ctx.strokeStyle = `rgba(37,99,235,${0.07 * (1 - Math.sqrt(d) / 140)})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(b.x * w, b.y * h); ctx.stroke(); }
         }
         const streak = Math.min(30, Math.abs(vel) * 0.8);
-        ctx.strokeStyle = `rgba(0,229,192,${0.25 + a.a * 0.35})`; ctx.lineWidth = 1.4;
+        ctx.strokeStyle = `rgba(6,182,212,${0.18 + a.a * 0.25})`; ctx.lineWidth = 1.4;
         ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(ax, ay + Math.sign(vel) * streak + 0.01); ctx.stroke();
-        ctx.fillStyle = `rgba(0,229,192,${0.3 + a.a * 0.4})`; ctx.fillRect(ax - 0.8, ay - 0.8, 1.6, 1.6);
+        ctx.fillStyle = `rgba(37,99,235,${0.22 + a.a * 0.3})`; ctx.fillRect(ax - 0.8, ay - 0.8, 1.6, 1.6);
       }
       if (reduced) cancelAnimationFrame(raf);
     };
     raf = requestAnimationFrame(draw);
     return () => { cancelAnimationFrame(raf); removeEventListener("resize", resize); };
   }, []);
-  return <canvas ref={ref} aria-hidden data-ai-fx className="pointer-events-none fixed inset-0 z-0 h-full w-full opacity-70" />;
+  return <canvas ref={ref} aria-hidden data-ai-fx className="pointer-events-none fixed inset-0 z-0 h-full w-full opacity-60" />;
 }
