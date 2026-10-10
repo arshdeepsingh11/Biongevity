@@ -1,5 +1,4 @@
-import { ProductHub } from "@/components/products/ProductHub";
-import { Hero, Streams, BrandFilm, ThreeSixty, Disciplines, StoriesSection, AILayer, GlobalClinic, ProgramsTeaser, FinalCTA } from "@/components/home/HomeSections";
+import { Hero, Streams, BrandFilm, ThreeSixty, Disciplines, StoriesSection, AILayer, GlobalClinic, ProgramsTeaser, FinalCTA, StoreTeaser } from "@/components/home/HomeSections";
 
 export default function HomePage() {
   return (
@@ -9,7 +8,7 @@ export default function HomePage() {
       <BrandFilm />
       <ThreeSixty />
       <Disciplines />
-      <ProductHub />
+      <StoreTeaser />
       <StoriesSection />
       <AILayer />
       <GlobalClinic />
