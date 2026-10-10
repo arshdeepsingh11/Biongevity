@@ -53,7 +53,7 @@ export function ScrollSphereGallery({ cards, active, onSelect }: { cards: Sphere
             return (
               <button key={i} onClick={() => onSelect?.(c.id)}
                 className={`absolute -ml-[78px] -mt-[52px] flex h-[104px] w-[156px] flex-col justify-between rounded-2xl p-3 text-left [backface-visibility:hidden] transition-shadow
-                  ${on ? "bg-ink text-night shadow-glow" : "bg-surface/95 text-ink shadow-card ring-1 ring-white/[0.06] hover:shadow-lift"}`}
+                  ${on ? "bg-ink text-white shadow-glow" : "bg-surface/95 text-ink shadow-card ring-1 ring-ink/[0.06] hover:shadow-lift"}`}
                 style={{ transform: `rotateY(${lon}deg) rotateX(${lat}deg) translateZ(${radius}px)` }}>
                 <span className={`grid h-8 w-8 place-items-center rounded-lg ${on ? "bg-iri text-white" : "bg-canvas"}`}><Icon name={c.icon} size={16} /></span>
                 <span><span className={`block text-[10px] font-semibold uppercase tracking-wider ${on ? "text-white/60" : "text-violet"}`}>{c.k}</span>
