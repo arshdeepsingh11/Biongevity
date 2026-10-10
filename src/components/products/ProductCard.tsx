@@ -17,7 +17,7 @@ export function ProductCard({ p, reason }: { p: CatalogProduct; reason?: string 
       <div className="mt-2 line-clamp-2 text-[13px] leading-relaxed text-muted">{p.bestFor ?? p.summary}</div>
       {reason && <div className="mt-3 flex items-start gap-1.5 rounded-xl bg-canvas px-3 py-2 text-[12px] text-ink/80"><Icon name="sparkle" size={13} className="mt-0.5 shrink-0 text-aqua" />{reason}</div>}
       <div className="flex-1" />
-      <div className="mt-4 flex items-center justify-between border-t border-white/[0.06] pt-3 text-[12px] text-faint">
+      <div className="mt-4 flex items-center justify-between border-t border-ink/[0.06] pt-3 text-[12px] text-faint">
         <span>{host}</span>
         <span className="flex items-center gap-1 font-semibold text-ink transition-colors group-hover:text-aqua">View & buy<Icon name="arrow-up-right" size={13} /></span>
       </div>
