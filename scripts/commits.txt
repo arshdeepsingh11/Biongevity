@@ -1,102 +1,78 @@
-add|build: init Next.js 15, React 19, three, GSAP, framer-motion, cobe|package.json package-lock.json
-add|build: add typed next.config.ts with static export for web + Capacitor|next.config.ts
-add|build: configure TypeScript strict mode and @/ path alias|tsconfig.json
-add|chore: add .gitignore for Next, Capacitor and env files|.gitignore
-add|chore: document Shopify Storefront and AI endpoint env vars|.env.example
-add|style: add Tailwind design tokens (light premium palette, iridescent AI gradient)|tailwind.config.ts
-add|build: add PostCSS config for Tailwind|postcss.config.mjs
-add|style: add global styles, DM Sans, reveal/scan animations and calm mode|src/app/globals.css
-add|chore(mobile): configure Capacitor app id and web dir|capacitor.config.ts
-add|chore: add public media folder for videos and images|public/media/.gitkeep
-add|feat(ui): add cn, money formatting and glyph utilities|src/lib/utils.ts
-add|feat(ui): add 24px icon path set|src/components/ui/icons.ts
-add|feat(ui): add Icon component|src/components/ui/Icon.tsx
-add|feat(data): add shared catalog types mirroring Shopify products|src/data/types.ts
-add|feat(data): add site nav, dock, contacts, locations and founder info|src/data/site.ts
-add|feat(data): add 11 departments, AI triage rules, pillars, care phases and packages|src/data/health.ts
-add|feat(data): add BioAro Labs catalog with 47 tests and 9 collections|src/data/labs.ts
-add|feat(data): add BioAro Drugs products, goals, personas and protocol rules|src/data/drugs.ts
-add|feat(data): add journal articles from BioAro Drugs Science and samples|src/data/journal.ts
-add|feat(data): add illustrative member dashboard data|src/data/dashboard.ts
-add|feat(data): add unified catalog index|src/data/catalog.ts
-add|feat(config): add drop-in media slots for videos and images|src/config/media.ts
-add|feat(shopify): add browser-safe Storefront API client|src/lib/shopify/client.ts
-add|feat(shopify): add product, collection and cart GraphQL operations|src/lib/shopify/queries.ts
-add|feat(shopify): add Storefront response types|src/lib/shopify/types.ts
-add|feat(shopify): add product merge adapter and cart API|src/lib/shopify/index.ts
-add|feat(commerce): add cart provider with Shopify cart and demo fallback|src/components/commerce/CartProvider.tsx
-add|feat(hooks): add useInView|src/hooks/useInView.ts
-add|feat(hooks): add useReducedMotion|src/hooks/useReducedMotion.ts
-add|feat(hooks): add useShopifyCatalog live product hydration|src/hooks/useShopifyCatalog.ts
-add|feat(fx): add DecodeText matrix decode effect|src/components/fx/DecodeText.tsx
-add|feat(fx): add MorphingText blur morph|src/components/fx/MorphingText.tsx
-add|feat(fx): add Text3DFlip staggered letter flip|src/components/fx/Text3DFlip.tsx
-add|feat(fx): add NumberTicker count-up|src/components/fx/NumberTicker.tsx
-add|feat(fx): add KeywordStream AI data marquee|src/components/fx/KeywordStream.tsx
-add|feat(fx): add ShineBorder iridescent border|src/components/fx/ShineBorder.tsx
-add|feat(fx): add animated circular ProgressRing|src/components/fx/ProgressRing.tsx
-add|feat(fx): add AnimatedList with spring notifications|src/components/fx/AnimatedList.tsx
-add|feat(fx): add macOS-style Terminal with typing|src/components/fx/Terminal.tsx
-add|feat(fx): add BentoGrid layout|src/components/fx/BentoGrid.tsx
-add|feat(fx): add EvervaultCard with touch support|src/components/fx/EvervaultCard.tsx
-add|feat(fx): add iridescent Confetti bursts|src/components/fx/Confetti.ts
-add|feat(fx): add Focused 3D Marquee with central lens|src/components/fx/FocusedMarquee.tsx
-add|feat(fx): add Apple Dock proximity magnification|src/components/fx/AppleDock.tsx
-add|feat(fx): add Dynamic Navigation gliding pill|src/components/fx/DynamicNav.tsx
-add|feat(fx): add scroll-driven 3D coverflow carousel|src/components/fx/CoverflowCarousel.tsx
-add|feat(fx): add GSAP scroll-rotate sphere gallery|src/components/fx/ScrollSphereGallery.tsx
-add|feat(fx): add Beam Flow WebGL laser shader for light theme|src/components/fx/BeamFlow.tsx
-add|feat(fx): add Globe with cobe and safe WebGL fallback|src/components/fx/Globe.tsx
-add|feat(fx): add Video Text with SVG mask|src/components/fx/VideoText.tsx
-add|feat(fx): add three.js Planet System with orbiting moons|src/components/fx/PlanetSystem.tsx
-add|feat(fx): add Signal Convergence with streaming particles|src/components/fx/SignalConvergence.tsx
-add|feat(ai): add grounded knowledge base and prepared answers|src/components/ai/knowledge.ts
-add|feat(ai): add AI provider with Cmd+K shortcut and typing stream|src/components/ai/AIProvider.tsx
-add|feat(ai): add Biongevity AI assistant panel|src/components/ai/AIAssistant.tsx
-add|feat(ai): add scroll-aware AI HUD|src/components/ai/AIHud.tsx
-add|feat(ai): add touch ripple, cursor aura, scroll progress and reveal layer|src/components/ai/AIInteractionLayer.tsx
-add|feat(ui): add MediaSlot video/image placeholder|src/components/ui/MediaSlot.tsx
-add|feat(ui): add Section, Eyebrow and PageHero helpers|src/components/ui/Section.tsx
-add|feat(layout): add header with dynamic nav, AI and bag buttons|src/components/layout/Header.tsx
-add|feat(layout): add mobile Apple Dock tab bar|src/components/layout/MobileDock.tsx
-add|feat(layout): add footer|src/components/layout/Footer.tsx
-add|feat(commerce): add cart drawer|src/components/commerce/CartDrawer.tsx
-add|feat(commerce): add add-to-bag button with confetti|src/components/commerce/AddToCart.tsx
-add|feat(commerce): add product card|src/components/commerce/ProductCard.tsx
-add|feat(commerce): add catalog browser with search, filters and sort|src/components/commerce/CatalogBrowser.tsx
-add|feat(commerce): add product detail with formulation table|src/components/commerce/ProductDetail.tsx
-add|feat(app): add client providers|src/app/providers.tsx
-add|feat(app): add root layout with AI layer, dock and cart|src/app/layout.tsx
-add|feat(home): add home sections (hero, 360, marquee, BioELR, bento, care, film)|src/components/home/HomeSections.tsx
-add|feat(home): compose home page|src/app/page.tsx
-add|feat(ai): add reusable Ask AI button|src/components/pages/AskButton.tsx
-add|feat(precision-health): add AI triage|src/components/pages/Triage.tsx
-add|feat(precision-health): add departments page|src/app/precision-health/page.tsx
-add|feat(precision-health): add 11 static department pages|src/app/precision-health/[dept]/page.tsx
-add|feat(packages): add Core, Plus and Elite comparison|src/app/packages/page.tsx
-add|feat(labs): add test sphere explorer|src/components/pages/LabsExplorer.tsx
-add|feat(labs): add BioAro Labs page|src/app/labs/page.tsx
-add|feat(labs): add tests shop|src/app/labs/tests/page.tsx
-add|feat(labs): add 47 static test pages|src/app/labs/tests/[handle]/page.tsx
-add|feat(drugs): add AI protocol builder|src/components/pages/ProtocolBuilder.tsx
-add|feat(drugs): add personas, coverflow range and example protocol|src/components/pages/DrugsSections.tsx
-add|feat(drugs): add BioAro Drugs page|src/app/drugs/page.tsx
-add|feat(drugs): add formulas shop|src/app/drugs/shop/page.tsx
-add|feat(drugs): add 8 static product pages|src/app/drugs/products/[handle]/page.tsx
-add|feat(journey): add member journey page|src/app/journey/page.tsx
-add|feat(life): add Biongevity Life planet page|src/app/life/page.tsx
-add|feat(clinic): add calm clinic page with globe|src/app/clinic/page.tsx
-add|feat(app-page): add ELR App dock showcase and signup|src/components/pages/AppDock.tsx
-add|feat(app-page): add ELR App page|src/app/app/page.tsx
-add|feat(journal): add journal list with AI key points|src/components/pages/JournalList.tsx
-add|feat(journal): add journal page|src/app/journal/page.tsx
-add|feat(about): add about page|src/app/about/page.tsx
-add|feat(contact): add contact form with AI routing|src/components/pages/ContactForm.tsx
-add|feat(contact): add contact page|src/app/contact/page.tsx
-add|feat(dashboard): add demo member dashboard|src/components/pages/Dashboard.tsx
-add|feat(dashboard): add dashboard route|src/app/dashboard/page.tsx
-add|feat(cart): add cart view|src/components/pages/CartView.tsx
-add|feat(cart): add cart page|src/app/cart/page.tsx
-add|feat: add 404 page|src/app/not-found.tsx
-add|docs: add README|README.md
-add|docs: add commit guide and commit scripts|COMMITS.md scripts
+add|style(noir): introduce neural-noir 2040 palette tokens, zero pink|tailwind.config.ts
+add|style(noir): dark-first globals, CSS variables, card edge light, cool selection|src/app/globals.css
+add|chore(env): drop Shopify keys, keep AI and contact endpoints|.env.example
+add|feat(data): add external url field to catalog type|src/data/types.ts
+add|feat(data): link all 47 tests to their bioarolabs.com pages|src/data/labs.ts
+add|feat(data): link all 8 formulas to their bioarodrugs.com pages|src/data/drugs.ts
+add|feat(nav): consolidate to six tabs and new mobile dock|src/data/site.ts
+add|feat(fx): add ambient signal field reacting to scroll velocity|src/components/fx/AmbientField.tsx
+add|style(fx): cyan-blue beam flow shader|src/components/fx/BeamFlow.tsx
+add|style(fx): dark globe with aqua markers|src/components/fx/Globe.tsx
+add|style(fx): cool atmosphere planet and hide labels without WebGL|src/components/fx/PlanetSystem.tsx
+add|style(fx): aqua signal convergence and WebGL-safe labels|src/components/fx/SignalConvergence.tsx
+add|style(fx): aqua-blue shine border|src/components/fx/ShineBorder.tsx
+add|style(fx): aqua-blue progress ring|src/components/fx/ProgressRing.tsx
+add|style(fx): aqua-blue confetti|src/components/fx/Confetti.ts
+add|style(fx): glass dynamic nav pill|src/components/fx/DynamicNav.tsx
+add|style(fx): dark glass app dock|src/components/fx/AppleDock.tsx
+add|style(fx): dark 3D marquee icons|src/components/fx/FocusedMarquee.tsx
+add|style(fx): dark bento cells with edge light|src/components/fx/BentoGrid.tsx
+add|style(fx): dark animated list|src/components/fx/AnimatedList.tsx
+add|style(fx): dark evervault card|src/components/fx/EvervaultCard.tsx
+add|style(fx): dark keyword stream|src/components/fx/KeywordStream.tsx
+add|style(fx): dark sphere gallery cards|src/components/fx/ScrollSphereGallery.tsx
+add|style(fx): terminal palette pass|src/components/fx/Terminal.tsx
+add|style(fx): aqua-blue video text fill|src/components/fx/VideoText.tsx
+add|style(ui): dark media slots|src/components/ui/MediaSlot.tsx
+add|feat(products): add external product card with AI reason|src/components/products/ProductCard.tsx
+add|feat(products): add AI product match and browser for labs + drugs|src/components/products/ProductHub.tsx
+add|feat(ai): status HUD with Scanning, Synthesizing and Ready states|src/components/ai/AIHud.tsx
+add|feat(ai): ambient field, cursor edge light and aqua neural pulse|src/components/ai/AIInteractionLayer.tsx
+add|style(ai): dark assistant panel and backdrop|src/components/ai/AIAssistant.tsx
+add|feat(ai): point answers to official stores, new page suggestions|src/components/ai/knowledge.ts
+add|feat(layout): header with Ask AI shine, Dashboard and Book consult|src/components/layout/Header.tsx
+add|feat(layout): footer links to official stores|src/components/layout/Footer.tsx
+add|refactor(app): remove cart provider|src/app/providers.tsx
+add|refactor(app): dark theme color, drop cart drawer|src/app/layout.tsx
+add|feat(home): cinematic dark hero, AI match CTAs, external store links|src/components/home/HomeSections.tsx
+add|feat(home): mount product hub on home|src/app/page.tsx
+add|feat(care): add sticky in-page care navigation|src/components/pages/CareNav.tsx
+add|feat(care): merge journey, life, clinic and app into Care|src/app/care/page.tsx
+add|style(care): dark app showcase card|src/components/pages/AppDock.tsx
+add|feat(insights): rename journal to Insights|src/app/insights/page.tsx
+rm|refactor(journal): remove old journal route|src/app/journal/page.tsx
+add|style(insights): dark journal list|src/components/pages/JournalList.tsx
+add|feat(health): related tests open on bioarolabs.com|src/app/precision-health/[dept]/page.tsx
+add|style(health): dark AI triage|src/components/pages/Triage.tsx
+add|style(programs): dark programs page|src/app/packages/page.tsx
+add|style(ui): dark ask AI button|src/components/pages/AskButton.tsx
+add|style(contact): dark contact form|src/components/pages/ContactForm.tsx
+add|style(dashboard): dark member dashboard|src/components/pages/Dashboard.tsx
+rm|refactor(labs): remove labs page|src/app/labs/page.tsx
+rm|refactor(labs): remove tests shop|src/app/labs/tests/page.tsx
+rm|refactor(labs): remove test detail pages|src/app/labs/tests/[handle]/page.tsx
+rm|refactor(labs): remove test sphere explorer|src/components/pages/LabsExplorer.tsx
+rm|refactor(drugs): remove drugs page|src/app/drugs/page.tsx
+rm|refactor(drugs): remove formulas shop|src/app/drugs/shop/page.tsx
+rm|refactor(drugs): remove product detail pages|src/app/drugs/products/[handle]/page.tsx
+rm|refactor(drugs): remove protocol builder|src/components/pages/ProtocolBuilder.tsx
+rm|refactor(drugs): remove drugs sections|src/components/pages/DrugsSections.tsx
+rm|refactor(care): remove journey route (now in Care)|src/app/journey/page.tsx
+rm|refactor(care): remove life route (now in Care)|src/app/life/page.tsx
+rm|refactor(care): remove clinic route (now in Care)|src/app/clinic/page.tsx
+rm|refactor(care): remove app route (now in Care)|src/app/app/page.tsx
+rm|refactor(commerce): remove cart page|src/app/cart/page.tsx
+rm|refactor(commerce): remove cart view|src/components/pages/CartView.tsx
+rm|refactor(commerce): remove cart drawer|src/components/commerce/CartDrawer.tsx
+rm|refactor(commerce): remove add-to-cart|src/components/commerce/AddToCart.tsx
+rm|refactor(commerce): remove catalog browser|src/components/commerce/CatalogBrowser.tsx
+rm|refactor(commerce): remove product detail|src/components/commerce/ProductDetail.tsx
+rm|refactor(commerce): remove internal product card|src/components/commerce/ProductCard.tsx
+rm|refactor(commerce): remove cart provider|src/components/commerce/CartProvider.tsx
+rm|refactor(shopify): remove shopify catalog hook|src/hooks/useShopifyCatalog.ts
+rm|refactor(shopify): remove storefront client|src/lib/shopify/client.ts
+rm|refactor(shopify): remove storefront queries|src/lib/shopify/queries.ts
+rm|refactor(shopify): remove storefront types|src/lib/shopify/types.ts
+rm|refactor(shopify): remove storefront adapter|src/lib/shopify/index.ts
+add|docs: minimal AI-style README|README.md
+add|docs: neural-noir commit guide and scripts|COMMITS.md scripts
