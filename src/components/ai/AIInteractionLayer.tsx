@@ -2,13 +2,11 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { DEPARTMENTS } from "@/data/health";
-import { AmbientField } from "@/components/fx/AmbientField";
 
 /**
  * The "AI on every touch and scroll" layer:
  *  • cursor aura — soft iridescent light following the pointer (desktop)
  *  • neural tap ripple — every tap/click emits an iridescent pulse with sparks
- *  • scroll progress — iridescent bar under the header
  *  • reveal + scan — [data-reveal] blur-in, [data-scan] AI scan sweep on enter
  *  • calm mode — muted effects on Clinic and Mental Health pages
  */
@@ -38,7 +36,7 @@ export function AIInteractionLayer() {
     return () => { io.disconnect(); mo.disconnect(); clearInterval(safety); };
   }, [path]);
 
-  // Cursor aura + tap ripple + scroll progress
+  // Cursor aura + tap ripple
   useEffect(() => {
     const root = document.documentElement;
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -66,20 +64,13 @@ export function AIInteractionLayer() {
         s.animate([{ transform: "translate(-50%,-50%)", opacity: 1 }, { transform: `translate(${Math.cos(a) * 34 - 2}px,${Math.sin(a) * 34 - 2}px)`, opacity: 0 }], { duration: 560, easing: "cubic-bezier(.2,.7,.2,1)" }).onfinish = () => s.remove();
       }
     };
-    const bar = document.getElementById("scroll-progress");
-    const scroll = () => { if (bar) bar.style.transform = `scaleX(${scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight)})`; };
     addEventListener("pointermove", move, { passive: true });
     addEventListener("pointerdown", tap, { passive: true });
-    addEventListener("scroll", scroll, { passive: true });
-    scroll();
-    return () => { removeEventListener("pointermove", move); removeEventListener("pointerdown", tap); removeEventListener("scroll", scroll); };
+    return () => { removeEventListener("pointermove", move); removeEventListener("pointerdown", tap); };
   }, []);
 
   return (
-    <>
-      <AmbientField />
-      <div aria-hidden data-ai-fx className="pointer-events-none fixed inset-0 z-0 hidden lg:block"
-        style={{ background: "radial-gradient(600px circle at var(--mx) var(--my), rgba(37,99,235,.06), transparent 60%)" }} />
-    </>
+    <div aria-hidden data-ai-fx className="pointer-events-none fixed inset-0 z-0 hidden lg:block"
+      style={{ background: "radial-gradient(600px circle at var(--mx) var(--my), rgba(37,99,235,.06), transparent 60%)" }} />
   );
 }
