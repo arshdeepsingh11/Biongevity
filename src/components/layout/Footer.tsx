@@ -31,7 +31,7 @@ export function Footer() {
             <a href="https://bioarodrugs.com/us/shop" target="_blank" rel="noopener" className="text-[14px] text-muted hover:text-accent">BioAro Drugs ↗</a>
             <a href="https://neyuhealth.com" target="_blank" rel="noopener" className="text-[14px] text-muted hover:text-accent">NEYU Health ↗</a>
           </div>
-          <p className="mt-6 text-[12px] leading-relaxed text-faint">Content from biongevity.com, neyuhealth.com, bioarolabs.com and bioarodrugs.com. Figures cite their sources; dashboard data is illustrative. Answers in chat come from Xevyo.</p>
+          <p className="mt-6 text-[12px] leading-relaxed text-faint">Testing fulfilled by BioAro Labs and BioAro Drugs. Figures cite their sources; dashboard data is illustrative. Answers in chat come from Xevyo.</p>
         </div>
       </div>
       <div className="border-t border-ink/[0.06] py-5 text-center text-[12px] text-faint">© {new Date().getFullYear()} Biongevity · BioAro Inc. Educational information, not medical advice.</div>
