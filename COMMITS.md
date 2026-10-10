@@ -1,20 +1,22 @@
 # ◐ Commits
 
 ```
-branch   ▸ ai/neural-noir
+branch   ▸ ai/aurora-glass
 base     ▸ main
-commits  ▸ 78 · one per change
-script   ▸ scripts/commit-all.ps1  (PowerShell)  ·  scripts/commit-all.sh  (Git Bash)
-plan     ▸ scripts/commits.txt     (add|message|paths · rm|message|paths)
+commits  ▸ ~105 · one per change
+script   ▸ scripts/commit-all.ps1 (PowerShell) · scripts/commit-all.sh (Git Bash)
+plan     ▸ scripts/commits.txt    message|paths
+manifest ▸ scripts/manifest.txt   every file in this version — anything else in src/ is pruned
 ```
 
 ## ▸ Run
 
 ```powershell
-git checkout -b ai/neural-noir
-# copy the update files over the project (see README)
+git checkout main
+git checkout -b ai/aurora-glass
+# copy the update over the project
 powershell -ExecutionPolicy Bypass -File scripts\commit-all.ps1
-git push -u origin ai/neural-noir
+git push -u origin ai/aurora-glass
 ```
 
 ## ▸ Convention
