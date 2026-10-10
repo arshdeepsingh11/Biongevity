@@ -34,7 +34,6 @@ export default async function ClinicSubPage({ params }: P) {
           <div data-reveal className="mt-8 flex flex-wrap gap-3">
             <Link href={`/contact/?interest=${encodeURIComponent(c.name)}`} className="btn-dark">{c.id === "uae" ? "Book a visit" : "Start your journey"}</Link>
             <AskButton q={`How does the ${c.name} work?`}>Ask Xevyo</AskButton>
-            <a href={c.source} target="_blank" rel="noopener" className="btn-light">biongevity.com<Icon name="arrow-up-right" size={13} /></a>
           </div>
         </div>
       </section>

@@ -19,7 +19,7 @@ export function BPTracker() {
       <div>
         <div className="text-[15px] font-semibold">Your 7-day log</div>
         <LineChart labels={DAYS} unit=" mmHg" min={60} max={170} refLine={{ value: 135, label: "135 home threshold" }}
-          series={[{ name: "Systolic", values: rows.map((r) => r[0]) }, { name: "Diastolic", values: rows.map((r) => r[1]), color: "#0F9D8F" }]} />
+          series={[{ name: "Systolic", values: rows.map((r) => r[0]) }, { name: "Diastolic", values: rows.map((r) => r[1]), color: "#5E7F62" }]} />
       </div>
       <div className="space-y-3">
         <div className="grid grid-cols-[auto_1fr_1fr] items-center gap-x-2 gap-y-1.5 text-[13px]">

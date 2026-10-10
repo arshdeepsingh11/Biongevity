@@ -1,7 +1,7 @@
 import type { IconName } from "@/components/ui/icons";
 import { SITE_URL } from "./health";
 
-/* Content source: biongevity.com — Global Clinic menu (Journey, Virtual Clinic, UAE Precision Clinic). */
+/* Global Clinic: Longevity Journey, Virtual Clinic, UAE Precision Clinic. */
 
 export interface ClinicPage {
   id: "journey" | "virtual" | "uae";
@@ -58,7 +58,7 @@ export const CLINICS: ClinicPage[] = [
 
 export const clinicById = (id: string) => CLINICS.find((c) => c.id === id) ?? CLINICS[0];
 
-/** Offices (biongevity.com/contact). */
+/** Offices. */
 export const OFFICES = [
   { city: "Calgary", region: "Head Office · Canada", phone: "403-250-2221", tel: "tel:+14032502221", email: "info@biongevity.com", address: "Calgary Place Tower 1, #1020 – 330 5th Avenue SW, Calgary, Alberta", loc: [51.0447, -114.0719] as [number, number] },
   { city: "Dubai", region: "Biongevity Clinic · UAE", phone: "+971 4 379 6393", tel: "tel:+97143796393", email: "infodxb@biongevity.com", address: "AB Center, 3rd floor, office 302, Sheikh Zayed Rd, Al Barsha 1, Dubai", loc: [25.2048, 55.2708] as [number, number] },
@@ -73,12 +73,12 @@ export const ABOUT = {
 
 /** Testimonial stories (uploaded clinic videos). */
 export const STORIES = [
-  { id: "clinic", t: "Inside the clinic", d: "A patient on her precision aesthetics visit.", video: "/media/story-clinic.mp4", poster: "/media/story-clinic.jpg", tag: "Precision Dermatology", href: "/precision-health/dermatology/" },
+  { id: "clinic", t: "Inside the clinic", d: "A patient on her precision aesthetics visit.", video: "/media/story-clinic.mp4", poster: "/media/story-clinic.jpg", tag: "Precision Dermatology", href: "/precision-health/skin-health/" },
   { id: "gut", t: "Gut health, decoded", d: "At-home gut microbiome test and personalized recommendations.", video: "/media/story-gut.mp4", poster: "/media/story-gut.jpg", tag: "Precision Gut Health", href: "/precision-health/gut-health/" },
-  { id: "skin", t: "My skin microbiome", d: "Unboxing and using the Bio Skin kit.", video: "/media/story-skin.mp4", poster: "/media/story-skin.jpg", tag: "BioSkin test", href: "/precision-health/dermatology/" },
+  { id: "skin", t: "My skin microbiome", d: "Unboxing and using the Bio Skin kit.", video: "/media/story-skin.mp4", poster: "/media/story-skin.jpg", tag: "BioSkin test", href: "/precision-health/skin-health/" },
 ];
 
-/* ---------- Clinic detail (tabs). Paraphrased from biongevity.com and neyuhealth.com virtual-care pages. ---------- */
+/* ---------- Clinic detail (tabs). Virtual care flow, remote BP program and UAE assessments. ---------- */
 export const VIRTUAL = {
   flow: [
     { icon: "calendar", t: "Request a visit", d: "Pick a time online. No waiting room, no commute." },
