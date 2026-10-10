@@ -1,40 +1,41 @@
 import type { Config } from "tailwindcss";
 
-/** Aurora Glass · Rich — light surfaces, deep navy ink, royal blue, AI teal, brand gold. Zero pink. */
+/** Champagne — ivory surfaces, warm charcoal ink, champagne-bronze accent, sage secondary. Light only. */
 export default {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       fontFamily: { sans: ["'DM Sans Variable'", "'DM Sans'", "sans-serif"] },
       colors: {
-        pearl: "#FFFFFF",      // --bg
-        canvas: "#F5F7FA",     // --bg-subtle
-        surface: "#FFFFFF",    // --surface-solid
-        ink: "#0B1530",        // --text (deep navy)
-        muted: "#4B5876",      // --text-secondary
-        faint: "#8A94AB",      // --text-muted
-        navy: { DEFAULT: "#0B1530", 2: "#13234D", 3: "#1E3A8A" },
-        teal: { DEFAULT: "#0F9D8F", soft: "#14B8A6", light: "#E6F7F5" },
-        gold: { DEFAULT: "#B8873B", soft: "#EBDCC0", deep: "#8A6420" },
-        accent: { DEFAULT: "#2563EB", soft: "#3B82F6", light: "#EFF6FF" },
-        violet: { DEFAULT: "#2563EB", soft: "#3B82F6" }, // legacy alias → accent
-        sky: "#3B82F6",
-        aqua: "#0369A1",       // readable cyan-blue for labels
-        cyan: "#14B8A6",
-        amber: "#B8873B",      // brand gold (tiny use)
-        tangerine: "#FB923C",  // --warm-2 (tinier use)
-        warn: "#D97706",
+        pearl: "#FFFDF9",
+        canvas: "#FAF6EF",
+        surface: "#FFFFFF",
+        ink: "#221D16",
+        muted: "#6B6155",
+        faint: "#A39889",
+        // "navy" = feature surface (warm champagne panel). Name kept for component stability.
+        navy: { DEFAULT: "#F4ECDF", 2: "#EDE2CF", 3: "#8A6A3A" },
+        teal: { DEFAULT: "#5E7F62", soft: "#7FA083", light: "#EDF2EA" },   // sage
+        gold: { DEFAULT: "#C2A16A", soft: "#F1E6D1", deep: "#8A6A3A" },   // champagne gold
+        accent: { DEFAULT: "#97703F", soft: "#B8925C", light: "#F7EFE3" }, // champagne bronze
+        violet: { DEFAULT: "#97703F", soft: "#B8925C" },
+        sky: "#B8925C",
+        aqua: "#6B5232",
+        cyan: "#7FA083",
+        amber: "#C2A16A",
+        tangerine: "#C9895B",
+        warn: "#B4691F",
       },
       backgroundImage: {
-        iri: "linear-gradient(135deg,#1E3A8A,#2563EB 48%,#0F9D8F)",
-        "iri-x": "linear-gradient(90deg,#1E3A8A,#2563EB 55%,#0F9D8F)",
-        navy: "radial-gradient(120% 120% at 0% 0%,#1E3A8A 0%,#0B1530 55%,#070D20 100%)",
+        iri: "linear-gradient(135deg,#D9BE8E,#B08A55 52%,#8A6A3A)",
+        "iri-x": "linear-gradient(90deg,#D9BE8E,#B08A55 55%,#7FA083)",
+        navy: "radial-gradient(120% 120% at 0% 0%,#FBF6EC 0%,#F4ECDF 55%,#EDE2CF 100%)",
       },
       borderRadius: { "4xl": "28px", "5xl": "32px" },
       boxShadow: {
-        card: "0 1px 2px rgba(11,21,48,.05), 0 10px 30px rgba(11,21,48,.07)",
-        lift: "0 2px 6px rgba(15,23,42,.05), 0 24px 60px rgba(15,23,42,.10)",
-        glow: "0 0 0 1px rgba(37,99,235,.18), 0 12px 36px rgba(37,99,235,.22)",
+        card: "0 1px 2px rgba(60,44,20,.04), 0 10px 30px rgba(60,44,20,.06)",
+        lift: "0 2px 6px rgba(60,44,20,.05), 0 24px 60px rgba(60,44,20,.10)",
+        glow: "0 0 0 1px rgba(151,112,63,.20), 0 12px 36px rgba(151,112,63,.18)",
       },
       keyframes: {
         marquee: { from: { transform: "translateX(0)" }, to: { transform: "translateX(-50%)" } },
