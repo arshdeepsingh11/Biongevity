@@ -6,35 +6,29 @@ import { ShineBorder } from "@/components/fx/ShineBorder";
 import { Icon } from "@/components/ui/Icon";
 import { deptById, scoreDepartments } from "@/data/health";
 
-/** AI starting point — maps a free-text goal to departments (keyword rules + optional live explanation). */
+/** Starting point — keyword match from your words to departments; follow-up questions go to Xevyo. */
 export function Triage() {
-  const { explain } = useAI();
+  const { ask } = useAI();
   const [q, setQ] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [res, setRes] = useState<{ ids: string[]; note: string; live: boolean } | null>(null);
-  const run = async () => {
-    if (!q.trim()) return;
-    setBusy(true);
-    const ids = scoreDepartments(q), names = ids.map((i) => deptById(i).name).join(", ");
-    const r = await explain(`You are Biongevity AI. A visitor wrote: "${q}". Keyword matching suggests: ${names}. In under 45 words explain why these are reasonable to discuss with a coordinator. No diagnosis.`,
-      `Based on the words you used, ${names} ${ids.length > 1 ? "are" : "is"} a reasonable place to start. A coordinator can confirm what fits.`);
-    setRes({ ids, note: r.text, live: r.live }); setBusy(false);
-  };
+  const [ids, setIds] = useState<string[] | null>(null);
+  const run = () => { if (q.trim()) setIds(scoreDepartments(q)); };
   return (
     <div className="relative rounded-4xl bg-surface p-6 shadow-lift sm:p-8">
       <ShineBorder radius={28} />
-      <div className="flex items-center gap-2 text-[13px] font-semibold text-violet"><Icon name="sparkle" size={16} />AI starting point</div>
+      <div className="flex items-center gap-2 text-[13px] font-semibold text-accent"><Icon name="search" size={16} />Find your starting point</div>
       <div className="mt-2 text-[24px] font-semibold tracking-tight sm:text-[28px]">Describe what you want to improve.</div>
       <div className="mt-5 flex flex-col gap-2 sm:flex-row">
         <input value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.key === "Enter" && run()} aria-label="Your goal"
-          placeholder="e.g. I sleep badly and my cholesterol is creeping up" className="h-12 flex-1 rounded-full border border-ink/10 bg-canvas px-5 text-[15px] outline-none focus:border-violet focus:bg-surface" />
-        <button onClick={run} className="btn-dark h-12 px-6">{busy ? "Thinking…" : "Suggest departments"}</button>
+          placeholder="e.g. I sleep badly and my cholesterol is creeping up" className="h-12 flex-1 rounded-full border border-ink/10 bg-canvas px-5 text-[15px] outline-none focus:border-accent focus:bg-surface" />
+        <button onClick={run} className="btn-dark h-12 px-6">Match departments</button>
       </div>
-      {res && (
+      {ids && (
         <div className="mt-5 rounded-2xl bg-canvas p-4">
-          <div className="flex flex-wrap gap-2">{res.ids.map((id) => { const d = deptById(id); return <Link key={id} href={`/precision-health/${id}/`} className="chip border-transparent bg-ink text-white"><Icon name={d.icon} size={15} />{d.name}</Link>; })}</div>
-          <p className="mt-3 text-[14px] leading-relaxed text-ink/80">{res.note}</p>
-          <p className="mt-1 text-[11px] text-faint">{res.live ? "Live AI explanation" : "Prepared explanation"} · departments matched by keywords</p>
+          <div className="flex flex-wrap gap-2">{ids.map((id) => { const d = deptById(id); return <Link key={id} href={`/precision-health/${id}/`} className="chip border-transparent bg-navy text-white"><Icon name={d.icon} size={15} />{d.name}</Link>; })}</div>
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+            <p className="text-[12px] text-faint">Matched by the words you used · a coordinator confirms what fits · not a diagnosis</p>
+            <button onClick={() => ask(`I wrote: "${q}". Which Biongevity departments should I consider and why?`)} className="text-[13px] font-semibold text-accent">Ask Xevyo why →</button>
+          </div>
         </div>
       )}
     </div>
