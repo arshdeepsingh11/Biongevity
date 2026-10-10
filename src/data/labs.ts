@@ -119,3 +119,32 @@ export const LAB_DIFFERENCE = [
   { t: "Biomarkers, genomics & microbiome in one place", d: "All your data, integrated for a complete picture.", typical: false },
   { t: "Specialized tests beyond routine panels", d: "Access advanced testing options when you need them.", typical: false },
 ];
+
+/** Ten "Bio" test families (BioAro Labs naming). */
+export const BIO_FAMILIES: { t: string; d: string; icon: IconName; cat: string }[] = [
+  { t: "Bio Genome", d: "Whole genome, exome, disease-based and pharmacogenomic DNA tests.", icon: "dna", cat: "genome-sequencing" },
+  { t: "Bio Aging", d: "Telomeres, GDF-15 and inflammation-ageing panels.", icon: "hourglass", cat: "biological-aging-healthspan-panels" },
+  { t: "Bio Hormone", d: "Cortisol, testosterone, estradiol, SHBG, DHEA-S and full panels.", icon: "test-tube", cat: "hormone-steroid-balance" },
+  { t: "Bio Nutrition", d: "Vitamins A, D, E and K1, plus amino-acid balance.", icon: "sun", cat: "vitamin-nutritional-status" },
+  { t: "Bio Vascular", d: "PAI-1, Cystatin C, B2M and tissue-remodelling markers.", icon: "heart", cat: "vascular-organ-stress" },
+  { t: "Bio Brain", d: "p-Tau217 and amyloid 40/42 for medically guided evaluation.", icon: "brain", cat: "brain-aging-neurodegeneration" },
+  { t: "Bio Gut", d: "At-home stool microbiome analysis.", icon: "gut", cat: "microbiome" },
+  { t: "Bio Skin", d: "Skin microbiome swab for irritation and acne.", icon: "face", cat: "microbiome" },
+  { t: "Bio Dental", d: "Oral microbiome for gums and breath.", icon: "tooth", cat: "microbiome" },
+  { t: "Bio Femme", d: "Vaginal microbiome for recurrent infections.", icon: "flower", cat: "microbiome" },
+];
+
+/** Turnaround times (BioAro Labs, as listed). */
+export const TURNAROUND = [
+  { label: "Comprehensive cell-free DNA", value: 3, note: "2–3 weeks" },
+  { label: "Whole genome / exome", value: 6, note: "4–6 weeks" },
+];
+
+/** Private health packages — clinic services + BioAro lab component (lab list prices; clinic services quoted). */
+export const HEALTH_PACKAGES = [
+  { id: "heart", t: "Heart Health Check", icon: "heart" as IconName, price: 165, best: "Family history of heart disease, high blood pressure or cholesterol — or peace of mind.", clinic: ["Cardiology consultation", "ECG", "Echocardiography"], labs: ["hs-CRP", "PAI-1 Total"], output: "A heart summary that flags what to re-check." },
+  { id: "executive", t: "Executive Health", icon: "briefcase" as IconName, price: 833.99, best: "Busy professionals who want a complete picture in one morning.", clinic: ["Internal medicine assessment", "Exercise stress echo", "Carotid ultrasound", "24-hour ambulatory BP"], labs: ["Core Inflammation Aging", "GDF-15", "Cystatin C", "Vitamin D"], output: "One connected report and a 12-month plan." },
+  { id: "longevity", t: "Longevity Baseline", icon: "hourglass" as IconName, price: 1128.99, best: "Starting a longevity plan with a baseline to re-test against.", clinic: ["Longevity consultation", "Body & blood-pressure assessment"], labs: ["Advanced Inflammation Aging", "GDF-15", "Telomere Length"], output: "Markers tracked over time against your baseline." },
+  { id: "genomics", t: "Precision Genomics", icon: "dna" as IconName, price: 1198, best: "Family history, medicine safety or a lifelong genetic reference.", clinic: ["Genetic results review with a physician"], labs: ["Whole Genome Sequencing 30X", "Pharmacogenomics"], output: "Genes explained in plain language; medicines checked against them." },
+  { id: "metabolic", t: "Metabolic & Hormone", icon: "test-tube" as IconName, price: 977.99, best: "Fatigue, weight change, prediabetes or hormone questions.", clinic: ["Endocrinology or internal medicine consultation"], labs: ["Hormone Health", "Essential Vitamin Health", "Cortisol"], output: "Hormone and nutrient results linked to symptoms and habits." },
+];
