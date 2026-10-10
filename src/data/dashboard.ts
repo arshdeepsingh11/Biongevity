@@ -33,7 +33,7 @@ export const PLAN = [
 
 export const VISITS = [
   { mo: "Oct", day: "14", t: "Cardiology review", time: "10:30", where: "Calgary clinic" },
-  { mo: "Oct", day: "28", t: "Telemedicine check-in", time: "09:00", where: "ELR App" },
+  { mo: "Oct", day: "28", t: "Telemedicine check-in", time: "09:00", where: "Biongevity App" },
   { mo: "Nov", day: "11", t: "Quarterly review", time: "14:00", where: "Video call" },
 ];
 
@@ -54,7 +54,7 @@ export const INSIGHTS = [
 
 export const FEED = [
   { t: "Genome data linked", d: "Illustrative · BioAro Labs", icon: "dna" },
-  { t: "Sleep trend updated", d: "Illustrative · ELR App", icon: "moon" },
+  { t: "Sleep trend updated", d: "Illustrative · Biongevity App", icon: "moon" },
   { t: "Visit summary drafted", d: "For clinician review", icon: "file" },
   { t: "Activity synced", d: "Illustrative · wearable", icon: "activity" },
   { t: "Microbiome report parsed", d: "Illustrative · BioGut", icon: "flask" },
