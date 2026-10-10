@@ -77,3 +77,28 @@ export const STORIES = [
   { id: "gut", t: "Gut health, decoded", d: "At-home gut microbiome test and personalized recommendations.", video: "/media/story-gut.mp4", poster: "/media/story-gut.jpg", tag: "Precision Gut Health", href: "/precision-health/gut-health/" },
   { id: "skin", t: "My skin microbiome", d: "Unboxing and using the Bio Skin kit.", video: "/media/story-skin.mp4", poster: "/media/story-skin.jpg", tag: "BioSkin test", href: "/precision-health/dermatology/" },
 ];
+
+/* ---------- Clinic detail (tabs). Paraphrased from biongevity.com and neyuhealth.com virtual-care pages. ---------- */
+export const VIRTUAL = {
+  flow: [
+    { icon: "calendar", t: "Request a visit", d: "Pick a time online. No waiting room, no commute." },
+    { icon: "bot", t: "Smart intake", d: "A short AI-assisted questionnaire so your clinician starts informed." },
+    { icon: "video", t: "Video consultation", d: "A secure video visit with a longevity clinician." },
+    { icon: "route", t: "Plan & follow-up", d: "Tests, prescriptions where appropriate, and a follow-up in your record." },
+  ],
+  good: ["Follow-ups and results reviews", "Medication and supplement reviews", "Lifestyle, sleep and nutrition coaching", "Mental health and talk therapy", "Mild, non-urgent symptoms", "Second opinions on a plan"],
+  inPerson: ["A physical examination is needed", "Imaging, ECG or other on-site tests", "Procedures and aesthetic treatments", "Vaccinations and injections", "Blood draws (or an at-home kit)"],
+  emergency: ["Chest pain or pressure", "Sudden weakness, face droop or slurred speech", "Severe breathing difficulty", "Heavy bleeding or major injury"],
+  bpSteps: [
+    { t: "Get set up", d: "Use a validated upper-arm monitor with the right cuff size." },
+    { t: "Measure for 7 days", d: "Two readings each morning and evening, one minute apart." },
+    { t: "Rest first", d: "Sit quietly for 5 minutes, back supported, feet flat, arm at heart level." },
+    { t: "Share your log", d: "Readings flow into your record for clinician review." },
+    { t: "Adjust together", d: "Your plan is tuned to the average — not a single reading." },
+  ],
+};
+
+export const UAE = {
+  focus: ["Precision internal medicine", "Endocrinology", "Genetic diagnostics", "Microbiome diagnostics", "Longevity assessments", "Precision aesthetics"],
+  radar: { axes: ["Fitness (VO₂)", "Lungs", "Vessels", "Strength", "Body comp.", "Metabolism", "Cognition", "Stress/HRV"], you: [0.7, 0.82, 0.88, 0.62, 0.6, 0.74, 0.8, 0.66], ref: [0.6, 0.7, 0.75, 0.6, 0.6, 0.6, 0.7, 0.6] },
+};
