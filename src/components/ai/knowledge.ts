@@ -5,10 +5,10 @@ import { BIOMARKERS } from "@/data/dashboard";
 import { formatMoney } from "@/lib/utils";
 
 /** Grounding facts sent to a live model (if NEXT_PUBLIC_AI_ENDPOINT is set). */
-export const FACTS = `Packages (12 months): ${PACKAGES.map((p) => `${p.name} (${p.consult} consultations; ${p.tests.join(", ")})`).join("; ")}.
+export const FACTS = `Longevity packages: ${PACKAGES.map((p) => `${p.name} USD ${p.price} (${p.cadence}; ${p.diagnostics.join(", ")})`).join("; ")}.
 BioAro Labs (bioarolabs.com): at-home tests, clinician-reviewed, CLIA-registered labs. Tests: ${LAB_TESTS.map((t) => `${t.title} ${formatMoney(t.price)}`).join(", ")}.
 BioAro Drugs (bioarodrugs.com): ${DRUG_PRODUCTS.map((p) => `${p.title} ${formatMoney(p.price)} (${p.summary})`).join(" ")} The builder uses stated goals and routine only, not biomarkers or genetics.
-Departments: ${DEPARTMENTS.map((d) => d.name).join(", ")}.`;
+Precision departments: ${DEPARTMENTS.map((d) => d.name).join(", ")}. Offices: Calgary (head office, 403-250-2221), Dubai clinic (+971 4 379 6393), BioAro Europe (Almelo).`;
 
 export function buildPrompt(q: string, context: string) {
   return `You are Biongevity AI, an educational assistant for Biongevity (precision health and longevity medicine, part of BioAro). Facts: ${FACTS}
@@ -37,12 +37,12 @@ export function preparedAnswer(q: string): string {
   const area = LAB_AREAS.find((a) => s.includes(a.name.toLowerCase()) || s.includes(a.k.toLowerCase()));
   if (area) return `${area.name}: ${area.explores} Sample: ${area.sample} It can show: ${area.shows} It doesn't establish: ${area.not} Tests start from ${formatMoney(area.from)}.`;
 
-  if (has("difference", "compare", "core", "plus", "elite", "package"))
-    return "All three Biongevity packages run 12 months. Core includes monthly longevity-expert consultations plus whole genome sequencing, a gut microbiome test and telomere length analysis. Plus moves to twice-monthly consultations and adds targeted methylation analysis and pharmacogenomics. Elite offers unlimited consultations and adds transcriptomics/gene expression and cell-free DNA cancer screening. Confirm pricing and regional availability with a coordinator.";
+  if (has("difference", "compare", "core", "precision", "elite", "package", "price"))
+    return "Biongevity has three longevity packages. Core (USD 369, baseline + annual): longevity genomics panel, gut microbiome snapshot, epigenetic ageing proxies and key hormones, plus the AI longevity coach and app. Precision (USD 699): adds WGS 30X, telomere length, pharmacogenomics and inflammation markers, with forecasting and quarterly expert review. Elite (USD 999, baseline + 3–6 months): WGS 100X, multi-omics, advanced epigenetic clocks and proteomics, with an assigned longevity physician. Checkout is on biongevity.com.";
   if (has("biological age", "bio age", "what does this mean", "measured"))
     return "Biological age estimates how your body is ageing compared with your calendar age. Biongevity assesses which ageing molecules your body produces to estimate biological age by organ system. Methods differ, so the most useful comparison is your own estimate over time. Dashboard numbers are illustrative.";
   if (has("bioelr", "elr"))
-    return "BioELR is Biongevity's Electronic Longevity Record. It integrates genomic sequencing, epigenetic analysis, metabolic profiling and gut microbiome assessments with data from the ELR App and connected wearables, and provides continuous analysis with personal feedback.";
+    return "BioELR is Biongevity's Electronic Longevity Record, available through the Biongevity App. It integrates genomic sequencing, epigenetic analysis, metabolic profiling and gut microbiome assessments with data from the Biongevity App and connected wearables, and provides continuous analysis with personal feedback.";
   if (has("pharmacogenomic", "cyp2c19", "medication"))
     return "Pharmacogenomics looks at genes that affect how you process some medicines (for example CYP2C19). BioAro Labs offers a Pharmacogenomics Test ($499). It can inform medication choices with your clinician; it doesn't decide which medicine you should take.";
   if (has("plan", "adjust", "protocol"))
@@ -51,11 +51,11 @@ export function preparedAnswer(q: string): string {
     return "BioAro Drugs offers bioactive formulations such as LONgevity+ ($150), CellOmega+ ($99), Glutara ($50), SleepO ($25) and the Creagen series ($50). Its builder works from the goals and routine you describe; it does not read biomarkers or genetic data.";
   if (has("kit", "activate", "sample", "at home", "at-home"))
     return "BioAro Labs tests use an at-home kit or a sample collection option: choose your test, collect your sample, the lab analyses it with validated methods, then you access secure results with connected interpretation. Order on bioarolabs.com. Support: +1 (833) 246-2766 · support@bioarolabs.com.";
-  if (has("book", "appointment", "visit", "consult", "contact"))
-    return "You can send a request from the Contact page and a coordinator follows up. Biongevity has clinics in Calgary and Dubai, plus telemedicine through the ELR App.";
-  const d = DEPARTMENTS.find((x) => s.includes(x.short.toLowerCase().split(" ")[0].toLowerCase()));
+  if (has("book", "appointment", "visit", "consult", "contact", "clinic", "where"))
+    return "Book from the Contact page and a coordinator follows up. The Biongevity clinic is in Dubai (AB Center, Al Barsha · +971 4 379 6393), head office in Calgary (403-250-2221, info@biongevity.com), BioAro Europe in Almelo — plus the Virtual Longevity Clinic wherever you are.";
+  const d = DEPARTMENTS.find((x) => s.includes(x.short.toLowerCase().split(" ")[0].toLowerCase().replace("'s", "")));
   if (d) return `${d.name}: ${d.summary} A good first question: "${d.questions[0]}" Services may vary by location.`;
-  return "Biongevity combines comprehensive clinical evaluations with genomic and epigenetic analysis, everyday data from the ELR App and continuous monitoring through BioELR. BioAro Labs provides at-home testing and BioAro Drugs provides bioactive formulations. A coordinator can confirm specifics I don't have verified.";
+  return "Biongevity combines comprehensive clinical evaluations with genomic and epigenetic analysis, everyday data from the Biongevity App and continuous monitoring through BioELR. BioAro Labs provides at-home testing and BioAro Drugs provides bioactive formulations. A coordinator can confirm specifics I don't have verified.";
 }
 
 export async function liveComplete(prompt: string): Promise<string | null> {
@@ -72,10 +72,12 @@ export async function liveComplete(prompt: string): Promise<string | null> {
 }
 
 export const SUGGESTIONS: Record<string, string[]> = {
-  "precision-health": ["Which department fits fatigue?", "What happens in a first evaluation?"],
-  packages: ["Compare Core, Plus and Elite", "What is pharmacogenomics?"],
-  home: ["What is BioELR?", "Which test should I start with?", "What is in LONgevity+?"],
-  care: ["How does the ELR App work?", "Where are the clinics?", "What is biological age?"],
+  packages: ["Compare Core, Precision and Elite", "What is pharmacogenomics?"],
+  home: ["What is BioELR?", "Compare Core, Precision and Elite", "Which test should I start with?"],
+  "precision-health": ["Which department fits fatigue?", "What does Precision Dermatology offer?"],
+  clinic: ["Where is the Dubai clinic?", "How does the Virtual Clinic work?", "What is biological age?"],
+  life: ["What is Biongevity Life?", "How does the Virtual Clinic work?"],
+  app: ["What does the Biongevity App do?", "What is BioELR?"],
   insights: ["What is biological age?", "Explain whole genome sequencing"],
   dashboard: ["Explain my triglycerides", "What does CYP2C19 mean?", "Questions about my plan"],
 };
