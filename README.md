@@ -1,81 +1,95 @@
-# ◐ Biongevity
+<div align="center">
 
-> Precision health. Shared longevity. An AI-native interface for BioAro.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:D9BE8E,50:B08A55,100:7FA083&height=200&section=header&text=Biongevity&fontColor=FFFDF9&fontSize=60&fontAlignY=36&animation=fadeIn&desc=Precision%20Health%20%C2%B7%20Shared%20Longevity&descSize=18&descAlignY=58" width="100%" alt="Biongevity" />
 
+<img src="https://readme-typing-svg.demolab.com?font=DM+Sans&weight=500&size=20&duration=2600&pause=900&color=97703F&center=true&vCenter=true&width=680&lines=Genomics%2C+biomarkers+and+microbiome+%E2%80%94+connected+by+AI;14+departments+%C2%B7+47+lab+tests+%C2%B7+8+bioactive+formulas;Static%2C+fast%2C+Shopify-ready+and+mobile-native" alt="Biongevity highlights" />
+
+<br/>
+
+![Next.js](https://img.shields.io/badge/Next.js-15-221D16?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-19-97703F?style=for-the-badge&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-5E7F62?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind-3.4-B8925C?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Shopify](https://img.shields.io/badge/Shopify-ready-7FA083?style=for-the-badge&logo=shopify&logoColor=white)
+![Capacitor](https://img.shields.io/badge/iOS%20%26%20Android-Capacitor-8A6A3A?style=for-the-badge&logo=capacitor&logoColor=white)
+
+</div>
+
+---
+
+## ◆ At a glance
+
+| | | | |
+|:--:|:--:|:--:|:--:|
+| **14**<br/><sub>departments</sub> | **47**<br/><sub>BioAro lab tests</sub> | **8**<br/><sub>bioactive formulas</sub> | **30**<br/><sub>static pages</sub> |
+| **5**<br/><sub>health packages</sub> | **3**<br/><sub>global clinics</sub> | **0**<br/><sub>backend servers</sub> | **100%**<br/><sub>JSON-LD coverage</sub> |
+
+## ◆ Architecture
+
+```mermaid
+flowchart LR
+  A[Static Next.js export] --> B[CDN / any host]
+  A --> C[iOS · Android via Capacitor]
+  B --> D[(Shopify checkout)]
+  B --> E[(AI assistant endpoint)]
+  B --> F[(Contact webhook)]
 ```
-theme    ▸ aurora-glass · rich · navy / blue / teal / gold · light only
-stack    ▸ next 15 (static export) · react 19 · typescript · tailwind · framer-motion · gsap · lucide
-targets  ▸ web · ios · android (capacitor)
-backend  ▸ none. shopify hosts checkout · xevyo hosts AI · everything else is static
-```
 
-## ▸ Boot
+No custom backend. Checkout runs on Shopify, chat on a hosted AI endpoint, everything else ships as static HTML.
+
+## ◆ Quick start
 
 ```bash
 npm install
-cp .env.example .env.local   # optional
-npm run dev                  # → localhost:3000
-npm run build                # → ./out (static)
+cp .env.example .env.local
+npm run dev        # localhost:3000
+npm run build      # static site → ./out
 ```
 
-## ▸ Map
+## ◆ What's inside
 
-| Route | What's there |
+| Area | Highlights |
 |---|---|
-| `/` | Hero · data-stream explorer · discipline explorer · shop + quiz · stories · BioELR · interactive world map · programs |
-| `/precision-health/[9]` | Tabs: Overview · Care & tests · Evidence · Lab tests · Self-check · Specialist & FAQ |
-| `/clinic/journey` | The journey · Biological age · What you get · Programs |
-| `/clinic/virtual` | How it works · Virtual or in person · Remote BP program (7-day tracker) · Join |
-| `/clinic/uae` | Overview · Assessments (radar) · Departments · Visit |
-| `/shop` | Programs · Lab tests · Formulas · Find my match (`?tab=`) |
-| `/life` `/app` `/insights` `/about` `/contact` `/dashboard` | Discover |
+| **Precision Health** | 14 departments · overview, conditions, tests & prep, care path, cited evidence, FAQ |
+| **BioAro Labs** | AI intelligence flow · 10 Bio families · full catalogue · packages · test matcher |
+| **BioAro Drugs** | AI protocol builder · transparent dosing charts · science & quality |
+| **Global Clinic** | Journey · Virtual Clinic with 7-day BP tracker · UAE assessments · interactive world map |
+| **Shop** | Programs comparison · health packages · 8-step match quiz |
+| **Design** | Champagne theme · Phosphor icons · SVG charts · Magic UI–style motion |
 
-## ▸ Xevyo (in-house AI)
+## ◆ Search & AI discoverability
 
-No answers live in the frontend. The chat sits bottom-right and shows **not connected** until `NEXT_PUBLIC_XEVYO_URL` is set.
+- `sitemap.xml` and `robots.txt` generated at build — open to Google, Bing, GPTBot, ClaudeBot, PerplexityBot and Applebot
+- `llms.txt` summary for AI answer engines
+- schema.org JSON-LD: `MedicalOrganization`, `MedicalClinic`, `MedicalWebPage`, `FAQPage`, `BreadcrumbList`
+- Per-page titles, descriptions, keywords, canonical URLs and Open Graph
 
-```http
-POST $NEXT_PUBLIC_XEVYO_URL
-Authorization: Bearer $NEXT_PUBLIC_XEVYO_PUBLIC_KEY   # optional, publishable
-Content-Type: application/json
+## ◆ Configuration
 
-{ "message": "…", "history": [{ "role": "user|assistant", "content": "…" }],
-  "context": { "page": "shop" }, "sessionId": "…" }
-```
-
-Reply with JSON `{ "reply": "…", "sources": [{ "title", "url" }] }`, or stream `text/event-stream` (`data: token` … `data: [DONE]`) / chunked `text/plain`. Client: `src/lib/xevyo.ts`.
-
-## ▸ Shopify
-
-Buy buttons call `buyUrl()` in `src/lib/commerce.ts`:
-
-- `NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN` set **and** a variant id in `src/config/shopify.ts` → Shopify cart permalink (`/cart/{variant}:1`). Shopify hosts checkout.
-- Otherwise → the official product page on bioarolabs.com, bioarodrugs.com or biongevity.com.
-
-Quiz results can open a multi-item cart with `bundleUrl()`. No server, no secrets.
-
-## ▸ Data
-
-| File | Holds |
+| Variable | Purpose |
 |---|---|
-| `data/health.ts` | 9 departments · packages · pillars |
-| `data/care.ts` | When to see us · care & tests · FAQ · self-check per department |
-| `data/stats.ts` | Cited figures (WHO, GLOBOCAN, Hypertension Canada…) behind every chart |
-| `data/labs.ts` · `data/drugs.ts` | BioAro Labs tests · BioAro Drugs formulas |
-| `lib/quiz.ts` | Deterministic, on-device match scoring |
+| `NEXT_PUBLIC_XEVYO_URL` | AI assistant endpoint |
+| `NEXT_PUBLIC_XEVYO_PUBLIC_KEY` | Publishable key (optional) |
+| `NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN` | Enables Shopify cart permalinks |
+| `NEXT_PUBLIC_CONTACT_ENDPOINT` | Contact form webhook |
+| `NEXT_PUBLIC_SITE_URL` | Canonical domain |
 
-Figures carry their source. Anything marked *illustrative* is a teaching example, not member data.
+> All values are public in a static build — never store secrets in `.env`.
 
-## ▸ Env
+## ◆ Project structure
 
-Static export: every variable is public. **Never put secrets in `.env`.** See `.env.example`.
-
-## ▸ Mobile
-
-```bash
-npx cap add ios && npx cap add android
-npm run cap:sync
+```
+src/
+├─ app/          routes · sitemap · robots
+├─ components/   ai · charts · fx · dept · bioaro · shop · clinic · layout · ui
+├─ data/         departments · labs · drugs · stats · clinic
+└─ lib/          seo · commerce · quiz · env
 ```
 
----
-`BioAro Inc. · Calgary · Dubai · Almelo`. Educational information, not medical advice.
+<div align="center">
+
+<sub>© BioAro Inc. · Calgary · Dubai · Almelo — educational information, not medical advice.</sub>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:7FA083,50:B08A55,100:D9BE8E&height=100&section=footer" width="100%" alt="" />
+
+</div>
