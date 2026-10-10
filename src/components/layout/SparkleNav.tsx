@@ -14,7 +14,7 @@ function activeId(path: string) {
   if (path === "/") return "home";
   if (path.startsWith("/precision-health")) return "precision";
   if (path.startsWith("/clinic")) return "clinic";
-  if (path.startsWith("/packages")) return "programs";
+  if (path.startsWith("/shop")) return "shop";
   if (path.startsWith("/contact")) return "contact";
   if (/^\/(life|app|insights|about|dashboard)/.test(path)) return "discover";
   return "home";
@@ -43,7 +43,7 @@ export function SparkleNav() {
     for (let i = 0; i < 7; i++) {
       const s = document.createElement("span");
       s.className = "absolute h-1 w-1 rounded-full";
-      s.style.background = i % 3 === 0 ? "#F59E0B" : i % 2 ? "#06B6D4" : "#2563EB";
+      s.style.background = i % 3 === 0 ? "#B8873B" : i % 2 ? "#0F9D8F" : "#2563EB";
       s.style.left = `${x}px`; s.style.top = `${y}px`;
       layer.appendChild(s);
       const a = Math.random() * Math.PI * 2, d = 10 + Math.random() * 18;
@@ -82,18 +82,18 @@ export function SparkleNav() {
       <nav aria-label="Primary" onMouseEnter={() => clearTimeout(closeT.current)} onMouseLeave={leave} className="glass pointer-events-auto relative max-w-full rounded-full p-1.5 shadow-lift">
         <div ref={bar} className="no-scrollbar relative flex items-center overflow-x-auto">
           <span ref={line} aria-hidden className="pointer-events-none absolute left-0 top-0 z-20 h-[2px] w-0 rounded-full opacity-0"
-            style={{ background: "linear-gradient(90deg,#2563EB,#06B6D4)", boxShadow: "0 0 8px rgba(37,99,235,.9), 0 0 18px rgba(6,182,212,.6)" }} />
+            style={{ background: "linear-gradient(90deg,#2563EB,#0F9D8F)", boxShadow: "0 0 8px rgba(37,99,235,.9), 0 0 18px rgba(15,157,143,.55)" }} />
           <div ref={sparkLayer} aria-hidden className="pointer-events-none absolute inset-0 z-30" />
           {NAV.map((n) => {
             const on = target === n.id, cur = active === n.id;
             const inner = (
               <>
                 <Icon name={n.icon} size={16} className={`shrink-0 transition-colors ${on ? "text-accent" : "text-faint"}`} />
-                <span data-label className={`relative text-[13px] font-semibold transition-colors ${on ? "text-accent" : "text-muted"}`}>{n.label}</span>
-                {n.menu && <Icon name="chevron-down" size={12} className={`transition-transform ${open === n.id ? "rotate-180 text-accent" : "text-faint"}`} />}
+                <span data-label className={`relative text-[10.5px] font-semibold transition-colors sm:text-[13px] ${on ? "text-accent" : "text-muted"}`}>{n.label}</span>
+                {n.menu && <Icon name="chevron-down" size={12} className={`hidden transition-transform sm:block ${open === n.id ? "rotate-180 text-accent" : "text-faint"}`} />}
               </>
             );
-            const cls = `relative z-10 flex shrink-0 items-center gap-1.5 rounded-full px-3 py-2 transition-colors sm:px-3.5 ${cur ? "bg-accent-light" : "hover:bg-ink/[0.04]"}`;
+            const cls = `relative z-10 flex shrink-0 flex-col items-center gap-0.5 rounded-2xl px-2.5 py-1.5 transition-colors sm:flex-row sm:rounded-full sm:gap-1.5 sm:px-3.5 sm:py-2 ${cur ? "bg-accent-light" : "hover:bg-ink/[0.04]"}`;
             return n.menu ? (
               <button key={n.id} data-nav={n.id} className={cls} aria-expanded={open === n.id} aria-haspopup="true"
                 onMouseEnter={() => enter(n)} onClick={() => (open === n.id ? setOpen(null) : enter(n))}>{inner}</button>
@@ -108,9 +108,9 @@ export function SparkleNav() {
 }
 
 function MenuPanel({ item, preview, setPreview }: { item: NavItem; preview: string | null; setPreview: (h: string) => void }) {
-  if (item.id === "discover") {
+  if (item.id === "discover" || item.id === "shop") {
     return (
-      <div className="grid gap-2 p-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className={`grid gap-2 p-3 sm:grid-cols-2 ${item.id === "shop" ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
         {item.menu!.map((m) => (
           <Link key={m.href} href={m.href} className="group flex items-start gap-3 rounded-2xl p-3 transition-colors hover:bg-accent-light">
             <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-canvas text-accent group-hover:bg-white"><Icon name={m.icon} size={18} /></span>
