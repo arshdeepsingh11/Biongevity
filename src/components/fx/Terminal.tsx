@@ -24,7 +24,7 @@ export function Terminal({ lines, title = "bioelr — demo session", height = 32
         <span className="h-3 w-3 rounded-full bg-[#FF5F57]" /><span className="h-3 w-3 rounded-full bg-[#FEBC2E]" /><span className="h-3 w-3 rounded-full bg-[#28C840]" />
         <span className="ml-2 text-[12px] text-faint">{title}</span>
       </div>
-      <pre className="overflow-auto p-5 font-mono text-[12.5px] leading-[1.75]" style={{ height }}>
+      <pre className="overflow-auto whitespace-pre-wrap break-words p-5 font-mono text-[12.5px] leading-[1.75]" style={{ height }}>
         {lines.slice(0, li).map((l, i) => <div key={i} className={color(l)}>{l}</div>)}
         {li < lines.length && <div className={color(lines[li])}>{lines[li].slice(0, ci)}<span className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 animate-pulseDot bg-accent" /></div>}
       </pre>
