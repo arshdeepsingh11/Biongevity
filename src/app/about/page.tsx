@@ -3,7 +3,7 @@ import { PageHero, Section, Eyebrow } from "@/components/ui/Section";
 import { Text3DFlip } from "@/components/fx/Text3DFlip";
 import { DiaTextReveal } from "@/components/fx/DiaTextReveal";
 import { AuroraText } from "@/components/fx/AuroraText";
-import { Globe } from "@/components/fx/Globe";
+import { WorldMap } from "@/components/fx/WorldMap";
 import { Icon } from "@/components/ui/Icon";
 import { LogoMark } from "@/components/ui/Logo";
 import { ABOUT, OFFICES } from "@/data/clinic";
@@ -47,7 +47,7 @@ export default function AboutPage() {
       <Section ai="Reach" className="!pt-0">
         <div className="container-x text-center">
           <h2 className="h-section mx-auto max-w-[18ch]"><DiaTextReveal text="Three regions. One record." /></h2>
-          <div className="mx-auto mt-8 w-full max-w-[460px]"><Globe markers={OFFICES.map((o) => ({ location: o.loc, size: 0.09 }))} /></div>
+          <div className="mt-8 text-left"><WorldMap /></div>
         </div>
       </Section>
     </>
