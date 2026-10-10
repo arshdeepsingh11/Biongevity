@@ -62,25 +62,25 @@ export function ProductHub() {
   const visible = all ? shown : shown.slice(0, 9);
 
   return (
-    <Section ai="Products" id="products">
+    <Section ai="Store" id="store" className="scroll-mt-20">
       <div className="container-x">
-        <Eyebrow>BioAro Labs × BioAro Drugs</Eyebrow>
+        <Eyebrow>Store · BioAro Labs × BioAro Drugs</Eyebrow>
         <h2 data-reveal className="h-section mt-3 max-w-[18ch]">Measure your biology. Then act on it.</h2>
         <p data-reveal className="lede mt-4 max-w-[60ch]">{LAB_TESTS.length} lab tests and {DRUG_PRODUCTS.length} bioactive formulas. Tell the AI your goals, or browse. Every product opens on its official store.</p>
 
         {/* AI match */}
-        <div data-reveal className="relative mt-10 overflow-hidden rounded-5xl border border-white/[0.08] bg-surface p-6 sm:p-8">
+        <div data-reveal className="relative mt-10 overflow-hidden rounded-5xl border border-ink/[0.08] bg-gradient-to-br from-white via-white to-accent-light p-6 shadow-card sm:p-8">
           <ShineBorder radius={32} width={1} />
-          <div aria-hidden data-ai-fx className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-aqua/10 blur-3xl" />
+          <div aria-hidden data-ai-fx className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan/10 blur-3xl" />
           <div className="relative flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2 text-[13px] font-semibold text-aqua"><Icon name="sparkle" size={15} /><DecodeText text="AI MATCH · RULE-BASED · ON-DEVICE" /></div>
-            <button onClick={() => ask("Which BioAro Labs test and BioAro Drugs formula fit my goals?")} className="chip border-white/10 bg-canvas text-[13px]"><Icon name="message" size={14} />Ask AI instead</button>
+            <div className="flex items-center gap-2 text-[13px] font-semibold text-accent"><Icon name="sparkle" size={15} /><DecodeText text="AI MATCH · RULE-BASED · ON-DEVICE" /></div>
+            <button onClick={() => ask("Which BioAro Labs test and BioAro Drugs formula fit my goals?")} className="chip border-ink/10 bg-canvas text-[13px]"><Icon name="message" size={14} />Ask AI instead</button>
           </div>
           <div className="relative mt-3 text-[24px] font-semibold tracking-tight sm:text-[28px]">What do you want to improve?</div>
           <div className="relative mt-5 flex flex-wrap gap-2">
             {GOALS.map((g) => { const on = goals.includes(g.id); return (
               <button key={g.id} aria-pressed={on} onClick={() => { setGoals((s) => (on ? s.filter((x) => x !== g.id) : [...s, g.id])); setPhase("idle"); }}
-                className={`chip ${on ? "border-aqua/50 bg-aqua/10 text-ink shadow-[0_0_18px_rgba(0,229,192,.18)]" : "border-white/10 bg-canvas text-muted hover:text-ink"}`}>
+                className={`chip ${on ? "border-accent/40 bg-accent-light text-accent shadow-[0_0_18px_rgba(37,99,235,.15)]" : "border-ink/10 bg-canvas text-muted hover:text-ink"}`}>
                 <Icon name={g.icon} size={15} />{g.label}
               </button>
             ); })}
@@ -99,7 +99,7 @@ export function ProductHub() {
             )}
             {phase === "done" && (
               <motion.div key="done" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="relative mt-6">
-                <div className="mb-3 flex items-center gap-2 text-[13px] text-muted"><span className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-aqua" />{recs.length} matches · measure first, then support</div>
+                <div className="mb-3 flex items-center gap-2 text-[13px] text-muted"><span className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-accent" />{recs.length} matches · measure first, then support</div>
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{recs.map((r) => <ProductCard key={r.p.handle} p={r.p} reason={r.reason} />)}</div>
               </motion.div>
             )}
@@ -108,21 +108,21 @@ export function ProductHub() {
 
         {/* Browse */}
         <div className="mt-14 flex flex-wrap items-center justify-between gap-3">
-          <div role="tablist" className="inline-flex rounded-full bg-surface p-1 ring-1 ring-white/[0.08]">
+          <div role="tablist" className="inline-flex rounded-full bg-surface p-1 ring-1 ring-ink/[0.08]">
             {([["tests", `Lab tests · ${LAB_TESTS.length}`], ["formulas", `Formulas · ${DRUG_PRODUCTS.length}`]] as const).map(([id, label]) => (
               <button key={id} role="tab" aria-selected={tab === id} onClick={() => { setTab(id); setCat("all"); setAll(false); }}
-                className={`rounded-full px-4 py-2 text-[14px] font-semibold transition-all ${tab === id ? "bg-ink text-night" : "text-muted hover:text-ink"}`}>{label}</button>
+                className={`rounded-full px-4 py-2 text-[14px] font-semibold transition-all ${tab === id ? "bg-ink text-white" : "text-muted hover:text-ink"}`}>{label}</button>
             ))}
           </div>
           <div className="relative w-full sm:w-72">
             <Icon name="search" size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-faint" />
             <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search products" aria-label="Search products"
-              className="h-11 w-full rounded-full border border-white/10 bg-surface pl-10 pr-4 text-[14px] outline-none placeholder:text-faint focus:border-sky" />
+              className="h-11 w-full rounded-full border border-ink/10 bg-surface pl-10 pr-4 text-[14px] outline-none placeholder:text-faint focus:border-sky" />
           </div>
         </div>
         <div className="no-scrollbar mt-4 flex gap-2 overflow-x-auto">
           {[{ handle: "all", title: "All" }, ...cols].map((c) => (
-            <button key={c.handle} onClick={() => { setCat(c.handle); setAll(false); }} className={`chip shrink-0 ${cat === c.handle ? "border-sky/50 bg-sky/10 text-ink" : "border-white/10 bg-surface text-muted hover:text-ink"}`}>{c.title}</button>
+            <button key={c.handle} onClick={() => { setCat(c.handle); setAll(false); }} className={`chip shrink-0 ${cat === c.handle ? "border-accent/40 bg-accent-light text-accent" : "border-ink/10 bg-surface text-muted hover:text-ink"}`}>{c.title}</button>
           ))}
         </div>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{visible.map((p) => <ProductCard key={p.handle} p={p} />)}</div>
