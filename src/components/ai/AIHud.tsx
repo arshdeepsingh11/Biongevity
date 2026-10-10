@@ -38,12 +38,12 @@ export function AIHud() {
   }, [path, setSection]);
 
   if (open) return null;
-  const dot = status === "Ready" ? "bg-aqua" : status === "Scanning" ? "bg-sky animate-pulseDot" : "bg-warn animate-pulseDot";
+  const dot = status === "Ready" ? "bg-emerald-500" : status === "Scanning" ? "bg-accent animate-pulseDot" : "bg-amber animate-pulseDot";
   return (
     <button data-ai-fx onClick={() => setOpen(true)} aria-label={`Ask Biongevity AI about ${section}`}
-      className="glass fixed bottom-[calc(96px+var(--safe-bottom))] right-3 z-[70] flex items-center gap-2.5 rounded-full p-1.5 shadow-lift sm:pr-4 lg:bottom-6 lg:right-6">
+      className="glass fixed right-3 top-[calc(72px+var(--safe-top))] z-[70] flex items-center gap-2.5 rounded-full p-1.5 shadow-lift sm:pr-4 lg:right-6">
       <span className="relative grid h-8 w-8 place-items-center rounded-full bg-iri text-white">
-        {status !== "Ready" && <span className="absolute inset-0 animate-ping rounded-full bg-aqua/30" />}<Icon name="sparkle" size={15} />
+        {status !== "Ready" && <span className="absolute inset-0 animate-ping rounded-full bg-accent/30" />}<Icon name="sparkle" size={15} />
       </span>
       <span className="hidden text-left leading-tight sm:block">
         <span className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted"><span className={`h-1.5 w-1.5 rounded-full ${dot}`} />{status}{status !== "Ready" && "…"}</span>
