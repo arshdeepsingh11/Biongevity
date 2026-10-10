@@ -5,12 +5,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * NEURAL NOIR — 2040 AI design tokens (zero pink)
+ *   --bg-deep #05060A · --bg #0A0C12 · --surface #11141C · --surface-2 #181C28
+ *   --text #F2F4F8 · --text-secondary #8B93A7 · --text-muted #5C6578
+ *   --accent #3D8BFF · --accent-2 #00E5C0 · --warning #FFB020
+ * AI patterns enabled: scroll neural track, AI status HUD (Scanning/Synthesizing/Ready),
+ *   data-reveal decode, data-scan sweep, cursor-tracked edge light on .card,
+ *   neural tap pulse, ambient signal field, shine borders on AI CTAs, live tickers.
+ */
 :root {
-  --ink: #1d1d1f;
-  --muted: #6e6e73;
-  --canvas: #f5f5f7;
-  --violet: #6a5cff;
-  --iri: linear-gradient(90deg, #ff8a3d, #ff4d8d 33%, #9b6bff 66%, #3d8bff);
+  --bg-deep: #05060a;
+  --bg: #0a0c12;
+  --surface: #11141c;
+  --surface-2: #181c28;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --ink: #f2f4f8;
+  --muted: #8b93a7;
+  --faint: #5c6578;
+  --violet: #3d8bff;
+  --accent: #3d8bff;
+  --accent-2: #00e5c0;
+  --accent-glow: rgba(61, 139, 255, 0.35);
+  --ai-glow: rgba(0, 229, 192, 0.25);
+  --canvas: var(--bg);
+  --iri: linear-gradient(90deg, #00e5c0, #3d8bff 55%, #8fb8ff);
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --mx: 50vw;
@@ -21,11 +41,12 @@ html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
 body {
   background: var(--canvas);
   color: var(--ink);
-  font-family: "DM Sans Variable", "DM Sans", system-ui, sans-serif;
+  font-family: "DM Sans Variable", "DM Sans", sans-serif;
+  color-scheme: dark;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
-::selection { background: rgba(155, 107, 255, 0.22); }
+::selection { background: rgba(0, 229, 192, 0.28); color: #fff; }
 :focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; border-radius: 8px; }
 
 @layer components {
@@ -34,11 +55,12 @@ body {
   .h-display { @apply text-[44px] font-semibold leading-[1.02] tracking-[-0.035em] sm:text-[64px] lg:text-[84px]; }
   .h-section { @apply text-[34px] font-semibold leading-[1.06] tracking-[-0.03em] sm:text-[48px] lg:text-[56px]; }
   .lede { @apply text-[17px] leading-[1.5] text-muted sm:text-[19px]; }
-  .card { @apply rounded-4xl border border-black/[0.06] bg-white shadow-card; }
-  .glass { @apply border border-white/60 bg-white/70 backdrop-blur-xl backdrop-saturate-150; }
+  .card { @apply relative rounded-4xl border border-white/[0.06] bg-surface shadow-card transition-[transform,box-shadow,border-color] duration-500; }
+  .card:hover { @apply border-white/[0.12]; }
+  .glass { @apply border border-white/10 bg-surface/70 backdrop-blur-xl backdrop-saturate-150; }
   .btn { @apply inline-flex h-11 items-center justify-center gap-2 rounded-full px-5 text-[15px] font-medium transition-all duration-300 active:scale-[0.97]; }
-  .btn-dark { @apply btn bg-ink text-white hover:bg-black; }
-  .btn-light { @apply btn border border-black/10 bg-white text-ink hover:border-black/20; }
+  .btn-dark { @apply btn bg-ink text-night hover:bg-white hover:shadow-[0_0_24px_rgba(61,139,255,.45)]; }
+  .btn-light { @apply btn border border-white/10 bg-surface text-ink hover:border-aqua/40 hover:shadow-[0_0_20px_rgba(0,229,192,.18)]; }
   .chip { @apply inline-flex h-9 items-center gap-1.5 rounded-full border px-3.5 text-[14px] font-medium transition-colors; }
   .text-iri { background: var(--iri); -webkit-background-clip: text; background-clip: text; color: transparent; }
 }
@@ -47,7 +69,7 @@ body {
 [data-scan] { position: relative; overflow: hidden; isolation: isolate; }
 [data-scan]::after {
   content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
-  background: linear-gradient(100deg, transparent 30%, rgba(155,107,255,.14) 45%, rgba(61,139,255,.12) 55%, transparent 70%);
+  background: linear-gradient(100deg, transparent 30%, rgba(0,229,192,.14) 45%, rgba(61,139,255,.14) 55%, transparent 70%);
   transform: translateX(-120%);
 }
 [data-scan].is-scanned::after { animation: scan 1.4s cubic-bezier(.4,0,.2,1) 1; }
@@ -69,3 +91,13 @@ body {
 .no-scrollbar { scrollbar-width: none; }
 .pb-safe { padding-bottom: calc(var(--safe-bottom) + 84px); }
 @media (min-width: 1024px) { .pb-safe { padding-bottom: 0; } }
+
+/* Cursor-tracked edge light on cards (set by AIInteractionLayer) */
+.card::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0; opacity: 0;
+  background: radial-gradient(420px circle at var(--cx, 50%) var(--cy, 50%), rgba(61,139,255,.16), transparent 45%);
+  transition: opacity .4s;
+}
+.card:hover::before { opacity: 1; }
+.card > * { position: relative; z-index: 1; }
+.fx-calm .card::before { display: none; }
