@@ -28,9 +28,9 @@ import { MEDIA } from "@/config/media";
 export function Hero() {
   const { setOpen } = useAI();
   return (
-    <section data-ai="Hero" className="relative z-[1] grid min-h-[100svh] place-items-center overflow-hidden bg-pearl pt-[calc(60px+var(--safe-top))]">
+    <section data-ai="Hero" className="relative z-[1] grid min-h-[100svh] place-items-center overflow-hidden bg-night pt-[calc(60px+var(--safe-top))]">
       <div className="absolute inset-0"><BeamFlow /></div>
-      <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-canvas to-transparent" />
+      <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-pearl to-transparent" />
       <div className="container-x relative py-20 text-center">
         <div data-reveal className="glass mx-auto inline-flex items-center gap-2 rounded-full py-1 pl-1 pr-3.5 text-[13px] shadow-card">
           <span className="rounded-full bg-iri px-2.5 py-0.5 text-[11px] font-bold text-white">BioELR AI</span>
@@ -43,13 +43,13 @@ export function Hero() {
           A new way of living where longevity is enhanced through the power of biology. Crafted with leading technology, scientists and healthcare professionals, delivered anywhere, anytime.
         </p>
         <div data-reveal className="mt-9 flex flex-wrap justify-center gap-3">
-          <Link href="/packages/" className="btn-dark h-12 px-6 text-[16px]">Explore packages<Icon name="arrow-right" size={17} /></Link>
-          <button onClick={() => setOpen(true)} className="btn relative h-12 overflow-hidden bg-white px-6 text-[16px] shadow-card">
-            <ShineBorder radius={999} /><Icon name="sparkle" size={17} className="text-violet" />Ask Biongevity AI
+          <Link href="/#products" className="btn-dark h-12 px-6 text-[16px]"><Icon name="cpu" size={17} />Run AI match</Link>
+          <button onClick={() => setOpen(true)} className="btn relative h-12 overflow-hidden bg-surface px-6 text-[16px] shadow-card">
+            <ShineBorder radius={999} /><Icon name="sparkle" size={17} className="text-aqua" />Ask Biongevity AI
           </button>
         </div>
         <div data-reveal className="mx-auto mt-14 grid max-w-[720px] grid-cols-3 gap-3">
-          {[[LAB_TESTS.length, "lab tests", "/labs/tests/"], [DRUG_PRODUCTS.length, "bioactive formulas", "/drugs/shop/"], [DEPARTMENTS.length, "clinical disciplines", "/precision-health/"]].map(([n, l, h]) => (
+          {[[LAB_TESTS.length, "lab tests", "/#products"], [DRUG_PRODUCTS.length, "bioactive formulas", "/#products"], [DEPARTMENTS.length, "clinical disciplines", "/precision-health/"]].map(([n, l, h]) => (
             <Link key={l as string} href={h as string} className="glass rounded-2xl p-3 shadow-card sm:p-4">
               <div className="text-[26px] font-semibold tracking-tight sm:text-[34px]"><NumberTicker value={n as number} /></div>
               <div className="text-[12px] text-muted sm:text-[13px]">{l}</div>
@@ -81,8 +81,8 @@ export function ThreeSixty() {
           <div data-reveal className="mt-8 space-y-2">
             {PILLARS.map((p, i) => (
               <button key={p.t} onClick={() => setIdx(i)} onMouseEnter={() => setIdx(i)} aria-pressed={idx === i}
-                className={`flex w-full items-start gap-4 rounded-2xl p-4 text-left transition-all duration-300 ${idx === i ? "bg-white shadow-card ring-1 ring-black/[0.05]" : "hover:bg-white/60"}`}>
-                <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl transition-colors ${idx === i ? "bg-iri text-white" : "bg-white text-faint ring-1 ring-black/5"}`}><Icon name={p.icon} size={21} /></span>
+                className={`flex w-full items-start gap-4 rounded-2xl p-4 text-left transition-all duration-300 ${idx === i ? "bg-surface shadow-card ring-1 ring-white/[0.05]" : "hover:bg-surface/60"}`}>
+                <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl transition-colors ${idx === i ? "bg-iri text-white" : "bg-surface text-faint ring-1 ring-white/5"}`}><Icon name={p.icon} size={21} /></span>
                 <span><span className="block text-[17px] font-semibold">{p.t}</span>
                   {idx === i && <span className="mt-1 block text-[14px] leading-relaxed text-muted">{p.d}</span>}</span>
               </button>
@@ -114,11 +114,11 @@ export function AILayer() {
   return (
     <Section ai="AI layer">
       <div className="container-x">
-        <div className="relative overflow-hidden rounded-5xl bg-night p-6 text-white sm:p-12">
-          <div aria-hidden data-ai-fx className="absolute -right-40 -top-40 h-[420px] w-[420px] rounded-full bg-iri opacity-30 blur-[120px]" />
+        <div className="relative overflow-hidden rounded-5xl border border-white/[0.08] bg-night p-6 text-white sm:p-12">
+          <div aria-hidden data-ai-fx className="absolute -right-40 -top-40 h-[420px] w-[420px] rounded-full bg-sky opacity-20 blur-[120px]" />
           <div className="relative grid gap-10 lg:grid-cols-2">
             <div>
-              <div className="eyebrow !text-[#B9A8FF]"><DecodeText text="BioELR · Electronic Longevity Record" /></div>
+              <div className="eyebrow !text-aqua"><DecodeText text="BioELR · Electronic Longevity Record" /></div>
               <h2 data-reveal className="mt-3 text-[34px] font-semibold leading-[1.06] tracking-[-0.03em] sm:text-[48px]">Continuous data analysis, personal feedback.</h2>
               <p data-reveal className="mt-4 text-[17px] leading-relaxed text-white/65">BioELR integrates genomic sequencing, epigenetic analysis, metabolic profiling and gut microbiome assessments, alongside data from the ELR App and connected wearables.</p>
               <div className="mt-8"><AnimatedList items={FEED} dark /></div>
@@ -146,7 +146,7 @@ export function Ecosystem() {
             <div className="mt-2 text-[28px] font-semibold tracking-tight sm:text-[34px]">Understand your biology before symptoms become decisions.</div>
             <p className="mt-2 max-w-[52ch] text-[15px] text-muted">Advanced biomarker, microbiome, and genomic testing — at home, clinician-reviewed, from CLIA-registered labs.</p>
             <MediaSlot id="homeLabs" className="mt-5 min-h-[200px] flex-1" rounded="rounded-3xl" />
-            <div className="mt-5 flex flex-wrap gap-2"><Link href="/labs/" className="btn-dark">Explore Labs<Icon name="arrow-right" size={15} /></Link><Link href="/labs/tests/" className="btn-light">Shop {LAB_TESTS.length} tests</Link></div>
+            <div className="mt-5 flex flex-wrap gap-2"><Link href="/#products" className="btn-dark">Match a test<Icon name="cpu" size={15} /></Link><a href="https://bioarolabs.com/shop" target="_blank" rel="noopener" className="btn-light">bioarolabs.com<Icon name="arrow-up-right" size={14} /></a></div>
           </BentoCell>
           <BentoCell span="md:col-span-2">
             <div className="text-[13px] font-semibold text-muted">Clinics</div>
@@ -154,22 +154,22 @@ export function Ecosystem() {
             <div className="-mb-24 mt-2"><Globe markers={[{ location: [51.0447, -114.0719], size: 0.08 }, { location: [25.2048, 55.2708], size: 0.08 }, { location: [37.3382, -121.8863], size: 0.05 }]} /></div>
           </BentoCell>
           <BentoCell span="md:col-span-2" dark>
-            <div className="flex items-center gap-2 text-[13px] font-semibold text-[#B9A8FF]"><Icon name="pill" size={16} />Bioactives · BioAro Drugs</div>
+            <div className="flex items-center gap-2 text-[13px] font-semibold text-[#7FD8FF]"><Icon name="pill" size={16} />Bioactives · BioAro Drugs</div>
             <div className="mt-2 text-[22px] font-semibold leading-snug">Your goals. Your routine. Your protocol.</div>
             <p className="mt-2 text-[14px] text-white/60">AI-guided protocols with every ingredient and amount shown.</p>
-            <Link href="/drugs/" className="btn mt-5 bg-white text-ink">Build my protocol<Icon name="arrow-right" size={15} /></Link>
+            <a href="https://bioarodrugs.com/us/ai" target="_blank" rel="noopener" className="btn-light mt-5">Build my protocol<Icon name="arrow-up-right" size={14} /></a>
           </BentoCell>
           <BentoCell span="md:col-span-3">
             <div className="text-[13px] font-semibold text-muted">Longevity packages</div>
             <div className="mt-1 text-[26px] font-semibold tracking-tight">Core. Plus. Elite.</div>
             <p className="mt-2 text-[14px] text-muted">Three 12-month programs that differ in expert access and genetic testing depth.</p>
-            <Link href="/packages/" className="btn-light mt-5">Compare packages</Link>
+            <Link href="/packages/" className="btn-light mt-5">Compare programs</Link>
           </BentoCell>
           <BentoCell span="md:col-span-3">
             <div className="text-[13px] font-semibold text-muted">ELR App</div>
             <div className="mt-1 text-[26px] font-semibold tracking-tight">Your care, in your pocket.</div>
             <p className="mt-2 text-[14px] text-muted">Telemedicine, wearables, smart-home devices and BioELR feedback.</p>
-            <Link href="/app/" className="btn-light mt-5">Explore the app</Link>
+            <Link href="/care/#app" className="btn-light mt-5">Explore the app</Link>
           </BentoCell>
         </BentoGrid>
       </div>
@@ -185,7 +185,7 @@ export function CareModel() {
         <h2 data-reveal className="h-section mt-3 max-w-[18ch]">From baseline to lifelong monitoring.</h2>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {CARE_PHASES.map((c) => (
-            <Link href="/journey/" key={c.n} data-reveal data-scan className="card p-6 transition-transform duration-500 hover:-translate-y-1">
+            <Link href="/care/" key={c.n} data-reveal data-scan className="card p-6 transition-transform duration-500 hover:-translate-y-1">
               <div className="flex items-center justify-between"><span className="grid h-11 w-11 place-items-center rounded-xl bg-canvas"><Icon name={c.icon} size={21} /></span><span className="text-[13px] font-semibold text-faint">{c.n}</span></div>
               <div className="mt-6 text-[19px] font-semibold">{c.t}</div>
               <div className="mt-1.5 text-[14px] text-muted">{c.short}</div>
