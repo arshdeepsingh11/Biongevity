@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-const COLORS = [0xff8a3d, 0xff4d8d, 0x9b6bff, 0x3d8bff, 0x6a5cff];
+const COLORS = [0x00E5C0, 0x22C3E6, 0x3D8BFF, 0x3d8bff, 0x3D8BFF];
 
 /**
  * Signal Convergence — streaming signal lines from data sources converge on a
@@ -28,9 +28,9 @@ export function SignalConvergence({ items, active = 0, hub = "BioELR", className
     const group = new THREE.Group(); scene.add(group);
 
     // Hub
-    const hubMesh = new THREE.Mesh(new THREE.IcosahedronGeometry(0.55, 3), new THREE.MeshStandardMaterial({ color: 0x6a5cff, emissive: 0x6a5cff, emissiveIntensity: 0.35, roughness: 0.25, metalness: 0.2 }));
+    const hubMesh = new THREE.Mesh(new THREE.IcosahedronGeometry(0.55, 3), new THREE.MeshStandardMaterial({ color: 0x3D8BFF, emissive: 0x3D8BFF, emissiveIntensity: 0.35, roughness: 0.25, metalness: 0.2 }));
     group.add(hubMesh);
-    const halo = new THREE.Mesh(new THREE.SphereGeometry(0.9, 32, 32), new THREE.MeshBasicMaterial({ color: 0x9b6bff, transparent: true, opacity: 0.12 }));
+    const halo = new THREE.Mesh(new THREE.SphereGeometry(0.9, 32, 32), new THREE.MeshBasicMaterial({ color: 0x3D8BFF, transparent: true, opacity: 0.12 }));
     group.add(halo);
     scene.add(new THREE.AmbientLight(0xffffff, 0.8));
     const dl = new THREE.DirectionalLight(0xffffff, 1.6); dl.position.set(3, 4, 5); scene.add(dl);
@@ -94,10 +94,10 @@ export function SignalConvergence({ items, active = 0, hub = "BioELR", className
   }, [items]);
 
   return (
-    <div ref={host} className={`relative aspect-square w-full ${className ?? ""}`}>
+    <div ref={host} className={`relative aspect-square w-full [&[data-nogl="1"]>span]:hidden ${className ?? ""}`}>
       {items.map((it, i) => (
         <span key={it} ref={(n) => { labels.current[i] = n; }}
-          className="pointer-events-none absolute left-0 top-0 z-10 whitespace-nowrap rounded-full bg-white/90 px-2.5 py-1 text-[12px] font-semibold text-muted shadow-card ring-1 ring-black/5 transition-colors data-[on='1']:bg-ink data-[on='1']:text-white">
+          className="pointer-events-none absolute left-0 top-0 z-10 whitespace-nowrap rounded-full bg-surface/90 px-2.5 py-1 text-[12px] font-semibold text-muted shadow-card ring-1 ring-white/5 transition-colors data-[on='1']:bg-ink data-[on='1']:text-night">
           {it}
         </span>
       ))}
