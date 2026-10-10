@@ -7,23 +7,31 @@ import { SparkleNav } from "@/components/layout/SparkleNav";
 import { AIAssistant } from "@/components/ai/AIAssistant";
 import { AIInteractionLayer } from "@/components/ai/AIInteractionLayer";
 import { SITE } from "@/data/site";
+import { JsonLd, organization, website } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: { default: `${SITE.name} — Precision Health. Shared Longevity.`, template: `%s · ${SITE.name}` },
+  title: { default: `${SITE.name} — Precision Health & Longevity Clinic | Genomics, Cardiology, Labs`, template: `%s · ${SITE.name}` },
   description: SITE.description,
   metadataBase: new URL(SITE.url),
-  openGraph: { title: SITE.name, description: SITE.description, type: "website" },
+  applicationName: SITE.name,
+  keywords: ["precision health", "longevity clinic", "biological age", "whole genome sequencing", "pharmacogenomics", "gut microbiome test", "stress echocardiogram Calgary", "cardiology Calgary", "endocrinology", "executive health", "virtual care", "hypertension clinic", "BioAro Labs", "BioAro Drugs", "NAD+ booster"],
+  alternates: { canonical: "/" },
+  openGraph: { title: SITE.name, description: SITE.description, type: "website", siteName: SITE.name, locale: "en_CA", url: SITE.url },
+  twitter: { card: "summary_large_image", title: SITE.name, description: SITE.description },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
   appleWebApp: { capable: true, title: SITE.name, statusBarStyle: "default" },
+  category: "health",
 };
 
 export const viewport: Viewport = {
-  width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#FFFFFF",
+  width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#FFFDF9",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
+        <JsonLd data={[organization(), website()]} />
         <Providers>
           <AIInteractionLayer />
           <Header />
