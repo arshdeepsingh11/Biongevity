@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 
 const VERT = `attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
 
-// Laser flow: an iridescent beam with fbm fog turbulence, cursor tilt and micro-wisp streaks.
+// Laser flow: a champagne-gold beam with fbm fog turbulence, cursor tilt and micro-wisp streaks.
 const FRAG = `precision highp float;
 uniform vec2 r;uniform float t;uniform vec2 m;
 float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
@@ -11,7 +11,7 @@ float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
   return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
 float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p*=2.03;a*=.5;}return v;}
 vec3 iri(float x){
-  vec3 a=vec3(.11,.31,.85),b=vec3(.15,.39,.92),c=vec3(.02,.71,.83),d=vec3(.23,.51,.96);
+  vec3 a=vec3(.59,.44,.25),b=vec3(.76,.63,.42),c=vec3(.50,.63,.51),d=vec3(.85,.75,.56);
   x=fract(x);return x<.33?mix(a,b,x/.33):x<.66?mix(b,c,(x-.33)/.33):mix(c,d,(x-.66)/.34);}
 void main(){
   vec2 uv=gl_FragCoord.xy/r;vec2 q=uv-.5;q.x*=r.x/r.y;
