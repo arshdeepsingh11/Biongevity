@@ -12,7 +12,7 @@ const GROUPS = [
   { k: "app", t: "App & integrations", icon: "phone" },
 ] as const;
 
-/** Rows for the comparison matrix: which program includes what (from biongevity.com package pages). */
+/** Rows for the comparison matrix: which program includes what . */
 const MATRIX: { t: string; has: [boolean, boolean, boolean] }[] = [
   { t: "Longevity genomics panel", has: [true, true, true] },
   { t: "Gut microbiome analysis", has: [true, true, true] },
@@ -46,7 +46,7 @@ export function ProgramsTab({ onMatch }: { onMatch: () => void }) {
             ))}
             <div className={`mt-5 rounded-2xl px-4 py-3 text-[13px] ${p.featured ? "bg-white/10" : "bg-canvas"}`}><span className="opacity-70">Bioactives · </span><b>{p.bioactives}</b></div>
             <div className="flex-1" />
-            <a href={buyUrl(p)} target="_blank" rel="noopener" className={`mt-6 w-full ${p.featured ? "btn-light" : "btn-dark"}`}>Choose {p.name.split(" ")[1]}<Icon name="arrow-up-right" size={14} /></a>
+            <a href={buyUrl(p)} className={`mt-6 w-full ${p.featured ? "btn-light" : "btn-dark"}`}>Choose {p.name.split(" ")[1]}<Icon name="arrow-up-right" size={14} /></a>
           </div>
         ))}
       </div>
@@ -75,7 +75,7 @@ export function ProgramsTab({ onMatch }: { onMatch: () => void }) {
           </button>
         </div>
       </div>
-      <p className="text-[12px] text-faint">Prices and inclusions as listed on biongevity.com. Programs are purchased on the official Biongevity store.</p>
+      <p className="text-[12px] text-faint">Prices in USD. Our care team confirms inclusions and scheduling before anything is booked.</p>
     </div>
   );
 }

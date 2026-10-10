@@ -31,7 +31,7 @@ export function CatalogTab({ onMatch }: { kind: "tests"; onMatch: () => void }) 
         <div className="rounded-[28px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]"><div className="mb-4 text-[14px] font-semibold">Starting price by category (USD)</div><BarList data={byCat.sort((a, b) => a.from - b.from).map((x) => ({ label: short(x.c.title), value: x.from }))} format={(v) => `$${Math.round(v)}`} /></div>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-4">{LAB_STEPS.map((s) => <div key={s.n} className="rounded-2xl bg-canvas p-4"><div className="text-[12px] font-semibold text-accent">{s.n}</div><div className="mt-1 text-[15px] font-semibold">{s.t}</div><div className="mt-1 text-[13px] text-muted">{s.d}</div></div>)}</div>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">{LAB_STEPS.map((s) => <div key={s.n} className="rounded-2xl bg-canvas p-4"><div className="text-[12px] font-semibold text-accent">{s.n}</div><div className="mt-1 text-[15px] font-semibold">{s.t}</div><div className="mt-1 text-[13px] text-muted">{s.d}</div></div>)}</div>
 
       <div>
         <div className="flex flex-wrap items-center justify-between gap-3">
