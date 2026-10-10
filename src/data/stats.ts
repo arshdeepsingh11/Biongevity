@@ -71,11 +71,6 @@ export const DEPT_EVIDENCE: Record<string, { why: string; stats: StatItem[]; cha
     stats: [{ v: "17.9M", l: "deaths from cardiovascular disease each year", src: "WHO" }, { v: "1.28B", l: "adults aged 30–79 live with hypertension", src: "WHO, 2023" }],
     chart: { kind: "waffle", title: "About 1 in 3 adults worldwide has hypertension", of: 30, hit: 10, src: "WHO Global report on hypertension, 2023" },
   },
-  dermatology: {
-    why: "Skin shows biology on the surface — hydration, pigment, barrier and the skin microbiome can all be measured and treated precisely.",
-    stats: [{ v: "~80%", l: "of visible facial ageing attributed to UV exposure", src: "Flament et al., 2013" }, { v: "1.8B", l: "people affected by a skin condition at any time", src: "WHO" }],
-    chart: { kind: "donut", title: "Drivers of visible facial ageing", center: "UV", sub: "main driver", src: "Flament et al., Clin Cosmet Investig Dermatol 2013", data: [{ label: "Sun (UV) exposure", value: 80 }, { label: "Intrinsic & other factors", value: 20 }] },
-  },
   dental: {
     why: "The mouth is linked to heart and metabolic health. Oral disease is the most common non-communicable condition on earth.",
     stats: [{ v: "3.5B", l: "people affected by oral diseases", src: "WHO Global oral health report, 2022" }, { v: "~19%", l: "of adults have severe gum disease", src: "WHO, 2022" }],
@@ -96,10 +91,40 @@ export const DEPT_EVIDENCE: Record<string, { why: string; stats: StatItem[]; cha
     stats: [{ v: "~70%", l: "of immune tissue is in the gut", src: "Vighi et al., 2008" }, { v: "~50%", l: "of the recommended fibre is what most Canadians eat", src: "Dietitians of Canada" }],
     chart: { kind: "bars", title: "Daily fibre targets (Health Canada)", unit: " g", src: "Health Canada Dietary Reference Intakes", data: [{ label: "Adult men", value: 38 }, { label: "Adult women", value: 25 }, { label: "Typical intake (≈ half)", value: 16, note: "approximate" }] },
   },
-  gastroenterology: {
-    why: "Reflux, IBS and bowel cancer are common — and colorectal cancer is highly treatable when found early by screening.",
-    stats: [{ v: "1.9M", l: "new colorectal cancer cases worldwide (2020)", src: "GLOBOCAN 2020" }, { v: "3rd", l: "most common cancer worldwide", src: "WHO" }],
-    chart: { kind: "bars", title: "Global prevalence", unit: "%", src: "Nirwan et al., Sci Rep 2020; Sperber et al., Gastroenterology 2021", data: [{ label: "GERD (reflux)", value: 14 }, { label: "IBS (Rome IV)", value: 4.1 }] },
+  "heart-failure": {
+    why: "Heart failure is common and long-term — but steady, proactive management keeps most people well and out of hospital.",
+    stats: [{ v: "64M", l: "people live with heart failure worldwide", src: "GBD 2017" }, { v: "1 in 5", l: "lifetime risk of heart failure from age 40", src: "Framingham Heart Study" }],
+    chart: { kind: "waffle", title: "About 1 in 5 adults will develop heart failure in their lifetime", of: 30, hit: 6, src: "Lloyd-Jones et al., Circulation 2002" },
+  },
+  endocrinology: {
+    why: "Diabetes and prediabetes are widespread and often silent. A three-month blood-sugar marker — HbA1c — finds them early.",
+    stats: [{ v: "537M", l: "adults live with diabetes worldwide", src: "IDF Diabetes Atlas, 2021" }, { v: "6.5%", l: "HbA1c threshold for diabetes", src: "Diabetes Canada" }],
+    chart: { kind: "waffle", title: "About 1 in 3 Canadians live with diabetes or prediabetes", of: 30, hit: 10, src: "Diabetes Canada" },
+  },
+  "respiratory-medicine": {
+    why: "Breathing and sleep disorders are among the most common chronic conditions — and among the most under-diagnosed.",
+    stats: [{ v: "936M", l: "adults 30–69 estimated to have sleep apnea", src: "Benjafield et al., Lancet Respir Med 2019" }, { v: "3rd", l: "COPD's rank among causes of death worldwide", src: "WHO" }],
+    chart: { kind: "bars", title: "People affected worldwide", format: "M", src: "Benjafield 2019; WHO 2019; GBD 2019", data: [{ label: "Obstructive sleep apnea", value: 936 }, { label: "Asthma", value: 262 }, { label: "COPD", value: 212 }] },
+  },
+  "geriatric-medicine": {
+    why: "Falls, memory change and medication load shape independence in later life — and all three can be assessed and improved.",
+    stats: [{ v: "55M", l: "people live with dementia worldwide", src: "WHO, 2021" }, { v: "28–35%", l: "of people over 65 fall each year", src: "WHO" }],
+    chart: { kind: "bars", title: "People who fall each year, by age (WHO range midpoints)", unit: "%", src: "WHO Global report on falls prevention in older age", data: [{ label: "Age 65+", value: 32 }, { label: "Age 70+", value: 37 }] },
+  },
+  nutrition: {
+    why: "Food is the most-used medicine there is. A simple, consistent plate pattern moves blood pressure, blood sugar and cholesterol.",
+    stats: [{ v: "½", l: "of your plate as vegetables and fruit", src: "Canada's Food Guide" }, { v: "25 / 38 g", l: "daily fibre target, women / men", src: "Health Canada" }],
+    chart: { kind: "donut", title: "Canada's Food Guide plate", center: "Plate", sub: "proportions", src: "Health Canada, Canada's Food Guide", data: [{ label: "Vegetables & fruit", value: 50 }, { label: "Protein foods", value: 25 }, { label: "Whole grains", value: 25 }] },
+  },
+  "skin-health": {
+    why: "Skin shows biology on the surface. Sun protection and precise, physician-led treatment do more than any single product.",
+    stats: [{ v: "~80%", l: "of visible facial ageing attributed to UV exposure", src: "Flament et al., 2013" }, { v: "2 depths", l: "Fotona Er:YAG (surface) and Nd:YAG (deep)", src: "Fotona" }],
+    chart: { kind: "donut", title: "Drivers of visible facial ageing", center: "UV", sub: "main driver", src: "Flament et al., Clin Cosmet Investig Dermatol 2013", data: [{ label: "Sun (UV) exposure", value: 80 }, { label: "Intrinsic & other factors", value: 20 }] },
+  },
+  "pediatric-rheumatology": {
+    why: "Juvenile arthritis is the most common chronic rheumatic disease of childhood — and early specialist care protects joints and growth.",
+    stats: [{ v: "< 16", l: "age at onset for juvenile idiopathic arthritis", src: "ILAR criteria" }, { v: "6 weeks", l: "minimum symptom duration for diagnosis", src: "ILAR criteria" }],
+    chart: { kind: "donut", title: "JIA subtypes (approximate share)", center: "JIA", sub: "subtypes", src: "Ravelli & Martini, Lancet 2007 (approx.)", data: [{ label: "Oligoarticular", value: 50 }, { label: "Polyarticular", value: 25 }, { label: "Enthesitis-related", value: 10 }, { label: "Systemic", value: 10 }, { label: "Psoriatic", value: 5 }] },
   },
   "mental-health": {
     why: "Mental health is health. Sleep, stress physiology and lifestyle are measurable levers alongside therapy and medicine.",
