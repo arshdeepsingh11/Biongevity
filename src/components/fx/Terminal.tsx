@@ -17,16 +17,16 @@ export function Terminal({ lines, title = "bioelr — demo session", height = 32
     }, ci < line.length ? (isCmd ? 28 : 320) : 380);
     return () => clearTimeout(t);
   }, [inView, li, ci, lines]);
-  const color = (l: string) => (l.startsWith("$") ? "text-white" : l.startsWith("✓") ? "text-emerald-300" : "text-white/55");
+  const color = (l: string) => (l.startsWith("$") ? "text-ink" : l.startsWith("✓") ? "text-emerald-600" : "text-muted");
   return (
-    <div ref={ref} className="overflow-hidden rounded-3xl bg-[#0E0E12] shadow-lift ring-1 ring-white/10">
-      <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
+    <div ref={ref} className="overflow-hidden rounded-3xl bg-white/80 shadow-lift ring-1 ring-ink/[0.08] backdrop-blur-xl">
+      <div className="flex items-center gap-2 border-b border-ink/[0.06] px-4 py-3">
         <span className="h-3 w-3 rounded-full bg-[#FF5F57]" /><span className="h-3 w-3 rounded-full bg-[#FEBC2E]" /><span className="h-3 w-3 rounded-full bg-[#28C840]" />
-        <span className="ml-2 text-[12px] text-white/45">{title}</span>
+        <span className="ml-2 text-[12px] text-faint">{title}</span>
       </div>
       <pre className="overflow-auto p-5 font-mono text-[12.5px] leading-[1.75]" style={{ height }}>
         {lines.slice(0, li).map((l, i) => <div key={i} className={color(l)}>{l}</div>)}
-        {li < lines.length && <div className={color(lines[li])}>{lines[li].slice(0, ci)}<span className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 animate-pulseDot bg-surface/80" /></div>}
+        {li < lines.length && <div className={color(lines[li])}>{lines[li].slice(0, ci)}<span className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 animate-pulseDot bg-accent" /></div>}
       </pre>
     </div>
   );
