@@ -92,7 +92,7 @@ const PLAYBOOK: Record<Domain, { tests: string[]; formulas: string[]; dept: stri
   Gut: { tests: ["BioGut"], formulas: ["glutara"], dept: "gut-health", why: "Microbiome diversity and balance behind digestion and immunity." },
   Hormones: { tests: ["Hormone Health", "Cortisol", "Vitamin D, 25-Hydroxy (D2 + D3)"], formulas: ["creagen-femme-energy"], dept: "womens-health", why: "Hormone, stress-hormone and vitamin D status that drive energy and mood." },
   "Brain & sleep": { tests: ["Cortisol", "Essential Vitamin Health", "Brain Health"], formulas: ["sleepo", "creagen-brain-boost"], dept: "mental-health", why: "Stress physiology, nutrients and (when indicated) brain-ageing markers." },
-  Skin: { tests: ["BioSkin"], formulas: ["glutara"], dept: "dermatology", why: "Skin microbiome and antioxidant status." },
+  Skin: { tests: ["BioSkin"], formulas: ["glutara"], dept: "skin-health", why: "Skin microbiome and antioxidant status." },
 };
 
 export interface QuizResult {
@@ -135,7 +135,7 @@ export function scoreQuiz(a: Answers): QuizResult {
 
   let dept = PLAYBOOK[top[0]].dept;
   if (dept === "womens-health" && sex === "m") dept = "mens-health";
-  if (top[0] === "Gut" && (a.signals ?? []).includes("reflux")) dept = "gastroenterology";
+  if (top[0] === "Gut" && (a.signals ?? []).includes("reflux")) dept = "gut-health";
 
   // Confidence = how much signal the answers gave (answered questions + how clearly one domain leads). Not a medical probability.
   const answered = QUESTIONS.filter((q) => (a[q.id] ?? []).length).length;

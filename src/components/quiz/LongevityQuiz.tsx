@@ -118,11 +118,11 @@ function Results({ r, restart }: { r: ReturnType<typeof scoreQuiz>; restart: () 
       <div className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
         <div>
           <div className="mb-3 flex items-end justify-between"><h4 className="text-[20px] font-semibold tracking-tight">Formulas to support it</h4><span className="text-[12px] text-faint">BioAro Drugs</span></div>
-          <div className="grid gap-4 sm:grid-cols-2">{r.formulas.map((f, i) => <PickCard key={f.p.handle} p={f.p} why={f.why} top={i === 0} color="#0F9D8F" />)}</div>
+          <div className="grid gap-4 sm:grid-cols-2">{r.formulas.map((f, i) => <PickCard key={f.p.handle} p={f.p} why={f.why} top={i === 0} color="#5E7F62" />)}</div>
         </div>
         <div>
           <div className="mb-3 flex items-end justify-between"><h4 className="text-[20px] font-semibold tracking-tight">Program</h4><span className="text-[12px] text-faint">Biongevity</span></div>
-          <ElectricBorder color="#B8873B" radius={24}>
+          <ElectricBorder color="#C2A16A" radius={24}>
             <a href={buyUrl(r.pkg)} target="_blank" rel="noopener" className="block rounded-3xl bg-white p-6 ring-1 ring-ink/[0.06]">
               <div className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-gold-deep"><Icon name="crown" size={14} />Recommended program</div>
               <div className="mt-2 text-[24px] font-semibold tracking-tight">{r.pkg.name}</div>
@@ -145,12 +145,12 @@ function Results({ r, restart }: { r: ReturnType<typeof scoreQuiz>; restart: () 
   );
 }
 
-function PickCard({ p, why, top, badge, color = "#2563EB" }: { p: import("@/data/types").CatalogProduct; why: string; top?: boolean; badge?: string; color?: string }) {
+function PickCard({ p, why, top, badge, color = "#97703F" }: { p: import("@/data/types").CatalogProduct; why: string; top?: boolean; badge?: string; color?: string }) {
   const href = buyUrl(p);
   const card = (
     <a href={href} target="_blank" rel="noopener" className="group flex h-full flex-col rounded-3xl bg-white p-5 ring-1 ring-ink/[0.06] transition-transform hover:-translate-y-0.5">
       <div className="flex items-start justify-between">
-        <span className="grid h-11 w-11 place-items-center rounded-2xl text-white" style={{ background: `linear-gradient(135deg, #1E3A8A, ${color})` }}><Icon name={p.icon} size={20} /></span>
+        <span className="grid h-11 w-11 place-items-center rounded-2xl text-white" style={{ background: `linear-gradient(135deg, #8A6A3A, ${color})` }}><Icon name={p.icon} size={20} /></span>
         <span className="text-[16px] font-semibold tabular-nums">{formatMoney(p.price, p.currency)}</span>
       </div>
       {badge && <span className="mt-3 inline-flex w-fit items-center gap-1 rounded-full bg-accent-light px-2 py-0.5 text-[11px] font-semibold text-accent"><Icon name="star" size={11} />{badge}</span>}
