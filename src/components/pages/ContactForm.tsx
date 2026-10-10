@@ -6,6 +6,7 @@ import { fireConfetti } from "@/components/fx/Confetti";
 import { Icon } from "@/components/ui/Icon";
 import { DEPARTMENTS, PACKAGES, deptById, scoreDepartments } from "@/data/health";
 import { CLINICS } from "@/data/clinic";
+import { env } from "@/lib/env";
 
 const INTERESTS = ["Not sure yet", ...PACKAGES.map((p) => p.name), ...DEPARTMENTS.map((d) => d.name), ...CLINICS.map((c) => c.name), "BioAro Labs testing", "BioAro Drugs protocol", "Clinic visit"];
 const EMPTY = { name: "", email: "", phone: "", interest: "Not sure yet", msg: "" };
@@ -15,7 +16,7 @@ const EMPTY = { name: "", email: "", phone: "", interest: "Not sure yet", msg: "
  * Shopify Forms / a Shopify Flow webhook / CRM. Until then it confirms locally.
  */
 async function submitEnquiry(data: typeof EMPTY & { routed: string }) {
-  const url = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT;
+  const url = env.contactEndpoint;
   if (!url) return true;
   const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
   return r.ok;
