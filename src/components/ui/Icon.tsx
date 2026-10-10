@@ -1,37 +1,43 @@
+"use client";
 import {
-  Activity, ArrowRight, ArrowUpRight, ChevronDown, ChevronLeft, ChevronRight, Sparkles, Search, User, Menu, X, ArrowUp,
-  HeartPulse, Brain, Stethoscope, Dna, FlaskConical, Pill, CalendarDays, FileText, Leaf, Moon, Dumbbell, Smile, ScanLine,
-  Users, ShieldCheck, Check, Info, Clock, Smartphone, BookOpen, Mail, Phone, MapPin, Utensils, Hourglass, Droplets, Layers,
-  LayoutGrid, Plus, Minus, ExternalLink, Package, Route, MessageCircle, Lock, House, Briefcase, Plane, Globe2, Target, Play,
-  Zap, LineChart, Cpu, Eye, Video, ShoppingCart, ShoppingBag, Star, Trash2, Microscope, Bone, Baby, Waves, Wind, Gauge,
-  Thermometer, Syringe, Bot, Radar, Award, TrendingUp, BarChart3, PieChart, Fingerprint, Atom, Orbit, Building2, Wifi,
-  CircleDot, Sun, Apple, Scale, ScanFace, Flower2, PersonStanding, Salad, HeartHandshake, Footprints, Ruler, Calculator, Timer,
-  BedDouble, Wheat, CigaretteOff, Wine, Flame, Sprout, Crown, Gem, ZoomIn, ZoomOut, RotateCcw, Move, Laptop, Siren, ClipboardList,
-  ListChecks, Tablets, TestTube, TestTubes, Crosshair, AlarmClock, type LucideIcon,
-} from "lucide-react";
+  ArrowRight, ArrowUpRight, CaretDown, CaretLeft, CaretRight, Sparkle, MagnifyingGlass, User, List, X, ArrowUp, Heartbeat, Pulse,
+  Brain, Stethoscope, Dna, Flask, Pill, CalendarBlank, FileText, Leaf, Moon, Barbell, Tooth, Scan, UsersThree, ShieldCheck, Check,
+  Info, Clock, DeviceMobile, BookOpen, EnvelopeSimple, Phone, MapPin, ForkKnife, Hourglass, Drop, Stack, SquaresFour, Plus, Minus,
+  ArrowSquareOut, Package, Path, ChatCircle, Lock, House, Briefcase, Airplane, GlobeHemisphereWest, Target, Play, Lightning,
+  ChartLine, Cpu, Eye, VideoCamera, ShoppingCart, ShoppingBag, Star, Trash, Microscope, Bone, Baby, Waves, Wind, Gauge, Thermometer,
+  Syringe, Robot, Medal, TrendUp, ChartBar, ChartPie, Fingerprint, Atom, Planet, Buildings, WifiHigh, CircleDashed, Sun, AppleLogo,
+  Scales, Smiley, FlowerLotus, PersonSimple, BowlFood, HandHeart, Footprints, Ruler, Calculator, Timer, Bed, Grains, CigaretteSlash,
+  Wine, Flame, Plant, Crown, Diamond, MagnifyingGlassPlus, MagnifyingGlassMinus, ArrowCounterClockwise, ArrowsOutCardinal, Laptop,
+  Siren, ClipboardText, ListChecks, TestTube, Crosshair, Alarm, Heart, PersonSimpleWalk, FaceMask, Waveform, HeartHalf, Graph,
+  Hospital, Wheelchair, Virus, FirstAidKit, Ear, CirclesThreePlus, type Icon as PhosphorIcon, type IconWeight,
+} from "@phosphor-icons/react";
 
-/** Icon set — Lucide (consistent 24px stroke icons). Names kept stable across the codebase. */
-const MAP: Record<string, LucideIcon> = {
-  "arrow-right": ArrowRight, "arrow-up-right": ArrowUpRight, "chevron-down": ChevronDown, "chevron-left": ChevronLeft, "chevron-right": ChevronRight,
-  sparkle: Sparkles, search: Search, user: User, menu: Menu, x: X, "arrow-up": ArrowUp, heart: HeartPulse, activity: Activity, brain: Brain,
-  stethoscope: Stethoscope, dna: Dna, flask: FlaskConical, pill: Pill, calendar: CalendarDays, file: FileText, leaf: Leaf, moon: Moon,
-  dumbbell: Dumbbell, tooth: Smile, scan: ScanLine, users: Users, shield: ShieldCheck, check: Check, info: Info, clock: Clock, phone: Smartphone,
-  book: BookOpen, mail: Mail, call: Phone, pin: MapPin, utensils: Utensils, hourglass: Hourglass, droplet: Droplets, layers: Layers, grid: LayoutGrid,
-  plus: Plus, minus: Minus, external: ExternalLink, box: Package, route: Route, message: MessageCircle, lock: Lock, home: House, briefcase: Briefcase,
-  plane: Plane, globe: Globe2, target: Target, play: Play, bolt: Zap, chart: LineChart, cpu: Cpu, eye: Eye, video: Video, cart: ShoppingCart,
-  bag: ShoppingBag, star: Star, trash: Trash2, microscope: Microscope, bone: Bone, baby: Baby, gut: Waves, wind: Wind, gauge: Gauge,
-  thermometer: Thermometer, syringe: Syringe, bot: Bot, radar: Radar, award: Award, trend: TrendingUp, bars: BarChart3, pie: PieChart,
-  fingerprint: Fingerprint, atom: Atom, orbit: Orbit, building: Building2, wifi: Wifi, dot: CircleDot, sun: Sun, apple: Apple,
-  venus: Flower2, mars: PersonStanding, scale: Scale, face: ScanFace, flower: Flower2, person: PersonStanding, salad: Salad,
-  care: HeartHandshake, steps: Footprints, ruler: Ruler, calculator: Calculator, timer: Timer, bed: BedDouble, wheat: Wheat,
-  "no-smoking": CigaretteOff, wine: Wine, flame: Flame, sprout: Sprout, crown: Crown, gem: Gem, "zoom-in": ZoomIn, "zoom-out": ZoomOut,
-  reset: RotateCcw, move: Move, laptop: Laptop, siren: Siren, clipboard: ClipboardList, checklist: ListChecks, tablets: Tablets,
-  "test-tube": TestTube, "test-tubes": TestTubes, crosshair: Crosshair, alarm: AlarmClock,
+/** Icon set — Phosphor (clean, consistent 1.5px strokes). Names are stable across the codebase. */
+const MAP: Record<string, PhosphorIcon> = {
+  "arrow-right": ArrowRight, "arrow-up-right": ArrowUpRight, "chevron-down": CaretDown, "chevron-left": CaretLeft, "chevron-right": CaretRight,
+  sparkle: Sparkle, search: MagnifyingGlass, user: User, menu: List, x: X, "arrow-up": ArrowUp, heart: Heartbeat, activity: Pulse, brain: Brain,
+  stethoscope: Stethoscope, dna: Dna, flask: Flask, pill: Pill, calendar: CalendarBlank, file: FileText, leaf: Leaf, moon: Moon,
+  dumbbell: Barbell, tooth: Tooth, scan: Scan, users: UsersThree, shield: ShieldCheck, check: Check, info: Info, clock: Clock, phone: DeviceMobile,
+  book: BookOpen, mail: EnvelopeSimple, call: Phone, pin: MapPin, utensils: ForkKnife, hourglass: Hourglass, droplet: Drop, layers: Stack, grid: SquaresFour,
+  plus: Plus, minus: Minus, external: ArrowSquareOut, box: Package, route: Path, message: ChatCircle, lock: Lock, home: House, briefcase: Briefcase,
+  plane: Airplane, globe: GlobeHemisphereWest, target: Target, play: Play, bolt: Lightning, chart: ChartLine, cpu: Cpu, eye: Eye, video: VideoCamera, cart: ShoppingCart,
+  bag: ShoppingBag, star: Star, trash: Trash, microscope: Microscope, bone: Bone, baby: Baby, gut: Waves, wind: Wind, gauge: Gauge,
+  thermometer: Thermometer, syringe: Syringe, bot: Robot, radar: Crosshair, award: Medal, trend: TrendUp, bars: ChartBar, pie: ChartPie,
+  fingerprint: Fingerprint, atom: Atom, orbit: Planet, building: Buildings, wifi: WifiHigh, dot: CircleDashed, sun: Sun, apple: AppleLogo,
+  venus: FlowerLotus, mars: PersonSimple, scale: Scales, face: Smiley, flower: FlowerLotus, person: PersonSimple, salad: BowlFood,
+  care: HandHeart, steps: Footprints, ruler: Ruler, calculator: Calculator, timer: Timer, bed: Bed, wheat: Grains,
+  "no-smoking": CigaretteSlash, wine: Wine, flame: Flame, sprout: Plant, crown: Crown, gem: Diamond, "zoom-in": MagnifyingGlassPlus, "zoom-out": MagnifyingGlassMinus,
+  reset: ArrowCounterClockwise, move: ArrowsOutCardinal, laptop: Laptop, siren: Siren, clipboard: ClipboardText, checklist: ListChecks, tablets: Pill,
+  "test-tube": TestTube, "test-tubes": Flask, crosshair: Crosshair, alarm: Alarm, "heart-plain": Heart, walk: PersonSimpleWalk, lungs: Wind,
+  mask: FaceMask, wave: Waveform, "heart-half": HeartHalf, graph: Graph, hospital: Hospital, wheelchair: Wheelchair, virus: Virus,
+  firstaid: FirstAidKit, ear: Ear, network: CirclesThreePlus,
 };
 
 export type IconName = keyof typeof MAP | string;
 
-export function Icon({ name, size = 18, strokeWidth = 1.75, className }: { name: IconName; size?: number; strokeWidth?: number; className?: string }) {
-  const C = MAP[name] ?? Sparkles;
-  return <C size={size} strokeWidth={strokeWidth} className={className} aria-hidden="true" />;
+/** `weight`: "light" for UI, "duotone" for feature tiles. Size in px. */
+export function Icon({ name, size = 18, className, weight = "regular", strokeWidth }: { name: IconName; size?: number; className?: string; weight?: IconWeight; strokeWidth?: number }) {
+  const C = MAP[name] ?? Sparkle;
+  void strokeWidth;
+  return <C size={size} weight={weight} className={className} aria-hidden="true" />;
 }
