@@ -54,10 +54,10 @@ export function AIInteractionLayer() {
       if (reduced || root.classList.contains("fx-calm")) return;
       const r = document.createElement("span");
       r.className = "pointer-events-none fixed z-[200] rounded-full";
-      Object.assign(r.style, { left: `${e.clientX}px`, top: `${e.clientY}px`, width: "8px", height: "8px", transform: "translate(-50%,-50%)", border: "1.5px solid rgba(0,229,192,.85)", boxShadow: "0 0 22px rgba(0,229,192,.45)" });
+      Object.assign(r.style, { left: `${e.clientX}px`, top: `${e.clientY}px`, width: "8px", height: "8px", transform: "translate(-50%,-50%)", border: "1.5px solid rgba(37,99,235,.7)", boxShadow: "0 0 18px rgba(37,99,235,.35)" });
       document.body.appendChild(r);
       r.animate([{ width: "8px", height: "8px", opacity: 1 }, { width: "84px", height: "84px", opacity: 0 }], { duration: 650, easing: "cubic-bezier(.2,.7,.2,1)" }).onfinish = () => r.remove();
-      const cols = ["#00E5C0", "#22C3E6", "#3D8BFF", "#8FB8FF"];
+      const cols = ["#06B6D4", "#3B82F6", "#2563EB", "#93C5FD"];
       for (let i = 0; i < 6; i++) {
         const s = document.createElement("span"), a = (i / 6) * Math.PI * 2 + Math.random();
         s.className = "pointer-events-none fixed z-[200] rounded-full";
@@ -79,7 +79,7 @@ export function AIInteractionLayer() {
     <>
       <AmbientField />
       <div aria-hidden data-ai-fx className="pointer-events-none fixed inset-0 z-0 hidden lg:block"
-        style={{ background: "radial-gradient(600px circle at var(--mx) var(--my), rgba(61,139,255,.08), transparent 60%)" }} />
+        style={{ background: "radial-gradient(600px circle at var(--mx) var(--my), rgba(37,99,235,.06), transparent 60%)" }} />
     </>
   );
 }
