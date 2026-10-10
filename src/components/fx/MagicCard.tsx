@@ -2,7 +2,7 @@
 import { useRef, type ReactNode } from "react";
 
 /** Magic Card (Magic UI pattern) — spotlight gradient follows the pointer, plus a lit border. */
-export function MagicCard({ children, className, glow = "rgba(37,99,235,.14)" }: { children: ReactNode; className?: string; glow?: string }) {
+export function MagicCard({ children, className, glow = "rgba(151,112,63,.14)" }: { children: ReactNode; className?: string; glow?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const move = (e: React.PointerEvent) => {
     const el = ref.current; if (!el) return;

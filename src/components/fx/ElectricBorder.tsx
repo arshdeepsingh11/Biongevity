@@ -5,7 +5,7 @@ import { useId, type ReactNode } from "react";
  * Electric Border (Lightswind / React Bits pattern) — an animated, turbulent SVG stroke around a card.
  * Used to flag recommended tests and top matches.
  */
-export function ElectricBorder({ children, color = "#2563EB", radius = 24, className, active = true }: { children: ReactNode; color?: string; radius?: number; className?: string; active?: boolean }) {
+export function ElectricBorder({ children, color = "#97703F", radius = 24, className, active = true }: { children: ReactNode; color?: string; radius?: number; className?: string; active?: boolean }) {
   const id = useId().replace(/:/g, "");
   return (
     <div className={`relative ${className ?? ""}`} style={{ borderRadius: radius }}>
