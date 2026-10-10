@@ -2,63 +2,88 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAI } from "./AIProvider";
-import { SUGGESTIONS } from "./knowledge";
 import { Icon } from "@/components/ui/Icon";
-import { ShineBorder } from "@/components/fx/ShineBorder";
+import { LogoMark } from "@/components/ui/Logo";
+import { BorderBeam } from "@/components/fx/BorderBeam";
 
-/** Biongevity AI — slide-over assistant (bottom sheet on mobile). */
+/** Conversation starters — prompts only; every answer comes from Xevyo. */
+const STARTERS: Record<string, string[]> = {
+  home: ["What is BioELR?", "Which package fits me?", "Which test should I start with?"],
+  "precision-health": ["Which department fits my symptoms?", "How do I prepare for a Holter monitor?"],
+  clinic: ["How does a virtual visit work?", "Where is the Dubai clinic?"],
+  shop: ["Compare Core, Precision and Elite", "What is in LONgevity+?"],
+};
+
+/** Xevyo — Biongevity's in-house AI. Launcher bottom-right; panel opens above it. */
 export function AIAssistant() {
-  const { open, setOpen, msgs, busy, ask, context } = useAI();
+  const { open, setOpen, msgs, busy, ask, context, connected, reset } = useAI();
   const [input, setInput] = useState("");
   const list = useRef<HTMLDivElement>(null);
   useEffect(() => { list.current?.scrollTo({ top: 1e6, behavior: "smooth" }); }, [msgs]);
-  const sugg = SUGGESTIONS[context] ?? SUGGESTIONS.home;
   const send = () => { ask(input); setInput(""); };
+  const starters = STARTERS[context] ?? STARTERS.home;
 
   return (
-    <AnimatePresence>
-      {open && (
-        <>
-          <motion.div className="fixed inset-0 z-[90] bg-ink/10 backdrop-blur-[2px] lg:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpen(false)} />
-          <motion.aside aria-label="Biongevity AI" role="dialog"
-            initial={{ opacity: 0, y: 40, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 40, scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 320, damping: 32 }}
-            className="fixed inset-x-2 bottom-2 z-[95] flex max-h-[82vh] flex-col overflow-hidden rounded-[26px] bg-surface/90 shadow-lift ring-1 ring-ink/[0.08] backdrop-blur-2xl
-              lg:inset-x-auto lg:bottom-24 lg:right-6 lg:top-20 lg:max-h-none lg:w-[400px]">
-            <ShineBorder radius={26} width={1} />
-            <header className="flex items-center gap-3 border-b border-ink/[0.06] px-4 py-3.5">
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-iri text-white"><Icon name="sparkle" size={17} /></span>
-              <div className="flex-1"><div className="text-[15px] font-semibold">Biongevity AI</div>
-                <div className="flex items-center gap-1.5 text-[12px] text-faint"><span className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-emerald-500" />{busy ? "Thinking…" : `Context: ${context}`}</div></div>
-              <button onClick={() => setOpen(false)} aria-label="Close assistant" className="grid h-8 w-8 place-items-center rounded-full bg-canvas text-muted hover:text-ink"><Icon name="x" size={15} /></button>
+    <>
+      <AnimatePresence>
+        {open && (
+          <motion.aside role="dialog" aria-label="Xevyo · Biongevity AI"
+            initial={{ opacity: 0, y: 24, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 24, scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 340, damping: 30 }}
+            className="fixed inset-x-2 bottom-[calc(150px+var(--safe-bottom))] top-[calc(70px+var(--safe-top))] z-[95] flex flex-col overflow-hidden rounded-[26px] bg-white shadow-lift ring-1 ring-ink/[0.08] backdrop-blur-2xl
+              sm:inset-x-auto sm:right-4 sm:top-auto sm:h-[min(620px,calc(100vh-200px))] sm:w-[400px] lg:bottom-24">
+            <BorderBeam />
+            <header className="flex items-center gap-3 border-b border-ink/[0.06] bg-navy px-4 py-3.5 text-white">
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white"><LogoMark size={24} /></span>
+              <div className="flex-1">
+                <div className="text-[15px] font-semibold">Xevyo <span className="font-normal text-white/60">· Biongevity AI</span></div>
+                <div className="flex items-center gap-1.5 text-[12px] text-white/70">
+                  <span className={`h-1.5 w-1.5 rounded-full ${connected ? "bg-teal-soft" : "bg-gold"}`} />{connected ? (busy ? "Thinking…" : "Online") : "Not connected yet"}
+                </div>
+              </div>
+              {msgs.length > 0 && <button onClick={reset} className="rounded-full px-2.5 py-1 text-[12px] text-white/70 hover:bg-white/10" aria-label="New chat">New</button>}
+              <button onClick={() => setOpen(false)} aria-label="Close" className="grid h-8 w-8 place-items-center rounded-full bg-white/10 hover:bg-white/20"><Icon name="x" size={15} /></button>
             </header>
             <div ref={list} aria-live="polite" className="flex-1 space-y-3 overflow-y-auto p-4">
               {!msgs.length && (
                 <div className="rounded-2xl bg-canvas p-4">
-                  <div className="text-[15px] font-semibold">Ask about services, tests, biomarkers or your next step.</div>
-                  <div className="mt-1.5 text-[13px] leading-relaxed text-muted">Explains and supports decisions. It doesn&apos;t diagnose or prescribe, and it hasn&apos;t seen any real medical record.</div>
+                  <div className="text-[15px] font-semibold">Hi, I&apos;m Xevyo.</div>
+                  <div className="mt-1.5 text-[13px] leading-relaxed text-muted">Biongevity&apos;s in-house AI for services, tests, packages and your next step. I explain and guide — I don&apos;t diagnose or prescribe.</div>
+                  {!connected && <div className="mt-3 rounded-xl bg-gold-soft/50 px-3 py-2 text-[12px] text-gold-deep">Xevyo isn&apos;t connected in this build yet. Set <code className="font-semibold">NEXT_PUBLIC_XEVYO_URL</code> to go live.</div>}
                 </div>
               )}
               {msgs.map((m, i) => (
                 <div key={i} className={`flex flex-col ${m.role === "user" ? "items-end" : "items-start"}`}>
-                  <div className={`max-w-[88%] whitespace-pre-wrap rounded-2xl px-3.5 py-2.5 text-[14px] leading-relaxed ${m.role === "user" ? "bg-ink text-white" : "bg-canvas text-ink"}`}>
-                    {m.text || <span className="inline-flex gap-1">{[0, 1, 2].map((k) => <span key={k} className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-violet" style={{ animationDelay: `${k * 0.2}s` }} />)}</span>}
+                  <div className={`max-w-[88%] whitespace-pre-wrap rounded-2xl px-3.5 py-2.5 text-[14px] leading-relaxed ${m.role === "user" ? "bg-accent text-white" : m.role === "notice" ? "bg-gold-soft/50 text-gold-deep" : "bg-canvas text-ink"}`}>
+                    {m.text || <span className="inline-flex gap-1">{[0, 1, 2].map((k) => <span key={k} className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-accent" style={{ animationDelay: `${k * 0.2}s` }} />)}</span>}
                   </div>
-                  {m.src && <div className="mt-1 px-1 text-[11px] text-faint">{m.src}</div>}
+                  {m.sources?.length ? <div className="mt-1 flex flex-wrap gap-1 px-1">{m.sources.map((s) => <a key={s.url} href={s.url} target="_blank" rel="noopener" className="text-[11px] text-accent underline">{s.title}</a>)}</div> : null}
                 </div>
               ))}
             </div>
             <div className="no-scrollbar flex gap-2 overflow-x-auto px-4 pb-2">
-              {sugg.map((q) => <button key={q} onClick={() => ask(q)} className="chip shrink-0 border-ink/10 bg-surface text-[13px] hover:border-violet/40">{q}</button>)}
+              {starters.map((q) => <button key={q} onClick={() => ask(q)} className="chip shrink-0 border-ink/10 bg-white text-[13px] hover:border-accent/40 hover:text-accent">{q}</button>)}
             </div>
-            <div className="flex items-center gap-2 border-t border-ink/[0.06] p-3 pb-[calc(12px+var(--safe-bottom))] lg:pb-3">
-              <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder="Message Biongevity AI"
-                aria-label="Message Biongevity AI" className="h-11 flex-1 rounded-full border border-ink/10 bg-canvas px-4 text-[15px] outline-none focus:border-violet focus:bg-surface" />
-              <button onClick={send} aria-label="Send" disabled={busy} className="grid h-11 w-11 place-items-center rounded-full bg-ink text-white disabled:opacity-40"><Icon name="arrow-up" size={18} /></button>
+            <div className="flex items-center gap-2 border-t border-ink/[0.06] p-3">
+              <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder="Message Xevyo"
+                aria-label="Message Xevyo" className="h-11 flex-1 rounded-full border border-ink/10 bg-canvas px-4 text-[15px] outline-none focus:border-accent focus:bg-white" />
+              <button onClick={send} aria-label="Send" disabled={busy || !input.trim()} className="grid h-11 w-11 place-items-center rounded-full bg-accent text-white disabled:opacity-40"><Icon name="arrow-up" size={18} /></button>
             </div>
           </motion.aside>
-        </>
-      )}
-    </AnimatePresence>
+        )}
+      </AnimatePresence>
+
+      <button onClick={() => setOpen((o) => !o)} aria-label={open ? "Close Biongevity AI" : "Open Biongevity AI"} aria-expanded={open}
+        className="fixed bottom-[calc(84px+var(--safe-bottom))] right-3 z-[96] flex items-center gap-2.5 rounded-full bg-white/90 p-1.5 pr-1.5 shadow-lift ring-1 ring-ink/[0.08] backdrop-blur-xl transition-transform hover:-translate-y-0.5 sm:pr-4 xl:bottom-6 xl:right-6">
+        <span className="relative grid h-11 w-11 place-items-center rounded-full bg-navy">
+          <span className="absolute inset-0 animate-ping rounded-full bg-accent/20 [animation-duration:2.6s]" />
+          {open ? <Icon name="x" size={18} className="text-white" /> : <LogoMark size={26} mono className="text-white" />}
+        </span>
+        <span className="hidden text-left leading-tight sm:block">
+          <span className="block text-[14px] font-semibold">Biongevity</span>
+          <span className="block text-[11px] text-muted">Ask Xevyo AI</span>
+        </span>
+      </button>
+    </>
   );
 }
