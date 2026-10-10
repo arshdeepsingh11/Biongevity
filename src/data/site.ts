@@ -20,13 +20,13 @@ export const NAV: NavItem[] = [
     menu: [
       { href: "/precision-health/internal-medicine/", label: "Internal Medicine", icon: "stethoscope" },
       { href: "/precision-health/cardiology/", label: "Cardiology", icon: "heart" },
-      { href: "/precision-health/dermatology/", label: "Dermatology", icon: "sparkle" },
+      { href: "/precision-health/dermatology/", label: "Dermatology", icon: "face" },
       { href: "/precision-health/dental/", label: "Dental", icon: "tooth" },
-      { href: "/precision-health/womens-health/", label: "Women's Health", icon: "users" },
-      { href: "/precision-health/mens-health/", label: "Men's Health", icon: "user" },
-      { href: "/precision-health/gut-health/", label: "Gut Health", icon: "activity" },
-      { href: "/precision-health/gastroenterology/", label: "Gastroenterology", icon: "droplet" },
-      { href: "/precision-health/mental-health/", label: "Mental Health", icon: "leaf" },
+      { href: "/precision-health/womens-health/", label: "Women's Health", icon: "flower" },
+      { href: "/precision-health/mens-health/", label: "Men's Health", icon: "person" },
+      { href: "/precision-health/gut-health/", label: "Gut Health", icon: "salad" },
+      { href: "/precision-health/gastroenterology/", label: "Gastroenterology", icon: "microscope" },
+      { href: "/precision-health/mental-health/", label: "Mental Health", icon: "brain" },
     ],
   },
   {
@@ -37,10 +37,17 @@ export const NAV: NavItem[] = [
       { href: "/clinic/uae/", label: "UAE Precision Clinic", icon: "pin" },
     ],
   },
-  { id: "programs", label: "Programs", icon: "layers", href: "/packages/" },
-  { id: "store", label: "Store", icon: "bag", href: "/#store" },
   {
-    id: "discover", label: "Discover", icon: "sparkle",
+    id: "shop", label: "Shop", icon: "bag", href: "/shop/",
+    menu: [
+      { href: "/shop/?tab=programs", label: "Longevity programs", icon: "crown", desc: "Core, Precision and Elite — compared side by side." },
+      { href: "/shop/?tab=tests", label: "BioAro lab tests", icon: "test-tubes", desc: "Genomics, gut, skin, women's and men's health tests." },
+      { href: "/shop/?tab=formulas", label: "BioAro formulas", icon: "tablets", desc: "LONgevity+ and targeted bioactive formulas." },
+      { href: "/shop/?tab=match", label: "Find my match", icon: "target", desc: "A 2-minute quiz that ranks the tests and programs for you." },
+    ],
+  },
+  {
+    id: "discover", label: "Discover", icon: "orbit",
     menu: [
       { href: "/life/", label: "Biongevity Life", icon: "globe", desc: "Longevity at resorts, homes, offices, cities and schools." },
       { href: "/app/", label: "Biongevity App", icon: "phone", desc: "AI vitals, expert advice and BioELR in your pocket." },
