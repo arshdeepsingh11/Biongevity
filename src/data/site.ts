@@ -9,27 +9,23 @@ export const SITE = {
   url: "https://biongevity.com",
 };
 
+/** Six tabs. Labs + Drugs live on Home (products link out); Journey, Life, Clinic, App merged into Care. */
 export const NAV: { href: string; label: string; icon: IconName }[] = [
   { href: "/", label: "Home", icon: "home" },
   { href: "/precision-health/", label: "Precision Health", icon: "stethoscope" },
-  { href: "/packages/", label: "Packages", icon: "layers" },
-  { href: "/labs/", label: "Labs", icon: "flask" },
-  { href: "/drugs/", label: "Drugs", icon: "pill" },
-  { href: "/journey/", label: "Journey", icon: "route" },
-  { href: "/life/", label: "Life", icon: "globe" },
-  { href: "/clinic/", label: "Clinic", icon: "pin" },
-  { href: "/app/", label: "App", icon: "phone" },
-  { href: "/journal/", label: "Journal", icon: "book" },
+  { href: "/packages/", label: "Programs", icon: "layers" },
+  { href: "/care/", label: "Care", icon: "route" },
+  { href: "/insights/", label: "Insights", icon: "book" },
   { href: "/about/", label: "About", icon: "info" },
   { href: "/contact/", label: "Contact", icon: "message" },
 ];
 
-/** Mobile bottom dock (Apple Dock component) — becomes the native tab bar in the app. */
+/** Mobile bottom dock (Apple Dock) — the native tab bar in the app. */
 export const DOCK: { href: string; label: string; icon: IconName }[] = [
   { href: "/", label: "Home", icon: "home" },
-  { href: "/labs/", label: "Labs", icon: "flask" },
-  { href: "/drugs/", label: "Drugs", icon: "pill" },
-  { href: "/packages/", label: "Plans", icon: "layers" },
+  { href: "/precision-health/", label: "Health", icon: "stethoscope" },
+  { href: "/care/", label: "Care", icon: "route" },
+  { href: "/insights/", label: "Insights", icon: "book" },
   { href: "/dashboard/", label: "Me", icon: "user" },
 ];
 
