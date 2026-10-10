@@ -1,7 +1,10 @@
 import type { CatalogProduct, Collection } from "./types";
 import type { IconName } from "@/components/ui/icons";
 
-/* Content: bioarodrugs.com/us (home, shop, protocols). Prices USD as listed Oct 2026. */
+/* Content: bioarodrugs.com/us (home, shop, protocols). Prices USD as listed Oct 2026.
+   Each product links to its real page: https://bioarodrugs.com/us/products/<handle> */
+
+export const DRUGS_URL = "https://bioarodrugs.com/us";
 
 export const DRUG_COLLECTIONS: Collection[] = [
   { handle: "longevity", title: "Longevity", description: "Cellular energy and healthy-aging formulas.", icon: "hourglass" },
@@ -22,7 +25,7 @@ export const GOALS: { id: string; label: string; icon: IconName }[] = [
   { id: "womens-health", label: "Women's Health", icon: "heart" },
 ];
 
-export const DRUG_PRODUCTS: CatalogProduct[] = [
+const RAW: Omit<CatalogProduct, "url">[] = [
   {
     handle: "longevity-plus", title: "LONgevity+", tagline: "NAD+ Booster", vendor: "BioAro Drugs", kind: "supplement",
     price: 150, currency: "USD", category: "longevity", format: "Per 2 capsules", icon: "bolt", goals: ["longevity", "energy"],
@@ -76,6 +79,8 @@ export const DRUG_PRODUCTS: CatalogProduct[] = [
     directions: "Take 2 capsules daily with meals, or as directed by a healthcare professional.",
   },
 ];
+
+export const DRUG_PRODUCTS: CatalogProduct[] = RAW.map((p) => ({ ...p, url: `${DRUGS_URL}/products/${p.handle}` }));
 
 export const PRINCIPLES = [
   { n: "01", t: "AI-guided personalization", d: "BioAro Drugs AI turns what you want to improve into a starting protocol, so you are not choosing from a shelf on instinct." },
