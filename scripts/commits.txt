@@ -1,67 +1,48 @@
-chore(deps): add lucide-react icon set, drop unused cobe globe|package.json package-lock.json
-feat(icons): Lucide-backed Icon with meaningful medical icons per department|src/components/ui/Icon.tsx src/components/ui/icons.ts
-style(theme): rich palette — navy, blue, teal and gold tokens with deeper shadows|tailwind.config.ts
-style(theme): rich CSS variables, 3D/orbit/sweep keyframes, reduced-motion guard|src/app/globals.css
-style(text): navy-blue-teal gradients for Aurora Text and Dia reveal|src/components/fx/AuroraText.tsx src/components/fx/DiaTextReveal.tsx
-feat(env): typed public env — Xevyo, Shopify, contact, site URL|src/lib/env.ts
-chore(env): document public-only variables, no secrets|.env.example
-feat(xevyo): client for Xevyo API with JSON and streaming replies|src/lib/xevyo.ts
-refactor(ai): provider talks only to Xevyo — no local or hard-coded answers|src/components/ai/AIProvider.tsx
-feat(fx): Border Beam light travelling around a border|src/components/fx/BorderBeam.tsx
-feat(xevyo): bottom-right Biongevity launcher and Xevyo chat panel|src/components/ai/AIAssistant.tsx
-chore(ai): remove scanning/ready status HUD|src/components/ai/AIHud.tsx
-chore(ai): remove hard-coded knowledge answers|src/components/ai/knowledge.ts
-refactor(layout): drop HUD mount from root layout|src/app/layout.tsx
-refactor(header): remove scroll progress bar and duplicate Ask AI button|src/components/layout/Header.tsx
-refactor(fx): remove scroll progress and ambient field from interaction layer|src/components/ai/AIInteractionLayer.tsx src/components/fx/AmbientField.tsx
-refactor(triage): keyword department match with Ask Xevyo follow-up|src/components/pages/Triage.tsx
-refactor(ui): Ask buttons open Xevyo|src/components/pages/AskButton.tsx src/components/pages/JournalList.tsx
-feat(charts): in-view hook for one-time chart animation|src/components/charts/useInView.ts
-feat(charts): SVG chart kit — line, bars, columns, donut, radar, gauge, waffle, stat|src/components/charts/Charts.tsx
-feat(data): cited evidence layer for streams and departments|src/data/stats.ts
-feat(charts): data-driven evidence chart with sources|src/components/charts/EvidenceChart.tsx
-feat(fx): CSS 3D DNA double helix|src/components/fx/DnaHelix.tsx
-feat(fx): Electric Border for recommended picks|src/components/fx/ElectricBorder.tsx
-feat(fx): Magic Card spotlight|src/components/fx/MagicCard.tsx
-feat(fx): Dot Pattern background|src/components/fx/DotPattern.tsx
-feat(fx): Orbiting Circles|src/components/fx/OrbitingCircles.tsx
-feat(fx): Shimmer Button with light variant|src/components/fx/ShimmerButton.tsx
-feat(home): data-stream explorer — hover swaps stats, helix, clocks, donut and radar|src/components/home/DataStreamExplorer.tsx
-feat(home): discipline explorer — hover swaps icon, evidence and chart|src/components/home/DisciplineExplorer.tsx
-feat(map): world map data (dotted projection, clinic pins)|src/data/worldmap.ts
-feat(map): interactive world map — pan, pinch, zoom, live routes and clinic clocks|src/components/fx/WorldMap.tsx
-chore(fx): retire signal convergence, focused marquee and globe|src/components/fx/SignalConvergence.tsx src/components/fx/FocusedMarquee.tsx src/components/fx/Globe.tsx
-feat(commerce): Shopify variant map|src/config/shopify.ts
-feat(commerce): buyUrl and bundleUrl — Shopify cart permalinks with store fallback|src/lib/commerce.ts
-refactor(products): product cards buy through the commerce layer|src/components/products/ProductCard.tsx
-style(labs): clearer category icons|src/data/labs.ts
-feat(quiz): deterministic on-device longevity match scoring|src/lib/quiz.ts
-feat(quiz): 8-step match quiz with radar, bars and electric-bordered picks|src/components/quiz/LongevityQuiz.tsx
-feat(shop): programs tab — cards, comparison matrix, price and feature charts|src/components/shop/ProgramsTab.tsx
-feat(shop): lab tests tab — category donut, price bars, filterable grid|src/components/shop/CatalogTab.tsx
-feat(shop): formulas tab — LONgevity+ ingredient chart, example day, personas|src/components/shop/FormulasTab.tsx
-feat(shop): tabbed shop shell with ?tab= deep links|src/components/shop/ShopTabs.tsx
-feat(shop): /shop page merging programs and store|src/app/shop/page.tsx
-chore(shop): retire home product hub and /packages page|src/components/products/ProductHub.tsx src/app/packages/page.tsx
-feat(nav): merge Programs and Store into Shop menu|src/data/site.ts
-feat(nav): compact mobile nav and teal sparkle line|src/components/layout/SparkleNav.tsx
-feat(home): explorers, world map, shop teaser and quiz entry|src/components/home/HomeSections.tsx
-feat(home): shop teaser replaces product hub|src/app/page.tsx
-fix(terminal): wrap long lines on mobile|src/components/fx/Terminal.tsx
-style(health): department and stream icons|src/data/health.ts
-feat(care): clinical detail per department from NEYU and Biongevity|src/data/care.ts
-feat(tools): self-check tools — BP, BMI, HbA1c, fibre, sleep, UV, oral, bone, bowel screening|src/components/tools/HealthTools.tsx
-feat(dept): department tabs — overview, care, evidence, labs, self-check, FAQ|src/components/dept/DeptTabs.tsx
-feat(dept): department pages use internal tabs|src/app/precision-health/[dept]/page.tsx
-feat(precision): evidence explorer on the precision index|src/app/precision-health/page.tsx
-feat(clinic): virtual flow, remote BP program and UAE assessment data|src/data/clinic.ts
-feat(clinic): 7-day home blood-pressure tracker|src/components/clinic/BPTracker.tsx
-feat(clinic): tabs for Journey, Virtual Clinic and UAE Precision Clinic|src/components/clinic/ClinicTabs.tsx
-feat(clinic): clinic pages use tabs|src/app/clinic/[slug]/page.tsx
-feat(clinic): world map replaces globe on clinic index|src/app/clinic/page.tsx
-feat(about): world map replaces globe|src/app/about/page.tsx
-refactor(contact): read endpoint from typed env|src/components/pages/ContactForm.tsx
-docs(footer): sources, partners and Xevyo note|src/components/layout/Footer.tsx
-docs: README — routes, Xevyo contract, Shopify, data|README.md
+chore(deps): Phosphor icons in, lucide and three.js out|package.json package-lock.json
+style(theme): champagne palette — ivory, warm ink, bronze accent, sage|tailwind.config.ts
+style(theme): champagne globals and light feature surfaces|src/app/globals.css
+feat(icons): Phosphor icon set with duotone weight for feature tiles|src/components/ui/Icon.tsx
+style(brand): champagne logo and favicon|src/components/ui/Logo.tsx src/app/icon.svg
+style(fx): champagne hero beam shader|src/components/fx/BeamFlow.tsx
+style(fx): champagne text, borders, rings and confetti|src/components/fx/AuroraText.tsx src/components/fx/DiaTextReveal.tsx src/components/fx/ShineBorder.tsx src/components/fx/ProgressRing.tsx src/components/fx/Confetti.ts src/components/fx/AppleDock.tsx
+style(fx): champagne magic card, dot pattern, beam, electric border, shimmer|src/components/fx/MagicCard.tsx src/components/fx/DotPattern.tsx src/components/fx/BorderBeam.tsx src/components/fx/ElectricBorder.tsx src/components/fx/ShimmerButton.tsx
+style(ui): champagne media slot, interaction layer and header|src/components/ui/MediaSlot.tsx src/components/ai/AIInteractionLayer.tsx src/components/layout/Header.tsx
+style(dashboard): champagne chart colors|src/components/pages/Dashboard.tsx
+chore(fx): remove 3D helix, planet system, sphere gallery and 3D flip text|src/components/fx/DnaHelix.tsx src/components/fx/PlanetSystem.tsx src/components/fx/ScrollSphereGallery.tsx src/components/fx/Text3DFlip.tsx
+chore(fx): remove unused bento, coverflow, dynamic nav and video text|src/components/fx/BentoGrid.tsx src/components/fx/CoverflowCarousel.tsx src/components/fx/DynamicNav.tsx src/components/fx/VideoText.tsx
+fix(charts): fixed sizes on hover and champagne palette|src/components/charts/Charts.tsx
+feat(data): 14 departments with conditions, tests, prep, FAQ and care path|src/data/departments.ts
+refactor(data): health data re-exports departments; internal package links|src/data/health.ts
+feat(data): evidence for heart failure, endocrinology, respiratory, geriatrics, nutrition, skin, pediatric rheumatology|src/data/stats.ts
+chore(dept): remove self-check tools and lab-test tab content|src/components/tools/HealthTools.tsx src/data/care.ts
+feat(ai): inline AI panel with prompts beside content|src/components/ai/AIPanel.tsx
+feat(dept): department tabs — overview, conditions, tests, care path, evidence, FAQ|src/components/dept/DeptTabs.tsx
+feat(dept): department pages with schema and per-page metadata|src/app/precision-health/[dept]/page.tsx
+feat(precision): grouped departments and BioAro cards on Precision index|src/app/precision-health/page.tsx
+feat(ui): reusable hash-synced tab bar|src/components/ui/Tabs.tsx
+feat(fx): AI flow diagram with animated beams|src/components/fx/AIFlow.tsx
+feat(labs): Bio families, turnaround and health packages data|src/data/labs.ts
+feat(labs): health packages component with price chart|src/components/bioaro/HealthPackages.tsx
+feat(labs): BioAro Labs hub — AI intelligence, areas, catalogue, packages, process, matcher|src/components/bioaro/LabsHub.tsx
+feat(labs): BioAro Labs page under Precision Health|src/app/precision-health/bioaro-labs/page.tsx
+feat(drugs): BioAro Drugs hub — AI protocols, live builder, formulas, science|src/components/bioaro/DrugsHub.tsx
+feat(drugs): BioAro Drugs page under Precision Health|src/app/precision-health/bioaro-drugs/page.tsx
+feat(nav): Precision menu with departments and BioAro; SEO site description|src/data/site.ts
+feat(nav): grouped menu, BioAro previews, duotone icons|src/components/layout/SparkleNav.tsx
+feat(shop): health packages tab replaces duplicated catalogue tabs|src/components/shop/ShopTabs.tsx
+style(shop): champagne programs, internal links|src/components/shop/ProgramsTab.tsx src/components/shop/CatalogTab.tsx
+feat(home): fixed-size explorers, 14-department grid, BioAro links|src/components/home/DataStreamExplorer.tsx src/components/home/DisciplineExplorer.tsx src/components/home/HomeSections.tsx
+style(map): light champagne world map|src/components/fx/WorldMap.tsx
+style(clinic): champagne tabs and BP tracker; no external links|src/components/clinic/ClinicTabs.tsx src/components/clinic/BPTracker.tsx src/app/clinic/[slug]/page.tsx src/data/clinic.ts
+feat(life): orbiting spaces replace 3D planet; internal waitlist|src/app/life/page.tsx
+style(about): animated text replaces 3D flip|src/app/about/page.tsx
+fix(quiz): department ids for skin and gut|src/lib/quiz.ts src/components/quiz/LongevityQuiz.tsx
+feat(seo): schema.org JSON-LD helpers|src/lib/seo.tsx
+feat(seo): rich root metadata and organization schema|src/app/layout.tsx
+feat(seo): sitemap.xml for every route|src/app/sitemap.ts
+feat(seo): robots.txt open to search and AI crawlers|src/app/robots.ts
+feat(seo): llms.txt summary for AI answer engines|public/llms.txt
+docs(footer): BioAro fulfilment note|src/components/layout/Footer.tsx
+docs: README with animated header, stats and architecture|README.md
 docs: commit plan|COMMITS.md
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt scripts/commit-all.ps1 scripts/commit-all.sh
