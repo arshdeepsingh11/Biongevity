@@ -14,7 +14,7 @@ export function LogoMark({ size = 28, className, mono }: { size?: number; classN
       {!mono && (
         <defs>
           <linearGradient id={`g${id}`} x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#1D4ED8" /><stop offset=".55" stopColor="#2563EB" /><stop offset="1" stopColor="#06B6D4" />
+            <stop stopColor="#7E5C31" /><stop offset=".55" stopColor="#97703F" /><stop offset="1" stopColor="#7FA083" />
           </linearGradient>
         </defs>
       )}
@@ -25,7 +25,7 @@ export function LogoMark({ size = 28, className, mono }: { size?: number; classN
       {/* inner a-ring with tail */}
       <circle cx="18.6" cy="19.6" r="3.1" stroke={fill} strokeWidth="2.2" />
       <path d="M21.7 19.6v3.6" stroke={fill} strokeWidth="2.2" strokeLinecap="round" />
-      {!mono && <circle cx="27.6" cy="5.2" r="1.7" fill="#F59E0B" />}
+      {!mono && <circle cx="27.6" cy="5.2" r="1.7" fill="#C2A16A" />}
     </svg>
   );
 }
