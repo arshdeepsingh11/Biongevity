@@ -11,7 +11,7 @@
  *   --border rgba(15,23,42,.08) · --border-strong rgba(15,23,42,.14)
  *   --text #0F172A · --text-secondary #64748B · --text-muted #94A3B8
  *   --accent #2563EB · --accent-soft #3B82F6 · --accent-glow rgba(37,99,235,.18) · --accent-light #EFF6FF
- *   --warm-1 #F59E0B · --warm-2 #FB923C (tiny accents only)
+ *   --navy #0B1530 · --teal #0F9D8F (AI/live) · --gold #B8873B (brand, tiny accents)
  * AI patterns: scroll neural line · AI status HUD (Scanning → Synthesizing → Ready) · data-reveal blur-in ·
  *   data-scan sweep · cursor edge light on .card · neural tap pulse · ambient signal field ·
  *   shine borders on AI CTAs · number tickers · progress rings · aurora / dia / animate text.
@@ -23,9 +23,12 @@
   --surface-solid: #ffffff;
   --border: rgba(15, 23, 42, 0.08);
   --border-strong: rgba(15, 23, 42, 0.14);
-  --ink: #0f172a;
-  --muted: #64748b;
-  --faint: #94a3b8;
+  --ink: #0b1530;
+  --muted: #4b5876;
+  --faint: #8a94ab;
+  --navy: #0b1530;
+  --teal: #0f9d8f;
+  --gold: #b8873b;
   --accent: #2563eb;
   --accent-soft: #3b82f6;
   --accent-glow: rgba(37, 99, 235, 0.18);
@@ -34,7 +37,7 @@
   --warm-2: #fb923c;
   --violet: var(--accent);
   --canvas: var(--bg-subtle);
-  --iri: linear-gradient(90deg, #1d4ed8, #2563eb 45%, #0891b2);
+  --iri: linear-gradient(90deg, #1e3a8a, #2563eb 50%, #0f9d8f);
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --mx: 50vw;
@@ -107,3 +110,10 @@ body {
 
 /* Body clears the bottom sparkle navbar */
 body { padding-bottom: calc(var(--safe-bottom) + 88px); }
+
+/* 3D + motion keyframes used by inline styles (always emitted) */
+@keyframes spinY { to { transform: rotateY(360deg); } }
+@keyframes orbit { from { transform: rotate(0deg) translateX(var(--r)) rotate(0deg); } to { transform: rotate(360deg) translateX(var(--r)) rotate(-360deg); } }
+@keyframes sweep { 0% { transform: translateX(-100%); } 60%, 100% { transform: translateX(100%); } }
+@keyframes flow { to { stroke-dashoffset: -40; } }
+@media (prefers-reduced-motion: reduce) { [class*="animate-"], [style*="animation"] { animation: none !important; } }
