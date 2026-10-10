@@ -28,11 +28,11 @@ export function preparedAnswer(q: string): string {
   const prod = DRUG_PRODUCTS.find((p) => s.includes(p.title.toLowerCase()) || s.includes(p.title.toLowerCase().split(" ").pop()!));
   if (prod) {
     const ing = prod.ingredients ? ` Per serving: ${prod.ingredients.map((i) => `${i.name} ${i.amount}`).join(", ")}.` : "";
-    return `${prod.title} (${formatMoney(prod.price)}, ${prod.format}): ${prod.summary}${ing} BioAro Drugs lists every ingredient and amount. Check with your clinician before starting it, especially if you take medication.`;
+    return `${prod.title} (${formatMoney(prod.price)}, ${prod.format}): ${prod.summary}${ing} Buy it on bioarodrugs.com, where every ingredient and amount is listed. Check with your clinician before starting it, especially if you take medication.`;
   }
 
   const test = LAB_TESTS.find((t) => s.includes(t.title.toLowerCase().split(" (")[0].toLowerCase()));
-  if (test) return `${test.title} from BioAro Labs costs ${formatMoney(test.price)}. Best suited for: ${test.bestFor ?? test.summary} Results are clinician-reviewed. A coordinator can confirm sample type and turnaround.`;
+  if (test) return `${test.title} from BioAro Labs costs ${formatMoney(test.price)} on bioarolabs.com. Best suited for: ${test.bestFor ?? test.summary} Results are clinician-reviewed. A coordinator can confirm sample type and turnaround.`;
 
   const area = LAB_AREAS.find((a) => s.includes(a.name.toLowerCase()) || s.includes(a.k.toLowerCase()));
   if (area) return `${area.name}: ${area.explores} Sample: ${area.sample} It can show: ${area.shows} It doesn't establish: ${area.not} Tests start from ${formatMoney(area.from)}.`;
@@ -50,7 +50,7 @@ export function preparedAnswer(q: string): string {
   if (has("drug", "supplement", "bioactive"))
     return "BioAro Drugs offers bioactive formulations such as LONgevity+ ($150), CellOmega+ ($99), Glutara ($50), SleepO ($25) and the Creagen series ($50). Its builder works from the goals and routine you describe; it does not read biomarkers or genetic data.";
   if (has("kit", "activate", "sample", "at home", "at-home"))
-    return "BioAro Labs tests use an at-home kit or a sample collection option: choose your test, collect your sample, the lab analyses it with validated methods, then you access secure results with connected interpretation. Support: +1 (833) 246-2766 · support@bioarolabs.com.";
+    return "BioAro Labs tests use an at-home kit or a sample collection option: choose your test, collect your sample, the lab analyses it with validated methods, then you access secure results with connected interpretation. Order on bioarolabs.com. Support: +1 (833) 246-2766 · support@bioarolabs.com.";
   if (has("book", "appointment", "visit", "consult", "contact"))
     return "You can send a request from the Contact page and a coordinator follows up. Biongevity has clinics in Calgary and Dubai, plus telemedicine through the ELR App.";
   const d = DEPARTMENTS.find((x) => s.includes(x.short.toLowerCase().split(" ")[0].toLowerCase()));
@@ -72,10 +72,10 @@ export async function liveComplete(prompt: string): Promise<string | null> {
 }
 
 export const SUGGESTIONS: Record<string, string[]> = {
-  home: ["What is BioELR?", "Compare Core, Plus and Elite", "What is biological age?"],
   "precision-health": ["Which department fits fatigue?", "What happens in a first evaluation?"],
   packages: ["Compare Core, Plus and Elite", "What is pharmacogenomics?"],
-  labs: ["Which microbiome test fits me?", "How does the at-home kit work?", "What does Telomere Length Testing show?"],
-  drugs: ["What is in LONgevity+?", "Does the builder read my genome?"],
+  home: ["What is BioELR?", "Which test should I start with?", "What is in LONgevity+?"],
+  care: ["How does the ELR App work?", "Where are the clinics?", "What is biological age?"],
+  insights: ["What is biological age?", "Explain whole genome sequencing"],
   dashboard: ["Explain my triglycerides", "What does CYP2C19 mean?", "Questions about my plan"],
 };
