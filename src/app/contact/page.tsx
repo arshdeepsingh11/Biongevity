@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { Section, Eyebrow } from "@/components/ui/Section";
 import { ContactForm } from "@/components/pages/ContactForm";
 import { Icon } from "@/components/ui/Icon";
-import { CONTACTS, LOCATIONS } from "@/data/site";
+import { CONTACTS } from "@/data/site";
+import { OFFICES } from "@/data/clinic";
 
 export const metadata: Metadata = { title: "Contact" };
 
@@ -15,13 +16,16 @@ export default function ContactPage() {
           <Eyebrow>Contact</Eyebrow>
           <h1 data-reveal className="h-display mt-4">Start with a conversation.</h1>
           <p data-reveal className="lede mt-5">Tell us what you&apos;d like to improve. The AI suggests a starting department as you type.</p>
-          <div className="mt-8 space-y-3 text-[15px]">
-            {LOCATIONS.map((l) => <div key={l.city} className="flex items-center gap-2"><Icon name="pin" size={17} className="text-violet" />{l.city}</div>)}
-            <a href={CONTACTS.labs.tel} className="flex items-center gap-2 hover:text-violet"><Icon name="call" size={17} className="text-violet" />BioAro Labs · {CONTACTS.labs.phone}</a>
-            <a href={`mailto:${CONTACTS.labs.email}`} className="flex items-center gap-2 hover:text-violet"><Icon name="mail" size={17} className="text-violet" />{CONTACTS.labs.email}</a>
-            <a href={`mailto:${CONTACTS.drugs.email}`} className="flex items-center gap-2 hover:text-violet"><Icon name="mail" size={17} className="text-violet" />{CONTACTS.drugs.email}</a>
+          <div className="mt-8 grid gap-3">
+            {OFFICES.map((o) => (
+              <div key={o.city} className="card p-5">
+                <div className="flex items-center gap-2 text-[17px] font-semibold"><Icon name="pin" size={17} className="text-accent" />{o.city}<span className="text-[12px] font-medium text-faint">· {o.region}</span></div>
+                <div className="mt-1 text-[14px] text-muted">{o.address}</div>
+                <div className="mt-2 flex flex-wrap gap-x-4 text-[14px] font-semibold"><a href={o.tel} className="hover:text-accent">{o.phone}</a>{o.email && <a href={`mailto:${o.email}`} className="hover:text-accent">{o.email}</a>}</div>
+              </div>
+            ))}
+            <div className="text-[13px] text-muted">BioAro Labs support · <a href={CONTACTS.labs.tel} className="font-semibold hover:text-accent">{CONTACTS.labs.phone}</a> · <a href={`mailto:${CONTACTS.labs.email}`} className="font-semibold hover:text-accent">{CONTACTS.labs.email}</a></div>
           </div>
-          <p className="mt-6 text-[12px] text-faint">Biongevity enquiry phone and email to be confirmed by the client.</p>
         </div>
         <Suspense><ContactForm /></Suspense>
       </div>
