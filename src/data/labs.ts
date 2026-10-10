@@ -2,7 +2,11 @@ import type { CatalogProduct, Collection } from "./types";
 import type { IconName } from "@/components/ui/icons";
 import { slugify } from "@/lib/utils";
 
-/* Content: bioarolabs.com (home, /shop, categories). Prices USD as listed Oct 2026. */
+/* Content: bioarolabs.com (home, /shop, categories). Prices USD as listed Oct 2026.
+   Each test links to its real page: https://bioarolabs.com/shop?test=<slug> */
+
+export const LABS_URL = "https://bioarolabs.com";
+const SLUGS: Record<string, string> = { "Whole Genome Sequencing 100X": "genome-testing", "Whole Genome Sequencing 30X": "whole-genome-sequencing-30x", "Whole Exome Sequencing 100X": "whole-exome-sequencing-100x", "Disease-Based DNA Test": "disease-based-dna-test", "Pharmacogenomics Test": "pharmacogenomics-test", "Comprehensive Cell-free DNA Analysis": "comprehensive-cell-free-dna-analysis", "TNF-α (Tumor Necrosis Factor Alpha)": "tnf-alpha", "GDF-15 (Growth Differentiation Factor 15)": "gdf-15", "IL-6 (Interleukin-6)": "il-6", "IL-10 (Interleukin-10)": "il-10", "BioGut": "the-biogut-test", "BioSkin": "the-bioskin-test", "BioDental": "the-biodental-test", "BioFemme": "the-biofemme-test", "Telomere Length Testing": "telomere-length-testing", "Progesterone": "progesterone", "Total Testosterone": "testosterone", "Cortisol": "cortisol", "Resveratrol": "resveratrol", "Vitamin D, 25-Hydroxy (D2 + D3)": "vitamin-d2-d3", "Vitamin E (Alpha & Gamma Tocopherol)": "vitamin-e-α-γ", "hs-CRP (High-Sensitivity C-Reactive Protein)": "high-sensitive-crp-hs-crp", "sTNFR1 (Soluble TNF Receptors 1)": "interleukin-6-il-6", "MCP-1 (CCL2)": "mcp-1-ccl2", "PAI-1 Total (Plasminogen Activator Inhibitor-1)": "pai-1-total", "Cystatin C": "cystatin-c", "β2-Microglobulin (B2M)": "β2-microglobulin-b2m", "TIMP-1 (Tissue Inhibitor of Metalloproteinases-1)": "timp-1", "p-Tau217 (Phosphorylated Tau 217)": "p-tau-217", "Beta-Amyloid 40/42 Ratio": "beta-amyloid-40-42", "SHBG (Sex Hormone-Binding Globulin)": "shbg-sex-hormone-binding-globulin", "DHEA-S (Dehydroepiandrosterone Sulfate)": "dhea-s", "Androstenedione": "androstenedione", "Vitamin K1 (Phylloquinone)": "vitamin-k1", "Vitamin A (Retinol)": "vitamin-a-retinol", "Estradiol (E2)": "estradiol-e2", "DHT (Dihydrotestosterone)": "dht-dihydrotestosterone", "Hormone Health": "hormone-health", "Ultra Hormone Health": "ultra-hormone-health", "Essential Vitamin Health": "essential-vitamin-health", "Brain Health": "brain-health", "Core Inflammation Aging": "core-inflammation-aging", "Advanced Inflammation Aging": "advanced-inflammation-aging", "Ultra Inflammation Aging": "ultra-inflammation-aging", "Core Amino Acid Balance": "core-amino-acid-balance", "Advanced Amino Acid Metabolism": "advanced-amino-acid-metabolism", "Ultra Amino Acid Profile": "ultra-amino-acid-profile" };
 
 export const LAB_COLLECTIONS: Collection[] = [
   { handle: "biological-aging-healthspan-panels", title: "Biological Aging & Healthspan Panels", description: "Panels that estimate biological ageing to compare over time.", icon: "hourglass" },
@@ -72,6 +76,7 @@ const colIcon = (h: string): IconName => LAB_COLLECTIONS.find((c) => c.handle ==
 
 export const LAB_TESTS: CatalogProduct[] = ROWS.map(([title, price, category, bestFor]) => ({
   handle: slugify(title.replace("α", "alpha").replace("β", "beta")),
+  url: SLUGS[title] ? `${LABS_URL}/shop?test=${encodeURIComponent(SLUGS[title])}` : `${LABS_URL}/explore-tests/${category}`,
   title,
   vendor: "BioAro Labs",
   kind: "lab-test",
@@ -83,7 +88,9 @@ export const LAB_TESTS: CatalogProduct[] = ROWS.map(([title, price, category, be
   icon: colIcon(category),
 }));
 
-/** Six headline test areas used by the 3D test sphere + explainer card. */
+export const labCategoryUrl = (c: string) => `${LABS_URL}/explore-tests/${c}`;
+
+/** Six headline test areas (AI knowledge + home recommendations). */
 export const LAB_AREAS = [
   { id: "genome-sequencing", icon: "dna" as IconName, k: "Genomics", name: "Genome Sequencing", explores: "Genetic insights for inherited traits and personalized health.", sample: "At-home collection. BioAro has described a cheek-swab kit, with blood samples also available. Confirm current kit.", shows: "Inherited variants associated with health risks, traits and medication response, interpreted with clinician review.", not: "A diagnosis. Most conditions also depend on environment and lifestyle; a variant shows risk, not certainty.", from: 499 },
   { id: "microbiome", icon: "activity" as IconName, k: "Microbiome", name: "Microbiome", explores: "Your microbiome and its role in health and balance.", sample: "BioGut (stool), BioDental (oral), BioSkin (skin swab) and BioFemme (vaginal).", shows: "Which bacteria and fungi are present and their diversity, with recommendations.", not: "A disease diagnosis. Composition changes with diet, medication and time.", from: 279 },
