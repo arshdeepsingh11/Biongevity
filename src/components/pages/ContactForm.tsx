@@ -38,9 +38,9 @@ export function ContactForm() {
     setSent(true); fireConfetti({ x: e.clientX / innerWidth, y: e.clientY / innerHeight });
   };
 
-  const input = "mt-1.5 h-12 w-full rounded-2xl border bg-canvas px-4 text-[15px] outline-none focus:border-violet focus:bg-white";
+  const input = "mt-1.5 h-12 w-full rounded-2xl border bg-canvas px-4 text-[15px] outline-none focus:border-violet focus:bg-surface";
   return (
-    <div className="relative rounded-4xl bg-white p-6 shadow-lift sm:p-8">
+    <div className="relative rounded-4xl bg-surface p-6 shadow-lift sm:p-8">
       <ShineBorder radius={28} />
       {sent ? (
         <div className="py-10 text-center">
@@ -51,16 +51,16 @@ export function ContactForm() {
         </div>
       ) : (
         <div className="space-y-4">
-          <label className="block text-[14px] font-medium">Full name<input value={f.name} onChange={set("name")} aria-invalid={!!nameErr} className={`${input} ${nameErr ? "border-warn" : "border-black/10"}`} />{nameErr && <span className="mt-1 block text-[12px] text-warn">{nameErr}</span>}</label>
+          <label className="block text-[14px] font-medium">Full name<input value={f.name} onChange={set("name")} aria-invalid={!!nameErr} className={`${input} ${nameErr ? "border-warn" : "border-white/10"}`} />{nameErr && <span className="mt-1 block text-[12px] text-warn">{nameErr}</span>}</label>
           <div className="grid gap-4 sm:grid-cols-2">
-            <label className="block text-[14px] font-medium">Email<input type="email" value={f.email} onChange={set("email")} aria-invalid={!!emailErr} className={`${input} ${emailErr ? "border-warn" : "border-black/10"}`} />{emailErr && <span className="mt-1 block text-[12px] text-warn">{emailErr}</span>}</label>
-            <label className="block text-[14px] font-medium">Phone (optional)<input type="tel" value={f.phone} onChange={set("phone")} className={`${input} border-black/10`} /></label>
+            <label className="block text-[14px] font-medium">Email<input type="email" value={f.email} onChange={set("email")} aria-invalid={!!emailErr} className={`${input} ${emailErr ? "border-warn" : "border-white/10"}`} />{emailErr && <span className="mt-1 block text-[12px] text-warn">{emailErr}</span>}</label>
+            <label className="block text-[14px] font-medium">Phone (optional)<input type="tel" value={f.phone} onChange={set("phone")} className={`${input} border-white/10`} /></label>
           </div>
           <label className="block text-[14px] font-medium">Interest
-            <select value={f.interest} onChange={set("interest")} className={`${input} border-black/10`}>{INTERESTS.map((o) => <option key={o}>{o}</option>)}</select>
+            <select value={f.interest} onChange={set("interest")} className={`${input} border-white/10`}>{INTERESTS.map((o) => <option key={o}>{o}</option>)}</select>
           </label>
           <label className="block text-[14px] font-medium">What would you like to improve?
-            <textarea value={f.msg} onChange={set("msg")} rows={4} className="mt-1.5 w-full rounded-2xl border border-black/10 bg-canvas p-4 text-[15px] outline-none focus:border-violet focus:bg-white" />
+            <textarea value={f.msg} onChange={set("msg")} rows={4} className="mt-1.5 w-full rounded-2xl border border-white/10 bg-canvas p-4 text-[15px] outline-none focus:border-violet focus:bg-surface" />
           </label>
           <div className="flex items-center gap-2 rounded-2xl bg-canvas px-4 py-3 text-[14px]"><Icon name="sparkle" size={15} className="text-violet" />AI suggestion: <span className="font-semibold">{routed}</span></div>
           <button onClick={submit} className="btn-dark h-12 w-full text-[16px]">Send request</button>
