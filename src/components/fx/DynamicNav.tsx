@@ -21,7 +21,7 @@ export function DynamicNav({ items, active, className }: { items: { href: string
   }, [target]);
   return (
     <nav ref={ref} aria-label="Primary" onMouseLeave={() => setHover(null)} className={cn("relative flex items-center", className)}>
-      <span aria-hidden className="absolute top-1/2 h-8 -translate-y-1/2 rounded-full bg-black/[0.06] transition-all duration-500 [transition-timing-function:cubic-bezier(.3,1.4,.4,1)]"
+      <span aria-hidden className="absolute top-1/2 h-8 -translate-y-1/2 rounded-full bg-white/[0.08] shadow-[inset_0_0_0_1px_rgba(255,255,255,.06)] transition-all duration-500 [transition-timing-function:cubic-bezier(.3,1.4,.4,1)]"
         style={{ left: pill.l, width: pill.w, opacity: pill.o }} />
       {items.map((it) => (
         <Link key={it.href} href={it.href} data-nav={it.href} onMouseEnter={() => setHover(it.href)} aria-current={active === it.href ? "page" : undefined}
