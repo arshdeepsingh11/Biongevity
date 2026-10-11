@@ -2,9 +2,9 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Floating 3D Particles — canvas pseudo-3D field behind every page.
+ * Floating 3D Particles — tiny twinkling dots in a slow pseudo-3D field behind every page.
  * Perspective projection · continuous rotation · buoyant drift · depth-aware size, alpha and softness.
- * Cheap by design: pre-rendered glow sprites, painter's sort, ≤ 1.5 DPR, paused when hidden,
+ * Calm by design: tiny dots, slow twinkle, slow drift; painter's sort, ≤ 1.5 DPR, paused when hidden,
  * fewer particles on small screens, a single still frame for reduced motion.
  */
 const COLORS = ["194,161,106", "151,112,63", "127,160,131", "216,195,160"]; // gold · bronze · sage · champagne
@@ -20,17 +20,9 @@ export function ParticleField() {
     if (!ctx) return;
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const small = innerWidth < 768;
-    const N = small ? 55 : 130;
+    const N = small ? 70 : 160;
     const R = 1; // world radius (unit cube −1..1)
     const FOV = 1.8;
-
-    // Glow sprites per colour (radial gradient rendered once).
-    const sprites = COLORS.map((rgb) => {
-      const s = document.createElement("canvas"); s.width = s.height = 64;
-      const g = s.getContext("2d")!; const gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
-      gr.addColorStop(0, `rgba(${rgb},1)`); gr.addColorStop(0.35, `rgba(${rgb},.55)`); gr.addColorStop(1, `rgba(${rgb},0)`);
-      g.fillStyle = gr; g.fillRect(0, 0, 64, 64); return s;
-    });
 
     const rand = (a: number, b: number) => a + Math.random() * (b - a);
     const ps: P[] = Array.from({ length: N }, () => ({ x: rand(-R, R), y: rand(-R, R), z: rand(-R, R), s: rand(0.6, 1.6), c: (Math.random() * COLORS.length) | 0, ph: rand(0, Math.PI * 2), sp: rand(0.6, 1.4) }));
@@ -59,9 +51,9 @@ export function ParticleField() {
     };
 
     const draw = (dt: number, t: number) => {
-      angle += dt * 0.06;                               // continuous rotation
-      mouse.x += (mouse.tx - mouse.x) * 0.04; mouse.y += (mouse.ty - mouse.y) * 0.04;
-      const ay = angle + mouse.x * 0.5, ax = 0.25 + mouse.y * 0.3;
+      angle += dt * 0.02;                               // continuous rotation
+      mouse.x += (mouse.tx - mouse.x) * 0.02; mouse.y += (mouse.ty - mouse.y) * 0.02;
+      const ay = angle + mouse.x * 0.15, ax = 0.25 + mouse.y * 0.1;
       const cy = Math.cos(ay), sy = Math.sin(ay), cx = Math.cos(ax), sx = Math.sin(ax);
       const calm = document.documentElement.classList.contains("fx-calm");
       const unit = Math.min(W, H) * 0.62, ox = W / 2, oy = H / 2;
@@ -69,8 +61,8 @@ export function ParticleField() {
       for (let i = 0; i < N; i++) {
         const p = ps[i];
         // buoyant drift: slow rise + gentle sway; wrap at the top
-        p.y -= dt * 0.035 * p.sp;
-        p.x += Math.sin(t * 0.5 + p.ph) * dt * 0.012;
+        p.y -= dt * 0.012 * p.sp;
+        p.x += Math.sin(t * 0.3 + p.ph) * dt * 0.004;
         if (p.y < -R) { p.y = R; p.x = rand(-R, R); p.z = rand(-R, R); }
         // rotate (Y then X)
         const x1 = p.x * cy - p.z * sy, z1 = p.x * sy + p.z * cy;
@@ -82,11 +74,12 @@ export function ParticleField() {
 
       ctx.clearRect(0, 0, W, H);
       for (const q of proj) {
-        const depth = (q.z + R) / (2 * R);             // 0 near … 1 far
-        const near = 1 - depth;
-        const size = (2.5 + q.p.s * 6.5) * q.k * (0.7 + near * 0.7);
-        ctx.globalAlpha = (0.1 + near * 0.4) * (calm ? 0.45 : 1);
-        ctx.drawImage(sprites[q.p.c], q.x - size, q.y - size, size * 2, size * 2);
+        const near = 1 - (q.z + R) / (2 * R);           // 1 near … 0 far
+        const r = (0.5 + q.p.s * 0.55) * (0.6 + near * 0.6); // tiny: ~0.4–1.6 px
+        const twinkle = 0.5 + 0.5 * Math.sin(t * 0.9 * q.p.sp + q.p.ph); // slow, soft flicker
+        ctx.globalAlpha = (0.12 + near * 0.33) * (0.35 + 0.65 * twinkle) * (calm ? 0.5 : 1);
+        ctx.fillStyle = `rgb(${COLORS[q.p.c]})`;
+        ctx.beginPath(); ctx.arc(q.x, q.y, r, 0, Math.PI * 2); ctx.fill();
       }
       ctx.globalAlpha = 1;
     };
