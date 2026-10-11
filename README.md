@@ -22,7 +22,7 @@
 | | | | |
 |:--:|:--:|:--:|:--:|
 | **14**<br/><sub>departments</sub> | **47**<br/><sub>BioAro lab tests</sub> | **8**<br/><sub>bioactive formulas</sub> | **30**<br/><sub>static pages</sub> |
-| **5**<br/><sub>health packages</sub> | **3**<br/><sub>global clinics</sub> | **0**<br/><sub>backend servers</sub> | **100%**<br/><sub>JSON-LD coverage</sub> |
+| **17**<br/><sub>connected biomarkers</sub> | **3**<br/><sub>global clinics</sub> | **0**<br/><sub>backend servers</sub> | **100%**<br/><sub>JSON-LD coverage</sub> |
 
 ## ◆ Architecture
 
@@ -50,6 +50,7 @@ npm run build      # static site → ./out
 
 | Area | Highlights |
 |---|---|
+| **Home** | Live AI intent engine · data fusion graph · 17-biomarker constellation · research-based longevity simulator · department intelligence · goal → plan pipeline |
 | **Precision Health** | 14 departments · overview, conditions, tests & prep, care path, cited evidence, FAQ |
 | **BioAro Labs** | AI intelligence flow · 10 Bio families · full catalogue · packages · test matcher |
 | **BioAro Drugs** | AI protocol builder · transparent dosing charts · science & quality |
