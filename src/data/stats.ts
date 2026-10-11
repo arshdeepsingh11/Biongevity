@@ -10,7 +10,7 @@ export type ChartSpec =
   | { kind: "donut"; title: string; center: string; sub: string; data: { label: string; value: number }[]; src: string; illustrative?: boolean }
   | { kind: "columns"; title: string; unit?: string; data: { label: string; value: number }[]; src: string; highlight?: string };
 
-/* ---------- Five data streams (home: DataStreamExplorer) ---------- */
+/* ---------- Five data streams (home: FusionEngine) ---------- */
 export const STREAMS = {
   Genomics: {
     lead: "Your genome is the instruction set. Whole-genome sequencing reads it end to end, so risk can be found before it shows up.",
