@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { SparkleNav } from "@/components/layout/SparkleNav";
 import { AIAssistant } from "@/components/ai/AIAssistant";
 import { AIInteractionLayer } from "@/components/ai/AIInteractionLayer";
+import { ParticleField } from "@/components/fx/ParticleField";
 import { SITE } from "@/data/site";
 import { JsonLd, organization, website } from "@/lib/seo";
 
@@ -33,9 +34,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <JsonLd data={[organization(), website()]} />
         <Providers>
+          <ParticleField />
           <AIInteractionLayer />
           <Header />
-          <main className="relative">{children}</main>
+          <main className="relative z-[1]">{children}</main>
           <Footer />
           <SparkleNav />
           <AIAssistant />
