@@ -1,4 +1,2 @@
-feat(fx): floating 3D particle field — perspective, rotation, buoyant drift, depth-aware glow|src/components/fx/ParticleField.tsx
-feat(layout): particle background on every page|src/app/layout.tsx
-docs: README and commit notes|README.md COMMITS.md
-chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt
+style(fx): tiny, slow, softly twinkling background particles|src/components/fx/ParticleField.tsx
+chore(scripts): commit plan|scripts/commits.txt
