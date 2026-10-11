@@ -118,3 +118,15 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 .bg-navy [class*="bg-white\/5"], .bg-navy [class*="bg-white\/10"] { background-color: rgba(255, 255, 255, 0.7); }
 .bg-navy [class*="ring-white"], .bg-navy [class*="border-white"] { --tw-ring-color: rgba(151, 112, 63, 0.15); border-color: rgba(151, 112, 63, 0.15); }
 .bg-navy .text-teal-soft { color: var(--teal); }
+
+/* ───── Futuristic HUD primitives (light champagne) ───── */
+.hud-label { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+.grid-bg { background-image: linear-gradient(rgba(151,112,63,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(151,112,63,.07) 1px, transparent 1px); background-size: 32px 32px; }
+.hud { position: relative; }
+.hud::before, .hud::after { content: ""; position: absolute; width: 14px; height: 14px; border-color: rgba(151,112,63,.55); pointer-events: none; z-index: 3; }
+.hud::before { top: 8px; left: 8px; border-top: 1.5px solid; border-left: 1.5px solid; border-top-left-radius: 4px; }
+.hud::after { bottom: 8px; right: 8px; border-bottom: 1.5px solid; border-right: 1.5px solid; border-bottom-right-radius: 4px; }
+.scanline { position: absolute; inset: 0; pointer-events: none; overflow: hidden; border-radius: inherit; }
+.scanline::after { content: ""; position: absolute; left: 0; right: 0; height: 30%; top: -30%; background: linear-gradient(180deg, transparent, rgba(194,161,106,.10), transparent); animation: scanY 6s linear infinite; }
+@keyframes scanY { to { top: 100%; } }
+@keyframes caret { 50% { opacity: 0; } }
