@@ -63,6 +63,7 @@ src/components/fx/MagicCard.tsx
 src/components/fx/MorphingText.tsx
 src/components/fx/NumberTicker.tsx
 src/components/fx/OrbitingCircles.tsx
+src/components/fx/ParticleField.tsx
 src/components/fx/ProgressRing.tsx
 src/components/fx/ShimmerButton.tsx
 src/components/fx/ShineBorder.tsx
