@@ -2,7 +2,7 @@
 
 ```
 branch   ▸ ai/neural-noir
-commits  ▸ ~48 · one per change
+commits  ▸ one per change
 script   ▸ scripts/commit-all.ps1 (PowerShell) · scripts/commit-all.sh (Git Bash)
 plan     ▸ scripts/commits.txt    message|paths
 manifest ▸ scripts/manifest.txt   every file in this version — anything else in src/ is pruned

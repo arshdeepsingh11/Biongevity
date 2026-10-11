@@ -55,7 +55,7 @@ npm run build      # static site → ./out
 | **BioAro Drugs** | AI protocol builder · transparent dosing charts · science & quality |
 | **Global Clinic** | Journey · Virtual Clinic with 7-day BP tracker · UAE assessments · interactive world map |
 | **Shop** | Programs comparison · health packages · 8-step match quiz |
-| **Design** | Champagne theme · Phosphor icons · SVG charts · Magic UI–style motion |
+| **Design** | Champagne theme · Phosphor icons · SVG charts · floating 3D particle field · Magic UI–style motion |
 
 ## ◆ Search & AI discoverability
 
