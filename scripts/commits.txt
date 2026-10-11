@@ -1,2 +1,14 @@
-style(fx): tiny, slow, softly twinkling background particles|src/components/fx/ParticleField.tsx
-chore(scripts): commit plan|scripts/commits.txt
+feat(home): HUD primitives — grid, corner brackets, scanline, mono labels|src/app/globals.css
+feat(data): biomarker, body-system, lifestyle-evidence and goal-path data|src/data/intelligence.ts
+feat(ai): on-device intent matcher across departments, tests, formulas and biomarkers|src/lib/intent.ts
+feat(home): live AI intent engine hero|src/components/home/AIHero.tsx
+feat(home): data fusion engine — hover for data, click to ask Xevyo|src/components/home/FusionEngine.tsx
+feat(home): biomarker constellation — systems, markers and care connected|src/components/home/Constellation.tsx
+feat(home): research-based longevity simulator|src/components/home/LifespanSimulator.tsx
+feat(home): department intelligence bento with AI ranking|src/components/home/DeptIntelligence.tsx
+feat(home): goal to plan pipeline across labs, formulas, programs and care|src/components/home/GoalPipeline.tsx
+refactor(home): numbered HUD section heads; keep film, stories, map, CTA|src/components/home/HomeSections.tsx
+chore(home): retire old data-stream explorer|src/components/home/DataStreamExplorer.tsx src/data/stats.ts
+feat(home): new AI-first home page composition|src/app/page.tsx
+docs: README home highlights|README.md
+chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt

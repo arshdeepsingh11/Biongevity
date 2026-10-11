@@ -70,9 +70,14 @@ src/components/fx/ShineBorder.tsx
 src/components/fx/Terminal.tsx
 src/components/fx/TextAnimate.tsx
 src/components/fx/WorldMap.tsx
-src/components/home/DataStreamExplorer.tsx
+src/components/home/AIHero.tsx
+src/components/home/Constellation.tsx
+src/components/home/DeptIntelligence.tsx
 src/components/home/DisciplineExplorer.tsx
+src/components/home/FusionEngine.tsx
+src/components/home/GoalPipeline.tsx
 src/components/home/HomeSections.tsx
+src/components/home/LifespanSimulator.tsx
 src/components/layout/Footer.tsx
 src/components/layout/Header.tsx
 src/components/layout/SparkleNav.tsx
@@ -104,6 +109,7 @@ src/data/dashboard.ts
 src/data/departments.ts
 src/data/drugs.ts
 src/data/health.ts
+src/data/intelligence.ts
 src/data/journal.ts
 src/data/labs.ts
 src/data/site.ts
@@ -114,6 +120,7 @@ src/hooks/useInView.ts
 src/hooks/useReducedMotion.ts
 src/lib/commerce.ts
 src/lib/env.ts
+src/lib/intent.ts
 src/lib/quiz.ts
 src/lib/seo.tsx
 src/lib/utils.ts
