@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
-import { askXevyo, sessionId, xevyoEnabled, type XevyoTurn } from "@/lib/xevyo";
+import { askXevyo, sessionId, xevyoEnabled, XevyoError, type XevyoTurn } from "@/lib/xevyo";
 import { pageLabel, pagePrompts } from "@/lib/aiPrompts";
 
 export interface Msg { role: "user" | "ai" | "notice"; text: string; sources?: { title: string; url: string }[] }
@@ -85,8 +85,11 @@ export function AIProvider({ children }: { children: ReactNode }) {
       const r = await askXevyo({ message: q, history, context: { page: context, ...(section ? { section } : {}) }, sessionId: sessionId() },
         (partial) => setMsgs((m) => { const c = [...m]; c[c.length - 1] = { role: "ai", text: partial }; return c; }), abort.current.signal);
       setMsgs((m) => { const c = [...m]; c[c.length - 1] = { role: "ai", text: r.reply, sources: r.sources }; return c; });
-    } catch {
-      setMsgs((m) => { const c = [...m]; c[c.length - 1] = { role: "notice", text: "Xevyo is unavailable right now. Please try again shortly, or contact the care team." }; return c; });
+    } catch (e) {
+      const local = process.env.NODE_ENV !== "production" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+      const dev = local && e instanceof XevyoError ? `\n\n[Setup check] ${e.reason}` : "";
+      if (e instanceof XevyoError) console.error("[Xevyo]", e.reason);
+      setMsgs((m) => { const c = [...m]; c[c.length - 1] = { role: "notice", text: `Xevyo is unavailable right now. Please try again shortly, or contact the care team.${dev}` }; return c; });
     } finally { busyRef.current = false; setBusy(false); }
   }, [context, section, msgs]);
 
