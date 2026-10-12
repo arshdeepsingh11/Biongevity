@@ -1,12 +1,4 @@
-feat(brand): original Biongevity logo rebuilt as a vector icon|src/components/ui/Logo.tsx
-feat(ui): voice, stop, command and text-select icons|src/components/ui/Icon.tsx
-feat(ai): voice ask via the browser speech recogniser|src/hooks/useVoice.ts
-feat(ai): page-aware smart questions for every page and department|src/lib/aiPrompts.ts
-feat(ai): section-aware context, smart questions and Ctrl+X shortcut|src/components/ai/AIProvider.tsx
-feat(ai): Xevyo command bar — search everything or ask, Ctrl+X|src/components/ai/CommandBar.tsx
-feat(ai): highlight any text to explain it with Xevyo|src/components/ai/AskSelection.tsx
-feat(ai): Xevyo panel — smart questions, voice input, page context|src/components/ai/AIAssistant.tsx
-feat(shop): AI plan review streamed inside the bag|src/components/shop/BagLayer.tsx
-feat(layout): search-or-ask button and AI layers mounted site-wide|src/components/layout/Header.tsx src/app/layout.tsx
-docs: Xevyo key setup and AI features|.env.example README.md
+fix(ai): accept OpenAI-style Xevyo endpoints and report the exact connection error|src/lib/xevyo.ts src/lib/env.ts
+fix(ai): show the setup reason in chat on localhost|src/components/ai/AIProvider.tsx
+docs: optional Xevyo model setting|.env.example
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt
