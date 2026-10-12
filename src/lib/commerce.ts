@@ -11,7 +11,7 @@ export function buyUrl(item: { handle: string; url: string }, qty = 1): string {
   return item.url;
 }
 
-/** Multi-item cart permalink (e.g. a quiz result bundle). Falls back to null when Shopify isn't configured. */
+/** Multi-item cart permalink (e.g. a Plan Studio bundle). Falls back to null when Shopify isn't configured. */
 export function bundleUrl(handles: string[]): string | null {
   if (!shopifyEnabled) return null;
   const parts = handles.map((h) => SHOPIFY_VARIANTS[h]).filter(Boolean).map((v) => `${v}:1`);
