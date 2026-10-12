@@ -15,23 +15,42 @@ export interface XevyoReply { reply: string; sources?: { title: string; url: str
 
 export { xevyoEnabled };
 
+/** Error with a readable reason (shown in development to speed up setup). */
+export class XevyoError extends Error { constructor(public code: string, public reason: string) { super(code); } }
+
 export async function askXevyo(
   input: { message: string; history: XevyoTurn[]; context: { page: string; section?: string }; sessionId: string },
   onToken?: (partial: string) => void,
   signal?: AbortSignal,
 ): Promise<XevyoReply> {
   if (!xevyoEnabled) throw new Error("XEVYO_NOT_CONFIGURED");
-  const res = await fetch(env.xevyoUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json, text/event-stream", ...(env.xevyoKey ? { Authorization: `Bearer ${env.xevyoKey}` } : {}) },
-    body: JSON.stringify(input),
-    signal,
-  });
-  if (!res.ok) throw new Error(`XEVYO_HTTP_${res.status}`);
+  // Also send OpenAI-style `messages` (+ optional model) so chat-completions style endpoints work too.
+  const messages = [
+    { role: "system", content: `You are Xevyo, Biongevity's health guide. The visitor is on: ${input.context.page}${input.context.section ? ` — ${input.context.section}` : ""}. Explain simply; do not diagnose.` },
+    ...input.history.map((h) => ({ role: h.role, content: h.content })),
+    { role: "user", content: input.message },
+  ];
+  let res: Response;
+  try {
+    res = await fetch(env.xevyoUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json, text/event-stream", ...(env.xevyoKey ? { Authorization: `Bearer ${env.xevyoKey}` } : {}) },
+      body: JSON.stringify({ ...input, messages, ...(env.xevyoModel ? { model: env.xevyoModel } : {}) }),
+      signal,
+    });
+  } catch (e) {
+    if ((e as Error).name === "AbortError") throw e;
+    throw new XevyoError("NETWORK", "Request blocked or unreachable — usually CORS (Xevyo must allow this site's origin) or a wrong URL.");
+  }
+  if (!res.ok) {
+    const detail = (await res.text().catch(() => "")).slice(0, 200);
+    const why = res.status === 401 || res.status === 403 ? "key rejected or not allowed for this origin" : res.status === 404 ? "endpoint URL not found" : res.status === 400 || res.status === 422 ? "request format not accepted" : "server error";
+    throw new XevyoError(`HTTP_${res.status}`, `HTTP ${res.status} — ${why}${detail ? `: ${detail}` : ""}`);
+  }
   const type = res.headers.get("content-type") ?? "";
   if (type.includes("application/json")) {
-    const j = (await res.json()) as Partial<XevyoReply> & { text?: string; message?: string };
-    const reply = j.reply ?? j.text ?? j.message ?? "";
+    const j = (await res.json()) as Partial<XevyoReply> & { text?: string; message?: string | { content?: string }; answer?: string; output?: string; choices?: { message?: { content?: string } }[] };
+    const reply = j.reply ?? j.choices?.[0]?.message?.content ?? j.answer ?? j.output ?? j.text ?? (typeof j.message === "string" ? j.message : j.message?.content) ?? "";
     onToken?.(reply);
     return { reply, sources: j.sources };
   }
@@ -47,7 +66,7 @@ export async function askXevyo(
         if (!line.startsWith("data:")) continue;
         const data = line.slice(5).trim();
         if (data === "[DONE]") continue;
-        try { const j = JSON.parse(data) as { token?: string; delta?: string }; acc += j.token ?? j.delta ?? ""; } catch { acc += data; }
+        try { const j = JSON.parse(data) as { token?: string; delta?: string; text?: string; choices?: { delta?: { content?: string } }[] }; acc += j.token ?? j.delta ?? j.text ?? j.choices?.[0]?.delta?.content ?? ""; } catch { acc += data; }
       }
     } else acc += chunk;
     onToken?.(acc);

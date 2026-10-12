@@ -5,6 +5,7 @@
 export const env = {
   xevyoUrl: process.env.NEXT_PUBLIC_XEVYO_URL ?? "",
   xevyoKey: process.env.NEXT_PUBLIC_XEVYO_PUBLIC_KEY ?? "",
+  xevyoModel: process.env.NEXT_PUBLIC_XEVYO_MODEL ?? "",
   shopifyDomain: process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN ?? "",
   contactEndpoint: process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? "",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://biongevity.com",
