@@ -7,7 +7,7 @@ import { AIFlow } from "@/components/fx/AIFlow";
 import { MagicCard } from "@/components/fx/MagicCard";
 import { BarList, Stat } from "@/components/charts/Charts";
 import { CatalogTab } from "@/components/shop/CatalogTab";
-import { LongevityQuiz } from "@/components/quiz/LongevityQuiz";
+import { PlanStudio } from "@/components/shop/PlanStudio";
 import { HealthPackages } from "./HealthPackages";
 
 const TABS = [
@@ -16,7 +16,7 @@ const TABS = [
   { id: "catalog", label: "All tests", icon: "test-tubes" },
   { id: "packages", label: "Health packages", icon: "box" },
   { id: "process", label: "How it works", icon: "route" },
-  { id: "match", label: "Find my test", icon: "target" },
+  { id: "match", label: "Plan Studio", icon: "sparkle" },
 ] as const;
 
 /** BioAro Labs hub — AI-connected diagnostics: intelligence, test areas, catalogue, packages, process and matching. */
@@ -87,7 +87,7 @@ export function LabsHub() {
             </div>
           )}
 
-          {tab === "match" && <LongevityQuiz />}
+          {tab === "match" && <PlanStudio />}
         </motion.div>
       </AnimatePresence>
     </div>
