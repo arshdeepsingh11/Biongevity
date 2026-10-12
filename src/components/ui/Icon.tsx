@@ -9,7 +9,7 @@ import {
   Scales, Smiley, FlowerLotus, PersonSimple, BowlFood, HandHeart, Footprints, Ruler, Calculator, Timer, Bed, Grains, CigaretteSlash,
   Wine, Flame, Plant, Crown, Diamond, MagnifyingGlassPlus, MagnifyingGlassMinus, ArrowCounterClockwise, ArrowsOutCardinal, Laptop,
   Siren, ClipboardText, ListChecks, TestTube, Crosshair, Alarm, Heart, PersonSimpleWalk, FaceMask, Waveform, HeartHalf, Graph,
-  Hospital, Wheelchair, Virus, FirstAidKit, Ear, CirclesThreePlus, type Icon as PhosphorIcon, type IconWeight,
+  Hospital, Wheelchair, Virus, FirstAidKit, Ear, CirclesThreePlus, Microphone, StopCircle, Command, CursorText, type Icon as PhosphorIcon, type IconWeight,
 } from "@phosphor-icons/react";
 
 /** Icon set — Phosphor (clean, consistent 1.5px strokes). Names are stable across the codebase. */
@@ -31,6 +31,7 @@ const MAP: Record<string, PhosphorIcon> = {
   "test-tube": TestTube, "test-tubes": Flask, crosshair: Crosshair, alarm: Alarm, "heart-plain": Heart, walk: PersonSimpleWalk, lungs: Wind,
   mask: FaceMask, wave: Waveform, "heart-half": HeartHalf, graph: Graph, hospital: Hospital, wheelchair: Wheelchair, virus: Virus,
   firstaid: FirstAidKit, ear: Ear, network: CirclesThreePlus,
+  mic: Microphone, stop: StopCircle, command: Command, "text-select": CursorText,
 };
 
 export type IconName = keyof typeof MAP | string;
