@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SparkleNav } from "@/components/layout/SparkleNav";
 import { AIAssistant } from "@/components/ai/AIAssistant";
+import { BagLayer } from "@/components/shop/BagLayer";
 import { AIInteractionLayer } from "@/components/ai/AIInteractionLayer";
 import { ParticleField } from "@/components/fx/ParticleField";
 import { SITE } from "@/data/site";
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           <SparkleNav />
           <AIAssistant />
+          <BagLayer />
         </Providers>
       </body>
     </html>
