@@ -27,7 +27,11 @@ export function ContactForm() {
   const [f, setF] = useState(EMPTY);
   const [tried, setTried] = useState(false);
   const [sent, setSent] = useState(false);
-  useEffect(() => { const i = sp.get("interest"); if (i) setF((s) => ({ ...s, interest: INTERESTS.includes(i) ? i : s.interest, msg: INTERESTS.includes(i) ? s.msg : `Interested in: ${i}` })); }, [sp]);
+  useEffect(() => {
+    const i = sp.get("interest"), plan = sp.get("plan");
+    if (plan) { setF((s) => ({ ...s, msg: `My plan:\n${plan}` })); return; }
+    if (i) setF((s) => ({ ...s, interest: INTERESTS.includes(i) ? i : s.interest, msg: INTERESTS.includes(i) ? s.msg : `Interested in: ${i}` }));
+  }, [sp]);
   const set = (k: keyof typeof EMPTY) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => setF((s) => ({ ...s, [k]: e.target.value }));
   const emailOk = /\S+@\S+\.\S+/.test(f.email);
   const nameErr = tried && !f.name.trim() ? "Please enter your name." : "";
