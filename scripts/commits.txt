@@ -1,14 +1,15 @@
-feat(home): HUD primitives — grid, corner brackets, scanline, mono labels|src/app/globals.css
-feat(data): biomarker, body-system, lifestyle-evidence and goal-path data|src/data/intelligence.ts
-feat(ai): on-device intent matcher across departments, tests, formulas and biomarkers|src/lib/intent.ts
-feat(home): live AI intent engine hero|src/components/home/AIHero.tsx
-feat(home): data fusion engine — hover for data, click to ask Xevyo|src/components/home/FusionEngine.tsx
-feat(home): biomarker constellation — systems, markers and care connected|src/components/home/Constellation.tsx
-feat(home): research-based longevity simulator|src/components/home/LifespanSimulator.tsx
-feat(home): department intelligence bento with AI ranking|src/components/home/DeptIntelligence.tsx
-feat(home): goal to plan pipeline across labs, formulas, programs and care|src/components/home/GoalPipeline.tsx
-refactor(home): numbered HUD section heads; keep film, stories, map, CTA|src/components/home/HomeSections.tsx
-chore(home): retire old data-stream explorer|src/components/home/DataStreamExplorer.tsx src/data/stats.ts
-feat(home): new AI-first home page composition|src/app/page.tsx
-docs: README home highlights|README.md
+feat(store): CAD store currency, 3/6/12-month terms and policy config|src/config/store.ts src/lib/utils.ts src/data/health.ts src/data/labs.ts src/data/drugs.ts src/components/bioaro/DrugsHub.tsx
+feat(shop): unified catalogue model across programs, packages, tests and formulas|src/lib/catalog.ts
+feat(shop): site-wide plan bag with saved state and term pricing|src/components/shop/CartProvider.tsx src/app/providers.tsx
+feat(shop): bag and product detail drawers with what-happens-next steps|src/components/shop/BagLayer.tsx src/app/layout.tsx
+feat(contact): prefill message from a requested plan|src/components/pages/ContactForm.tsx
+feat(shop): Plan Studio live plan builder replaces the quiz|src/components/shop/PlanStudio.tsx src/components/quiz/LongevityQuiz.tsx src/lib/quiz.ts src/lib/commerce.ts
+feat(shop): test, package and program depth ladder|src/components/shop/Ladder.tsx src/components/shop/ProgramsTab.tsx
+feat(shop): one search across all items with persona shortcuts|src/components/shop/Catalogue.tsx src/components/shop/ShopTabs.tsx
+feat(shop): after-purchase timeline and trust strip|src/components/shop/TrustStrip.tsx
+feat(shop): new shop page — Plan Studio, depth, browse, after you buy|src/app/shop/page.tsx
+feat(shop): product cards open the shared drawer and bag|src/components/products/ProductCard.tsx src/components/shop/CatalogTab.tsx
+feat(labs): Plan Studio tab in the BioAro Labs hub|src/components/bioaro/LabsHub.tsx
+refactor(nav): point shop links to Plan Studio, depth and browse sections|src/data/site.ts src/components/home/GoalPipeline.tsx src/components/home/HomeSections.tsx src/components/clinic/ClinicTabs.tsx
+docs: README shop and store settings|README.md
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt
