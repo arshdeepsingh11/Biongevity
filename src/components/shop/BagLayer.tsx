@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCart } from "./CartProvider";
@@ -9,6 +9,7 @@ import { TERMS, POLICIES, type Term } from "@/config/store";
 import { formatMoney } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import { useAI } from "@/components/ai/AIProvider";
+import { askXevyo, sessionId, xevyoEnabled } from "@/lib/xevyo";
 
 const money = (v: number | null) => (v === null ? "Quote" : formatMoney(v));
 
@@ -25,6 +26,22 @@ export function BagLayer() {
   const shopify = bundleUrl(c.lines.map((l) => l.item.handle));
   const planText = c.lines.map((l) => `${l.item.title}${l.term ? ` (${l.term} months)` : ""} — ${money(l.price)}`).join("\n");
   const request = `/contact/?interest=${encodeURIComponent("My plan")}&plan=${encodeURIComponent(planText)}`;
+
+  // AI plan review — streams Xevyo's answer right inside the bag. Resets when the plan changes.
+  const [review, setReview] = useState<{ state: "idle" | "busy" | "done" | "error" | "off"; text: string; sources?: { title: string; url: string }[] }>({ state: "idle", text: "" });
+  const stop = useRef<AbortController | null>(null);
+  useEffect(() => { stop.current?.abort(); setReview({ state: "idle", text: "" }); }, [planText]);
+  const runReview = async () => {
+    if (!xevyoEnabled) return setReview({ state: "off", text: "" });
+    stop.current = new AbortController();
+    setReview({ state: "busy", text: "" });
+    const message = `Review my Biongevity plan (prices in CAD):\n${planText}\nEstimated total: ${formatMoney(c.total)} CAD${c.quoted ? " + quoted items" : ""}.\nIs anything missing or overlapping, what order should I start in, and what should I ask the care team? Keep it short and simple.`;
+    try {
+      const r = await askXevyo({ message, history: [], context: { page: "shop", section: "My plan" }, sessionId: sessionId() },
+        (t) => setReview({ state: "busy", text: t }), stop.current.signal);
+      setReview({ state: "done", text: r.reply, sources: r.sources });
+    } catch { setReview({ state: "error", text: "" }); }
+  };
 
   return (
     <>
@@ -98,6 +115,25 @@ export function BagLayer() {
                   )}
                 </div>
               ))}
+              {c.lines.length > 0 && (
+                <div className="hud relative overflow-hidden rounded-2xl bg-white p-4 ring-1 ring-accent/20">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="hud-label flex items-center gap-1.5"><span className={`h-1.5 w-1.5 rounded-full ${review.state === "busy" ? "animate-pulseDot bg-accent" : "bg-teal"}`} />Xevyo plan review</span>
+                    {review.state !== "busy" && <button onClick={runReview} className="flex items-center gap-1 rounded-full bg-accent-light px-3 py-1.5 text-[12px] font-semibold text-accent hover:bg-accent/15"><Icon name="sparkle" size={13} weight="duotone" />{review.state === "done" ? "Review again" : "Review my plan"}</button>}
+                    {review.state === "busy" && <button onClick={() => stop.current?.abort()} className="text-[12px] text-muted hover:text-accent">Stop</button>}
+                  </div>
+                  {review.state === "idle" && <p className="mt-2 text-[12.5px] leading-relaxed text-muted">Get a quick AI check: gaps, overlaps and the best order to start. Your care team still confirms everything.</p>}
+                  {review.state === "off" && <p className="mt-2 rounded-xl bg-gold-soft/50 px-3 py-2 text-[12.5px] text-gold-deep">Xevyo isn&apos;t connected in this build yet — request your plan and our care team will review it.</p>}
+                  {review.state === "error" && <p className="mt-2 text-[12.5px] text-gold-deep">Xevyo is unavailable right now. Please try again shortly.</p>}
+                  {(review.state === "busy" || review.state === "done") && (
+                    <div className="mt-3 whitespace-pre-wrap text-[13.5px] leading-relaxed text-ink/90">
+                      {review.text || <span className="inline-flex gap-1">{[0, 1, 2].map((k) => <span key={k} className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-accent" style={{ animationDelay: `${k * 0.2}s` }} />)}</span>}
+                      {review.sources?.length ? <div className="mt-2 flex flex-wrap gap-2">{review.sources.map((x) => <a key={x.url} href={x.url} target="_blank" rel="noopener" className="text-[11px] text-accent underline">{x.title}</a>)}</div> : null}
+                      {review.state === "done" && <p className="mt-2 text-[11px] text-faint">AI guidance, not a diagnosis. A clinician confirms your plan.</p>}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
             {c.lines.length > 0 && (
               <div className="space-y-3 border-t border-ink/[0.06] p-5">
