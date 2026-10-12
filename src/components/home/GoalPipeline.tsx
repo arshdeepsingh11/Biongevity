@@ -27,7 +27,7 @@ export function GoalPipeline() {
     { k: "Measure", icon: "test-tube", t: test.title, sub: `BioAro Labs · $${test.price}`, href: buyUrl(test), ext: true },
     { k: "Reveal", icon: "eye", t: "What it shows", sub: g.reveals },
     { k: "Support", icon: formula.icon, t: formula.title, sub: `${formula.tagline} · $${formula.price}`, href: buyUrl(formula), ext: true },
-    { k: "Program", icon: "box", t: g.program, sub: "Care team confirms fit and scheduling", href: g.program.startsWith("Biongevity") ? "/shop/?tab=programs" : "/shop/?tab=packages" },
+    { k: "Program", icon: "box", t: g.program, sub: "Care team confirms fit and scheduling", href: g.program.startsWith("Biongevity") ? "/shop/#depth" : "/shop/#browse" },
     { k: "Care", icon: dept.icon, t: dept.name, sub: dept.tag, href: `/precision-health/${dept.id}/` },
   ];
 

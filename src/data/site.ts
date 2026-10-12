@@ -35,10 +35,10 @@ export const NAV: NavItem[] = [
   {
     id: "shop", label: "Shop", icon: "bag", href: "/shop/",
     menu: [
-      { href: "/shop/?tab=programs", label: "Longevity programs", icon: "crown", desc: "Core, Precision and Elite — compared side by side." },
-      { href: "/shop/?tab=packages", label: "Health packages", icon: "box", desc: "Heart, Executive, Longevity, Genomics and Metabolic." },
+      { href: "/shop/#studio", label: "Plan Studio", icon: "sparkle", desc: "Pick a goal — a plan assembles itself, live." },
+      { href: "/shop/#depth", label: "Longevity programs", icon: "crown", desc: "Core, Precision and Elite — 3, 6 or 12 months." },
+      { href: "/shop/#browse", label: "Browse everything", icon: "search", desc: "Programs, packages, tests and formulas — one bag." },
       { href: "/precision-health/bioaro-labs/#catalog", label: "BioAro lab tests", icon: "test-tubes", desc: "47 tests — genome, microbiome, hormones and more." },
-      { href: "/shop/?tab=match", label: "Find my match", icon: "target", desc: "A 2-minute quiz that ranks the tests and programs for you." },
     ],
   },
   {
