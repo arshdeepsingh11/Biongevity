@@ -7,6 +7,8 @@ import { SparkleNav } from "@/components/layout/SparkleNav";
 import { AIAssistant } from "@/components/ai/AIAssistant";
 import { BagLayer } from "@/components/shop/BagLayer";
 import { AIInteractionLayer } from "@/components/ai/AIInteractionLayer";
+import { CommandBar } from "@/components/ai/CommandBar";
+import { AskSelection } from "@/components/ai/AskSelection";
 import { ParticleField } from "@/components/fx/ParticleField";
 import { SITE } from "@/data/site";
 import { JsonLd, organization, website } from "@/lib/seo";
@@ -43,6 +45,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SparkleNav />
           <AIAssistant />
           <BagLayer />
+          <CommandBar />
+          <AskSelection />
         </Providers>
       </body>
     </html>
