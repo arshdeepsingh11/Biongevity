@@ -1,15 +1,12 @@
-feat(store): CAD store currency, 3/6/12-month terms and policy config|src/config/store.ts src/lib/utils.ts src/data/health.ts src/data/labs.ts src/data/drugs.ts src/components/bioaro/DrugsHub.tsx
-feat(shop): unified catalogue model across programs, packages, tests and formulas|src/lib/catalog.ts
-feat(shop): site-wide plan bag with saved state and term pricing|src/components/shop/CartProvider.tsx src/app/providers.tsx
-feat(shop): bag and product detail drawers with what-happens-next steps|src/components/shop/BagLayer.tsx src/app/layout.tsx
-feat(contact): prefill message from a requested plan|src/components/pages/ContactForm.tsx
-feat(shop): Plan Studio live plan builder replaces the quiz|src/components/shop/PlanStudio.tsx src/components/quiz/LongevityQuiz.tsx src/lib/quiz.ts src/lib/commerce.ts
-feat(shop): test, package and program depth ladder|src/components/shop/Ladder.tsx src/components/shop/ProgramsTab.tsx
-feat(shop): one search across all items with persona shortcuts|src/components/shop/Catalogue.tsx src/components/shop/ShopTabs.tsx
-feat(shop): after-purchase timeline and trust strip|src/components/shop/TrustStrip.tsx
-feat(shop): new shop page — Plan Studio, depth, browse, after you buy|src/app/shop/page.tsx
-feat(shop): product cards open the shared drawer and bag|src/components/products/ProductCard.tsx src/components/shop/CatalogTab.tsx
-feat(labs): Plan Studio tab in the BioAro Labs hub|src/components/bioaro/LabsHub.tsx
-refactor(nav): point shop links to Plan Studio, depth and browse sections|src/data/site.ts src/components/home/GoalPipeline.tsx src/components/home/HomeSections.tsx src/components/clinic/ClinicTabs.tsx
-docs: README shop and store settings|README.md
+feat(brand): original Biongevity logo rebuilt as a vector icon|src/components/ui/Logo.tsx
+feat(ui): voice, stop, command and text-select icons|src/components/ui/Icon.tsx
+feat(ai): voice ask via the browser speech recogniser|src/hooks/useVoice.ts
+feat(ai): page-aware smart questions for every page and department|src/lib/aiPrompts.ts
+feat(ai): section-aware context, smart questions and Ctrl+X shortcut|src/components/ai/AIProvider.tsx
+feat(ai): Xevyo command bar — search everything or ask, Ctrl+X|src/components/ai/CommandBar.tsx
+feat(ai): highlight any text to explain it with Xevyo|src/components/ai/AskSelection.tsx
+feat(ai): Xevyo panel — smart questions, voice input, page context|src/components/ai/AIAssistant.tsx
+feat(shop): AI plan review streamed inside the bag|src/components/shop/BagLayer.tsx
+feat(layout): search-or-ask button and AI layers mounted site-wide|src/components/layout/Header.tsx src/app/layout.tsx
+docs: Xevyo key setup and AI features|.env.example README.md
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt

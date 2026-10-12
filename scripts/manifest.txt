@@ -23,6 +23,8 @@ src/components/ai/AIAssistant.tsx
 src/components/ai/AIInteractionLayer.tsx
 src/components/ai/AIPanel.tsx
 src/components/ai/AIProvider.tsx
+src/components/ai/AskSelection.tsx
+src/components/ai/CommandBar.tsx
 src/components/bioaro/DrugsHub.tsx
 src/components/bioaro/HealthPackages.tsx
 src/components/bioaro/LabsHub.tsx
@@ -108,6 +110,8 @@ src/data/types.ts
 src/data/worldmap.ts
 src/hooks/useInView.ts
 src/hooks/useReducedMotion.ts
+src/hooks/useVoice.ts
+src/lib/aiPrompts.ts
 src/lib/catalog.ts
 src/lib/commerce.ts
 src/lib/env.ts
