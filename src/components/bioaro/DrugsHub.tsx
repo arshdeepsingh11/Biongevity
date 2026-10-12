@@ -44,7 +44,7 @@ export function DrugsHub() {
               </div>
               <div className="grid gap-5 md:grid-cols-[1fr_1fr]">
                 <div className="rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]"><div className="mb-3 text-[14px] font-semibold">Formulas by collection</div><Donut data={DRUG_COLLECTIONS.map((c) => ({ label: c.title, value: DRUG_PRODUCTS.filter((p) => p.category === c.handle).length }))} center={String(DRUG_PRODUCTS.length)} sub="formulas" size={160} /></div>
-                <div className="rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]"><div className="mb-3 text-[14px] font-semibold">Price per formula (USD)</div><BarList data={DRUG_PRODUCTS.map((p) => ({ label: p.title, value: p.price }))} format={(v) => `$${v}`} /></div>
+                <div className="rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]"><div className="mb-3 text-[14px] font-semibold">Price per formula (CAD)</div><BarList data={DRUG_PRODUCTS.map((p) => ({ label: p.title, value: p.price }))} format={(v) => `$${v}`} /></div>
               </div>
             </div>
           )}

@@ -34,21 +34,21 @@ export interface Package {
 
 export const PACKAGES: Package[] = [
   {
-    handle: "core", name: "Biongevity Core", price: 369, currency: "USD", cadence: "Baseline + annual", url: "/contact/?interest=core",
+    handle: "core", name: "Biongevity Core", price: 369, currency: "CAD", cadence: "Baseline + annual", url: "/contact/?interest=core",
     diagnostics: ["Longevity genomics panel — FOXO3, SIRT, mTOR, AMPK, inflammation pathways", "Gut microbiome snapshot — diversity, dysbiosis, metabolic efficiency", "Epigenetic ageing proxies — DNA methylation, inflammaging", "Glucose & insulin · Cortisol · Testosterone · Progesterone · Vit D & E"],
     ai: ["Personalized AI-driven longevity roadmap", "Daily micro-coaching: nutrition, sleep, movement, stress", "Conversational AI explaining biomarker changes", "Adherence tracking with intelligent nudging"],
     app: ["Longevity Score™ — biological vs chronological age proxy", "Habit, sleep and activity tracking", "Integrated wearables (sleep, HRV, activity, recovery)", "Monthly AI-generated longevity summaries"],
     bioactives: "Core formulation",
   },
   {
-    handle: "precision", name: "Biongevity Precision", price: 699, currency: "USD", cadence: "Baseline + annual", featured: true, url: "/contact/?interest=precision",
+    handle: "precision", name: "Biongevity Precision", price: 699, currency: "CAD", cadence: "Baseline + annual", featured: true, url: "/contact/?interest=precision",
     diagnostics: ["Everything in Core", "Whole Genome Sequencing 30X", "Telomere length measurement", "Pharmacogenomics", "IL-6 · IL-10 · TNF-α · CRP"],
     ai: ["Continuous biological age and risk forecasting", "AI-driven “what-if” intervention modelling", "Wearable physiology: HRV, sleep efficiency, recovery", "Monthly AI protocol updates · quarterly expert review"],
     app: ["Telomere and epigenetic trend visualization", "Precision nutrition timing & fasting guidance", "Sleep and circadian optimization", "Clinician-shareable longitudinal reports"],
     bioactives: "Precision nutraceutical stack",
   },
   {
-    handle: "elite", name: "Biongevity Elite", price: 999, currency: "USD", cadence: "Baseline + 3–6 months", url: "/contact/?interest=elite",
+    handle: "elite", name: "Biongevity Elite", price: 999, currency: "CAD", cadence: "Baseline + 3–6 months", url: "/contact/?interest=elite",
     diagnostics: ["Whole Genome Sequencing 100X", "Multi-omics microbiome · metabolomics", "Advanced epigenetic ageing clocks", "Telomere dynamics · GDF-15, IGF-1, NAD/NADH, GlycA", "Targeted proteomics incl. p-Tau217, Aβ 40/42", "cfDNA & RNA sequencing (additional cost)"],
     ai: ["Continuous high-resolution longevity monitoring", "Intervention orchestration across nutrition, supplements, movement, recovery, stress", "Scenario planning: travel, stress load, illness, performance", "Direct collaboration with an assigned longevity physician / scientist"],
     app: ["Executive-grade longevity intelligence dashboard", "Family or cohort benchmarking", "Continuous wearable, CGM and device integration", "Quarterly executive longevity reports"],

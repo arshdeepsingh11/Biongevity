@@ -5,8 +5,10 @@ export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 export const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
 export const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
-export const formatMoney = (amount: number | string, currency = "USD") =>
-  new Intl.NumberFormat("en-US", { style: "currency", currency }).format(Number(amount));
+export const formatMoney = (amount: number | string, currency = "CAD") => {
+  const n = Number(amount);
+  return new Intl.NumberFormat("en-CA", { style: "currency", currency, currencyDisplay: "narrowSymbol", minimumFractionDigits: Number.isInteger(n) ? 0 : 2, maximumFractionDigits: 2 }).format(n);
+};
 
 export const prefersReducedMotion = () =>
   typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;

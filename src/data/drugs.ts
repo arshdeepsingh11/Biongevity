@@ -1,7 +1,7 @@
 import type { CatalogProduct, Collection } from "./types";
 import type { IconName } from "@/components/ui/icons";
 
-/* Content: bioarodrugs.com/us (home, shop, protocols). Prices USD as listed Oct 2026.
+/* Content: bioarodrugs.com/us (home, shop, protocols). Amounts as listed Oct 2026, shown in the store currency (CAD) — confirm CAD pricing before launch.
    Each product links to its real page: https://bioarodrugs.com/us/products/<handle> */
 
 export const DRUGS_URL = "https://bioarodrugs.com/us";
@@ -28,7 +28,7 @@ export const GOALS: { id: string; label: string; icon: IconName }[] = [
 const RAW: Omit<CatalogProduct, "url">[] = [
   {
     handle: "longevity-plus", title: "LONgevity+", tagline: "NAD+ Booster", vendor: "BioAro Drugs", kind: "supplement",
-    price: 150, currency: "USD", category: "longevity", format: "Per 2 capsules", icon: "bolt", goals: ["longevity", "energy"],
+    price: 150, currency: "CAD", category: "longevity", format: "Per 2 capsules", icon: "bolt", goals: ["longevity", "energy"],
     summary: "Cellular energy formula featuring NMN, Resveratrol, CoQ10, Curcumin, Vitamin D3, and Vitamin B12.",
     directions: "Take 2 capsules daily with food, or as directed on the product label.",
     ingredients: [
@@ -42,39 +42,39 @@ const RAW: Omit<CatalogProduct, "url">[] = [
   },
   {
     handle: "glutara", title: "Glutara", tagline: "Advanced Liposomal Delivery", vendor: "BioAro Drugs", kind: "supplement",
-    price: 50, currency: "USD", category: "daily-foundations", format: "Per 1 sachet", icon: "droplet", goals: ["recovery", "energy"],
+    price: 50, currency: "CAD", category: "daily-foundations", format: "Per 1 sachet", icon: "droplet", goals: ["recovery", "energy"],
     summary: "High-absorption antioxidant formula featuring Liposomal Glutathione, Vitamin C, Hyaluronic Acid, B vitamins, and Piperine.",
     directions: "Mix 1 sachet with water daily, or as directed on the product label.",
   },
   {
     handle: "sleepo", title: "SleepO", tagline: "Sleep Support", vendor: "BioAro Drugs", kind: "supplement",
-    price: 25, currency: "USD", category: "sleep-calm", format: "1 spray", icon: "moon", goals: ["sleep", "recovery"],
+    price: 25, currency: "CAD", category: "sleep-calm", format: "1 spray", icon: "moon", goals: ["sleep", "recovery"],
     summary: "Helps reset the body's sleep-wake cycle, promoting deeper, more restorative rest.",
   },
   {
     handle: "creagen-brain-boost", title: "Creagen Brain Boost", tagline: "Creatine + Magnesium + B12", vendor: "BioAro Drugs", kind: "supplement",
-    price: 50, currency: "USD", category: "focus", format: "Per 1 sachet", icon: "brain", goals: ["focus", "energy"],
+    price: 50, currency: "CAD", category: "focus", format: "Per 1 sachet", icon: "brain", goals: ["focus", "energy"],
     summary: "Performance support formula featuring Creatine Monohydrate, Magnesium Glycinate, and Vitamin B12.",
   },
   {
     handle: "creagen-femme-energy", title: "Creagen Femme Energy", tagline: "Women's Health · Energy Support", vendor: "BioAro Drugs", kind: "supplement",
-    price: 50, currency: "USD", category: "energy", format: "Per 1 sachet", icon: "sparkle", goals: ["womens-health", "energy", "recovery"],
+    price: 50, currency: "CAD", category: "energy", format: "Per 1 sachet", icon: "sparkle", goals: ["womens-health", "energy", "recovery"],
     summary: "Women-focused creatine support formula featuring Creatine Monohydrate, Ferrous Bisglycinate, and Vitamin B12.",
   },
   {
     handle: "creagen-raw-power", title: "Creagen Raw Power", tagline: "6g Creatine Monohydrate", vendor: "BioAro Drugs", kind: "supplement",
-    price: 50, currency: "USD", category: "performance", format: "Per 1 sachet", icon: "dumbbell", goals: ["performance"],
+    price: 50, currency: "CAD", category: "performance", format: "Per 1 sachet", icon: "dumbbell", goals: ["performance"],
     summary: "Creatine monohydrate formula designed to support strength, power, and athletic performance.",
   },
   {
     handle: "creagen-pro-power", title: "Creagen Pro Power", tagline: "Performance Blend", vendor: "BioAro Drugs", kind: "supplement",
-    price: 50, currency: "USD", category: "performance", format: "Per 1 sachet", icon: "bolt", goals: ["performance", "recovery"],
+    price: 50, currency: "CAD", category: "performance", format: "Per 1 sachet", icon: "bolt", goals: ["performance", "recovery"],
     summary: "Advanced performance formula featuring Creatine Monohydrate, Beta-Alanine, and essential electrolytes.",
     directions: "Mix 1 sachet with water daily, during or after training, or as directed on the product label.",
   },
   {
     handle: "cellomega-plus", title: "CellOmega+", tagline: "Essential Omega Wellness", vendor: "BioAro Drugs", kind: "supplement",
-    price: 99, currency: "USD", category: "longevity", format: "Per 2 capsules", icon: "heart", goals: ["longevity", "focus"],
+    price: 99, currency: "CAD", category: "longevity", format: "Per 2 capsules", icon: "heart", goals: ["longevity", "focus"],
     summary: "Targeted nutritional support for the heart, brain, and cellular function with omega-3s, antioxidants, and essential nutrients.",
     directions: "Take 2 capsules daily with meals, or as directed by a healthcare professional.",
   },

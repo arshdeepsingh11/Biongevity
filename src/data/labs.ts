@@ -2,7 +2,7 @@ import type { CatalogProduct, Collection } from "./types";
 import type { IconName } from "@/components/ui/icons";
 import { slugify } from "@/lib/utils";
 
-/* Content: bioarolabs.com (home, /shop, categories). Prices USD as listed Oct 2026.
+/* Content: bioarolabs.com (home, /shop, categories). Amounts as listed Oct 2026, shown in the store currency (CAD) — confirm CAD pricing before launch.
    Each test links to its real page: https://bioarolabs.com/shop?test=<slug> */
 
 export const LABS_URL = "https://bioarolabs.com";
@@ -81,7 +81,7 @@ export const LAB_TESTS: CatalogProduct[] = ROWS.map(([title, price, category, be
   vendor: "BioAro Labs",
   kind: "lab-test",
   price,
-  currency: "USD",
+  currency: "CAD",
   category,
   bestFor,
   summary: bestFor ?? LAB_COLLECTIONS.find((c) => c.handle === category)?.description ?? "",
