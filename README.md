@@ -56,6 +56,7 @@ npm run build      # static site → ./out
 | **BioAro Drugs** | AI protocol builder · transparent dosing charts · science & quality |
 | **Global Clinic** | Journey · Virtual Clinic with 7-day BP tracker · UAE assessments · interactive world map |
 | **Shop** | Plan Studio live plan builder · Test / Package / Program ladder · one search across 63 items · site-wide bag with 3/6/12-month terms · prices in CAD |
+| **Xevyo AI** | Ctrl X command bar · highlight any text to ask · page-aware smart questions · voice ask · AI plan review in the bag |
 | **Design** | Champagne theme · Phosphor icons · SVG charts · floating 3D particle field · Magic UI–style motion |
 
 ## ◆ Search & AI discoverability
@@ -70,7 +71,7 @@ npm run build      # static site → ./out
 | Variable | Purpose |
 |---|---|
 | `NEXT_PUBLIC_XEVYO_URL` | AI assistant endpoint |
-| `NEXT_PUBLIC_XEVYO_PUBLIC_KEY` | Publishable key (optional) |
+| `NEXT_PUBLIC_XEVYO_PUBLIC_KEY` | Publishable `xk-` key — browser-safe, domain-locked |
 | `NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN` | Enables Shopify cart permalinks |
 | `NEXT_PUBLIC_CONTACT_ENDPOINT` | Contact form webhook |
 | `NEXT_PUBLIC_SITE_URL` | Canonical domain |
