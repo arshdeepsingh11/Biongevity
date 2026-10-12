@@ -55,7 +55,7 @@ npm run build      # static site → ./out
 | **BioAro Labs** | AI intelligence flow · 10 Bio families · full catalogue · packages · test matcher |
 | **BioAro Drugs** | AI protocol builder · transparent dosing charts · science & quality |
 | **Global Clinic** | Journey · Virtual Clinic with 7-day BP tracker · UAE assessments · interactive world map |
-| **Shop** | Programs comparison · health packages · 8-step match quiz |
+| **Shop** | Plan Studio live plan builder · Test / Package / Program ladder · one search across 63 items · site-wide bag with 3/6/12-month terms · prices in CAD |
 | **Design** | Champagne theme · Phosphor icons · SVG charts · floating 3D particle field · Magic UI–style motion |
 
 ## ◆ Search & AI discoverability
@@ -75,6 +75,8 @@ npm run build      # static site → ./out
 | `NEXT_PUBLIC_CONTACT_ENDPOINT` | Contact form webhook |
 | `NEXT_PUBLIC_SITE_URL` | Canonical domain |
 
+Store settings (currency, program term prices, refund and shipping text) live in `src/config/store.ts`.
+
 > All values are public in a static build — never store secrets in `.env`.
 
 ## ◆ Project structure
@@ -84,7 +86,7 @@ src/
 ├─ app/          routes · sitemap · robots
 ├─ components/   ai · charts · fx · dept · bioaro · shop · clinic · layout · ui
 ├─ data/         departments · labs · drugs · stats · clinic
-└─ lib/          seo · commerce · quiz · env
+└─ lib/          seo · commerce · catalog · intent · env
 ```
 
 <div align="center">
