@@ -23,12 +23,12 @@ export function CatalogTab({ onMatch }: { kind: "tests"; onMatch: () => void }) 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Stat v={String(LAB_TESTS.length)} l="tests across BioAro Labs" accent />
         <Stat v={String(byCat.length)} l="categories, from genome to vitamins" />
-        <Stat v={`$${Math.min(...LAB_TESTS.map((t) => t.price))}`} l="lowest single-marker price (USD)" />
+        <Stat v={`$${Math.min(...LAB_TESTS.map((t) => t.price))}`} l="lowest single-marker price (CAD)" />
         <Stat v="100X" l="deepest whole-genome coverage offered" src="bioarolabs.com" />
       </div>
       <div className="grid gap-5 lg:grid-cols-2">
         <div className="rounded-[28px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]"><div className="mb-4 text-[14px] font-semibold">Tests by category</div><Donut data={byCat.map((x) => ({ label: short(x.c.title), value: x.n }))} center={String(LAB_TESTS.length)} sub="tests" size={170} /></div>
-        <div className="rounded-[28px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]"><div className="mb-4 text-[14px] font-semibold">Starting price by category (USD)</div><BarList data={byCat.sort((a, b) => a.from - b.from).map((x) => ({ label: short(x.c.title), value: x.from }))} format={(v) => `$${Math.round(v)}`} /></div>
+        <div className="rounded-[28px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]"><div className="mb-4 text-[14px] font-semibold">Starting price by category (CAD)</div><BarList data={byCat.sort((a, b) => a.from - b.from).map((x) => ({ label: short(x.c.title), value: x.from }))} format={(v) => `$${Math.round(v)}`} /></div>
       </div>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">{LAB_STEPS.map((s) => <div key={s.n} className="rounded-2xl bg-canvas p-4"><div className="text-[12px] font-semibold text-accent">{s.n}</div><div className="mt-1 text-[15px] font-semibold">{s.t}</div><div className="mt-1 text-[13px] text-muted">{s.d}</div></div>)}</div>
@@ -46,7 +46,7 @@ export function CatalogTab({ onMatch }: { kind: "tests"; onMatch: () => void }) 
           </div>
         </div>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{visible.map((p) => <ProductCard key={p.handle} p={p} />)}</div>
-        {!shown.length && <div className="mt-6 rounded-2xl bg-canvas p-6 text-center text-[14px] text-muted">No tests match. Try another word or <button onClick={onMatch} className="font-semibold text-accent">take the match quiz</button>.</div>}
+        {!shown.length && <div className="mt-6 rounded-2xl bg-canvas p-6 text-center text-[14px] text-muted">No tests match. Try another word or <button onClick={onMatch} className="font-semibold text-accent">build a plan in Plan Studio</button>.</div>}
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           {shown.length > 9 && <button onClick={() => setAll((v) => !v)} className="btn-light">{all ? "Show less" : `Show all ${shown.length}`}</button>}
           <a href={`${LABS_URL}/shop`} target="_blank" rel="noopener" className="btn-light">Open bioarolabs.com<Icon name="arrow-up-right" size={14} /></a>
