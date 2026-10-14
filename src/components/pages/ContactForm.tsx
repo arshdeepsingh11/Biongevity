@@ -8,7 +8,7 @@ import { DEPARTMENTS, PACKAGES, deptById, scoreDepartments } from "@/data/health
 import { CLINICS } from "@/data/clinic";
 import { env } from "@/lib/env";
 
-const INTERESTS = ["Not sure yet", ...PACKAGES.map((p) => p.name), ...DEPARTMENTS.map((d) => d.name), ...CLINICS.map((c) => c.name), "BioAro Labs testing", "BioAro Drugs protocol", "Clinic visit"];
+const INTERESTS = ["Not sure yet", ...PACKAGES.map((p) => p.name), ...DEPARTMENTS.map((d) => d.name), ...CLINICS.map((c) => c.name), "BioAro Labs testing", "BioAro Drugs protocol", "Clinic visit", "BioELR demo", "BioELR proposal", "Family member / parent care"];
 const EMPTY = { name: "", email: "", phone: "", interest: "Not sure yet", msg: "" };
 
 /**
@@ -29,7 +29,7 @@ export function ContactForm() {
   const [sent, setSent] = useState(false);
   useEffect(() => {
     const i = sp.get("interest"), plan = sp.get("plan");
-    if (plan) { setF((s) => ({ ...s, msg: `My plan:\n${plan}` })); return; }
+    if (plan) { setF((s) => ({ ...s, interest: i && INTERESTS.includes(i) ? i : s.interest, msg: plan.startsWith("BioELR") ? plan : `My plan:\n${plan}` })); return; }
     if (i) setF((s) => ({ ...s, interest: INTERESTS.includes(i) ? i : s.interest, msg: INTERESTS.includes(i) ? s.msg : `Interested in: ${i}` }));
   }, [sp]);
   const set = (k: keyof typeof EMPTY) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => setF((s) => ({ ...s, [k]: e.target.value }));
