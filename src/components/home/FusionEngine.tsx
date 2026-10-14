@@ -62,18 +62,18 @@ export function FusionEngine() {
         <div className="scanline" />
         <div className="no-scrollbar relative overflow-x-auto"><div className="relative w-full min-w-[760px] md:min-w-0" style={{ aspectRatio: `${W} / ${H}` }}>
           <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 h-full w-full" aria-hidden>
-            <defs><linearGradient id="fe" x1="0" x2="1"><stop offset="0" stopColor="#C2A16A" /><stop offset=".6" stopColor="#97703F" /><stop offset="1" stopColor="#7FA083" /></linearGradient></defs>
+            <defs><linearGradient id="fe" x1="0" x2="1"><stop offset="0" stopColor="rgb(var(--c-gold))" /><stop offset=".6" stopColor="rgb(var(--c-accent))" /><stop offset="1" stopColor="rgb(var(--c-teal-soft))" /></linearGradient></defs>
             {edges.map(([a, b]) => {
               const d = curve(byId[a], byId[b]), on = edgeLit(a, b);
               return (
                 <g key={a + b}>
-                  <path d={d} fill="none" stroke="#97703F" strokeOpacity={on ? 0.25 : 0.08} strokeWidth={on ? 2 : 1.2} />
+                  <path d={d} fill="none" stroke="rgb(var(--c-accent))" strokeOpacity={on ? 0.25 : 0.08} strokeWidth={on ? 2 : 1.2} />
                   <path d={d} fill="none" stroke="url(#fe)" strokeWidth={on ? 2.4 : 1} strokeOpacity={on ? 1 : 0.35} strokeDasharray="5 9" style={{ animation: `flow ${on ? 1 : 2.6}s linear infinite`, transition: "stroke-width .3s, stroke-opacity .3s" }} />
-                  {on && <circle r="3.5" fill="#97703F"><animateMotion dur="1.8s" repeatCount="indefinite" path={d} /></circle>}
+                  {on && <circle r="3.5" fill="rgb(var(--c-accent))"><animateMotion dur="1.8s" repeatCount="indefinite" path={d} /></circle>}
                 </g>
               );
             })}
-            <circle cx={640} cy={290} r="78" fill="none" stroke="#C2A16A" strokeOpacity=".35" strokeDasharray="2 8" style={{ transformOrigin: "640px 290px", animation: "spinSlow 24s linear infinite" }} />
+            <circle cx={640} cy={290} r="78" fill="none" stroke="rgb(var(--c-gold))" strokeOpacity=".35" strokeDasharray="2 8" style={{ transformOrigin: "640px 290px", animation: "spinSlow 24s linear infinite" }} />
           </svg>
           {NODES.map((n) => {
             const on = lit.has(n.id), active = hot === n.id;

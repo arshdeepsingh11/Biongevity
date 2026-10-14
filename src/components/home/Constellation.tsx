@@ -36,16 +36,16 @@ export function Constellation() {
   return (
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_340px]">
       <div className="hud relative overflow-hidden rounded-[28px] bg-white/85 shadow-card ring-1 ring-ink/[0.06] backdrop-blur">
-        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(241,230,209,.9),transparent_60%)]" />
+        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgb(var(--c-gold-soft)/.9),transparent_60%)]" />
         <div className="no-scrollbar relative overflow-x-auto"><div className="relative w-full min-w-[680px] md:min-w-0" style={{ aspectRatio: `${W} / ${H}` }}>
           <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 h-full w-full" aria-hidden>
-            <ellipse cx={CX} cy={CY} rx="190" ry="150" fill="none" stroke="#97703F" strokeOpacity=".12" strokeDasharray="3 6" />
-            <ellipse cx={CX} cy={CY} rx="430" ry="275" fill="none" stroke="#97703F" strokeOpacity=".08" strokeDasharray="2 8" />
+            <ellipse cx={CX} cy={CY} rx="190" ry="150" fill="none" stroke="rgb(var(--c-accent))" strokeOpacity=".12" strokeDasharray="3 6" />
+            <ellipse cx={CX} cy={CY} rx="430" ry="275" fill="none" stroke="rgb(var(--c-accent))" strokeOpacity=".08" strokeDasharray="2 8" />
             {MARKERS.flatMap((mk) => mk.systems.map((sid) => {
               const a = MK_POS[mk.id], b = SYS_POS[sid], on = lit.has(`m:${mk.id}`) && lit.has(`s:${sid}`);
-              return <line key={mk.id + sid} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke={on ? "#97703F" : "#97703F"} strokeOpacity={on ? 0.85 : 0.07} strokeWidth={on ? 1.8 : 1} strokeDasharray={on ? "4 6" : undefined} style={on ? { animation: "flow 1.2s linear infinite" } : undefined} />;
+              return <line key={mk.id + sid} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke={on ? "rgb(var(--c-accent))" : "rgb(var(--c-accent))"} strokeOpacity={on ? 0.85 : 0.07} strokeWidth={on ? 1.8 : 1} strokeDasharray={on ? "4 6" : undefined} style={on ? { animation: "flow 1.2s linear infinite" } : undefined} />;
             }))}
-            {SYSTEMS.map((s) => <line key={s.id} x1={CX} y1={CY} x2={SYS_POS[s.id].x} y2={SYS_POS[s.id].y} stroke="#7FA083" strokeOpacity={lit.has(`s:${s.id}`) ? 0.6 : 0.12} />)}
+            {SYSTEMS.map((s) => <line key={s.id} x1={CX} y1={CY} x2={SYS_POS[s.id].x} y2={SYS_POS[s.id].y} stroke="rgb(var(--c-teal-soft))" strokeOpacity={lit.has(`s:${s.id}`) ? 0.6 : 0.12} />)}
           </svg>
           <div className="absolute left-1/2 top-1/2 grid h-[16%] min-h-[56px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-iri text-white shadow-glow" style={{ aspectRatio: "1" }}>
             <span className="text-center"><Icon name="user" size={20} weight="duotone" className="mx-auto" /><span className="block text-[10px] font-semibold sm:text-[12px]">You</span></span>

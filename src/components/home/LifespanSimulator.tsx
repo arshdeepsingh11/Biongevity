@@ -103,7 +103,7 @@ function Slider({ label, v, set, min, max, step, fmt }: { label: string; v: numb
   return (
     <label className="block">
       <span className="flex items-baseline justify-between text-[13.5px]"><span className="font-semibold">{label}</span><span className="font-mono text-[13px] tabular-nums text-accent">{fmt(v)}</span></span>
-      <input type="range" min={min} max={max} step={step} value={v} onChange={(e) => set(Number(e.target.value))} className="mt-1.5 w-full accent-[#97703F]" aria-label={label} />
+      <input type="range" min={min} max={max} step={step} value={v} onChange={(e) => set(Number(e.target.value))} className="mt-1.5 w-full accent-accent" aria-label={label} />
     </label>
   );
 }
@@ -113,9 +113,9 @@ function Risk({ title, icon, rr, note, src }: { title: string; icon: string; rr:
   return (
     <div className="rounded-[22px] bg-white p-4 shadow-card ring-1 ring-ink/[0.06]">
       <div className="flex items-center gap-2 text-[14px] font-semibold"><Icon name={icon} size={18} weight="duotone" className="text-accent" />{title}</div>
-      <div className={`mt-2 text-[30px] font-semibold tabular-nums ${good ? "text-teal" : "text-[#B4691F]"}`}>×{rr.toFixed(2)}</div>
+      <div className={`mt-2 text-[30px] font-semibold tabular-nums ${good ? "text-teal" : "text-warn"}`}>×{rr.toFixed(2)}</div>
       <div className="text-[12px] text-muted">relative risk · {note}</div>
-      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-ink/[0.07]"><motion.div className={`h-full rounded-full ${good ? "bg-teal" : "bg-[#C9895B]"}`} animate={{ width: `${pct}%` }} /></div>
+      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-ink/[0.07]"><motion.div className={`h-full rounded-full ${good ? "bg-teal" : "bg-tangerine"}`} animate={{ width: `${pct}%` }} /></div>
       <div className="mt-2 text-[10px] leading-snug text-faint">{src}</div>
     </div>
   );

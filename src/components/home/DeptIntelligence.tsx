@@ -11,7 +11,7 @@ import { Icon } from "@/components/ui/Icon";
 /** Tiny chart for a tile, drawn from the department's cited evidence spec. */
 function MiniViz({ spec }: { spec: ChartSpec }) {
   if (spec.kind === "waffle") return <div className="grid grid-cols-10 gap-[3px]">{Array.from({ length: spec.of }, (_, i) => <span key={i} className={`aspect-square rounded-[2px] ${i < spec.hit ? "bg-accent" : "bg-ink/10"}`} />)}</div>;
-  if (spec.kind === "donut") { const t = spec.data.reduce((a, d) => a + d.value, 0), f = spec.data[0].value / t, C = 2 * Math.PI * 16; return <svg viewBox="0 0 40 40" className="h-12 w-12 -rotate-90"><circle cx="20" cy="20" r="16" fill="none" stroke="#221D16" strokeOpacity=".08" strokeWidth="6" /><circle cx="20" cy="20" r="16" fill="none" stroke="#97703F" strokeWidth="6" strokeDasharray={`${f * C} ${C}`} /></svg>; }
+  if (spec.kind === "donut") { const t = spec.data.reduce((a, d) => a + d.value, 0), f = spec.data[0].value / t, C = 2 * Math.PI * 16; return <svg viewBox="0 0 40 40" className="h-12 w-12 -rotate-90"><circle cx="20" cy="20" r="16" fill="none" stroke="rgb(var(--c-ink))" strokeOpacity=".08" strokeWidth="6" /><circle cx="20" cy="20" r="16" fill="none" stroke="rgb(var(--c-accent))" strokeWidth="6" strokeDasharray={`${f * C} ${C}`} /></svg>; }
   const data = spec.data, m = Math.max(...data.map((d) => d.value));
   return <div className="space-y-1">{data.slice(0, 3).map((d) => <div key={d.label} className="flex items-center gap-2"><span className="w-[46%] truncate text-[10px] text-muted">{d.label}</span><span className="h-1.5 flex-1 overflow-hidden rounded-full bg-ink/[0.07]"><span className="block h-full rounded-full bg-iri-x" style={{ width: `${(d.value / m) * 100}%` }} /></span></div>)}</div>;
 }
