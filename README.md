@@ -24,6 +24,15 @@
 | **14**<br/><sub>departments</sub> | **47**<br/><sub>BioAro lab tests</sub> | **8**<br/><sub>bioactive formulas</sub> | **30**<br/><sub>static pages</sub> |
 | **17**<br/><sub>connected biomarkers</sub> | **3**<br/><sub>global clinics</sub> | **0**<br/><sub>backend servers</sub> | **100%**<br/><sub>JSON-LD coverage</sub> |
 
+## ◆ Themes & AI (Biongevity 2.0)
+
+- **4 themes** — Champagne (default), Midnight (dark), Mono (black & white), Aurora (cool, minimal). Switch from the palette button in the top header. Colours live **only** in `src/styles/themes.css`; Tailwind reads them as CSS variables. `npm run check:colors` fails on hard-coded hex.
+- **AI is visible everywhere** — the Xevyo orb (`components/ai/XevyoOrb.tsx`), `AIBadge`, `AISurface`, "✦ Ask about this" on every section, "Summarise this page" on every hero, a 25-second nudge, and "Your next step" at the end of every page.
+- **Grounded answers** — `/site-index.json` is built at `next build`; `lib/retrieve.ts` (BM25, on-device) sends the top 3 passages to Xevyo and the chat shows them as sources. English / 日本語 reply switch in the chat.
+- **New pages** — `/platform/` (digital twin overview → member app), `/tools/` (lab explainer, visit prep, specialist router), `/bioelr/` (modules + configurator → proposal), `/ai/` (governance, model cards), `/login/` (→ member app).
+- **Member app** — `NEXT_PUBLIC_APP_URL` (default `https://app.biongevity.com`). The website never handles passwords.
+- Copy rules: `docs/COPY_RULES.md`.
+
 ## ◆ Architecture
 
 ```mermaid
