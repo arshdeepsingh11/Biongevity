@@ -1,36 +1,13 @@
 @import "@fontsource-variable/dm-sans";
 @import "@fontsource-variable/dm-sans/wght-italic.css";
+@import "../styles/themes.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/*
- * CHAMPAGNE — premium light theme. Ivory surfaces, warm charcoal ink, champagne-bronze accent, sage secondary.
- * No dark blocks: "feature surfaces" (.bg-navy) are warm champagne panels with ink text.
- */
+/* Colours live in src/styles/themes.css (four themes). Only layout tokens are set here. */
 :root {
-  --bg: #fffdf9;
-  --bg-subtle: #faf6ef;
-  --surface: rgba(255, 253, 249, 0.78);
-  --surface-solid: #ffffff;
-  --border: rgba(60, 44, 20, 0.08);
-  --border-strong: rgba(60, 44, 20, 0.14);
-  --ink: #221d16;
-  --muted: #6b6155;
-  --faint: #a39889;
-  --navy: #f4ecdf;
-  --teal: #5e7f62;
-  --gold: #c2a16a;
-  --accent: #97703f;
-  --accent-soft: #b8925c;
-  --accent-glow: rgba(151, 112, 63, 0.18);
-  --accent-light: #f7efe3;
-  --warm-1: #c2a16a;
-  --warm-2: #c9895b;
-  --violet: var(--accent);
-  --canvas: var(--bg-subtle);
-  --iri: linear-gradient(90deg, #8a6a3a, #b08a55 50%, #7fa083);
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --mx: 50vw;
@@ -40,26 +17,27 @@
 html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
 body {
   background: var(--bg);
+  transition: background-color .35s ease, color .35s ease;
   color: var(--ink);
   font-family: "DM Sans Variable", "DM Sans", sans-serif;
-  color-scheme: light;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
-::selection { background: rgba(151, 112, 63, 0.16); color: var(--ink); }
+::selection { background: rgb(var(--c-accent) / 0.18); color: var(--ink); }
 :focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; border-radius: 8px; }
 
 @layer components {
   .container-x { @apply mx-auto w-full max-w-[1200px] px-4 sm:px-6; }
   .eyebrow { @apply text-[12px] font-semibold uppercase tracking-[0.14em] text-accent; }
-  .h-display { @apply text-[44px] font-semibold leading-[1.02] tracking-[-0.035em] sm:text-[64px] lg:text-[84px]; }
+  .h-display { letter-spacing: var(--heading-track); @apply text-[44px] font-semibold leading-[1.02] sm:text-[64px] lg:text-[84px]; }
   .h-section { @apply text-[34px] font-semibold leading-[1.06] tracking-[-0.03em] sm:text-[48px] lg:text-[56px]; }
   .lede { @apply text-[17px] leading-[1.5] text-muted sm:text-[19px]; }
   .card { @apply relative rounded-4xl border border-ink/[0.08] bg-white/[0.72] shadow-card backdrop-blur-xl transition-[transform,box-shadow,border-color] duration-500; }
   .card:hover { @apply border-accent/30 shadow-glow; }
   .glass { @apply border border-ink/[0.08] bg-white/[0.72] backdrop-blur-[22px] backdrop-saturate-[1.6]; }
   .btn { @apply inline-flex h-11 items-center justify-center gap-2 rounded-full px-5 text-[15px] font-medium transition-all duration-300 active:scale-[0.97]; }
-  .btn-dark { @apply btn bg-accent text-white shadow-[0_6px_20px_rgba(151,112,63,.28)] hover:bg-[#7E5C31] hover:shadow-[0_10px_28px_rgba(151,112,63,.38)]; }
+  .btn-dark { @apply btn bg-accent bg-btn-grad text-on-accent shadow-[0_6px_20px_rgb(var(--c-accent)/.26)] hover:bg-accent-deep hover:shadow-[0_10px_28px_rgb(var(--c-accent)/.36)] hover:brightness-[1.06]; }
+  .btn-ai { @apply btn bg-ai bg-ai-grad text-on-ai shadow-ai hover:brightness-110; }
   .btn-light { @apply btn border border-ink/[0.10] bg-white/[0.72] text-ink backdrop-blur-xl hover:border-accent/40 hover:text-accent; }
   .chip { @apply inline-flex h-9 items-center gap-1.5 rounded-full border px-3.5 text-[14px] font-medium transition-colors; }
   .text-iri { background: var(--iri); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -69,7 +47,7 @@ body {
 [data-scan] { position: relative; overflow: hidden; isolation: isolate; }
 [data-scan]::after {
   content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
-  background: linear-gradient(100deg, transparent 30%, rgba(194,161,106,.14) 45%, rgba(151,112,63,.14) 55%, transparent 70%);
+  background: linear-gradient(100deg, transparent 30%, rgb(var(--c-gold) / .14) 45%, rgb(var(--c-ai) / .14) 55%, transparent 70%);
   transform: translateX(-120%);
 }
 [data-scan].is-scanned::after { animation: scan 1.4s cubic-bezier(.4,0,.2,1) 1; }
@@ -94,7 +72,7 @@ body {
 /* Cursor-tracked edge light on cards (set by AIInteractionLayer) */
 .card::before {
   content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0; opacity: 0;
-  background: radial-gradient(420px circle at var(--cx, 50%) var(--cy, 50%), rgba(151,112,63,.16), transparent 45%);
+  background: radial-gradient(420px circle at var(--cx, 50%) var(--cy, 50%), rgb(var(--c-accent) / .16), transparent 45%);
   transition: opacity .4s;
 }
 .card:hover::before { opacity: 1; }
@@ -111,22 +89,64 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 @keyframes flow { to { stroke-dashoffset: -40; } }
 @media (prefers-reduced-motion: reduce) { [class*="animate-"], [style*="animation"] { animation: none !important; } }
 
-/* Feature surfaces — warm champagne panels. Light-on-dark utilities inside them are re-mapped to ink. */
-.bg-navy { background-image: linear-gradient(160deg, #fbf6ec 0%, #f4ecdf 60%, #efe4d1 100%); color: var(--ink); border: 1px solid rgba(151, 112, 63, 0.14); }
+/* Feature surfaces — soft theme panels. Light-on-dark utilities inside them are re-mapped to ink. */
+.bg-navy { background-image: var(--g-feature); color: var(--ink); border: 1px solid rgb(var(--c-accent) / 0.14); }
 .bg-navy .text-white:not([class*="bg-"]), .bg-navy.text-white { color: var(--ink); }
 .bg-navy [class*="text-white\/"]:not([class*="bg-"]) { color: var(--muted); }
-.bg-navy [class*="bg-white\/5"], .bg-navy [class*="bg-white\/10"] { background-color: rgba(255, 255, 255, 0.7); }
-.bg-navy [class*="ring-white"], .bg-navy [class*="border-white"] { --tw-ring-color: rgba(151, 112, 63, 0.15); border-color: rgba(151, 112, 63, 0.15); }
+.bg-navy [class*="bg-white\/5"], .bg-navy [class*="bg-white\/10"] { background-color: rgb(var(--c-surface) / 0.7); }
+.bg-navy [class*="ring-white"], .bg-navy [class*="border-white"] { --tw-ring-color: rgb(var(--c-accent) / 0.15); border-color: rgb(var(--c-accent) / 0.15); }
 .bg-navy .text-teal-soft { color: var(--teal); }
 
 /* ───── Futuristic HUD primitives (light champagne) ───── */
 .hud-label { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
-.grid-bg { background-image: linear-gradient(rgba(151,112,63,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(151,112,63,.07) 1px, transparent 1px); background-size: 32px 32px; }
+.grid-bg { background-image: linear-gradient(rgb(var(--c-accent) / .07) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--c-accent) / .07) 1px, transparent 1px); background-size: 32px 32px; }
 .hud { position: relative; }
-.hud::before, .hud::after { content: ""; position: absolute; width: 14px; height: 14px; border-color: rgba(151,112,63,.55); pointer-events: none; z-index: 3; }
+.hud::before, .hud::after { content: ""; position: absolute; width: 14px; height: 14px; border-color: rgb(var(--c-accent) / .55); pointer-events: none; z-index: 3; }
 .hud::before { top: 8px; left: 8px; border-top: 1.5px solid; border-left: 1.5px solid; border-top-left-radius: 4px; }
 .hud::after { bottom: 8px; right: 8px; border-bottom: 1.5px solid; border-right: 1.5px solid; border-bottom-right-radius: 4px; }
 .scanline { position: absolute; inset: 0; pointer-events: none; overflow: hidden; border-radius: inherit; }
-.scanline::after { content: ""; position: absolute; left: 0; right: 0; height: 30%; top: -30%; background: linear-gradient(180deg, transparent, rgba(194,161,106,.10), transparent); animation: scanY 6s linear infinite; }
+.scanline::after { content: ""; position: absolute; left: 0; right: 0; height: 30%; top: -30%; background: linear-gradient(180deg, transparent, rgb(var(--c-ai) / .10), transparent); animation: scanY 6s linear infinite; }
 @keyframes scanY { to { top: 100%; } }
 @keyframes caret { 50% { opacity: 0; } }
+
+/* ───── Theme details ───── */
+[data-theme="midnight"] img, [data-theme="midnight"] video { filter: brightness(.9); }
+[data-theme="midnight"] .card { box-shadow: none; border-color: rgb(255 255 255 / .08); }
+[data-theme="mono"] .text-iri { background: none; color: var(--ink); }
+[data-theme="aurora"] .card { box-shadow: 0 1px 2px rgb(var(--c-shadow) / .03), 0 8px 24px rgb(var(--c-shadow) / .04); }
+[data-theme="aurora"] section[data-ai] { scroll-margin-top: 80px; }
+
+/* ───── AI signature: anything Xevyo powers ───── */
+.text-ai-grad { background: var(--g-ai); -webkit-background-clip: text; background-clip: text; color: transparent; }
+[data-theme="mono"] .text-ai-grad { background: none; color: var(--ink); }
+.ai-ring { box-shadow: 0 0 0 1px rgb(var(--c-ai) / .22), 0 10px 30px rgb(var(--c-ai) / .12); }
+.ai-glow { position: absolute; pointer-events: none; border-radius: 9999px; filter: blur(60px); opacity: .22; background: var(--g-ai); }
+@keyframes orbSpin { to { transform: rotate(360deg); } }
+@keyframes orbFloat { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-2px) scale(1.03); } }
+
+/* ───── Print (visit-prep brief) ───── */
+@media print {
+  body { padding: 0 !important; background: #fff !important; }
+  body * { visibility: hidden !important; }
+  .print-area, .print-area * { visibility: visible !important; }
+  .print-area { position: absolute; inset: 0 auto auto 0; width: 100%; box-shadow: none !important; border: 0 !important; color: #000 !important; background: #fff !important; }
+  .no-print { display: none !important; }
+}
+
+/* ───── Xevyo orb — the face of the AI (glass sphere, colours from the theme) ───── */
+.orb { position: relative; display: inline-block; flex-shrink: 0; border-radius: 9999px; isolation: isolate; overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 26%, rgb(255 255 255 / .95) 0 7%, rgb(255 255 255 / 0) 24%),
+    radial-gradient(circle at 72% 78%, rgb(var(--c-ai-2) / .95), rgb(var(--c-ai-2) / 0) 62%),
+    radial-gradient(circle at 26% 74%, rgb(var(--c-ai-hi) / .95), rgb(var(--c-ai-hi) / 0) 58%),
+    radial-gradient(circle at 50% 45%, rgb(var(--c-ai)), rgb(var(--c-ai-2)));
+  box-shadow: inset 0 -3px 8px rgb(var(--c-ai-2) / .55), inset 0 2px 6px rgb(255 255 255 / .55), 0 3px 12px rgb(var(--c-ai) / .32); }
+.orb::before { content: ""; position: absolute; inset: 8%; border-radius: inherit; z-index: -1;
+  background: conic-gradient(from 0deg, transparent 0 20%, rgb(var(--c-ai-hi) / .85) 32%, transparent 48% 62%, rgb(var(--c-ai-2) / .7) 78%, transparent 92%);
+  filter: blur(2.5px); animation: orbSpin 7s linear infinite; mix-blend-mode: screen; }
+.orb::after { content: ""; position: absolute; left: 18%; top: 12%; width: 38%; height: 26%; border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgb(255 255 255 / .75), rgb(255 255 255 / 0) 70%); transform: rotate(-24deg); }
+.orb-live { animation: orbFloat 4.5s ease-in-out infinite; }
+.orb-halo { position: absolute; inset: -6px; border-radius: 9999px; pointer-events: none; border: 1.5px solid rgb(var(--c-ai) / .35); animation: haloPulse 2.8s ease-out infinite; }
+@keyframes haloPulse { 0% { transform: scale(.85); opacity: .9; } 100% { transform: scale(1.35); opacity: 0; } }
+.fx-calm .orb::before, .fx-calm .orb-halo { animation: none; }
