@@ -1,4 +1,37 @@
-fix(ai): accept OpenAI-style Xevyo endpoints and report the exact connection error|src/lib/xevyo.ts src/lib/env.ts
-fix(ai): show the setup reason in chat on localhost|src/components/ai/AIProvider.tsx
-docs: optional Xevyo model setting|.env.example
+docs(copy): copy rules for audience, claims and AI wording|docs/COPY_RULES.md
+feat(theme): four theme token sets (Champagne, Midnight, Mono, Aurora) in CSS variables|src/styles/themes.css
+feat(theme): Tailwind colours read theme variables, add on-accent, on-ai, ai and feature tokens|tailwind.config.ts
+refactor(theme): globals use theme variables; AI glow, orb and print styles|src/app/globals.css
+feat(theme): theme registry, no-flash init script and colour helpers|src/lib/theme.ts
+feat(theme): ThemeProvider and header theme switcher|src/components/theme/ThemeProvider.tsx src/components/theme/ThemeSwitcher.tsx src/app/providers.tsx
+refactor(charts): charts follow the theme palette|src/components/charts/Charts.tsx
+refactor(fx): particles, laser beam and confetti read theme colours live|src/components/fx/ParticleField.tsx src/components/fx/BeamFlow.tsx src/components/fx/Confetti.ts
+refactor(fx): effects use theme tokens instead of hex|src/components/fx/AIFlow.tsx src/components/fx/AppleDock.tsx src/components/fx/AuroraText.tsx src/components/fx/BorderBeam.tsx src/components/fx/DiaTextReveal.tsx src/components/fx/DotPattern.tsx src/components/fx/ElectricBorder.tsx src/components/fx/MagicCard.tsx src/components/fx/ProgressRing.tsx src/components/fx/ShimmerButton.tsx src/components/fx/ShineBorder.tsx src/components/fx/WorldMap.tsx
+refactor(home): home visuals use theme tokens|src/components/home/Constellation.tsx src/components/home/DeptIntelligence.tsx src/components/home/FusionEngine.tsx src/components/home/LifespanSimulator.tsx
+refactor(theme): clinic, department, shop and dashboard use theme tokens|src/components/clinic/ClinicTabs.tsx src/components/clinic/BPTracker.tsx src/components/dept/DeptTabs.tsx src/components/shop/PlanStudio.tsx src/components/shop/BagLayer.tsx src/components/pages/Dashboard.tsx src/components/bioaro/HealthPackages.tsx src/components/ui/MediaSlot.tsx
+fix(theme): text over photos and video stays white in every theme|src/components/media/FilmPlayer.tsx src/components/media/Stories.tsx
+chore(scripts): check:colors guard against hard-coded colours|scripts/check-colors.mjs package.json
+feat(ai): Xevyo orb, AI badge and AI surface — one visible AI identity|src/components/ai/XevyoOrb.tsx src/components/ai/AIBadge.tsx src/components/ai/AISurface.tsx
+feat(ai): "Ask about this" chip on every section and "Summarise this page" in heroes|src/components/ai/AskAboutChip.tsx src/components/ai/PageSummary.tsx src/components/ui/Section.tsx
+feat(ai): build-time site index and on-device BM25 retrieval|src/lib/siteIndex.ts src/lib/retrieve.ts src/app/site-index.json/route.ts
+feat(ai): grounded Xevyo answers with sources, Japanese replies and cached page summaries|src/lib/xevyo.ts src/components/ai/AIProvider.tsx
+feat(ai): chat panel with orb, EN/日本語 switch, sources and page summary|src/components/ai/AIAssistant.tsx
+feat(ai): AI panels, command bar, highlight chip and ask buttons use the orb|src/components/ai/AIPanel.tsx src/components/ai/CommandBar.tsx src/components/ai/AskSelection.tsx src/components/pages/AskButton.tsx src/components/ai/AIInteractionLayer.tsx
+feat(ai): gentle summary nudge and on-device "Your next step" strip|src/components/ai/AINudge.tsx src/components/ai/NextStep.tsx src/lib/interest.ts
+feat(app): NEXT_PUBLIC_APP_URL for the member app|src/lib/env.ts .env.example
+feat(layout): header Ask Xevyo, theme switcher and Sign in; footer AI legend and links|src/components/layout/Header.tsx src/components/layout/Footer.tsx
+feat(layout): no-flash theme script, nudge and next step in the root layout|src/app/layout.tsx
+feat(home): AI-first hero with ask bar, suggested questions and app links|src/components/home/AIHero.tsx
+feat(home): "Xevyo everywhere" section for platform, tools and BioELR|src/components/home/AIEverywhere.tsx src/app/page.tsx src/components/home/HomeSections.tsx
+feat(tools): lab reference ranges, on-device parser and Xevyo task hook|src/data/labRanges.ts src/hooks/useXevyoTask.ts
+feat(tools): /tools/ — lab-result explainer, visit-prep brief, specialist router|src/components/tools/AIOutput.tsx src/components/tools/LabExplainer.tsx src/components/tools/VisitPrep.tsx src/components/tools/SpecialistRouter.tsx src/app/tools/page.tsx
+feat(platform): /platform/ — seven layers, digital twin, scores and "Why this?"|src/data/platform.ts src/components/platform/PlatformParts.tsx src/app/platform/page.tsx
+feat(login): /login/ sends members, clinicians and family to the app|src/app/login/page.tsx
+feat(bioelr): /bioelr/ — AI, modules, interoperability and clinic configurator|src/data/bioelr.ts src/components/bioelr/Configurator.tsx src/app/bioelr/page.tsx src/components/pages/ContactForm.tsx
+feat(ai): /ai/ governance page with principles, evidence levels and model cards|src/data/governance.ts src/app/ai/page.tsx
+feat(nav): Platform, AI tools, BioELR and AI pages in Discover; page prompts|src/data/site.ts src/components/layout/SparkleNav.tsx src/lib/aiPrompts.ts
+content: remove athlete overlap and camera-vitals claim; mid-age wording|src/components/shop/Catalogue.tsx src/data/drugs.ts src/data/intelligence.ts src/data/health.ts src/app/app/page.tsx
+feat(ai): page summary on department and clinic heroes|src/app/precision-health/[dept]/page.tsx src/app/clinic/[slug]/page.tsx
+feat(seo): sitemap and llms.txt for platform, tools, BioELR and AI pages|src/app/sitemap.ts public/llms.txt
+docs: README — themes, AI and new pages|README.md
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt
