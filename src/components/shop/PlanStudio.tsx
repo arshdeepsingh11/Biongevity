@@ -88,7 +88,7 @@ export function PlanStudio() {
         </div>
         <label className="block">
           <span className="flex items-baseline justify-between"><span className="hud-label">4 · Budget</span><span className="font-mono text-[13px] text-accent">{formatMoney(budget)} CAD</span></span>
-          <input type="range" min={150} max={4000} step={50} value={budget} onChange={(e) => setBudget(Number(e.target.value))} className="mt-2 w-full accent-[#97703F]" aria-label="Budget" />
+          <input type="range" min={150} max={4000} step={50} value={budget} onChange={(e) => setBudget(Number(e.target.value))} className="mt-2 w-full accent-accent" aria-label="Budget" />
         </label>
       </div>
 
@@ -100,7 +100,7 @@ export function PlanStudio() {
             <div><div className="hud-label flex items-center gap-2"><span className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-teal" />Your plan · live</div><div className="mt-1 text-[22px] font-semibold tracking-tight">{active.length} items, built from our catalogue</div></div>
             <div className="text-right"><div className="text-[28px] font-semibold tabular-nums">{formatMoney(total)}</div><div className="text-[12px] text-muted">CAD · {total <= budget ? "within budget" : `${formatMoney(total - budget)} over budget`}</div></div>
           </div>
-          <div className="mt-3 h-2 overflow-hidden rounded-full bg-ink/[0.07]"><motion.div className={`h-full rounded-full ${total <= budget ? "bg-iri-x" : "bg-[#C9895B]"}`} animate={{ width: `${pct}%` }} /></div>
+          <div className="mt-3 h-2 overflow-hidden rounded-full bg-ink/[0.07]"><motion.div className={`h-full rounded-full ${total <= budget ? "bg-iri-x" : "bg-tangerine"}`} animate={{ width: `${pct}%` }} /></div>
 
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             <AnimatePresence initial={false}>

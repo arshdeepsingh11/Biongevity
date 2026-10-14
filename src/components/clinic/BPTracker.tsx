@@ -19,7 +19,7 @@ export function BPTracker() {
       <div>
         <div className="text-[15px] font-semibold">Your 7-day log</div>
         <LineChart labels={DAYS} unit=" mmHg" min={60} max={170} refLine={{ value: 135, label: "135 home threshold" }}
-          series={[{ name: "Systolic", values: rows.map((r) => r[0]) }, { name: "Diastolic", values: rows.map((r) => r[1]), color: "#5E7F62" }]} />
+          series={[{ name: "Systolic", values: rows.map((r) => r[0]) }, { name: "Diastolic", values: rows.map((r) => r[1]), color: "rgb(var(--c-teal))" }]} />
       </div>
       <div className="space-y-3">
         <div className="grid grid-cols-[auto_1fr_1fr] items-center gap-x-2 gap-y-1.5 text-[13px]">
@@ -30,7 +30,7 @@ export function BPTracker() {
             <input key={`d${i}`} type="number" inputMode="numeric" value={r[1]} onChange={(e) => set(i, 1, Number(e.target.value) || 0)} aria-label={`Day ${i + 1} diastolic`} className="h-9 w-full rounded-lg border border-ink/10 bg-canvas text-center tabular-nums outline-none focus:border-accent" />,
           ])}
         </div>
-        <div className={`rounded-2xl p-4 ${high ? "bg-[#FEF3C7] text-[#92400E]" : "bg-teal-light text-teal"}`}>
+        <div className={`rounded-2xl p-4 ${high ? "bg-warn/10 text-warn" : "bg-teal-light text-teal"}`}>
           <div className="text-[12px] font-semibold uppercase tracking-[0.1em]">Average, days 2–7</div>
           <div className="mt-1 text-[30px] font-semibold tabular-nums">{sys}/{dia} <span className="text-[14px] font-normal">mmHg</span></div>
           <div className="text-[13px]">{high ? "At or above 135/85 — share this with your clinician." : "Below the 135/85 home threshold."}</div>

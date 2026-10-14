@@ -66,12 +66,12 @@ export function Dashboard() {
                 <div>
                   <div className="flex justify-between text-[12px] text-faint"><span>12 months</span><span>Illustrative trend</span></div>
                   <svg viewBox="0 0 400 150" className="mt-2 w-full">
-                    <defs><linearGradient id="dash-l" x1="0" x2="1"><stop offset="0" stopColor="#7FA083" /><stop offset=".5" stopColor="#97703F" /><stop offset="1" stopColor="#97703F" /></linearGradient>
-                      <linearGradient id="dash-a" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#97703F" stopOpacity=".25" /><stop offset="1" stopColor="#97703F" stopOpacity="0" /></linearGradient></defs>
-                    <line x1="0" x2="400" y1={yOf(44)} y2={yOf(44)} stroke="#8E8579" strokeDasharray="4 4" strokeWidth="1" />
+                    <defs><linearGradient id="dash-l" x1="0" x2="1"><stop offset="0" stopColor="rgb(var(--c-teal-soft))" /><stop offset=".5" stopColor="rgb(var(--c-accent))" /><stop offset="1" stopColor="rgb(var(--c-accent))" /></linearGradient>
+                      <linearGradient id="dash-a" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="rgb(var(--c-accent))" stopOpacity=".25" /><stop offset="1" stopColor="rgb(var(--c-accent))" stopOpacity="0" /></linearGradient></defs>
+                    <line x1="0" x2="400" y1={yOf(44)} y2={yOf(44)} stroke="rgb(var(--c-faint))" strokeDasharray="4 4" strokeWidth="1" />
                     <path d={`${line} L400 150 L0 150 Z`} fill="url(#dash-a)" />
                     <path d={line} fill="none" stroke="url(#dash-l)" strokeWidth="3" strokeLinecap="round" />
-                    <circle cx="400" cy={pts[pts.length - 1][1]} r="5" fill="#97703F" />
+                    <circle cx="400" cy={pts[pts.length - 1][1]} r="5" fill="rgb(var(--c-accent))" />
                   </svg>
                   <div className="text-[11px] text-faint">Dashed line · chronological age</div>
                 </div>
@@ -79,7 +79,7 @@ export function Dashboard() {
             </div>
             <div className="flex items-center gap-5 rounded-4xl bg-surface p-6 shadow-card"><ProgressRing value={adherence} label="this week" /><div><div className="font-semibold">Draft plan progress</div><div className="mt-1 text-[13px] text-muted">{done} of {PLAN.length} actions checked off. Calculated from the Plan tab.</div></div></div>
             <div className="rounded-4xl bg-surface p-6 shadow-card lg:col-span-2"><div className="mb-4 text-[13px] font-semibold text-faint">AI updates · simulated</div><AnimatedList items={INSIGHTS} /></div>
-            <div className="relative flex flex-col overflow-hidden rounded-4xl bg-gradient-to-br from-accent to-[#7E5C31] p-6 text-white shadow-glow">
+            <div className="relative flex flex-col overflow-hidden rounded-4xl bg-gradient-to-br from-accent to-accent-deep p-6 text-white shadow-glow">
               <div className="flex items-center gap-1.5 text-[13px] text-white/75"><Icon name="calendar" size={14} />Next visit · demo calendar</div>
               <div className="mt-3 text-[22px] font-semibold">{visits[0].t}</div><div className="text-[14px] text-white/60">{visits[0].mo} {visits[0].day} · {visits[0].time} · {visits[0].where}</div>
               <div className="flex-1" /><button onClick={() => setTab("visits")} className="btn mt-6 bg-surface text-ink">Manage visits</button>

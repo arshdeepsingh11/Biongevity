@@ -27,7 +27,7 @@ export function HealthPackages() {
                         <Link href={`/contact/?interest=${encodeURIComponent(p.t)}`} className="btn-light mt-4 w-full">Request a quote</Link>
                       </div>
                     );
-                    return k === 1 ? <ElectricBorder key={p.id} color="#97703F" className="h-full">{card}</ElectricBorder> : <div key={p.id}>{card}</div>;
+                    return k === 1 ? <ElectricBorder key={p.id} color="rgb(var(--c-accent))" className="h-full">{card}</ElectricBorder> : <div key={p.id}>{card}</div>;
                   })}
                 </div>
                 <div className="space-y-4">

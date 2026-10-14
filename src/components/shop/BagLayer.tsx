@@ -56,7 +56,7 @@ export function BagLayer() {
       </AnimatePresence>
 
       <AnimatePresence>
-        {(c.open || item) && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { c.setOpen(false); c.setView(null); }} className="fixed inset-0 z-[97] bg-ink/20 backdrop-blur-[2px]" />}
+        {(c.open || item) && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { c.setOpen(false); c.setView(null); }} className="fixed inset-0 z-[97] bg-scrim/25 backdrop-blur-[2px]" />}
       </AnimatePresence>
 
       {/* Product detail drawer */}

@@ -6,12 +6,12 @@ import { cn } from "@/lib/utils";
 export function MediaSlot({ id, className, rounded = "rounded-4xl" }: { id: keyof typeof MEDIA | string; className?: string; rounded?: string }) {
   const m = MEDIA[id] ?? { label: id };
   return (
-    <div className={cn("relative overflow-hidden bg-gradient-to-br from-accent-light via-white to-[#F3F7F1]", rounded, className)}>
+    <div className={cn("relative overflow-hidden bg-gradient-to-br from-accent-light via-white to-teal-light", rounded, className)}>
       {m.video ? <video className="absolute inset-0 h-full w-full object-cover" src={m.video} poster={m.poster} autoPlay muted loop playsInline />
         : m.image ? <img className="absolute inset-0 h-full w-full object-cover" src={m.image} alt={m.label} loading="lazy" />
         : (
           <div className="absolute inset-0 grid place-items-center p-4 text-center">
-            <div className="absolute inset-0 opacity-50 [background-image:radial-gradient(rgba(151,112,63,.18)_1px,transparent_1px)] [background-size:18px_18px]" />
+            <div className="absolute inset-0 opacity-50 [background-image:radial-gradient(rgb(var(--c-accent)/.18)_1px,transparent_1px)] [background-size:18px_18px]" />
             <div className="relative">
               <span className="mx-auto grid h-11 w-11 place-items-center rounded-full bg-surface text-violet shadow-card"><Icon name="play" size={18} /></span>
               <div className="mt-2 text-[13px] font-semibold text-ink/70">{m.label}</div>

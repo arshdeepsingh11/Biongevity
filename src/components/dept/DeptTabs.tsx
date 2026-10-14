@@ -67,7 +67,7 @@ export function DeptTabs({ id }: { id: string }) {
                     <div className="mt-5 grid grid-cols-2 gap-3">{ev.stats.map((s) => <div key={s.l}><div className="text-[24px] font-semibold text-accent">{s.v}</div><div className="text-[12px] text-muted">{s.l}</div></div>)}</div>
                   </div>
                 </div>
-                {d.urgent && <div className="flex gap-3 rounded-2xl bg-[#FBF0EA] p-4 text-[14px] text-[#8A3B1E]"><Icon name="siren" size={19} className="mt-0.5 shrink-0" />{d.urgent}</div>}
+                {d.urgent && <div className="flex gap-3 rounded-2xl bg-warn/10 p-4 text-[14px] text-warn"><Icon name="siren" size={19} className="mt-0.5 shrink-0" />{d.urgent}</div>}
               </div>
             )}
 
