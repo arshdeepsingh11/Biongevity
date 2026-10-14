@@ -12,6 +12,19 @@ import { env, xevyoEnabled } from "./env";
  */
 export interface XevyoTurn { role: "user" | "assistant"; content: string }
 export interface XevyoReply { reply: string; sources?: { title: string; url: string }[] }
+export type XevyoLanguage = "en" | "ja";
+
+/** House rules sent with every request. Health-safety wording follows docs/COPY_RULES.md. */
+export function systemPrompt(o: { page: string; section?: string; language?: XevyoLanguage; grounding?: string }) {
+  return [
+    "You are Xevyo, the AI guide of Biongevity (BioAro Inc.) — a longevity and precision-health company focused on healthspan for adults 40–65 and their families.",
+    `The visitor is on: ${o.page}${o.section ? ` — section "${o.section}"` : ""}.`,
+    "Explain simply and warmly in short paragraphs or bullets. Educate; never diagnose, never prescribe, never promise outcomes. Suggest a clinician for decisions, and emergency services for urgent symptoms.",
+    "Prefer the Biongevity information provided below. When you use a passage, cite it as [1], [2] or [3]. If the passages do not cover the question, say so briefly and answer from general knowledge.",
+    o.language === "ja" ? "Reply in natural, polite Japanese (です・ます調)." : "Reply in English.",
+    o.grounding ? `\n${o.grounding}` : "",
+  ].filter(Boolean).join("\n");
+}
 
 export { xevyoEnabled };
 
@@ -19,14 +32,20 @@ export { xevyoEnabled };
 export class XevyoError extends Error { constructor(public code: string, public reason: string) { super(code); } }
 
 export async function askXevyo(
-  input: { message: string; history: XevyoTurn[]; context: { page: string; section?: string }; sessionId: string },
+  input: {
+    message: string; history: XevyoTurn[]; context: { page: string; section?: string }; sessionId: string;
+    /** Reply language. "ja" asks Xevyo to answer in Japanese. */
+    language?: XevyoLanguage;
+    /** Extra grounding: numbered passages from our own pages (see lib/retrieve.ts) and page text for summaries. */
+    grounding?: string;
+  },
   onToken?: (partial: string) => void,
   signal?: AbortSignal,
 ): Promise<XevyoReply> {
   if (!xevyoEnabled) throw new Error("XEVYO_NOT_CONFIGURED");
   // Also send OpenAI-style `messages` (+ optional model) so chat-completions style endpoints work too.
   const messages = [
-    { role: "system", content: `You are Xevyo, Biongevity's health guide. The visitor is on: ${input.context.page}${input.context.section ? ` — ${input.context.section}` : ""}. Explain simply; do not diagnose.` },
+    { role: "system", content: systemPrompt({ ...input.context, language: input.language, grounding: input.grounding }) },
     ...input.history.map((h) => ({ role: h.role, content: h.content })),
     { role: "user", content: input.message },
   ];
@@ -35,7 +54,7 @@ export async function askXevyo(
     res = await fetch(env.xevyoUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json, text/event-stream", ...(env.xevyoKey ? { Authorization: `Bearer ${env.xevyoKey}` } : {}) },
-      body: JSON.stringify({ ...input, messages, ...(env.xevyoModel ? { model: env.xevyoModel } : {}) }),
+      body: JSON.stringify({ message: input.message, history: input.history, context: { ...input.context, language: input.language ?? "en" }, sessionId: input.sessionId, messages, ...(env.xevyoModel ? { model: env.xevyoModel } : {}) }),
       signal,
     });
   } catch (e) {
