@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 
 /** sitemap.xml — every static route, so search engines and AI crawlers index the whole site. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date("2026-10-10");
+  const now = new Date("2026-10-14");
   const page = (p: string, priority: number, freq: "weekly" | "monthly" = "monthly") => ({ url: `${SITE.url}${p}`, lastModified: now, changeFrequency: freq, priority });
   return [
     page("/", 1, "weekly"),
@@ -18,6 +18,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/clinic/", 0.8),
     ...CLINICS.map((c) => page(`/clinic/${c.id}/`, 0.8)),
     page("/shop/", 0.8, "weekly"),
+    page("/platform/", 0.85),
+    page("/tools/", 0.8),
+    page("/bioelr/", 0.8),
+    page("/ai/", 0.6),
     ...["/life/", "/app/", "/insights/", "/about/", "/contact/"].map((p) => page(p, 0.6)),
   ];
 }

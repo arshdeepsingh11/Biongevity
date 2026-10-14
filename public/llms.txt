@@ -1,6 +1,6 @@
 # Biongevity
 
-> Precision health and longevity medicine by BioAro: specialty care (cardiology with onsite exercise stress echocardiography, heart failure, internal medicine, endocrinology, respiratory, geriatrics, nutrition, skin, pediatric rheumatology), precision programs (women's, men's, gut, dental, mental health), BioAro Labs testing (47 tests incl. whole genome sequencing, microbiome, hormones, inflammation, brain biomarkers) and BioAro Drugs AI-guided bioactive protocols. Clinics and offices in Calgary (Canada), Dubai (UAE) and Almelo (Netherlands).
+> AI-guided longevity and healthspan care by BioAro Inc. for adults about 40–65 and their families. Xevyo, the in-house AI, explains results and answers questions with citations to this site. Precision health and longevity medicine: specialty care (cardiology with onsite exercise stress echocardiography, heart failure, internal medicine, endocrinology, respiratory, geriatrics, nutrition, skin, pediatric rheumatology), precision programs (women's, men's, gut, dental, mental health), BioAro Labs testing (47 tests incl. whole genome sequencing, microbiome, hormones, inflammation, brain biomarkers) and BioAro Drugs AI-guided bioactive protocols. Clinics and offices in Calgary (Canada), Dubai (UAE) and Almelo (Netherlands).
 
 Information on this site is educational and not a diagnosis. For emergencies call 911.
 
@@ -32,6 +32,14 @@ Information on this site is educational and not a diagnosis. For emergencies cal
 - [Virtual Clinic](https://biongevity.com/clinic/virtual/): secure video visits and a remote blood-pressure program (home target 135/85, 7 days, morning and evening readings)
 - [UAE Precision Clinic](https://biongevity.com/clinic/uae/): Dubai longevity assessments — VO2 max, spirometry, ankle-brachial index, grip, body composition, HRV, cognition
 - [Shop](https://biongevity.com/shop/): longevity programs (Core, Precision, Elite), health packages and a matching quiz
+
+## Platform, AI and B2B
+
+- [Healthspan platform](https://biongevity.com/platform/): longevity digital twin (biological, physiological, functional, behavioural, clinical and trajectory states), domain scores with a transparent Healthspan Index, AI coach in English and Japanese, clinician and family views. Members sign in at https://app.biongevity.com
+- [AI health tools](https://biongevity.com/tools/): lab-result explainer, visit-prep brief, specialist router (on-device matching; Xevyo on request; nothing stored)
+- [BioELR](https://biongevity.com/bioelr/): longevity-focused health record system for clinics, resorts and communities — AI clinical support, voice notes, scheduling, billing, inventory, cardiac/derma/dental modules, HL7, SNOMED CT and ICD
+- [How our AI works](https://biongevity.com/ai/): principles, evidence levels and model cards for Xevyo and on-device models
+- [Site index for AI](https://biongevity.com/site-index.json): passages used to ground Xevyo answers
 
 ## Contact
 
