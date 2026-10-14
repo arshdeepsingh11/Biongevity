@@ -8,6 +8,7 @@ import { CATALOG, KIND_META } from "@/lib/catalog";
 import { NAV } from "@/data/site";
 import { useVoice } from "@/hooks/useVoice";
 import { Icon } from "@/components/ui/Icon";
+import { XevyoOrb } from "./XevyoOrb";
 import { formatMoney } from "@/lib/utils";
 
 type Row = { id: string; label: string; sub: string; icon: string; group: string; text: string; run: () => void };
@@ -73,13 +74,13 @@ export function CommandBar() {
     <AnimatePresence>
       {cmd.open && (
         <>
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={closeCmd} className="fixed inset-0 z-[120] bg-ink/25 backdrop-blur-[3px]" />
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={closeCmd} className="fixed inset-0 z-[120] bg-scrim/30 backdrop-blur-[3px]" />
           <motion.div role="dialog" aria-label="Search or ask Xevyo" initial={{ opacity: 0, y: -14, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -10, scale: 0.98 }}
             transition={{ type: "spring", stiffness: 380, damping: 32 }}
-            className="fixed inset-x-3 top-[calc(76px+var(--safe-top))] z-[121] mx-auto max-w-[640px] overflow-hidden rounded-[24px] bg-pearl/95 shadow-lift ring-1 ring-accent/20 backdrop-blur-2xl">
+            className="fixed inset-x-3 top-[calc(76px+var(--safe-top))] z-[121] mx-auto max-w-[640px] overflow-hidden rounded-[24px] bg-pearl/95 shadow-lift ring-1 ring-ai/25 backdrop-blur-2xl">
             <div aria-hidden className="scanline" />
             <div className="flex items-center gap-3 border-b border-ink/[0.06] px-4">
-              <Icon name="sparkle" size={20} weight="duotone" className="shrink-0 text-accent" />
+              <XevyoOrb size={30} live />
               <input ref={input} value={q} onChange={(e) => { setQ(e.target.value); setIdx(0); }} onKeyDown={key} placeholder="Search tests, departments, pages — or ask anything"
                 aria-label="Search or ask Xevyo" className="h-[58px] min-w-0 flex-1 bg-transparent text-[16px] outline-none placeholder:text-faint focus-visible:outline-none" />
               {voice.supported && (
@@ -98,7 +99,7 @@ export function CommandBar() {
                     {head && <div className="hud-label px-3 pb-1 pt-2.5">{head}</div>}
                     <button onMouseEnter={() => setIdx(i)} onClick={r.run}
                       className={`flex w-full items-center gap-3 rounded-2xl px-3 py-2.5 text-left transition-colors ${i === active ? "bg-accent-light" : ""}`}>
-                      <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl ${r.group === "AI" || r.group === "Ask Xevyo" ? "bg-iri text-white" : "bg-canvas text-accent"}`}><Icon name={r.icon} size={18} weight="duotone" /></span>
+                      {r.group === "AI" || r.group === "Ask Xevyo" ? <XevyoOrb size={36} /> : <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-canvas text-accent"><Icon name={r.icon} size={18} weight="duotone" /></span>}
                       <span className="min-w-0 flex-1"><span className="block truncate text-[14.5px] font-semibold">{r.label}</span><span className="block truncate text-[12px] text-muted">{r.sub}</span></span>
                       {i === active && <Icon name="arrow-right" size={15} className="text-accent" />}
                     </button>
@@ -108,7 +109,7 @@ export function CommandBar() {
             </div>
             <div className="flex items-center justify-between border-t border-ink/[0.06] px-4 py-2 text-[11px] text-faint">
               <span className="hidden items-center gap-3 sm:flex"><span>↑↓ move</span><span>↵ open</span><span>Ctrl X close</span></span>
-              <span>Search runs on your device · answers from Xevyo</span>
+              <span><span className="text-ai">✦</span> Search runs on your device · answers from Xevyo, with sources</span>
             </div>
           </motion.div>
         </>
