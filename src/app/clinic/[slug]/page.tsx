@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PageSummary } from "@/components/ai/PageSummary";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/Section";
@@ -35,6 +36,7 @@ export default async function ClinicSubPage({ params }: P) {
             <Link href={`/contact/?interest=${encodeURIComponent(c.name)}`} className="btn-dark">{c.id === "uae" ? "Book a visit" : "Start your journey"}</Link>
             <AskButton q={`How does the ${c.name} work?`}>Ask Xevyo</AskButton>
           </div>
+          <div data-reveal className="mt-5"><PageSummary /></div>
         </div>
       </section>
 

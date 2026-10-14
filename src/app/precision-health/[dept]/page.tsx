@@ -7,6 +7,7 @@ import { AskButton } from "@/components/pages/AskButton";
 import { KeywordStream } from "@/components/fx/KeywordStream";
 import { TextAnimate } from "@/components/fx/TextAnimate";
 import { DeptTabs } from "@/components/dept/DeptTabs";
+import { PageSummary } from "@/components/ai/PageSummary";
 import { DEPARTMENTS } from "@/data/departments";
 import { JsonLd, breadcrumb, faqPage, medicalPage } from "@/lib/seo";
 
@@ -51,6 +52,7 @@ export default async function DeptPage({ params }: P) {
             <Link href={`/contact/?interest=${encodeURIComponent(d.name)}`} className="btn-dark">Book {d.short}</Link>
             <AskButton q={`What happens in ${d.name} at Biongevity?`}>Ask Xevyo about this</AskButton>
           </div>
+          <div data-reveal className="mt-5"><PageSummary /></div>
         </div>
       </section>
       {!d.calm && <section className="relative z-[1]"><KeywordStream words={[...d.keywords, ...d.keywords]} /></section>}
