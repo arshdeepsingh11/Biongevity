@@ -6,6 +6,7 @@ import { Constellation } from "@/components/home/Constellation";
 import { LifespanSimulator } from "@/components/home/LifespanSimulator";
 import { DeptIntelligence } from "@/components/home/DeptIntelligence";
 import { GoalPipeline } from "@/components/home/GoalPipeline";
+import { AIEverywhere } from "@/components/home/AIEverywhere";
 import { Head, BrandFilm, StoriesSection, GlobalClinic, FinalCTA } from "@/components/home/HomeSections";
 
 export default function HomePage() {
@@ -14,7 +15,7 @@ export default function HomePage() {
       <AIHero />
       <Section ai="Fusion engine" className="bg-canvas/50">
         <div className="container-x">
-          <Head n="01" label="Data fusion engine" title={<>Five streams. <AuroraText>One intelligence.</AuroraText></>} lede="Every signal — from your genome to your blood pressure — flows into one record that AI reads as a whole. Hover any node for the data; click it and Xevyo answers." />
+          <Head n="01" label="Data fusion engine" title={<>Five streams. <AuroraText>One intelligence.</AuroraText></>} lede="Every signal — from your genome to your blood pressure — flows into one record that AI reads as a whole, measured against your own baseline. Hover any node for the data; click it and Xevyo answers." />
           <div className="mt-10"><FusionEngine /></div>
         </div>
       </Section>
@@ -40,6 +41,12 @@ export default function HomePage() {
         <div className="container-x">
           <Head n="05" label="From goal to plan" title={<>Measure. Support. <AuroraText>Care.</AuroraText></>} lede="Pick a goal and watch it resolve into a BioAro test, what it reveals, a matching formula, a program and the right care team." />
           <div className="mt-10"><GoalPipeline /></div>
+        </div>
+      </Section>
+      <Section ai="Xevyo everywhere">
+        <div className="container-x">
+          <Head n="06" label="Xevyo everywhere" title={<>Beyond the chat. <AuroraText>AI in every step.</AuroraText></>} lede="The same AI that answers your questions also powers your digital twin, free health tools and BioELR — the record system clinics use." />
+          <div className="mt-10"><AIEverywhere /></div>
         </div>
       </Section>
       <BrandFilm />

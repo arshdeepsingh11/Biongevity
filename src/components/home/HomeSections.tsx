@@ -26,7 +26,7 @@ export function BrandFilm() {
   return (
     <Section ai="Brand film">
       <div className="container-x">
-        <Head n="06" label="Biongevity" title={<DiaTextReveal text="Redefining health with multiomics." />} lede="Genomics, microbiome, epigenetics and clinical data — turned into one personal longevity plan." />
+        <Head n="07" label="Biongevity" title={<DiaTextReveal text="Redefining health with multiomics." />} lede="Genomics, microbiome, epigenetics and clinical data — turned into one personal longevity plan." />
         <FilmPlayer film="brandFilm" loop="brandLoop" label="Precision Health. Shared Longevity." className="mt-10 aspect-video" />
       </div>
     </Section>
@@ -37,7 +37,7 @@ export function StoriesSection() {
   return (
     <Section ai="Stories" className="bg-canvas/60">
       <div className="container-x">
-        <Head center n="07" label="Stories" title={<TextAnimate animation="slideUp">Real people. Real biology.</TextAnimate>} lede="From the clinic floor to an at-home test kit. Hover to preview, tap to watch." />
+        <Head center n="08" label="Stories" title={<TextAnimate animation="slideUp">Real people. Real biology.</TextAnimate>} lede="From the clinic floor to an at-home test kit. Hover to preview, tap to watch." />
         <div className="mt-10"><Stories /></div>
       </div>
     </Section>
@@ -48,7 +48,7 @@ export function GlobalClinic() {
   return (
     <Section ai="Global clinic">
       <div className="container-x">
-        <Head n="08" label="Global clinic" title={<TextAnimate animation="blurIn">Your longevity clinic, anywhere in the world.</TextAnimate>} />
+        <Head n="09" label="Global clinic" title={<TextAnimate animation="blurIn">Your longevity clinic, anywhere in the world.</TextAnimate>} />
         <div className="mt-10 grid gap-6 lg:grid-cols-5">
           <FilmPlayer film="clinicFilm" loop="clinicLoop" label="Inside Biongevity Clinic Dubai" className="aspect-video lg:col-span-3" />
           <div className="grid gap-3 lg:col-span-2">
