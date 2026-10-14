@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { onThemeChange, themeRgb } from "@/lib/theme";
 
 /**
  * Floating 3D Particles — tiny twinkling dots in a slow pseudo-3D field behind every page.
@@ -7,7 +8,8 @@ import { useEffect, useRef } from "react";
  * Calm by design: tiny dots, slow twinkle, slow drift; painter's sort, ≤ 1.5 DPR, paused when hidden,
  * fewer particles on small screens, a single still frame for reduced motion.
  */
-const COLORS = ["194,161,106", "151,112,63", "127,160,131", "216,195,160"]; // gold · bronze · sage · champagne
+/** Particle colours come from the active theme (gold · accent · sage · AI highlight) and update when it changes. */
+const TOKENS = ["gold", "accent", "teal-soft", "ai-hi"];
 
 type P = { x: number; y: number; z: number; s: number; c: number; ph: number; sp: number };
 
@@ -24,8 +26,10 @@ export function ParticleField() {
     const R = 1; // world radius (unit cube −1..1)
     const FOV = 1.8;
 
+    let COLORS = TOKENS.map((t) => themeRgb(t).join(","));
+    const offTheme = onThemeChange(() => { COLORS = TOKENS.map((t) => themeRgb(t).join(",")); if (reduced) draw(0.016, 0); });
     const rand = (a: number, b: number) => a + Math.random() * (b - a);
-    const ps: P[] = Array.from({ length: N }, () => ({ x: rand(-R, R), y: rand(-R, R), z: rand(-R, R), s: rand(0.6, 1.6), c: (Math.random() * COLORS.length) | 0, ph: rand(0, Math.PI * 2), sp: rand(0.6, 1.4) }));
+    const ps: P[] = Array.from({ length: N }, () => ({ x: rand(-R, R), y: rand(-R, R), z: rand(-R, R), s: rand(0.6, 1.6), c: (Math.random() * TOKENS.length) | 0, ph: rand(0, Math.PI * 2), sp: rand(0.6, 1.4) }));
 
     let W = 0, H = 0, dpr = 1;
     const resize = () => {
@@ -89,7 +93,7 @@ export function ParticleField() {
     if (reduced) draw(0.016, 0); else raf = requestAnimationFrame(frame);
 
     return () => {
-      cancelAnimationFrame(raf);
+      cancelAnimationFrame(raf); offTheme();
       removeEventListener("resize", resize); removeEventListener("pointermove", onMove);
       document.removeEventListener("visibilitychange", onVis);
     };

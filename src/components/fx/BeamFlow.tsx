@@ -1,17 +1,18 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { onThemeChange, themeRgb } from "@/lib/theme";
 
 const VERT = `attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
 
-// Laser flow: a champagne-gold beam with fbm fog turbulence, cursor tilt and micro-wisp streaks.
+// Laser flow: a beam in the theme's AI colours (ai · ai-hi · ai-2 · gold) with fbm fog turbulence, cursor tilt and micro-wisp streaks.
 const FRAG = `precision highp float;
-uniform vec2 r;uniform float t;uniform vec2 m;
+uniform vec2 r;uniform float t;uniform vec2 m;uniform vec3 ca;uniform vec3 cb;uniform vec3 cc;uniform vec3 cd;
 float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
   return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
 float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p*=2.03;a*=.5;}return v;}
 vec3 iri(float x){
-  vec3 a=vec3(.59,.44,.25),b=vec3(.76,.63,.42),c=vec3(.50,.63,.51),d=vec3(.85,.75,.56);
+  vec3 a=ca,b=cb,c=cc,d=cd;
   x=fract(x);return x<.33?mix(a,b,x/.33):x<.66?mix(b,c,(x-.33)/.33):mix(c,d,(x-.66)/.34);}
 void main(){
   vec2 uv=gl_FragCoord.xy/r;vec2 q=uv-.5;q.x*=r.x/r.y;
@@ -46,6 +47,10 @@ export function BeamFlow({ className }: { className?: string }) {
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
     const loc = gl.getAttribLocation(pr, "p"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     const uR = gl.getUniformLocation(pr, "r"), uT = gl.getUniformLocation(pr, "t"), uM = gl.getUniformLocation(pr, "m");
+    const uC = ["ca", "cb", "cc", "cd"].map((n) => gl.getUniformLocation(pr, n));
+    const setColors = () => ["ai", "ai-hi", "ai-2", "gold"].forEach((tok, i) => { const [r, g, b] = themeRgb(tok); gl.uniform3f(uC[i], r / 255, g / 255, b / 255); });
+    setColors();
+    const offTheme = onThemeChange(setColors);
     const mouse = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 };
     const onMove = (x: number, y: number) => { const b = c.getBoundingClientRect(); mouse.tx = (x - b.left) / b.width; mouse.ty = 1 - (y - b.top) / b.height; };
     const mm = (e: PointerEvent) => onMove(e.clientX, e.clientY);
@@ -64,7 +69,7 @@ export function BeamFlow({ className }: { className?: string }) {
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
     raf = requestAnimationFrame(loop);
-    return () => { cancelAnimationFrame(raf); io.disconnect(); removeEventListener("pointermove", mm); removeEventListener("resize", resize); };
+    return () => { cancelAnimationFrame(raf); offTheme(); io.disconnect(); removeEventListener("pointermove", mm); removeEventListener("resize", resize); };
   }, []);
   return <canvas ref={ref} aria-hidden data-ai-fx className={`pointer-events-none h-full w-full ${className ?? ""}`} />;
 }
