@@ -101,17 +101,17 @@ export function WorldMap() {
         <svg ref={svg} viewBox={`${view.x} ${view.y} ${view.w} ${view.w * ASPECT}`} className={`block aspect-[135.5/64.22] w-full touch-none select-none ${active ? "cursor-grabbing" : "cursor-grab"}`}
           onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} role="img" aria-label="World map of Biongevity clinics in Calgary, Almelo and Dubai">
           <defs>
-            <radialGradient id="wm-glow"><stop offset="0" stopColor="#B8925C" stopOpacity=".55" /><stop offset="1" stopColor="#B8925C" stopOpacity="0" /></radialGradient>
-            <linearGradient id="wm-arc" x1="0" x2="1"><stop offset="0" stopColor="#B8925C" /><stop offset="1" stopColor="#7FA083" /></linearGradient>
+            <radialGradient id="wm-glow"><stop offset="0" stopColor="rgb(var(--c-accent-soft))" stopOpacity=".55" /><stop offset="1" stopColor="rgb(var(--c-accent-soft))" stopOpacity="0" /></radialGradient>
+            <linearGradient id="wm-arc" x1="0" x2="1"><stop offset="0" stopColor="rgb(var(--c-accent-soft))" /><stop offset="1" stopColor="rgb(var(--c-teal-soft))" /></linearGradient>
           </defs>
-          <path d={WORLD_DOTS} stroke="#B89A6A" strokeOpacity=".55" strokeWidth=".55" strokeLinecap="round" fill="none" />
+          <path d={WORLD_DOTS} stroke="rgb(var(--c-gold))" strokeOpacity=".55" strokeWidth=".55" strokeLinecap="round" fill="none" />
           {ROUTES.map(([a, b], i) => {
             const d = arc(WORLD_PINS[a], WORLD_PINS[b]);
             return (
               <g key={a + b}>
                 <path d={d} fill="none" stroke="url(#wm-arc)" strokeWidth={0.35 * k} strokeOpacity=".35" />
                 <path d={d} fill="none" stroke="url(#wm-arc)" strokeWidth={0.45 * k} strokeDasharray="1.2 2.2" style={{ animation: `flow ${3 + i}s linear infinite` }} />
-                <circle r={0.75 * k} fill="#97703F"><animateMotion dur={`${4 + i * 1.3}s`} repeatCount="indefinite" path={d} /></circle>
+                <circle r={0.75 * k} fill="rgb(var(--c-accent))"><animateMotion dur={`${4 + i * 1.3}s`} repeatCount="indefinite" path={d} /></circle>
               </g>
             );
           })}
@@ -120,11 +120,11 @@ export function WorldMap() {
             return (
               <g key={o.city} transform={`translate(${x} ${y})`} className="cursor-pointer" onClick={() => focus(o.city)} onPointerDown={(e) => e.stopPropagation()}>
                 <circle r={6 * k} fill="url(#wm-glow)" />
-                <circle r={1.4 * k} fill="none" stroke="#7FA083" strokeWidth={0.3 * k}><animate attributeName="r" values={`${1.2 * k};${4.5 * k}`} dur="2.4s" repeatCount="indefinite" /><animate attributeName="opacity" values="1;0" dur="2.4s" repeatCount="indefinite" /></circle>
-                <circle r={(on ? 1.5 : 1.1) * k} fill={on ? "#7FA083" : "#97703F"} stroke="#fff" strokeWidth={0.35 * k} />
+                <circle r={1.4 * k} fill="none" stroke="rgb(var(--c-teal-soft))" strokeWidth={0.3 * k}><animate attributeName="r" values={`${1.2 * k};${4.5 * k}`} dur="2.4s" repeatCount="indefinite" /><animate attributeName="opacity" values="1;0" dur="2.4s" repeatCount="indefinite" /></circle>
+                <circle r={(on ? 1.5 : 1.1) * k} fill={on ? "rgb(var(--c-teal-soft))" : "rgb(var(--c-accent))"} stroke="rgb(var(--c-surface))" strokeWidth={0.35 * k} />
                 <g transform={`translate(${2 * k} ${-1.6 * k}) scale(${k})`}>
-                  <rect x="0" y="-2.6" width={o.city.length * 1.55 + 2.4} height="3.6" rx="1.8" fill="#FFFFFF" fillOpacity=".95" stroke="#97703F" strokeOpacity=".35" strokeWidth=".15" />
-                  <text x="1.2" y="-.15" fontSize="2.3" fill="#221D16" fontWeight="600">{o.city}</text>
+                  <rect x="0" y="-2.6" width={o.city.length * 1.55 + 2.4} height="3.6" rx="1.8" fill="rgb(var(--c-surface))" fillOpacity=".95" stroke="rgb(var(--c-accent))" strokeOpacity=".35" strokeWidth=".15" />
+                  <text x="1.2" y="-.15" fontSize="2.3" fill="rgb(var(--c-ink))" fontWeight="600">{o.city}</text>
                 </g>
               </g>
             );

@@ -6,7 +6,7 @@ export function ShineBorder({ radius = 28, width = 1.5, className }: { radius?: 
     <span aria-hidden data-ai-fx className={cn("pointer-events-none absolute inset-0 z-[1] animate-shine", className)}
       style={{
         borderRadius: radius, padding: width,
-        background: "linear-gradient(90deg,#7FA083,#B8925C,#97703F,#97703F,#7FA083) 0 0/200% 100%",
+        background: "linear-gradient(90deg,rgb(var(--c-ai-hi)),rgb(var(--c-ai)),rgb(var(--c-ai-2)),rgb(var(--c-ai)),rgb(var(--c-ai-hi))) 0 0/200% 100%",
         WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
         WebkitMaskComposite: "xor", maskComposite: "exclude",
       }} />

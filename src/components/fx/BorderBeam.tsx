@@ -1,5 +1,5 @@
 /** Border Beam (Magic UI pattern) — a light beam travelling around a rounded border. Parent: relative + overflow-hidden + rounded. */
-export function BorderBeam({ duration = 8, colorFrom = "#97703F", colorTo = "#5E7F62", className }: { duration?: number; colorFrom?: string; colorTo?: string; className?: string }) {
+export function BorderBeam({ duration = 8, colorFrom = "rgb(var(--c-ai-hi))", colorTo = "rgb(var(--c-ai-2))", className }: { duration?: number; colorFrom?: string; colorTo?: string; className?: string }) {
   return (
     <span aria-hidden className={`pointer-events-none absolute inset-0 z-[2] rounded-[inherit] [mask-composite:intersect] [-webkit-mask-composite:source-in] ${className ?? ""}`}
       style={{ padding: 1.5, WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)", mask: "linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0)" }}>

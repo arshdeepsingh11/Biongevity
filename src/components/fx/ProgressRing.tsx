@@ -10,8 +10,8 @@ export function ProgressRing({ value, size = 120, stroke = 10, label, dark }: { 
   return (
     <div ref={ref} className="relative grid place-items-center" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
-        <defs><linearGradient id={id} x1="0" x2="1"><stop offset="0" stopColor="#7FA083" /><stop offset=".35" stopColor="#B8925C" /><stop offset=".7" stopColor="#97703F" /><stop offset="1" stopColor="#97703F" /></linearGradient></defs>
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={dark ? "rgba(255,255,255,.12)" : "rgba(0,0,0,.07)"} strokeWidth={stroke} />
+        <defs><linearGradient id={id} x1="0" x2="1"><stop offset="0" stopColor="rgb(var(--c-teal-soft))" /><stop offset=".35" stopColor="rgb(var(--c-accent-soft))" /><stop offset=".7" stopColor="rgb(var(--c-accent))" /><stop offset="1" stopColor="rgb(var(--c-accent))" /></linearGradient></defs>
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={dark ? "rgb(var(--c-surface)/.12)" : "rgb(var(--c-ink)/.07)"} strokeWidth={stroke} />
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={`url(#${id})`} strokeWidth={stroke} strokeLinecap="round"
           strokeDasharray={c} strokeDashoffset={off} style={{ transition: "stroke-dashoffset 1.4s cubic-bezier(.2,.7,.2,1)" }} />
       </svg>

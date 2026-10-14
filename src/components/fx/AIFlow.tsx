@@ -17,21 +17,21 @@ export function AIFlow({ inputs, core, outputs, height = 340 }: { inputs: Node[]
     <div className="relative w-full" style={{ aspectRatio: `${W} / ${H}` }}>
       <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 h-full w-full" aria-hidden>
         <defs>
-          <linearGradient id="af-l" x1="0" x2="1"><stop offset="0" stopColor="#C2A16A" stopOpacity=".25" /><stop offset="1" stopColor="#97703F" /></linearGradient>
-          <linearGradient id="af-r" x1="0" x2="1"><stop offset="0" stopColor="#97703F" /><stop offset="1" stopColor="#7FA083" stopOpacity=".5" /></linearGradient>
-          <radialGradient id="af-c"><stop offset="0" stopColor="#F1E6D1" /><stop offset="1" stopColor="#F1E6D1" stopOpacity="0" /></radialGradient>
+          <linearGradient id="af-l" x1="0" x2="1"><stop offset="0" stopColor="rgb(var(--c-gold))" stopOpacity=".25" /><stop offset="1" stopColor="rgb(var(--c-accent))" /></linearGradient>
+          <linearGradient id="af-r" x1="0" x2="1"><stop offset="0" stopColor="rgb(var(--c-accent))" /><stop offset="1" stopColor="rgb(var(--c-teal-soft))" stopOpacity=".5" /></linearGradient>
+          <radialGradient id="af-c"><stop offset="0" stopColor="rgb(var(--c-gold-soft))" /><stop offset="1" stopColor="rgb(var(--c-gold-soft))" stopOpacity="0" /></radialGradient>
         </defs>
         <circle cx={cx} cy={cy} r={H * 0.42} fill="url(#af-c)" />
         {inputs.map((_, i) => {
           const y = yAt(i, inputs.length), d = `M210 ${y} C ${cx - 140} ${y}, ${cx - 160} ${cy}, ${cx - 70} ${cy}`;
-          return <g key={i}><path d={d} fill="none" stroke="#97703F" strokeOpacity=".12" strokeWidth="2" /><path d={d} fill="none" stroke="url(#af-l)" strokeWidth={hot === i ? 3 : 1.6} strokeDasharray="6 10" style={{ animation: `flow ${hot === i ? 0.9 : 2.2}s linear infinite`, transition: "stroke-width .3s" }} /></g>;
+          return <g key={i}><path d={d} fill="none" stroke="rgb(var(--c-accent))" strokeOpacity=".12" strokeWidth="2" /><path d={d} fill="none" stroke="url(#af-l)" strokeWidth={hot === i ? 3 : 1.6} strokeDasharray="6 10" style={{ animation: `flow ${hot === i ? 0.9 : 2.2}s linear infinite`, transition: "stroke-width .3s" }} /></g>;
         })}
         {outputs.map((_, i) => {
           const y = yAt(i, outputs.length), d = `M${cx + 70} ${cy} C ${cx + 160} ${cy}, ${cx + 140} ${y}, ${W - 210} ${y}`;
-          return <g key={i}><path d={d} fill="none" stroke="#5E7F62" strokeOpacity=".12" strokeWidth="2" /><path d={d} fill="none" stroke="url(#af-r)" strokeWidth="1.8" strokeDasharray="6 10" style={{ animation: "flow 1.6s linear infinite" }} /></g>;
+          return <g key={i}><path d={d} fill="none" stroke="rgb(var(--c-teal))" strokeOpacity=".12" strokeWidth="2" /><path d={d} fill="none" stroke="url(#af-r)" strokeWidth="1.8" strokeDasharray="6 10" style={{ animation: "flow 1.6s linear infinite" }} /></g>;
         })}
-        <circle cx={cx} cy={cy} r="64" fill="none" stroke="#C2A16A" strokeOpacity=".35" strokeDasharray="3 7" style={{ transformOrigin: `${cx}px ${cy}px`, animation: "spinSlow 22s linear infinite" }} />
-        <circle cx={cx} cy={cy} r="80" fill="none" stroke="#7FA083" strokeOpacity=".25" strokeDasharray="1 9" style={{ transformOrigin: `${cx}px ${cy}px`, animation: "spinSlow 30s linear infinite reverse" }} />
+        <circle cx={cx} cy={cy} r="64" fill="none" stroke="rgb(var(--c-gold))" strokeOpacity=".35" strokeDasharray="3 7" style={{ transformOrigin: `${cx}px ${cy}px`, animation: "spinSlow 22s linear infinite" }} />
+        <circle cx={cx} cy={cy} r="80" fill="none" stroke="rgb(var(--c-teal-soft))" strokeOpacity=".25" strokeDasharray="1 9" style={{ transformOrigin: `${cx}px ${cy}px`, animation: "spinSlow 30s linear infinite reverse" }} />
       </svg>
       {inputs.map((n, i) => (
         <div key={n.label} className={`absolute left-0 flex w-[21%] -translate-y-1/2 items-center gap-2 rounded-xl bg-white px-2.5 py-2 text-[12px] font-semibold shadow-card ring-1 transition-all duration-300 sm:text-[13px] ${hot === i ? "text-accent ring-accent/40" : "ring-ink/[0.06]"}`} style={{ top: `${(yAt(i, inputs.length) / H) * 100}%` }}>
