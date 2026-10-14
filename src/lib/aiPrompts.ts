@@ -5,7 +5,7 @@ import { DEPARTMENTS } from "@/data/departments";
  * These are only QUESTIONS; every answer comes from Xevyo.
  */
 const PAGE: Record<string, string[]> = {
-  home: ["What is BioELR?", "Which test should I start with?", "How is Biongevity different from a regular clinic?"],
+  home: ["Which test should I start with at 50?", "What is a healthspan baseline?", "How is Biongevity different from a regular clinic?"],
   "precision-health": ["Which department fits my symptoms?", "What happens at a first precision visit?", "Do I need a referral?"],
   "bioaro-labs": ["Which lab test should I start with?", "What is the difference between genome and microbiome tests?", "How long do results take?"],
   "bioaro-drugs": ["Which formula fits my goal?", "Can I take these with my medication?", "What is in LONgevity+?"],
@@ -17,6 +17,11 @@ const PAGE: Record<string, string[]> = {
   about: ["Who is behind Biongevity?", "Where are your clinics?"],
   dashboard: ["What does a BioELR record show?", "How often should I re-test?"],
   contact: ["How do I book a consultation?", "Can I start with a virtual visit?"],
+  platform: ["What is my digital twin?", "How is the Healthspan Index calculated?", "Can my family see my results?", "What will the app show me after a baseline?"],
+  login: ["How do I sign in to the app?", "What can a family member see?", "I'm a clinician — how do I get access?"],
+  bioelr: ["What modules does BioELR include?", "How does BioELR connect to labs and devices?", "Can BioELR run several clinics?", "How does the AI help clinicians?"],
+  tools: ["How do I read my lipid panel?", "What should I ask my doctor about high blood pressure?", "Which specialist should I see for fatigue?"],
+  ai: ["Does Xevyo store my data?", "Can Xevyo diagnose me?", "How do answers cite your pages?"],
 };
 
 /** Page key from a pathname: department id, BioAro hub, or first segment. */

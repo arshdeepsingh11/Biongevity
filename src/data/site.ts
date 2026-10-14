@@ -3,10 +3,10 @@ import { DEPARTMENTS } from "./departments";
 
 export const SITE = {
   name: "Biongevity",
-  tagline: "Precision health and longevity medicine",
+  tagline: "AI-guided longevity and healthspan care",
   parent: "BioAro",
   description:
-    "Precision health and longevity medicine: cardiology with onsite exercise stress echo, internal medicine, endocrinology, whole genome sequencing, microbiome and biomarker testing, virtual care and AI-guided plans — Calgary, Dubai and Almelo.",
+    "AI-guided longevity and precision health for adults 40–65 and their families: Xevyo AI, a longitudinal healthspan platform, cardiology with onsite exercise stress echo, internal medicine, endocrinology, whole genome sequencing, microbiome and biomarker testing, virtual care and AI-guided plans — Calgary, Dubai and Almelo.",
   url: "https://biongevity.com",
 };
 
@@ -44,10 +44,14 @@ export const NAV: NavItem[] = [
   {
     id: "discover", label: "Discover", icon: "orbit",
     menu: [
+      { href: "/platform/", label: "Healthspan platform", icon: "fingerprint", desc: "Your digital twin, domain scores and AI coach — open the app." },
+      { href: "/tools/", label: "AI health tools", icon: "sparkle", desc: "Explain lab results, prep a visit, find the right specialist." },
+      { href: "/bioelr/", label: "BioELR for clinics", icon: "layers", desc: "Longevity-focused health record for clinics and communities." },
       { href: "/life/", label: "Biongevity Life", icon: "globe", desc: "Longevity at resorts, homes, offices, cities and schools." },
-      { href: "/app/", label: "Biongevity App", icon: "phone", desc: "AI vitals, expert advice and BioELR in your pocket." },
+      { href: "/app/", label: "Biongevity App", icon: "phone", desc: "Wearables, AI coach and your record in your pocket." },
       { href: "/insights/", label: "Insights", icon: "book", desc: "Longevity science, explained plainly." },
       { href: "/about/", label: "About", icon: "info", desc: "Mission, vision and the BioAro group." },
+      { href: "/ai/", label: "How our AI works", icon: "shield", desc: "What Xevyo does and doesn't do, with model cards." },
       { href: "/dashboard/", label: "Member dashboard", icon: "user", desc: "Illustrative demo of your BioELR record." },
     ],
   },

@@ -16,7 +16,7 @@ function activeId(path: string) {
   if (path.startsWith("/clinic")) return "clinic";
   if (path.startsWith("/shop")) return "shop";
   if (path.startsWith("/contact")) return "contact";
-  if (/^\/(life|app|insights|about|dashboard)/.test(path)) return "discover";
+  if (/^\/(life|app|insights|about|dashboard|platform|tools|bioelr|ai|login)/.test(path)) return "discover";
   return "home";
 }
 
@@ -43,7 +43,7 @@ export function SparkleNav() {
     for (let i = 0; i < 7; i++) {
       const s = document.createElement("span");
       s.className = "absolute h-1 w-1 rounded-full";
-      s.style.background = i % 3 === 0 ? "#C2A16A" : i % 2 ? "#5E7F62" : "#97703F";
+      s.style.background = i % 3 === 0 ? "rgb(var(--c-gold))" : i % 2 ? "rgb(var(--c-teal))" : "rgb(var(--c-accent))";
       s.style.left = `${x}px`; s.style.top = `${y}px`;
       layer.appendChild(s);
       const a = Math.random() * Math.PI * 2, d = 10 + Math.random() * 18;
@@ -82,7 +82,7 @@ export function SparkleNav() {
       <nav aria-label="Primary" onMouseEnter={() => clearTimeout(closeT.current)} onMouseLeave={leave} className="glass pointer-events-auto relative max-w-full rounded-full p-1.5 shadow-lift">
         <div ref={bar} className="no-scrollbar relative flex items-center overflow-x-auto">
           <span ref={line} aria-hidden className="pointer-events-none absolute left-0 top-0 z-20 h-[2px] w-0 rounded-full opacity-0"
-            style={{ background: "linear-gradient(90deg,#97703F,#5E7F62)", boxShadow: "0 0 8px rgba(151,112,63,.9), 0 0 18px rgba(94,127,98,.55)" }} />
+            style={{ background: "linear-gradient(90deg,rgb(var(--c-accent)),rgb(var(--c-teal)))", boxShadow: "0 0 8px rgb(var(--c-accent)/.9), 0 0 18px rgb(var(--c-teal)/.55)" }} />
           <div ref={sparkLayer} aria-hidden className="pointer-events-none absolute inset-0 z-30" />
           {NAV.map((n) => {
             const on = target === n.id, cur = active === n.id;
