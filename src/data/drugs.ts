@@ -92,7 +92,7 @@ export const PRINCIPLES = [
 
 export const PERSONAS = [
   { t: "The Executive", d: "Long days, heavy cognitive load, and energy that has to hold to the end of them.", goals: ["focus", "energy"], tags: ["Mental clarity", "Cognitive focus", "Cellular energy", "Metabolic support"] },
-  { t: "The Athlete", d: "Training hard enough that what happens between sessions decides the next one.", goals: ["performance", "recovery"], tags: ["Strength", "Power output", "Muscle recovery", "Hydration"] },
+  { t: "The Active 50s", d: "Staying strong and mobile — after 40, muscle and recovery become longevity priorities.", goals: ["performance", "recovery"], tags: ["Strength", "Muscle maintenance", "Recovery", "Hydration"] },
   { t: "The LONgevity Protocol", d: "Playing a long game — cellular health and everyday vitality over decades, not weeks.", goals: ["longevity", "energy"], tags: ["Healthy aging", "Cellular resilience", "Cellular energy", "Metabolic support"] },
   { t: "Women's Performance", d: "Energy, cognition and recovery, in a formula built around women's needs.", goals: ["womens-health", "recovery"], tags: ["Daily energy", "Iron and B12 support", "Muscle recovery", "Hydration"] },
 ];

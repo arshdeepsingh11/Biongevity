@@ -70,7 +70,7 @@ export const LIFE_PLACES: { icon: IconName; t: string; d: string }[] = [
 
 /** Biongevity App features. */
 export const APP_FEATURES: { icon: IconName; t: string; d: string }[] = [
-  { icon: "eye", t: "AI vitals", d: "Heart rate and blood pressure measured from your face through the camera." },
+  { icon: "eye", t: "Connected vitals", d: "Heart rate, blood pressure, oxygen and sleep from your wearables and home devices." },
   { icon: "calendar", t: "Expert advice", d: "Book consultations with top healthcare professionals." },
   { icon: "stethoscope", t: "Specialized services", d: "Choose from a range of specialized healthcare services." },
   { icon: "utensils", t: "Diet tips", d: "Expert-curated nutrition for your goals and preferences." },

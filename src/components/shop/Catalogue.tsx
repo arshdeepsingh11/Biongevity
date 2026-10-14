@@ -13,7 +13,7 @@ const SHORTCUTS = [
   { label: "Executive check", q: "executive stress echo carotid ambulatory" },
   { label: "Women 40+", q: "hormone estradiol progesterone bone vitamin" },
   { label: "Heart family history", q: "heart crp pai lipid cardiology" },
-  { label: "Athlete", q: "performance creatine amino recovery" },
+  { label: "Parent 65+", q: "brain memory heart bone vitamin" },
   { label: "Gut & energy", q: "gut biogut energy glutathione" },
   { label: "Genome once, for life", q: "genome sequencing pharmacogenomics" },
 ];
@@ -75,7 +75,7 @@ export function Catalogue() {
               <div className="mt-3 flex items-center justify-between border-t border-ink/[0.05] pt-3">
                 <span><span className="text-[16px] font-semibold tabular-nums">{formatMoney(i.price)}</span><span className="ml-1 text-[11px] text-faint">{i.billing === "term" ? "/ 12 mo" : "CAD"}</span></span>
                 <button onClick={() => (inBag ? cart.setOpen(true) : cart.add(i.id))} aria-label={inBag ? "In plan" : `Add ${i.title}`}
-                  className={`flex h-9 items-center gap-1 rounded-full px-3 text-[12.5px] font-semibold transition-colors ${inBag ? "bg-teal-light text-teal" : "bg-accent text-white hover:bg-[#7E5C31]"}`}>
+                  className={`flex h-9 items-center gap-1 rounded-full px-3 text-[12.5px] font-semibold transition-colors ${inBag ? "bg-teal-light text-teal" : "bg-accent text-white hover:bg-accent-deep"}`}>
                   <Icon name={inBag ? "check" : "plus"} size={14} weight="bold" />{inBag ? "Added" : "Add"}
                 </button>
               </div>
