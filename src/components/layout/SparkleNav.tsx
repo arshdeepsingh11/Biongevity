@@ -16,7 +16,7 @@ function activeId(path: string) {
   if (path.startsWith("/clinic")) return "clinic";
   if (path.startsWith("/shop")) return "shop";
   if (path.startsWith("/contact")) return "contact";
-  if (/^\/(life|app|insights|about|dashboard|platform|tools|bioelr|ai|login)/.test(path)) return "discover";
+  if (/^\/(life|app|insights|about|dashboard|platform|tools|bioelr|ai|login|scan|family)/.test(path)) return "discover";
   return "home";
 }
 
