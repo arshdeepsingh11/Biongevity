@@ -19,3 +19,4 @@ export const GOAL_TAGS = [
   { id: "strength", label: "Strength & mobility", icon: "walk" },
   { id: "genes", label: "Genes & medicines", icon: "dna" },
 ] as const;
+export type GoalId = (typeof GOAL_TAGS)[number]["id"];
