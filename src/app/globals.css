@@ -148,6 +148,11 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 [data-theme="aurora"] .ai-glow { opacity: .07 !important; }
 [data-theme="aurora"] .hero-beams { opacity: .08; }
 [data-theme="aurora"] section[data-ai] { scroll-margin-top: 80px; }
+/* Aurora: floating glass top bar, like a command-center console. */
+.aurora-nav { display: none; }
+.aurora-only { display: none; }
+[data-theme="aurora"] .aurora-only { display: block; }
+[data-theme="aurora"] .aurora-hide { display: none; }
 
 /* ───── AI signature: anything Xevyo powers ───── */
 .text-ai-grad { background: var(--g-ai); -webkit-background-clip: text; background-clip: text; color: transparent; }
