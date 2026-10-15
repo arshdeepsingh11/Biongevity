@@ -27,7 +27,7 @@ export function SpecialistRouter() {
           <div className="space-y-2">
             {depts.map((d, i) => (
               <Link key={d.id} href={`/precision-health/${d.id}/`} className="flex items-center gap-3 rounded-2xl bg-white p-3 ring-1 ring-ink/[0.07] hover:ring-ai/35">
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent-light text-accent"><Icon name={d.icon} size={19} weight="duotone" /></span>
+                <span className="grid h-10 w-10 place-items-center icon-tile"><Icon name={d.icon} size={19} weight="duotone" /></span>
                 <span className="min-w-0 flex-1"><span className="block text-[14.5px] font-semibold">{d.name}{i === 0 && <span className="ml-2 rounded-full bg-ai-soft px-2 py-0.5 text-[10.5px] text-ai">best match</span>}</span><span className="block truncate text-[12.5px] text-muted">{d.tag}</span></span>
                 <Icon name="arrow-right" size={15} className="text-faint" />
               </Link>
