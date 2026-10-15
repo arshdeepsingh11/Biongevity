@@ -61,73 +61,128 @@ export function LifespanSimulator() {
   const sleepRR = sleep < 7 ? SLEEP_RISK.short : sleep > 9 ? SLEEP_RISK.long : 1;
   const bpRR = +Math.max(1, Math.pow(2, (sbp - BP_RISK.ref) / BP_RISK.doubleEvery)).toFixed(2);
   const stepsRR = useMemo(() => {
-    const b = STEPS_RISK.bands;
-    if (steps <= b[0].steps) return 1;
-    if (steps >= b[b.length - 1].steps) return b[b.length - 1].rr;
-    const i = b.findIndex((x) => x.steps >= steps);
-    const a = b[i - 1], c = b[i], f = (steps - a.steps) / (c.steps - a.steps);
-    return +(a.rr + (c.rr - a.rr) * f).toFixed(2);
+    const b = STEPS_RISK.bands; if (steps <= b[0].steps) return 1; if (steps >= b[b.length - 1].steps) return b[b.length - 1].rr;
+    const i = b.findIndex((x) => x.steps >= steps), a = b[i - 1], c = b[i]; return +(a.rr + (c.rr - a.rr) * ((steps - a.steps) / (c.steps - a.steps))).toFixed(2);
   }, [steps]);
 
-  const lever = n < 5 ? `Adding “${LIFESTYLE_FACTORS.find((f) => !on.includes(f.id))!.label.toLowerCase()}” is worth about +${per.toFixed(1)} years` : sbp >= 135 ? "Bringing blood pressure under 135/85 is your biggest lever" : steps < 8000 ? "Walking toward 8,000+ steps a day is your biggest lever" : "You're on the strongest evidence-based path — keep it";
-  const toggle = (id: string) => setOn((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
-  const max = L.five + 2;
+  // where it acts: missing habits + elevated risks light up the body
+  const intensity = useMemo(() => {
+    const m: Record<string, number> = {};
+    const add = (k: string, w: number) => ACTS[k].forEach((o) => (m[o] = Math.min(1, (m[o] ?? 0) + w)));
+    Object.entries(h).forEach(([k, v]) => v < 1 && add(k, (1 - v) * 0.6));
+    if (sleepRR > 1) add("sleep", 0.5); if (bpRR > 1.3) add("bp", Math.min(0.8, (bpRR - 1) * 0.5)); if (stepsRR > 0.62) add("steps", 0.45);
+    if (focus) { const only: Record<string, number> = {}; ACTS[focus].forEach((o) => (only[o] = 1)); return only; }
+    return m;
+  }, [h, sleepRR, bpRR, stepsRR, focus]);
+
+  const missing = LIFESTYLE_FACTORS.filter((f) => h[f.id] < 1).sort((a, b) => h[a.id] - h[b.id]);
+  const lever = bpRR >= 1.7 ? { k: "bp", t: `Bring blood pressure toward 120 — at ${sbp} mmHg risk is about ${bpRR}× the reference.` }
+    : missing[0] ? { k: missing[0].id, t: `“${missing[0].label}” is worth about +${((1 - h[missing[0].id]) * per).toFixed(1)} years in the study population.` }
+    : steps < 7800 ? { k: "steps", t: "Walking toward 7,800+ steps a day is your next biggest lever." } : { k: "sleep", t: "You're on the strongest evidence-based path — protect your sleep and keep it." };
+
+  const understand = () => {
+    const src = text.trim() || EXAMPLE_WEEK;
+    if (!text.trim()) setText(EXAMPLE_WEEK);
+    const r = readWeek(src), got: string[] = [];
+    if (r.h && Object.keys(r.h).length) { setH((s) => ({ ...s, ...r.h })); Object.entries(r.h).forEach(([k, v]) => got.push(`${LIFESTYLE_FACTORS.find((f) => f.id === k)!.label}: ${LEVELS.find((l) => l.v === v)!.l}`)); }
+    if (r.sleep) { setSleep(r.sleep); got.push(`Sleep ${r.sleep} h`); }
+    if (r.sbp) { setSbp(r.sbp); got.push(`BP ${r.sbp}`); }
+    if (r.steps) { setSteps(Math.round(r.steps / 100) * 100); got.push(`${Math.round(r.steps).toLocaleString()} steps`); }
+    setRead(got.length ? got : ["Nothing specific found — try numbers like “6 hours sleep, 4000 steps, 130/85”"]);
+  };
+
+  const max = L.five;
+  const bars = [{ k: "Baseline", v: L.zero, base: 0 }, ...LIFESTYLE_FACTORS.map((f, i) => ({ k: f.label, v: per * h[f.id], base: L.zero + per * LIFESTYLE_FACTORS.slice(0, i).reduce((a, g) => a + h[g.id], 0), id: f.id }))];
 
   return (
-    <div className="grid gap-5 lg:grid-cols-[380px_minmax(0,1fr)]">
-      <div className="hud space-y-5 rounded-[28px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06] sm:p-6">
-        <div className="flex items-center justify-between"><span className="hud-label">Inputs</span>
-          <div className="inline-flex rounded-full bg-canvas p-1">{(["women", "men"] as const).map((s) => <button key={s} onClick={() => setSex(s)} className={`rounded-full px-3 py-1 text-[12.5px] font-semibold capitalize ${sex === s ? "bg-accent text-white" : "text-muted"}`}>{s}</button>)}</div>
+    <div className="grid grid-cols-1 gap-5 lg:grid-cols-[400px_minmax(0,1fr)]">
+      {/* Inputs */}
+      <div className="space-y-4 rounded-[30px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06] sm:p-6">
+        <div className="relative overflow-hidden rounded-2xl bg-ai-soft/60 p-3 ring-1 ring-ai/15">
+          <div className="flex items-center gap-2 text-[12px] font-semibold text-ai"><XevyoOrb size={20} live />Tell Xevyo about your week</div>
+          <textarea value={text} onChange={(e) => setText(e.target.value)} rows={3} aria-label="Describe your week"
+            placeholder="e.g. I sleep about 6 hours, walk 4,000 steps, gym twice a week, never smoked, BP 136/88, a few glasses of wine"
+            className="mt-2 w-full resize-none rounded-xl bg-white/90 p-3 text-[13.5px] outline-none ring-1 ring-ink/[0.06] focus:ring-ai/40" />
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            <button onClick={understand} className="btn-ai h-9 px-4 text-[13px]">{text.trim() ? "Read my week" : "Read an example week"}</button>
+            <button onClick={() => setText(EXAMPLE_WEEK)} className="text-[12px] font-semibold text-ai underline">Try an example</button>
+          </div>
+          {read.length > 0 && <div className="mt-2 flex flex-wrap gap-1">{read.map((r) => <span key={r} className="rounded-full bg-white px-2 py-0.5 text-[11px] font-medium text-ink ring-1 ring-ai/20">✦ {r}</span>)}</div>}
+          <p className="mt-1.5 text-[10.5px] text-faint">Read on your device — nothing is sent.</p>
         </div>
-        <div className="space-y-1.5">
-          {LIFESTYLE_FACTORS.map((f) => { const c = on.includes(f.id); return (
-            <button key={f.id} onClick={() => toggle(f.id)} aria-pressed={c} className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors ${c ? "bg-accent-light" : "bg-canvas hover:bg-accent-light/60"}`}>
-              <Icon name={f.icon} size={20} weight="duotone" className={c ? "text-accent" : "text-faint"} />
-              <span className="flex-1"><span className="block text-[14px] font-semibold">{f.label}</span><span className="block text-[11.5px] text-muted">{f.detail}</span></span>
-              <span className={`relative h-5 w-9 rounded-full transition-colors ${c ? "bg-accent" : "bg-ink/15"}`}><span className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-all ${c ? "left-[18px]" : "left-0.5"}`} /></span>
-            </button>
-          ); })}
-        </div>
-        <Slider label="Sleep per night" v={sleep} set={setSleep} min={4} max={10} step={0.5} fmt={(v) => `${v} h`} />
-        <Slider label="Systolic blood pressure" v={sbp} set={setSbp} min={100} max={180} step={1} fmt={(v) => `${v} mmHg`} />
-        <Slider label="Steps per day" v={steps} set={setSteps} min={2000} max={14000} step={500} fmt={(v) => v.toLocaleString()} />
-      </div>
 
-      <div className="space-y-5">
-        <div className="hud relative overflow-hidden rounded-[28px] bg-navy p-5 sm:p-7">
-          <div className="scanline" />
-          <div className="relative grid gap-6 md:grid-cols-[1fr_1.2fr]">
-            <div>
-              <div className="hud-label">Projected life expectancy at 50</div>
-              <div className="mt-2 flex items-baseline gap-2"><motion.span key={years} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-[64px] font-semibold leading-none tracking-tight tabular-nums">{years}</motion.span><span className="text-[16px] text-muted">more years</span></div>
-              <div className="mt-2 text-[14px]"><b className="text-teal">+{gain} years</b> vs no low-risk habits{left > 0 && <> · <b className="text-accent">{left} years</b> still on the table</>}</div>
-              <div className="mt-4 rounded-2xl bg-white p-3 text-[13.5px]"><div className="hud-label !text-muted">Biggest lever</div><div className="mt-1 font-semibold">{lever}</div></div>
-            </div>
-            <div>
-              <div className="hud-label">Low-risk habits vs remaining years ({sex})</div>
-              <div className="mt-3 flex h-[170px] items-end gap-2">
-                {[0, 1, 2, 3, 4, 5].map((k) => { const v = le(k), act = k === n; return (
-                  <div key={k} className="flex h-full flex-1 flex-col items-center justify-end gap-1">
-                    <span className={`text-[11px] font-semibold tabular-nums ${act ? "text-accent" : "text-muted"}`}>{v}</span>
-                    <motion.div className={`w-full rounded-t-lg ${act ? "bg-iri" : "bg-accent/25"}`} initial={false} animate={{ height: `${(v / max) * 100}%` }} transition={{ type: "spring", stiffness: 120, damping: 18 }} />
-                    <span className={`text-[11px] ${act ? "font-semibold text-accent" : "text-faint"}`}>{k}</span>
-                  </div>
-                ); })}
+        <div className="flex items-center justify-between"><span className="text-[12px] font-semibold uppercase tracking-[0.12em] text-faint">Five habits</span>
+          <div className="inline-flex rounded-full bg-canvas p-0.5">{(["women", "men"] as const).map((s) => <button key={s} onClick={() => setSex(s)} className={`rounded-full px-3 py-1 text-[12px] font-semibold capitalize ${sex === s ? "bg-white shadow-card" : "text-muted"}`}>{s}</button>)}</div>
+        </div>
+        <div className="space-y-2">
+          {LIFESTYLE_FACTORS.map((f) => (
+            <div key={f.id} onMouseEnter={() => setFocus(f.id)} onMouseLeave={() => setFocus(null)} className="flex items-center gap-3 rounded-2xl bg-canvas px-3 py-2">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-accent ring-1 ring-ink/[0.05]"><Icon name={f.icon} size={18} /></span>
+              <span className="min-w-0 flex-1"><span className="block text-[13.5px] font-semibold leading-tight">{f.label}</span><span className="block truncate text-[11px] text-muted">{f.detail}</span></span>
+              <div role="radiogroup" aria-label={f.label} className="relative grid shrink-0 grid-cols-3 rounded-full bg-white p-0.5 ring-1 ring-ink/[0.06]">
+                <motion.span layout aria-hidden className="absolute inset-y-0.5 w-1/3 rounded-full bg-ai" style={{ left: `calc(${(h[f.id] * 2) / 3 * 100}% + ${h[f.id] === 0 ? 2 : h[f.id] === 1 ? -2 : 0}px)` }} transition={{ type: "spring", stiffness: 500, damping: 35 }} />
+                {LEVELS.map((l) => <button key={l.l} role="radio" aria-checked={h[f.id] === l.v} onClick={() => setH((s) => ({ ...s, [f.id]: l.v }))} className={`relative z-[1] w-[46px] py-1 text-[11px] font-semibold transition-colors ${h[f.id] === l.v ? "text-on-ai" : "text-muted"}`}>{l.l}</button>)}
               </div>
             </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-3 gap-2">
+          <Dial label="Sleep" unit="h" v={sleep} set={setSleep} min={4} max={10} step={0.5} warn={sleep < 7 || sleep > 9} onFocus={() => setFocus("sleep")} onBlur={() => setFocus(null)} />
+          <Dial label="Systolic" unit="mmHg" v={sbp} set={setSbp} min={100} max={180} step={1} warn={sbp >= 135} onFocus={() => setFocus("bp")} onBlur={() => setFocus(null)} />
+          <Dial label="Steps" unit="/day" v={steps} set={setSteps} min={2000} max={14000} step={250} warn={steps < 7000} fmt={(v) => `${(v / 1000).toFixed(1)}k`} onFocus={() => setFocus("steps")} onBlur={() => setFocus(null)} />
+        </div>
+        <p className="text-[10.5px] text-faint">Drag a dial (or use arrow keys). &ldquo;Partly&rdquo; counts as half a habit — an illustrative interpolation of the study.</p>
+      </div>
+
+      {/* Outputs */}
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_340px]">
+        <div className="space-y-4">
+          <div className="relative overflow-hidden rounded-[30px] bg-white p-6 ai-ring">
+            <div aria-hidden className="ai-glow -right-16 -top-16 h-56 w-56" />
+            <div className="relative grid grid-cols-1 gap-5 sm:grid-cols-3">
+              <Big k="Life expectancy at 50" v={years} unit="yrs" sub={`${n.toFixed(1)} of 5 habits`} />
+              <Big k="Healthy years on the table" v={onTable} unit="yrs" sub="with all five habits" ai />
+              <Big k="Risk from your numbers" v={+(sleepRR * bpRR * (stepsRR / 0.47 > 1 ? stepsRR / 0.47 : 1)).toFixed(2)} unit="×" sub="combined, vs best band" />
+            </div>
+            <div className="relative mt-5 flex items-start gap-3 rounded-2xl bg-ai-soft/70 p-3.5">
+              <XevyoOrb size={30} live />
+              <div className="min-w-0 flex-1 text-[14px]"><b className="text-ai">Biggest lever · </b>{lever.t}</div>
+              <button onClick={() => ask(`My week: habits ${JSON.stringify(h)}, sleep ${sleep} h, systolic ${sbp}, ${steps} steps. Explain my biggest longevity lever and a realistic 4-week plan. Population data only — not a diagnosis.`, { label: "✦ Plan my biggest lever" })} className="shrink-0 rounded-full bg-ai px-3 py-1.5 text-[12px] font-semibold text-on-ai">Plan it</button>
+            </div>
           </div>
-          <p className="relative mt-4 text-[10.5px] text-muted">Source: {LIFE_EXPECTANCY.src}. Endpoints published; intermediate values interpolated.</p>
+
+          {/* Waterfall */}
+          <figure className="rounded-[26px] bg-white p-5 ring-1 ring-ink/[0.07]">
+            <figcaption className="flex items-baseline justify-between"><span className="text-[15px] font-semibold">How your habits add up</span><span className="text-[11px] text-faint">{LIFE_EXPECTANCY.src.split("(")[0]}</span></figcaption>
+            <div className="mt-4 space-y-2">
+              {bars.map((b, i) => (
+                <div key={b.k} className="grid grid-cols-[120px_minmax(0,1fr)_48px] items-center gap-2 text-[12px]" onMouseEnter={() => b.id && setFocus(b.id)} onMouseLeave={() => setFocus(null)}>
+                  <span className="truncate font-medium">{b.k}</span>
+                  <div className="relative h-5 rounded-md bg-ink/[0.04]">
+                    {i > 0 && <span className="absolute inset-y-0 rounded-md bg-ai/15" style={{ left: `${(b.base / max) * 100}%`, width: `${(per / max) * 100}%` }} />}
+                    <motion.span className={`absolute inset-y-0 rounded-md ${i === 0 ? "bg-ink/25" : "bg-ai bg-ai-grad"}`} initial={false} animate={{ left: `${(b.base / max) * 100}%`, width: `${(b.v / max) * 100}%` }} transition={{ type: "spring", stiffness: 140, damping: 22 }} />
+                  </div>
+                  <span className="text-right tabular-nums text-muted">{i === 0 ? b.v.toFixed(1) : `+${b.v.toFixed(1)}`}</span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-3 text-[11px] text-faint">Light bars show the years each missing habit could add. Population averages for adults at 50.</p>
+          </figure>
+
+          {/* Risk meters */}
+          <figure className="grid grid-cols-1 gap-3 rounded-[26px] bg-white p-5 ring-1 ring-ink/[0.07] sm:grid-cols-3">
+            <Risk k="Sleep" rr={sleepRR} note={sleep < 7 ? "short sleep" : sleep > 9 ? "long sleep" : "7–9 h"} src="Cappuccio 2010" />
+            <Risk k="Blood pressure" rr={bpRR} note={`${sbp} mmHg vs 115`} src="PSC, Lancet 2002" />
+            <Risk k="Steps" rr={stepsRR} note={`${steps.toLocaleString()} a day`} src="Paluch 2022" lowerIsBetter />
+          </figure>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          <Risk title="Sleep" icon="moon" rr={sleepRR} note={sleep < 7 ? "Short sleep" : sleep > 9 ? "Long sleep" : "7–9 h reference"} src={SLEEP_RISK.src} />
-          <Risk title="Blood pressure" icon="gauge" rr={bpRR} note={`vs ${BP_RISK.ref} mmHg · cardiovascular death`} src={BP_RISK.src} />
-          <Risk title="Daily steps" icon="steps" rr={stepsRR} note="vs ~3,500 steps/day" src={STEPS_RISK.src} />
-        </div>
-
-        <div className="flex flex-wrap items-center gap-3">
-          <button onClick={() => ask(`I have ${n} of 5 low-risk habits, sleep ${sleep} hours, systolic BP ${sbp} and walk ${steps} steps a day. What should I focus on first?`)} className="btn-dark"><Icon name="sparkle" size={16} weight="duotone" />Ask Xevyo for my plan</button>
-          <span className="text-[11.5px] text-faint">Population estimates from published studies — not a personal prediction or diagnosis.</span>
+        {/* Body impact */}
+        <div className="overflow-hidden rounded-[30px] bg-white ring-1 ring-ink/[0.07]">
+          <div className="flex items-center gap-2 px-5 pt-4"><span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ai">✦ Where it acts</span><span className="ml-auto text-[11px] text-muted">{focus ? LIFESTYLE_FACTORS.find((f) => f.id === focus)?.label ?? focus : "All gaps"}</span></div>
+          <BodyHologram intensity={intensity} labels={false} height={520} compact autoRotate />
+          <p className="px-5 pb-4 text-[11.5px] leading-snug text-muted">Glow = the organs a habit affects most. Hover a habit or dial to see just its effect.</p>
         </div>
       </div>
     </div>
