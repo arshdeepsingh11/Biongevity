@@ -104,7 +104,7 @@ export function BagLayer() {
               {c.lines.map((l) => (
                 <div key={l.id} className="rounded-2xl bg-white p-4 ring-1 ring-ink/[0.06]">
                   <div className="flex items-start gap-3">
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent-light text-accent"><Icon name={l.item.icon} size={20} weight="duotone" /></span>
+                    <span className="grid h-10 w-10 shrink-0 place-items-center icon-tile"><Icon name={l.item.icon} size={20} weight="duotone" /></span>
                     <button onClick={() => c.setView(l.id)} className="min-w-0 flex-1 text-left"><span className="block truncate text-[14.5px] font-semibold">{l.item.title}</span><span className="hud-label !text-faint">{KIND_META[l.item.kind].label}</span></button>
                     <span className="text-right text-[14.5px] font-semibold tabular-nums">{money(l.price)}</span>
                     <button onClick={() => c.remove(l.id)} aria-label={`Remove ${l.item.title}`} className="text-faint hover:text-accent"><Icon name="trash" size={16} /></button>
