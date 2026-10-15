@@ -38,7 +38,7 @@ export default function ShopPage() {
           <div className="mt-8 grid gap-3 md:grid-cols-3">
             {DOORS.map((d) => (
               <a key={d.href} href={d.href} className="hud group flex items-center gap-4 rounded-[24px] bg-white/85 p-5 shadow-card ring-1 ring-ink/[0.06] backdrop-blur transition-transform hover:-translate-y-0.5">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-iri text-white"><Icon name={d.icon} size={24} weight="duotone" /></span>
+                <span className="grid h-12 w-12 shrink-0 place-items-center icon-tile"><Icon name={d.icon} size={24} weight="duotone" /></span>
                 <span className="flex-1"><span className="block text-[17px] font-semibold">{d.t}</span><span className="block text-[13px] text-muted">{d.d}</span></span>
                 <Icon name="arrow-right" size={18} className="text-accent transition-transform group-hover:translate-x-1" />
               </a>
