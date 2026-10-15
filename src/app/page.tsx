@@ -7,6 +7,9 @@ import { LifespanSimulator } from "@/components/home/LifespanSimulator";
 import { DeptIntelligence } from "@/components/home/DeptIntelligence";
 import { GoalPipeline } from "@/components/home/GoalPipeline";
 import { AIEverywhere } from "@/components/home/AIEverywhere";
+import { EvidenceBoard } from "@/components/home/EvidenceBoard";
+import { Ecosystem } from "@/components/home/Ecosystem";
+import { StartHere } from "@/components/home/StartHere";
 import { Head, BrandFilm, StoriesSection, GlobalClinic, FinalCTA } from "@/components/home/HomeSections";
 
 export default function HomePage() {
