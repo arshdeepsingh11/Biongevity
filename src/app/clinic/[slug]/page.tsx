@@ -28,7 +28,7 @@ export default async function ClinicSubPage({ params }: P) {
         <div aria-hidden className="pointer-events-none absolute -top-40 left-1/3 h-[420px] w-[680px] rounded-full bg-accent/10 blur-[110px]" />
         <div className="container-x relative">
           <Link href="/clinic/" className="inline-flex items-center gap-1 text-[14px] font-medium text-muted hover:text-accent"><Icon name="chevron-left" size={16} />Global Clinic</Link>
-          <div className="mt-8 flex items-center gap-3"><span className="grid h-14 w-14 place-items-center rounded-2xl bg-iri text-white shadow-glow"><Icon name={c.icon} size={26} /></span></div>
+          <div className="mt-8 flex items-center gap-3"><span className="grid h-14 w-14 place-items-center icon-tile"><Icon name={c.icon} size={26} /></span></div>
           <h1 className="h-display mt-6 max-w-[16ch]"><TextAnimate animation="blurIn">{c.name}</TextAnimate></h1>
           <p data-reveal className="mt-3 text-[20px] font-medium text-accent">{c.tag}</p>
           <p data-reveal className="lede mt-4 max-w-[62ch]">{c.summary}</p>
