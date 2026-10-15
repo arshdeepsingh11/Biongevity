@@ -76,7 +76,7 @@ export function DeptTabs({ id }: { id: string }) {
                 {d.areas.map((a, k) => (
                   <MagicCard key={a.t} className="h-full p-5">
                     <div className="flex items-start gap-4">
-                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-accent-light text-accent"><Icon name={a.icon} size={24} weight="duotone" /></span>
+                      <span className="grid h-12 w-12 shrink-0 place-items-center icon-tile"><Icon name={a.icon} size={24} weight="duotone" /></span>
                       <div><div className="text-[12px] font-semibold tabular-nums text-faint">{String(k + 1).padStart(2, "0")}</div><div className="text-[17px] font-semibold">{a.t}</div><div className="mt-1 text-[14px] text-muted">{a.d}</div></div>
                     </div>
                   </MagicCard>
