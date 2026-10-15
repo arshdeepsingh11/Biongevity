@@ -189,24 +189,12 @@ export function LifespanSimulator() {
   );
 }
 
-function Slider({ label, v, set, min, max, step, fmt }: { label: string; v: number; set: (n: number) => void; min: number; max: number; step: number; fmt: (v: number) => string }) {
+function Big({ k, v, unit, sub, ai }: { k: string; v: number; unit: string; sub: string; ai?: boolean }) {
   return (
-    <label className="block">
-      <span className="flex items-baseline justify-between text-[13.5px]"><span className="font-semibold">{label}</span><span className="font-mono text-[13px] tabular-nums text-accent">{fmt(v)}</span></span>
-      <input type="range" min={min} max={max} step={step} value={v} onChange={(e) => set(Number(e.target.value))} className="mt-1.5 w-full accent-accent" aria-label={label} />
-    </label>
-  );
-}
-
-function Risk({ title, icon, rr, note, src }: { title: string; icon: string; rr: number; note: string; src: string }) {
-  const good = rr <= 1, pct = Math.min(100, (rr / 2.5) * 100);
-  return (
-    <div className="rounded-[22px] bg-white p-4 shadow-card ring-1 ring-ink/[0.06]">
-      <div className="flex items-center gap-2 text-[14px] font-semibold"><Icon name={icon} size={18} weight="duotone" className="text-accent" />{title}</div>
-      <div className={`mt-2 text-[30px] font-semibold tabular-nums ${good ? "text-teal" : "text-warn"}`}>×{rr.toFixed(2)}</div>
-      <div className="text-[12px] text-muted">relative risk · {note}</div>
-      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-ink/[0.07]"><motion.div className={`h-full rounded-full ${good ? "bg-teal" : "bg-tangerine"}`} animate={{ width: `${pct}%` }} /></div>
-      <div className="mt-2 text-[10px] leading-snug text-faint">{src}</div>
+    <div>
+      <div className="text-[11.5px] font-medium text-muted">{k}</div>
+      <div className={`mt-1 text-[40px] font-semibold leading-none tracking-tight tabular-nums ${ai ? "text-ai-grad" : ""}`}><NumberTicker value={v} decimals={unit === "×" ? 2 : 1} /><span className="ml-1 text-[15px] font-medium text-muted">{unit}</span></div>
+      <div className="mt-1 text-[11.5px] text-faint">{sub}</div>
     </div>
   );
 }
