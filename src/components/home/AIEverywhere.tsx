@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { AIBadge } from "@/components/ai/AIBadge";
-import { env } from "@/lib/env";
 
 const CARDS = [
   { href: "/platform/", icon: "fingerprint", k: "For you", t: "Your digital twin", d: "Labs, genome and wearables learned into one model of your healthspan — with Xevyo explaining every change.", cta: "See the platform" },
