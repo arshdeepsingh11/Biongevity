@@ -52,3 +52,5 @@ export interface TestIntel {
   /** 0–100, transparent: 40% evidence · 30% actionability · 20% cost · 10% breadth */
   utility: number; categoryLabel: string; categoryIndex: number;
 }
+
+const maxPrice = Math.max(...LAB_TESTS.map((t) => t.price));
