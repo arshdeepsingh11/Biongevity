@@ -25,3 +25,4 @@ function landPoints() {
   }
   return out;
 }
+const rad = (d: number) => (d * Math.PI) / 180;
