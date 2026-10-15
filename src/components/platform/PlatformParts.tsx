@@ -5,7 +5,6 @@ import { useAI } from "@/components/ai/AIProvider";
 import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { Icon } from "@/components/ui/Icon";
 import { PLATFORM_LAYERS, TWIN_STATES, WHY_EXAMPLE, ACTION_LABELS } from "@/data/platform";
-import { env } from "@/lib/env";
 
 /** Buttons that connect the website to the member app (the twin itself lives in the app). */
 export function AppButtons({ center }: { center?: boolean }) {
