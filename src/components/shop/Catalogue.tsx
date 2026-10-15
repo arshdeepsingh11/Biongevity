@@ -65,7 +65,7 @@ export function Catalogue() {
             <motion.div layout key={i.id} className={`group flex flex-col rounded-[22px] bg-white p-4 ring-1 transition-shadow hover:shadow-card ${i.featured ? "ring-accent/40" : "ring-ink/[0.06]"}`}>
               <button onClick={() => cart.setView(i.id)} className="text-left">
                 <div className="flex items-start justify-between gap-2">
-                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent-light text-accent transition-colors group-hover:bg-iri group-hover:text-white"><Icon name={i.icon} size={22} weight="duotone" /></span>
+                  <span className="grid h-11 w-11 place-items-center icon-tile transition-colors group-hover:bg-iri group-hover:text-white"><Icon name={i.icon} size={22} weight="duotone" /></span>
                   <span className="rounded-full bg-canvas px-2 py-0.5 text-[10.5px] font-semibold uppercase tracking-wide text-muted">{KIND_META[i.kind].label}</span>
                 </div>
                 <div className="mt-3 line-clamp-2 text-[15px] font-semibold leading-snug">{i.title}</div>
