@@ -32,3 +32,6 @@ export const ORGANS: Organ[] = [
   { id: "skin", label: "Skin", plain: "Barrier, ageing and skin microbiome", at: [-0.215, 0.5, 0.03], r: [0.03, 0.08, 0.03], n: 40, depts: ["skin-health"] },
 ];
 export const organById = (id: string) => ORGANS.find((o) => o.id === id);
+
+/** Small seeded random generator so the body looks the same on every visit. */
+function rng(seed = 7) { let s = seed; return () => ((s = (s * 16807) % 2147483647) / 2147483647); }
