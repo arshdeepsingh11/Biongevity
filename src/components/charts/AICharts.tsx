@@ -108,3 +108,26 @@ export function Scatter({ points, xLabel, yLabel, active, onPick, height = 300, 
     </div>
   );
 }
+
+/* ---------- Heatmap ---------- */
+export function Heatmap({ rows, cols, cells, highlightCol }: { rows: string[]; cols: string[]; cells: number[][]; highlightCol?: (c: number) => boolean }) {
+  const [ref, on] = useInView<HTMLDivElement>();
+  return (
+    <div ref={ref} className="no-scrollbar overflow-x-auto">
+      <table className="w-full border-separate border-spacing-1 text-[11.5px]">
+        <thead><tr><th />{cols.map((c, j) => <th key={c} className={`px-1 pb-1 text-left align-bottom font-semibold ${highlightCol?.(j) ? "text-ai" : "text-muted"}`}><span className="block max-w-[76px] leading-tight">{c}</span></th>)}</tr></thead>
+        <tbody>
+          {rows.map((r, i) => (
+            <tr key={r}>
+              <th className="whitespace-nowrap pr-2 text-left font-semibold">{r}</th>
+              {cols.map((c, j) => {
+                const v = cells[i][j];
+                return <td key={c} title={`${r} · ${c}: ${v ? "yes" : "no"}`} className="h-7 min-w-[30px] rounded-md" style={{ background: v ? `rgb(var(--c-ai) / ${on ? 0.25 + 0.6 * v : 0})` : "rgb(var(--c-ink) / .04)", transition: `background .5s ${(i + j) * 0.02}s` }} />;
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
