@@ -74,6 +74,6 @@ export default function HomePage() {
       <StoriesSection />
       <GlobalClinic />
       <FinalCTA />
-    </>
+    </div>
   );
 }
