@@ -61,7 +61,7 @@ export function GlobalClinic() {
             ))}
           </div>
         </div>
-        <div data-reveal className="mt-6"><WorldMap /></div>
+        <div className="mt-6"><ClinicGlobe /></div>
       </div>
     </Section>
   );
