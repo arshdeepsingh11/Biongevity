@@ -13,7 +13,7 @@ import { env } from "@/lib/env";
 type Step = { href: string; t: string; d: string; icon: string; ext?: boolean };
 
 const DEFAULTS: Step[] = [
-  { href: "/shop/#studio", t: "Build your plan", d: "Plan Studio assembles a plan from your goal.", icon: "sparkle" },
+  { href: "/scan/", t: "Take the AI scan", d: "2 minutes: domains, tests and a re-test plan.", icon: "radar" },
   { href: "/tools/", t: "Explain my lab results", d: "Paste results; Xevyo explains them.", icon: "flask" },
   { href: "/platform/", t: "See the healthspan platform", d: "Your digital twin, explained.", icon: "fingerprint" },
 ];
