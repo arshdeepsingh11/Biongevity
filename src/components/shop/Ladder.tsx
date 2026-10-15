@@ -34,7 +34,7 @@ export function Ladder() {
             <th className="p-5 text-left align-bottom"><span className="hud-label">Choose your depth</span></th>
             {cols.map((c, i) => (
               <th key={c.k} className={`p-5 text-center align-bottom ${i === 2 ? "bg-navy" : ""}`}>
-                <span className="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-iri text-white"><Icon name={c.icon} size={22} weight="duotone" /></span>
+                <span className="mx-auto grid h-11 w-11 place-items-center icon-tile"><Icon name={c.icon} size={22} weight="duotone" /></span>
                 <div className="mt-2 text-[16px] font-semibold">{c.t}</div>
                 <div className="mt-1 text-[15px] font-semibold text-accent">{c.price}</div>
                 <div className="text-[11px] font-normal text-muted">CAD · {c.unit}</div>
