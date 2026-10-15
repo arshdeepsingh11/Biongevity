@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { LIFESTYLE_FACTORS, LIFE_EXPECTANCY, SLEEP_RISK, BP_RISK, STEPS_RISK } from "@/data/intelligence";
 import { useAI } from "@/components/ai/AIProvider";
