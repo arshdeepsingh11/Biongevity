@@ -6,6 +6,9 @@ import { Icon } from "@/components/ui/Icon";
 import { parseLabs, SAMPLE_LABS, type Flag } from "@/data/labRanges";
 import { useXevyoTask } from "@/hooks/useXevyoTask";
 import { AIOutput } from "./AIOutput";
+import { RangeBar } from "@/components/charts/AICharts";
+import { BuyButton } from "@/components/commerce/BuyButton";
+import { LAB_TESTS } from "@/data/labs";
 
 const TONE: Record<Flag, string> = { low: "bg-warn/10 text-warn", high: "bg-warn/10 text-warn", "in range": "bg-teal-light text-teal", "no range": "bg-canvas text-muted" };
 
