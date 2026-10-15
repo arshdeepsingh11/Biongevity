@@ -165,10 +165,10 @@
   --c-ink: 37 49 60;           /* #25313C main text */
   --c-muted: 117 128 138;      /* #75808A secondary text */
   --c-faint: 128 136 144;
-  --c-accent: 196 64 8;
-  --c-accent-soft: 255 140 66;
-  --c-accent-light: 255 241 230;
-  --c-accent-deep: 168 52 4;
+  --c-accent: 217 79 31;       /* #D94F1F deep orange (text + buttons) */
+  --c-accent-soft: 243 107 50; /* #F36B32 primary orange */
+  --c-accent-light: 255 236 220;
+  --c-accent-deep: 186 64 22;
   --c-on-accent: 255 255 255;
   --c-teal: 36 138 61;
   --c-teal-soft: 52 199 89;
