@@ -35,3 +35,55 @@ export const organById = (id: string) => ORGANS.find((o) => o.id === id);
 
 /** Small seeded random generator so the body looks the same on every visit. */
 function rng(seed = 7) { let s = seed; return () => ((s = (s * 16807) % 2147483647) / 2147483647); }
+
+/** Body surface points (skin) and organ points. Returned as flat Float32Arrays: x,y,z,… */
+export function buildBody(density = 1) {
+  const r = rng(11), body: number[] = [], organ: number[] = [], organIdx: number[] = [];
+  const N = (n: number) => Math.round(n * density);
+  const ellipsoid = (c: V3, rad: V3, n: number, out: number[], fill = false) => {
+    for (let i = 0; i < n; i++) {
+      const u = r() * 2 - 1, t = r() * Math.PI * 2, k = fill ? Math.cbrt(r()) : 1, s = Math.sqrt(1 - u * u);
+      out.push(c[0] + rad[0] * s * Math.cos(t) * k, c[1] + rad[1] * u * k, c[2] + rad[2] * s * Math.sin(t) * k);
+    }
+  };
+  const capsule = (a: V3, b: V3, ra: number, rb: number, n: number) => {
+    for (let i = 0; i < n; i++) {
+      const t = r(), ang = r() * Math.PI * 2, rad = ra + (rb - ra) * t;
+      const cx = a[0] + (b[0] - a[0]) * t, cy = a[1] + (b[1] - a[1]) * t, cz = a[2] + (b[2] - a[2]) * t;
+      body.push(cx + Math.cos(ang) * rad, cy, cz + Math.sin(ang) * rad * 0.92);
+    }
+  };
+  // head + neck
+  ellipsoid([0, 0.86, 0], [0.095, 0.12, 0.108], N(520), body);
+  capsule([0, 0.69, -0.005], [0, 0.77, 0], 0.048, 0.044, N(90));
+  // torso: stacked superellipse rings
+  const W = (y: number) => (y > 0.62 ? 0.12 + (0.66 - y) * 2 : y > 0.45 ? 0.2 - (0.62 - y) * 0.18 : y > 0.15 ? 0.17 - (0.45 - y) * 0.13 : 0.13 + (0.15 - y) * 0.15);
+  const D = (y: number) => (y > 0.45 ? 0.1 : y > 0.15 ? 0.1 - (0.45 - y) * 0.05 : 0.085 + (0.15 - y) * 0.05);
+  for (let i = 0; i < N(1700); i++) {
+    const y = 0.66 - r() * 0.72, t = r() * Math.PI * 2, c = Math.cos(t), s = Math.sin(t);
+    const e = 2.6, sx = Math.sign(c) * Math.pow(Math.abs(c), 2 / e), sz = Math.sign(s) * Math.pow(Math.abs(s), 2 / e);
+    body.push(sx * W(y), y, sz * D(y) + (y > 0.3 && sz > 0 ? 0.012 : 0));
+  }
+  // arms + hands
+  for (const side of [-1, 1]) {
+    capsule([side * 0.205, 0.6, 0], [side * 0.265, 0.3, -0.012], 0.052, 0.042, N(260));
+    capsule([side * 0.265, 0.3, -0.012], [side * 0.305, 0.04, 0.03], 0.04, 0.03, N(220));
+    ellipsoid([side * 0.322, -0.045, 0.04], [0.026, 0.06, 0.018], N(70), body);
+    // legs + feet
+    capsule([side * 0.085, -0.06, 0], [side * 0.095, -0.5, 0.012], 0.082, 0.056, N(470));
+    capsule([side * 0.095, -0.5, 0.012], [side * 0.1, -0.92, -0.012], 0.054, 0.038, N(380));
+    ellipsoid([side * 0.1, -0.965, 0.045], [0.038, 0.025, 0.085], N(70), body);
+  }
+  // organs (filled clouds)
+  ORGANS.forEach((o, oi) => {
+    const before = organ.length;
+    if (o.id === "lungs") { ellipsoid([-0.075, o.at[1], o.at[2]], [0.06, 0.11, 0.06], N(o.n / 2), organ, true); ellipsoid([0.075, o.at[1], o.at[2]], [0.06, 0.11, 0.06], N(o.n / 2), organ, true); }
+    else if (o.id === "kidneys" || o.id === "eyes") { ellipsoid([-o.r[0] * 0.75, o.at[1], o.at[2]], [o.r[0] * 0.3, o.r[1], o.r[2]], N(o.n / 2), organ, true); ellipsoid([o.r[0] * 0.75, o.at[1], o.at[2]], [o.r[0] * 0.3, o.r[1], o.r[2]], N(o.n / 2), organ, true); }
+    else if (o.id === "joints") { for (const sx of [-0.095, 0.095]) ellipsoid([sx, -0.5, 0.02], [0.04, 0.03, 0.035], N(o.n / 2), organ, true); }
+    else if (o.id === "muscles") { for (const sx of [-0.09, 0.09]) ellipsoid([sx, -0.27, 0.01], [0.06, 0.15, 0.055], N(o.n / 2), organ, true); }
+    else if (o.id === "gut") { for (let i = 0; i < N(o.n); i++) { const t = (i / N(o.n)) * Math.PI * 12, rr = 0.03 + 0.05 * (i / N(o.n)); organ.push(Math.cos(t) * rr + (r() - 0.5) * 0.012, o.at[1] + Math.sin(t * 0.5) * 0.05, o.at[2] + Math.sin(t) * rr * 0.5); } }
+    else ellipsoid(o.at, o.r, N(o.n), organ, true);
+    for (let k = before; k < organ.length; k += 3) organIdx.push(oi);
+  });
+  return { body: new Float32Array(body), organ: new Float32Array(organ), organIdx: new Uint8Array(organIdx) };
+}
