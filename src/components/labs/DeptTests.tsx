@@ -12,3 +12,4 @@ const DEPT_GOALS: Record<string, GoalId[]> = {
   "respiratory-medicine": ["sleep"], "geriatric-medicine": ["brain", "ageing"], nutrition: ["metabolic", "ageing"], "skin-health": ["gut"],
   "womens-health": ["hormones"], "mens-health": ["hormones"], "gut-health": ["gut"], dental: ["gut"], "mental-health": ["sleep"],
 };
+const SKIN = /bioskin/i, DENTAL = /biodental/i;
