@@ -7,3 +7,5 @@ import { cn } from "@/lib/utils";
 
 export type Tone = "good" | "attention" | "neutral" | "focus";
 export interface Hotspot { id: string; label?: string; status?: string; tone?: Tone }
+
+const TONE_TOKEN: Record<Tone, string> = { good: "teal", attention: "ai-2", neutral: "muted", focus: "ai" };
