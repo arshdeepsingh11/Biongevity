@@ -36,3 +36,17 @@ export const QUESTIONS: Question[] = [
 ];
 
 export const DOMAINS = ["Cardiometabolic", "Brain", "Metabolic", "Inflammation", "Physical function", "Sleep & recovery", "Nutrition", "Resilience", "Ageing pace"];
+
+export interface ScanResult {
+  domains: { label: string; score: number; lo: number; hi: number }[];
+  habits: { count: number; list: { t: string; ok: boolean | null }[] };
+  lifeExp: { n: number; years: number }[];
+  stepsRR: number; bpRR: number | null; sleepNote: string;
+  tests: (TestIntel & { match: number; why: string })[];
+  formulas: CatalogProduct[];
+  program: (typeof PACKAGES)[number];
+  depts: (typeof DEPARTMENTS)[number][];
+  retest: { label: string; marks: number[]; sub: string }[];
+  total: number;
+  priorities: string[];
+}
