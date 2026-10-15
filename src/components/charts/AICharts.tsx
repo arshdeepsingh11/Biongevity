@@ -59,3 +59,6 @@ export function Sparkline({ values, width = 120, height = 34, color = "rgb(var(-
     </svg>
   );
 }
+
+/* ---------- Scatter (value map) ---------- */
+export interface ScatterPt { id: string; x: number; y: number; label: string; group?: number; r?: number }
