@@ -44,6 +44,10 @@ export function buildSiteIndex(): Passage[] {
 
   add("ai", "How Biongevity's AI works", "/ai/", AI_PRINCIPLES.map((p) => `${p.t}: ${p.d}`).join(" "));
   AI_FAQ.forEach((f, i) => add(`ai:faq${i}`, `AI — ${f.q}`, "/ai/", `${f.q} ${f.a}`));
+  add("scan", "AI Healthspan Scan", "/scan/", "A free 2-minute scan: 12 one-tap questions about age, goals, steps, sleep, blood pressure, smoking, alcohol, diet, weight, family history and last tests. Shows a radar of 9 health domains with uncertainty ranges, published population charts (steps, blood pressure, five healthy habits), the BioAro Labs tests that fit (buy on bioarolabs.com), matched BioAro Drugs formulas and a 12-month re-test timeline. Runs on your device; educational estimate, not a diagnosis.");
+  add("family", "Family care for an ageing parent", "/family/", "For adult children caring for a parent: pick concerns such as memory, falls, heart, kidneys and medicines, mood or tiredness. Get a checklist, the right specialist (geriatric medicine, cardiology, internal medicine), relevant BioAro Labs tests, virtual visits, and a family view in the Biongevity app where the parent chooses what is shared.");
+  add("navigator", "AI Test Navigator (BioAro Labs)", "/precision-health/bioaro-labs/#navigator", "Every BioAro Labs test scored on your device: utility = 40% evidence, 30% actionability, 20% cost, 10% breadth, plus a goal match. Value map chart of price vs utility, evidence mix, compare up to three tests, and buy on bioarolabs.com.");
+  add("studio", "AI Protocol Studio (BioAro Drugs)", "/precision-health/bioaro-drugs/#studio", "Pick BioAro Drugs formulas and see a daily dose clock, an ingredient-overlap heatmap (for example creatine or vitamin B12 in several products), cost per order and buy links to bioarodrugs.com.");
   add("tools", "AI health tools", "/tools/", "Free AI tools: lab-result explainer (paste results, see flags, explain with Xevyo), visit-prep brief (print a one-page summary for your appointment), and specialist router (describe a problem, see the right department and test).");
   return out;
 }
