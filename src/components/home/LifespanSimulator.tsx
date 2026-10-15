@@ -3,13 +3,47 @@ import { useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { LIFESTYLE_FACTORS, LIFE_EXPECTANCY, SLEEP_RISK, BP_RISK, STEPS_RISK } from "@/data/intelligence";
 import { useAI } from "@/components/ai/AIProvider";
+import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { Icon } from "@/components/ui/Icon";
+import { BodyHologram } from "@/components/body/BodyHologram";
+import { NumberTicker } from "@/components/fx/NumberTicker";
 
 /**
- * Lifestyle → longevity simulator.
- * Life expectancy endpoints: Li et al., Circulation 2018 (0 vs 5 low-risk factors; intermediate counts interpolated).
- * Sleep, blood pressure and steps shown as relative risk from meta-analyses. Population estimates, not a personal prediction.
+ * AI Longevity Lab (was: lifestyle simulator).
+ * Describe your week in your own words → parsed ON YOUR DEVICE into five habits plus sleep, blood pressure and steps.
+ * Outputs use published population figures only:
+ *  • Life expectancy at 50 with 0–5 low-risk habits: Li et al., Circulation 2018 (partial habits interpolated, labelled)
+ *  • Sleep, blood pressure and steps as relative risk from meta-analyses (sources shown)
+ * The 3D body shows WHERE each habit acts. Not a personal prediction.
  */
+type Level = 0 | 0.5 | 1;
+const LEVELS: { v: Level; l: string }[] = [{ v: 0, l: "No" }, { v: 0.5, l: "Partly" }, { v: 1, l: "Yes" }];
+
+/** Where each habit / risk acts in the body (organ ids from lib/body.ts). */
+const ACTS: Record<string, string[]> = {
+  smoke: ["lungs", "heart", "mouth", "skin"], bmi: ["heart", "liver", "pancreas", "joints"], move: ["heart", "muscles", "brain"],
+  alcohol: ["liver", "brain", "heart"], diet: ["gut", "heart", "pancreas"], sleep: ["brain", "heart"], bp: ["heart", "brain", "kidneys", "eyes"], steps: ["muscles", "heart", "joints"],
+};
+
+/** On-device reader for a free-text description. Returns only what it found. */
+function readWeek(t: string) {
+  const s = t.toLowerCase(), out: Partial<{ h: Record<string, Level>; sleep: number; sbp: number; steps: number }> = { h: {} };
+  const num = (re: RegExp) => { const m = s.match(re); return m ? parseFloat(m[1].replace(/,/g, "")) : undefined; };
+  const sl = num(/(\d+(?:\.\d)?)\s*(?:h|hrs?|hours?)\b[^.]{0,20}sleep|sleep[^.\d]{0,20}(\d+(?:\.\d)?)/) ?? num(/sleep[^.\d]{0,20}(\d+(?:\.\d)?)/);
+  if (sl && sl > 2 && sl < 13) out.sleep = sl;
+  const st = num(/(\d[\d,.]*)\s*k?\s*steps/); if (st) out.steps = st < 50 ? st * 1000 : st;
+  const bp = s.match(/(\d{2,3})\s*\/\s*(\d{2,3})/); if (bp) out.sbp = +bp[1];
+  if (/never smok|don.?t smoke|non-?smoker|no smoking/.test(s)) out.h!.smoke = 1; else if (/quit smok|ex-?smoker|used to smoke/.test(s)) out.h!.smoke = 0.5; else if (/smok|cigarette|vape/.test(s)) out.h!.smoke = 0;
+  if (/no alcohol|don.?t drink|sober|teetotal/.test(s)) out.h!.alcohol = 1; else { const d = num(/(\d+)\s*(?:drinks?|beers?|glasses)/); if (d !== undefined) out.h!.alcohol = d <= 7 ? 1 : d <= 14 ? 0.5 : 0; }
+  if (/overweight|obes|bmi\s*(?:2[6-9]|[3-4]\d)/.test(s)) out.h!.bmi = 0; else if (/healthy weight|normal weight|bmi\s*(?:19|2[0-4])/.test(s)) out.h!.bmi = 1;
+  const ex = num(/(?:gym|run|exercise|work ?out|train|swim|cycle|walk)[^.\d]{0,20}(\d)\s*(?:x|times|days)/) ?? num(/(\d)\s*(?:x|times|days)[^.]{0,20}(?:gym|run|exercise|work ?out|walk)/);
+  if (ex !== undefined) out.h!.move = ex >= 5 ? 1 : ex >= 2 ? 0.5 : 0; else if (/sedentary|desk all day|no exercise/.test(s)) out.h!.move = 0;
+  if (/fast food|takeaway|junk|processed|sugary/.test(s)) out.h!.diet = 0; else if (/vegetables|whole ?food|mediterranean|home ?cook|salad|fish/.test(s)) out.h!.diet = 1;
+  return out;
+}
+
+const EXAMPLE_WEEK = "I sleep about 6 hours, walk 4,000 steps, gym twice a week, never smoked, BP 136/88, 10 glasses of wine a week, mostly home cooked";
+
 export function LifespanSimulator() {
   const { ask } = useAI();
   const [sex, setSex] = useState<"women" | "men">("women");
