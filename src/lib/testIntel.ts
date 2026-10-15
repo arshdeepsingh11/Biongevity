@@ -7,3 +7,15 @@ import type { CatalogProduct } from "@/data/types";
  */
 export type Evidence = "Clinically validated" | "Supportive evidence" | "Exploratory";
 export const EVIDENCE_SCORE: Record<Evidence, number> = { "Clinically validated": 1, "Supportive evidence": 0.65, Exploratory: 0.35 };
+
+export const GOAL_TAGS = [
+  { id: "heart", label: "Heart", icon: "heart" },
+  { id: "metabolic", label: "Energy & weight", icon: "bolt" },
+  { id: "brain", label: "Brain & memory", icon: "brain" },
+  { id: "ageing", label: "Ageing well", icon: "hourglass" },
+  { id: "gut", label: "Gut", icon: "gut" },
+  { id: "hormones", label: "Hormones", icon: "test-tube" },
+  { id: "sleep", label: "Sleep & stress", icon: "moon" },
+  { id: "strength", label: "Strength & mobility", icon: "walk" },
+  { id: "genes", label: "Genes & medicines", icon: "dna" },
+] as const;
