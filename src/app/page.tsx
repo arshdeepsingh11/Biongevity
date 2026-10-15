@@ -42,7 +42,7 @@ export default function HomePage() {
       </Section>
       <Section ai="Longevity simulator" className="bg-canvas/50">
         <div className="container-x">
-          <Head n="05" label="Longevity simulator" title={<>Habits, measured <AuroraText>in years.</AuroraText></>} lede="Toggle the five low-risk habits and move the sliders. Built on peer-reviewed cohort studies and meta-analyses — every number is sourced." />
+          <Head n="05" label="AI Longevity Lab" title={<>Your week, <AuroraText>read by AI.</AuroraText></>} lede="Describe your week in your own words or turn the dials. See the healthy years on the table, your risk from sleep, blood pressure and steps — and where each habit acts in the body. Every number is sourced." />
           <div className="mt-10"><LifespanSimulator /></div>
         </div>
       </Section>
