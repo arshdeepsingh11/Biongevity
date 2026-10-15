@@ -26,7 +26,7 @@ export default function LifePage() {
         <div className="container-x grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {LIFE_PLACES.map((l) => (
             <div key={l.t} data-reveal data-scan className="card flex flex-col p-6">
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent-light text-accent"><Icon name={l.icon} size={24} weight="duotone" /></span>
+              <span className="grid h-11 w-11 place-items-center icon-tile"><Icon name={l.icon} size={24} weight="duotone" /></span>
               <div className="mt-5 text-[20px] font-semibold">{l.t}</div>
               <div className="mt-2 text-[14px] text-muted">{l.d}</div>
             </div>
