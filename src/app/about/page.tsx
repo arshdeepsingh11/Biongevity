@@ -20,7 +20,7 @@ export default function AboutPage() {
         <div className="container-x grid gap-4 md:grid-cols-2">
           {[["Our mission", ABOUT.mission, "target"], ["Our vision", ABOUT.vision, "eye"]].map(([t, d, i]) => (
             <div key={t} data-reveal data-scan className="card p-8">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-iri text-white"><Icon name={i} size={22} /></span>
+              <span className="grid h-12 w-12 place-items-center icon-tile"><Icon name={i} size={22} /></span>
               <div className="mt-6 text-[24px] font-semibold tracking-tight">{t}</div>
               <p className="mt-3 text-[17px] leading-relaxed text-muted">{d}</p>
             </div>
