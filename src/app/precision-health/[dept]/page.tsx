@@ -9,6 +9,7 @@ import { TextAnimate } from "@/components/fx/TextAnimate";
 import { DeptTabs } from "@/components/dept/DeptTabs";
 import { PageSummary } from "@/components/ai/PageSummary";
 import { DeptTests } from "@/components/labs/DeptTests";
+import { DeptBody } from "@/components/dept/DeptBody";
 import { DEPARTMENTS } from "@/data/departments";
 import { JsonLd, breadcrumb, faqPage, medicalPage } from "@/lib/seo";
 
