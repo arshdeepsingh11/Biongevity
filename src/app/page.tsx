@@ -48,7 +48,7 @@ export default function HomePage() {
       </Section>
       <Section ai="Department intelligence">
         <div className="container-x">
-          <Head n="06" label="Department intelligence" title={<>Fourteen departments. <AuroraText>One record.</AuroraText></>} lede="Type a symptom or goal and AI ranks the departments live. Hover a tile for services; ask AI from any of them." />
+          <Head n="06" label="Department intelligence" title={<>Fourteen departments. <AuroraText>One body.</AuroraText></>} lede="Turn the 3D body and tap a part — or describe a symptom. Xevyo finds the department, shows the evidence and the test that fits." />
           <div className="mt-10"><DeptIntelligence /></div>
         </div>
       </Section>
