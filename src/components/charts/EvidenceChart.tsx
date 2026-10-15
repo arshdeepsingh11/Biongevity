@@ -6,6 +6,8 @@ import { XevyoOrb } from "@/components/ai/XevyoOrb";
 
 /** Renders a data-driven ChartSpec (from src/data/stats.ts) with its title and source. */
 export function EvidenceChart({ spec, compact }: { spec: ChartSpec; compact?: boolean }) {
+  const { ask } = useAI();
+  const explain = () => ask(`Explain the chart "${spec.title}" in plain words and what it means for an adult aged 40–65.`, { label: `✦ Explain chart: ${spec.title}`, grounding: `Chart data: ${JSON.stringify(spec).slice(0, 2500)}` });
   const fmt = "format" in spec && spec.format ? (v: number) => `${v}${spec.format}` : undefined;
   return (
     <figure>
