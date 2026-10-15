@@ -8,3 +8,5 @@ next-env.d.ts
 ios
 android
 .DS_Store
+scripts/stages/
+scripts/.final/
