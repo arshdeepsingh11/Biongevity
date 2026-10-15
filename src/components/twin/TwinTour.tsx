@@ -76,3 +76,70 @@ export function TwinTour() {
     </div>
   );
 }
+
+/** A working preview of each part of the app screen (example data). */
+function Preview({ id, onSystem }: { id: string; onSystem: (id: string) => void }) {
+  const [metric, setMetric] = useState("HRV");
+  const [range, setRange] = useState("Weekly");
+  const [extraSleep, setExtraSleep] = useState(1);
+  const E = TWIN_EXAMPLE;
+  const card = "rounded-[26px] bg-white p-5 ring-1 ring-ink/[0.07]";
+  if (id === "scores") return (
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <Ring label="Health Score" v={E.health} word="Low" tone="attention" />
+      <Ring label="Recovery Score" v={E.recovery} word="Fair" tone="mid" />
+      <div className={`${card} flex flex-col justify-between`}><div className="text-[13px] font-semibold text-muted">HRV Status</div><div className="text-[40px] font-semibold leading-none tracking-tight">{E.hrv}<span className="ml-1 text-[14px] text-muted">ms</span></div><Sparkline values={[48, 44, 40, 31, 22, 15, 10]} width={140} height={30} color="rgb(var(--c-ai-2))" /><div className="text-[11px] text-gold-deep">Example</div></div>
+    </div>
+  );
+  if (id === "monitor") return (
+    <div className={card}>
+      <div className="flex items-center justify-between"><b className="text-[16px]">Live Health Monitor</b><span className="flex items-center gap-1.5 text-[11px] font-semibold text-teal"><span className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-teal" />Live · Example</span></div>
+      <div className="mt-3 divide-y divide-ink/[0.06]">
+        {[["heart-plain", "Heart rate", `${E.hr} bpm`, [44, 42, 41, 43, 40, 40]], ["wave", "HRV", `${E.hrv} ms`, [30, 22, 18, 14, 12, 10]], ["steps", "Steps", E.steps.toLocaleString(), [1200, 2400, 3100, 4600, 5200, 6703]], ["moon", "Sleep", "6 h 12 m", [7, 6.6, 6.2, 6.4, 6.0, 6.2]]].map(([ic, l, v, s]) => (
+          <div key={l as string} className="flex items-center gap-3 py-2.5"><span className="icon-tile h-10 w-10"><Icon name={ic as string} size={18} /></span><div className="flex-1"><div className="text-[12.5px] text-muted">{l as string}</div><div className="text-[18px] font-semibold">{v as string}</div></div><Sparkline values={s as number[]} width={110} height={30} /></div>
+        ))}
+      </div>
+    </div>
+  );
+  if (id === "body") return (
+    <div className={card}>
+      <div className="grid grid-cols-2 gap-2">{TWIN_SYSTEMS.map((x) => <button key={x.id} onClick={() => onSystem(x.id)} className="flex items-center gap-2 rounded-xl bg-canvas px-3 py-2 text-left hover:ring-1 hover:ring-ai/30"><span className={`h-2 w-2 rounded-full ${x.tone === "good" ? "bg-teal" : "bg-ai-2"}`} /><span className="flex-1 text-[13px] font-semibold">{x.label}</span><span className={`text-[11px] ${x.tone === "good" ? "text-teal" : "text-ai"}`}>{x.status}</span></button>)}</div>
+      <div className="mt-3 grid gap-1.5">{STATUS_WORDS.map((w) => <div key={w.t} className="text-[12.5px] text-muted"><b className={w.tone === "good" ? "text-teal" : "text-ai"}>{w.t}</b> — {w.d}</div>)}</div>
+    </div>
+  );
+  if (id === "trends") {
+    const vals = E.trends[metric][range], labels = vals.map((_, k) => (range === "Daily" ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][k] : range === "Weekly" ? `W${k + 1}` : range === "Monthly" ? `M${k + 1}` : `${2023 + k}`));
+    const first = vals[0], last = vals[vals.length - 1], dir = last > first ? "up" : "down";
+    return (
+      <div className={card}>
+        <div className="flex flex-wrap gap-1.5">{Object.keys(E.trends).map((m) => <button key={m} onClick={() => setMetric(m)} className={`rounded-full px-3 py-1 text-[12.5px] font-semibold ${metric === m ? "bg-ink text-pearl" : "bg-canvas text-muted"}`}>{m}</button>)}</div>
+        <div className="mt-2 flex flex-wrap gap-1.5">{["Daily", "Weekly", "Monthly", "Yearly"].map((r) => <button key={r} onClick={() => setRange(r)} className={`rounded-full px-2.5 py-0.5 text-[11.5px] font-semibold ${range === r ? "bg-ai-soft text-ai" : "text-muted"}`}>{r}</button>)}<span className="ml-auto text-[11px] text-gold-deep">Example</span></div>
+        <LineChart key={metric + range} labels={labels} series={[{ name: metric, values: vals }]} height={180} />
+        <div className="mt-2 rounded-xl bg-ai-soft/60 px-3 py-2 text-[12.5px]"><b className="text-ai">✦ AI read · </b>{metric} is trending {dir} ({first} → {last}). Look at the direction over weeks — one day rarely matters.</div>
+      </div>
+    );
+  }
+  if (id === "simulate") {
+    const rec = Math.min(95, Math.round(E.recovery + extraSleep * 7)), hrv = Math.round(E.hrv + extraSleep * 6);
+    return (
+      <div className={card}>
+        <div className="flex items-baseline justify-between"><b className="text-[16px]">What if I sleep more?</b><span className="text-[11px] text-gold-deep">Illustrative</span></div>
+        <input type="range" min={0} max={2} step={0.5} value={extraSleep} onChange={(e) => setExtraSleep(+e.target.value)} className="mt-3 w-full accent-[rgb(var(--c-ai))]" aria-label="Extra sleep" />
+        <div className="text-[12.5px] text-muted">+{extraSleep} h a night for 2 weeks</div>
+        <div className="mt-3 grid grid-cols-2 gap-3">
+          <div className="rounded-2xl bg-canvas p-3"><div className="text-[12px] text-muted">Recovery Score</div><div className="text-[28px] font-semibold">{E.recovery} → <span className="text-ai-grad">{rec}</span></div></div>
+          <div className="rounded-2xl bg-canvas p-3"><div className="text-[12px] text-muted">HRV</div><div className="text-[28px] font-semibold">{E.hrv} → <span className="text-ai-grad">{hrv}</span> <span className="text-[13px] text-muted">ms</span></div></div>
+        </div>
+        <p className="mt-2 text-[12px] text-muted">The heat map lights Brain and Heart — the systems sleep touches most. In the app, simulations use your own data and say how confident they are.</p>
+      </div>
+    );
+  }
+  return (
+    <div className={card}>
+      <div className="flex items-center gap-2"><XevyoOrb size={28} live /><b className="text-[16px]">AI Insight</b><span className="ml-auto rounded-full bg-ai-soft px-2 py-0.5 text-[11px] font-semibold text-ai">New</span></div>
+      <p className="mt-2 text-[15px] leading-relaxed">Your sleep duration is below recommended levels — aim for 7–9 hours. Your HRV dropped on the nights you slept under 6 hours.</p>
+      <div className="mt-3 rounded-2xl bg-canvas p-3 text-[13px]"><b>Small next step:</b> lights out 30 minutes earlier on weeknights for 2 weeks. Xevyo will check in.</div>
+      <div className="mt-3 flex gap-2"><span className="rounded-full bg-ink px-3 py-1.5 text-[12.5px] font-semibold text-pearl">Chat with Coach</span><span className="rounded-full bg-canvas px-3 py-1.5 text-[12.5px] font-semibold text-muted">English · 日本語</span></div>
+    </div>
+  );
+}
