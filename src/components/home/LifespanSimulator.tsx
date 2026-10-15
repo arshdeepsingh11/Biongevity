@@ -198,3 +198,46 @@ function Big({ k, v, unit, sub, ai }: { k: string; v: number; unit: string; sub:
     </div>
   );
 }
+
+function Risk({ k, rr, note, src, lowerIsBetter }: { k: string; rr: number; note: string; src: string; lowerIsBetter?: boolean }) {
+  const pct = Math.min(100, (rr / 2.5) * 100), bad = lowerIsBetter ? rr > 0.62 : rr > 1.05;
+  return (
+    <div>
+      <div className="flex items-baseline justify-between"><span className="text-[13px] font-semibold">{k}</span><span className={`text-[20px] font-semibold tabular-nums ${bad ? "text-ai" : "text-teal"}`}>{rr.toFixed(2)}×</span></div>
+      <div className="relative mt-2 h-2 rounded-full bg-ink/[0.06]">
+        <motion.div className={`absolute inset-y-0 left-0 rounded-full ${bad ? "bg-ai" : "bg-teal"}`} animate={{ width: `${pct}%` }} />
+        <span className="absolute -top-1 h-4 w-px bg-ink/40" style={{ left: "40%" }} title="1.0 = reference" />
+      </div>
+      <div className="mt-1.5 text-[11px] text-muted">{note} · {src}</div>
+    </div>
+  );
+}
+
+/** Dial — drag around the arc (or use arrow keys) to set a value. */
+function Dial({ label, unit, v, set, min, max, step, warn, fmt, onFocus, onBlur }: { label: string; unit: string; v: number; set: (n: number) => void; min: number; max: number; step: number; warn?: boolean; fmt?: (n: number) => string; onFocus?: () => void; onBlur?: () => void }) {
+  const ref = useRef<SVGSVGElement>(null);
+  const f = (v - min) / (max - min), A0 = 135, SW = 270, ang = A0 + f * SW;
+  const pt = (a: number, r = 38) => [50 + Math.cos((a * Math.PI) / 180) * r, 50 + Math.sin((a * Math.PI) / 180) * r];
+  const arc = (a1: number, a2: number) => { const [x1, y1] = pt(a1), [x2, y2] = pt(a2); return `M${x1},${y1} A38,38 0 ${a2 - a1 > 180 ? 1 : 0} 1 ${x2},${y2}`; };
+  const setFrom = (e: React.PointerEvent) => {
+    const b = ref.current!.getBoundingClientRect(), x = e.clientX - (b.left + b.width / 2), y = e.clientY - (b.top + b.height / 2);
+    let a = (Math.atan2(y, x) * 180) / Math.PI; if (a < 0) a += 360; let rel = a - A0; if (rel < 0) rel += 360;
+    if (rel > SW) rel = rel > SW + 45 ? 0 : SW;
+    set(Math.round((min + (rel / SW) * (max - min)) / step) * step);
+  };
+  const [kx, ky] = pt(ang);
+  return (
+    <div className="rounded-2xl bg-canvas p-2 text-center">
+      <svg ref={ref} viewBox="0 0 100 100" className="mx-auto w-full max-w-[104px] cursor-pointer touch-none" role="slider" tabIndex={0} aria-label={label} aria-valuemin={min} aria-valuemax={max} aria-valuenow={v}
+        onPointerDown={(e) => { (e.target as Element).setPointerCapture?.(e.pointerId); setFrom(e); onFocus?.(); }} onPointerMove={(e) => e.buttons && setFrom(e)} onPointerUp={onBlur} onFocus={onFocus} onBlur={onBlur}
+        onKeyDown={(e) => { if (e.key === "ArrowRight" || e.key === "ArrowUp") set(Math.min(max, +(v + step).toFixed(2))); if (e.key === "ArrowLeft" || e.key === "ArrowDown") set(Math.max(min, +(v - step).toFixed(2))); }}>
+        <path d={arc(A0, A0 + SW)} fill="none" stroke="rgb(var(--c-ink))" strokeOpacity=".08" strokeWidth="8" strokeLinecap="round" />
+        <path d={arc(A0, Math.max(A0 + 0.5, ang))} fill="none" stroke={warn ? "rgb(var(--c-ai-2))" : "rgb(var(--c-teal))"} strokeWidth="8" strokeLinecap="round" />
+        <circle cx={kx} cy={ky} r="7" fill="rgb(var(--c-surface))" stroke={warn ? "rgb(var(--c-ai-2))" : "rgb(var(--c-teal))"} strokeWidth="3" />
+        <text x="50" y="52" textAnchor="middle" fontSize="17" fontWeight="600" fill="rgb(var(--c-ink))">{fmt ? fmt(v) : v}</text>
+        <text x="50" y="66" textAnchor="middle" fontSize="8.5" fill="rgb(var(--c-muted))">{unit}</text>
+      </svg>
+      <div className="-mt-1 text-[11.5px] font-semibold">{label}</div>
+    </div>
+  );
+}
