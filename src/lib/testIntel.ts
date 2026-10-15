@@ -54,3 +54,11 @@ export interface TestIntel {
 }
 
 const maxPrice = Math.max(...LAB_TESTS.map((t) => t.price));
+export const TEST_INTEL: TestIntel[] = LAB_TESTS.map((t) => {
+  const r = RULES.find((x) => x.m.test(t.title)) ?? FALLBACK;
+  const cost = 1 - Math.log(t.price) / Math.log(maxPrice);
+  const breadth = /health|panel|aging|profile|metabolism|genome|exome/i.test(t.title) ? 1 : 0.5;
+  const utility = Math.round(100 * (0.4 * EVIDENCE_SCORE[r.ev] + 0.3 * r.act + 0.2 * Math.max(0, cost) + 0.1 * breadth));
+  const ci = LAB_COLLECTIONS.findIndex((c) => c.handle === t.category);
+  return { t, evidence: r.ev, actionability: r.act, goals: r.goals, retest: r.retest, reveals: r.reveals || t.summary, utility, categoryLabel: LAB_COLLECTIONS[ci]?.title ?? t.category, categoryIndex: Math.max(0, ci) };
+});
