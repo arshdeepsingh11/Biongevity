@@ -48,7 +48,7 @@ export default function PlatformPage() {
         <div className="container-x">
           <Head n="02" label="Digital twin" title="Six states. Your own baseline." lede="A change from your own normal can matter more than a value inside a broad population range. The twin tracks direction, speed and confidence for each domain." />
           <div className="mt-10"><TwinStates /></div>
-          <div className="mt-8 flex justify-center"><a href={env.appUrl} className="btn-ai h-12 px-6"><Icon name="fingerprint" size={18} />Open my twin in the app</a></div>
+          <div className="mt-8 flex justify-center"><a href="/twin/" className="btn-ai h-12 px-6"><Icon name="fingerprint" size={18} />Take the 3D Digital Twin tour</a></div>
         </div>
       </Section>
 
