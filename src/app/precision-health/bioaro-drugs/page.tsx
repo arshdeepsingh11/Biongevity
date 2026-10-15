@@ -17,6 +17,7 @@ export default function DrugsPage() {
       <JsonLd data={breadcrumb([["Precision Health", "/precision-health/"], ["BioAro Drugs", "/precision-health/bioaro-drugs/"]])} />
       <PageHero eyebrow="Precision Health · BioAro Drugs" title={<>Protocols built <AuroraText>by AI.</AuroraText></>}
         lede="Tell the AI your goals and routine. Get a transparent, evidence-informed protocol — every ingredient, every dose, every reason." />
+      <Section ai="AI Protocol Studio" id="studio" className="!pt-0 scroll-mt-20" chip={false}><div className="container-x"><ProtocolStudio /></div></Section>
       <Section ai="BioAro Drugs" className="!pt-0"><div className="container-x"><DrugsHub /></div></Section>
     </>
   );
