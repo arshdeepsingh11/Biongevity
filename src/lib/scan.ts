@@ -145,3 +145,5 @@ export function runScan(a: Answers): ScanResult {
 
   return { domains, habits: { count, list: habitList }, lifeExp, stepsRR: bandRR.rr, bpRR, sleepNote, tests, formulas, program, depts, retest, total, priorities };
 }
+
+export const answered = (a: Answers, q: Question) => (q.multi ? (a[q.id] as string[]).length > 0 : Boolean(a[q.id]));
