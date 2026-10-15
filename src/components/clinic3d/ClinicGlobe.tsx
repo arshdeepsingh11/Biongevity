@@ -15,3 +15,13 @@ export const SITES: Record<string, { floors: number; floor: number; suite: strin
   Dubai: { floors: 9, floor: 3, suite: "Office 302", building: "AB Center", note: "3rd floor, office 302", tz: "Asia/Dubai" },
   Almelo: { floors: 3, floor: 1, suite: "Windmolen 22", building: "BioAro Europe", note: "Floor to be confirmed", tz: "Europe/Amsterdam" },
 };
+
+/** World dots (x,y on a 135.5 × 64.2 grid) → longitude / latitude. */
+function landPoints() {
+  const out: [number, number][] = [];
+  for (const m of WORLD_DOTS.matchAll(/M([\d.]+) ([\d.]+)h0/g)) {
+    const x = +m[1], y = +m[2];
+    out.push([(x - 24) / 0.378 - 114.07, (40.41 - y) / 0.4694]);
+  }
+  return out;
+}
