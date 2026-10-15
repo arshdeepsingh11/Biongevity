@@ -1,6 +1,8 @@
 "use client";
 import type { ChartSpec } from "@/data/stats";
 import { BarList, Columns, Donut, Waffle } from "./Charts";
+import { useAI } from "@/components/ai/AIProvider";
+import { XevyoOrb } from "@/components/ai/XevyoOrb";
 
 /** Renders a data-driven ChartSpec (from src/data/stats.ts) with its title and source. */
 export function EvidenceChart({ spec, compact }: { spec: ChartSpec; compact?: boolean }) {
