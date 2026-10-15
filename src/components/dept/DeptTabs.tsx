@@ -111,7 +111,7 @@ export function DeptTabs({ id }: { id: string }) {
                   <div aria-hidden className="absolute left-0 right-0 top-6 hidden h-[2px] bg-iri-x md:block" />
                   {CARE_PATH.map((p, k) => (
                     <div key={p.t} className="relative rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]">
-                      <span className="relative z-[1] grid h-12 w-12 place-items-center rounded-2xl bg-iri text-white ring-4 ring-pearl"><Icon name={p.icon} size={22} weight="duotone" /></span>
+                      <span className="relative z-[1] grid h-12 w-12 place-items-center icon-tile ring-4 ring-pearl"><Icon name={p.icon} size={22} weight="duotone" /></span>
                       <div className="mt-3 text-[12px] font-semibold text-accent">Step {k + 1}</div>
                       <div className="text-[16px] font-semibold">{p.t}</div>
                       <div className="mt-1 text-[13px] text-muted">{p.d}</div>
