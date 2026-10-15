@@ -33,7 +33,7 @@ export function DisciplineExplorer() {
           <motion.div key={id} initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={{ duration: 0.28 }}>
             <div className="flex items-start gap-4">
               <motion.span initial={{ rotate: -12, scale: 0.8 }} animate={{ rotate: 0, scale: 1 }} transition={{ type: "spring", stiffness: 260, damping: 16 }}
-                className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-iri text-white shadow-glow"><Icon name={d.icon} size={28} weight="duotone" /></motion.span>
+                className="grid h-14 w-14 shrink-0 place-items-center icon-tile"><Icon name={d.icon} size={28} weight="duotone" /></motion.span>
               <div className="min-w-0"><div className="text-[24px] font-semibold tracking-tight">{d.name}</div><div className="text-[14px] text-accent">{d.tag}</div></div>
             </div>
             <p className="mt-4 text-[15px] leading-relaxed text-muted">{ev.why}</p>
