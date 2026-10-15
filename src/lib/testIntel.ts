@@ -45,3 +45,4 @@ const RULES: { m: RegExp; ev: Evidence; act: number; goals: GoalId[]; retest: nu
   { m: /amino/i, ev: "Exploratory", act: 0.45, goals: ["strength", "metabolic"], retest: 6, reveals: "Amino-acid balance behind muscle, recovery and metabolism." },
   { m: /resveratrol/i, ev: "Exploratory", act: 0.2, goals: ["ageing"], retest: 6, reveals: "Resveratrol level when supplementing." },
 ];
+const FALLBACK = { ev: "Supportive evidence" as Evidence, act: 0.45, goals: ["ageing"] as GoalId[], retest: 6, reveals: "" };
