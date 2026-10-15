@@ -119,8 +119,9 @@ export function ScanTeaser({ className }: { className?: string }) {
   return (
     <div className={`relative overflow-hidden rounded-[28px] bg-white p-6 ai-ring ${className ?? ""}`}>
       <div aria-hidden className="ai-glow -right-12 -top-12 h-48 w-48" />
+      <GlassSwoosh />
       <div className="relative flex items-center gap-3"><XevyoOrb size={48} live halo /><AIBadge label="2-minute scan" /></div>
-      <div className="relative mt-4 text-[24px] font-semibold leading-tight tracking-tight">Where should <span className="text-ai-grad">your healthspan</span> start?</div>
+      <div className="scan-title relative mt-4 text-[24px] font-semibold leading-tight tracking-tight">Where should <span className="text-ai-grad">your healthspan</span> start?</div>
       <p className="relative mt-2 text-[14.5px] text-muted">12 one-tap questions. A radar of 9 health domains, the BioAro Labs tests that fit you, and a 12-month re-test plan.</p>
       <div className="relative mt-5 flex flex-wrap gap-2">
         <Link href="/scan/" className="btn-ai h-11 px-5">Start the AI scan<Icon name="arrow-right" size={16} /></Link>
