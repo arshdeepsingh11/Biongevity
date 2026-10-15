@@ -43,7 +43,7 @@ export default function PrecisionHealthPage() {
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {[["/precision-health/bioaro-labs/", "test-tubes", "BioAro Labs", "47 advanced tests — genome, microbiome, hormones, inflammation and brain — connected by AI."], ["/precision-health/bioaro-drugs/", "tablets", "BioAro Drugs", "AI-guided bioactive protocols with every ingredient and dose shown."]].map(([h, i, t, x]) => (
               <Link key={h} href={h} className="group flex items-center gap-5 rounded-[28px] bg-navy p-6 transition-transform hover:-translate-y-0.5">
-                <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-iri text-white shadow-glow"><Icon name={i} size={32} weight="duotone" /></span>
+                <span className="grid h-16 w-16 shrink-0 place-items-center icon-tile"><Icon name={i} size={32} weight="duotone" /></span>
                 <span className="flex-1"><span className="block text-[22px] font-semibold">{t}</span><span className="block text-[14px] text-muted">{x}</span></span>
                 <Icon name="arrow-right" size={20} className="text-accent" />
               </Link>
