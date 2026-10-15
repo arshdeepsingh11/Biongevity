@@ -162,9 +162,9 @@
   --c-surface: 255 255 255;    /* glass base */
   --c-feature: 255 247 240;
   --c-feature-2: 255 215 184;  /* #FFD7B8 peach */
-  --c-ink: 29 29 31;
-  --c-muted: 88 88 94;
-  --c-faint: 110 110 116;
+  --c-ink: 37 49 60;           /* #25313C main text */
+  --c-muted: 117 128 138;      /* #75808A secondary text */
+  --c-faint: 128 136 144;
   --c-accent: 196 64 8;
   --c-accent-soft: 255 140 66;
   --c-accent-light: 255 241 230;
