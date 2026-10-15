@@ -14,12 +14,12 @@ import { Head, BrandFilm, StoriesSection, GlobalClinic, FinalCTA } from "@/compo
 
 export default function HomePage() {
   return (
-    <>
-      <AIHero />
-      <Section ai="Start here">
+    <div className="home-panels">
+      <div className="aurora-hide"><AIHero /></div>
+      <Section ai="Start here" className="home-start">
         <div className="container-x">
-          <Head n="01" label="Start here" title={<>Two minutes to <AuroraText>your starting point.</AuroraText></>} lede="Take the AI Healthspan Scan for yourself — or plan care for a parent. Both run on your device; Xevyo explains the result when you ask." />
-          <div className="mt-10"><StartHere /></div>
+          <div className="start-head"><Head n="01" label="Start here" title={<>Two minutes to <AuroraText>your starting point.</AuroraText></>} lede="Take the AI Healthspan Scan for yourself — or plan care for a parent. Both run on your device; Xevyo explains the result when you ask." /></div>
+          <div className="start-body mt-10"><StartHere /></div>
         </div>
       </Section>
       <Section ai="AI evidence board" className="bg-canvas/50">
