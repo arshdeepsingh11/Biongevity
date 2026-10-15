@@ -103,3 +103,17 @@ export function GoalPipeline() {
     </div>
   );
 }
+
+function Detail({ kicker, title, body, action, note }: { kicker: string; title: string; body: React.ReactNode; action?: React.ReactNode; note?: string }) {
+  return (
+    <>
+      <div className="min-w-0">
+        <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ai">✦ {kicker}</div>
+        <div className="mt-1 text-[22px] font-semibold leading-tight tracking-tight sm:text-[26px]">{title}</div>
+        <div className="mt-2 text-[14.5px]">{body}</div>
+        {note && <div className="mt-2 text-[11.5px] text-faint">{note}</div>}
+      </div>
+      {action && <div className="shrink-0">{action}</div>}
+    </>
+  );
+}
