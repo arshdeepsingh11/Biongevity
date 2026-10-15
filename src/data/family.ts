@@ -9,3 +9,13 @@ export const PARENT_CONCERNS: { id: string; t: string; icon: IconName; dept: str
   { id: "mood", t: "Low mood or loneliness", icon: "face", dept: "mental-health", tests: [], checks: ["Ask open questions about sleep, appetite and interest", "Plan regular calls or visits", "Look for community or group activities"] },
   { id: "energy", t: "Tiredness or weight loss", icon: "bolt", dept: "internal-medicine", tests: ["essential-vitamin-health"], checks: ["Track appetite and weight weekly", "Check for new or worsening symptoms", "Book a full review if weight drops without trying"] },
 ];
+
+/** Illustrative only — what a permissioned family view can show in the Biongevity app. */
+export const FAMILY_DOMAINS = [
+  { id: "bp", t: "Blood pressure trend", on: true },
+  { id: "activity", t: "Daily activity", on: true },
+  { id: "sleep", t: "Sleep", on: true },
+  { id: "meds", t: "Medicine reminders", on: false },
+  { id: "labs", t: "Lab results", on: false },
+  { id: "visits", t: "Upcoming visits", on: true },
+];
