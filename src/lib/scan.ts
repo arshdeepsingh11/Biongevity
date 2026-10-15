@@ -50,3 +50,5 @@ export interface ScanResult {
   total: number;
   priorities: string[];
 }
+
+const clamp = (v: number) => Math.round(Math.max(5, Math.min(97, v)));
