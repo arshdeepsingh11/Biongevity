@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function PrecisionHealthPage() {
   const card = (d: (typeof DEPARTMENTS)[number]) => (
     <Link key={d.id} href={`/precision-health/${d.id}/`} data-reveal className="card group flex flex-col p-6 hover:-translate-y-1">
-      <span className="grid h-12 w-12 place-items-center rounded-2xl bg-accent-light text-accent transition-colors group-hover:bg-iri group-hover:text-white"><Icon name={d.icon} size={26} weight="duotone" /></span>
+      <span className="grid h-12 w-12 place-items-center icon-tile transition-colors group-hover:bg-iri group-hover:text-white"><Icon name={d.icon} size={26} weight="duotone" /></span>
       <div className="mt-5 text-[20px] font-semibold tracking-tight">{d.name}</div>
       <div className="mt-1 text-[14px] text-accent">{d.tag}</div>
       <p className="mt-3 line-clamp-3 text-[14px] leading-relaxed text-muted">{d.summary}</p>
