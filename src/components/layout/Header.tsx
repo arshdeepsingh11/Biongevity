@@ -6,10 +6,14 @@ import { Icon } from "@/components/ui/Icon";
 import { useAI } from "@/components/ai/AIProvider";
 import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { ThemeSwitcher } from "@/components/theme/ThemeSwitcher";
+import { NAV } from "@/data/site";
 
-/** Top bar: brand, Ask Xevyo, theme switcher, Sign in (→ member app) and Book. Primary navigation stays in the bottom Sparkle Navbar. */
+/** Top bar: brand, Ask Xevyo, theme switcher, Sign in (→ member app) and Book. Primary navigation stays in the bottom Sparkle Navbar;
+ *  the Aurora theme also shows the same links inside its floating glass bar on large screens. */
 export function Header() {
   const { openCmd } = useAI();
+  const path = usePathname() ?? "/";
+  const isOn = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
   return (
     <header className="fixed inset-x-0 top-0 z-[80] border-b border-ink/[0.06] pt-[var(--safe-top)] backdrop-blur-[22px] backdrop-saturate-[1.6]" style={{ background: "rgb(var(--c-pearl) / var(--header-alpha))" }}>
       <div className="mx-auto flex h-[60px] max-w-[1280px] items-center gap-2 px-3 sm:gap-3 sm:px-6">
