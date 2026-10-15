@@ -101,7 +101,7 @@ export function FusionEngine() {
           <motion.div key={hot} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.18 }}>
             <div className="hud-label">{node.kind === "core" ? "Core" : node.kind === "output" ? "AI output" : node.kind === "stream" ? "Data stream" : "Signal"}</div>
             <div className="mt-2 flex items-center gap-3">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-iri text-white"><Icon name={node.icon} size={24} weight="duotone" /></span>
+              <span className="grid h-12 w-12 place-items-center icon-tile"><Icon name={node.icon} size={24} weight="duotone" /></span>
               <div className="text-[19px] font-semibold leading-tight">{node.info.title}</div>
             </div>
             <p className="mt-3 text-[14px] leading-relaxed text-muted">{node.info.body}</p>
