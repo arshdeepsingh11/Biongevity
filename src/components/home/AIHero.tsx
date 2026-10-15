@@ -100,7 +100,7 @@ export function AIHero() {
           <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
             {CARDS.map((c) => (
               <button key={c.q} onClick={() => ask(c.q)} className="group flex items-center gap-3 rounded-2xl bg-white/80 p-3 text-left ring-1 ring-ink/[0.07] backdrop-blur transition hover:-translate-y-0.5 hover:ring-ai/35 sm:p-3.5">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-ai-soft text-ai ring-1 ring-ai/15"><Icon name={c.icon} size={19} weight="duotone" /></span>
+                <span className="grid h-10 w-10 shrink-0 place-items-center icon-tile ring-1 ring-ai/15"><Icon name={c.icon} size={19} weight="duotone" /></span>
                 <span className="min-w-0 flex-1 text-[14.5px] font-medium leading-snug">{c.q}</span>
                 <Icon name="arrow-right" size={15} className="shrink-0 text-ai transition-transform group-hover:translate-x-0.5" />
               </button>
