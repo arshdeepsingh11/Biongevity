@@ -127,6 +127,9 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
   box-shadow: 0 0 0 1px rgb(var(--c-ai-2) / .10), 0 2px 6px rgb(var(--c-ink) / .04), 0 18px 40px -16px rgb(var(--c-ai-2) / .28), inset 0 1px 0 rgb(255 255 255 / 1), inset 0 -1px 0 rgb(var(--c-ai-2) / .06);
 }
 [data-theme="aurora"] .card:hover { box-shadow: 0 0 0 1px rgb(var(--c-ai-2) / .22), 0 2px 6px rgb(var(--c-ink) / .04), 0 24px 48px -16px rgb(var(--c-ai-2) / .36), inset 0 1px 0 rgb(255 255 255 / 1); }
+[data-theme="aurora"] .bg-canvas, [data-theme="aurora"] [class*="bg-canvas/"]:not(section) { background-color: rgb(var(--c-ai-2) / .05) !important; }
+[data-theme="aurora"] [class*="bg-ai-soft"] { background-color: rgb(var(--c-ai-2) / .09) !important; }
+[data-theme="aurora"] .shadow-lift { box-shadow: 0 2px 6px rgb(var(--c-ink) / .05), 0 30px 60px -18px rgb(var(--c-ai-2) / .3) !important; }
 
 /* ───── AI signature: anything Xevyo powers ───── */
 .text-ai-grad { background: var(--g-ai); -webkit-background-clip: text; background-clip: text; color: transparent; }
