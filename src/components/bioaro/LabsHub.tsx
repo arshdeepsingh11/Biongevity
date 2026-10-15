@@ -56,7 +56,7 @@ export function LabsHub() {
                 {LAB_AREAS.map((a) => (
                   <details key={a.id} className="group rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06] open:ring-accent/25">
                     <summary className="flex cursor-pointer list-none items-center gap-4">
-                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-accent-light text-accent"><Icon name={a.icon} size={24} weight="duotone" /></span>
+                      <span className="grid h-12 w-12 shrink-0 place-items-center icon-tile"><Icon name={a.icon} size={24} weight="duotone" /></span>
                       <span className="flex-1"><span className="block text-[17px] font-semibold">{a.name}</span><span className="block text-[13px] text-muted">From ${a.from} · {a.explores}</span></span>
                       <Icon name="plus" size={18} className="text-accent transition-transform group-open:rotate-45" />
                     </summary>
