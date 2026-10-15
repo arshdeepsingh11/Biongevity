@@ -93,7 +93,7 @@ export function ScanResults({ a, r, onRestart }: { a: Answers; r: ScanResult; on
           {r.tests.map((x, i) => (
             <div key={x.t.handle} className="flex flex-col rounded-[22px] bg-white p-4 ring-1 ring-ink/[0.06]">
               <div className="flex items-start gap-3">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent-light text-accent"><Icon name={x.t.icon} size={19} weight="duotone" /></span>
+                <span className="grid h-10 w-10 shrink-0 place-items-center icon-tile"><Icon name={x.t.icon} size={19} weight="duotone" /></span>
                 <div className="min-w-0 flex-1"><div className="text-[14.5px] font-semibold leading-snug">{x.t.title}</div><div className="mt-0.5 flex flex-wrap gap-1"><EvidencePill e={x.evidence} />{i === 0 && <span className="rounded-full bg-ai-soft px-2 py-0.5 text-[10.5px] font-semibold text-ai">Top match</span>}</div></div>
               </div>
               <p className="mt-2.5 text-[13px] leading-snug text-muted">{x.reveals}</p>
