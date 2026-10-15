@@ -47,16 +47,17 @@ const EXAMPLE_WEEK = "I sleep about 6 hours, walk 4,000 steps, gym twice a week,
 export function LifespanSimulator() {
   const { ask } = useAI();
   const [sex, setSex] = useState<"women" | "men">("women");
-  const [on, setOn] = useState<string[]>(["smoke", "alcohol"]);
+  const [h, setH] = useState<Record<string, Level>>({ smoke: 1, bmi: 0.5, move: 0.5, alcohol: 1, diet: 0.5 });
   const [sleep, setSleep] = useState(6.5);
-  const [sbp, setSbp] = useState(132);
-  const [steps, setSteps] = useState(5500);
+  const [sbp, setSbp] = useState(134);
+  const [steps, setSteps] = useState(5200);
+  const [text, setText] = useState("");
+  const [read, setRead] = useState<string[]>([]);
+  const [focus, setFocus] = useState<string | null>(null);
 
-  const L = LIFE_EXPECTANCY[sex];
-  const per = (L.five - L.zero) / 5;
-  const le = (n: number) => +(L.zero + per * n).toFixed(1);
-  const n = on.length, years = le(n), gain = +(years - L.zero).toFixed(1), left = +(L.five - years).toFixed(1);
-
+  const L = LIFE_EXPECTANCY[sex], per = (L.five - L.zero) / 5;
+  const n = Object.values(h).reduce<number>((a, b) => a + b, 0);
+  const years = +(L.zero + per * n).toFixed(1), onTable = +(L.five - years).toFixed(1);
   const sleepRR = sleep < 7 ? SLEEP_RISK.short : sleep > 9 ? SLEEP_RISK.long : 1;
   const bpRR = +Math.max(1, Math.pow(2, (sbp - BP_RISK.ref) / BP_RISK.doubleEvery)).toFixed(2);
   const stepsRR = useMemo(() => {
