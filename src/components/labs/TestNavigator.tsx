@@ -108,7 +108,7 @@ export function TestNavigator() {
         {selected && (
           <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }} className="relative overflow-hidden rounded-[26px] bg-white p-5 ai-ring">
             <div className="flex flex-wrap items-start gap-4">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-accent-light text-accent"><Icon name={selected.t.icon} size={22} weight="duotone" /></span>
+              <span className="grid h-12 w-12 place-items-center icon-tile"><Icon name={selected.t.icon} size={22} weight="duotone" /></span>
               <div className="min-w-[220px] flex-1">
                 <div className="text-[20px] font-semibold tracking-tight">{selected.t.title}</div>
                 <div className="mt-1 flex flex-wrap gap-1.5"><EvidencePill e={selected.evidence} /><span className="rounded-full bg-canvas px-2 py-0.5 text-[10.5px] font-semibold text-muted">{selected.categoryLabel}</span></div>
