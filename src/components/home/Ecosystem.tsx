@@ -23,7 +23,7 @@ export function Ecosystem() {
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {items.map((x) => (
           <div key={x.t} className="card flex flex-col p-5">
-            <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent-light text-accent"><Icon name={x.icon} size={21} weight="duotone" /></span>
+            <span className="grid h-11 w-11 place-items-center icon-tile"><Icon name={x.icon} size={21} weight="duotone" /></span>
             <div className="mt-3 text-[17px] font-semibold">{x.t}</div>
             <p className="mt-1 text-[13px] leading-snug text-muted">{x.d}</p>
             <div className="mt-3 rounded-xl bg-ai-soft/70 px-2.5 py-1.5 text-[12px] font-medium text-ai">✦ {x.ai}</div>
