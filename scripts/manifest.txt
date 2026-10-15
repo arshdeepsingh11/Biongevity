@@ -6,6 +6,7 @@ src/app/clinic/[slug]/page.tsx
 src/app/clinic/page.tsx
 src/app/contact/page.tsx
 src/app/dashboard/page.tsx
+src/app/family/page.tsx
 src/app/globals.css
 src/app/icon.svg
 src/app/insights/page.tsx
@@ -21,6 +22,7 @@ src/app/precision-health/bioaro-labs/page.tsx
 src/app/precision-health/page.tsx
 src/app/providers.tsx
 src/app/robots.ts
+src/app/scan/page.tsx
 src/app/shop/page.tsx
 src/app/site-index.json/route.ts
 src/app/sitemap.ts
@@ -42,12 +44,16 @@ src/components/bioaro/DrugsHub.tsx
 src/components/bioaro/HealthPackages.tsx
 src/components/bioaro/LabsHub.tsx
 src/components/bioelr/Configurator.tsx
+src/components/charts/AICharts.tsx
 src/components/charts/Charts.tsx
 src/components/charts/EvidenceChart.tsx
 src/components/charts/useInView.ts
 src/components/clinic/BPTracker.tsx
 src/components/clinic/ClinicTabs.tsx
+src/components/commerce/BuyButton.tsx
 src/components/dept/DeptTabs.tsx
+src/components/drugs/ProtocolStudio.tsx
+src/components/family/FamilyCare.tsx
 src/components/fx/AIFlow.tsx
 src/components/fx/AnimatedList.tsx
 src/components/fx/AppleDock.tsx
@@ -77,10 +83,16 @@ src/components/home/AIHero.tsx
 src/components/home/Constellation.tsx
 src/components/home/DeptIntelligence.tsx
 src/components/home/DisciplineExplorer.tsx
+src/components/home/Ecosystem.tsx
+src/components/home/EvidenceBoard.tsx
 src/components/home/FusionEngine.tsx
 src/components/home/GoalPipeline.tsx
 src/components/home/HomeSections.tsx
 src/components/home/LifespanSimulator.tsx
+src/components/home/StartHere.tsx
+src/components/labs/DeptTests.tsx
+src/components/labs/EvidencePill.tsx
+src/components/labs/TestNavigator.tsx
 src/components/layout/Footer.tsx
 src/components/layout/Header.tsx
 src/components/layout/SparkleNav.tsx
@@ -94,6 +106,8 @@ src/components/pages/JournalList.tsx
 src/components/pages/Triage.tsx
 src/components/platform/PlatformParts.tsx
 src/components/products/ProductCard.tsx
+src/components/scan/HealthspanScan.tsx
+src/components/scan/ScanResults.tsx
 src/components/shop/BagLayer.tsx
 src/components/shop/CartProvider.tsx
 src/components/shop/CatalogTab.tsx
@@ -123,6 +137,7 @@ src/data/clinic.ts
 src/data/dashboard.ts
 src/data/departments.ts
 src/data/drugs.ts
+src/data/family.ts
 src/data/governance.ts
 src/data/health.ts
 src/data/intelligence.ts
@@ -145,8 +160,10 @@ src/lib/env.ts
 src/lib/intent.ts
 src/lib/interest.ts
 src/lib/retrieve.ts
+src/lib/scan.ts
 src/lib/seo.tsx
 src/lib/siteIndex.ts
+src/lib/testIntel.ts
 src/lib/theme.ts
 src/lib/utils.ts
 src/lib/xevyo.ts

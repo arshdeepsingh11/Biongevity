@@ -1,37 +1,93 @@
-docs(copy): copy rules for audience, claims and AI wording|docs/COPY_RULES.md
-feat(theme): four theme token sets (Champagne, Midnight, Mono, Aurora) in CSS variables|src/styles/themes.css
-feat(theme): Tailwind colours read theme variables, add on-accent, on-ai, ai and feature tokens|tailwind.config.ts
-refactor(theme): globals use theme variables; AI glow, orb and print styles|src/app/globals.css
-feat(theme): theme registry, no-flash init script and colour helpers|src/lib/theme.ts
-feat(theme): ThemeProvider and header theme switcher|src/components/theme/ThemeProvider.tsx src/components/theme/ThemeSwitcher.tsx src/app/providers.tsx
-refactor(charts): charts follow the theme palette|src/components/charts/Charts.tsx
-refactor(fx): particles, laser beam and confetti read theme colours live|src/components/fx/ParticleField.tsx src/components/fx/BeamFlow.tsx src/components/fx/Confetti.ts
-refactor(fx): effects use theme tokens instead of hex|src/components/fx/AIFlow.tsx src/components/fx/AppleDock.tsx src/components/fx/AuroraText.tsx src/components/fx/BorderBeam.tsx src/components/fx/DiaTextReveal.tsx src/components/fx/DotPattern.tsx src/components/fx/ElectricBorder.tsx src/components/fx/MagicCard.tsx src/components/fx/ProgressRing.tsx src/components/fx/ShimmerButton.tsx src/components/fx/ShineBorder.tsx src/components/fx/WorldMap.tsx
-refactor(home): home visuals use theme tokens|src/components/home/Constellation.tsx src/components/home/DeptIntelligence.tsx src/components/home/FusionEngine.tsx src/components/home/LifespanSimulator.tsx
-refactor(theme): clinic, department, shop and dashboard use theme tokens|src/components/clinic/ClinicTabs.tsx src/components/clinic/BPTracker.tsx src/components/dept/DeptTabs.tsx src/components/shop/PlanStudio.tsx src/components/shop/BagLayer.tsx src/components/pages/Dashboard.tsx src/components/bioaro/HealthPackages.tsx src/components/ui/MediaSlot.tsx
-fix(theme): text over photos and video stays white in every theme|src/components/media/FilmPlayer.tsx src/components/media/Stories.tsx
-chore(scripts): check:colors guard against hard-coded colours|scripts/check-colors.mjs package.json
-feat(ai): Xevyo orb, AI badge and AI surface — one visible AI identity|src/components/ai/XevyoOrb.tsx src/components/ai/AIBadge.tsx src/components/ai/AISurface.tsx
-feat(ai): "Ask about this" chip on every section and "Summarise this page" in heroes|src/components/ai/AskAboutChip.tsx src/components/ai/PageSummary.tsx src/components/ui/Section.tsx
-feat(ai): build-time site index and on-device BM25 retrieval|src/lib/siteIndex.ts src/lib/retrieve.ts src/app/site-index.json/route.ts
-feat(ai): grounded Xevyo answers with sources, Japanese replies and cached page summaries|src/lib/xevyo.ts src/components/ai/AIProvider.tsx
-feat(ai): chat panel with orb, EN/日本語 switch, sources and page summary|src/components/ai/AIAssistant.tsx
-feat(ai): AI panels, command bar, highlight chip and ask buttons use the orb|src/components/ai/AIPanel.tsx src/components/ai/CommandBar.tsx src/components/ai/AskSelection.tsx src/components/pages/AskButton.tsx src/components/ai/AIInteractionLayer.tsx
-feat(ai): gentle summary nudge and on-device "Your next step" strip|src/components/ai/AINudge.tsx src/components/ai/NextStep.tsx src/lib/interest.ts
-feat(app): NEXT_PUBLIC_APP_URL for the member app|src/lib/env.ts .env.example
-feat(layout): header Ask Xevyo, theme switcher and Sign in; footer AI legend and links|src/components/layout/Header.tsx src/components/layout/Footer.tsx
-feat(layout): no-flash theme script, nudge and next step in the root layout|src/app/layout.tsx
-feat(home): AI-first hero with ask bar, suggested questions and app links|src/components/home/AIHero.tsx
-feat(home): "Xevyo everywhere" section for platform, tools and BioELR|src/components/home/AIEverywhere.tsx src/app/page.tsx src/components/home/HomeSections.tsx
-feat(tools): lab reference ranges, on-device parser and Xevyo task hook|src/data/labRanges.ts src/hooks/useXevyoTask.ts
-feat(tools): /tools/ — lab-result explainer, visit-prep brief, specialist router|src/components/tools/AIOutput.tsx src/components/tools/LabExplainer.tsx src/components/tools/VisitPrep.tsx src/components/tools/SpecialistRouter.tsx src/app/tools/page.tsx
-feat(platform): /platform/ — seven layers, digital twin, scores and "Why this?"|src/data/platform.ts src/components/platform/PlatformParts.tsx src/app/platform/page.tsx
-feat(login): /login/ sends members, clinicians and family to the app|src/app/login/page.tsx
-feat(bioelr): /bioelr/ — AI, modules, interoperability and clinic configurator|src/data/bioelr.ts src/components/bioelr/Configurator.tsx src/app/bioelr/page.tsx src/components/pages/ContactForm.tsx
-feat(ai): /ai/ governance page with principles, evidence levels and model cards|src/data/governance.ts src/app/ai/page.tsx
-feat(nav): Platform, AI tools, BioELR and AI pages in Discover; page prompts|src/data/site.ts src/components/layout/SparkleNav.tsx src/lib/aiPrompts.ts
-content: remove athlete overlap and camera-vitals claim; mid-age wording|src/components/shop/Catalogue.tsx src/data/drugs.ts src/data/intelligence.ts src/data/health.ts src/app/app/page.tsx
-feat(ai): page summary on department and clinic heroes|src/app/precision-health/[dept]/page.tsx src/app/clinic/[slug]/page.tsx
-feat(seo): sitemap and llms.txt for platform, tools, BioELR and AI pages|src/app/sitemap.ts public/llms.txt
-docs: README — themes, AI and new pages|README.md
+chore(scripts): support several small commits per file with staged versions|scripts/commit-all.ps1 scripts/commit-all.sh
+chore(git): ignore commit staging folders|.gitignore
+feat(labs-ai): add evidence levels for lab tests|src/lib/testIntel.ts@1
+feat(labs-ai): score evidence levels from 0 to 1|src/lib/testIntel.ts@2
+feat(labs-ai): add the nine health goals used for matching|src/lib/testIntel.ts@3
+feat(labs-ai): add GoalId type|src/lib/testIntel.ts@4
+feat(labs-ai): add rules for evidence, actionability, goals and re-test interval per test|src/lib/testIntel.ts@5
+feat(labs-ai): add fallback rule for unmatched tests|src/lib/testIntel.ts@6
+feat(labs-ai): add TestIntel type|src/lib/testIntel.ts@7
+feat(labs-ai): find the highest test price for cost scoring|src/lib/testIntel.ts@8
+feat(labs-ai): compute a transparent utility score for every BioAro Labs test|src/lib/testIntel.ts@9
+feat(labs-ai): add goal match score|src/lib/testIntel.ts@10
+feat(labs-ai): add plain-English re-test labels|src/lib/testIntel.ts
+feat(labs-ai): add EvidencePill label|src/components/labs/EvidencePill.tsx
+feat(commerce): add BuyButton that opens the partner store product page|src/components/commerce/BuyButton.tsx@11
+feat(commerce): add StoreNote explaining checkout happens on the partner site|src/components/commerce/BuyButton.tsx
+feat(charts): add AIChartFrame with AI insight line and Explain with Xevyo|src/components/charts/AICharts.tsx@12
+feat(charts): add Sparkline|src/components/charts/AICharts.tsx@13
+feat(charts): add ScatterPt type for the value map|src/components/charts/AICharts.tsx@14
+feat(charts): add Scatter chart with hover tooltip and click to select|src/components/charts/AICharts.tsx@15
+feat(charts): add Heatmap|src/components/charts/AICharts.tsx@16
+feat(charts): add Timeline for re-test schedules|src/components/charts/AICharts.tsx@17
+feat(charts): add RangeBar to show a value against its reference range|src/components/charts/AICharts.tsx@18
+feat(charts): add DoseClock 24-hour radial chart|src/components/charts/AICharts.tsx@19
+feat(charts): add hour formatter for the dose clock|src/components/charts/AICharts.tsx@20
+feat(charts): add ScoreMeter with uncertainty band|src/components/charts/AICharts.tsx
+style(charts): highlighted column uses the AI colour|src/components/charts/Charts.tsx
+feat(charts): connect evidence charts to Xevyo|src/components/charts/EvidenceChart.tsx@21
+feat(charts): build the explain request with the chart data|src/components/charts/EvidenceChart.tsx@22
+feat(charts): add Explain button to every evidence chart|src/components/charts/EvidenceChart.tsx
+feat(family): add parent concerns with specialists, tests and checklists|src/data/family.ts@23
+feat(family): add illustrative family-sharing domains|src/data/family.ts@24
+feat(family): add illustrative 8-week blood-pressure series|src/data/family.ts
+feat(scan): add scan option type|src/lib/scan.ts@25
+feat(scan): add Question type|src/lib/scan.ts@26
+feat(scan): add Answers type|src/lib/scan.ts@27
+feat(scan): add empty answers|src/lib/scan.ts@28
+feat(scan): add the 12 scan questions|src/lib/scan.ts@29
+feat(scan): add the 9 health domains|src/lib/scan.ts@30
+feat(scan): add ScanResult type|src/lib/scan.ts@31
+feat(scan): add score clamp helper|src/lib/scan.ts@32
+feat(scan): compute domains, habits, population charts, tests, formulas and re-test plan on device|src/lib/scan.ts@33
+feat(scan): add answered helper|src/lib/scan.ts
+feat(scan): results page with radar, ranges, evidence charts, test plan and buy links|src/components/scan/ScanResults.tsx
+feat(scan): one-tap question flow with progress and on-device analysis|src/components/scan/HealthspanScan.tsx@34
+feat(scan): add ScanTeaser card|src/components/scan/HealthspanScan.tsx
+feat(scan): add /scan/ page metadata|src/app/scan/page.tsx@35
+feat(scan): add /scan/ page|src/app/scan/page.tsx
+feat(labs-ai): AI Test Navigator with value map, evidence mix, compare and buy links|src/components/labs/TestNavigator.tsx
+feat(labs-ai): import Test Navigator on the BioAro Labs page|src/app/precision-health/bioaro-labs/page.tsx@36
+feat(labs-ai): show Test Navigator at the top of the BioAro Labs page|src/app/precision-health/bioaro-labs/page.tsx
+feat(drugs-ai): add key ingredients and timing for each BioAro Drugs formula|src/components/drugs/ProtocolStudio.tsx@37
+feat(drugs-ai): AI Protocol Studio with dose clock, overlap heatmap, budget and buy links|src/components/drugs/ProtocolStudio.tsx
+feat(drugs-ai): import Protocol Studio on the BioAro Drugs page|src/app/precision-health/bioaro-drugs/page.tsx@38
+feat(drugs-ai): show Protocol Studio at the top of the BioAro Drugs page|src/app/precision-health/bioaro-drugs/page.tsx
+feat(family): family care planner with checklist, specialists and tests|src/components/family/FamilyCare.tsx@39
+feat(family): illustrative family view with sharing switches and BP trend|src/components/family/FamilyCare.tsx
+feat(family): add /family/ page metadata|src/app/family/page.tsx@40
+feat(family): add /family/ page|src/app/family/page.tsx
+feat(labs-ai): map departments to health goals|src/components/labs/DeptTests.tsx@41
+feat(labs-ai): boost skin and dental microbiome tests for their departments|src/components/labs/DeptTests.tsx@42
+feat(labs-ai): AI test match strip for department pages|src/components/labs/DeptTests.tsx
+feat(dept): import AI test match|src/app/precision-health/[dept]/page.tsx@43
+feat(dept): show AI test match with buy links on every department page|src/app/precision-health/[dept]/page.tsx
+feat(home): AI evidence board with four sourced charts|src/components/home/EvidenceBoard.tsx
+feat(home): BioAro ecosystem section with links to each site|src/components/home/Ecosystem.tsx
+feat(home): Start here section with scan, family care, lab explainer and navigator|src/components/home/StartHere.tsx
+feat(home): import new home sections|src/app/page.tsx@44
+feat(home): add Start here and AI evidence board sections|src/app/page.tsx@45
+chore(home): renumber biomarker constellation section|src/app/page.tsx@46
+chore(home): renumber longevity simulator section|src/app/page.tsx@47
+chore(home): renumber department intelligence section|src/app/page.tsx@48
+chore(home): renumber goal pipeline section|src/app/page.tsx@49
+feat(home): add ecosystem section after Xevyo everywhere|src/app/page.tsx
+chore(home): renumber brand film section|src/components/home/HomeSections.tsx@50
+chore(home): renumber stories section|src/components/home/HomeSections.tsx@51
+chore(home): renumber global clinic section|src/components/home/HomeSections.tsx
+feat(home): hero links to the 2-minute AI scan|src/components/home/AIHero.tsx
+feat(tools): import range bar and buy button in the lab explainer|src/components/tools/LabExplainer.tsx@52
+feat(tools): map flagged values to BioAro Labs re-tests|src/components/tools/LabExplainer.tsx@53
+feat(tools): show each lab value on a range bar|src/components/tools/LabExplainer.tsx@54
+feat(tools): suggest BioAro Labs re-tests with buy links|src/components/tools/LabExplainer.tsx
+feat(shop): import partner buy button in the bag|src/components/shop/BagLayer.tsx@55
+feat(shop): buy lab tests and formulas directly on the partner store from the bag|src/components/shop/BagLayer.tsx
+feat(ai): next step suggests the AI scan|src/components/ai/NextStep.tsx@56
+feat(ai): department next step opens the Test Navigator|src/components/ai/NextStep.tsx
+feat(nav): add AI Healthspan Scan and Family care to Discover|src/data/site.ts
+fix(nav): highlight Discover on scan and family pages|src/components/layout/SparkleNav.tsx
+feat(ai): smart questions for scan and family pages|src/lib/aiPrompts.ts
+feat(ai): ground Xevyo answers in scan, family, navigator and studio pages|src/lib/siteIndex.ts
+feat(seo): add scan and family pages to the sitemap|src/app/sitemap.ts
+feat(seo): describe scan, family, navigator and studio in llms.txt|public/llms.txt
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt
