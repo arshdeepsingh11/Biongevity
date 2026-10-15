@@ -130,6 +130,14 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 [data-theme="aurora"] .bg-canvas, [data-theme="aurora"] [class*="bg-canvas/"]:not(section) { background-color: rgb(var(--c-ai-2) / .05) !important; }
 [data-theme="aurora"] [class*="bg-ai-soft"] { background-color: rgb(var(--c-ai-2) / .09) !important; }
 [data-theme="aurora"] .shadow-lift { box-shadow: 0 2px 6px rgb(var(--c-ink) / .05), 0 30px 60px -18px rgb(var(--c-ai-2) / .3) !important; }
+/* Orange tabs and buttons: glossy, lit from inside, never flat slabs. */
+[data-theme="aurora"] .bg-ink { background-color: rgb(var(--c-ai-2)) !important; background-image: var(--g-btn) !important; color: rgb(var(--c-on-ai)) !important;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / .45), 0 8px 20px -8px rgb(var(--c-ai-2) / .6) !important; }
+[data-theme="aurora"] .ring-ink { --tw-ring-color: rgb(var(--c-ai-2) / .4) !important; }
+[data-theme="aurora"] .btn-ai, [data-theme="aurora"] .btn-dark { box-shadow: inset 0 1px 0 rgb(255 255 255 / .45), inset 0 -1px 0 rgb(var(--c-accent-deep) / .3), 0 10px 24px -8px rgb(var(--c-ai-2) / .6); }
+[data-theme="aurora"] .btn-light { background-color: rgb(255 255 255 / .7); border-color: rgb(var(--c-ai-2) / .18); -webkit-backdrop-filter: blur(16px) saturate(1.8); backdrop-filter: blur(16px) saturate(1.8);
+  box-shadow: 0 6px 18px -10px rgb(var(--c-ai-2) / .35), inset 0 1px 0 rgb(255 255 255 / 1); }
+[data-theme="aurora"] .btn-light:hover { border-color: rgb(var(--c-ai-2) / .45); color: rgb(var(--c-accent)); }
 
 /* ───── AI signature: anything Xevyo powers ───── */
 .text-ai-grad { background: var(--g-ai); -webkit-background-clip: text; background-clip: text; color: transparent; }
