@@ -18,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/clinic/", 0.8),
     ...CLINICS.map((c) => page(`/clinic/${c.id}/`, 0.8)),
     page("/shop/", 0.8, "weekly"),
+    page("/scan/", 0.9),
+    page("/family/", 0.8),
     page("/platform/", 0.85),
     page("/tools/", 0.8),
     page("/bioelr/", 0.8),
