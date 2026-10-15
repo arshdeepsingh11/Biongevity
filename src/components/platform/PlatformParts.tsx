@@ -11,7 +11,7 @@ export function AppButtons({ center }: { center?: boolean }) {
   const { ask } = useAI();
   return (
     <div className={`flex flex-wrap gap-3 ${center ? "justify-center" : ""}`}>
-      <a href={env.appUrl} className="btn-ai h-12 px-6"><Icon name="fingerprint" size={18} />Open my twin</a>
+      <a href="/twin/" className="btn-ai h-12 px-6"><Icon name="fingerprint" size={18} />Explore the Digital Twin</a>
       <a href="/login/" className="btn-light h-12 px-6"><Icon name="user" size={16} />Sign in options</a>
       <button onClick={() => ask("What is the Biongevity digital twin, and what will I see in the app after my baseline tests?", { label: "✦ What is my digital twin?" })} className="btn-light h-12 px-6"><XevyoOrb size={22} />Ask about the twin</button>
     </div>
