@@ -48,7 +48,8 @@ export function LabExplainer() {
                 <li key={p.r.id} className="rounded-xl bg-white px-3 py-2 ring-1 ring-ink/[0.05]">
                   <div className="flex items-center gap-2"><span className="flex-1 text-[14px] font-semibold">{p.r.label}</span><span className="tabular-nums text-[14px]">{p.value} <span className="text-[11px] text-muted">{p.unit}</span></span>
                     <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${TONE[p.flag]}`}>{p.flag}</span></div>
-                  <div className="mt-0.5 text-[11.5px] leading-snug text-muted">{p.r.note}</div>
+                  {(p.r.low !== undefined || p.r.high !== undefined) && <RangeBar value={p.value} low={p.r.low} high={p.r.high} />}
+                  <div className="mt-1.5 text-[11.5px] leading-snug text-muted">{p.r.note}</div>
                 </li>
               ))}
             </ul>
