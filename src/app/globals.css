@@ -113,7 +113,24 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 [data-theme="midnight"] img, [data-theme="midnight"] video { filter: brightness(.9); }
 [data-theme="midnight"] .card { box-shadow: none; border-color: rgb(255 255 255 / .08); }
 [data-theme="mono"] .text-iri { background: none; color: var(--ink); }
-[data-theme="aurora"] .card { box-shadow: 0 1px 2px rgb(var(--c-shadow) / .03), 0 8px 24px rgb(var(--c-shadow) / .04); }
+/* Aurora: Apple-style glass. Soft orange light behind frosted white surfaces. */
+[data-theme="aurora"] body {
+  background:
+    radial-gradient(900px 600px at 8% -5%, rgb(255 166 94 / .22), transparent 60%),
+    radial-gradient(800px 600px at 105% 10%, rgb(255 120 40 / .14), transparent 55%),
+    radial-gradient(1000px 700px at 50% 120%, rgb(255 190 140 / .18), transparent 60%),
+    rgb(var(--c-pearl));
+  background-attachment: fixed;
+}
+[data-theme="aurora"] [class*="bg-white"]:not(input):not(textarea):not(select) { background-color: var(--glass) !important; }
+[data-theme="aurora"] .card, [data-theme="aurora"] .glass, [data-theme="aurora"] .ai-ring, [data-theme="aurora"] figure.rounded-\[26px\] {
+  background-color: var(--glass) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(1.8); backdrop-filter: blur(22px) saturate(1.8);
+}
+[data-theme="aurora"] .card { border-color: var(--glass-border); box-shadow: 0 1px 1px rgb(0 0 0 / .02), 0 12px 32px rgb(var(--c-shadow) / .06), inset 0 1px 0 rgb(255 255 255 / .8); }
+[data-theme="aurora"] .ai-ring { box-shadow: 0 0 0 1px rgb(255 255 255 / .8), 0 0 0 1.5px rgb(var(--c-ai-2) / .18), 0 18px 40px rgb(var(--c-ai-2) / .12), inset 0 1px 0 rgb(255 255 255 / .9); }
+[data-theme="aurora"] .bg-canvas, [data-theme="aurora"] [class*="bg-canvas/"] { background-color: rgb(255 255 255 / .45) !important; }
+[data-theme="aurora"] .shadow-lift { box-shadow: 0 2px 6px rgb(0 0 0 / .03), 0 30px 60px rgb(var(--c-shadow) / .10) !important; }
 [data-theme="aurora"] section[data-ai] { scroll-margin-top: 80px; }
 
 /* ───── AI signature: anything Xevyo powers ───── */
