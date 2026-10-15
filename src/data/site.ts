@@ -44,6 +44,8 @@ export const NAV: NavItem[] = [
   {
     id: "discover", label: "Discover", icon: "orbit",
     menu: [
+      { href: "/scan/", label: "AI Healthspan Scan", icon: "radar", desc: "2 minutes: 9 health domains, your test plan and re-test timeline." },
+      { href: "/family/", label: "Family care", icon: "users", desc: "Caring for a parent: AI checklist, tests, specialists, family view." },
       { href: "/platform/", label: "Healthspan platform", icon: "fingerprint", desc: "Your digital twin, domain scores and AI coach — open the app." },
       { href: "/tools/", label: "AI health tools", icon: "sparkle", desc: "Explain lab results, prep a visit, find the right specialist." },
       { href: "/bioelr/", label: "BioELR for clinics", icon: "layers", desc: "Longevity-focused health record for clinics and communities." },
