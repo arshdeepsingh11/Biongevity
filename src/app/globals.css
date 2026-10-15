@@ -173,6 +173,9 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
   -webkit-backdrop-filter: blur(30px) saturate(1.6); backdrop-filter: blur(30px) saturate(1.6);
   box-shadow: 0 1px 2px rgb(var(--c-shadow) / .04), 0 24px 60px -20px rgb(var(--c-shadow) / .16), inset 0 1px 0 rgb(255 255 255 / .9); }
 [data-theme="aurora"] .home-panels > section[data-ai]:not(.home-start) > .pointer-events-none { top: 34px; }
+[data-theme="aurora"] .home-panels > section[data-ai]:not(.home-start) .h-section { font-size: clamp(30px, 3.4vw, 46px); line-height: 1.06; }
+[data-theme="aurora"] .home-panels > section[data-ai]:not(.home-start) .lede { font-size: 16px; line-height: 1.6; }
+[data-theme="aurora"] .home-panels > section[data-ai]:not(.home-start) > .pointer-events-none .container-x { max-width: 1240px; padding-right: clamp(28px, 4vw, 52px); }
 
 /* ───── AI signature: anything Xevyo powers ───── */
 .text-ai-grad { background: var(--g-ai); -webkit-background-clip: text; background-clip: text; color: transparent; }
