@@ -155,7 +155,7 @@
   color-scheme: light;
 }
 
-/* 4 · AURORA — cool, minimal, premium. Cool white, deep navy ink, one teal→blue AI aurora. */
+/* 4 · AURORA — minimal white with tiny particles, clear glass cards and tabs, orange interface. */
 :root[data-theme="aurora"] {
   --c-pearl: 255 255 255;      /* minimal white background */
   --c-canvas: 250 250 251;
