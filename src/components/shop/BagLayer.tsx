@@ -109,6 +109,9 @@ export function BagLayer() {
                     <span className="text-right text-[14.5px] font-semibold tabular-nums">{money(l.price)}</span>
                     <button onClick={() => c.remove(l.id)} aria-label={`Remove ${l.item.title}`} className="text-faint hover:text-accent"><Icon name="trash" size={16} /></button>
                   </div>
+                  {(l.item.kind === "test" || l.item.kind === "formula") && l.item.url && (
+                    <div className="mt-3 flex items-center gap-2 border-t border-ink/[0.05] pt-3"><span className="flex-1 text-[11.5px] text-muted">Sold by {l.item.kind === "test" ? "BioAro Labs" : "BioAro Drugs"}</span><BuyButton href={l.item.url} store={l.item.kind === "test" ? "labs" : "drugs"} size="sm" label="Buy now" /></div>
+                  )}
                   {l.item.kind === "program" && (
                     <div className="mt-3 flex items-center gap-2"><span className="text-[12px] text-muted">Term</span>
                       <div className="inline-flex rounded-full bg-canvas p-0.5">{TERMS.map((t) => <button key={t} onClick={() => c.setTerm(l.id, t as Term)} className={`rounded-full px-3 py-1 text-[12px] font-semibold ${l.term === t ? "bg-accent text-white" : "text-muted"}`}>{t} mo</button>)}</div>
