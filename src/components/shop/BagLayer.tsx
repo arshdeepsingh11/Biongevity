@@ -8,6 +8,7 @@ import { bundleUrl } from "@/lib/commerce";
 import { TERMS, POLICIES, type Term } from "@/config/store";
 import { formatMoney } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
+import { BuyButton } from "@/components/commerce/BuyButton";
 import { useAI } from "@/components/ai/AIProvider";
 import { askXevyo, sessionId, xevyoEnabled } from "@/lib/xevyo";
 
