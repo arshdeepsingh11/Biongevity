@@ -199,10 +199,11 @@
   --g-feature: linear-gradient(160deg, rgb(255 250 244 / .78) 0%, rgb(255 236 220 / .7) 100%);
   --g-btn: linear-gradient(180deg, #F57B45 0%, #E25B26 55%, #D94F1F 100%);
   --g-ai: linear-gradient(120deg, #FFB454, #F36B32 50%, #D94F1F);
-  --header-alpha: 0.62;
+  --header-alpha: 0.6;
   --heading-track: -0.045em;
   --glass: rgb(255 255 255 / .62);
-  --glass-border: rgb(255 255 255 / .75);
+  --glass-strong: rgb(255 255 255 / .7);
+  --glass-border: rgb(255 255 255 / .9);
   color-scheme: light;
 }
 
