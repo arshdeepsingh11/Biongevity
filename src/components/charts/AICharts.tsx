@@ -162,3 +162,17 @@ export function Timeline({ rows, months = 12, start = new Date() }: { rows: { la
     </div>
   );
 }
+
+/* ---------- Range bar: one value against a reference range ---------- */
+export function RangeBar({ value, low, high, unit, min, max }: { value: number; low?: number; high?: number; unit?: string; min?: number; max?: number }) {
+  const lo = min ?? Math.min(value, low ?? value, high ?? value) * 0.6;
+  const hi = max ?? Math.max(value, high ?? value, low ?? value) * 1.35;
+  const pct = (v: number) => `${Math.max(0, Math.min(100, ((v - lo) / (hi - lo || 1)) * 100))}%`;
+  const out = (low !== undefined && value < low) || (high !== undefined && value > high);
+  return (
+    <div className="relative mt-2 h-2 rounded-full bg-ink/[0.07]" aria-label={`${value}${unit ?? ""}`}>
+      <div className="absolute inset-y-0 rounded-full bg-teal/30" style={{ left: low !== undefined ? pct(low) : "0%", right: high !== undefined ? `calc(100% - ${pct(high)})` : "0%" }} />
+      <span className="absolute top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-white" style={{ left: pct(value), background: out ? "rgb(var(--c-warn))" : "rgb(var(--c-teal))" }} />
+    </div>
+  );
+}
