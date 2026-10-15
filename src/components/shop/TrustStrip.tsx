@@ -23,7 +23,7 @@ export function TrustStrip() {
         <div aria-hidden className="absolute left-[10%] right-[10%] top-7 hidden h-[2px] bg-iri-x opacity-40 md:block" />
         {STEPS.map((s, i) => (
           <div key={s.t} className="relative rounded-2xl bg-white p-4 text-center ring-1 ring-ink/[0.06]">
-            <span className="relative z-[1] mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-iri text-white ring-4 ring-pearl"><Icon name={s.icon} size={22} weight="duotone" /></span>
+            <span className="relative z-[1] mx-auto grid h-12 w-12 place-items-center icon-tile ring-4 ring-pearl"><Icon name={s.icon} size={22} weight="duotone" /></span>
             <div className="mt-2 hud-label">Step {i + 1}</div><div className="text-[14.5px] font-semibold">{s.t}</div><div className="mt-1 text-[12px] text-muted">{s.d}</div>
           </div>
         ))}
