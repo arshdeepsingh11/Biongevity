@@ -166,6 +166,13 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 [data-theme="aurora"] .home-panels > .home-start .scan-title { font-size: clamp(28px, 3.2vw, 40px); letter-spacing: -0.03em; max-width: 14ch; }
 [data-theme="aurora"] .home-panels > .home-start .ai-ring { padding: clamp(22px, 3vw, 40px); border-radius: 32px; }
 [data-theme="aurora"] .glass-swoosh { display: block; opacity: .55; }
+[data-theme="aurora"] .home-panels > section[data-ai]:not(.home-start) { padding-block: 12px; background: transparent !important; }
+[data-theme="aurora"] .home-panels > section[data-ai]:not(.home-start) > .container-x:last-child {
+  width: calc(100% - 24px); max-width: 1240px; padding: clamp(22px, 4vw, 52px); border-radius: 36px;
+  background: linear-gradient(140deg, rgb(255 255 255 / .5), rgb(255 255 255 / .22)); border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(30px) saturate(1.6); backdrop-filter: blur(30px) saturate(1.6);
+  box-shadow: 0 1px 2px rgb(var(--c-shadow) / .04), 0 24px 60px -20px rgb(var(--c-shadow) / .16), inset 0 1px 0 rgb(255 255 255 / .9); }
+[data-theme="aurora"] .home-panels > section[data-ai]:not(.home-start) > .pointer-events-none { top: 34px; }
 
 /* ───── AI signature: anything Xevyo powers ───── */
 .text-ai-grad { background: var(--g-ai); -webkit-background-clip: text; background-clip: text; color: transparent; }
