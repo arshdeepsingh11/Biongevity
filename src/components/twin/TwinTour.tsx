@@ -1,0 +1,78 @@
+"use client";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { TOUR, TWIN_SYSTEMS, TWIN_EXAMPLE, STATUS_WORDS, TWIN_PATH } from "@/data/twin";
+import { useAI } from "@/components/ai/AIProvider";
+import { XevyoOrb } from "@/components/ai/XevyoOrb";
+import { Icon } from "@/components/ui/Icon";
+import { BodyHologram } from "@/components/body/BodyHologram";
+import { LineChart } from "@/components/charts/Charts";
+import { Sparkline } from "@/components/charts/AICharts";
+import { env } from "@/lib/env";
+
+const TWIN_URL = `${env.appUrl}${TWIN_PATH}`;
+
+/**
+ * Digital Twin guided tour — a 360° 3D twin on the left, a six-step tour on the right.
+ * Each step shows a working preview of the matching part of the app (example data) and explains it in plain words.
+ */
+export function TwinTour() {
+  const { ask } = useAI();
+  const [i, setI] = useState(0);
+  const [sys, setSys] = useState<string | null>(null);
+  const [auto, setAuto] = useState(true);
+  const step = TOUR[i];
+  useEffect(() => { if (!auto) return; const t = setTimeout(() => setI((x) => (x + 1) % TOUR.length), 9000); return () => clearTimeout(t); }, [auto, i]);
+  const go = (n: number) => { setAuto(false); setI(n); };
+  const s = TWIN_SYSTEMS.find((x) => x.id === sys);
+
+  return (
+    <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+      {/* 3D twin */}
+      <div className="relative overflow-hidden rounded-[34px] bg-white ring-1 ring-ink/[0.07]">
+        <div className="absolute left-4 top-4 z-[4] flex items-center gap-2 rounded-full bg-white/80 py-1 pl-1 pr-3 text-[12px] font-semibold ring-1 ring-ink/[0.06] backdrop-blur-md"><XevyoOrb size={24} live />Your twin · <span className="text-gold-deep">Example</span></div>
+        <BodyHologram height={680} selected={sys ?? (step.id === "body" ? "heart" : null)} onSelect={(id) => { setSys(id); setAuto(false); }}
+          hotspots={TWIN_SYSTEMS.map((x) => ({ id: x.id, label: x.label, status: x.status, tone: x.tone }))} />
+        <AnimatePresence>
+          {s && (
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute inset-x-4 bottom-16 z-[4] rounded-2xl bg-white/90 p-4 shadow-lift ring-1 ring-ink/[0.06] backdrop-blur-xl">
+              <div className="flex items-center gap-2"><span className={`h-2.5 w-2.5 rounded-full ${s.tone === "good" ? "bg-teal" : "bg-ai-2"}`} /><b className="text-[15px]">{s.label}</b><span className="text-[12.5px] text-muted">· {s.status}</span><button onClick={() => setSys(null)} className="ml-auto text-faint" aria-label="Close"><Icon name="x" size={14} /></button></div>
+              <p className="mt-1 text-[13px] text-muted">{s.why}</p>
+              <button onClick={() => ask(`In my Biongevity digital twin, ${s.label} shows "${s.status}". What does that status mean and what could I do?`, { label: `✦ What does “${s.status}” mean for ${s.label}?` })} className="mt-2 text-[12.5px] font-semibold text-ai">✦ Ask Xevyo what this means</button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* tour */}
+      <div className="flex flex-col gap-4">
+        <div className="no-scrollbar -mx-1 flex gap-1.5 overflow-x-auto px-1 pb-1">
+          {TOUR.map((t, k) => (
+            <button key={t.id} onClick={() => go(k)} aria-current={k === i ? "step" : undefined}
+              className={`relative flex shrink-0 items-center gap-2 overflow-hidden rounded-full py-1.5 pl-1.5 pr-3.5 text-[12.5px] font-semibold ring-1 transition ${k === i ? "bg-ink text-pearl ring-ink" : "bg-white ring-ink/[0.07] hover:ring-ai/40"}`}>
+              <span className={`grid h-6 w-6 place-items-center rounded-full text-[10.5px] ${k === i ? "bg-ai text-on-ai" : "bg-canvas text-muted"}`}>{t.n}</span>{t.s}
+              {k === i && auto && <motion.span key={`p${i}`} className="absolute bottom-0 left-0 h-[2px] bg-ai-2" initial={{ width: 0 }} animate={{ width: "100%" }} transition={{ duration: 9, ease: "linear" }} />}
+            </button>
+          ))}
+        </div>
+
+        <AnimatePresence mode="wait">
+          <motion.div key={step.id} initial={{ opacity: 0, x: 14 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -14 }} transition={{ duration: 0.28 }} className="flex flex-col gap-4">
+            <div className="rounded-[28px] bg-white p-6 ring-1 ring-ink/[0.07]">
+              <div className="flex items-center gap-3"><span className="icon-tile h-12 w-12"><Icon name={step.icon} size={22} /></span><div><div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ai">Step {step.n} · {step.where}</div><div className="text-[24px] font-semibold leading-tight tracking-tight">{step.t}</div></div></div>
+              <p className="mt-3 text-[15.5px] leading-relaxed text-ink/85">{step.plain}</p>
+              <ul className="mt-3 grid gap-1.5">{step.points.map((p) => <li key={p} className="flex gap-2 text-[13.5px] text-muted"><Icon name="check" size={15} className="mt-0.5 shrink-0 text-teal" />{p}</li>)}</ul>
+            </div>
+            <Preview id={step.id} onSystem={(id) => { setSys(id); setAuto(false); }} />
+          </motion.div>
+        </AnimatePresence>
+
+        <div className="mt-auto flex flex-wrap items-center gap-2">
+          <button onClick={() => go((i + TOUR.length - 1) % TOUR.length)} className="btn-light h-11 px-4"><Icon name="chevron-left" size={16} />Back</button>
+          <button onClick={() => go((i + 1) % TOUR.length)} className="btn-light h-11 px-4">Next<Icon name="chevron-right" size={16} /></button>
+          <a href={TWIN_URL} className="btn-ai ml-auto h-11 px-5"><Icon name="fingerprint" size={17} />Open my Digital Twin<Icon name="arrow-up-right" size={14} /></a>
+        </div>
+      </div>
+    </div>
+  );
+}
