@@ -42,3 +42,20 @@ export function AIChartFrame({ title, kicker, insight, data, source, children, c
     </figure>
   );
 }
+
+/* ---------- Sparkline ---------- */
+export function Sparkline({ values, width = 120, height = 34, color = "rgb(var(--c-ai))", className, fill = true }: { values: number[]; width?: number; height?: number; color?: string; className?: string; fill?: boolean }) {
+  const id = useId().replace(/:/g, "");
+  if (values.length < 2) return null;
+  const lo = Math.min(...values), hi = Math.max(...values), r = hi - lo || 1;
+  const pts = values.map((v, i) => [(i / (values.length - 1)) * width, height - 3 - ((v - lo) / r) * (height - 6)]);
+  const d = pts.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)},${y.toFixed(1)}`).join(" ");
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} className={className} aria-hidden>
+      <defs><linearGradient id={`sp${id}`} x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor={color} stopOpacity=".28" /><stop offset="1" stopColor={color} stopOpacity="0" /></linearGradient></defs>
+      {fill && <path d={`${d} L${width},${height} L0,${height} Z`} fill={`url(#sp${id})`} />}
+      <path d={d} fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx={pts[pts.length - 1][0]} cy={pts[pts.length - 1][1]} r="2.6" fill={color} />
+    </svg>
+  );
+}
