@@ -69,3 +69,5 @@ export function goalMatch(x: TestIntel, goals: GoalId[]) {
   const hits = x.goals.filter((g) => goals.includes(g)).length;
   return Math.round(Math.min(100, (hits / x.goals.length) * 80 + (x.goals[0] && goals.includes(x.goals[0]) ? 20 : 0)));
 }
+
+export const RETEST_LABEL = (m: number) => (m === 0 ? "Once — results last a lifetime" : m === 12 ? "Yearly" : `Every ${m} months`);
