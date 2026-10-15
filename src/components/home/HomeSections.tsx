@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { DiaTextReveal } from "@/components/fx/DiaTextReveal";
 import { TextAnimate } from "@/components/fx/TextAnimate";
-import { WorldMap } from "@/components/fx/WorldMap";
+import { ClinicGlobe } from "@/components/clinic3d/ClinicGlobe";
 import { FilmPlayer } from "@/components/media/FilmPlayer";
 import { Stories } from "@/components/media/Stories";
 import { Icon } from "@/components/ui/Icon";
