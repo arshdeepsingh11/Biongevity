@@ -113,12 +113,10 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 [data-theme="midnight"] img, [data-theme="midnight"] video { filter: brightness(.9); }
 [data-theme="midnight"] .card { box-shadow: none; border-color: rgb(255 255 255 / .08); }
 [data-theme="mono"] .text-iri { background: none; color: var(--ink); }
-/* Aurora: Apple-style glass. Soft orange light behind frosted white surfaces. */
+/* Aurora: warm command center. Cream light, orange waves on the outer edges, bright uncluttered centre. */
 [data-theme="aurora"] body {
   background:
-    radial-gradient(900px 600px at 8% -5%, rgb(255 166 94 / .22), transparent 60%),
-    radial-gradient(800px 600px at 105% 10%, rgb(255 120 40 / .14), transparent 55%),
-    radial-gradient(1000px 700px at 50% 120%, rgb(255 190 140 / .18), transparent 60%),
+    radial-gradient(ellipse 85% 80% at 50% 40%, rgb(255 253 250 / 1), rgb(255 253 250 / .6) 55%, rgb(255 253 250 / 0) 85%),
     rgb(var(--c-pearl));
   background-attachment: fixed;
 }
