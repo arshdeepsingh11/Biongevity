@@ -95,3 +95,25 @@ export function HealthspanScan() {
     </div>
   );
 }
+
+/** Small entry card used on the home page and elsewhere. */
+export function ScanTeaser({ className }: { className?: string }) {
+  const { ask } = useAI();
+  return (
+    <div className={`relative overflow-hidden rounded-[28px] bg-white p-6 ai-ring ${className ?? ""}`}>
+      <div aria-hidden className="ai-glow -right-12 -top-12 h-48 w-48" />
+      <div className="relative flex items-center gap-3"><XevyoOrb size={48} live halo /><AIBadge label="2-minute scan" /></div>
+      <div className="relative mt-4 text-[24px] font-semibold leading-tight tracking-tight">Where should <span className="text-ai-grad">your healthspan</span> start?</div>
+      <p className="relative mt-2 text-[14.5px] text-muted">12 one-tap questions. A radar of 9 health domains, the BioAro Labs tests that fit you, and a 12-month re-test plan.</p>
+      <div className="relative mt-5 flex flex-wrap gap-2">
+        <Link href="/scan/" className="btn-ai h-11 px-5">Start the AI scan<Icon name="arrow-right" size={16} /></Link>
+        <button onClick={() => ask("What does the Biongevity AI Healthspan Scan measure, and how should I use the results?", { label: "✦ What does the scan measure?" })} className="btn-light h-11 px-5">What does it measure?</button>
+      </div>
+      <div className="relative mt-6 grid grid-cols-3 gap-2">
+        {[["radar", "9-domain radar"], ["test-tubes", "Ranked BioAro tests"], ["calendar", "Re-test timeline"]].map(([i, t]) => (
+          <div key={t} className="rounded-2xl bg-ai-soft/60 p-3 text-center"><Icon name={i} size={20} className="mx-auto text-ai" /><div className="mt-1.5 text-[12px] font-semibold leading-tight">{t}</div></div>
+        ))}
+      </div>
+    </div>
+  );
+}
