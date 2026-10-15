@@ -97,6 +97,23 @@ export function HealthspanScan() {
 }
 
 /** Small entry card used on the home page and elsewhere. */
+/** Glossy orange glass ribbon for hero cards (shown in the Aurora theme). */
+export function GlassSwoosh() {
+  return (
+    <svg aria-hidden viewBox="0 0 400 300" className="glass-swoosh pointer-events-none absolute -right-10 -top-6 hidden h-[118%] w-[62%]" preserveAspectRatio="xMaxYMin meet">
+      <defs>
+        <linearGradient id="gsw-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style={{ stopColor: "rgb(var(--c-chart-5))", stopOpacity: 0.15 }} /><stop offset=".55" style={{ stopColor: "rgb(var(--c-ai-hi))", stopOpacity: 0.55 }} /><stop offset="1" style={{ stopColor: "rgb(var(--c-ai-2))", stopOpacity: 0.8 }} /></linearGradient>
+        <linearGradient id="gsw-h" x1="0" y1="0" x2="1" y2="0"><stop offset="0" style={{ stopColor: "rgb(var(--c-on-ai))", stopOpacity: 0 }} /><stop offset=".5" style={{ stopColor: "rgb(var(--c-on-ai))", stopOpacity: 0.95 }} /><stop offset="1" style={{ stopColor: "rgb(var(--c-on-ai))", stopOpacity: 0 }} /></linearGradient>
+        <filter id="gsw-b"><feGaussianBlur stdDeviation="6" /></filter>
+      </defs>
+      <path d="M210 -10 C300 30 260 120 330 170 C370 198 400 240 410 300 L410 -10 Z" fill="url(#gsw-a)" opacity=".55" filter="url(#gsw-b)" />
+      <path d="M250 -10 C330 40 290 130 350 180 C385 208 405 250 410 300 L410 -10 Z" fill="url(#gsw-a)" />
+      <path d="M250 -10 C330 40 290 130 350 180 C385 208 405 250 410 300" fill="none" stroke="url(#gsw-h)" strokeWidth="2.5" />
+      <path d="M292 -10 C350 46 318 120 368 168" fill="none" stroke="url(#gsw-h)" strokeWidth="1.2" opacity=".7" />
+    </svg>
+  );
+}
+
 export function ScanTeaser({ className }: { className?: string }) {
   const { ask } = useAI();
   return (
