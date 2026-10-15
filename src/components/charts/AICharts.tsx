@@ -62,3 +62,49 @@ export function Sparkline({ values, width = 120, height = 34, color = "rgb(var(-
 
 /* ---------- Scatter (value map) ---------- */
 export interface ScatterPt { id: string; x: number; y: number; label: string; group?: number; r?: number }
+export function Scatter({ points, xLabel, yLabel, active, onPick, height = 300, xFormat = (v: number) => String(Math.round(v)), yFormat = (v: number) => String(Math.round(v)), groups, xLog }: {
+  points: ScatterPt[]; xLabel: string; yLabel: string; active?: string | null; onPick?: (id: string) => void; height?: number;
+  xFormat?: (v: number) => string; yFormat?: (v: number) => string; groups?: string[];
+  /** Log scale on x — useful for prices that span $50 to $1,700. */
+  xLog?: boolean;
+}) {
+  const [ref, on] = useInView<HTMLDivElement>();
+  const [hover, setHover] = useState<string | null>(null);
+  const W = 560, H = height, P = { l: 44, r: 14, t: 14, b: 38 };
+  const xs = points.map((p) => p.x), ys = points.map((p) => p.y);
+  const tx = (v: number) => (xLog ? Math.log10(Math.max(1, v)) : v);
+  const x0 = xLog ? tx(Math.min(...xs) * 0.8) : Math.min(...xs, 0), x1 = tx(Math.max(...xs) * 1.1), y0 = Math.min(...ys, 0), y1 = Math.max(...ys, 100);
+  const X = (v: number) => P.l + ((tx(v) - x0) / (x1 - x0 || 1)) * (W - P.l - P.r);
+  const xTicks = xLog ? [50, 100, 200, 500, 1000, 2000].filter((v) => tx(v) >= x0 && tx(v) <= x1) : [0, 0.25, 0.5, 0.75, 1].map((k) => x0 + (x1 - x0) * k);
+  const Y = (v: number) => P.t + (1 - (v - y0) / (y1 - y0 || 1)) * (H - P.t - P.b);
+  const show = points.find((p) => p.id === (hover ?? active));
+  return (
+    <div ref={ref} className="relative">
+      <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label={`${yLabel} by ${xLabel}`}>
+        <rect x={P.l} y={Y(y1)} width={(W - P.l - P.r) / 2} height={(Y(y0) - Y(y1)) / 2} fill="rgb(var(--c-ai))" fillOpacity=".05" rx="10" />
+        <text x={P.l + 8} y={Y(y1) + 16} fontSize="10" fill="rgb(var(--c-ai))" fontWeight="600">High value · lower cost</text>
+        {[0.25, 0.5, 0.75, 1].map((k) => { const v = y0 + (y1 - y0) * k; return <g key={k}><line x1={P.l} x2={W - P.r} y1={Y(v)} y2={Y(v)} stroke="rgb(var(--c-ink))" strokeOpacity=".06" /><text x={P.l - 6} y={Y(v) + 3} textAnchor="end" fontSize="9.5" fill="rgb(var(--c-faint))">{yFormat(v)}</text></g>; })}
+        {xTicks.map((v) => <text key={v} x={X(v)} y={H - 20} textAnchor="middle" fontSize="9.5" fill="rgb(var(--c-faint))">{xFormat(v)}</text>)}
+        <text x={(W + P.l) / 2} y={H - 4} textAnchor="middle" fontSize="10.5" fill="rgb(var(--c-muted))" fontWeight="600">{xLabel}</text>
+        <text x={12} y={(H - P.b) / 2} textAnchor="middle" fontSize="10.5" fill="rgb(var(--c-muted))" fontWeight="600" transform={`rotate(-90 12 ${(H - P.b) / 2})`}>{yLabel}</text>
+        {points.map((p, i) => {
+          const sel = p.id === active, hov = p.id === hover;
+          return (
+            <circle key={p.id} cx={X(p.x)} cy={Y(p.y)} r={(p.r ?? 6) + (sel || hov ? 3 : 0)} fill={PALETTE[(p.group ?? 0) % PALETTE.length]} fillOpacity={sel ? 0.95 : 0.6}
+              stroke={sel ? "rgb(var(--c-ink))" : "rgb(var(--c-surface))"} strokeWidth={sel ? 2 : 1.5} className="cursor-pointer"
+              style={{ transition: `opacity .5s ${i * 0.012}s, r .2s`, opacity: on ? 1 : 0 }}
+              onMouseEnter={() => setHover(p.id)} onMouseLeave={() => setHover(null)} onClick={() => onPick?.(p.id)}>
+              <title>{p.label}</title>
+            </circle>
+          );
+        })}
+      </svg>
+      {show && (
+        <div className="pointer-events-none absolute right-2 top-2 max-w-[60%] rounded-xl bg-ink px-3 py-2 text-[12px] text-pearl shadow-lift">
+          <div className="font-semibold">{show.label}</div><div className="opacity-75">{xLabel}: {xFormat(show.x)} · {yLabel}: {yFormat(show.y)}</div>
+        </div>
+      )}
+      {groups && <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[11.5px] text-muted">{groups.map((g, i) => <span key={g} className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full" style={{ background: PALETTE[i % PALETTE.length] }} />{g}</span>)}</div>}
+    </div>
+  );
+}
