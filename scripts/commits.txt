@@ -1,4 +1,8 @@
-feat(aurora): cream background and glass surface tokens|src/styles/themes.css@1
+fix(home): restore the original home layout|src/app/page.tsx
+fix(header): restore the original top bar|src/components/layout/Header.tsx
+fix(scan): restore the original scan card|src/components/scan/HealthspanScan.tsx
+fix(hero): restore the original hero|src/components/home/AIHero.tsx
+feat(aurora): minimal white background and glass surface tokens|src/styles/themes.css@1
 feat(aurora): slate text colours for main and secondary text|src/styles/themes.css@2
 feat(aurora): primary and deep orange brand tokens|src/styles/themes.css@3
 feat(aurora): AI colours from deep orange to amber|src/styles/themes.css@4
@@ -7,22 +11,10 @@ feat(aurora): warm shadows and scrim|src/styles/themes.css@6
 feat(aurora): chart palette in orange, amber, peach and slate|src/styles/themes.css@7
 feat(aurora): orange gradients lit through glass|src/styles/themes.css@8
 feat(aurora): clear glass surface, border and header translucency|src/styles/themes.css@9
-docs(aurora): describe the warm command center theme|src/styles/themes.css
-feat(aurora): theme picker swatch and note for warm glass|src/lib/theme.ts
-feat(aurora): light cream background with a bright centre|src/app/globals.css@10
-feat(aurora): soft glass ribbons on the outer edges with slow drift|src/app/globals.css@11
-feat(aurora): clear frosted glass cards, glowing buttons and a calmer hero centre|src/app/globals.css@12
-feat(aurora): helpers to show or hide blocks per theme|src/app/globals.css@13
-feat(aurora): floating clear-glass top bar|src/app/globals.css@14
-feat(aurora): scan card becomes the home hero with a glass ribbon|src/app/globals.css@15
-feat(aurora): home sections sit in clear glass panels|src/app/globals.css@16
-style(aurora): calmer heading and lead sizes inside panels|src/app/globals.css
-feat(hero): tag background beams so themes can tone them down|src/components/home/AIHero.tsx
-feat(scan): add GlassSwoosh ribbon for hero cards|src/components/scan/HealthspanScan.tsx@17
-feat(scan): show the glass ribbon and tag the scan title|src/components/scan/HealthspanScan.tsx
-feat(header): import pathname and main navigation|src/components/layout/Header.tsx@18
-feat(header): track the active page|src/components/layout/Header.tsx@19
-feat(header): main links inside the Aurora glass bar on large screens|src/components/layout/Header.tsx
-feat(home): Aurora uses the scan card as the hero and glass section panels|src/app/page.tsx@20
-chore(home): close the home panels wrapper|src/app/page.tsx
+docs(aurora): describe the white glass theme|src/styles/themes.css
+feat(aurora): theme picker swatch and note for white glass|src/lib/theme.ts
+feat(aurora): minimal white background with only tiny particles, no grids or glows|src/app/globals.css@10
+feat(aurora): clear frosted glass cards with a bright top edge and warm shadow|src/app/globals.css@11
+feat(aurora): soft orange tint for inner surfaces and lifted cards|src/app/globals.css@12
+feat(aurora): glossy orange tabs and buttons, glass light buttons|src/app/globals.css
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt
