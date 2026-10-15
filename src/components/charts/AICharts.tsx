@@ -205,3 +205,17 @@ export function DoseClock({ doses, size = 240 }: { doses: { label: string; hour:
   );
 }
 const fmtHour = (h: number) => `${((Math.floor(h) + 11) % 12) + 1}:${String(Math.round((h % 1) * 60)).padStart(2, "0")} ${h < 12 ? "am" : "pm"}`;
+
+/* ---------- Meter: 0–100 score with an uncertainty band ---------- */
+export function ScoreMeter({ value, lo, hi, label }: { value: number; lo: number; hi: number; label: string }) {
+  const [ref, on] = useInView<HTMLDivElement>();
+  return (
+    <div ref={ref}>
+      <div className="flex items-baseline justify-between text-[12.5px]"><span className="font-semibold">{label}</span><span className="tabular-nums text-muted">{Math.round(lo)}–{Math.round(hi)}</span></div>
+      <div className="relative mt-1.5 h-2 rounded-full bg-ink/[0.07]">
+        <div className="absolute inset-y-0 rounded-full bg-ai/25" style={{ left: `${lo}%`, width: on ? `${hi - lo}%` : 0, transition: "width .8s" }} />
+        <span className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ai ring-2 ring-white" style={{ left: `${on ? value : 0}%`, transition: "left .9s cubic-bezier(.2,.7,.2,1)" }} />
+      </div>
+    </div>
+  );
+}
