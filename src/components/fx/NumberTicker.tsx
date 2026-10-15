@@ -7,12 +7,13 @@ export function NumberTicker({ value, decimals = 0, duration = 1400, from = 0, p
   { value: number; decimals?: number; duration?: number; from?: number; prefix?: string; suffix?: string; className?: string }) {
   const [ref, inView] = useInView<HTMLSpanElement>();
   const [n, setN] = useState(from);
+  const cur = useRef(from);
   useEffect(() => {
     if (!inView) return;
-    let raf = 0; const t0 = performance.now();
+    let raf = 0; const t0 = performance.now(), start = cur.current;
     const tick = (t: number) => {
       const k = Math.min(1, (t - t0) / duration), e = 1 - Math.pow(1 - k, 4);
-      setN(from + (value - from) * e);
+      cur.current = start + (value - start) * e; setN(cur.current);
       if (k < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
