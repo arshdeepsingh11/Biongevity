@@ -44,3 +44,5 @@ export function XevyoOrb({ size = 28, live = false, halo = false, className }: {
     </span>
   );
 }
+
+export { XevyoOrb as XevyoMark };
