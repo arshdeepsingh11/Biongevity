@@ -155,55 +155,54 @@
   color-scheme: light;
 }
 
-/* 4 · AURORA — warm healthcare command center. Cream light, frosted glass, orange lit from behind the glass. */
+/* 4 · AURORA — cool, minimal, premium. Cool white, deep navy ink, one teal→blue AI aurora. */
 :root[data-theme="aurora"] {
-  --c-pearl: 255 245 235;      /* #FFF5EB background */
-  --c-canvas: 255 239 224;
-  --c-surface: 255 250 244;    /* glass base */
-  --c-feature: 255 240 226;
+  --c-pearl: 255 255 255;      /* minimal white background */
+  --c-canvas: 250 250 251;
+  --c-surface: 255 255 255;    /* glass base */
+  --c-feature: 255 247 240;
   --c-feature-2: 255 215 184;  /* #FFD7B8 peach */
-  --c-ink: 37 49 60;           /* #25313C main text */
-  --c-muted: 117 128 138;      /* #75808A secondary text */
-  --c-faint: 128 136 144;
-  --c-accent: 217 79 31;       /* #D94F1F deep orange (text + buttons) */
-  --c-accent-soft: 243 107 50; /* #F36B32 primary orange */
-  --c-accent-light: 255 236 220;
-  --c-accent-deep: 186 64 22;
+  --c-ink: 29 29 31;
+  --c-muted: 88 88 94;
+  --c-faint: 110 110 116;
+  --c-accent: 196 64 8;
+  --c-accent-soft: 255 140 66;
+  --c-accent-light: 255 241 230;
+  --c-accent-deep: 168 52 4;
   --c-on-accent: 255 255 255;
-  --c-teal: 47 133 98;
-  --c-teal-soft: 92 178 140;
-  --c-teal-light: 231 245 237;
-  --c-gold: 255 180 84;        /* #FFB454 amber */
-  --c-gold-soft: 255 240 216;
-  --c-gold-deep: 176 104 18;
-  --c-ai: 217 79 31;
-  --c-ai-2: 243 107 50;
-  --c-ai-hi: 255 180 84;
+  --c-teal: 36 138 61;
+  --c-teal-soft: 52 199 89;
+  --c-teal-light: 232 248 236;
+  --c-gold: 255 159 10;
+  --c-gold-soft: 255 244 229;
+  --c-gold-deep: 178 92 0;
+  --c-ai: 201 66 6;
+  --c-ai-2: 255 107 26;
+  --c-ai-hi: 255 190 120;
   --c-on-ai: 255 255 255;
-  --c-ai-soft: 255 232 214;
-  --c-warn: 176 90 10;
-  --c-tangerine: 255 180 84;
-  --c-danger: 200 40 40;
-  --c-shadow: 120 62 24;
-  --c-scrim: 37 49 60;
-  --c-chart-1: 243 107 50;
-  --c-chart-2: 37 49 60;
-  --c-chart-3: 255 180 84;
-  --c-chart-4: 117 128 138;
-  --c-chart-5: 255 215 184;
-  --c-chart-6: 217 79 31;
-  --c-chart-7: 47 133 98;
-  --g-iri: linear-gradient(135deg, #FFB454, #F36B32 50%, #D94F1F);
-  --g-iri-x: linear-gradient(90deg, #FFB454, #F36B32);
-  --g-text: linear-gradient(95deg, #F58A3C, #F36B32 45%, #D94F1F);
-  --g-feature: linear-gradient(160deg, rgb(255 250 244 / .78) 0%, rgb(255 236 220 / .7) 100%);
-  --g-btn: linear-gradient(180deg, #F57B45 0%, #E25B26 55%, #D94F1F 100%);
-  --g-ai: linear-gradient(120deg, #FFB454, #F36B32 50%, #D94F1F);
-  --header-alpha: 0.65;
+  --c-ai-soft: 255 242 233;
+  --c-warn: 178 72 0;
+  --c-tangerine: 255 149 0;
+  --c-danger: 215 0 21;
+  --c-shadow: 60 30 10;
+  --c-scrim: 29 29 31;
+  --c-chart-1: 244 95 19;
+  --c-chart-2: 29 29 31;
+  --c-chart-3: 255 159 10;
+  --c-chart-4: 142 142 147;
+  --c-chart-5: 255 196 150;
+  --c-chart-6: 168 52 4;
+  --c-chart-7: 52 199 89;
+  --g-iri: linear-gradient(135deg, #ffa257, #f56a1d 50%, #d9480f);
+  --g-iri-x: linear-gradient(90deg, #ffa257, #e8550f);
+  --g-text: linear-gradient(95deg, #ff8a2b, #f0561a 45%, #c2410c);
+  --g-feature: linear-gradient(160deg, rgb(255 255 255 / .75) 0%, rgb(255 246 238 / .7) 100%);
+  --g-btn: linear-gradient(180deg, #f6731f, #dd4f0c);
+  --g-ai: linear-gradient(115deg, #ff9b45, #f25f17 48%, #d2440b);
+  --header-alpha: 0.62;
   --heading-track: -0.045em;
-  --glass: rgb(255 255 255 / .52);
-  --glass-strong: rgb(255 255 255 / .7);
-  --glass-border: rgb(255 255 255 / .9);
+  --glass: rgb(255 255 255 / .62);
+  --glass-border: rgb(255 255 255 / .75);
   color-scheme: light;
 }
 
