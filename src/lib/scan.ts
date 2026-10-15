@@ -12,3 +12,7 @@ import type { CatalogProduct } from "@/data/types";
  */
 export type Opt = { v: string; label: string; sub?: string };
 export interface Question { id: keyof Answers; q: string; help?: string; multi?: boolean; options: Opt[] }
+export interface Answers {
+  age: string; sex: string; goals: string[]; steps: string; sleep: string; bp: string; smoking: string;
+  alcohol: string; diet: string; weight: string; family: string[]; lastTest: string;
+}
