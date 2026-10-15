@@ -155,7 +155,7 @@
   color-scheme: light;
 }
 
-/* 4 · AURORA — cool, minimal, premium. Cool white, deep navy ink, one teal→blue AI aurora. */
+/* 4 · AURORA — warm healthcare command center. Cream light, frosted glass, orange lit from behind the glass. */
 :root[data-theme="aurora"] {
   --c-pearl: 255 245 235;      /* #FFF5EB background */
   --c-canvas: 255 239 224;
