@@ -89,7 +89,7 @@ export function DeptTabs({ id }: { id: string }) {
                 {d.services.map((s) => (
                   <div key={s.t} className="flex h-full flex-col rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]">
                     <div className="flex items-start justify-between gap-3">
-                      <span className="grid h-12 w-12 place-items-center rounded-2xl bg-iri text-white"><Icon name={s.icon} size={24} weight="duotone" /></span>
+                      <span className="grid h-12 w-12 place-items-center icon-tile"><Icon name={s.icon} size={24} weight="duotone" /></span>
                       {s.time && <span className="flex items-center gap-1 rounded-full bg-canvas px-2.5 py-1 text-[12px] font-semibold text-muted"><Icon name="clock" size={13} />{s.time}</span>}
                     </div>
                     <div className="mt-4 text-[17px] font-semibold">{s.t}</div>
