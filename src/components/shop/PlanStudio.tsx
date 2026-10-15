@@ -114,7 +114,7 @@ export function PlanStudio() {
                       <button onClick={() => setOff((o) => (o.includes(s.key) ? o.filter((x) => x !== s.key) : [...o, s.key]))} aria-label={disabled ? "Include" : "Exclude"} className={`relative h-5 w-9 rounded-full ${disabled ? "bg-ink/15" : "bg-accent"}`}><span className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-all ${disabled ? "left-0.5" : "left-[18px]"}`} /></button>
                     </div>
                     <button onClick={() => cart.setView(it.id)} className="mt-2 flex w-full items-start gap-3 text-left">
-                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-iri text-white"><Icon name={it.icon} size={22} weight="duotone" /></span>
+                      <span className="grid h-11 w-11 shrink-0 place-items-center icon-tile"><Icon name={it.icon} size={22} weight="duotone" /></span>
                       <span className="min-w-0 flex-1"><span className="block text-[14.5px] font-semibold leading-snug">{it.title}</span><span className="mt-0.5 line-clamp-2 block text-[12px] text-muted">{s.why}</span></span>
                       <span className="text-[14.5px] font-semibold tabular-nums">{formatMoney(it.price)}</span>
                     </button>
