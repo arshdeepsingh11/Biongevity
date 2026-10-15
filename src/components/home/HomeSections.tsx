@@ -26,7 +26,7 @@ export function BrandFilm() {
   return (
     <Section ai="Brand film">
       <div className="container-x">
-        <Head n="07" label="Biongevity" title={<DiaTextReveal text="Redefining health with multiomics." />} lede="Genomics, microbiome, epigenetics and clinical data — turned into one personal longevity plan." />
+        <Head n="10" label="Biongevity" title={<DiaTextReveal text="Redefining health with multiomics." />} lede="Genomics, microbiome, epigenetics and clinical data — turned into one personal longevity plan." />
         <FilmPlayer film="brandFilm" loop="brandLoop" label="Precision Health. Shared Longevity." className="mt-10 aspect-video" />
       </div>
     </Section>
