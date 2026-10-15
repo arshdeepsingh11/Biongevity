@@ -19,3 +19,6 @@ export const FAMILY_DOMAINS = [
   { id: "labs", t: "Lab results", on: false },
   { id: "visits", t: "Upcoming visits", on: true },
 ];
+
+/** Illustrative 8-week home blood-pressure series for the family-view demo. */
+export const FAMILY_BP = { labels: ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8"], sys: [148, 146, 143, 141, 138, 136, 134, 133], dia: [88, 88, 86, 85, 84, 83, 82, 82] };
