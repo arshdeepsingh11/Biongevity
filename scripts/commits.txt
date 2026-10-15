@@ -1,114 +1,28 @@
-feat(theme): Aurora becomes Apple-clean glass with premium orange|src/styles/themes.css
-feat(theme): Aurora note and swatch for premium orange|src/lib/theme.ts
-style(aurora): glass surfaces with soft orange light|src/app/globals.css@1
-feat(ai): animated Xevyo mark styles and premium icon tile|src/app/globals.css
-style(icons): clean single-weight line icons|src/components/ui/Icon.tsx
-style(fx): AuroraText uses the premium orange gradient|src/components/fx/AuroraText.tsx
-feat(ai): import useId for the Xevyo mark|src/components/ai/XevyoOrb.tsx@2
-feat(ai): redraw Xevyo as an animated AI chip with a beating heart|src/components/ai/XevyoOrb.tsx@3
-feat(ai): export XevyoMark alias|src/components/ai/XevyoOrb.tsx
-style(ai): Ask button uses the live Xevyo mark|src/components/pages/AskButton.tsx
-feat(ai): compact Summarise button variant|src/components/ai/PageSummary.tsx
-docs(body): describe the body model|src/lib/body.ts@4
-feat(body): add Organ type|src/lib/body.ts@5
-feat(body): add 16 organs with their departments|src/lib/body.ts@6
-feat(body): add organById|src/lib/body.ts@7
-feat(body): add seeded random generator|src/lib/body.ts@8
-feat(body): build body surface and organ point clouds|src/lib/body.ts
-feat(body): add Tone type for body system status|src/components/body/BodyHologram.tsx@9
-feat(body): add Hotspot type|src/components/body/BodyHologram.tsx@10
-feat(body): map tones to theme colours|src/components/body/BodyHologram.tsx@11
-feat(body): 360 degree 3D body with organ glow, labels without overlap, zoom and views|src/components/body/BodyHologram.tsx
-feat(fx): NumberTicker glides from the previous value|src/components/fx/NumberTicker.tsx@12
-feat(fx): track current value for smooth re-animation|src/components/fx/NumberTicker.tsx
-feat(lab): use memo and refs|src/components/home/LifespanSimulator.tsx@13
-feat(lab): import Xevyo mark and 3D body|src/components/home/LifespanSimulator.tsx@14
-feat(lab): AI Longevity Lab with week reader, levels, dials, waterfall and body map|src/components/home/LifespanSimulator.tsx@15
-feat(lab): interpolate steps risk between bands|src/components/home/LifespanSimulator.tsx@16
-feat(lab): add Big stat component|src/components/home/LifespanSimulator.tsx@17
-feat(lab): add Risk bar component|src/components/home/LifespanSimulator.tsx
-feat(home): Department intelligence with 3D body, symptom search, evidence and test match|src/components/home/DeptIntelligence.tsx
-refactor(goal): update imports|src/components/home/GoalPipeline.tsx@18
-feat(goal): auto-play state and test intelligence|src/components/home/GoalPipeline.tsx@19
-feat(goal): goal grid and animated flow rail with step details|src/components/home/GoalPipeline.tsx@20
-feat(goal): add Detail layout|src/components/home/GoalPipeline.tsx
-copy(home): AI Longevity Lab heading|src/app/page.tsx@21
-copy(home): Department intelligence heading|src/app/page.tsx
-refactor(hero): remove unused env import|src/components/home/AIHero.tsx@22
-feat(hero): empty Ask asks the example on screen|src/components/home/AIHero.tsx@23
-style(hero): Ask Xevyo button is never faded|src/components/home/AIHero.tsx@24
-style(hero): use premium icon tiles|src/components/home/AIHero.tsx@25
-feat(hero): add Digital Twin tour button|src/components/home/AIHero.tsx
-feat(clinic3d): add building facts per office|src/components/clinic3d/ClinicGlobe.tsx@26
-feat(clinic3d): convert world dots to longitude and latitude|src/components/clinic3d/ClinicGlobe.tsx@27
-feat(clinic3d): add degree helper|src/components/clinic3d/ClinicGlobe.tsx@28
-feat(clinic3d): interactive 3D globe that flies to each clinic|src/components/clinic3d/ClinicGlobe.tsx
-feat(clinic3d): add illustrative clinic room layouts per city|src/components/clinic3d/BuildingView.tsx@29
-feat(clinic3d): building view with 3D tower, floor plan and satellite map|src/components/clinic3d/BuildingView.tsx
-feat(clinic): import ClinicGlobe|src/components/home/HomeSections.tsx@30
-feat(clinic): show the 3D globe in Global clinic|src/components/home/HomeSections.tsx
-feat(dept): add DeptBody 3D hero visual|src/components/dept/DeptBody.tsx
-feat(dept): import DeptBody|src/app/precision-health/[dept]/page.tsx@31
-fix(dept): hero with 3D body and aligned Book, Ask and Summarise buttons|src/app/precision-health/[dept]/page.tsx
-style(dept tabs): use premium icon tiles on areas|src/components/dept/DeptTabs.tsx@32
-style(dept tabs): use premium icon tiles on services|src/components/dept/DeptTabs.tsx@33
-style(dept tabs): use premium icon tiles on care phases|src/components/dept/DeptTabs.tsx
-feat(twin): add app path|src/data/twin.ts@34
-feat(twin): add body system statuses|src/data/twin.ts@35
-feat(twin): add status words|src/data/twin.ts@36
-feat(twin): add TourStep type|src/data/twin.ts@37
-feat(twin): add the six tour steps|src/data/twin.ts@38
-feat(twin): add example values|src/data/twin.ts@39
-feat(twin): add app map|src/data/twin.ts@40
-feat(twin): add glossary|src/data/twin.ts
-feat(twin): interactive tour with 3D body and six steps|src/components/twin/TwinTour.tsx@41
-feat(twin): working preview of each part of the app screen|src/components/twin/TwinTour.tsx@42
-feat(twin): add score ring|src/components/twin/TwinTour.tsx
-feat(twin): add /twin/ metadata|src/app/twin/page.tsx@43
-feat(twin): add how-it-works flow|src/app/twin/page.tsx@44
-feat(twin): add Digital Twin tour page|src/app/twin/page.tsx
-feat(nav): add Digital Twin to Discover menu|src/data/site.ts
-feat(nav): treat /twin/ as a Discover page|src/components/layout/SparkleNav.tsx
-feat(ai): suggested questions for the twin page|src/lib/aiPrompts.ts
-feat(search): index the Digital Twin tour for Xevyo|src/lib/siteIndex.ts
-feat(seo): add /twin/ to sitemap|src/app/sitemap.ts
-docs(llms): list the Digital Twin tour|public/llms.txt
-feat(next-step): suggest the Digital Twin tour|src/components/ai/NextStep.tsx@45
-style(next-step): use premium icon tiles|src/components/ai/NextStep.tsx
-refactor(platform): remove unused import|src/components/platform/PlatformParts.tsx@46
-feat(platform): Explore the Digital Twin app button|src/components/platform/PlatformParts.tsx
-feat(platform): add Digital Twin tour button|src/app/platform/page.tsx@47
-style(platform): use premium icon tiles|src/app/platform/page.tsx
-refactor(ai-everywhere): remove unused import|src/components/home/AIEverywhere.tsx@48
-feat(ai-everywhere): add Digital Twin tour card|src/components/home/AIEverywhere.tsx
-style(precision): use premium icon tiles on departments|src/app/precision-health/page.tsx@49
-style(precision): use premium icon tiles on care team|src/app/precision-health/page.tsx
-style(labs): use premium icon tiles on intelligence cards|src/components/bioaro/LabsHub.tsx@50
-style(labs): use premium icon tiles on services|src/components/bioaro/LabsHub.tsx@51
-style(labs): use premium icon tiles on steps|src/components/bioaro/LabsHub.tsx
-style(drugs): use premium icon tiles|src/components/bioaro/DrugsHub.tsx
-style(packages): use premium icon tiles|src/components/bioaro/HealthPackages.tsx
-style(test navigator): use premium icon tiles on detail|src/components/labs/TestNavigator.tsx@52
-style(test navigator): use premium icon tiles on list|src/components/labs/TestNavigator.tsx
-style(clinic tabs): use premium icon tiles on services|src/components/clinic/ClinicTabs.tsx@53
-style(clinic tabs): use premium icon tiles on steps|src/components/clinic/ClinicTabs.tsx
-style(clinic): use premium icon tiles|src/app/clinic/[slug]/page.tsx
-style(about): use premium icon tiles|src/app/about/page.tsx
-style(bioelr): use premium icon tiles|src/app/bioelr/page.tsx
-style(life): use premium icon tiles|src/app/life/page.tsx
-style(login): use premium icon tiles|src/app/login/page.tsx
-style(shop): use premium icon tiles|src/app/shop/page.tsx
-style(bag): use premium icon tiles on items|src/components/shop/BagLayer.tsx@54
-style(bag): use premium icon tiles on empty state|src/components/shop/BagLayer.tsx
-style(catalogue): use premium icon tiles|src/components/shop/Catalogue.tsx
-style(ladder): use premium icon tiles|src/components/shop/Ladder.tsx
-style(plan studio): use premium icon tiles|src/components/shop/PlanStudio.tsx
-style(trust strip): use premium icon tiles|src/components/shop/TrustStrip.tsx
-style(specialist router): use premium icon tiles|src/components/tools/SpecialistRouter.tsx
-style(scan results): use premium icon tiles|src/components/scan/ScanResults.tsx
-style(app dock): use premium icon tiles|src/components/pages/AppDock.tsx
-style(animated list): use premium icon tiles|src/components/fx/AnimatedList.tsx
-style(disciplines): use premium icon tiles|src/components/home/DisciplineExplorer.tsx
-style(ecosystem): use premium icon tiles|src/components/home/Ecosystem.tsx
-style(fusion engine): use premium icon tiles|src/components/home/FusionEngine.tsx
+feat(aurora): cream background and glass surface tokens|src/styles/themes.css@1
+feat(aurora): slate text colours for main and secondary text|src/styles/themes.css@2
+feat(aurora): primary and deep orange brand tokens|src/styles/themes.css@3
+feat(aurora): AI colours from deep orange to amber|src/styles/themes.css@4
+feat(aurora): calm status colours that sit with warm orange|src/styles/themes.css@5
+feat(aurora): warm shadows and scrim|src/styles/themes.css@6
+feat(aurora): chart palette in orange, amber, peach and slate|src/styles/themes.css@7
+feat(aurora): orange gradients lit through glass|src/styles/themes.css@8
+feat(aurora): clear glass surface, border and header translucency|src/styles/themes.css@9
+docs(aurora): describe the warm command center theme|src/styles/themes.css
+feat(aurora): theme picker swatch and note for warm glass|src/lib/theme.ts
+feat(aurora): light cream background with a bright centre|src/app/globals.css@10
+feat(aurora): soft glass ribbons on the outer edges with slow drift|src/app/globals.css@11
+feat(aurora): clear frosted glass cards, glowing buttons and a calmer hero centre|src/app/globals.css@12
+feat(aurora): helpers to show or hide blocks per theme|src/app/globals.css@13
+feat(aurora): floating clear-glass top bar|src/app/globals.css@14
+feat(aurora): scan card becomes the home hero with a glass ribbon|src/app/globals.css@15
+feat(aurora): home sections sit in clear glass panels|src/app/globals.css@16
+style(aurora): calmer heading and lead sizes inside panels|src/app/globals.css
+feat(hero): tag background beams so themes can tone them down|src/components/home/AIHero.tsx
+feat(scan): add GlassSwoosh ribbon for hero cards|src/components/scan/HealthspanScan.tsx@17
+feat(scan): show the glass ribbon and tag the scan title|src/components/scan/HealthspanScan.tsx
+feat(header): import pathname and main navigation|src/components/layout/Header.tsx@18
+feat(header): track the active page|src/components/layout/Header.tsx@19
+feat(header): main links inside the Aurora glass bar on large screens|src/components/layout/Header.tsx
+feat(home): Aurora uses the scan card as the hero and glass section panels|src/app/page.tsx@20
+chore(home): close the home panels wrapper|src/app/page.tsx
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt
