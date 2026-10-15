@@ -17,6 +17,7 @@ export default function LabsPage() {
       <JsonLd data={breadcrumb([["Precision Health", "/precision-health/"], ["BioAro Labs", "/precision-health/bioaro-labs/"]])} />
       <PageHero eyebrow="Precision Health · BioAro Labs" title={<>Your biology, <AuroraText>read by AI.</AuroraText></>}
         lede="Genome, biomarkers and microbiome — measured in CLIA-registered labs, connected by BioAro Intelligence and explained in plain language." />
+      <Section ai="AI Test Navigator" id="navigator" className="!pt-0 scroll-mt-20" chip={false}><div className="container-x"><TestNavigator /></div></Section>
       <Section ai="BioAro Labs" className="!pt-0"><div className="container-x"><LabsHub /></div></Section>
     </>
   );
