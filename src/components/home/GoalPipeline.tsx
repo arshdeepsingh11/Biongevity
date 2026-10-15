@@ -5,12 +5,19 @@ import { AnimatePresence, motion } from "framer-motion";
 import { GOAL_PATHS } from "@/data/intelligence";
 import { LAB_TESTS } from "@/data/labs";
 import { DRUG_PRODUCTS } from "@/data/drugs";
+import { PACKAGES } from "@/data/health";
 import { deptById } from "@/data/departments";
-import { buyUrl } from "@/lib/commerce";
+import { TEST_INTEL } from "@/lib/testIntel";
 import { useAI } from "@/components/ai/AIProvider";
+import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { Icon } from "@/components/ui/Icon";
+import { BuyButton } from "@/components/commerce/BuyButton";
+import { EvidencePill } from "@/components/labs/EvidencePill";
 
-/** Goal pipeline — one goal flows through measure → reveal → support → program → care, step by step. */
+/**
+ * From goal to plan — one goal flows through six steps: Goal → Measure → Reveal → Support → Program → Care.
+ * Plays automatically like a story; tap any step to open it. Built from our own catalogue on your device.
+ */
 export function GoalPipeline() {
   const { ask } = useAI();
   const [gid, setGid] = useState(GOAL_PATHS[0].id);
