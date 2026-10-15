@@ -27,7 +27,7 @@ export default function LoginPage() {
           <div className="mt-8 grid gap-3">
             {PORTALS.map((p) => (
               <a key={p.id} href={env.appUrl} className="group flex items-center gap-4 rounded-[22px] bg-white p-4 shadow-card ring-1 ring-ink/[0.07] transition hover:-translate-y-0.5 hover:ring-ai/35 sm:p-5">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-accent-light text-accent"><Icon name={p.icon} size={22} weight="duotone" /></span>
+                <span className="grid h-12 w-12 shrink-0 place-items-center icon-tile"><Icon name={p.icon} size={22} weight="duotone" /></span>
                 <span className="flex-1"><span className="block text-[18px] font-semibold">{p.t}</span><span className="block text-[14px] text-muted">{p.d}</span></span>
                 <span className="btn-dark h-10 px-4 text-[14px]">Continue<Icon name="arrow-up-right" size={14} /></span>
               </a>
