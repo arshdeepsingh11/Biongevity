@@ -157,12 +157,11 @@
 
 /* 4 · AURORA — cool, minimal, premium. Cool white, deep navy ink, one teal→blue AI aurora. */
 :root[data-theme="aurora"] {
-  /* Aurora - Apple-clean white glass with one premium orange. */
-  --c-pearl: 250 250 252;
-  --c-canvas: 245 245 247;
-  --c-surface: 255 255 255;
-  --c-feature: 255 247 240;
-  --c-feature-2: 255 237 222;
+  --c-pearl: 255 245 235;      /* #FFF5EB background */
+  --c-canvas: 255 239 224;
+  --c-surface: 255 250 244;    /* glass base */
+  --c-feature: 255 240 226;
+  --c-feature-2: 255 215 184;  /* #FFD7B8 peach */
   --c-ink: 29 29 31;
   --c-muted: 88 88 94;
   --c-faint: 110 110 116;
