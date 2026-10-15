@@ -16,9 +16,21 @@ export default function HomePage() {
   return (
     <>
       <AIHero />
+      <Section ai="Start here">
+        <div className="container-x">
+          <Head n="01" label="Start here" title={<>Two minutes to <AuroraText>your starting point.</AuroraText></>} lede="Take the AI Healthspan Scan for yourself — or plan care for a parent. Both run on your device; Xevyo explains the result when you ask." />
+          <div className="mt-10"><StartHere /></div>
+        </div>
+      </Section>
+      <Section ai="AI evidence board" className="bg-canvas/50">
+        <div className="container-x">
+          <Head n="02" label="AI evidence board" title={<>What the research says, <AuroraText>in four charts.</AuroraText></>} lede="Published findings from large studies, drawn as charts. Every chart has an AI insight and an Explain button — Xevyo walks you through it." />
+          <div className="mt-10"><EvidenceBoard /></div>
+        </div>
+      </Section>
       <Section ai="Fusion engine" className="bg-canvas/50">
         <div className="container-x">
-          <Head n="01" label="Data fusion engine" title={<>Five streams. <AuroraText>One intelligence.</AuroraText></>} lede="Every signal — from your genome to your blood pressure — flows into one record that AI reads as a whole, measured against your own baseline. Hover any node for the data; click it and Xevyo answers." />
+          <Head n="03" label="Data fusion engine" title={<>Five streams. <AuroraText>One intelligence.</AuroraText></>} lede="Every signal — from your genome to your blood pressure — flows into one record that AI reads as a whole, measured against your own baseline. Hover any node for the data; click it and Xevyo answers." />
           <div className="mt-10"><FusionEngine /></div>
         </div>
       </Section>
