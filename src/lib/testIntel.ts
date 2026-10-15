@@ -6,3 +6,4 @@ import type { CatalogProduct } from "@/data/types";
  * (spec section 13: evidence, actionability, cost, redundancy). No AI call; weights are shown in the UI.
  */
 export type Evidence = "Clinically validated" | "Supportive evidence" | "Exploratory";
+export const EVIDENCE_SCORE: Record<Evidence, number> = { "Clinically validated": 1, "Supportive evidence": 0.65, Exploratory: 0.35 };
