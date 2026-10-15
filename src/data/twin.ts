@@ -25,3 +25,17 @@ export const STATUS_WORDS = [
 ];
 
 export interface TourStep { id: string; n: string; s: string; t: string; icon: IconName; where: string; plain: string; points: string[] }
+export const TOUR: TourStep[] = [
+  { id: "scores", n: "01", s: "Scores", t: "Your scores at a glance", icon: "gauge", where: "Top of the Overview", plain: "Three numbers summarise today. Health Score is your overall picture (0–100). Recovery Score shows how ready your body is today. HRV Status is the variation between heartbeats — higher usually means better recovery.",
+    points: ["Health Score updates as new results arrive", "Recovery Score is live from your wearable", "HRV is shown in milliseconds (ms)"] },
+  { id: "monitor", n: "02", s: "Live health", t: "Live Health Monitor", icon: "activity", where: "Left column", plain: "Your latest heart rate, HRV, steps and sleep, streamed from your watch or ring. A small trend line shows today's shape.",
+    points: ["Works with Apple Health, Health Connect, Garmin, Oura and more", "Tap View all for every signal", "Gaps mean the device wasn't worn"] },
+  { id: "body", n: "03", s: "Your body", t: "Your body, system by system", icon: "fingerprint", where: "Centre — the 3D twin", plain: "A 3D model of you. Each body system shows a simple status — Excellent, Good or Needs attention — compared with your own baseline, not just population ranges.",
+    points: ["Front and back views", "Tap a system to see what moved", "Personalise your avatar"] },
+  { id: "trends", n: "04", s: "Trends", t: "Health Trends", icon: "chart", where: "Right column", plain: "Charts of HRV, sleep, resting heart rate and steps — daily, weekly, monthly or yearly — so you can see direction, not just today's number.",
+    points: ["Switch metric with the tabs", "Change the time range", "Look for the trend, not one bad day"] },
+  { id: "simulate", n: "05", s: "What-if", t: "Simulations & heat map", icon: "radar", where: "Sidebar → Simulations, Heat Map Simulator", plain: "Ask “what if?”. Move a habit — more sleep, more steps — and see which body systems the change touches and how your scores may respond.",
+    points: ["Educational estimates, clearly labelled", "The heat map shows where the effect lands", "Share a scenario with your clinician"] },
+  { id: "coach", n: "06", s: "AI Coach", t: "AI Insight & Coach", icon: "sparkle", where: "AI Insight card and Coach", plain: "Xevyo turns the numbers into one plain-language insight and a small next step. Chat with the Coach any time; it escalates anything clinical to your care team.",
+    points: ["English and Japanese", "Explains why a status changed", "Never diagnoses or prescribes"] },
+];
