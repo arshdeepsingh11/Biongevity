@@ -16,7 +16,7 @@ export function HealthPackages() {
                   {HEALTH_PACKAGES.map((p, k) => {
                     const card = (
                       <div className="flex h-full flex-col rounded-[24px] bg-white p-6 ring-1 ring-ink/[0.06]">
-                        <div className="flex items-start justify-between"><span className="grid h-12 w-12 place-items-center rounded-2xl bg-iri text-white"><Icon name={p.icon} size={24} weight="duotone" /></span><span className="text-right"><span className="block text-[11px] text-faint">Lab component</span><span className="text-[20px] font-semibold">{formatMoney(p.price)}</span></span></div>
+                        <div className="flex items-start justify-between"><span className="grid h-12 w-12 place-items-center icon-tile"><Icon name={p.icon} size={24} weight="duotone" /></span><span className="text-right"><span className="block text-[11px] text-faint">Lab component</span><span className="text-[20px] font-semibold">{formatMoney(p.price)}</span></span></div>
                         <div className="mt-4 text-[19px] font-semibold">{p.t}</div><p className="mt-1 text-[13.5px] text-muted">{p.best}</p>
                         <div className="mt-4 grid gap-3 sm:grid-cols-2">
                           <div><div className="text-[11px] font-semibold uppercase tracking-[0.1em] text-accent">In clinic</div><ul className="mt-1.5 space-y-1">{p.clinic.map((c) => <li key={c} className="flex gap-1.5 text-[13px]"><Icon name="stethoscope" size={14} className="mt-0.5 shrink-0 text-accent" />{c}</li>)}</ul></div>
