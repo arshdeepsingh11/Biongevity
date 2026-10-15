@@ -31,3 +31,4 @@ export const ORGANS: Organ[] = [
   { id: "muscles", label: "Muscles", plain: "Strength, metabolism and mobility", at: [0, -0.27, 0.02], r: [0.15, 0.12, 0.05], n: 70, tag: [-0.1, -0.25, 0.06], depts: ["internal-medicine"] },
   { id: "skin", label: "Skin", plain: "Barrier, ageing and skin microbiome", at: [-0.215, 0.5, 0.03], r: [0.03, 0.08, 0.03], n: 40, depts: ["skin-health"] },
 ];
+export const organById = (id: string) => ORGANS.find((o) => o.id === id);
