@@ -20,3 +20,28 @@ export const GOAL_TAGS = [
   { id: "genes", label: "Genes & medicines", icon: "dna" },
 ] as const;
 export type GoalId = (typeof GOAL_TAGS)[number]["id"];
+
+/** Rules by name keyword → evidence, actionability (0–1), goals, re-test interval (months, 0 = once), what it reveals. */
+const RULES: { m: RegExp; ev: Evidence; act: number; goals: GoalId[]; retest: number; reveals: string }[] = [
+  { m: /hs-crp/i, ev: "Clinically validated", act: 0.85, goals: ["heart", "ageing"], retest: 6, reveals: "Low-grade inflammation linked with cardiovascular risk." },
+  { m: /vitamin d/i, ev: "Clinically validated", act: 0.9, goals: ["ageing", "strength", "metabolic"], retest: 3, reveals: "Vitamin D status for bones, muscles and immunity." },
+  { m: /cystatin/i, ev: "Clinically validated", act: 0.8, goals: ["heart", "ageing"], retest: 12, reveals: "Kidney function, less affected by muscle mass than creatinine." },
+  { m: /pharmacogenomics/i, ev: "Clinically validated", act: 0.8, goals: ["genes"], retest: 0, reveals: "How your genes may affect how you process common medicines." },
+  { m: /disease-based dna/i, ev: "Clinically validated", act: 0.65, goals: ["genes", "heart"], retest: 0, reveals: "Variants linked to specific inherited conditions." },
+  { m: /cell-free dna/i, ev: "Clinically validated", act: 0.55, goals: ["genes"], retest: 0, reveals: "Tumour DNA profiling, used with an oncology team." },
+  { m: /whole genome sequencing 100x/i, ev: "Supportive evidence", act: 0.6, goals: ["genes", "ageing"], retest: 0, reveals: "Your full genome at high depth — a lifelong reference." },
+  { m: /whole genome sequencing 30x/i, ev: "Supportive evidence", act: 0.6, goals: ["genes", "ageing"], retest: 0, reveals: "Your full genome — a lifelong reference for inherited risk." },
+  { m: /exome/i, ev: "Supportive evidence", act: 0.5, goals: ["genes"], retest: 0, reveals: "The protein-coding genes, for inherited-variant questions." },
+  { m: /p-tau|amyloid|brain health/i, ev: "Supportive evidence", act: 0.5, goals: ["brain"], retest: 0, reveals: "Blood markers used in medically guided memory evaluation." },
+  { m: /testosterone|estradiol|progesterone|shbg|dhea|androstenedione|dht|hormone health|cortisol/i, ev: "Clinically validated", act: 0.7, goals: ["hormones", "metabolic", "sleep"], retest: 6, reveals: "Hormone levels behind energy, mood, body composition and sleep." },
+  { m: /essential vitamin|vitamin a|vitamin e|vitamin k1/i, ev: "Supportive evidence", act: 0.55, goals: ["ageing", "metabolic"], retest: 6, reveals: "Fat-soluble vitamin status for immunity, bones and cells." },
+  { m: /telomere/i, ev: "Exploratory", act: 0.2, goals: ["ageing"], retest: 12, reveals: "Telomere length — a research marker of cellular ageing." },
+  { m: /gdf-15/i, ev: "Exploratory", act: 0.3, goals: ["ageing", "metabolic"], retest: 6, reveals: "A cellular-stress signal studied in ageing and metabolism." },
+  { m: /inflammation aging/i, ev: "Supportive evidence", act: 0.5, goals: ["ageing", "heart"], retest: 6, reveals: "A panel of inflammation and ageing markers together." },
+  { m: /il-6|il-10|tnf|mcp-1|stnfr1/i, ev: "Exploratory", act: 0.35, goals: ["ageing"], retest: 6, reveals: "Individual inflammation and immune signals." },
+  { m: /pai-1|timp-1|b2m|β2/i, ev: "Exploratory", act: 0.4, goals: ["heart", "metabolic"], retest: 6, reveals: "Vascular, kidney and tissue-remodelling stress signals." },
+  { m: /biogut/i, ev: "Exploratory", act: 0.5, goals: ["gut", "metabolic"], retest: 6, reveals: "Gut microbiome diversity and balance." },
+  { m: /bioskin|biodental|biofemme/i, ev: "Exploratory", act: 0.5, goals: ["gut"], retest: 6, reveals: "Microbiome balance at the skin, mouth or vaginal site." },
+  { m: /amino/i, ev: "Exploratory", act: 0.45, goals: ["strength", "metabolic"], retest: 6, reveals: "Amino-acid balance behind muscle, recovery and metabolism." },
+  { m: /resveratrol/i, ev: "Exploratory", act: 0.2, goals: ["ageing"], retest: 6, reveals: "Resveratrol level when supplementing." },
+];
