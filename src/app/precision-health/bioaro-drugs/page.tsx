@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHero, Section } from "@/components/ui/Section";
 import { AuroraText } from "@/components/fx/AuroraText";
 import { DrugsHub } from "@/components/bioaro/DrugsHub";
+import { ProtocolStudio } from "@/components/drugs/ProtocolStudio";
 import { JsonLd, breadcrumb } from "@/lib/seo";
 
 export const metadata: Metadata = {
