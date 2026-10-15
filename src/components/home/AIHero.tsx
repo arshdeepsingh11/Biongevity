@@ -43,7 +43,11 @@ export function AIHero() {
     return () => clearInterval(id);
   }, []);
 
-  const submit = () => q.trim() && ask(q);
+  const submit = () => {
+    if (q.trim()) return ask(q);
+    const ex = EXAMPLES.find((e) => ph && e.startsWith(ph)) ?? EXAMPLES[0];
+    ask(ex);
+  };
 
   return (
     <section data-ai="Hero" className="relative z-[1] overflow-hidden pb-14 pt-[calc(92px+var(--safe-top))] sm:pt-[124px]">
