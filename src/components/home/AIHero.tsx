@@ -6,7 +6,6 @@ import { matchIntent } from "@/lib/intent";
 import { useAI } from "@/components/ai/AIProvider";
 import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { AIBadge } from "@/components/ai/AIBadge";
-import { env } from "@/lib/env";
 import { Icon } from "@/components/ui/Icon";
 import { BeamFlow } from "@/components/fx/BeamFlow";
 import { NumberTicker } from "@/components/fx/NumberTicker";
