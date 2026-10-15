@@ -22,6 +22,9 @@ export function LabExplainer() {
   const [consent, setConsent] = useState(false);
   const rows = useMemo(() => parseLabs(text), [text]);
   const ai = useXevyoTask("AI tools — lab-result explainer");
+  // Flagged values that BioAro Labs can re-test (on-device mapping).
+  const RETEST: Record<string, string> = { crp: "hs-crp-high-sensitivity-c-reactive-protein", vitd: "vitamin-d-25-hydroxy-d2-d3", egfr: "cystatin-c", creat: "cystatin-c" };
+  const retests = [...new Set(rows.filter((p) => p.flag === "low" || p.flag === "high").map((p) => RETEST[p.r.id]).filter(Boolean))].map((h) => LAB_TESTS.find((t) => t.handle === h)).filter((t): t is NonNullable<typeof t> => Boolean(t));
   const summary = rows.map((p) => `${p.r.label}: ${p.value} ${p.unit} (${p.flag}${p.r.low !== undefined || p.r.high !== undefined ? `; general range ${p.r.low ?? "–"}–${p.r.high ?? "–"}` : ""})`).join("\n");
 
   return (
