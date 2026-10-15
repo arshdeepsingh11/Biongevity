@@ -64,3 +64,12 @@ export const APP_MAP = {
     { t: "Coach", d: "Chat with your AI coach" },
   ],
 };
+
+export const TWIN_GLOSSARY = [
+  { t: "Health Score", d: "A 0–100 summary of your current picture across domains. It explains its parts — it is not a diagnosis." },
+  { t: "Recovery Score", d: "How ready your body is today, mainly from sleep, HRV and resting heart rate." },
+  { t: "HRV (heart rate variability)", d: "The tiny variation between heartbeats, in milliseconds. Your own trend matters more than one number." },
+  { t: "Resting heart rate", d: "Beats per minute at rest. A rise over several days can mean stress, illness or poor sleep." },
+  { t: "Baseline", d: "Your personal normal, learned over weeks. Statuses compare you with you." },
+  { t: "Profile completeness", d: "How much of your record is filled in. More data means more accurate insights." },
+];
