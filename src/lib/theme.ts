@@ -6,7 +6,7 @@ export const THEMES = [
   { id: "champagne", label: "Champagne", note: "Warm · default", swatch: ["#FFFDF9", "#8F6838", "#5E7F62"], meta: "#FFFDF9" },
   { id: "midnight", label: "Midnight", note: "Dark · AI lab", swatch: ["#0F0E0C", "#D4AA66", "#8DB592"], meta: "#0F0E0C" },
   { id: "mono", label: "Mono", note: "Black & white", swatch: ["#FFFFFF", "#111111", "#8F8F8F"], meta: "#FFFFFF" },
-  { id: "aurora", label: "Aurora", note: "Cool · minimal", swatch: ["#F8FAFB", "#0B7F8F", "#2563C9"], meta: "#F8FAFB" },
+  { id: "aurora", label: "Aurora", note: "Glass · premium orange", swatch: ["#FAFAFC", "#F25F17", "#1D1D1F"], meta: "#FAFAFC" },
 ] as const;
 
 export type ThemeId = (typeof THEMES)[number]["id"];
