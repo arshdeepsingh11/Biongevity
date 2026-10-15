@@ -52,7 +52,7 @@ export function AIHero() {
   return (
     <section data-ai="Hero" className="relative z-[1] overflow-hidden pb-14 pt-[calc(92px+var(--safe-top))] sm:pt-[124px]">
       <div aria-hidden className="grid-bg absolute inset-0 opacity-60 [mask-image:radial-gradient(70%_60%_at_50%_30%,#000,transparent)]" />
-      <div aria-hidden className="absolute inset-0 opacity-30"><BeamFlow /></div>
+      <div aria-hidden className="hero-beams absolute inset-0 opacity-30"><BeamFlow /></div>
       <div aria-hidden className="ai-glow left-1/2 top-24 h-[340px] w-[min(900px,90vw)] -translate-x-1/2 !opacity-[0.16]" />
       <div className="container-x relative">
         <div className="mx-auto max-w-[920px] text-center">
