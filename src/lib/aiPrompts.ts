@@ -21,6 +21,8 @@ const PAGE: Record<string, string[]> = {
   login: ["How do I sign in to the app?", "What can a family member see?", "I'm a clinician — how do I get access?"],
   bioelr: ["What modules does BioELR include?", "How does BioELR connect to labs and devices?", "Can BioELR run several clinics?", "How does the AI help clinicians?"],
   tools: ["How do I read my lipid panel?", "What should I ask my doctor about high blood pressure?", "Which specialist should I see for fatigue?"],
+  scan: ["What does the AI scan measure?", "How accurate is the healthspan habits score?", "Which test should I do first?"],
+  family: ["How do I talk to my dad about memory problems?", "What should a medication review include?", "How can I help my mum from another city?"],
   ai: ["Does Xevyo store my data?", "Can Xevyo diagnose me?", "How do answers cite your pages?"],
 };
 
