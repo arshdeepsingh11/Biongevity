@@ -16,3 +16,4 @@ export interface Answers {
   age: string; sex: string; goals: string[]; steps: string; sleep: string; bp: string; smoking: string;
   alcohol: string; diet: string; weight: string; family: string[]; lastTest: string;
 }
+export const EMPTY_ANSWERS: Answers = { age: "", sex: "", goals: [], steps: "", sleep: "", bp: "", smoking: "", alcohol: "", diet: "", weight: "", family: [], lastTest: "" };
