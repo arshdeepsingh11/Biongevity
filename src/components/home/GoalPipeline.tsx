@@ -22,20 +22,24 @@ export function GoalPipeline() {
   const { ask } = useAI();
   const [gid, setGid] = useState(GOAL_PATHS[0].id);
   const [step, setStep] = useState(0);
+  const [play, setPlay] = useState(true);
   const g = GOAL_PATHS.find((x) => x.id === gid)!;
   const test = LAB_TESTS.find((t) => t.title === g.test)!;
+  const intel = TEST_INTEL.find((x) => x.t.handle === test.handle);
   const formula = DRUG_PRODUCTS.find((p) => p.handle === g.formula)!;
   const dept = deptById(g.dept);
+  const program = PACKAGES.find((p) => g.program.includes(p.name.replace("Biongevity ", "")));
 
-  useEffect(() => { setStep(0); const id = setInterval(() => setStep((s) => (s < 5 ? s + 1 : s)), 420); return () => clearInterval(id); }, [gid]);
+  useEffect(() => { setStep(0); setPlay(true); }, [gid]);
+  useEffect(() => { if (!play) return; const id = setTimeout(() => (step < 5 ? setStep(step + 1) : setPlay(false)), 1700); return () => clearTimeout(id); }, [play, step]);
 
   const nodes = [
-    { k: "Goal", icon: g.icon, t: g.label, sub: `${g.stat.v} — ${g.stat.l}`, src: g.stat.src },
-    { k: "Measure", icon: "test-tube", t: test.title, sub: `BioAro Labs · $${test.price}`, href: buyUrl(test), ext: true },
-    { k: "Reveal", icon: "eye", t: "What it shows", sub: g.reveals },
-    { k: "Support", icon: formula.icon, t: formula.title, sub: `${formula.tagline} · $${formula.price}`, href: buyUrl(formula), ext: true },
-    { k: "Program", icon: "box", t: g.program, sub: "Care team confirms fit and scheduling", href: g.program.startsWith("Biongevity") ? "/shop/#depth" : "/shop/#browse" },
-    { k: "Care", icon: dept.icon, t: dept.name, sub: dept.tag, href: `/precision-health/${dept.id}/` },
+    { k: "Goal", icon: g.icon, t: g.label },
+    { k: "Measure", icon: "test-tube", t: test.title.replace(/\s*\(.*\)/, "") },
+    { k: "Reveal", icon: "eye", t: "What it shows" },
+    { k: "Support", icon: formula.icon, t: formula.title },
+    { k: "Program", icon: "crown", t: g.program },
+    { k: "Care", icon: dept.icon, t: dept.short },
   ];
 
   return (
