@@ -70,7 +70,7 @@ export function BagLayer() {
               <button onClick={() => c.setView(null)} aria-label="Close" className="grid h-9 w-9 place-items-center rounded-full bg-canvas"><Icon name="x" size={16} /></button>
             </div>
             <div className="flex-1 overflow-y-auto p-5">
-              <span className="grid h-14 w-14 place-items-center rounded-2xl bg-iri text-white"><Icon name={item.icon} size={28} weight="duotone" /></span>
+              <span className="grid h-14 w-14 place-items-center icon-tile"><Icon name={item.icon} size={28} weight="duotone" /></span>
               <h3 className="mt-4 text-[24px] font-semibold leading-tight tracking-tight">{item.title}</h3>
               <div className="mt-2 text-[22px] font-semibold text-accent">{formatMoney(item.price)} <span className="text-[13px] font-normal text-muted">CAD · {item.billing === "term" ? "12-month plan" : "one-time"}</span></div>
               <p className="mt-3 text-[14.5px] leading-relaxed text-muted">{item.summary}</p>
