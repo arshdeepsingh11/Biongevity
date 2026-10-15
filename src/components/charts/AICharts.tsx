@@ -204,3 +204,4 @@ export function DoseClock({ doses, size = 240 }: { doses: { label: string; hour:
     </div>
   );
 }
+const fmtHour = (h: number) => `${((Math.floor(h) + 11) % 12) + 1}:${String(Math.round((h % 1) * 60)).padStart(2, "0")} ${h < 12 ? "am" : "pm"}`;
