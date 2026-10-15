@@ -83,7 +83,7 @@ function tabsFor(id: string): T[] {
     { id: "steps", label: "The journey", icon: "route", body: (
       <div className="relative space-y-3">
         <div aria-hidden className="absolute bottom-6 left-[27px] top-6 hidden w-[2px] bg-gradient-to-b from-accent via-teal to-gold sm:block" />
-        {CARE_PHASES.map((p) => <div key={p.n} className="relative flex flex-col gap-3 rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06] sm:flex-row sm:items-center"><span className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-iri text-white"><Icon name={p.icon} size={22} /></span><div><div className="text-[12px] font-semibold text-accent">Step {p.n} · {p.short}</div><div className="text-[18px] font-semibold">{p.t}</div><p className="mt-1 text-[14px] text-muted">{p.d}</p></div></div>)}
+        {CARE_PHASES.map((p) => <div key={p.n} className="relative flex flex-col gap-3 rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06] sm:flex-row sm:items-center"><span className="relative z-10 grid h-14 w-14 shrink-0 place-items-center icon-tile"><Icon name={p.icon} size={22} /></span><div><div className="text-[12px] font-semibold text-accent">Step {p.n} · {p.short}</div><div className="text-[18px] font-semibold">{p.t}</div><p className="mt-1 text-[14px] text-muted">{p.d}</p></div></div>)}
       </div>) },
     { id: "age", label: "Biological age", icon: "hourglass", body: (
       <div className="grid gap-5 lg:grid-cols-[1fr_1.5fr]">
