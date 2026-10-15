@@ -90,7 +90,7 @@ export function Columns({ data, unit = "", height = 160, className, highlight }:
           return (
             <div key={d.label} className="group flex h-full flex-1 flex-col items-center justify-end gap-1">
               <span className="text-[11px] font-semibold tabular-nums text-ink opacity-0 transition-opacity group-hover:opacity-100" style={{ opacity: hot ? 1 : undefined }}>{d.value}{unit}</span>
-              <div className="w-full max-w-[44px] rounded-t-lg" style={{ height: on ? `${(d.value / m) * 100}%` : "2%", background: d.color ?? (hot ? "linear-gradient(180deg,rgb(var(--c-teal)),rgb(var(--c-accent)))" : "linear-gradient(180deg,rgb(var(--c-accent-soft)),rgb(var(--c-gold-deep)))"), opacity: highlight && !hot ? 0.45 : 1, transition: `height 1s cubic-bezier(.2,.7,.2,1) ${i * 0.06}s` }} />
+              <div className="w-full max-w-[44px] rounded-t-lg" style={{ height: on ? `${(d.value / m) * 100}%` : "2%", background: d.color ?? (hot ? "linear-gradient(180deg,rgb(var(--c-ai-hi)),rgb(var(--c-ai)))" : "linear-gradient(180deg,rgb(var(--c-accent-soft)),rgb(var(--c-gold-deep)))"), opacity: highlight && !hot ? 0.45 : 1, transition: `height 1s cubic-bezier(.2,.7,.2,1) ${i * 0.06}s` }} />
             </div>
           );
         })}
