@@ -12,7 +12,7 @@ export function AppShowcase() {
     <div className="flex flex-col items-center">
       <AppleDock items={APP_FEATURES.map((a, k) => ({ icon: a.icon, label: a.t, active: k === i, onClick: () => setI(k) }))} base={54} magnify={1.6} />
       <div key={f.t} className="card mt-10 flex max-w-[560px] items-center gap-5 p-6 animate-[float_5s_ease-in-out_infinite]">
-        <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-iri text-white"><Icon name={f.icon} size={30} /></span>
+        <span className="grid h-16 w-16 shrink-0 place-items-center icon-tile"><Icon name={f.icon} size={30} /></span>
         <div><div className="text-[22px] font-semibold">{f.t}</div><div className="text-[15px] text-muted">{f.d}</div></div>
       </div>
     </div>
