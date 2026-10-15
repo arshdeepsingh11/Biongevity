@@ -18,7 +18,7 @@ type T = { id: string; label: string; icon: string; body: ReactNode };
 function Points({ id }: { id: string }) {
   const c = CLINICS.find((x) => x.id === id)!;
   return <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{c.points.map((p, k) => (
-    <MagicCard key={p.t} className="p-5"><div className="flex items-center justify-between"><span className="grid h-11 w-11 place-items-center rounded-2xl bg-iri text-white"><Icon name={p.icon ?? "check"} size={20} /></span><span className="text-[12px] font-semibold text-faint">{String(k + 1).padStart(2, "0")}</span></div><div className="mt-4 text-[17px] font-semibold">{p.t}</div><div className="mt-1 text-[14px] text-muted">{p.d}</div></MagicCard>
+    <MagicCard key={p.t} className="p-5"><div className="flex items-center justify-between"><span className="grid h-11 w-11 place-items-center icon-tile"><Icon name={p.icon ?? "check"} size={20} /></span><span className="text-[12px] font-semibold text-faint">{String(k + 1).padStart(2, "0")}</span></div><div className="mt-4 text-[17px] font-semibold">{p.t}</div><div className="mt-1 text-[14px] text-muted">{p.d}</div></MagicCard>
   ))}</div>;
 }
 
