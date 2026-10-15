@@ -39,22 +39,30 @@ export default async function DeptPage({ params }: P) {
   return (
     <>
       <JsonLd data={[breadcrumb([["Precision Health", "/precision-health/"], [d.name, path]]), faqPage(d.faq), medicalPage({ name: d.name, description: d.summary, path, about: d.areas.map((a) => a.t), procedures: d.services.map((s) => s.t) })]} />
-      <section data-ai={d.name} className="relative z-[1] overflow-hidden pb-8 pt-[calc(100px+var(--safe-top))] sm:pt-[130px]">
+      <section data-ai={d.name} className="relative z-[1] overflow-hidden pb-8 pt-[calc(96px+var(--safe-top))] sm:pt-[120px]">
         <div aria-hidden className="pointer-events-none absolute -top-40 right-0 h-[420px] w-[620px] rounded-full bg-gold-soft blur-[110px]" />
-        <div className="container-x relative">
-          <Link href="/precision-health/" className="inline-flex items-center gap-1 text-[14px] font-medium text-muted hover:text-accent"><Icon name="chevron-left" size={16} />Precision Health</Link>
-          <div className="mt-8 flex items-center gap-3">
-            <span className="grid h-14 w-14 place-items-center rounded-2xl bg-iri text-white shadow-glow"><Icon name={d.icon} size={28} weight="duotone" /></span>
-            <span className="rounded-full bg-accent-light px-3 py-1 text-[12px] font-semibold text-accent">{d.group}</span>
+        <div className="container-x relative grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+          <div>
+            <Link href="/precision-health/" className="inline-flex items-center gap-1 text-[14px] font-medium text-muted hover:text-accent"><Icon name="chevron-left" size={16} />Precision Health</Link>
+            <div className="mt-7 flex items-center gap-3">
+              <span className="icon-tile h-14 w-14"><Icon name={d.icon} size={26} /></span>
+              <span className="rounded-full bg-accent-light px-3 py-1 text-[12px] font-semibold text-accent">{d.group}</span>
+            </div>
+            <h1 className="h-display mt-6 max-w-[16ch]"><TextAnimate animation="blurIn">{d.name}</TextAnimate></h1>
+            <p data-reveal className="mt-3 text-[20px] font-medium text-accent">{d.tag}</p>
+            <p data-reveal className="lede mt-4 max-w-[60ch]">{d.summary}</p>
+            <div data-reveal className="mt-8 grid grid-cols-2 items-center gap-2.5 sm:flex sm:flex-wrap">
+              <Link href={`/contact/?interest=${encodeURIComponent(d.name)}`} className="btn-dark col-span-2 h-12 px-6">Book {d.short}</Link>
+              <AskButton q={`What happens in ${d.name} at Biongevity?`} className="h-12">Ask Xevyo</AskButton>
+              <PageSummary compact className="h-12 justify-center" />
+            </div>
+            <div data-reveal className="mt-8 grid max-w-[560px] grid-cols-2 gap-2 sm:grid-cols-4">
+              {([[d.services.length, "tests & services"], [d.areas.length, "areas of care"], [d.when.length, "reasons to come"], ["24/7", "Xevyo AI"]] as const).map(([v, l]) => (
+                <div key={l} className="rounded-2xl bg-white/80 p-3 ring-1 ring-ink/[0.06]"><div className="text-[24px] font-semibold leading-none tracking-tight">{v}</div><div className="mt-1 text-[11.5px] text-muted">{l}</div></div>
+              ))}
+            </div>
           </div>
-          <h1 className="h-display mt-6 max-w-[16ch]"><TextAnimate animation="blurIn">{d.name}</TextAnimate></h1>
-          <p data-reveal className="mt-3 text-[20px] font-medium text-accent">{d.tag}</p>
-          <p data-reveal className="lede mt-4 max-w-[64ch]">{d.summary}</p>
-          <div data-reveal className="mt-8 flex flex-wrap gap-3">
-            <Link href={`/contact/?interest=${encodeURIComponent(d.name)}`} className="btn-dark">Book {d.short}</Link>
-            <AskButton q={`What happens in ${d.name} at Biongevity?`}>Ask Xevyo about this</AskButton>
-          </div>
-          <div data-reveal className="mt-5"><PageSummary /></div>
+          <DeptBody dept={d.id} name={d.name} signs={d.signs} />
         </div>
       </section>
       {!d.calm && <section className="relative z-[1]"><KeywordStream words={[...d.keywords, ...d.keywords]} /></section>}
