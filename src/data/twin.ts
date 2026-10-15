@@ -50,3 +50,17 @@ export const TWIN_EXAMPLE = {
     Steps: { Daily: [5200, 7100, 6400, 8800, 4300, 6703, 7600], Weekly: [6100, 6400, 6900, 7200, 6800, 6500, 6703], Monthly: [5800, 6200, 6600, 6900, 6700, 6703], Yearly: [5400, 6000, 6500, 6703] },
   } as Record<string, Record<string, number[]>>,
 };
+
+export const APP_MAP = {
+  top: ["Home", "Health Hub", "Logs", "Digital Twin", "AI Coach", "Programs", "Marketplace"],
+  side: [
+    { t: "Overview", d: "Scores, live monitor, 3D twin, trends" },
+    { t: "My Twin", d: "Your full 3D model and avatar" },
+    { t: "Health Systems", d: "Each body system in detail" },
+    { t: "Simulations", d: "What-if scenarios for habits" },
+    { t: "Heat Map Simulator", d: "Where an effect lands in the body" },
+    { t: "Trends", d: "Every metric over time" },
+    { t: "Reports", d: "Lab and clinic reports" },
+    { t: "Coach", d: "Chat with your AI coach" },
+  ],
+};
