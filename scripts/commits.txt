@@ -1,93 +1,114 @@
-chore(scripts): support several small commits per file with staged versions|scripts/commit-all.ps1 scripts/commit-all.sh
-chore(git): ignore commit staging folders|.gitignore
-feat(labs-ai): add evidence levels for lab tests|src/lib/testIntel.ts@1
-feat(labs-ai): score evidence levels from 0 to 1|src/lib/testIntel.ts@2
-feat(labs-ai): add the nine health goals used for matching|src/lib/testIntel.ts@3
-feat(labs-ai): add GoalId type|src/lib/testIntel.ts@4
-feat(labs-ai): add rules for evidence, actionability, goals and re-test interval per test|src/lib/testIntel.ts@5
-feat(labs-ai): add fallback rule for unmatched tests|src/lib/testIntel.ts@6
-feat(labs-ai): add TestIntel type|src/lib/testIntel.ts@7
-feat(labs-ai): find the highest test price for cost scoring|src/lib/testIntel.ts@8
-feat(labs-ai): compute a transparent utility score for every BioAro Labs test|src/lib/testIntel.ts@9
-feat(labs-ai): add goal match score|src/lib/testIntel.ts@10
-feat(labs-ai): add plain-English re-test labels|src/lib/testIntel.ts
-feat(labs-ai): add EvidencePill label|src/components/labs/EvidencePill.tsx
-feat(commerce): add BuyButton that opens the partner store product page|src/components/commerce/BuyButton.tsx@11
-feat(commerce): add StoreNote explaining checkout happens on the partner site|src/components/commerce/BuyButton.tsx
-feat(charts): add AIChartFrame with AI insight line and Explain with Xevyo|src/components/charts/AICharts.tsx@12
-feat(charts): add Sparkline|src/components/charts/AICharts.tsx@13
-feat(charts): add ScatterPt type for the value map|src/components/charts/AICharts.tsx@14
-feat(charts): add Scatter chart with hover tooltip and click to select|src/components/charts/AICharts.tsx@15
-feat(charts): add Heatmap|src/components/charts/AICharts.tsx@16
-feat(charts): add Timeline for re-test schedules|src/components/charts/AICharts.tsx@17
-feat(charts): add RangeBar to show a value against its reference range|src/components/charts/AICharts.tsx@18
-feat(charts): add DoseClock 24-hour radial chart|src/components/charts/AICharts.tsx@19
-feat(charts): add hour formatter for the dose clock|src/components/charts/AICharts.tsx@20
-feat(charts): add ScoreMeter with uncertainty band|src/components/charts/AICharts.tsx
-style(charts): highlighted column uses the AI colour|src/components/charts/Charts.tsx
-feat(charts): connect evidence charts to Xevyo|src/components/charts/EvidenceChart.tsx@21
-feat(charts): build the explain request with the chart data|src/components/charts/EvidenceChart.tsx@22
-feat(charts): add Explain button to every evidence chart|src/components/charts/EvidenceChart.tsx
-feat(family): add parent concerns with specialists, tests and checklists|src/data/family.ts@23
-feat(family): add illustrative family-sharing domains|src/data/family.ts@24
-feat(family): add illustrative 8-week blood-pressure series|src/data/family.ts
-feat(scan): add scan option type|src/lib/scan.ts@25
-feat(scan): add Question type|src/lib/scan.ts@26
-feat(scan): add Answers type|src/lib/scan.ts@27
-feat(scan): add empty answers|src/lib/scan.ts@28
-feat(scan): add the 12 scan questions|src/lib/scan.ts@29
-feat(scan): add the 9 health domains|src/lib/scan.ts@30
-feat(scan): add ScanResult type|src/lib/scan.ts@31
-feat(scan): add score clamp helper|src/lib/scan.ts@32
-feat(scan): compute domains, habits, population charts, tests, formulas and re-test plan on device|src/lib/scan.ts@33
-feat(scan): add answered helper|src/lib/scan.ts
-feat(scan): results page with radar, ranges, evidence charts, test plan and buy links|src/components/scan/ScanResults.tsx
-feat(scan): one-tap question flow with progress and on-device analysis|src/components/scan/HealthspanScan.tsx@34
-feat(scan): add ScanTeaser card|src/components/scan/HealthspanScan.tsx
-feat(scan): add /scan/ page metadata|src/app/scan/page.tsx@35
-feat(scan): add /scan/ page|src/app/scan/page.tsx
-feat(labs-ai): AI Test Navigator with value map, evidence mix, compare and buy links|src/components/labs/TestNavigator.tsx
-feat(labs-ai): import Test Navigator on the BioAro Labs page|src/app/precision-health/bioaro-labs/page.tsx@36
-feat(labs-ai): show Test Navigator at the top of the BioAro Labs page|src/app/precision-health/bioaro-labs/page.tsx
-feat(drugs-ai): add key ingredients and timing for each BioAro Drugs formula|src/components/drugs/ProtocolStudio.tsx@37
-feat(drugs-ai): AI Protocol Studio with dose clock, overlap heatmap, budget and buy links|src/components/drugs/ProtocolStudio.tsx
-feat(drugs-ai): import Protocol Studio on the BioAro Drugs page|src/app/precision-health/bioaro-drugs/page.tsx@38
-feat(drugs-ai): show Protocol Studio at the top of the BioAro Drugs page|src/app/precision-health/bioaro-drugs/page.tsx
-feat(family): family care planner with checklist, specialists and tests|src/components/family/FamilyCare.tsx@39
-feat(family): illustrative family view with sharing switches and BP trend|src/components/family/FamilyCare.tsx
-feat(family): add /family/ page metadata|src/app/family/page.tsx@40
-feat(family): add /family/ page|src/app/family/page.tsx
-feat(labs-ai): map departments to health goals|src/components/labs/DeptTests.tsx@41
-feat(labs-ai): boost skin and dental microbiome tests for their departments|src/components/labs/DeptTests.tsx@42
-feat(labs-ai): AI test match strip for department pages|src/components/labs/DeptTests.tsx
-feat(dept): import AI test match|src/app/precision-health/[dept]/page.tsx@43
-feat(dept): show AI test match with buy links on every department page|src/app/precision-health/[dept]/page.tsx
-feat(home): AI evidence board with four sourced charts|src/components/home/EvidenceBoard.tsx
-feat(home): BioAro ecosystem section with links to each site|src/components/home/Ecosystem.tsx
-feat(home): Start here section with scan, family care, lab explainer and navigator|src/components/home/StartHere.tsx
-feat(home): import new home sections|src/app/page.tsx@44
-feat(home): add Start here and AI evidence board sections|src/app/page.tsx@45
-chore(home): renumber biomarker constellation section|src/app/page.tsx@46
-chore(home): renumber longevity simulator section|src/app/page.tsx@47
-chore(home): renumber department intelligence section|src/app/page.tsx@48
-chore(home): renumber goal pipeline section|src/app/page.tsx@49
-feat(home): add ecosystem section after Xevyo everywhere|src/app/page.tsx
-chore(home): renumber brand film section|src/components/home/HomeSections.tsx@50
-chore(home): renumber stories section|src/components/home/HomeSections.tsx@51
-chore(home): renumber global clinic section|src/components/home/HomeSections.tsx
-feat(home): hero links to the 2-minute AI scan|src/components/home/AIHero.tsx
-feat(tools): import range bar and buy button in the lab explainer|src/components/tools/LabExplainer.tsx@52
-feat(tools): map flagged values to BioAro Labs re-tests|src/components/tools/LabExplainer.tsx@53
-feat(tools): show each lab value on a range bar|src/components/tools/LabExplainer.tsx@54
-feat(tools): suggest BioAro Labs re-tests with buy links|src/components/tools/LabExplainer.tsx
-feat(shop): import partner buy button in the bag|src/components/shop/BagLayer.tsx@55
-feat(shop): buy lab tests and formulas directly on the partner store from the bag|src/components/shop/BagLayer.tsx
-feat(ai): next step suggests the AI scan|src/components/ai/NextStep.tsx@56
-feat(ai): department next step opens the Test Navigator|src/components/ai/NextStep.tsx
-feat(nav): add AI Healthspan Scan and Family care to Discover|src/data/site.ts
-fix(nav): highlight Discover on scan and family pages|src/components/layout/SparkleNav.tsx
-feat(ai): smart questions for scan and family pages|src/lib/aiPrompts.ts
-feat(ai): ground Xevyo answers in scan, family, navigator and studio pages|src/lib/siteIndex.ts
-feat(seo): add scan and family pages to the sitemap|src/app/sitemap.ts
-feat(seo): describe scan, family, navigator and studio in llms.txt|public/llms.txt
+feat(theme): Aurora becomes Apple-clean glass with premium orange|src/styles/themes.css
+feat(theme): Aurora note and swatch for premium orange|src/lib/theme.ts
+style(aurora): glass surfaces with soft orange light|src/app/globals.css@1
+feat(ai): animated Xevyo mark styles and premium icon tile|src/app/globals.css
+style(icons): clean single-weight line icons|src/components/ui/Icon.tsx
+style(fx): AuroraText uses the premium orange gradient|src/components/fx/AuroraText.tsx
+feat(ai): import useId for the Xevyo mark|src/components/ai/XevyoOrb.tsx@2
+feat(ai): redraw Xevyo as an animated AI chip with a beating heart|src/components/ai/XevyoOrb.tsx@3
+feat(ai): export XevyoMark alias|src/components/ai/XevyoOrb.tsx
+style(ai): Ask button uses the live Xevyo mark|src/components/pages/AskButton.tsx
+feat(ai): compact Summarise button variant|src/components/ai/PageSummary.tsx
+docs(body): describe the body model|src/lib/body.ts@4
+feat(body): add Organ type|src/lib/body.ts@5
+feat(body): add 16 organs with their departments|src/lib/body.ts@6
+feat(body): add organById|src/lib/body.ts@7
+feat(body): add seeded random generator|src/lib/body.ts@8
+feat(body): build body surface and organ point clouds|src/lib/body.ts
+feat(body): add Tone type for body system status|src/components/body/BodyHologram.tsx@9
+feat(body): add Hotspot type|src/components/body/BodyHologram.tsx@10
+feat(body): map tones to theme colours|src/components/body/BodyHologram.tsx@11
+feat(body): 360 degree 3D body with organ glow, labels without overlap, zoom and views|src/components/body/BodyHologram.tsx
+feat(fx): NumberTicker glides from the previous value|src/components/fx/NumberTicker.tsx@12
+feat(fx): track current value for smooth re-animation|src/components/fx/NumberTicker.tsx
+feat(lab): use memo and refs|src/components/home/LifespanSimulator.tsx@13
+feat(lab): import Xevyo mark and 3D body|src/components/home/LifespanSimulator.tsx@14
+feat(lab): AI Longevity Lab with week reader, levels, dials, waterfall and body map|src/components/home/LifespanSimulator.tsx@15
+feat(lab): interpolate steps risk between bands|src/components/home/LifespanSimulator.tsx@16
+feat(lab): add Big stat component|src/components/home/LifespanSimulator.tsx@17
+feat(lab): add Risk bar component|src/components/home/LifespanSimulator.tsx
+feat(home): Department intelligence with 3D body, symptom search, evidence and test match|src/components/home/DeptIntelligence.tsx
+refactor(goal): update imports|src/components/home/GoalPipeline.tsx@18
+feat(goal): auto-play state and test intelligence|src/components/home/GoalPipeline.tsx@19
+feat(goal): goal grid and animated flow rail with step details|src/components/home/GoalPipeline.tsx@20
+feat(goal): add Detail layout|src/components/home/GoalPipeline.tsx
+copy(home): AI Longevity Lab heading|src/app/page.tsx@21
+copy(home): Department intelligence heading|src/app/page.tsx
+refactor(hero): remove unused env import|src/components/home/AIHero.tsx@22
+feat(hero): empty Ask asks the example on screen|src/components/home/AIHero.tsx@23
+style(hero): Ask Xevyo button is never faded|src/components/home/AIHero.tsx@24
+style(hero): use premium icon tiles|src/components/home/AIHero.tsx@25
+feat(hero): add Digital Twin tour button|src/components/home/AIHero.tsx
+feat(clinic3d): add building facts per office|src/components/clinic3d/ClinicGlobe.tsx@26
+feat(clinic3d): convert world dots to longitude and latitude|src/components/clinic3d/ClinicGlobe.tsx@27
+feat(clinic3d): add degree helper|src/components/clinic3d/ClinicGlobe.tsx@28
+feat(clinic3d): interactive 3D globe that flies to each clinic|src/components/clinic3d/ClinicGlobe.tsx
+feat(clinic3d): add illustrative clinic room layouts per city|src/components/clinic3d/BuildingView.tsx@29
+feat(clinic3d): building view with 3D tower, floor plan and satellite map|src/components/clinic3d/BuildingView.tsx
+feat(clinic): import ClinicGlobe|src/components/home/HomeSections.tsx@30
+feat(clinic): show the 3D globe in Global clinic|src/components/home/HomeSections.tsx
+feat(dept): add DeptBody 3D hero visual|src/components/dept/DeptBody.tsx
+feat(dept): import DeptBody|src/app/precision-health/[dept]/page.tsx@31
+fix(dept): hero with 3D body and aligned Book, Ask and Summarise buttons|src/app/precision-health/[dept]/page.tsx
+style(dept tabs): use premium icon tiles on areas|src/components/dept/DeptTabs.tsx@32
+style(dept tabs): use premium icon tiles on services|src/components/dept/DeptTabs.tsx@33
+style(dept tabs): use premium icon tiles on care phases|src/components/dept/DeptTabs.tsx
+feat(twin): add app path|src/data/twin.ts@34
+feat(twin): add body system statuses|src/data/twin.ts@35
+feat(twin): add status words|src/data/twin.ts@36
+feat(twin): add TourStep type|src/data/twin.ts@37
+feat(twin): add the six tour steps|src/data/twin.ts@38
+feat(twin): add example values|src/data/twin.ts@39
+feat(twin): add app map|src/data/twin.ts@40
+feat(twin): add glossary|src/data/twin.ts
+feat(twin): interactive tour with 3D body and six steps|src/components/twin/TwinTour.tsx@41
+feat(twin): working preview of each part of the app screen|src/components/twin/TwinTour.tsx@42
+feat(twin): add score ring|src/components/twin/TwinTour.tsx
+feat(twin): add /twin/ metadata|src/app/twin/page.tsx@43
+feat(twin): add how-it-works flow|src/app/twin/page.tsx@44
+feat(twin): add Digital Twin tour page|src/app/twin/page.tsx
+feat(nav): add Digital Twin to Discover menu|src/data/site.ts
+feat(nav): treat /twin/ as a Discover page|src/components/layout/SparkleNav.tsx
+feat(ai): suggested questions for the twin page|src/lib/aiPrompts.ts
+feat(search): index the Digital Twin tour for Xevyo|src/lib/siteIndex.ts
+feat(seo): add /twin/ to sitemap|src/app/sitemap.ts
+docs(llms): list the Digital Twin tour|public/llms.txt
+feat(next-step): suggest the Digital Twin tour|src/components/ai/NextStep.tsx@45
+style(next-step): use premium icon tiles|src/components/ai/NextStep.tsx
+refactor(platform): remove unused import|src/components/platform/PlatformParts.tsx@46
+feat(platform): Explore the Digital Twin app button|src/components/platform/PlatformParts.tsx
+feat(platform): add Digital Twin tour button|src/app/platform/page.tsx@47
+style(platform): use premium icon tiles|src/app/platform/page.tsx
+refactor(ai-everywhere): remove unused import|src/components/home/AIEverywhere.tsx@48
+feat(ai-everywhere): add Digital Twin tour card|src/components/home/AIEverywhere.tsx
+style(precision): use premium icon tiles on departments|src/app/precision-health/page.tsx@49
+style(precision): use premium icon tiles on care team|src/app/precision-health/page.tsx
+style(labs): use premium icon tiles on intelligence cards|src/components/bioaro/LabsHub.tsx@50
+style(labs): use premium icon tiles on services|src/components/bioaro/LabsHub.tsx@51
+style(labs): use premium icon tiles on steps|src/components/bioaro/LabsHub.tsx
+style(drugs): use premium icon tiles|src/components/bioaro/DrugsHub.tsx
+style(packages): use premium icon tiles|src/components/bioaro/HealthPackages.tsx
+style(test navigator): use premium icon tiles on detail|src/components/labs/TestNavigator.tsx@52
+style(test navigator): use premium icon tiles on list|src/components/labs/TestNavigator.tsx
+style(clinic tabs): use premium icon tiles on services|src/components/clinic/ClinicTabs.tsx@53
+style(clinic tabs): use premium icon tiles on steps|src/components/clinic/ClinicTabs.tsx
+style(clinic): use premium icon tiles|src/app/clinic/[slug]/page.tsx
+style(about): use premium icon tiles|src/app/about/page.tsx
+style(bioelr): use premium icon tiles|src/app/bioelr/page.tsx
+style(life): use premium icon tiles|src/app/life/page.tsx
+style(login): use premium icon tiles|src/app/login/page.tsx
+style(shop): use premium icon tiles|src/app/shop/page.tsx
+style(bag): use premium icon tiles on items|src/components/shop/BagLayer.tsx@54
+style(bag): use premium icon tiles on empty state|src/components/shop/BagLayer.tsx
+style(catalogue): use premium icon tiles|src/components/shop/Catalogue.tsx
+style(ladder): use premium icon tiles|src/components/shop/Ladder.tsx
+style(plan studio): use premium icon tiles|src/components/shop/PlanStudio.tsx
+style(trust strip): use premium icon tiles|src/components/shop/TrustStrip.tsx
+style(specialist router): use premium icon tiles|src/components/tools/SpecialistRouter.tsx
+style(scan results): use premium icon tiles|src/components/scan/ScanResults.tsx
+style(app dock): use premium icon tiles|src/components/pages/AppDock.tsx
+style(animated list): use premium icon tiles|src/components/fx/AnimatedList.tsx
+style(disciplines): use premium icon tiles|src/components/home/DisciplineExplorer.tsx
+style(ecosystem): use premium icon tiles|src/components/home/Ecosystem.tsx
+style(fusion engine): use premium icon tiles|src/components/home/FusionEngine.tsx
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt

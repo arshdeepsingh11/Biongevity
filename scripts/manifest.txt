@@ -27,6 +27,7 @@ src/app/shop/page.tsx
 src/app/site-index.json/route.ts
 src/app/sitemap.ts
 src/app/tools/page.tsx
+src/app/twin/page.tsx
 src/components/ai/AIAssistant.tsx
 src/components/ai/AIBadge.tsx
 src/components/ai/AIInteractionLayer.tsx
@@ -44,13 +45,17 @@ src/components/bioaro/DrugsHub.tsx
 src/components/bioaro/HealthPackages.tsx
 src/components/bioaro/LabsHub.tsx
 src/components/bioelr/Configurator.tsx
+src/components/body/BodyHologram.tsx
 src/components/charts/AICharts.tsx
 src/components/charts/Charts.tsx
 src/components/charts/EvidenceChart.tsx
 src/components/charts/useInView.ts
 src/components/clinic/BPTracker.tsx
 src/components/clinic/ClinicTabs.tsx
+src/components/clinic3d/BuildingView.tsx
+src/components/clinic3d/ClinicGlobe.tsx
 src/components/commerce/BuyButton.tsx
+src/components/dept/DeptBody.tsx
 src/components/dept/DeptTabs.tsx
 src/components/drugs/ProtocolStudio.tsx
 src/components/family/FamilyCare.tsx
@@ -122,6 +127,7 @@ src/components/tools/AIOutput.tsx
 src/components/tools/LabExplainer.tsx
 src/components/tools/SpecialistRouter.tsx
 src/components/tools/VisitPrep.tsx
+src/components/twin/TwinTour.tsx
 src/components/ui/Icon.tsx
 src/components/ui/Logo.tsx
 src/components/ui/MediaSlot.tsx
@@ -147,6 +153,7 @@ src/data/labs.ts
 src/data/platform.ts
 src/data/site.ts
 src/data/stats.ts
+src/data/twin.ts
 src/data/types.ts
 src/data/worldmap.ts
 src/hooks/useInView.ts
@@ -154,6 +161,7 @@ src/hooks/useReducedMotion.ts
 src/hooks/useVoice.ts
 src/hooks/useXevyoTask.ts
 src/lib/aiPrompts.ts
+src/lib/body.ts
 src/lib/catalog.ts
 src/lib/commerce.ts
 src/lib/env.ts
