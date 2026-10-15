@@ -176,3 +176,31 @@ export function RangeBar({ value, low, high, unit, min, max }: { value: number; 
     </div>
   );
 }
+
+/* ---------- Dose clock: 24-hour radial schedule ---------- */
+export function DoseClock({ doses, size = 240 }: { doses: { label: string; hour: number; color?: string }[]; size?: number }) {
+  const [ref, on] = useInView<HTMLDivElement>();
+  const c = size / 2, R = size / 2 - 28;
+  const at = (h: number, r: number) => { const a = (h / 24) * Math.PI * 2 - Math.PI / 2; return [c + Math.cos(a) * r, c + Math.sin(a) * r]; };
+  return (
+    <div ref={ref}>
+      <svg viewBox={`0 0 ${size} ${size}`} className="mx-auto w-full max-w-[280px]" role="img" aria-label="Daily schedule">
+        <circle cx={c} cy={c} r={R} fill="none" stroke="rgb(var(--c-ink))" strokeOpacity=".08" strokeWidth="14" />
+        <path d={`M ${at(6, R).join(" ")} A ${R} ${R} 0 0 1 ${at(18, R).join(" ")}`} fill="none" stroke="rgb(var(--c-gold))" strokeOpacity=".35" strokeWidth="14" />
+        {[0, 6, 12, 18].map((h) => { const [x, y] = at(h, R - 22); return <text key={h} x={x} y={y + 3} textAnchor="middle" fontSize="10" fill="rgb(var(--c-faint))">{h === 0 ? "12am" : h === 12 ? "12pm" : h === 6 ? "6am" : "6pm"}</text>; })}
+        {doses.map((d, i) => {
+          const [x, y] = at(d.hour, R);
+          return <g key={d.label + i} style={{ opacity: on ? 1 : 0, transition: `opacity .4s ${i * 0.1}s` }}>
+            <circle cx={x} cy={y} r="9" fill={d.color ?? PALETTE[i % PALETTE.length]} stroke="rgb(var(--c-surface))" strokeWidth="2.5" />
+            <text x={x} y={y + 3.5} textAnchor="middle" fontSize="9" fontWeight="700" fill="rgb(var(--c-surface))">{i + 1}</text>
+          </g>;
+        })}
+        <text x={c} y={c - 4} textAnchor="middle" fontSize="22" fontWeight="600" fill="rgb(var(--c-ink))">{doses.length}</text>
+        <text x={c} y={c + 14} textAnchor="middle" fontSize="10.5" fill="rgb(var(--c-muted))">doses a day</text>
+      </svg>
+      <ol className="mt-3 space-y-1 text-[12.5px]">
+        {doses.map((d, i) => <li key={d.label + i} className="flex items-center gap-2"><span className="grid h-5 w-5 place-items-center rounded-full text-[10px] font-bold text-snow" style={{ background: d.color ?? PALETTE[i % PALETTE.length] }}>{i + 1}</span><span className="flex-1">{d.label}</span><span className="tabular-nums text-muted">{fmtHour(d.hour)}</span></li>)}
+      </ol>
+    </div>
+  );
+}
