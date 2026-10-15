@@ -143,3 +143,14 @@ function Preview({ id, onSystem }: { id: string; onSystem: (id: string) => void 
     </div>
   );
 }
+
+function Ring({ label, v, word, tone }: { label: string; v: number; word: string; tone: "attention" | "mid" }) {
+  const c = 2 * Math.PI * 30;
+  return (
+    <div className="flex items-center justify-between rounded-[26px] bg-white p-5 ring-1 ring-ink/[0.07]">
+      <div><div className="text-[13px] font-semibold text-muted">{label}</div><div className="mt-1 text-[40px] font-semibold leading-none tracking-tight">{v}<span className="text-[14px] text-muted">/100</span></div><div className="mt-2 text-[11px] text-gold-deep">Example</div></div>
+      <svg viewBox="0 0 72 72" className="h-16 w-16 -rotate-90"><circle cx="36" cy="36" r="30" fill="none" stroke="rgb(var(--c-ink))" strokeOpacity=".08" strokeWidth="6" /><circle cx="36" cy="36" r="30" fill="none" stroke={tone === "attention" ? "rgb(var(--c-danger))" : "rgb(var(--c-ai-2))"} strokeWidth="6" strokeLinecap="round" strokeDasharray={`${(v / 100) * c} ${c}`} />
+        <text x="36" y="40" textAnchor="middle" fontSize="11" fontWeight="600" fill="rgb(var(--c-ink))" transform="rotate(90 36 36)">{word}</text></svg>
+    </div>
+  );
+}
