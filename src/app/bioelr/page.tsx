@@ -69,7 +69,7 @@ export default function BioELRPage() {
           <Head n="03" label="Scale" title="From one clinic to a longevity city." lede="Centralised, consented health data for individuals, providers and researchers — to see population trends and test what works." />
           <div className="mt-8 grid gap-3 md:grid-cols-3">
             {BIOELR_SCALE.map((x) => (
-              <div key={x.t} className="rounded-[24px] bg-white p-6 ring-1 ring-ink/[0.06]"><span className="grid h-12 w-12 place-items-center rounded-2xl bg-iri text-white"><Icon name={x.icon} size={22} /></span><div className="mt-4 text-[18px] font-semibold">{x.t}</div><p className="mt-1 text-[14px] text-muted">{x.d}</p></div>
+              <div key={x.t} className="rounded-[24px] bg-white p-6 ring-1 ring-ink/[0.06]"><span className="grid h-12 w-12 place-items-center icon-tile"><Icon name={x.icon} size={22} /></span><div className="mt-4 text-[18px] font-semibold">{x.t}</div><p className="mt-1 text-[14px] text-muted">{x.d}</p></div>
             ))}
           </div>
         </div>
