@@ -62,3 +62,10 @@ export const TEST_INTEL: TestIntel[] = LAB_TESTS.map((t) => {
   const ci = LAB_COLLECTIONS.findIndex((c) => c.handle === t.category);
   return { t, evidence: r.ev, actionability: r.act, goals: r.goals, retest: r.retest, reveals: r.reveals || t.summary, utility, categoryLabel: LAB_COLLECTIONS[ci]?.title ?? t.category, categoryIndex: Math.max(0, ci) };
 });
+
+/** Goal match 0–100 for a set of goals (share of the test's goals you picked, plus a bonus for the first goal). */
+export function goalMatch(x: TestIntel, goals: GoalId[]) {
+  if (!goals.length) return 0;
+  const hits = x.goals.filter((g) => goals.includes(g)).length;
+  return Math.round(Math.min(100, (hits / x.goals.length) * 80 + (x.goals[0] && goals.includes(x.goals[0]) ? 20 : 0)));
+}
