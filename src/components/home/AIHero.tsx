@@ -106,7 +106,7 @@ export function AIHero() {
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <button onClick={() => setOpen(true)} className="btn-ai h-12 px-6"><XevyoOrb size={22} />Talk to Xevyo</button>
             <a href={env.appUrl} className="btn-light h-12 px-6"><Icon name="fingerprint" size={17} className="text-accent" />Open my twin</a>
-            <Link href="/tools/" className="btn-light h-12 px-6"><Icon name="flask" size={17} className="text-accent" />AI health tools</Link>
+            <Link href="/scan/" className="btn-light h-12 px-6"><Icon name="radar" size={17} className="text-accent" />2-minute AI scan</Link>
           </div>
         </div>
 
