@@ -76,7 +76,7 @@ export default function PlatformPage() {
           <div className="mt-8 grid gap-3 md:grid-cols-3">
             {PORTALS.map((p) => (
               <a key={p.id} href={env.appUrl} className="card group flex items-start gap-4 p-5 hover:-translate-y-0.5">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-light text-accent"><Icon name={p.icon} size={21} weight="duotone" /></span>
+                <span className="grid h-11 w-11 shrink-0 place-items-center icon-tile"><Icon name={p.icon} size={21} weight="duotone" /></span>
                 <span className="flex-1"><span className="block text-[17px] font-semibold">{p.t}</span><span className="block text-[13.5px] text-muted">{p.d}</span></span>
                 <Icon name="arrow-up-right" size={16} className="mt-1 text-faint group-hover:text-accent" />
               </a>
