@@ -131,3 +131,34 @@ export function Heatmap({ rows, cols, cells, highlightCol }: { rows: string[]; c
     </div>
   );
 }
+
+/* ---------- Timeline (re-test schedule) ---------- */
+export function Timeline({ rows, months = 12, start = new Date() }: { rows: { label: string; marks: number[]; sub?: string }[]; months?: number; start?: Date }) {
+  const [ref, on] = useInView<HTMLDivElement>();
+  const labels = useMemo(() => Array.from({ length: months + 1 }, (_, i) => new Date(start.getFullYear(), start.getMonth() + i, 1).toLocaleString("en", { month: "short" })), [months, start]);
+  return (
+    <div ref={ref}>
+      <div className="grid grid-cols-[minmax(96px,30%)_minmax(0,1fr)] items-end gap-2 pb-1 text-[10.5px] text-faint">
+        <span />
+        <div className="relative h-4">{labels.map((l, i) => (i % 2 === 0 || months <= 6) && <span key={i} className="absolute -translate-x-1/2" style={{ left: `${(i / months) * 100}%` }}>{l}</span>)}</div>
+      </div>
+      <div className="space-y-1.5">
+        {rows.map((r, ri) => (
+          <div key={r.label} className="grid grid-cols-[minmax(96px,30%)_minmax(0,1fr)] items-center gap-2">
+            <div className="min-w-0"><div className="truncate text-[12.5px] font-semibold">{r.label}</div>{r.sub && <div className="truncate text-[10.5px] text-muted">{r.sub}</div>}</div>
+            <div className="relative h-7 rounded-full bg-canvas">
+              <div className="absolute inset-y-[13px] left-0 right-0 bg-ink/[0.08]" />
+              {r.marks.map((m, k) => (
+                <span key={k} className="absolute top-1/2 grid h-5 w-5 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full text-[9px] font-bold"
+                  style={{ left: `${(m / months) * 100}%`, background: k === 0 ? "rgb(var(--c-ai))" : "rgb(var(--c-surface))", color: k === 0 ? "rgb(var(--c-on-ai))" : "rgb(var(--c-ai))", boxShadow: "0 0 0 1.5px rgb(var(--c-ai))", transform: `translate(-50%,-50%) scale(${on ? 1 : 0})`, transition: `transform .4s ${(ri * 0.06 + k * 0.08).toFixed(2)}s` }}>
+                  {k === 0 ? "B" : k}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="mt-2 text-[10.5px] text-muted"><b className="text-ai">B</b> = baseline · numbers = re-tests</div>
+    </div>
+  );
+}
