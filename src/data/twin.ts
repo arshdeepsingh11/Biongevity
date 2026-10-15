@@ -23,3 +23,5 @@ export const STATUS_WORDS = [
   { t: "Good", d: "Inside your normal range. Nothing to act on.", tone: "good" as Tone },
   { t: "Needs attention", d: "Moved away from your baseline. Xevyo explains why; your care team decides if anything should change.", tone: "attention" as Tone },
 ];
+
+export interface TourStep { id: string; n: string; s: string; t: string; icon: IconName; where: string; plain: string; points: string[] }
