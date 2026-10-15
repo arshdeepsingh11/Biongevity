@@ -1,8 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useInView } from "@/hooks/useInView";
 
-/** Number Ticker — counts to `value` when scrolled into view. */
+/** Number Ticker — counts to `value` when scrolled into view, then glides from the old value when it changes. */
 export function NumberTicker({ value, decimals = 0, duration = 1400, from = 0, prefix = "", suffix = "", className }:
   { value: number; decimals?: number; duration?: number; from?: number; prefix?: string; suffix?: string; className?: string }) {
   const [ref, inView] = useInView<HTMLSpanElement>();
