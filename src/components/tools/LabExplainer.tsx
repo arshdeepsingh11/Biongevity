@@ -66,6 +66,12 @@ export function LabExplainer() {
         <Link href="/contact/?interest=Not%20sure%20yet" className="btn-light">Review with a clinician</Link>
       </div>
       <AIOutput {...ai} />
+      {retests.length > 0 && (
+        <div className="mt-4 rounded-2xl bg-canvas p-3">
+          <div className="px-1 pb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-ai">✦ Re-test these with BioAro Labs</div>
+          <div className="grid gap-2 sm:grid-cols-2">{retests.map((t) => <div key={t.handle} className="flex items-center gap-2 rounded-xl bg-white p-2.5 ring-1 ring-ink/[0.05]"><span className="min-w-0 flex-1 truncate text-[13px] font-semibold">{t.title}</span><BuyButton href={t.url} store="labs" price={t.price} size="sm" /></div>)}</div>
+        </div>
+      )}
       <p className="mt-3 text-[11px] text-faint">General adult ranges for education. Your lab&apos;s printed range and your clinician&apos;s interpretation come first.</p>
     </AISurface>
   );
