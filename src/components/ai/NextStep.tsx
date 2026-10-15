@@ -67,7 +67,7 @@ export function NextStep() {
         </div>
         <div className="mt-5 grid gap-3 md:grid-cols-4">
           {steps.map((s) => {
-            const body = (<><span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent-light text-accent"><Icon name={s.icon} size={19} weight="duotone" /></span>
+            const body = (<><span className="grid h-10 w-10 shrink-0 place-items-center icon-tile"><Icon name={s.icon} size={19} weight="duotone" /></span>
               <span className="min-w-0 flex-1"><span className="block text-[14.5px] font-semibold">{s.t}</span><span className="block text-[12.5px] leading-snug text-muted">{s.d}</span></span>
               <Icon name={s.ext ? "arrow-up-right" : "arrow-right"} size={15} className="mt-1 text-faint" /></>);
             const cls = "card flex items-start gap-3 p-4 hover:-translate-y-0.5";
