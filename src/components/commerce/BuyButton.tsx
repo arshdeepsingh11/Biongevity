@@ -25,3 +25,8 @@ export function BuyButton({ href, store, price, className, size = "md", label }:
     </a>
   );
 }
+
+/** Small honest note under a buy area. */
+export function StoreNote({ store }: { store: keyof typeof STORES }) {
+  return <p className="text-[11px] text-faint">Checkout opens on {STORES[store].host}. Prices in CAD as listed; the store shows the final price.</p>;
+}
