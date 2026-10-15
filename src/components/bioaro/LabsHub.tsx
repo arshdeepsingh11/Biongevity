@@ -77,7 +77,7 @@ export function LabsHub() {
             <div className="space-y-6">
               <div className="relative grid gap-4 md:grid-cols-4">
                 <div aria-hidden className="absolute left-0 right-0 top-6 hidden h-[2px] bg-iri-x md:block" />
-                {LAB_STEPS.map((s, k) => <div key={s.n} className="relative rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]"><span className="relative z-[1] grid h-12 w-12 place-items-center rounded-2xl bg-iri text-white ring-4 ring-pearl"><Icon name={["search", "home", "microscope", "chart"][k]} size={22} weight="duotone" /></span><div className="mt-3 text-[12px] font-semibold text-accent">Step {s.n}</div><div className="text-[16px] font-semibold">{s.t}</div><div className="mt-1 text-[13px] text-muted">{s.d}</div></div>)}
+                {LAB_STEPS.map((s, k) => <div key={s.n} className="relative rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]"><span className="relative z-[1] grid h-12 w-12 place-items-center icon-tile ring-4 ring-pearl"><Icon name={["search", "home", "microscope", "chart"][k]} size={22} weight="duotone" /></span><div className="mt-3 text-[12px] font-semibold text-accent">Step {s.n}</div><div className="text-[16px] font-semibold">{s.t}</div><div className="mt-1 text-[13px] text-muted">{s.d}</div></div>)}
               </div>
               <div className="grid gap-5 md:grid-cols-2">
                 <div className="rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]"><div className="mb-3 text-[14px] font-semibold">Turnaround, upper bound (weeks)</div><BarList data={TURNAROUND} unit=" wks" max={6} /><p className="mt-3 text-[11px] text-faint">Source: BioAro Labs. Most single biomarkers return sooner.</p></div>
