@@ -34,3 +34,5 @@ export const QUESTIONS: Question[] = [
   { id: "family", q: "Any of these in close family?", multi: true, options: [{ v: "heart", label: "Heart disease" }, { v: "diabetes", label: "Diabetes" }, { v: "dementia", label: "Dementia" }, { v: "cancer", label: "Cancer" }, { v: "none", label: "None / not sure" }] },
   { id: "lastTest", q: "When were your last blood tests?", options: [{ v: "1", label: "This year" }, { v: "3", label: "1–3 years ago" }, { v: "9", label: "Longer / never" }] },
 ];
+
+export const DOMAINS = ["Cardiometabolic", "Brain", "Metabolic", "Inflammation", "Physical function", "Sleep & recovery", "Nutrition", "Resilience", "Ageing pace"];
