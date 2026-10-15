@@ -87,7 +87,7 @@ function Builder() {
           {picks.map((p, k) => {
             const card = (
               <a href={buyUrl(p)} target="_blank" rel="noopener" className="flex h-full flex-col rounded-[24px] bg-white p-5 ring-1 ring-ink/[0.06]">
-                <div className="flex items-start justify-between"><span className="grid h-12 w-12 place-items-center rounded-2xl bg-iri text-white"><Icon name={p.icon} size={24} weight="duotone" /></span><span className="text-[17px] font-semibold">{formatMoney(p.price)}</span></div>
+                <div className="flex items-start justify-between"><span className="grid h-12 w-12 place-items-center icon-tile"><Icon name={p.icon} size={24} weight="duotone" /></span><span className="text-[17px] font-semibold">{formatMoney(p.price)}</span></div>
                 <div className="mt-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-teal">{p.tagline}</div>
                 <div className="text-[17px] font-semibold">{p.title}</div><p className="mt-1 text-[13px] text-muted">{p.summary}</p>
                 {p.ingredients && <div className="mt-3"><BarList data={p.ingredients.filter((i) => i.amount.endsWith("mg")).map((i) => ({ label: i.name, value: parseInt(i.amount) }))} unit=" mg" /></div>}
