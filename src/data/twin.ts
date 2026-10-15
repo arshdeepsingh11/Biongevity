@@ -39,3 +39,14 @@ export const TOUR: TourStep[] = [
   { id: "coach", n: "06", s: "AI Coach", t: "AI Insight & Coach", icon: "sparkle", where: "AI Insight card and Coach", plain: "Xevyo turns the numbers into one plain-language insight and a small next step. Chat with the Coach any time; it escalates anything clinical to your care team.",
     points: ["English and Japanese", "Explains why a status changed", "Never diagnoses or prescribes"] },
 ];
+
+/** Example values shaped like the real Overview (labelled "Example"). */
+export const TWIN_EXAMPLE = {
+  health: 40, recovery: 59, hrv: 10, hr: 40, steps: 6703,
+  trends: {
+    HRV: { Daily: [62, 58, 55, 49, 46, 44, 41], Weekly: [100, 64, 61, 55, 52, 47, 30], Monthly: [72, 70, 66, 61, 58, 54], Yearly: [68, 71, 66, 60] },
+    Sleep: { Daily: [6.1, 5.8, 6.4, 7.2, 5.9, 6.0, 6.3], Weekly: [6.9, 6.6, 6.4, 6.2, 6.1, 6.0, 6.2], Monthly: [7.1, 6.8, 6.6, 6.3, 6.2, 6.1], Yearly: [7.0, 6.8, 6.5, 6.2] },
+    "Resting HR": { Daily: [58, 60, 61, 63, 62, 64, 63], Weekly: [57, 58, 59, 60, 61, 62, 63], Monthly: [56, 57, 58, 60, 61, 62], Yearly: [55, 57, 59, 62] },
+    Steps: { Daily: [5200, 7100, 6400, 8800, 4300, 6703, 7600], Weekly: [6100, 6400, 6900, 7200, 6800, 6500, 6703], Monthly: [5800, 6200, 6600, 6900, 6700, 6703], Yearly: [5400, 6000, 6500, 6703] },
+  } as Record<string, Record<string, number[]>>,
+};
