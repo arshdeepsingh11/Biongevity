@@ -46,3 +46,9 @@ const RULES: { m: RegExp; ev: Evidence; act: number; goals: GoalId[]; retest: nu
   { m: /resveratrol/i, ev: "Exploratory", act: 0.2, goals: ["ageing"], retest: 6, reveals: "Resveratrol level when supplementing." },
 ];
 const FALLBACK = { ev: "Supportive evidence" as Evidence, act: 0.45, goals: ["ageing"] as GoalId[], retest: 6, reveals: "" };
+
+export interface TestIntel {
+  t: CatalogProduct; evidence: Evidence; actionability: number; goals: GoalId[]; retest: number; reveals: string;
+  /** 0–100, transparent: 40% evidence · 30% actionability · 20% cost · 10% breadth */
+  utility: number; categoryLabel: string; categoryIndex: number;
+}
