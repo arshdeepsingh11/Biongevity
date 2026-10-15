@@ -158,6 +158,14 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
   -webkit-backdrop-filter: blur(26px) saturate(1.6); backdrop-filter: blur(26px) saturate(1.6);
   box-shadow: 0 12px 34px -12px rgb(var(--c-shadow) / .22), inset 0 1px 0 rgb(255 255 255 / .9); }
 @media (min-width: 1024px) { [data-theme="aurora"] .aurora-nav { display: flex; } }
+/* Aurora home: the scan card becomes the hero; every later section sits in one glass panel. */
+[data-theme="aurora"] .home-panels > .home-start { padding-top: calc(104px + var(--safe-top)); padding-bottom: 12px; }
+[data-theme="aurora"] .home-panels > .home-start .start-head { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+[data-theme="aurora"] .home-panels > .home-start .start-body { margin-top: 0; }
+[data-theme="aurora"] .home-panels > .home-start > .pointer-events-none { display: none; }
+[data-theme="aurora"] .home-panels > .home-start .scan-title { font-size: clamp(28px, 3.2vw, 40px); letter-spacing: -0.03em; max-width: 14ch; }
+[data-theme="aurora"] .home-panels > .home-start .ai-ring { padding: clamp(22px, 3vw, 40px); border-radius: 32px; }
+[data-theme="aurora"] .glass-swoosh { display: block; opacity: .55; }
 
 /* ───── AI signature: anything Xevyo powers ───── */
 .text-ai-grad { background: var(--g-ai); -webkit-background-clip: text; background-clip: text; color: transparent; }
