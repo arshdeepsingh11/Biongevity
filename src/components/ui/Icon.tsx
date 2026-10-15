@@ -36,9 +36,11 @@ const MAP: Record<string, PhosphorIcon> = {
 
 export type IconName = keyof typeof MAP | string;
 
-/** `weight`: "light" for UI, "duotone" for feature tiles. Size in px. */
+/** Line icons (Phosphor). `weight` "duotone" is drawn as "regular" for a clean, consistent look. Size in px. */
 export function Icon({ name, size = 18, className, weight = "regular", strokeWidth }: { name: IconName; size?: number; className?: string; weight?: IconWeight; strokeWidth?: number }) {
   const C = MAP[name] ?? Sparkle;
+  // Clean, Apple-like strokes everywhere: duotone fills are rendered as regular line icons.
+  if (weight === "duotone") weight = "regular";
   void strokeWidth;
   return <C size={size} weight={weight} className={className} aria-hidden="true" />;
 }
