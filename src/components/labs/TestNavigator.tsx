@@ -139,7 +139,7 @@ export function TestNavigator() {
         {rows.slice(0, more ? rows.length : 9).map((x) => (
           <div key={x.t.handle} className={`flex flex-col rounded-[22px] bg-white p-4 ring-1 transition ${cmp.includes(x.t.handle) ? "ring-ai/60" : "ring-ink/[0.06]"}`}>
             <div className="flex items-start gap-3">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent-light text-accent"><Icon name={x.t.icon} size={18} weight="duotone" /></span>
+              <span className="grid h-10 w-10 shrink-0 place-items-center icon-tile"><Icon name={x.t.icon} size={18} weight="duotone" /></span>
               <button onClick={() => setSel(x.t.handle)} className="min-w-0 flex-1 text-left"><span className="block text-[14.5px] font-semibold leading-snug hover:text-accent">{x.t.title}</span><span className="mt-0.5 block text-[11.5px] text-muted">{x.categoryLabel}</span></button>
               <label className="flex items-center gap-1 text-[11px] text-muted"><input type="checkbox" checked={cmp.includes(x.t.handle)} onChange={() => toggleCmp(x.t.handle)} className="h-3.5 w-3.5 accent-[rgb(var(--c-ai))]" />Compare</label>
             </div>
