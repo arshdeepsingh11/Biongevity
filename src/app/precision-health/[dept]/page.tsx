@@ -58,6 +58,7 @@ export default async function DeptPage({ params }: P) {
       </section>
       {!d.calm && <section className="relative z-[1]"><KeywordStream words={[...d.keywords, ...d.keywords]} /></section>}
       <Section ai={`${d.short} details`} className="!pt-10"><div className="container-x"><DeptTabs id={d.id} /></div></Section>
+      <Section ai={`${d.short} tests`} className="!pt-0" chip={false}><div className="container-x"><DeptTests dept={d.id} name={d.name} /></div></Section>
       <section className="relative z-[1] pb-20">
         <div className="container-x flex justify-between gap-3">
           <Link href={`/precision-health/${prev.id}/`} className="btn-light"><Icon name="chevron-left" size={15} />{prev.short}</Link>
