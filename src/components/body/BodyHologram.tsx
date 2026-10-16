@@ -175,6 +175,7 @@ export function BodyHologram({ hotspots = [], selected = null, onSelect, intensi
         <span className="mx-0.5 h-4 w-px bg-ink/10" />
         <button onClick={() => zoom(0.3)} aria-label="Zoom in" className="grid h-7 w-7 place-items-center rounded-full hover:bg-ink/[0.05]"><Icon name="plus" size={14} /></button>
         <button onClick={() => zoom(-0.3)} aria-label="Zoom out" className="grid h-7 w-7 place-items-center rounded-full hover:bg-ink/[0.05]"><Icon name="minus" size={14} /></button>
+        {ar && cam.supported && <button onClick={cam.toggle} aria-pressed={cam.on} className={cn("rounded-full px-2.5 py-1 text-[11.5px] font-semibold", cam.on ? "bg-ai-soft text-ai" : "hover:bg-ink/[0.05]")}>{cam.on ? "Exit AR" : "AR view"}</button>}
       </div>
       {hint && <div className="pointer-events-none absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-white/75 px-2.5 py-1 text-[11px] font-medium text-muted ring-1 ring-ink/[0.06] backdrop-blur"><Icon name="move" size={13} />Drag to rotate 360°</div>}
     </div>
