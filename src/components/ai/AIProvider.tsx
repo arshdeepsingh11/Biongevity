@@ -20,7 +20,7 @@ interface AIState {
   section: string;
   /** Smart questions for the current page + section. */
   prompts: string[];
-  /** Reply language for Xevyo (English or Japanese). */
+  /** Reply language for Biongevity SI: English, French, Arabic or Persian. */
   language: XevyoLanguage;
   setLanguage: (l: XevyoLanguage) => void;
   /** Command bar (Ctrl/⌘ + X). `seed` pre-fills its search. */
