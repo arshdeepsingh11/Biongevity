@@ -10,7 +10,7 @@ import { JsonLd, breadcrumb } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "AI health tools — explain lab results, prepare a visit, find a specialist",
-  description: "Free AI tools from Biongevity: paste lab results to see them flagged and explained by Xevyo AI, prepare a one-page visit brief, and find the right specialist. Nothing is stored.",
+  description: "Free AI tools from Biongevity: paste lab results to see them flagged and explained by Biongevity SI, prepare a one-page visit brief, and find the right specialist. Nothing is stored.",
   alternates: { canonical: "/tools/" },
 };
 
