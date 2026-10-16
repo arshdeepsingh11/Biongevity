@@ -8,6 +8,7 @@ import { AskButton } from "@/components/pages/AskButton";
 import { Icon } from "@/components/ui/Icon";
 import { CLINICS } from "@/data/clinic";
 import { ClinicTabs } from "@/components/clinic/ClinicTabs";
+import { VisitSection } from "@/components/clinic3d/VisitSection";
 
 type P = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
