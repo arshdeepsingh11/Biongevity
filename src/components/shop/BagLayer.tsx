@@ -28,7 +28,7 @@ export function BagLayer() {
   const planText = c.lines.map((l) => `${l.item.title}${l.term ? ` (${l.term} months)` : ""} — ${money(l.price)}`).join("\n");
   const request = `/contact/?interest=${encodeURIComponent("My plan")}&plan=${encodeURIComponent(planText)}`;
 
-  // AI plan review — streams Xevyo's answer right inside the bag. Resets when the plan changes.
+  // AI plan review — streams Biongevity SI's answer right inside the bag. Resets when the plan changes.
   const [review, setReview] = useState<{ state: "idle" | "busy" | "done" | "error" | "off"; text: string; sources?: { title: string; url: string }[] }>({ state: "idle", text: "" });
   const stop = useRef<AbortController | null>(null);
   useEffect(() => { stop.current?.abort(); setReview({ state: "idle", text: "" }); }, [planText]);
