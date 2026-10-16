@@ -13,3 +13,4 @@ export type Shape =
   | { k: "slab"; c: V3; s: V3; n?: number };
 export type Tone = "ai" | "ai-hi" | "ai-2" | "artery" | "vein" | "warn" | "teal" | "gold" | "muted";
 export interface Part { id: string; label: string; tone: Tone; shapes: Shape[]; note: string; check?: string }
+export interface Organ { id: OrganId; name: string; blurb: string; parts: Part[] }
