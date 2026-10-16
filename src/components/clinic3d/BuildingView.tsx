@@ -41,7 +41,7 @@ export function BuildingView({ city, address, phone, tel, site, onBack }: { city
   const rooms = ROOMS[city] ?? ROOMS.Calgary;
   const rm = rooms.find((r) => r.id === room);
   const auto = useRef(true);
-  useEffect(() => { setTab("tower"); setRoom(null); auto.current = true; }, [city]);
+  useEffect(() => { setTab("city"); setRoom(null); auto.current = true; }, [city]);
   // first visit: show the tower, then walk the visitor into the floor plan
   useEffect(() => { if (tab !== "tower" || !auto.current) return; const t = setTimeout(() => { auto.current = false; setTab("floor"); }, 5200); return () => clearTimeout(t); }, [tab, city]);
 
