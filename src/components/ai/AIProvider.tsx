@@ -63,7 +63,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
   const busyRef = useRef(false);
   const abort = useRef<AbortController | null>(null);
 
-  useEffect(() => { try { if (localStorage.getItem(LANG_KEY) === "ja") setLang("ja"); } catch { /* ignore */ } }, []);
+  useEffect(() => { try { const v = localStorage.getItem(LANG_KEY); if (isLanguage(v)) setLang(v); } catch { /* ignore */ } }, []);
   const setLanguage = useCallback((l: XevyoLanguage) => { setLang(l); try { localStorage.setItem(LANG_KEY, l); } catch { /* ignore */ } }, []);
 
   useEffect(() => { recordVisit(path); }, [path]);
