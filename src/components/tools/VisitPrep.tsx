@@ -36,10 +36,10 @@ export function VisitPrep() {
           </div>
           <label className="block text-[13px] font-medium">Questions for the clinician<textarea value={f.questions} onChange={set("questions")} rows={2} className={field} /></label>
           <div className="flex flex-wrap gap-2 pt-1">
-            <button disabled={!filled || ai.busy} onClick={() => ai.run(`Turn my notes into a clear one-page visit brief for a clinician: a 2-sentence summary, a symptom timeline, current medications, and my top questions (add 3 useful questions I may have missed). Keep it factual; do not diagnose.\n\n${notes}`)} className="btn-ai disabled:opacity-40"><Icon name="sparkle" size={16} />Tidy with Xevyo</button>
+            <button disabled={!filled || ai.busy} onClick={() => ai.run(`Turn my notes into a clear one-page visit brief for a clinician: a 2-sentence summary, a symptom timeline, current medications, and my top questions (add 3 useful questions I may have missed). Keep it factual; do not diagnose.\n\n${notes}`)} className="btn-ai disabled:opacity-40"><Icon name="sparkle" size={16} />Tidy with Biongevity SI</button>
             <button disabled={!filled} onClick={() => print()} className="btn-light disabled:opacity-40"><Icon name="file" size={16} />Print / save PDF</button>
           </div>
-          <p className="text-[11px] text-faint">Not stored by this site. Xevyo is called only when you press the button.</p>
+          <p className="text-[11px] text-faint">Not stored by this site. Biongevity SI is called only when you press the button.</p>
         </div>
         <div className="print-area rounded-2xl bg-white p-5 text-[13.5px] ring-1 ring-ink/[0.08]">
           <div className="flex items-center justify-between border-b border-ink/10 pb-3"><Logo size={18} /><span className="text-[11px] text-muted">Visit brief · {new Date().toLocaleDateString("en-CA")}</span></div>
