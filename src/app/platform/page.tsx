@@ -96,7 +96,7 @@ export default function PlatformPage() {
         <div className="container-x grid items-center gap-8 lg:grid-cols-2">
           <div>
             <h2 className="h-section">Questions about your twin?</h2>
-            <p className="lede mt-4">Xevyo answers from this page and our other pages, with sources. Then open the app to see your own data.</p>
+            <p className="lede mt-4">Biongevity SI answers from this page and our other pages, with sources. Then open the app to see your own data.</p>
             <div className="mt-6"><AppButtons /></div>
           </div>
           <AIPanel title="Ask about the platform" context="Healthspan platform and digital twin" prompts={["What is my digital twin?", "How is the Healthspan Index calculated?", "Can my family see my results?"]} />
