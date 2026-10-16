@@ -77,7 +77,7 @@ export function NextStep() {
             className="relative flex items-start gap-3 overflow-hidden rounded-4xl bg-white p-4 text-left ai-ring transition hover:-translate-y-0.5">
             <div aria-hidden className="ai-glow -right-8 -top-8 h-24 w-24" />
             <XevyoOrb size={40} />
-            <span className="relative min-w-0 flex-1"><span className="block text-[14.5px] font-semibold">Ask Xevyo</span><span className="block text-[12.5px] leading-snug text-muted">&ldquo;What should my next step be?&rdquo;</span></span>
+            <span className="relative min-w-0 flex-1"><span className="block text-[14.5px] font-semibold">Ask Biongevity SI</span><span className="block text-[12.5px] leading-snug text-muted">&ldquo;What should my next step be?&rdquo;</span></span>
           </button>
         </div>
       </div>
