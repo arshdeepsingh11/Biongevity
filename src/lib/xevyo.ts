@@ -36,7 +36,7 @@ export class XevyoError extends Error { constructor(public code: string, public 
 export async function askXevyo(
   input: {
     message: string; history: XevyoTurn[]; context: { page: string; section?: string }; sessionId: string;
-    /** Reply language. "ja" asks Xevyo to answer in Japanese. */
+    /** Reply language: English, French, Arabic or Persian. */
     language?: XevyoLanguage;
     /** Extra grounding: numbered passages from our own pages (see lib/retrieve.ts) and page text for summaries. */
     grounding?: string;
