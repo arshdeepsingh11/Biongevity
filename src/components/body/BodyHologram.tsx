@@ -152,7 +152,9 @@ export function BodyHologram({ hotspots = [], selected = null, onSelect, intensi
 
   return (
     <div ref={wrap} className={cn("relative select-none overflow-hidden", className)} style={{ height }}>
+      {cam.error && <div className="absolute inset-x-3 top-12 z-10 rounded-xl bg-white/90 px-3 py-2 text-[12px] text-muted shadow-card">{cam.error}</div>}
       <div aria-hidden className="absolute inset-0 grid-bg opacity-40 [mask-image:radial-gradient(60%_60%_at_50%_50%,#000,transparent)]" />
+      {cam.on && <video ref={cam.video} muted playsInline aria-hidden className="absolute inset-0 h-full w-full object-cover" />}
       <canvas ref={canvas} role="img" aria-label="Interactive 3D body. Drag to rotate." className="absolute inset-0 h-full w-full cursor-grab touch-pan-y active:cursor-grabbing" />
       {labels && hotspots.map((h, k) => {
         const o = organById(h.id); if (!o) return null;
