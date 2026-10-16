@@ -99,7 +99,7 @@ export function LifespanSimulator() {
       {/* Inputs */}
       <div className="space-y-4 rounded-[30px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06] sm:p-6">
         <div className="relative overflow-hidden rounded-2xl bg-ai-soft/60 p-3 ring-1 ring-ai/15">
-          <div className="flex items-center gap-2 text-[12px] font-semibold text-ai"><XevyoOrb size={20} live />Tell Xevyo about your week</div>
+          <div className="flex items-center gap-2 text-[12px] font-semibold text-ai"><XevyoOrb size={20} live />Tell Biongevity SI about your week</div>
           <textarea value={text} onChange={(e) => setText(e.target.value)} rows={3} aria-label="Describe your week"
             placeholder="e.g. I sleep about 6 hours, walk 4,000 steps, gym twice a week, never smoked, BP 136/88, a few glasses of wine"
             className="mt-2 w-full resize-none rounded-xl bg-white/90 p-3 text-[13.5px] outline-none ring-1 ring-ink/[0.06] focus:ring-ai/40" />
