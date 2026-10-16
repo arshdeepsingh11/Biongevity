@@ -83,7 +83,7 @@ export function Catalogue() {
           );
         })}
       </motion.div>
-      {!list.length && <div className="mt-6 rounded-2xl bg-canvas p-8 text-center text-[14px] text-muted">Nothing matches “{q}”. Try Plan Studio above, or ask Xevyo.</div>}
+      {!list.length && <div className="mt-6 rounded-2xl bg-canvas p-8 text-center text-[14px] text-muted">Nothing matches “{q}”. Try Plan Studio above, or ask Biongevity SI.</div>}
       {list.length > 12 && <div className="mt-6 text-center"><button onClick={() => setMore((m) => !m)} className="btn-light">{more ? "Show less" : `Show all ${list.length}`}</button></div>}
     </div>
   );
