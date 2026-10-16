@@ -22,9 +22,11 @@ const PAGE: Record<string, string[]> = {
   bioelr: ["What modules does BioELR include?", "How does BioELR connect to labs and devices?", "Can BioELR run several clinics?", "How does the AI help clinicians?"],
   tools: ["How do I read my lipid panel?", "What should I ask my doctor about high blood pressure?", "Which specialist should I see for fatigue?"],
   twin: ["What does my Health Score mean?", "What is HRV?", "How does the twin learn my baseline?"],
+  plan: ["What should a 12-month longevity plan include?", "How often should I re-test?", "What does a clinician check before approving?"],
+  evidence: ["What does GRADE certainty mean?", "Which interventions have the strongest evidence?", "What is a confidence interval?"],
   scan: ["What does the AI scan measure?", "How accurate is the healthspan habits score?", "Which test should I do first?"],
   family: ["How do I talk to my dad about memory problems?", "What should a medication review include?", "How can I help my mum from another city?"],
-  ai: ["Does Xevyo store my data?", "Can Xevyo diagnose me?", "How do answers cite your pages?"],
+  ai: ["Does Biongevity SI store my data?", "Can Biongevity SI diagnose me?", "How do answers cite your pages?"],
 };
 
 /** Page key from a pathname: department id, BioAro hub, or first segment. */
