@@ -6,3 +6,5 @@ import type { IconName } from "@/components/ui/icons";
  * Coordinates: x left→right, z back→front (entrance at the front), metres-ish. A corridor runs along z = 1;
  * front-row rooms open onto it from their back wall, back-row rooms from their front wall. Confirm details with the care team.
  */
+
+export type Tone = "glass" | "olive" | "wood" | "white" | "ink" | "teal" | "gold" | "soft";
