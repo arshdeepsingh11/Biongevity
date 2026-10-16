@@ -148,7 +148,7 @@ export function TestNavigator() {
             <div className="mt-2.5"><div className="flex justify-between text-[11px]"><span className="font-semibold text-ai">✦ AI match</span><span className="tabular-nums">{x.match}%</span></div><div className="mt-1 h-1.5 rounded-full bg-ink/[0.07]"><div className="h-full rounded-full bg-ai transition-all" style={{ width: `${x.match}%` }} /></div></div>
             <div className="mt-auto flex items-center gap-2 pt-3.5">
               <BuyButton href={x.t.url} store="labs" price={x.t.price} size="sm" />
-              <button onClick={() => ask(`Explain the ${x.t.title} test and whether it fits someone focused on ${goals.join(" and ") || "healthy ageing"}.`, { label: `✦ About ${x.t.title}` })} className="ml-auto grid h-8 w-8 place-items-center rounded-full bg-ai-soft" aria-label={`Ask Xevyo about ${x.t.title}`}><XevyoOrb size={20} /></button>
+              <button onClick={() => ask(`Explain the ${x.t.title} test and whether it fits someone focused on ${goals.join(" and ") || "healthy ageing"}.`, { label: `✦ About ${x.t.title}` })} className="ml-auto grid h-8 w-8 place-items-center rounded-full bg-ai-soft" aria-label={`Ask Biongevity SI about ${x.t.title}`}><XevyoOrb size={20} /></button>
             </div>
           </div>
         ))}
