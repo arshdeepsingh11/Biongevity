@@ -18,6 +18,8 @@ export function useVoice(onText: (text: string, final: boolean) => void, lang?: 
   const rec = useRef<Recognition | null>(null);
   const cb = useRef(onText);
   cb.current = onText;
+  const langRef = useRef(lang);
+  langRef.current = lang;
 
   useEffect(() => {
     const w = window as unknown as { SpeechRecognition?: RecognitionCtor; webkitSpeechRecognition?: RecognitionCtor };
