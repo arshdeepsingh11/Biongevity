@@ -35,7 +35,9 @@ Information on this site is educational and not a diagnosis. For emergencies cal
 
 ## Platform, AI and B2B
 
-- [Healthspan platform](https://biongevity.com/platform/): longevity digital twin (biological, physiological, functional, behavioural, clinical and trajectory states), domain scores with a transparent Healthspan Index, AI coach in English and Japanese, clinician and family views. Members sign in at https://app.biongevity.com
+- [Healthspan platform](https://biongevity.com/platform/): longevity digital twin (biological, physiological, functional, behavioural, clinical and trajectory states), domain scores with a transparent Healthspan Index, multilingual AI coach, clinician and family views. Members sign in at https://app.biongevity.com
+- [Care plan builder](https://biongevity.com/plan/): pick a goal and get a 12-month plan of BioAro tests, re-test dates, formulas, visits and a total in CAD; download, add reminders or send to the clinic for clinician approval.
+- [Evidence engine](https://biongevity.com/evidence/): the studies behind every number, with study counts, people, effect sizes, confidence intervals and GRADE certainty.
 - [Digital Twin tour](https://biongevity.com/twin/): 3D guided tour of the member Digital Twin - scores, live monitor, body systems, trends, simulations, AI coach - then open it at https://app.biongevity.com/en/patient/digital-twin
 - [AI Healthspan Scan](https://biongevity.com/scan/): 12 questions, on-device radar of 9 health domains, sourced population charts, ranked BioAro Labs tests (bought on bioarolabs.com), matched BioAro Drugs formulas and a 12-month re-test timeline
 - [Family care](https://biongevity.com/family/): planner for adult children caring for an ageing parent, plus a permissioned family view in the app
