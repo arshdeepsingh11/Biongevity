@@ -73,7 +73,7 @@ export function FinalCTA() {
     <Section ai="Get started">
       <div className="container-x text-center">
         <h2 className="h-section mx-auto max-w-[16ch]"><DiaTextReveal text="Start with a conversation." /></h2>
-        <p data-reveal className="lede mx-auto mt-4 max-w-[48ch]">Ask Xevyo anything, build a plan in Plan Studio, or book a consultation.</p>
+        <p data-reveal className="lede mx-auto mt-4 max-w-[48ch]">Ask Biongevity SI anything, build a plan in Plan Studio, or book a consultation.</p>
         <div data-reveal className="mt-8 flex flex-wrap justify-center gap-3">
           <Link href="/contact/" className="btn-dark h-12 px-6">Book a consultation</Link>
           <Link href="/shop/#studio" className="btn-light h-12 px-6"><Icon name="sparkle" size={16} weight="duotone" className="text-accent" />Plan Studio</Link>
