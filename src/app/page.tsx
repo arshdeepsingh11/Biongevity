@@ -19,7 +19,7 @@ export default function HomePage() {
       <AIHero />
       <Section ai="Start here">
         <div className="container-x">
-          <Head n="01" label="Start here" title={<>Two minutes to <AuroraText>your starting point.</AuroraText></>} lede="Take the AI Healthspan Scan for yourself — or plan care for a parent. Both run on your device; Xevyo explains the result when you ask." />
+          <Head n="01" label="Start here" title={<>Two minutes to <AuroraText>your starting point.</AuroraText></>} lede="Take the AI Healthspan Scan for yourself — or plan care for a parent. Both run on your device; Biongevity SI explains the result when you ask." />
           <div className="mt-10"><StartHere /></div>
         </div>
       </Section>
