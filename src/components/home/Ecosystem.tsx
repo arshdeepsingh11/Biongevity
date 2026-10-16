@@ -10,7 +10,7 @@ export function Ecosystem() {
   const items = [
     { t: "BioAro Labs", d: `${LAB_TESTS.length} tests — genome, microbiome, hormones, inflammation and vitamins, from CLIA-registered labs.`, ai: "AI Test Navigator ranks every test for you", icon: "test-tubes", here: "/precision-health/bioaro-labs/", ext: "https://bioarolabs.com", host: "bioarolabs.com" },
     { t: "BioAro Drugs", d: `${DRUG_PRODUCTS.length} transparent bioactive formulas, every ingredient and dose shown.`, ai: "AI Protocol Studio checks timing and overlap", icon: "tablets", here: "/precision-health/bioaro-drugs/", ext: "https://bioarodrugs.com/us", host: "bioarodrugs.com" },
-    { t: "Biongevity app", d: "Your digital twin, results, plan and Xevyo coach — with clinician and family views.", ai: "Xevyo learns your personal baseline", icon: "fingerprint", here: "/platform/", ext: env.appUrl, host: env.appUrl.replace(/^https?:\/\//, "") },
+    { t: "Biongevity app", d: "Your digital twin, results, plan and Biongevity SI coach — with clinician and family views.", ai: "Biongevity SI learns your personal baseline", icon: "fingerprint", here: "/platform/", ext: env.appUrl, host: env.appUrl.replace(/^https?:\/\//, "") },
     { t: "BioELR", d: "The longevity health record for clinics, resorts and communities.", ai: "AI drafts notes, flags interactions, answers patients", icon: "layers", here: "/bioelr/", ext: "", host: "" },
     { t: "NEYU Health", d: "Health information, care and intelligent guidance in one experience.", ai: "Partner health platform", icon: "globe", here: "", ext: "https://neyuhealth.com", host: "neyuhealth.com" },
   ];
