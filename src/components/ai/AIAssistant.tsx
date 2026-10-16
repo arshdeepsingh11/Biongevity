@@ -62,7 +62,7 @@ export function AIAssistant() {
                 </select>
                 <Icon name="chevron-down" size={12} className="pointer-events-none absolute right-2 text-faint" />
               </label>
-              <button onClick={() => { reset(); setTab("discover"); }} className="relative rounded-full bg-canvas px-2.5 py-1.5 text-[12px] font-semibold text-muted hover:text-ai" aria-label="New chat">New</button>
+              <button onClick={() => { reset(); setTab("discover"); setHub(true); setInput(""); }} className="relative rounded-full bg-canvas px-2.5 py-1.5 text-[12px] font-semibold text-muted hover:text-ai" aria-label="New chat">New</button>
               <button onClick={go} aria-label="Close" className="relative grid h-8 w-8 place-items-center rounded-full bg-canvas hover:bg-ink/[0.06]"><Icon name="x" size={15} /></button>
             </header>
             <div className="flex items-center gap-1.5 border-b border-ink/[0.05] bg-ai-soft/60 px-4 py-1.5 text-[11px] text-muted">
