@@ -52,7 +52,7 @@ export function BuildingView({ city, address, phone, tel, site, onBack }: { city
         <button onClick={onBack} className="inline-flex h-9 items-center gap-1 rounded-full bg-canvas px-3 text-[12.5px] font-semibold hover:bg-ink/[0.06]"><Icon name="globe" size={14} />Globe</button>
         <div className="min-w-0 flex-1 px-1"><div className="truncate text-[14.5px] font-semibold">{site.building} · {city}</div><div className="truncate text-[11.5px] text-muted">{address}</div></div>
         <div className="flex rounded-full bg-canvas p-0.5 text-[12px] font-semibold">
-          {([["tower", "3D building"], ["floor", "Floor plan"], ["map", "Live map"]] as const).map(([k, l]) => <button key={k} onClick={() => { auto.current = false; setTab(k); }} className={`rounded-full px-3 py-1.5 ${tab === k ? "bg-white shadow-card" : "text-muted"}`}>{l}</button>)}
+          {([["city", "3D city"], ["tower", "Building"], ["floor", "Floor"], ["map", "Satellite"]] as const).map(([k, l]) => <button key={k} onClick={() => { auto.current = false; setTab(k); }} className={`rounded-full px-3 py-1.5 ${tab === k ? "bg-white shadow-card" : "text-muted"}`}>{l}</button>)}
         </div>
       </div>
 
