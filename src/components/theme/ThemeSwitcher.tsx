@@ -48,10 +48,6 @@ export function ThemeSwitcher() {
                 </button>
               );
             })}
-            <button onClick={() => { setChoice("auto"); setOpen(false); }} aria-pressed={choice === "auto"}
-              className={`mt-1 flex w-full items-center gap-2 rounded-2xl border-t border-ink/[0.06] px-2.5 py-2.5 text-left text-[13px] ${choice === "auto" ? "font-semibold text-accent" : "text-muted hover:text-ink"}`}>
-              <Icon name="laptop" size={16} />Match my device<span className="ml-auto text-[11px] text-faint">light / dark</span>
-            </button>
           </motion.div>
         )}
       </AnimatePresence>
