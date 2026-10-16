@@ -1,5 +1,5 @@
 /**
- * Theme system — 4 switchable themes. Colours live only in src/styles/themes.css.
+ * Theme system — 2 themes: Olive (default) and Mono. Colours live only in src/styles/themes.css.
  * The inline <head> script (THEME_INIT) applies the saved theme before first paint (no flash).
  */
 export const THEMES = [
