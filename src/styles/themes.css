@@ -7,53 +7,58 @@
  *   --c-ai / --c-ai-2 / --c-ai-hi = the AI signature (orb, beams, ✦). Used ONLY for AI.
  */
 
-/* 1 · CHAMPAGNE — warm ivory, charcoal ink, bronze accent (default) */
+/* 1 · OLIVE — off-white #F3F1F0, olive #A1AB54, clean glass. Bright and fresh, never dull or dark. (default) */
 :root,
-:root[data-theme="champagne"] {
-  --c-pearl: 255 253 249;
-  --c-canvas: 250 246 239;
-  --c-surface: 255 255 255;
-  --c-feature: 244 236 223;
-  --c-feature-2: 237 226 207;
-  --c-ink: 34 29 22;
-  --c-muted: 107 97 85;
-  --c-faint: 120 109 94;
-  --c-accent: 143 104 56;
-  --c-accent-soft: 184 146 92;
-  --c-accent-light: 247 239 227;
-  --c-accent-deep: 118 86 46;
+:root[data-theme="olive"] {
+  --c-pearl: 243 241 240;      /* #F3F1F0 background */
+  --c-canvas: 236 235 230;
+  --c-surface: 255 255 255;    /* glass base */
+  --c-feature: 247 248 240;
+  --c-feature-2: 228 234 196;
+  --c-ink: 30 34 27;           /* deep green-charcoal text */
+  --c-muted: 92 98 86;
+  --c-faint: 102 108 94;
+  --c-accent: 104 114 38;      /* deep olive: text and links (AA on bg) */
+  --c-accent-soft: 161 171 84; /* #A1AB54 brand olive */
+  --c-accent-light: 236 240 214;
+  --c-accent-deep: 82 90 28;
   --c-on-accent: 255 255 255;
-  --c-teal: 94 127 98;
-  --c-teal-soft: 127 160 131;
-  --c-teal-light: 237 242 234;
-  --c-gold: 194 161 106;
-  --c-gold-soft: 241 230 209;
-  --c-gold-deep: 138 106 58;
-  --c-ai: 143 104 56;
-  --c-ai-2: 70 120 104;
-  --c-ai-hi: 244 214 150;
+  --c-teal: 52 132 92;
+  --c-teal-soft: 104 176 136;
+  --c-teal-light: 228 244 234;
+  --c-gold: 222 170 64;
+  --c-gold-soft: 250 238 210;
+  --c-gold-deep: 150 104 18;
+  --c-ai: 104 114 38;
+  --c-ai-2: 161 171 84;
+  --c-ai-hi: 206 218 120;      /* fresh lime-olive highlight */
   --c-on-ai: 255 255 255;
-  --c-ai-soft: 247 239 227;
-  --c-warn: 166 96 27;
-  --c-tangerine: 201 137 91;
-  --c-danger: 153 27 27;
-  --c-shadow: 60 44 20;
-  --c-scrim: 34 29 22;
-  --c-chart-1: 143 104 56;
-  --c-chart-2: 127 160 131;
-  --c-chart-3: 194 161 106;
-  --c-chart-4: 94 127 98;
-  --c-chart-5: 216 195 160;
-  --c-chart-6: 138 106 58;
-  --c-chart-7: 163 183 159;
-  --g-iri: linear-gradient(135deg, #d9be8e, #b08a55 52%, #8a6a3a);
-  --g-iri-x: linear-gradient(90deg, #d9be8e, #b08a55 55%, #7fa083);
-  --g-text: linear-gradient(90deg, #8a6a3a, #b08a55 50%, #7fa083);
-  --g-feature: linear-gradient(160deg, #fbf6ec 0%, #f4ecdf 60%, #efe4d1 100%);
-  --g-btn: linear-gradient(rgb(var(--c-accent)), rgb(var(--c-accent)));
-  --g-ai: linear-gradient(120deg, rgb(var(--c-gold)), rgb(var(--c-ai)) 50%, rgb(var(--c-ai-2)));
-  --header-alpha: 0.72;
-  --heading-track: -0.035em;
+  --c-ai-soft: 236 240 214;
+  --c-warn: 170 104 14;
+  --c-tangerine: 222 150 64;
+  --c-danger: 190 52 44;
+  --c-shadow: 58 66 24;
+  --c-scrim: 30 34 27;
+  --c-chart-1: 161 171 84;
+  --c-chart-2: 30 34 27;
+  --c-chart-3: 222 170 64;
+  --c-chart-4: 112 118 104;
+  --c-chart-5: 206 218 120;
+  --c-chart-6: 104 114 38;
+  --c-chart-7: 52 132 92;
+  --c-artery: 214 58 64;       /* anatomy: oxygen-rich blood */
+  --c-vein: 64 104 196;        /* anatomy: oxygen-poor blood */
+  --g-iri: linear-gradient(135deg, #CEDA78, #A1AB54 50%, #687226);
+  --g-iri-x: linear-gradient(90deg, #CEDA78, #A1AB54);
+  --g-text: linear-gradient(95deg, #7C8A2C, #A1AB54 45%, #5E6A22);
+  --g-feature: linear-gradient(160deg, rgb(255 255 255 / .8) 0%, rgb(236 240 214 / .7) 100%);
+  --g-btn: linear-gradient(180deg, #A2AD52 0%, #7F8A35 55%, #6A752A 100%);
+  --g-ai: linear-gradient(120deg, #9AA846, #7C8A2C 50%, #5E6A22);
+  --header-alpha: 0.6;
+  --heading-track: -0.04em;
+  --glass: rgb(255 255 255 / .6);
+  --glass-strong: rgb(255 255 255 / .74);
+  --glass-border: rgb(255 255 255 / .9);
   color-scheme: light;
 }
 
