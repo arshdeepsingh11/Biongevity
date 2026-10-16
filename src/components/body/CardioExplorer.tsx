@@ -49,3 +49,5 @@ function buildHeart() {
   }
   return { pts: new Float32Array(pts), side: new Uint8Array(side) };
 }
+
+interface Seg { x1: number; y1: number; x2: number; y2: number; w: number; z: number; id: string }
