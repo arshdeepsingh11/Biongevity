@@ -32,3 +32,5 @@ export const FAMILY: DiscoverItem[] = [
     points: ["3D twin with a status for every body system", "Recovery, HRV and sleep from your watch or ring", "What-if simulations and a heat map"],
     stat: { v: "3D", l: "digital twin" }, icon: "fingerprint", href: "/twin/", ask: "What can I do in the Biongevity app and the digital twin?" },
 ];
+
+export interface NewItem { t: string; d: string; icon: IconName; href: string; tag: "New" | "Updated" }
