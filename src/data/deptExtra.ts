@@ -17,3 +17,5 @@ export interface DeptExtra {
   partner?: { name: string; url: string; line: string };
   sources: { name: string; url: string }[];
 }
+
+const LABS = { name: "BioAro Labs", url: "https://bioarolabs.com/shop" };
