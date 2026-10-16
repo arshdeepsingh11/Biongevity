@@ -48,6 +48,13 @@ export function ClinicGlobe() {
   const [sel, setSel] = useState<string | null>(null);
   const [stage, setStage] = useState<"globe" | "building">("globe");
   const [now, setNow] = useState<Date | null>(null);
+  const [view, setView] = useState<View>("light");
+  const viewRef = useRef<View>("light"); viewRef.current = view;
+  const hits = useRef<{ id: string; kind: "city" | "sat"; x: number; y: number }[]>([]);
+  const [hover, setHover] = useState<string | null>(null);
+  const [sat, setSat] = useState<string | null>(null);
+  const flyRef = useRef<(c: string) => void>(() => {});
+  const selSat = useRef<string | null>(null);
   useEffect(() => { setNow(new Date()); const t = setInterval(() => setNow(new Date()), 30000); return () => clearInterval(t); }, []);
 
   useEffect(() => {
