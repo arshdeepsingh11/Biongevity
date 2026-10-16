@@ -199,9 +199,25 @@ export function ClinicGlobe() {
         <button onClick={() => ask("Which Biongevity location should I choose, and can I start with a virtual visit?", { label: "✦ Which location suits me?" })} className="mt-1 flex items-center gap-2 rounded-[22px] bg-ai-soft/70 p-3.5 text-left text-[13px] font-semibold text-ai ring-1 ring-ai/15"><XevyoOrb size={26} live />Which location suits me?</button>
       </div>
 
-      <div className="relative h-[560px] overflow-hidden rounded-[32px] bg-white ring-1 ring-ink/[0.07]">
+      <div className={`relative h-[560px] overflow-hidden rounded-[32px] ring-1 ring-ink/[0.07] transition-colors duration-500 ${view === "light" ? "bg-white" : "bg-[#03060d]"}`}>
         <canvas ref={canvas} aria-label="3D globe with Biongevity clinics. Drag to spin." className={`absolute inset-0 h-full w-full cursor-grab touch-pan-y transition-opacity duration-500 active:cursor-grabbing ${stage === "building" ? "opacity-0" : "opacity-100"}`} />
-        {stage === "globe" && !sel && <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-white/80 px-3 py-1.5 text-[12px] font-medium text-muted ring-1 ring-ink/[0.06] backdrop-blur">Drag to spin · pick a clinic to fly in</div>}
+        {stage === "globe" && !sel && <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white/80 px-3 py-1.5 text-[12px] font-medium text-muted ring-1 ring-ink/[0.06] backdrop-blur">Drag to spin · tap a city or a satellite</div>}
+        {stage === "globe" && (
+          <div role="radiogroup" aria-label="Globe view" className="absolute right-3 top-3 flex gap-0.5 rounded-full bg-white/85 p-1 text-[12px] font-semibold ring-1 ring-ink/[0.06] backdrop-blur">
+            {([["light", "Light", "sun"], ["satellite", "Satellite", "globe"], ["dark", "Dark", "moon"]] as const).map(([id, l, ic]) => (
+              <button key={id} role="radio" aria-checked={view === id} onClick={() => setView(id)} className={`flex items-center gap-1 rounded-full px-2.5 py-1 transition ${view === id ? "bg-ai text-on-ai" : "text-muted hover:text-ink"}`}><Icon name={ic} size={12} />{l}</button>
+            ))}
+          </div>
+        )}
+        {stage === "globe" && hover && <div className="pointer-events-none absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[12px] font-semibold text-ai ring-1 ring-ai/20">{OFFICES.some((x) => x.city === hover) ? `Fly to ${hover} →` : SATS.find((x) => x.id === hover)?.name}</div>}
+        <AnimatePresence>
+          {stage === "globe" && sat && (() => { const S = SATS.find((x) => x.id === sat)!; return (
+            <motion.div key={sat} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute bottom-14 left-3 right-3 mx-auto max-w-[380px] rounded-2xl bg-white/90 p-4 shadow-lift ring-1 ring-ai/15 backdrop-blur-xl">
+              <div className="flex items-center gap-2"><span className="icon-tile h-9 w-9"><Icon name="radar" size={17} /></span><div className="min-w-0 flex-1"><div className="text-[14.5px] font-semibold">{S.name}</div><div className="text-[11.5px] text-muted">Orbit {Math.abs(S.inc)}° · Illustrative</div></div>
+                <button onClick={() => { selSat.current = null; setSat(null); }} aria-label="Close" className="grid h-7 w-7 place-items-center rounded-full bg-canvas"><Icon name="x" size={13} /></button></div>
+              <p className="mt-2 text-[12.5px] leading-snug text-muted">{S.role}.</p>
+            </motion.div>); })()}
+        </AnimatePresence>
         <AnimatePresence>
           {stage === "building" && o && site && (
             <motion.div key={o.city} initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.45 }} className="absolute inset-0">
