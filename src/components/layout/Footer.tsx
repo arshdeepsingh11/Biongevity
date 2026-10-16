@@ -42,7 +42,7 @@ export function Footer() {
             <Link href="/login/" className="text-[14px] text-muted hover:text-accent">Sign in</Link>
             <a href={env.appUrl} className="text-[14px] text-muted hover:text-accent">Member app ↗</a>
           </div>
-          <p className="mt-6 text-[12px] leading-relaxed text-faint">Testing fulfilled by BioAro Labs and BioAro Drugs. Figures cite their sources; dashboard data is illustrative. Answers in chat come from Xevyo.</p>
+          <p className="mt-6 text-[12px] leading-relaxed text-faint">Testing fulfilled by BioAro Labs and BioAro Drugs. Figures cite their sources; dashboard data is illustrative. Answers in chat come from Biongevity SI.</p>
         </div>
       </div>
       <div className="container-x flex flex-wrap items-center justify-center gap-x-3 gap-y-1 border-t border-ink/[0.06] py-4 text-[12px] text-muted">
