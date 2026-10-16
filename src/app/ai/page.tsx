@@ -9,8 +9,8 @@ import { AI_PRINCIPLES, EVIDENCE_LEVELS, MODEL_CARDS, AI_FAQ } from "@/data/gove
 import { JsonLd, breadcrumb, faqPage } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "How our AI works — Xevyo governance, model cards and safeguards",
-  description: "What Xevyo, Biongevity's AI, does and does not do: clinician-first design, no data stored by the website, answers grounded in our pages, evidence levels and model cards.",
+  title: "How our AI works — Biongevity SI governance, model cards and safeguards",
+  description: "What Biongevity SI, Biongevity's AI, does and does not do: clinician-first design, no data stored by the website, answers grounded in our pages, evidence levels and model cards.",
   alternates: { canonical: "/ai/" },
 };
 
