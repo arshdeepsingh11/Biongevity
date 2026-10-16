@@ -47,9 +47,9 @@ export default function AIPage() {
           <Head n="02" label="Model cards" title="Every model, described." lede="Intended use, inputs, outputs and limits — for the AI and for the simple on-device models that support it." />
           <div className="mt-8 grid gap-3 lg:grid-cols-2">
             {MODEL_CARDS.map((m) => (
-              <div key={m.name} className={`rounded-[24px] bg-white p-5 ${m.kind === "Xevyo" ? "ai-ring" : "ring-1 ring-ink/[0.07]"}`}>
-                <div className="flex items-center gap-2.5">{m.kind === "Xevyo" ? <XevyoOrb size={28} /> : <span className="grid h-7 w-7 place-items-center rounded-lg bg-canvas text-accent"><Icon name="cpu" size={15} /></span>}
-                  <div className="flex-1 text-[16px] font-semibold">{m.name}</div><span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${m.kind === "Xevyo" ? "bg-ai-soft text-ai" : "bg-canvas text-muted"}`}>{m.kind === "Xevyo" ? "✦ Xevyo AI" : "On your device"}</span></div>
+              <div key={m.name} className={`rounded-[24px] bg-white p-5 ${m.kind === "Biongevity SI" ? "ai-ring" : "ring-1 ring-ink/[0.07]"}`}>
+                <div className="flex items-center gap-2.5">{m.kind === "Biongevity SI" ? <XevyoOrb size={28} /> : <span className="grid h-7 w-7 place-items-center rounded-lg bg-canvas text-accent"><Icon name="cpu" size={15} /></span>}
+                  <div className="flex-1 text-[16px] font-semibold">{m.name}</div><span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${m.kind === "Biongevity SI" ? "bg-ai-soft text-ai" : "bg-canvas text-muted"}`}>{m.kind === "Biongevity SI" ? "✦ Biongevity SI" : "On your device"}</span></div>
                 <dl className="mt-3 grid grid-cols-[86px_1fr] gap-x-3 gap-y-1.5 text-[13.5px]">
                   <dt className="font-semibold text-muted">Use</dt><dd>{m.use}</dd>
                   <dt className="font-semibold text-muted">Inputs</dt><dd>{m.inputs}</dd>
