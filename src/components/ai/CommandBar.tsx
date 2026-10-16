@@ -14,9 +14,9 @@ import { formatMoney } from "@/lib/utils";
 type Row = { id: string; label: string; sub: string; icon: string; group: string; text: string; run: () => void };
 
 /**
- * Xevyo Command Bar — Ctrl/⌘ + X from anywhere.
+ * Biongevity SI Command Bar — Ctrl/⌘ + X from anywhere.
  * Finds pages, departments, tests, formulas, packages and programs as you type;
- * the last row always hands the question to Xevyo. Search runs on-device; answers come from Xevyo.
+ * the last row always hands the question to Biongevity SI. Search runs on-device; answers come from Biongevity SI.
  */
 export function CommandBar() {
   const { cmd, closeCmd, ask, prompts, connected } = useAI();
