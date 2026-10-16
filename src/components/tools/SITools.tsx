@@ -75,3 +75,4 @@ export function FitnessAge() {
 
 /* ───────────── Genes vs lifestyle (Khera et al., NEJM 2016) ───────────── */
 const GENE_HR = { low: 1, mid: Math.sqrt(1.91), high: 1.91 };
+const LIFE_HR = { fav: 0.54, mid: Math.sqrt(0.54), unfav: 1 };
