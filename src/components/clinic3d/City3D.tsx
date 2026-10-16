@@ -9,3 +9,5 @@ const PROFILE: Record<string, { tall: [number, number]; water: "north" | "east" 
   Dubai: { tall: [30, 260], water: "east", seed: 9, label: "Dubai · Business Bay" },
   Almelo: { tall: [8, 26], water: "canal", seed: 13, label: "Almelo · town centre" },
 };
+
+interface B { x: number; y: number; w: number; d: number; h: number; clinic?: boolean; park?: boolean }
