@@ -9,7 +9,7 @@ const CARDS = [
   { href: "/bioelr/", icon: "layers", k: "For clinics", t: "BioELR", d: "The longevity health record with AI built in — for clinics, resorts and communities.", cta: "Configure BioELR" },
 ];
 
-/** Home section — the three ways Xevyo shows up beyond the chat. */
+/** Home section — the three ways Biongevity SI shows up beyond the chat. */
 export function AIEverywhere() {
   return (
     <div className="grid gap-4 lg:grid-cols-[1.2fr_1fr_1fr]">
