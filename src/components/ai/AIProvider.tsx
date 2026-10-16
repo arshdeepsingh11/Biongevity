@@ -48,7 +48,7 @@ function pageText() {
   return (clone.innerText || clone.textContent || "").replace(/\s+\n/g, "\n").replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n").trim().slice(0, 7000);
 }
 
-/** Chat state for Xevyo. Every answer comes from Xevyo — nothing is generated locally. */
+/** Chat state for Biongevity SI. Every answer comes from Biongevity SI — nothing is generated locally. */
 export function AIProvider({ children }: { children: ReactNode }) {
   const path = usePathname();
   const context = pageLabel(path);
