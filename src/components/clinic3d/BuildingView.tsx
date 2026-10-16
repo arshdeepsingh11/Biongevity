@@ -57,6 +57,7 @@ export function BuildingView({ city, address, phone, tel, site, onBack }: { city
       </div>
 
       <div className="relative flex-1 overflow-hidden">
+        {tab === "city" && <City3D city={city} floors={site.floors} floor={site.floor} building={site.building} onEnter={() => setTab("tower")} />}
         {tab === "tower" && (
           <div className="absolute inset-0 grid cursor-grab place-items-center touch-pan-y active:cursor-grabbing" style={{ perspective: 1400 }}
             onPointerDown={(e) => (drag.current = { x: e.clientX, r: rot })} onPointerMove={(e) => drag.current && setRot(drag.current.r + (e.clientX - drag.current.x) * 0.4)} onPointerUp={() => (drag.current = null)} onPointerLeave={() => (drag.current = null)}>
