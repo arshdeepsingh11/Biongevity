@@ -14,3 +14,5 @@ export type Shape =
 export type Tone = "ai" | "ai-hi" | "ai-2" | "artery" | "vein" | "warn" | "teal" | "gold" | "muted";
 export interface Part { id: string; label: string; tone: Tone; shapes: Shape[]; note: string; check?: string }
 export interface Organ { id: OrganId; name: string; blurb: string; parts: Part[] }
+
+const coil = (): V3[] => Array.from({ length: 70 }, (_, i) => { const t = i / 69; return [Math.sin(t * Math.PI * 7) * 0.42 * (1 - t * 0.2), 0.15 - t * 0.75, Math.cos(t * Math.PI * 7) * 0.22] as V3; });
