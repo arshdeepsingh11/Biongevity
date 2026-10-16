@@ -57,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <CommandBar />
           <AskSelection />
           <AINudge />
+          <MagneticCursor />
         </Providers>
       </body>
     </html>
