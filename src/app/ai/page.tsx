@@ -67,7 +67,7 @@ export default function AIPage() {
           <div className="space-y-3">
             {AI_FAQ.map((f) => <details key={f.q} className="group rounded-2xl bg-white p-4 ring-1 ring-ink/[0.06]"><summary className="cursor-pointer list-none text-[15.5px] font-semibold">{f.q}</summary><p className="mt-2 text-[14px] leading-relaxed text-muted">{f.a}</p></details>)}
           </div>
-          <AIPanel title="Ask how our AI works" context="Biongevity AI governance" prompts={["Does Xevyo store my data?", "Can Xevyo diagnose me?", "How do answers cite your pages?"]} />
+          <AIPanel title="Ask how our AI works" context="Biongevity SI governance" prompts={["Does Biongevity SI store my data?", "Can Biongevity SI diagnose me?", "How do answers cite your pages?"]} />
         </div>
       </Section>
     </>
