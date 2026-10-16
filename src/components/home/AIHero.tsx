@@ -16,7 +16,7 @@ import { MARKERS } from "@/data/intelligence";
 
 const EXAMPLES = ["I'm tired all the time and gaining weight", "my blood pressure is high at home", "I want to age slower", "my dad has a family history of heart disease", "poor sleep since my late 40s"];
 
-/** Suggested questions (Xevyo answers them; nothing is pre-written). Written for adults 40–65 and their families. */
+/** Suggested questions (Biongevity SI answers them; nothing is pre-written). Written for adults 40–65 and their families. */
 const CARDS = [
   { q: "Explain an ApoB of 1.1 g/L in simple words", icon: "droplet" },
   { q: "Which test should I start with at 50?", icon: "flask" },
