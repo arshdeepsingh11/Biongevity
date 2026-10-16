@@ -62,7 +62,7 @@ export function LabExplainer() {
       </label>
       <div className="mt-3 flex flex-wrap gap-2">
         <button disabled={!rows.length || !consent || ai.busy} onClick={() => ai.run(`Explain these lab results in plain words for ${age ? `a ${age}-year-old adult` : "an adult"}. For each: what it measures, what this value may mean, and what lifestyle factors influence it. Then list 3 questions to ask my clinician. Do not diagnose.\n\n${summary}`)}
-          className="btn-ai disabled:opacity-40"><Icon name="sparkle" size={16} />Explain with Xevyo</button>
+          className="btn-ai disabled:opacity-40"><Icon name="sparkle" size={16} />Explain with Biongevity SI</button>
         <Link href="/contact/?interest=Not%20sure%20yet" className="btn-light">Review with a clinician</Link>
       </div>
       <AIOutput {...ai} />
