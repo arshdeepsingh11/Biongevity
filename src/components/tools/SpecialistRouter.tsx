@@ -41,7 +41,7 @@ export function SpecialistRouter() {
         </div>
       )}
       <div className="mt-4 flex flex-wrap gap-2">
-        <button disabled={!depts.length || ai.busy} onClick={() => ai.run(`I described: "${q}". Our on-device router suggested: ${depts.map((d) => d.name).join(", ")}. In plain words, explain why these services fit, what a first visit might involve, and any warning signs that need urgent care instead. Do not diagnose.`)} className="btn-ai disabled:opacity-40"><Icon name="sparkle" size={16} />Why these? Ask Xevyo</button>
+        <button disabled={!depts.length || ai.busy} onClick={() => ai.run(`I described: "${q}". Our on-device router suggested: ${depts.map((d) => d.name).join(", ")}. In plain words, explain why these services fit, what a first visit might involve, and any warning signs that need urgent care instead. Do not diagnose.`)} className="btn-ai disabled:opacity-40"><Icon name="sparkle" size={16} />Why these? Ask Biongevity SI</button>
         {depts[0] && <Link href={`/contact/?interest=${encodeURIComponent(depts[0].name)}`} className="btn-light">Book {depts[0].short}</Link>}
       </div>
       <AIOutput {...ai} />
