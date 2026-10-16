@@ -102,7 +102,7 @@ export function ScanResults({ a, r, onRestart }: { a: Answers; r: ScanResult; on
               <div className="mt-1 text-[11.5px] text-muted">Re-test: {RETEST_LABEL(x.retest)}</div>
               <div className="mt-auto flex items-center gap-2 pt-4">
                 <BuyButton href={x.t.url} store="labs" price={x.t.price} size="sm" />
-                <button onClick={() => ask(`Explain the ${x.t.title} test: what it measures, who it helps, and how to prepare.`, { label: `✦ About ${x.t.title}` })} className="ml-auto grid h-8 w-8 place-items-center rounded-full bg-ai-soft" aria-label={`Ask Xevyo about ${x.t.title}`}><XevyoOrb size={20} /></button>
+                <button onClick={() => ask(`Explain the ${x.t.title} test: what it measures, who it helps, and how to prepare.`, { label: `✦ About ${x.t.title}` })} className="ml-auto grid h-8 w-8 place-items-center rounded-full bg-ai-soft" aria-label={`Ask Biongevity SI about ${x.t.title}`}><XevyoOrb size={20} /></button>
               </div>
             </div>
           ))}
