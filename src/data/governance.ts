@@ -28,8 +28,8 @@ export const MODEL_CARDS: { name: string; kind: "Biongevity SI" | "On-device"; u
 ];
 
 export const AI_FAQ = [
-  { q: "Is Xevyo a doctor?", a: "No. Xevyo is an AI guide that explains and organises information. Diagnosis and treatment decisions are made by clinicians." },
-  { q: "Does the website store my health data?", a: "No. Text you type into AI tools on this website is not stored by the site. It is sent to Xevyo only when you press a button." },
-  { q: "Can Xevyo answer in Japanese?", a: "Yes. Switch the chat to 日本語 and replies come in Japanese." },
+  { q: "Is Biongevity SI a doctor?", a: "No. Biongevity SI is an AI guide that explains and organises information. Diagnosis and treatment decisions are made by clinicians." },
+  { q: "Does the website store my health data?", a: "No. Text you type into AI tools on this website is not stored by the site. It is sent to Biongevity SI only when you press a button." },
+  { q: "Which languages does Biongevity SI speak?", a: "English, French, Arabic and Persian. Pick one from the dropdown in the chat; you can type or speak, and translate any answer into the other three." },
   { q: "Where is my digital twin?", a: "In the Biongevity member app. Use Sign in or Open my twin to go there." },
 ];
