@@ -119,3 +119,12 @@ export function TestsIn3D({ initial = "cascade" as Mode }: { initial?: Mode }) {
     </div>
   );
 }
+
+function BookCover({ title, count }: { title: string; count: number }) {
+  return (
+    <div className="flex h-full flex-col justify-between rounded-[18px] p-5 text-left" style={{ background: "var(--g-iri)" }}>
+      <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-on-ai/90">BioAro Labs</div>
+      <div><div className="text-[20px] font-semibold leading-tight text-on-ai sm:text-[26px]">{title}</div><div className="mt-1 text-[12px] text-on-ai/85">{count} tests · turn the page →</div></div>
+    </div>
+  );
+}
