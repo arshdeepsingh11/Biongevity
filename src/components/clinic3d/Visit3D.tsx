@@ -42,3 +42,5 @@ function person(out: Face[], x: number, z: number, face: number, phase: number, 
   box(out, -0.13, 1.5, -0.13, 0.13, 1.78, 0.13, skin, 1, place);
   box(out, -0.14, 1.7, -0.14, 0.14, 1.82, 0.14, hair, 1, place);
 }
+
+const TONES: Record<Tone, number[]> = { glass: [255, 255, 255], olive: [0, 0, 0], wood: [196, 164, 124], white: [246, 246, 242], ink: [40, 44, 40], teal: [0, 0, 0], gold: [0, 0, 0], soft: [236, 238, 230] };
