@@ -5,10 +5,10 @@ import { XevyoOrb } from "./XevyoOrb";
 import { AIBadge } from "./AIBadge";
 
 /**
- * AI surface — the wrapper for every Xevyo-powered block: AI ring + travelling beam + orb header.
+ * AI surface — the wrapper for every Biongevity SI-powered block: AI ring + travelling beam + orb header.
  * Content inside is the AI feature; `kicker` says what kind (e.g. "Explains your results").
  */
-export function AISurface({ title, kicker, children, className, badge = "Xevyo AI", padded = true }:
+export function AISurface({ title, kicker, children, className, badge = "Biongevity SI", padded = true }:
   { title?: ReactNode; kicker?: string; children: ReactNode; className?: string; badge?: string | false; padded?: boolean }) {
   return (
     <div className={cn("relative overflow-hidden rounded-[26px] bg-white ai-ring", padded && "p-5 sm:p-6", className)}>
