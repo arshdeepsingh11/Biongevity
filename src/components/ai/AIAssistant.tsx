@@ -25,6 +25,8 @@ export function AIAssistant() {
   const { open, setOpen, msgs, busy, ask, summarise, translate, context, section, prompts, connected, reset, language, setLanguage } = useAI();
   const [input, setInput] = useState("");
   const [tab, setTab] = useState<"discover" | "new" | "tests">("discover");
+  /** The discovery hub (BioAro family · What's new · Top tests) opens only when the reader asks for it — by pressing New or Explore. */
+  const [hub, setHub] = useState(false);
   const ui = UI[language], lang = langById(language);
   const voice = useVoice((t, final) => { if (final) { ask(t); setInput(""); } else setInput(t); }, lang.speech);
   const list = useRef<HTMLDivElement>(null);
