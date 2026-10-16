@@ -80,7 +80,7 @@ export function FusionEngine() {
             const size = n.kind === "core" ? "h-[22%] min-h-[64px] aspect-square rounded-full" : n.kind === "signal" ? "rounded-xl px-2 py-1.5" : "rounded-2xl px-2.5 py-2";
             return (
               <button key={n.id} onMouseEnter={() => setHot(n.id)} onFocus={() => setHot(n.id)} onClick={() => { setHot(n.id); ask(n.q); }}
-                aria-label={`${n.label} — click to ask Xevyo`}
+                aria-label={`${n.label} — click to ask Biongevity SI`}
                 className={`absolute -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${size} ${n.kind === "core" ? "grid place-items-center bg-iri text-white shadow-glow" : `flex items-center gap-1.5 bg-white shadow-card ring-1 ${active ? "ring-accent scale-[1.06]" : on ? "ring-accent/30" : "ring-ink/[0.06] opacity-60"}`}`}
                 style={{ left: `${(n.x / W) * 100}%`, top: `${(n.y / H) * 100}%` }}>
                 {n.kind === "core"
