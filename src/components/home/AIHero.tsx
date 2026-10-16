@@ -103,14 +103,8 @@ export function AIHero() {
           </div>
         </div>
 
-        <div className="mx-auto mt-10 grid max-w-[980px] grid-cols-2 gap-3 sm:grid-cols-4">
-          {([[DEPARTMENTS.length, "departments", "/precision-health/"], [LAB_TESTS.length, "BioAro lab tests", "/precision-health/bioaro-labs/"], [MARKERS.length, "biomarkers connected", "#constellation"], [DRUG_PRODUCTS.length, "AI-matched formulas", "/precision-health/bioaro-drugs/"]] as const).map(([n, l, h]) => (
-            <Link key={l} href={h} className="rounded-2xl bg-white/70 p-4 ring-1 ring-ink/[0.06] backdrop-blur transition-transform hover:-translate-y-0.5">
-              <div className="text-[30px] font-semibold tracking-tight tabular-nums"><NumberTicker value={n} /></div>
-              <div className="hud-label !text-muted">{l}</div>
-            </Link>
-          ))}
-        </div>
+        <HeroStats />
+        <LifeFilm />
       </div>
     </section>
   );
