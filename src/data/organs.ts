@@ -7,3 +7,7 @@ import type { OrganId } from "./deptExtra";
  */
 
 export type V3 = [number, number, number];
+export type Shape =
+  | { k: "ell"; c: V3; r: V3; n?: number; w?: number }
+  | { k: "tube"; path: V3[]; r: number; n?: number; taper?: number }
+  | { k: "slab"; c: V3; s: V3; n?: number };
