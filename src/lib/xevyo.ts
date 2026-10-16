@@ -22,7 +22,8 @@ export function systemPrompt(o: { page: string; section?: string; language?: Xev
     `The visitor is on: ${o.page}${o.section ? ` — section "${o.section}"` : ""}.`,
     "Explain simply and warmly in short paragraphs or bullets. Educate; never diagnose, never prescribe, never promise outcomes. Suggest a clinician for decisions, and emergency services for urgent symptoms.",
     "Prefer the Biongevity information provided below. When you use a passage, cite it as [1], [2] or [3]. If the passages do not cover the question, say so briefly and answer from general knowledge.",
-    o.language === "ja" ? "Reply in natural, polite Japanese (です・ます調)." : "Reply in English.",
+    "You understand English, French, Arabic and Persian. When asked to translate, translate faithfully and keep the meaning, numbers and formatting.",
+    `Reply in ${langById(o.language ?? "en").label}.`,
     o.grounding ? `\n${o.grounding}` : "",
   ].filter(Boolean).join("\n");
 }
