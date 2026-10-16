@@ -100,7 +100,7 @@ export function Constellation() {
             <div className="mt-4 hud-label !text-muted">Connected care</div>
             <div className="mt-1.5 space-y-1">{depts.map((d) => <Link key={d.id} href={`/precision-health/${d.id}/`} className="flex items-center gap-2 rounded-xl px-2 py-1.5 text-[13.5px] hover:bg-canvas"><Icon name={d.icon} size={17} weight="duotone" className="text-accent" />{d.name}<Icon name="arrow-right" size={13} className="ml-auto text-faint" /></Link>)}</div>
             {test && <a href={test.url} target="_blank" rel="noopener" className="mt-3 flex items-center justify-between rounded-xl bg-canvas px-3 py-2.5 text-[13px]"><span className="flex items-center gap-2"><Icon name="test-tube" size={16} weight="duotone" className="text-teal" />{test.title}</span><span className="font-semibold">${test.price}</span></a>}
-            <button onClick={() => ask(q)} className="mt-3 flex w-full items-center justify-between gap-2 rounded-2xl bg-accent-light px-4 py-3 text-left text-[13.5px] font-semibold text-accent hover:bg-accent/15"><span className="flex items-center gap-2"><Icon name="sparkle" size={16} weight="duotone" />Ask Xevyo about this</span><Icon name="arrow-up-right" size={15} /></button>
+            <button onClick={() => ask(q)} className="mt-3 flex w-full items-center justify-between gap-2 rounded-2xl bg-accent-light px-4 py-3 text-left text-[13.5px] font-semibold text-accent hover:bg-accent/15"><span className="flex items-center gap-2"><Icon name="sparkle" size={16} weight="duotone" />Ask Biongevity SI about this</span><Icon name="arrow-up-right" size={15} /></button>
           </motion.div>
         </AnimatePresence>
       </div>
