@@ -145,6 +145,11 @@ export function AIProvider({ children }: { children: ReactNode }) {
     });
   }, [ask, context, language, path]);
 
+  const translate = useCallback((text: string, to: XevyoLanguage) => {
+    const l = langById(to);
+    ask(`Translate the text below into ${l.label}. Keep the meaning, numbers and formatting. Reply with the translation only.\n\n${text}`, { label: `✦ Translate to ${l.native}`, retrieve: false });
+  }, [ask]);
+
   const reset = useCallback(() => { abort.current?.abort(); setMsgs([]); busyRef.current = false; setBusy(false); }, []);
 
   const prompts = useMemo(() => pagePrompts(path, section), [path, section]);
