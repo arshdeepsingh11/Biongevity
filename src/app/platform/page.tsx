@@ -19,7 +19,7 @@ export default function PlatformPage() {
     <>
       <JsonLd data={[breadcrumb([["Healthspan platform", "/platform/"]]), { "@context": "https://schema.org", "@type": "SoftwareApplication", name: "Biongevity app", applicationCategory: "HealthApplication", operatingSystem: "Web, iOS, Android", url: env.appUrl, publisher: { "@type": "Organization", name: "BioAro Inc." } }]} />
       <PageHero eyebrow="Healthspan platform" ai="Healthspan platform" title={<>Your healthspan, <span className="text-ai-grad">as a living model.</span></>}
-        lede="Repeated labs, genomics, wearables and lifestyle — learned over time into a personal digital twin. Xevyo explains what changed and why; your clinician decides what to do. The twin lives in the Biongevity app.">
+        lede="Repeated labs, genomics, wearables and lifestyle — learned over time into a personal digital twin. Biongevity SI explains what changed and why; your clinician decides what to do. The twin lives in the Biongevity app.">
         <AppButtons />
       </PageHero>
 
