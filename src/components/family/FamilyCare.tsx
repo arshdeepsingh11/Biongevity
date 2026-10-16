@@ -13,7 +13,7 @@ import { AIChartFrame } from "@/components/charts/AICharts";
 import { BuyButton } from "@/components/commerce/BuyButton";
 import { env } from "@/lib/env";
 
-/** Family care planner — for adult children looking after a parent. On-device; Xevyo drafts on click. */
+/** Family care planner — for adult children looking after a parent. On-device; Biongevity SI drafts on click. */
 export function FamilyPlanner() {
   const { ask } = useAI();
   const [age, setAge] = useState(78);
