@@ -23,7 +23,7 @@ const KEY: Record<string, { ing: string[]; hour: number; when: string }> = {
 
 /**
  * AI Protocol Studio — pick formulas; see a daily dose clock, ingredient overlap with AI watch-outs,
- * and monthly cost. On-device logic only; Xevyo reviews on click. Purchase on bioarodrugs.com.
+ * and monthly cost. On-device logic only; Biongevity SI reviews on click. Purchase on bioarodrugs.com.
  */
 export function ProtocolStudio() {
   const { ask } = useAI();
