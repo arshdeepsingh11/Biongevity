@@ -5,7 +5,7 @@ import { AskAboutChip } from "@/components/ai/AskAboutChip";
 import { PageSummary } from "@/components/ai/PageSummary";
 
 /**
- * Page section. `ai` names the section for Xevyo and adds the "✦ Ask about this" chip (top-right).
+ * Page section. `ai` names the section for Biongevity SI and adds the "✦ Ask about this" chip (top-right).
  * Pass `chip={false}` for sections that already are an AI tool.
  */
 export function Section({ ai, children, className, id, chip = true }: { ai: string; children: ReactNode; className?: string; id?: string; chip?: boolean }) {
