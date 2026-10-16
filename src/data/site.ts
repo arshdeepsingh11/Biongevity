@@ -56,7 +56,7 @@ export const NAV: NavItem[] = [
       { href: "/app/", label: "Biongevity App", icon: "phone", desc: "Wearables, AI coach and your record in your pocket." },
       { href: "/insights/", label: "Insights", icon: "book", desc: "Longevity science, explained plainly." },
       { href: "/about/", label: "About", icon: "info", desc: "Mission, vision and the BioAro group." },
-      { href: "/ai/", label: "How our AI works", icon: "shield", desc: "What Xevyo does and doesn't do, with model cards." },
+      { href: "/ai/", label: "How our AI works", icon: "shield", desc: "What Biongevity SI does and doesn't do, with model cards." },
       { href: "/dashboard/", label: "Member dashboard", icon: "user", desc: "Illustrative demo of your BioELR record." },
     ],
   },
