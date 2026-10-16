@@ -110,11 +110,9 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 @keyframes caret { 50% { opacity: 0; } }
 
 /* ───── Theme details ───── */
-[data-theme="midnight"] img, [data-theme="midnight"] video { filter: brightness(.9); }
-[data-theme="midnight"] .card { box-shadow: none; border-color: rgb(255 255 255 / .08); }
 [data-theme="mono"] .text-iri { background: none; color: var(--ink); }
-/* Aurora: minimal white, tiny particles, soft glass, refined type, orange used with restraint. */
-[data-theme="aurora"] body { background:
+/* Olive: off-white, tiny particles, soft white glass, refined type, olive used with restraint. */
+[data-theme="olive"] body { background:
   radial-gradient(1100px 700px at 100% 0%, rgb(var(--c-ai-hi) / .07), transparent 60%),
   radial-gradient(900px 600px at 0% 100%, rgb(var(--c-ai-2) / .05), transparent 60%),
   rgb(var(--c-pearl)); background-attachment: fixed; }
