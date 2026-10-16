@@ -62,56 +62,7 @@
   color-scheme: light;
 }
 
-/* 2 · MIDNIGHT — dark, warm, an "AI lab" mood. Depth from lighter surfaces, not shadows. */
-:root[data-theme="midnight"] {
-  --c-pearl: 15 14 12;
-  --c-canvas: 23 21 18;
-  --c-surface: 28 26 22;
-  --c-feature: 32 29 24;
-  --c-feature-2: 42 38 32;
-  --c-ink: 243 237 226;
-  --c-muted: 181 170 154;
-  --c-faint: 150 140 125;
-  --c-accent: 212 170 102;
-  --c-accent-soft: 226 192 127;
-  --c-accent-light: 42 36 25;
-  --c-accent-deep: 232 200 142;
-  --c-on-accent: 22 18 11;
-  --c-teal: 141 181 146;
-  --c-teal-soft: 166 199 170;
-  --c-teal-light: 27 36 28;
-  --c-gold: 217 190 142;
-  --c-gold-soft: 43 37 26;
-  --c-gold-deep: 226 192 127;
-  --c-ai: 226 192 127;
-  --c-ai-2: 141 181 146;
-  --c-ai-hi: 255 233 190;
-  --c-on-ai: 22 18 11;
-  --c-ai-soft: 36 31 22;
-  --c-warn: 230 160 92;
-  --c-tangerine: 217 154 108;
-  --c-danger: 242 139 130;
-  --c-shadow: 0 0 0;
-  --c-scrim: 0 0 0;
-  --c-chart-1: 226 192 127;
-  --c-chart-2: 141 181 146;
-  --c-chart-3: 212 170 102;
-  --c-chart-4: 166 199 170;
-  --c-chart-5: 140 131 116;
-  --c-chart-6: 255 233 190;
-  --c-chart-7: 110 140 114;
-  --g-iri: linear-gradient(135deg, #f0d9a8, #d4aa66 52%, #b08a55);
-  --g-iri-x: linear-gradient(90deg, #e8cf9a, #d4aa66 55%, #8db592);
-  --g-text: linear-gradient(90deg, #f0d9a8, #d4aa66 50%, #8db592);
-  --g-feature: linear-gradient(160deg, #24211b 0%, #1c1a16 60%, #171512 100%);
-  --g-btn: linear-gradient(rgb(var(--c-accent)), rgb(var(--c-accent)));
-  --g-ai: linear-gradient(120deg, rgb(var(--c-ai-hi)), rgb(var(--c-ai)) 50%, rgb(var(--c-ai-2)));
-  --header-alpha: 0.7;
-  --heading-track: -0.035em;
-  color-scheme: dark;
-}
-
-/* 3 · MONO — the original black-and-white brand. No hue at all. */
+/* 2 · MONO — the original black-and-white brand. No hue at all. */
 :root[data-theme="mono"] {
   --c-pearl: 255 255 255;
   --c-canvas: 245 245 245;
