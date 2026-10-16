@@ -31,7 +31,7 @@ export function TwinTour() {
       {/* 3D twin */}
       <div className="relative overflow-hidden rounded-[34px] bg-white ring-1 ring-ink/[0.07]">
         <div className="absolute left-4 top-4 z-[4] flex items-center gap-2 rounded-full bg-white/80 py-1 pl-1 pr-3 text-[12px] font-semibold ring-1 ring-ink/[0.06] backdrop-blur-md"><XevyoOrb size={24} live />Your twin · <span className="text-gold-deep">Example</span></div>
-        <BodyHologram height={680} selected={sys ?? (step.id === "body" ? "heart" : null)} onSelect={(id) => { setSys(id); setAuto(false); }}
+        <BodyHologram ar height={680} selected={sys ?? (step.id === "body" ? "heart" : null)} onSelect={(id) => { setSys(id); setAuto(false); }}
           hotspots={TWIN_SYSTEMS.map((x) => ({ id: x.id, label: x.label, status: x.status, tone: x.tone }))} />
         <AnimatePresence>
           {s && (
