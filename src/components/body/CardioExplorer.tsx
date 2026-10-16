@@ -343,3 +343,9 @@ export function CardioExplorer({ height = 640, className }: { height?: number; c
     </div>
   );
 }
+
+function distSeg(px: number, py: number, s: Seg) {
+  const dx = s.x2 - s.x1, dy = s.y2 - s.y1, l = dx * dx + dy * dy || 1;
+  const t = Math.max(0, Math.min(1, ((px - s.x1) * dx + (py - s.y1) * dy) / l));
+  return Math.hypot(px - (s.x1 + t * dx), py - (s.y1 + t * dy));
+}
