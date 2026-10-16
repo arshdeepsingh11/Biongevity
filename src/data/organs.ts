@@ -5,3 +5,5 @@ import type { OrganId } from "./deptExtra";
  * (our own geometry, no third-party model files). Units are roughly −1…1; y is up, z faces the viewer.
  * Each part carries a plain-language note and how it is usually checked. Educational, not to scale.
  */
+
+export type V3 = [number, number, number];
