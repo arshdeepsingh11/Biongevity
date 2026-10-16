@@ -156,7 +156,7 @@ export function AIAssistant() {
                   {m.role === "ai" && m.sources?.length ? (
                     <div className="mt-1.5 flex max-w-[90%] flex-wrap items-center gap-1 px-1">
                       <span className="text-[10.5px] font-semibold uppercase tracking-[0.1em] text-faint">From our pages</span>
-                      {m.sources.map((s, k) => <Link key={s.url + k} href={s.url} onClick={() => setOpen(false)} className="rounded-full bg-ai-soft px-2 py-0.5 text-[11px] font-medium text-ai ring-1 ring-ai/15 hover:ring-ai/40">{k + 1} · {s.title}</Link>)}
+                      {m.sources.map((s, k) => <Link key={s.url + k} href={s.url} onClick={go} className="rounded-full bg-ai-soft px-2 py-0.5 text-[11px] font-medium text-ai ring-1 ring-ai/15 hover:ring-ai/40">{k + 1} · {s.title}</Link>)}
                     </div>
                   ) : null}
                 </div>
