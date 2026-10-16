@@ -29,3 +29,22 @@ export function TestArt({ t, className }: { t: CatalogProduct; className?: strin
     </svg>
   );
 }
+
+/** Front face used by every 3D test component. */
+export function TestFace({ t, compact = false, className }: { t: CatalogProduct; compact?: boolean; className?: string }) {
+  const c = collectionOf(t);
+  return (
+    <div className={cn("relative flex h-full flex-col overflow-hidden rounded-[22px] text-left shadow-card ring-1 ring-ink/[0.06]", className)} style={{ background: "rgb(var(--c-surface))" }}>
+      <div className="relative aspect-[16/10] w-full">
+        <TestArt t={t} />
+        <span className="absolute left-3 top-3"><span className="icon-tile h-10 w-10"><Icon name={t.icon} size={19} /></span></span>
+        <span className="absolute right-3 top-3 rounded-full bg-white/85 px-2 py-0.5 text-[11px] font-semibold text-ink shadow-card backdrop-blur">{formatMoney(t.price)}</span>
+      </div>
+      <div className="flex flex-1 flex-col p-4">
+        <div className="text-[10.5px] font-semibold uppercase tracking-[0.12em] text-ai">{c?.title ?? "BioAro Labs"}</div>
+        <div className={cn("mt-0.5 font-semibold leading-snug", compact ? "text-[14px]" : "text-[16px]")}>{t.title}</div>
+        {!compact && <p className="mt-1 line-clamp-2 text-[12.5px] text-muted">{t.bestFor ?? t.summary}</p>}
+      </div>
+    </div>
+  );
+}
