@@ -10,7 +10,7 @@ import { JsonLd, breadcrumb } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Healthspan platform & digital twin",
-  description: "Biongevity's healthspan intelligence platform: a longevity digital twin, domain scores with a transparent Healthspan Index, an AI coach in English and Japanese, and clinician and family views.",
+  description: "Biongevity's healthspan intelligence platform: a longevity digital twin, domain scores with a transparent Healthspan Index, a multilingual AI coach, and clinician and family views.",
   alternates: { canonical: "/platform/" },
 };
 
