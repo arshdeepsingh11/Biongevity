@@ -135,6 +135,21 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
   -webkit-backdrop-filter: blur(24px) saturate(1.8); backdrop-filter: blur(24px) saturate(1.8);
   box-shadow: 0 1px 2px rgb(var(--c-ink) / .04), 0 12px 32px -14px rgb(var(--c-ink) / .14), 0 0 0 1px rgb(var(--c-ink) / .03); }
 
+/* Glass: white hairline edge, soft spread shadow, faint sheen. No coloured outlines. */
+[data-theme="aurora"] [class*="bg-white"]:not(input):not(textarea):not(select):not(.btn-light) { background-color: var(--glass) !important; }
+[data-theme="aurora"] .card, [data-theme="aurora"] .glass, [data-theme="aurora"] .ai-ring, [data-theme="aurora"] figure.rounded-\[26px\] {
+  background-color: transparent !important;
+  background-image: linear-gradient(160deg, rgb(255 255 255 / .92), rgb(255 252 249 / .72)) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.8); backdrop-filter: blur(20px) saturate(1.8);
+  border-color: rgb(255 255 255 / .95) !important;
+  box-shadow: 0 0 0 1px rgb(var(--c-ink) / .045), 0 1px 2px rgb(var(--c-ink) / .04), 0 14px 34px -16px rgb(var(--c-ink) / .14), 0 28px 60px -34px rgb(var(--c-ai-2) / .22), inset 0 1px 0 rgb(255 255 255 / 1) !important;
+  transition: box-shadow .35s ease, transform .35s cubic-bezier(.2,.8,.2,1);
+}
+[data-theme="aurora"] .card:hover { box-shadow: 0 0 0 1px rgb(var(--c-ai-2) / .14), 0 2px 4px rgb(var(--c-ink) / .04), 0 22px 44px -18px rgb(var(--c-ink) / .16), 0 34px 70px -34px rgb(var(--c-ai-2) / .32), inset 0 1px 0 rgb(255 255 255 / 1) !important; }
+[data-theme="aurora"] .bg-canvas, [data-theme="aurora"] [class*="bg-canvas/"]:not(section) { background-color: rgb(var(--c-ink) / .025) !important; }
+[data-theme="aurora"] [class*="bg-ai-soft"] { background-color: rgb(var(--c-ai-2) / .08) !important; }
+[data-theme="aurora"] .shadow-lift { box-shadow: 0 1px 2px rgb(var(--c-ink) / .04), 0 18px 44px -18px rgb(var(--c-ink) / .16), 0 30px 70px -36px rgb(var(--c-ai-2) / .26) !important; }
+
 
 /* ───── AI signature: anything Xevyo powers ───── */
 .text-ai-grad { background: var(--g-ai); -webkit-background-clip: text; background-clip: text; color: transparent; }
