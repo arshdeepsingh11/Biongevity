@@ -49,7 +49,7 @@ export default function HomePage() {
       </Section>
       <Section ai="Department intelligence">
         <div className="container-x">
-          <Head n="06" label="Department intelligence" title={<>Fourteen departments. <AuroraText>One body.</AuroraText></>} lede="Turn the 3D body and tap a part — or describe a symptom. Xevyo finds the department, shows the evidence and the test that fits." />
+          <Head n="06" label="Department intelligence" title={<>Fourteen departments. <AuroraText>One body.</AuroraText></>} lede="Turn the 3D body and tap a part — or describe a symptom. Biongevity SI finds the department, shows the evidence and the test that fits." />
           <div className="mt-10"><DeptIntelligence /></div>
         </div>
       </Section>
