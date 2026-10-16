@@ -17,11 +17,16 @@ function withCites(text: string) {
   return text.split(/(\[\d\])/g).map((p, i) => (/^\[\d\]$/.test(p) ? <sup key={i} className="mx-0.5 rounded bg-ai-soft px-1 text-[10px] font-semibold text-ai">{p.slice(1, -1)}</sup> : p));
 }
 
-/** Xevyo — Biongevity's in-house AI. Orb launcher bottom-right; panel opens above it. */
+const FEATURED = ["Whole Genome Sequencing 30X", "Pharmacogenomics", "Biological Age", "Microbiome", "CRP"]
+  .map((k) => LAB_TESTS.find((t) => t.title.toLowerCase().includes(k.toLowerCase()))).filter(Boolean) as typeof LAB_TESTS;
+
+/** Biongevity SI — orb launcher bottom-right; panel opens above it. Reads, writes and translates EN · FR · AR · FA. */
 export function AIAssistant() {
-  const { open, setOpen, msgs, busy, ask, summarise, context, section, prompts, connected, reset, language, setLanguage } = useAI();
+  const { open, setOpen, msgs, busy, ask, summarise, translate, context, section, prompts, connected, reset, language, setLanguage } = useAI();
   const [input, setInput] = useState("");
-  const voice = useVoice((t, final) => { if (final) { ask(t); setInput(""); } else setInput(t); });
+  const [tab, setTab] = useState<"discover" | "new" | "tests">("discover");
+  const ui = UI[language], lang = langById(language);
+  const voice = useVoice((t, final) => { if (final) { ask(t); setInput(""); } else setInput(t); }, lang.speech);
   const list = useRef<HTMLDivElement>(null);
   useEffect(() => { list.current?.scrollTo({ top: 1e6, behavior: "smooth" }); }, [msgs]);
   const send = () => { ask(input); setInput(""); };
