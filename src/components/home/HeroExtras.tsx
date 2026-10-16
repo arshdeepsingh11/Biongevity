@@ -129,3 +129,27 @@ export function HeroStats() {
 
 /* ── Life film: a video plays inside the words; the age caption follows the film ── */
 const STAGES = [[0, "Born", "Newborn screening, family history begins"], [8, "Childhood", "Growth, vaccines, paediatric rheumatology"], [25, "Adulthood", "Baseline labs and genome, habits that compound"], [45, "Midlife", "Heart, hormones and metabolism — the window that matters most"], [65, "Later life", "Memory, mobility, medicines that fit your genes"], [90, "Long life", "More good years, shared with family"]] as const;
+
+export function LifeFilm() {
+  const [p, setP] = useState(0);
+  const onTime = useCallback((x: number) => setP(x), []);
+  const age = Math.round(p * 95);
+  const stage = [...STAGES].reverse().find((s) => age >= s[0]) ?? STAGES[0];
+  return (
+    <div className="mx-auto mt-12 max-w-[1100px]">
+      <VideoText text="every age." className="h-[clamp(110px,18vw,230px)]" onTime={onTime} />
+      <div className="mx-auto mt-2 flex max-w-[760px] flex-col items-center gap-3 sm:flex-row">
+        <div className="flex items-baseline gap-1.5 font-mono"><span className="text-[28px] font-semibold tabular-nums text-ai">{String(age).padStart(2, "0")}</span><span className="text-[11px] uppercase tracking-[0.16em] text-faint">yrs</span></div>
+        <div className="relative h-1.5 w-full flex-1 overflow-hidden rounded-full bg-ink/[0.06]">
+          <div className="absolute inset-y-0 left-0 rounded-full bg-ai" style={{ width: `${p * 100}%` }} />
+          {STAGES.map((s) => <span key={s[1]} className="absolute top-1/2 h-2.5 w-px -translate-y-1/2 bg-ink/25" style={{ left: `${(s[0] / 95) * 100}%` }} />)}
+        </div>
+        <AnimatePresence mode="wait">
+          <motion.div key={stage[1]} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} className="min-w-[220px] text-center sm:text-left">
+            <div className="text-[13px] font-semibold">{stage[1]}</div><div className="text-[11.5px] text-muted">{stage[2]}</div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}
