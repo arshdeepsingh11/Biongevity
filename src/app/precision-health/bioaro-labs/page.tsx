@@ -26,6 +26,12 @@ export default function LabsPage() {
           <div className="mt-10"><TestsIn3D /></div>
         </div>
       </Section>
+      <Section ai="Shop by category" id="shop" className="!pt-0 scroll-mt-20" chip={false}>
+        <div className="container-x">
+          <Head n="02" label="Shop by category" title={<>Every BioAro test, <AuroraText>by category.</AuroraText></>} lede="Each test with its icon, artwork, what it is for and its CAD price. Pick your goals and Biongevity SI lights up the best matches." />
+          <div className="mt-8"><ShopCatalog /></div>
+        </div>
+      </Section>
       <Section ai="AI Test Navigator" id="navigator" className="!pt-0 scroll-mt-20" chip={false}><div className="container-x"><TestNavigator /></div></Section>
       <Section ai="BioAro Labs" className="!pt-0"><div className="container-x"><LabsHub /></div></Section>
     </>
