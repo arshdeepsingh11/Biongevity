@@ -34,7 +34,7 @@ export default async function ClinicSubPage({ params }: P) {
           <p data-reveal className="lede mt-4 max-w-[62ch]">{c.summary}</p>
           <div data-reveal className="mt-8 flex flex-wrap gap-3">
             <Link href={`/contact/?interest=${encodeURIComponent(c.name)}`} className="btn-dark">{c.id === "uae" ? "Book a visit" : "Start your journey"}</Link>
-            <AskButton q={`How does the ${c.name} work?`}>Ask Xevyo</AskButton>
+            <AskButton q={`How does the ${c.name} work?`}>Ask Biongevity SI</AskButton>
           </div>
           <div data-reveal className="mt-5"><PageSummary /></div>
         </div>
