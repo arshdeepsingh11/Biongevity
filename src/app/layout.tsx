@@ -11,6 +11,7 @@ import { CommandBar } from "@/components/ai/CommandBar";
 import { AskSelection } from "@/components/ai/AskSelection";
 import { ParticleField } from "@/components/fx/ParticleField";
 import { AINudge } from "@/components/ai/AINudge";
+import { MagneticCursor } from "@/components/fx3d/MagneticCursor";
 import { NextStep } from "@/components/ai/NextStep";
 import { THEME_INIT } from "@/lib/theme";
 import { SITE } from "@/data/site";
