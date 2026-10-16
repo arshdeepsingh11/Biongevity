@@ -27,7 +27,7 @@ export function Triage() {
           <div className="flex flex-wrap gap-2">{ids.map((id) => { const d = deptById(id); return <Link key={id} href={`/precision-health/${id}/`} className="chip border-transparent bg-navy text-white"><Icon name={d.icon} size={15} />{d.name}</Link>; })}</div>
           <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
             <p className="text-[12px] text-faint">Matched by the words you used · a coordinator confirms what fits · not a diagnosis</p>
-            <button onClick={() => ask(`I wrote: "${q}". Which Biongevity departments should I consider and why?`)} className="text-[13px] font-semibold text-accent">Ask Xevyo why →</button>
+            <button onClick={() => ask(`I wrote: "${q}". Which Biongevity departments should I consider and why?`)} className="text-[13px] font-semibold text-accent">Ask Biongevity SI why →</button>
           </div>
         </div>
       )}
