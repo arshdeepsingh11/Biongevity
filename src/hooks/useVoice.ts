@@ -32,7 +32,7 @@ export function useVoice(onText: (text: string, final: boolean) => void, lang?: 
     const C = w.SpeechRecognition ?? w.webkitSpeechRecognition;
     if (!C) return;
     const r = new C();
-    r.lang = navigator.language || "en-CA"; r.interimResults = true; r.continuous = false;
+    r.lang = langRef.current || navigator.language || "en-CA"; r.interimResults = true; r.continuous = false;
     let text = "";
     r.onresult = (e) => {
       text = Array.from(e.results).map((x) => x[0].transcript).join("");
