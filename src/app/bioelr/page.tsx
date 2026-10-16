@@ -32,7 +32,7 @@ export default function BioELRPage() {
         <div className="container-x">
           <div className="relative overflow-hidden rounded-[32px] bg-white p-6 ai-ring sm:p-8">
             <div aria-hidden className="ai-glow -left-16 -top-20 h-64 w-64" />
-            <div className="relative flex flex-wrap items-center gap-3"><XevyoOrb size={44} live halo /><div className="min-w-[220px] flex-1"><div className="text-[24px] font-semibold tracking-tight">AI that works for the care team</div><div className="text-[14px] text-muted">Xevyo drafts, flags and answers. Clinicians review and decide.</div></div><AIBadge /></div>
+            <div className="relative flex flex-wrap items-center gap-3"><XevyoOrb size={44} live halo /><div className="min-w-[220px] flex-1"><div className="text-[24px] font-semibold tracking-tight">AI that works for the care team</div><div className="text-[14px] text-muted">Biongevity SI drafts, flags and answers. Clinicians review and decide.</div></div><AIBadge /></div>
             <div className="relative mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {BIOELR_AI.map((a) => (
                 <div key={a.t} className="rounded-2xl bg-canvas p-4">
