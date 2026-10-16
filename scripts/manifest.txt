@@ -6,6 +6,7 @@ src/app/clinic/[slug]/page.tsx
 src/app/clinic/page.tsx
 src/app/contact/page.tsx
 src/app/dashboard/page.tsx
+src/app/evidence/page.tsx
 src/app/family/page.tsx
 src/app/globals.css
 src/app/icon.svg
@@ -15,6 +16,7 @@ src/app/life/page.tsx
 src/app/login/page.tsx
 src/app/not-found.tsx
 src/app/page.tsx
+src/app/plan/page.tsx
 src/app/platform/page.tsx
 src/app/precision-health/[dept]/page.tsx
 src/app/precision-health/bioaro-drugs/page.tsx
@@ -46,6 +48,7 @@ src/components/bioaro/HealthPackages.tsx
 src/components/bioaro/LabsHub.tsx
 src/components/bioelr/Configurator.tsx
 src/components/body/BodyHologram.tsx
+src/components/body/CardioExplorer.tsx
 src/components/charts/AICharts.tsx
 src/components/charts/Charts.tsx
 src/components/charts/EvidenceChart.tsx
@@ -53,12 +56,15 @@ src/components/charts/useInView.ts
 src/components/clinic/BPTracker.tsx
 src/components/clinic/ClinicTabs.tsx
 src/components/clinic3d/BuildingView.tsx
+src/components/clinic3d/City3D.tsx
 src/components/clinic3d/ClinicGlobe.tsx
 src/components/commerce/BuyButton.tsx
 src/components/dept/DeptBody.tsx
 src/components/dept/DeptTabs.tsx
 src/components/drugs/ProtocolStudio.tsx
+src/components/evidence/EvidenceEngine.tsx
 src/components/family/FamilyCare.tsx
+src/components/family/FamilyTree.tsx
 src/components/fx/AIFlow.tsx
 src/components/fx/AnimatedList.tsx
 src/components/fx/AppleDock.tsx
@@ -83,6 +89,15 @@ src/components/fx/ShineBorder.tsx
 src/components/fx/Terminal.tsx
 src/components/fx/TextAnimate.tsx
 src/components/fx/WorldMap.tsx
+src/components/fx3d/BeamCircle.tsx
+src/components/fx3d/Carousel3D.tsx
+src/components/fx3d/CascadeSlider.tsx
+src/components/fx3d/GlassCoinCarousel.tsx
+src/components/fx3d/HoverGallery3D.tsx
+src/components/fx3d/MagneticCursor.tsx
+src/components/fx3d/PageFlip3D.tsx
+src/components/fx3d/TestFace.tsx
+src/components/fx3d/TestsIn3D.tsx
 src/components/home/AIEverywhere.tsx
 src/components/home/AIHero.tsx
 src/components/home/Constellation.tsx
@@ -109,6 +124,7 @@ src/components/pages/ContactForm.tsx
 src/components/pages/Dashboard.tsx
 src/components/pages/JournalList.tsx
 src/components/pages/Triage.tsx
+src/components/plan/CarePlanBuilder.tsx
 src/components/platform/PlatformParts.tsx
 src/components/products/ProductCard.tsx
 src/components/scan/HealthspanScan.tsx
@@ -125,9 +141,11 @@ src/components/theme/ThemeProvider.tsx
 src/components/theme/ThemeSwitcher.tsx
 src/components/tools/AIOutput.tsx
 src/components/tools/LabExplainer.tsx
+src/components/tools/SITools.tsx
 src/components/tools/SpecialistRouter.tsx
 src/components/tools/VisitPrep.tsx
 src/components/twin/TwinTour.tsx
+src/components/twin/TwinWhatIf.tsx
 src/components/ui/Icon.tsx
 src/components/ui/Logo.tsx
 src/components/ui/MediaSlot.tsx
@@ -142,7 +160,9 @@ src/data/catalog.ts
 src/data/clinic.ts
 src/data/dashboard.ts
 src/data/departments.ts
+src/data/discover.ts
 src/data/drugs.ts
+src/data/evidence.ts
 src/data/family.ts
 src/data/governance.ts
 src/data/health.ts
@@ -155,7 +175,9 @@ src/data/site.ts
 src/data/stats.ts
 src/data/twin.ts
 src/data/types.ts
+src/data/vessels.ts
 src/data/worldmap.ts
+src/hooks/useCamera.ts
 src/hooks/useInView.ts
 src/hooks/useReducedMotion.ts
 src/hooks/useVoice.ts
@@ -167,6 +189,7 @@ src/lib/commerce.ts
 src/lib/env.ts
 src/lib/intent.ts
 src/lib/interest.ts
+src/lib/languages.ts
 src/lib/retrieve.ts
 src/lib/scan.ts
 src/lib/seo.tsx
