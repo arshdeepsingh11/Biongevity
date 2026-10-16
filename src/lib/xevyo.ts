@@ -13,7 +13,7 @@ import { langById, type SILanguage } from "./languages";
  */
 export interface XevyoTurn { role: "user" | "assistant"; content: string }
 export interface XevyoReply { reply: string; sources?: { title: string; url: string }[] }
-export type XevyoLanguage = "en" | "ja";
+export type XevyoLanguage = SILanguage;
 
 /** House rules sent with every request. Health-safety wording follows docs/COPY_RULES.md. */
 export function systemPrompt(o: { page: string; section?: string; language?: XevyoLanguage; grounding?: string }) {
