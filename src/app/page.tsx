@@ -59,9 +59,9 @@ export default function HomePage() {
           <div className="mt-10"><GoalPipeline /></div>
         </div>
       </Section>
-      <Section ai="Xevyo everywhere">
+      <Section ai="Biongevity SI everywhere">
         <div className="container-x">
-          <Head n="08" label="Xevyo everywhere" title={<>Beyond the chat. <AuroraText>AI in every step.</AuroraText></>} lede="The same AI that answers your questions also powers your digital twin, free health tools and BioELR — the record system clinics use." />
+          <Head n="08" label="Biongevity SI everywhere" title={<>Beyond the chat. <AuroraText>AI in every step.</AuroraText></>} lede="The same AI that answers your questions also powers your digital twin, free health tools and BioELR — the record system clinics use." />
           <div className="mt-10"><AIEverywhere /></div>
         </div>
       </Section>
