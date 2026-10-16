@@ -2,7 +2,7 @@
 import { useAI } from "./AIProvider";
 import { XevyoOrb } from "./XevyoOrb";
 
-/** "✦ Ask about this" — shown on every section. Opens Xevyo with the section as context. */
+/** "✦ Ask about this" — shown on every section. Opens Biongevity SI with the section as context. */
 export function AskAboutChip({ topic }: { topic: string }) {
   const { ask } = useAI();
   return (
