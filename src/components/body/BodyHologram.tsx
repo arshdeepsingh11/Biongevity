@@ -16,10 +16,13 @@ const TONE_TOKEN: Record<Tone, string> = { good: "teal", attention: "ai-2", neut
  * Drag to rotate, use the buttons to turn or zoom, tap a glowing part to select it.
  * `intensity` (0–1 per organ) makes parts glow — used to show how a habit or a condition affects the body.
  */
-export function BodyHologram({ hotspots = [], selected = null, onSelect, intensity, height = 560, autoRotate = true, className, labels = true, compact = false }: {
+export function BodyHologram({ hotspots = [], selected = null, onSelect, intensity, height = 560, autoRotate = true, className, labels = true, compact = false, ar = false }: {
   hotspots?: Hotspot[]; selected?: string | null; onSelect?: (id: string) => void; intensity?: Record<string, number>;
   height?: number; autoRotate?: boolean; className?: string; labels?: boolean; compact?: boolean;
+  /** Show an "AR view" button: the phone camera appears behind the body (stays on the device). */
+  ar?: boolean;
 }) {
+  const cam = useCamera();
   const wrap = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
   const tags = useRef<(HTMLButtonElement | null)[]>([]);
