@@ -61,7 +61,7 @@ export async function askXevyo(
     });
   } catch (e) {
     if ((e as Error).name === "AbortError") throw e;
-    throw new XevyoError("NETWORK", "Request blocked or unreachable — usually CORS (Xevyo must allow this site's origin) or a wrong URL.");
+    throw new XevyoError("NETWORK", "Request blocked or unreachable — usually CORS (Biongevity SI must allow this site's origin) or a wrong URL.");
   }
   if (!res.ok) {
     const detail = (await res.text().catch(() => "")).slice(0, 200);
