@@ -58,8 +58,8 @@ export function CommandBar() {
       .map((x) => x.r);
   }, [q, index]);
 
-  const askRow: Row | null = q.trim() ? { id: "ask", label: `Ask Xevyo: “${q.trim()}”`, sub: connected ? "Answer from Biongevity's AI" : "Xevyo · not connected yet", icon: "sparkle", group: "AI", text: q, run: () => { ask(q); closeCmd(); } } : null;
-  const suggested: Row[] = q.trim() ? [] : prompts.map((p) => ({ id: `s:${p}`, label: p, sub: "Suggested for this page", icon: "sparkle", group: "Ask Xevyo", text: p, run: () => { ask(p); closeCmd(); } }));
+  const askRow: Row | null = q.trim() ? { id: "ask", label: `Ask Biongevity SI: “${q.trim()}”`, sub: connected ? "Answer from Biongevity's AI" : "Biongevity SI · not connected yet", icon: "sparkle", group: "AI", text: q, run: () => { ask(q); closeCmd(); } } : null;
+  const suggested: Row[] = q.trim() ? [] : prompts.map((p) => ({ id: `s:${p}`, label: p, sub: "Suggested for this page", icon: "sparkle", group: "Ask Biongevity SI", text: p, run: () => { ask(p); closeCmd(); } }));
   const all = [...rows, ...(askRow ? [askRow] : []), ...suggested];
   const active = Math.min(idx, Math.max(all.length - 1, 0));
 
