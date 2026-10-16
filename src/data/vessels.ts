@@ -8,3 +8,4 @@ import type { V3 } from "@/lib/body";
 export type VesselKind = "artery" | "vein" | "pulmonary-artery" | "pulmonary-vein" | "portal" | "coronary";
 
 export interface VesselInfo { id: string; name: string; kind: VesselKind; what: string; fact: string; check?: string; dept?: string }
+export interface Vessel { info: string; r: number; pts: V3[] }
