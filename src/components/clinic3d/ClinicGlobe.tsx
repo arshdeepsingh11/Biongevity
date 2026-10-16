@@ -82,16 +82,26 @@ export function ClinicGlobe() {
         const x = cp * Math.sin(l), y = cp0 * sp - sp0 * cp * cl, k = R * (1 + h);
         return [cx + x * k, cy - y * k, z] as const;
       };
+      const mode = viewRef.current, dark = mode === "dark", sat = mode === "satellite";
+      const hit: typeof hits.current = [];
       ctx.clearRect(0, 0, W, H);
+      // space backdrop + stars for the satellite and dark views
+      if (dark || sat) {
+        ctx.fillStyle = dark ? "#04060c" : "#020814"; ctx.fillRect(0, 0, W, H);
+        for (let i = 0; i < 140; i++) { const sx = (i * 9301 + 49297) % 233280 / 233280 * W, sy = (i * 4253 + 1931) % 104729 / 104729 * H, tw = 0.35 + 0.35 * Math.sin(t * 1.5 + i); ctx.fillStyle = `rgba(255,255,255,${tw * 0.6})`; ctx.fillRect(sx, sy, 1.2, 1.2); }
+      }
       // atmosphere
-      const g = ctx.createRadialGradient(cx, cy, R * 0.85, cx, cy, R * 1.25); g.addColorStop(0, rgba(col.ai2, 0.18)); g.addColorStop(1, rgba(col.ai2, 0));
+      const g = ctx.createRadialGradient(cx, cy, R * 0.85, cx, cy, R * 1.25);
+      g.addColorStop(0, dark ? "rgba(90,140,255,0.22)" : sat ? "rgba(120,180,255,0.35)" : rgba(col.ai2, 0.18)); g.addColorStop(1, "rgba(0,0,0,0)");
       ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, R * 1.25, 0, Math.PI * 2); ctx.fill();
       const sea = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.4, R * 0.1, cx, cy, R);
-      sea.addColorStop(0, rgba(col.surface, 0.95)); sea.addColorStop(1, rgba(col.hi, 0.18));
+      if (sat) { sea.addColorStop(0, "#1d5fa8"); sea.addColorStop(0.7, "#0b3a74"); sea.addColorStop(1, "#05214a"); }
+      else if (dark) { sea.addColorStop(0, "#111a2e"); sea.addColorStop(1, "#060a14"); }
+      else { sea.addColorStop(0, rgba(col.surface, 0.95)); sea.addColorStop(1, rgba(col.hi, 0.18)); }
       ctx.fillStyle = sea; ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
-      ctx.strokeStyle = rgba(col.ai2, 0.25); ctx.lineWidth = 1; ctx.stroke();
+      ctx.strokeStyle = dark || sat ? "rgba(140,190,255,0.35)" : rgba(col.ai2, 0.25); ctx.lineWidth = 1; ctx.stroke();
       // graticule
-      ctx.strokeStyle = rgba(col.ink, 0.05);
+      ctx.strokeStyle = dark || sat ? "rgba(160,200,255,0.07)" : rgba(col.ink, 0.05);
       for (let lat = -60; lat <= 60; lat += 30) { ctx.beginPath(); let first = true; for (let lon = -180; lon <= 180; lon += 6) { const [x, y, z] = project(lon, lat); if (z < 0) { first = true; continue; } if (first) ctx.moveTo(x, y); else ctx.lineTo(x, y); first = false; } ctx.stroke(); }
       // land
       const ds = Math.max(1.1, R / 170);
