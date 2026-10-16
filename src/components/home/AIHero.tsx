@@ -90,7 +90,7 @@ export function AIHero() {
                       <Col title="Formulas" icon="tablets" empty="No formula match yet">{r.formulas.map(({ x, s }) => <Row key={x.handle} href={x.url} ext icon={x.icon} t={x.title} sub={x.tagline ?? ""} s={s} />)}</Col>
                     </div>
                   </div>
-                  <p className="mt-3 px-1 text-[11px] text-faint">Matched on your device from our own data. Press Enter for a written answer from Xevyo. Education, not a diagnosis.</p>
+                  <p className="mt-3 px-1 text-[11px] text-faint">Matched on your device from our own data. Press Enter for a written answer from Biongevity SI. Education, not a diagnosis.</p>
                 </div>
               </motion.div>
             )}
