@@ -21,7 +21,7 @@ export default function AIPage() {
     <>
       <JsonLd data={[breadcrumb([["How our AI works", "/ai/"]]), faqPage(AI_FAQ)]} />
       <PageHero eyebrow="How our AI works" ai="AI governance" title={<>AI you can <span className="text-ai-grad">see through.</span></>}
-        lede="Xevyo is Biongevity's in-house AI. Here is exactly what it does on this website, what it never does, and how each model is described.">
+        lede="Biongevity SI is Biongevity's in-house AI. Here is exactly what it does on this website, what it never does, and how each model is described.">
         <div className="flex flex-wrap items-center gap-3"><XevyoOrb size={44} live halo /><AIBadge /><AIBadge label="Clinician-first" /><AIBadge label="Nothing stored" /></div>
       </PageHero>
 
