@@ -153,3 +153,19 @@ function Detail({ kicker, title, body, action, note }: { kicker: string; title: 
     </>
   );
 }
+
+/** SI reasoning trace — what the engine weighed at each step, typed out live. */
+const WHY = ["Read your goal and its population risk", "Ranked BioAro tests by goal match × evidence", "Mapped the result to what it can reveal", "Matched formulas to the same goal tags", "Picked the program that bundles the right checks", "Routed to the department that owns follow-up"];
+function Reasoning({ step, chosen, alts }: { step: number; chosen: string[]; alts: string[][] }) {
+  return (
+    <div className="relative mt-4 rounded-[20px] bg-ink/[0.025] p-3 font-mono text-[11.5px] leading-relaxed">
+      <div className="mb-1.5 flex items-center gap-1.5 text-[10px] uppercase tracking-[0.16em] text-ai"><span className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-ai" />SI reasoning trace</div>
+      {WHY.slice(0, step + 1).map((w, i) => (
+        <motion.div key={i} initial={{ opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i === step ? 0.05 : 0 }} className={`flex flex-wrap gap-x-2 ${i === step ? "text-ink" : "text-faint"}`}>
+          <span className="text-ai">{String(i + 1).padStart(2, "0")}›</span><span>{w}</span><span className="text-ai">→ {chosen[i].length > 48 ? chosen[i].slice(0, 48) + "…" : chosen[i]}</span>
+          {alts[i]?.length ? <span className="text-faint">(also weighed: {alts[i].join(", ")})</span> : null}
+        </motion.div>
+      ))}
+    </div>
+  );
+}
