@@ -75,7 +75,7 @@ export function CommandBar() {
       {cmd.open && (
         <>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={closeCmd} className="fixed inset-0 z-[120] bg-scrim/30 backdrop-blur-[3px]" />
-          <motion.div role="dialog" aria-label="Search or ask Xevyo" initial={{ opacity: 0, y: -14, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -10, scale: 0.98 }}
+          <motion.div role="dialog" aria-label="Search or ask Biongevity SI" initial={{ opacity: 0, y: -14, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -10, scale: 0.98 }}
             transition={{ type: "spring", stiffness: 380, damping: 32 }}
             className="fixed inset-x-3 top-[calc(76px+var(--safe-top))] z-[121] mx-auto max-w-[640px] overflow-hidden rounded-[24px] bg-pearl/95 shadow-lift ring-1 ring-ai/25 backdrop-blur-2xl">
             <div aria-hidden className="scanline" />
