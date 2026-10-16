@@ -73,3 +73,49 @@ function ExpandSearch({ open, setOpen }: { open: boolean; setOpen: (o: boolean) 
     </motion.form>
   );
 }
+
+/** Top bar: brand, search, Ask Biongevity SI, theme switcher, Sign in (→ member app) and Book. Hides on scroll down — only the logo stays. */
+export function Header() {
+  const { openCmd } = useAI();
+  const [search, setSearch] = useState(false);
+  const hidden = useHideOnScroll(search);
+
+  return (
+    <>
+      <header className="site-header pointer-events-none fixed inset-x-0 top-0 z-[80] pt-[var(--safe-top)]">
+        <motion.div className="site-bar pointer-events-auto border-b border-ink/[0.06] backdrop-blur-[22px] backdrop-saturate-[1.6]"
+          style={{ background: "rgb(var(--c-pearl) / var(--header-alpha))" }}
+          animate={hidden ? { y: -96, opacity: 0 } : { y: 0, opacity: 1 }} transition={SPRING} aria-hidden={hidden || undefined} inert={hidden}>
+          <div className="site-inner mx-auto flex h-[60px] max-w-[1280px] items-center gap-2 px-3 sm:gap-3 sm:px-6">
+            <Link href="/" aria-label="Biongevity home" className="shrink-0"><Logo size={24} /></Link>
+            <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
+              <div className={`flex items-center gap-1.5 sm:gap-2 ${search ? "max-md:hidden" : ""}`}>
+              <button onClick={() => openCmd()} aria-label="Ask Biongevity SI (Ctrl X)"
+                className="group flex h-9 items-center gap-2 rounded-full bg-white/80 pl-1 pr-1 text-[13px] text-muted ring-1 ring-ai/20 transition hover:text-ai hover:ring-ai/40 md:pr-3">
+                <XevyoOrb size={28} />
+                <span className="hidden md:inline">Ask SI</span>
+                <kbd className="hidden rounded-md bg-canvas px-1.5 py-0.5 font-mono text-[10.5px] text-faint lg:inline">Ctrl X</kbd>
+              </button>
+              <ThemeSwitcher />
+              <Link href="/login/" aria-label="Sign in" className="flex h-9 items-center gap-1.5 rounded-full bg-white/80 px-2.5 text-[13px] font-semibold ring-1 ring-ink/[0.08] hover:text-accent sm:px-3.5"><Icon name="user" size={15} /><span className="hidden sm:inline">Sign in</span></Link>
+              <Link href="/contact/" className="flex h-9 items-center rounded-full bg-accent bg-btn-grad px-3 text-[13px] font-semibold text-on-accent shadow-[0_6px_18px_rgb(var(--c-accent)/.26)] hover:brightness-110 sm:px-3.5">Book<span className="hidden sm:inline">&nbsp;consult</span></Link>
+              </div>
+              <ExpandSearch open={search} setOpen={setSearch} />
+            </div>
+          </div>
+        </motion.div>
+      </header>
+
+      {/* While the bar is away, only the logo floats (no background) and still goes home. */}
+      <AnimatePresence>
+        {hidden && (
+          <motion.div key="float-logo" className="pointer-events-none fixed inset-x-0 top-0 z-[81] pt-[var(--safe-top)]" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={SPRING}>
+            <div className="float-logo mx-auto flex h-[60px] max-w-[1280px] items-center px-3 sm:px-6">
+              <Link href="/" aria-label="Biongevity home" className="pointer-events-auto rounded-xl p-1 drop-shadow-[0_2px_10px_rgb(255_255_255/.9)] transition-transform hover:scale-[1.04]"><Logo size={24} /></Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
