@@ -8,7 +8,7 @@ import { XevyoOrb } from "@/components/ai/XevyoOrb";
 /*
  * AI chart kit — dependency-free SVG charts that follow the active theme.
  * Every chart can sit inside <AIChartFrame>, which adds an on-device "✦ AI insight" line
- * and an "Explain this chart" button (Xevyo, on click, with the chart data as context).
+ * and an "Explain this chart" button (Biongevity SI, on click, with the chart data as context).
  */
 
 /* ---------- Frame: title + AI insight + explain ---------- */
