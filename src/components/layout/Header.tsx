@@ -6,7 +6,7 @@ import { useAI } from "@/components/ai/AIProvider";
 import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { ThemeSwitcher } from "@/components/theme/ThemeSwitcher";
 
-/** Top bar: brand, Ask Xevyo, theme switcher, Sign in (→ member app) and Book. Primary navigation stays in the bottom Sparkle Navbar. */
+/** Top bar: brand, Ask Biongevity SI, theme switcher, Sign in (→ member app) and Book. Primary navigation stays in the bottom Sparkle Navbar. */
 export function Header() {
   const { openCmd } = useAI();
   return (
