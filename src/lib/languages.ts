@@ -8,3 +8,4 @@ export const LANGUAGES: { id: SILanguage; label: string; native: string; dir: "l
   { id: "fa", label: "Persian", native: "فارسی", dir: "rtl", speech: "fa-IR" },
 ];
 export const langById = (id: SILanguage) => LANGUAGES.find((l) => l.id === id) ?? LANGUAGES[0];
+export const isLanguage = (v: unknown): v is SILanguage => LANGUAGES.some((l) => l.id === v);
