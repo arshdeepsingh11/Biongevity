@@ -36,7 +36,7 @@ export default function FamilyPage() {
       </Section>
       <Section ai="Ask about family care" chip={false}>
         <div className="container-x grid items-center gap-8 lg:grid-cols-2">
-          <div><h2 className="h-section">Not sure where to start?</h2><p className="lede mt-4">Ask Xevyo — in English or 日本語 — about memory, falls, medicines or how to start the conversation with your parent.</p></div>
+          <div><h2 className="h-section">Not sure where to start?</h2><p className="lede mt-4">Ask Biongevity SI — in English, French, Arabic or Persian — about memory, falls, medicines or how to start the conversation with your parent.</p></div>
           <AIPanel title="Ask about caring for a parent" context="Family care for an ageing parent" prompts={["How do I talk to my dad about memory problems?", "What should a medication review include?", "How can I help my mum from another city?"]} />
         </div>
       </Section>
