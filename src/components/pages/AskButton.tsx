@@ -4,7 +4,7 @@ import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { ShineBorder } from "@/components/fx/ShineBorder";
 import { cn } from "@/lib/utils";
 
-/** "Ask Xevyo" button for server-rendered pages — opens the Xevyo chat with a question. */
+/** "Ask Biongevity SI" button for server-rendered pages — opens the Biongevity SI chat with a question. */
 export function AskButton({ q, children, className, variant = "shine" }: { q: string; children: React.ReactNode; className?: string; variant?: "shine" | "row" }) {
   const { ask } = useAI();
   if (variant === "row")
