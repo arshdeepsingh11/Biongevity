@@ -121,6 +121,13 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 [data-theme="aurora"] .grid-bg, [data-theme="aurora"] .ai-glow, [data-theme="aurora"] canvas[data-ai-fx]:not(.fixed), [data-theme="aurora"] .bg-iri[data-ai-fx] { display: none !important; }
 [data-theme="aurora"] section[class*="bg-canvas/"] { background-color: transparent !important; }
 
+/* Type: lighter weights and calmer sizes read as premium. */
+[data-theme="aurora"] .h-display, [data-theme="aurora"] .h-section { text-wrap: balance; }
+[data-theme="aurora"] .h-display { font-weight: 600; font-size: clamp(40px, 6vw, 76px); line-height: 1.04; letter-spacing: -0.035em; }
+[data-theme="aurora"] .h-section { font-weight: 600; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.028em; }
+[data-theme="aurora"] .lede { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.6; }
+[data-theme="aurora"] .hud-label, [data-theme="aurora"] .eyebrow { letter-spacing: .14em; }
+
 
 /* ───── AI signature: anything Xevyo powers ───── */
 .text-ai-grad { background: var(--g-ai); -webkit-background-clip: text; background-clip: text; color: transparent; }
