@@ -131,3 +131,4 @@ export function GenesVsLifestyle() {
 /* ───────────── Intervention ranking ───────────── */
 type GradeW = "High" | "Moderate" | "Low" | "None";
 interface Iv { id: string; t: string; icon: IconName; benefit: number; grade: GradeW; cost: 0 | 1 | 2 | 3; costL: string; effort: number; src: string; applies: (p: Prof) => number; dept?: string }
+interface Prof { age: number; smoker: boolean; sbp: number; steps: number; sleep: number; diet: 0 | 1 | 2; ldl: "high" | "ok" | "unknown"; tg: boolean }
