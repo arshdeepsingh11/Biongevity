@@ -145,3 +145,51 @@ const IVS: Iv[] = [
   { id: "epa", t: "High-dose EPA (if triglycerides high on a statin)", icon: "pill", benefit: 0.45, grade: "Moderate", cost: 3, costL: "$$$ (prescription)", effort: 1, src: "REDUCE-IT 2019: HR 0.75", applies: (p) => (p.tg ? 1 : 0), dept: "cardiology" },
   { id: "vitd", t: "Vitamin D pills for heart protection", icon: "sun", benefit: 0, grade: "None", cost: 1, costL: "$", effort: 1, src: "VITAL 2019: no heart benefit (High certainty)", applies: () => 1 },
 ];
+/**
+ * Intervention ranking — every step scored for you on your device: expected benefit × certainty of evidence × how
+ * much it applies to you, discounted by cost and effort. Transparent maths, no hidden model. Educational estimate.
+ */
+export function InterventionRanking() {
+  const { ask } = useAI();
+  const [p, setP] = useState<Prof>({ age: 54, smoker: false, sbp: 138, steps: 5200, sleep: 6.3, diet: 1, ldl: "unknown", tg: false });
+  const set = <K extends keyof Prof>(k: K) => (v: Prof[K]) => setP((x) => ({ ...x, [k]: v }));
+  const ranked = useMemo(() => IVS.map((iv) => { const a = iv.applies(p), score = (100 * iv.benefit * GW[iv.grade] * a) / (1 + 0.12 * iv.effort + 0.1 * iv.cost); return { iv, a, score }; }).sort((x, y) => y.score - x.score), [p]);
+  const top = ranked[0]?.score || 1;
+
+  return (
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-[320px_minmax(0,1fr)]">
+      <Card className="space-y-3.5">
+        <Slider label="Age" v={p.age} set={set("age")} min={30} max={85} />
+        <Slider label="Systolic blood pressure" v={p.sbp} set={set("sbp")} min={100} max={180} fmt={(n) => `${n} mmHg`} />
+        <Slider label="Steps a day" v={p.steps} set={set("steps")} min={1000} max={15000} step={100} fmt={(n) => n.toLocaleString()} />
+        <Slider label="Sleep" v={p.sleep} set={set("sleep")} min={4} max={10} step={0.1} fmt={(n) => `${n.toFixed(1)} h`} />
+        <div><div className="mb-1 text-[12.5px] font-medium">Diet quality</div><Seg v={p.diet} set={set("diet")} opts={[[0, "Mostly processed"], [1, "Mixed"], [2, "Mostly whole foods"]]} /></div>
+        <div><div className="mb-1 text-[12.5px] font-medium">LDL cholesterol</div><Seg v={p.ldl} set={set("ldl")} opts={[["unknown", "Don't know"], ["ok", "Normal"], ["high", "High"]]} /></div>
+        <label className="flex items-center justify-between text-[13px]"><span>I smoke</span><input type="checkbox" checked={p.smoker} onChange={(e) => set("smoker")(e.target.checked)} className="h-4 w-4 accent-[rgb(var(--c-ai))]" /></label>
+        <label className="flex items-center justify-between text-[13px]"><span>High triglycerides on a statin</span><input type="checkbox" checked={p.tg} onChange={(e) => set("tg")(e.target.checked)} className="h-4 w-4 accent-[rgb(var(--c-ai))]" /></label>
+      </Card>
+      <Card>
+        <div className="flex flex-wrap items-center justify-between gap-2"><div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ai">✦ Ranked for you</div><span className="text-[11px] text-faint">score = benefit × certainty × fit ÷ (cost + effort)</span></div>
+        <ol className="mt-3 space-y-2">
+          {ranked.map(({ iv, a, score }, i) => (
+            <motion.li layout key={iv.id} className={cn("rounded-2xl p-3 ring-1", i < 3 && score > 0 ? "bg-ai-soft/60 ring-ai/25" : "bg-canvas ring-transparent")}>
+              <div className="flex items-center gap-3">
+                <span className={cn("grid h-7 w-7 shrink-0 place-items-center rounded-full text-[12px] font-bold", i < 3 && score > 0 ? "bg-ai text-on-ai" : "bg-white text-muted")}>{i + 1}</span>
+                <span className="icon-tile h-9 w-9"><Icon name={iv.icon} size={17} /></span>
+                <span className="min-w-0 flex-1"><span className="block text-[13.5px] font-semibold leading-snug">{iv.t}</span><span className="block truncate text-[11px] text-faint">{iv.src}</span></span>
+                <span className="w-14 shrink-0 text-right text-[16px] font-semibold tabular-nums">{Math.round(score)}</span>
+              </div>
+              <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-ink/[0.06]"><motion.div className="h-full rounded-full bg-ai" animate={{ width: `${(score / top) * 100}%` }} /></div>
+              <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-0.5 text-[10.5px] text-muted"><span>Certainty: <b>{iv.grade === "None" ? "High — no benefit" : iv.grade}</b></span><span>Fits you: <b>{Math.round(a * 100)}%</b></span><span>Cost: <b>{iv.costL}</b></span><span>Effort: <b>{"●".repeat(iv.effort)}{"○".repeat(5 - iv.effort)}</b></span></div>
+            </motion.li>
+          ))}
+        </ol>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <button onClick={() => ask(`My top three steps from the Biongevity intervention ranking are: ${ranked.slice(0, 3).map((r) => r.iv.t).join("; ")}. Explain why, and how to start each safely this month.`, { label: "✦ Explain my top three" })} className="btn-ai h-10 px-4 text-[13px]"><XevyoOrb size={20} />Explain my top three</button>
+          <Link href="/plan/" className="btn-light h-10 px-4 text-[13px]">Turn into a 12-month plan<Icon name="arrow-right" size={14} /></Link>
+        </div>
+        <p className="mt-3 text-[11px] text-faint">Benefit and certainty come from the studies in our <Link href="/evidence/" className="underline">evidence engine</Link>; costs are rough CAD tiers. Educational ranking — your clinician decides.</p>
+      </Card>
+    </div>
+  );
+}
