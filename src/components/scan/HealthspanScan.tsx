@@ -107,7 +107,7 @@ export function ScanTeaser({ className }: { className?: string }) {
       <p className="relative mt-2 text-[14.5px] text-muted">12 one-tap questions. A radar of 9 health domains, the BioAro Labs tests that fit you, and a 12-month re-test plan.</p>
       <div className="relative mt-5 flex flex-wrap gap-2">
         <Link href="/scan/" className="btn-ai h-11 px-5">Start the AI scan<Icon name="arrow-right" size={16} /></Link>
-        <button onClick={() => ask("What does the Biongevity AI Healthspan Scan measure, and how should I use the results?", { label: "✦ What does the scan measure?" })} className="btn-light h-11 px-5">What does it measure?</button>
+        <button onClick={() => ask("What does the Biongevity SI Healthspan Scan measure, and how should I use the results?", { label: "✦ What does the scan measure?" })} className="btn-light h-11 px-5">What does it measure?</button>
       </div>
       <div className="relative mt-6 grid grid-cols-3 gap-2">
         {[["radar", "9-domain radar"], ["test-tubes", "Ranked BioAro tests"], ["calendar", "Re-test timeline"]].map(([i, t]) => (
