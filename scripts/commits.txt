@@ -1,4 +1,99 @@
-feat(lib): department goals in a server-safe module|src/lib/deptGoals.ts
-refactor(labs): DeptTests reads department goals from lib/deptGoals|src/components/labs/DeptTests.tsx
-fix(build): department pages check for tests without calling a client file|src/app/precision-health/[dept]/page.tsx
+fix(olive): scope the floating top bar to the site header, not every header|src/app/globals.css@1
+feat(header): floating logo position in Olive|src/app/globals.css@2
+style(olive): frosted glass cards and panels|src/app/globals.css@3
+feat(hero): gradient fallback animation for video text|src/app/globals.css
+feat(header): imports for scroll and search motion|src/components/layout/Header.tsx@4
+feat(header): hide on scroll down and expandable spring search|src/components/layout/Header.tsx@5
+feat(header): logo floats alone while the bar is hidden|src/components/layout/Header.tsx
+feat(si): hub state for the discovery panel|src/components/ai/AIAssistant.tsx@6
+fix(si): New opens a fresh chat with the discovery hub|src/components/ai/AIAssistant.tsx@7
+feat(si): Explore BioAro toggle in the greeting|src/components/ai/AIAssistant.tsx@8
+fix(si): discovery tabs show only when asked for|src/components/ai/AIAssistant.tsx@9
+fix(si): close the discovery hub wrapper|src/components/ai/AIAssistant.tsx
+feat(media): life film slot for the hero video text|src/config/media.ts
+feat(hero): add VideoText|src/components/fx/VideoText.tsx
+feat(hero): add PromptCard (HeroExtras)|src/components/home/HeroExtras.tsx@10
+feat(hero): add DeptDots|src/components/home/HeroExtras.tsx@11
+feat(hero): add TestBars|src/components/home/HeroExtras.tsx@12
+feat(hero): add MarkerOrbit|src/components/home/HeroExtras.tsx@13
+feat(hero): add FormulaRing|src/components/home/HeroExtras.tsx@14
+feat(hero): add STATS|src/components/home/HeroExtras.tsx@15
+feat(hero): add HeroStats|src/components/home/HeroExtras.tsx@16
+feat(hero): add LifeFilm|src/components/home/HeroExtras.tsx
+refactor(hero): import prompt cards, stats and life film|src/components/home/AIHero.tsx@17
+feat(hero): what SI will cover for each suggested question|src/components/home/AIHero.tsx@18
+copy(hero): More good years, guided by SI|src/components/home/AIHero.tsx@19
+feat(hero): suggested questions with hover popovers|src/components/home/AIHero.tsx@20
+feat(hero): live stat cards and the every age video text|src/components/home/AIHero.tsx
+feat(evidence): drag-to-explore curves for steps, blood pressure, sleep and habits|src/components/home/EvidenceBoard.tsx
+fix(intent): ignore filler words like always and really|src/lib/intent.ts
+feat(pipeline): import the on-device matcher|src/components/home/GoalPipeline.tsx@21
+feat(pipeline): route a goal described in your own words|src/components/home/GoalPipeline.tsx@22
+feat(pipeline): Route my goal input with match strength and signals|src/components/home/GoalPipeline.tsx@23
+feat(pipeline): show the SI reasoning trace|src/components/home/GoalPipeline.tsx@24
+feat(pipeline): reasoning trace with alternatives weighed|src/components/home/GoalPipeline.tsx
+feat(globe): view modes and BioAro satellite data|src/components/clinic3d/ClinicGlobe.tsx@25
+feat(globe): state for view, hover, satellites and hit targets|src/components/clinic3d/ClinicGlobe.tsx@26
+feat(globe): space backdrop, stars and satellite or dark oceans|src/components/clinic3d/ClinicGlobe.tsx@27
+feat(globe): satellite land colours, city lights and drifting clouds|src/components/clinic3d/ClinicGlobe.tsx@28
+feat(globe): tap cities and satellites on the globe; orbiting BioAro satellites|src/components/clinic3d/ClinicGlobe.tsx@29
+feat(globe): fly to a city tapped on the globe|src/components/clinic3d/ClinicGlobe.tsx@30
+feat(globe): Light, Satellite and Dark switch with satellite cards|src/components/clinic3d/ClinicGlobe.tsx
+feat(commerce): optional compact buy button|src/components/commerce/BuyButton.tsx@31
+feat(commerce): hide the store name when compact|src/components/commerce/BuyButton.tsx
+feat(labs): add TestHero (ShopCatalog)|src/components/labs/ShopCatalog.tsx@32
+feat(labs): add ShopCatalog|src/components/labs/ShopCatalog.tsx
+feat(3d): add ServicesRing (Showcases)|src/components/fx3d/Showcases.tsx@33
+feat(3d): add FormulaCoins|src/components/fx3d/Showcases.tsx@34
+feat(3d): add PackageCascade|src/components/fx3d/Showcases.tsx@35
+feat(3d): add DeptBeam|src/components/fx3d/Showcases.tsx
+feat(dept): add deptExtra|src/data/deptExtra.ts@36
+feat(dept): add OrganId|src/data/deptExtra.ts@37
+feat(dept): add DeptExtra|src/data/deptExtra.ts@38
+feat(dept): add LABS|src/data/deptExtra.ts@39
+feat(dept): add DEPT_EXTRA|src/data/deptExtra.ts
+feat(organs): add organs|src/data/organs.ts@40
+feat(organs): add V3|src/data/organs.ts@41
+feat(organs): add Shape|src/data/organs.ts@42
+feat(organs): add Tone|src/data/organs.ts@43
+feat(organs): add Part|src/data/organs.ts@44
+feat(organs): add Organ|src/data/organs.ts@45
+feat(organs): add coil|src/data/organs.ts@46
+feat(organs): add arc|src/data/organs.ts@47
+feat(organs): add ORGANS|src/data/organs.ts
+feat(organs): add Organ3D|src/components/body/Organ3D.tsx
+feat(dept): add DeptDeepDive|src/components/dept/DeptDeepDive.tsx
+feat(visit): add visits|src/data/visits.ts@48
+feat(visit): add Tone|src/data/visits.ts@49
+feat(visit): add Room|src/data/visits.ts@50
+feat(visit): add Prop|src/data/visits.ts@51
+feat(visit): add Staff|src/data/visits.ts@52
+feat(visit): add Step|src/data/visits.ts@53
+feat(visit): add Visit|src/data/visits.ts@54
+feat(visit): add CALGARY_VISIT|src/data/visits.ts@55
+feat(visit): add DUBAI_VISIT|src/data/visits.ts
+feat(visit): add box (Visit3D)|src/components/clinic3d/Visit3D.tsx@56
+feat(visit): add person|src/components/clinic3d/Visit3D.tsx@57
+feat(visit): add TONES|src/components/clinic3d/Visit3D.tsx@58
+feat(visit): add Visit3D|src/components/clinic3d/Visit3D.tsx
+feat(visit): add VisitSection|src/components/clinic3d/VisitSection.tsx
+refactor(family): share the conditions list|src/components/family/FamilyTree.tsx
+feat(family): add ORDER (FamilyBuilder3D)|src/components/family/FamilyBuilder3D.tsx@59
+feat(family): add avatar|src/components/family/FamilyBuilder3D.tsx@60
+feat(family): add findTest|src/components/family/FamilyBuilder3D.tsx@61
+feat(family): add FamilyBuilder3D|src/components/family/FamilyBuilder3D.tsx
+feat(clinic): import the 3D visit section|src/app/clinic/[slug]/page.tsx@62
+feat(clinic): 3D visit walkthrough on Virtual Clinic and UAE pages|src/app/clinic/[slug]/page.tsx
+feat(family): import the live family builder|src/app/family/page.tsx@63
+feat(family): build your family live section|src/app/family/page.tsx
+feat(dept): import services ring, deep dive and organ data|src/app/precision-health/[dept]/page.tsx@64
+feat(dept): 3D organ, offers, connected care and services ring|src/app/precision-health/[dept]/page.tsx
+feat(drugs): import glass coin formulas|src/app/precision-health/bioaro-drugs/page.tsx@65
+feat(drugs): formulas in 3D section|src/app/precision-health/bioaro-drugs/page.tsx
+feat(labs): import the shop catalogue|src/app/precision-health/bioaro-labs/page.tsx@66
+feat(labs): shop every test by category|src/app/precision-health/bioaro-labs/page.tsx
+feat(precision): import the department beam circle|src/app/precision-health/page.tsx@67
+feat(precision): departments on one record beam circle|src/app/precision-health/page.tsx
+feat(shop): import the program cascade|src/app/shop/page.tsx@68
+feat(shop): programs in 3D section|src/app/shop/page.tsx
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt

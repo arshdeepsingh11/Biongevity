@@ -49,6 +49,7 @@ src/components/bioaro/LabsHub.tsx
 src/components/bioelr/Configurator.tsx
 src/components/body/BodyHologram.tsx
 src/components/body/CardioExplorer.tsx
+src/components/body/Organ3D.tsx
 src/components/charts/AICharts.tsx
 src/components/charts/Charts.tsx
 src/components/charts/EvidenceChart.tsx
@@ -58,11 +59,15 @@ src/components/clinic/ClinicTabs.tsx
 src/components/clinic3d/BuildingView.tsx
 src/components/clinic3d/City3D.tsx
 src/components/clinic3d/ClinicGlobe.tsx
+src/components/clinic3d/Visit3D.tsx
+src/components/clinic3d/VisitSection.tsx
 src/components/commerce/BuyButton.tsx
 src/components/dept/DeptBody.tsx
+src/components/dept/DeptDeepDive.tsx
 src/components/dept/DeptTabs.tsx
 src/components/drugs/ProtocolStudio.tsx
 src/components/evidence/EvidenceEngine.tsx
+src/components/family/FamilyBuilder3D.tsx
 src/components/family/FamilyCare.tsx
 src/components/family/FamilyTree.tsx
 src/components/fx/AIFlow.tsx
@@ -88,6 +93,7 @@ src/components/fx/ShimmerButton.tsx
 src/components/fx/ShineBorder.tsx
 src/components/fx/Terminal.tsx
 src/components/fx/TextAnimate.tsx
+src/components/fx/VideoText.tsx
 src/components/fx/WorldMap.tsx
 src/components/fx3d/BeamCircle.tsx
 src/components/fx3d/Carousel3D.tsx
@@ -96,6 +102,7 @@ src/components/fx3d/GlassCoinCarousel.tsx
 src/components/fx3d/HoverGallery3D.tsx
 src/components/fx3d/MagneticCursor.tsx
 src/components/fx3d/PageFlip3D.tsx
+src/components/fx3d/Showcases.tsx
 src/components/fx3d/TestFace.tsx
 src/components/fx3d/TestsIn3D.tsx
 src/components/home/AIEverywhere.tsx
@@ -107,11 +114,13 @@ src/components/home/Ecosystem.tsx
 src/components/home/EvidenceBoard.tsx
 src/components/home/FusionEngine.tsx
 src/components/home/GoalPipeline.tsx
+src/components/home/HeroExtras.tsx
 src/components/home/HomeSections.tsx
 src/components/home/LifespanSimulator.tsx
 src/components/home/StartHere.tsx
 src/components/labs/DeptTests.tsx
 src/components/labs/EvidencePill.tsx
+src/components/labs/ShopCatalog.tsx
 src/components/labs/TestNavigator.tsx
 src/components/layout/Footer.tsx
 src/components/layout/Header.tsx
@@ -160,6 +169,7 @@ src/data/catalog.ts
 src/data/clinic.ts
 src/data/dashboard.ts
 src/data/departments.ts
+src/data/deptExtra.ts
 src/data/discover.ts
 src/data/drugs.ts
 src/data/evidence.ts
@@ -170,12 +180,14 @@ src/data/intelligence.ts
 src/data/journal.ts
 src/data/labRanges.ts
 src/data/labs.ts
+src/data/organs.ts
 src/data/platform.ts
 src/data/site.ts
 src/data/stats.ts
 src/data/twin.ts
 src/data/types.ts
 src/data/vessels.ts
+src/data/visits.ts
 src/data/worldmap.ts
 src/hooks/useCamera.ts
 src/hooks/useInView.ts
