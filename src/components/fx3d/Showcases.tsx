@@ -96,3 +96,27 @@ export function PackageCascade() {
     )} /></div>
   );
 }
+
+/** Every department on a beam circle around Biongevity SI — tap to open. */
+export function DeptBeam() {
+  const router = useRouter();
+  const [active, setActive] = useState<string | null>(null);
+  const a = active ? deptById(active) : null;
+  return (
+    <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <BeamCircle className="mx-auto w-full max-w-[560px]" active={active} onSelect={(id) => setActive(id)}
+        nodes={DEPARTMENTS.map((d) => ({ id: d.id, label: d.short, icon: d.icon }))}
+        center={<div className="grid place-items-center text-center"><XevyoOrb size={56} live halo /><div className="mt-1 text-[11px] font-semibold text-ai">One record</div></div>} />
+      <AnimatePresence mode="wait">
+        <motion.div key={a?.id ?? "none"} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]">
+          {a ? <>
+            <div className="flex items-center gap-3"><span className="icon-tile h-11 w-11"><Icon name={a.icon} size={20} /></span><div className="text-[17px] font-semibold">{a.name}</div></div>
+            <p className="mt-2 text-[13px] text-muted">{a.tag}</p>
+            <div className="mt-3 flex flex-wrap gap-1">{a.areas.slice(0, 4).map((x) => <span key={x.t} className="rounded-full bg-ai-soft px-2 py-0.5 text-[11px] font-medium text-ai">{x.t}</span>)}</div>
+            <button onClick={() => router.push(`/precision-health/${a.id}/`)} className="btn-dark mt-4 h-10 px-4 text-[13.5px]">Open {a.short}<Icon name="arrow-right" size={14} /></button>
+          </> : <p className="text-[13.5px] text-muted">Tap any department on the circle. Every beam runs into the same record — so cardiology sees your sleep study and nutrition sees your genome.</p>}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
