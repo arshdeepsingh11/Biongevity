@@ -61,3 +61,15 @@ export const VESSELS: Vessel[] = [
   { info: "pulm-artery", r: 0.0085, pts: [[0.0, 0.5, 0.02], [0.065, 0.48, 0.015], [0.1, 0.45, 0.0], [0.11, 0.4, -0.01]] },
   ...both("pulm-vein", 0.0075, [[0.012, 0.405, 0.03], [0.05, 0.4, 0.018], [0.09, 0.39, 0.0], [0.11, 0.35, -0.01]]),
 ];
+
+/** Small branching airways/vessels inside each lung so the lungs read as tissue (deterministic). */
+export function lungBranches(): Vessel[] {
+  const out: Vessel[] = [];
+  for (const s of [-1, 1]) for (let k = 0; k < 7; k++) {
+    const a = -1.1 + k * 0.36, y0 = 0.44 - k * 0.012;
+    const p0: V3 = [s * 0.1, y0, 0], p1: V3 = [s * (0.1 + Math.cos(a) * 0.035), y0 + Math.sin(a) * 0.07, (k % 2 ? 0.02 : -0.02)];
+    const p2: V3 = [s * (0.1 + Math.cos(a) * 0.055), y0 + Math.sin(a) * 0.11, (k % 2 ? 0.03 : -0.03)];
+    out.push({ info: k % 2 ? "pulm-vein" : "pulm-artery", r: 0.0028, pts: [p0, p1, p2] });
+  }
+  return out;
+}
