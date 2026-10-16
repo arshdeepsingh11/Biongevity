@@ -10,7 +10,8 @@
     "cap:sync": "next build && npx cap sync",
     "cap:ios": "npx cap open ios",
     "cap:android": "npx cap open android",
-    "check:colors": "node scripts/check-colors.mjs"
+    "check:colors": "node scripts/check-colors.mjs",
+    "si:proxy": "node scripts/xevyo-proxy.mjs"
   },
   "dependencies": {
     "@capacitor/core": "^6.1.2",
