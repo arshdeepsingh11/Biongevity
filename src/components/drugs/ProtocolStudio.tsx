@@ -85,7 +85,7 @@ export function ProtocolStudio() {
                 ))}
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
-                <button onClick={() => ask(`Review this supplement protocol for a mid-age adult: ${items.map((p) => `${p.title} (${(KEY[p.handle]?.ing ?? []).join(", ")}) at ${KEY[p.handle]?.when}`).join("; ")}. Point out overlaps, timing tips and what to discuss with a clinician. Do not prescribe.`, { label: "✦ Review my protocol" })} className="btn-ai h-10 px-4 text-[14px]"><XevyoOrb size={20} />Review with Xevyo</button>
+                <button onClick={() => ask(`Review this supplement protocol for a mid-age adult: ${items.map((p) => `${p.title} (${(KEY[p.handle]?.ing ?? []).join(", ")}) at ${KEY[p.handle]?.when}`).join("; ")}. Point out overlaps, timing tips and what to discuss with a clinician. Do not prescribe.`, { label: "✦ Review my protocol" })} className="btn-ai h-10 px-4 text-[14px]"><XevyoOrb size={20} />Review with Biongevity SI</button>
                 <a href="https://bioarodrugs.com/us" target="_blank" rel="noopener" className="btn-light h-10 px-4 text-[14px]">Open BioAro Drugs AI<Icon name="arrow-up-right" size={14} /></a>
               </div>
               <div className="mt-3"><StoreNote store="drugs" /></div>
