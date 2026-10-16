@@ -13,6 +13,8 @@ const DEPT_GOALS: Record<string, GoalId[]> = {
   "womens-health": ["hormones"], "mens-health": ["hormones"], "gut-health": ["gut"], dental: ["gut"], "mental-health": ["sleep"],
 };
 const SKIN = /bioskin/i, DENTAL = /biodental/i;
+/** Whether a department has an adult test match (pediatric departments intentionally do not). */
+export const deptHasTests = (dept: string) => Boolean(DEPT_GOALS[dept]);
 
 /** "AI test match" strip on department pages — the BioAro Labs tests that fit this specialty, with Buy links. */
 export function DeptTests({ dept, name }: { dept: string; name: string }) {
