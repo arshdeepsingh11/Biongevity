@@ -138,8 +138,8 @@ function Preview({ id, onSystem }: { id: string; onSystem: (id: string) => void 
     <div className={card}>
       <div className="flex items-center gap-2"><XevyoOrb size={28} live /><b className="text-[16px]">AI Insight</b><span className="ml-auto rounded-full bg-ai-soft px-2 py-0.5 text-[11px] font-semibold text-ai">New</span></div>
       <p className="mt-2 text-[15px] leading-relaxed">Your sleep duration is below recommended levels — aim for 7–9 hours. Your HRV dropped on the nights you slept under 6 hours.</p>
-      <div className="mt-3 rounded-2xl bg-canvas p-3 text-[13px]"><b>Small next step:</b> lights out 30 minutes earlier on weeknights for 2 weeks. Xevyo will check in.</div>
-      <div className="mt-3 flex gap-2"><span className="rounded-full bg-ink px-3 py-1.5 text-[12.5px] font-semibold text-pearl">Chat with Coach</span><span className="rounded-full bg-canvas px-3 py-1.5 text-[12.5px] font-semibold text-muted">English · 日本語</span></div>
+      <div className="mt-3 rounded-2xl bg-canvas p-3 text-[13px]"><b>Small next step:</b> lights out 30 minutes earlier on weeknights for 2 weeks. Biongevity SI will check in.</div>
+      <div className="mt-3 flex gap-2"><span className="rounded-full bg-ink px-3 py-1.5 text-[12.5px] font-semibold text-pearl">Chat with Coach</span><span className="rounded-full bg-canvas px-3 py-1.5 text-[12.5px] font-semibold text-muted">EN · FR · AR · FA</span></div>
     </div>
   );
 }
