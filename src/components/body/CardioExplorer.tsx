@@ -16,3 +16,18 @@ type Layer = "arteries" | "veins" | "lungs" | "body";
 const KIND_LAYER: Record<VesselKind, Layer> = { artery: "arteries", coronary: "arteries", vein: "veins", portal: "veins", "pulmonary-artery": "lungs", "pulmonary-vein": "lungs" };
 /** Flow direction along the traced path: +1 = from first point to last. */
 const FLOW: Record<VesselKind, number> = { artery: 1, coronary: 1, vein: -1, portal: 1, "pulmonary-artery": 1, "pulmonary-vein": -1 };
+
+/** Catmull-Rom sampling so every vessel is a smooth tube. */
+function smooth(p: V3[], per = 6): V3[] {
+  if (p.length < 3) return p;
+  const out: V3[] = [];
+  for (let i = 0; i < p.length - 1; i++) {
+    const p0 = p[Math.max(0, i - 1)], p1 = p[i], p2 = p[i + 1], p3 = p[Math.min(p.length - 1, i + 2)];
+    for (let k = 0; k < per; k++) {
+      const t = k / per, t2 = t * t, t3 = t2 * t;
+      out.push([0, 1, 2].map((d) => 0.5 * (2 * p1[d] + (-p0[d] + p2[d]) * t + (2 * p0[d] - 5 * p1[d] + 4 * p2[d] - p3[d]) * t2 + (-p0[d] + 3 * p1[d] - 3 * p2[d] + p3[d]) * t3)) as V3);
+    }
+  }
+  out.push(p[p.length - 1]);
+  return out;
+}
