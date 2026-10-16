@@ -90,3 +90,10 @@ function FormulaRing({ on }: { on: boolean }) {
     </svg>
   );
 }
+
+const STATS = [
+  { n: DEPARTMENTS.length, l: "departments", h: "/precision-health/", icon: "stethoscope", V: DeptDots, sub: "Specialty care + precision programs, one record", list: DEPARTMENTS.slice(0, 6).map((d) => d.short) },
+  { n: LAB_TESTS.length, l: "BioAro lab tests", h: "/precision-health/bioaro-labs/", icon: "test-tubes", V: TestBars, sub: `${LAB_COLLECTIONS.length} categories · from ${formatMoney(Math.min(...LAB_TESTS.map((t) => t.price)))}`, list: LAB_COLLECTIONS.slice(0, 5).map((c) => c.title.split(" ")[0]) },
+  { n: MARKERS.length, l: "biomarkers connected", h: "#constellation", icon: "wave", V: MarkerOrbit, sub: "Each linked to body systems and evidence", list: MARKERS.slice(0, 6).map((m) => m.short) },
+  { n: DRUG_PRODUCTS.length, l: "AI-matched formulas", h: "/precision-health/bioaro-drugs/", icon: "tablets", V: FormulaRing, sub: "Matched to your goals, not picked off a shelf", list: DRUG_PRODUCTS.slice(0, 4).map((p) => p.title.split(" ")[0]) },
+] as const;
