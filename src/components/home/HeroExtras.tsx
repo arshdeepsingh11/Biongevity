@@ -42,3 +42,15 @@ export function PromptCard({ q, d, icon, covers }: { q: string; d: string; icon:
 }
 
 /* ── Stat cards: ticking number + a live mini-visual + hover detail ── */
+
+function DeptDots({ on }: { on: boolean }) {
+  return (
+    <div className="grid grid-cols-7 gap-1">
+      {DEPARTMENTS.map((d, i) => (
+        <span key={d.id} title={d.short} className={`grid h-4 w-4 place-items-center rounded-[5px] transition-colors duration-300 ${on ? "bg-ai text-white" : "bg-ai/15 text-ai"}`} style={{ transitionDelay: on ? `${i * 35}ms` : "0ms" }}>
+          <Icon name={d.icon} size={9} />
+        </span>
+      ))}
+    </div>
+  );
+}
