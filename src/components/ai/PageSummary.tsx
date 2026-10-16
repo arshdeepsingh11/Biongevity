@@ -3,7 +3,7 @@ import { useAI } from "./AIProvider";
 import { XevyoOrb } from "./XevyoOrb";
 import { cn } from "@/lib/utils";
 
-/** "Xevyo reads this page" — one tap for a plain-language summary (called only on click, cached for the session). */
+/** "Biongevity SI reads this page" — one tap for a plain-language summary (called only on click, cached for the session). */
 export function PageSummary({ className, compact = false }: { className?: string; compact?: boolean }) {
   const { summarise, busy } = useAI();
   return (
