@@ -32,3 +32,4 @@ export const VESSEL_INFO: VesselInfo[] = [
 export const vesselInfo = (id: string) => VESSEL_INFO.find((v) => v.id === id);
 
 const M = (p: V3[]): V3[] => p.map(([x, y, z]) => [-x, y, z]);
+const both = (info: string, r: number, pts: V3[]): Vessel[] => [{ info, r, pts }, { info, r, pts: M(pts) }];
