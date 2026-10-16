@@ -76,6 +76,9 @@ export function AIAssistant() {
                   <div className="relative overflow-hidden rounded-2xl bg-canvas p-4" dir={lang.dir}>
                     <div className="flex items-center gap-2.5"><XevyoOrb size={26} live /><div className="text-[15px] font-semibold">{ui.hi}</div></div>
                     <div className="mt-2 text-[13px] leading-relaxed text-muted">{ui.intro}</div>
+                    <button onClick={() => setHub((h) => !h)} aria-expanded={hub} className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-[12px] font-semibold text-ai ring-1 ring-ai/20 hover:ring-ai/40" dir="ltr">
+                      <span aria-hidden>✦</span>{hub ? "Hide BioAro explorer" : "Explore BioAro"}<Icon name="chevron-down" size={12} className={`transition-transform ${hub ? "rotate-180" : ""}`} />
+                    </button>
                     {!connected && <div className="mt-3 rounded-xl bg-gold-soft/60 px-3 py-2 text-[12px] text-gold-deep" dir="ltr">Biongevity SI isn&apos;t connected in this build yet. Set <code className="font-semibold">NEXT_PUBLIC_XEVYO_URL</code> (see docs/XEVYO_PROXY.md).</div>}
                   </div>
 
