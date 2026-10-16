@@ -10,3 +10,4 @@ import type { IconName } from "@/components/ui/icons";
 export type Tone = "glass" | "olive" | "wood" | "white" | "ink" | "teal" | "gold" | "soft";
 export interface Room { id: string; label: string; x: number; z: number; w: number; d: number; door: "front" | "back" | "both" | "open"; dx?: number }
 export interface Prop { x: number; z: number; w: number; d: number; h: number; y?: number; tone: Tone; kind?: "screen" | "bed" | "plant" }
+export interface Staff { x: number; z: number; face: number; role: string; coat: "white" | "olive" | "teal" }
