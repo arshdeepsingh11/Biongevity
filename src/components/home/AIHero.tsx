@@ -24,7 +24,7 @@ const CARDS = [
   { q: "What is a healthspan baseline and why does it matter?", icon: "hourglass" },
 ];
 
-/** Hero — the AI is the front door: an Ask Xevyo bar, suggested questions, and a live on-device intent engine. */
+/** Hero — the AI is the front door: an Ask Biongevity SI bar, suggested questions, and a live on-device intent engine. */
 export function AIHero() {
   const { ask, setOpen } = useAI();
   const [q, setQ] = useState("");
