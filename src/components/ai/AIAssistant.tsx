@@ -175,7 +175,7 @@ export function AIAssistant() {
               )}
               <button onClick={send} aria-label="Send" disabled={busy || !input.trim()} className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-ai text-on-ai disabled:opacity-40"><Icon name="arrow-up" size={18} /></button>
             </div>
-            <p className="px-4 pb-2.5 text-center text-[10.5px] text-faint">Education, not a diagnosis · nothing you type is stored by this site · <Link href="/ai/" onClick={() => setOpen(false)} className="underline hover:text-ai">How our AI works</Link></p>
+            <p className="px-4 pb-2.5 text-center text-[10.5px] text-faint">Education, not a diagnosis · nothing you type is stored by this site · <Link href="/ai/" onClick={go} className="underline hover:text-ai">How Biongevity SI works</Link></p>
           </motion.aside>
         )}
       </AnimatePresence>
