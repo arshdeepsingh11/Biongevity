@@ -8,11 +8,7 @@ import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { AIBadge } from "@/components/ai/AIBadge";
 import { Icon } from "@/components/ui/Icon";
 import { BeamFlow } from "@/components/fx/BeamFlow";
-import { NumberTicker } from "@/components/fx/NumberTicker";
-import { DEPARTMENTS } from "@/data/departments";
-import { LAB_TESTS } from "@/data/labs";
-import { DRUG_PRODUCTS } from "@/data/drugs";
-import { MARKERS } from "@/data/intelligence";
+import { PromptCard, HeroStats, LifeFilm } from "@/components/home/HeroExtras";
 
 const EXAMPLES = ["I'm tired all the time and gaining weight", "my blood pressure is high at home", "I want to age slower", "my dad has a family history of heart disease", "poor sleep since my late 40s"];
 
