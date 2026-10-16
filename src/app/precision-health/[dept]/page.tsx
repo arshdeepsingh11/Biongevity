@@ -59,7 +59,7 @@ export default async function DeptPage({ params }: P) {
               <PageSummary compact className="h-12 justify-center" />
             </div>
             <div data-reveal className="mt-8 grid max-w-[560px] grid-cols-2 gap-2 sm:grid-cols-4">
-              {([[d.services.length, "tests & services"], [d.areas.length, "areas of care"], [d.when.length, "reasons to come"], ["24/7", "Xevyo AI"]] as const).map(([v, l]) => (
+              {([[d.services.length, "tests & services"], [d.areas.length, "areas of care"], [d.when.length, "reasons to come"], ["24/7", "Biongevity SI"]] as const).map(([v, l]) => (
                 <div key={l} className="rounded-2xl bg-white/80 p-3 ring-1 ring-ink/[0.06]"><div className="text-[24px] font-semibold leading-none tracking-tight">{v}</div><div className="mt-1 text-[11.5px] text-muted">{l}</div></div>
               ))}
             </div>
