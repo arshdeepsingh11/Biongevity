@@ -41,7 +41,7 @@ const edges: [string, string][] = [
 ];
 const curve = (a: N, b: N) => { const mx = (a.x + b.x) / 2; return `M${a.x} ${a.y} C ${mx} ${a.y}, ${mx} ${b.y}, ${b.x} ${b.y}`; };
 
-/** Fusion engine — hover any node for its data; click to ask Xevyo about it. */
+/** Fusion engine — hover any node for its data; click to ask Biongevity SI about it. */
 export function FusionEngine() {
   const { ask } = useAI();
   const [hot, setHot] = useState("core");
