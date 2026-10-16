@@ -12,7 +12,7 @@ type RecognitionCtor = new () => Recognition;
  * Voice ask — speech-to-text using the browser's built-in recogniser (no extra service, no cost).
  * `onText(text, final)` streams what was heard; when speech ends, the final text is delivered.
  */
-export function useVoice(onText: (text: string, final: boolean) => void) {
+export function useVoice(onText: (text: string, final: boolean) => void, lang?: string) {
   const [listening, setListening] = useState(false);
   const [supported, setSupported] = useState(false);
   const rec = useRef<Recognition | null>(null);
