@@ -53,7 +53,7 @@ export function AIHero() {
       <div className="container-x relative">
         <div className="mx-auto max-w-[920px] text-center">
           <div className="flex justify-center"><AIBadge label="Biongevity intelligence · live" /></div>
-          <h1 className="h-display mt-6">More good years, <span className="text-ai-grad">guided by AI.</span></h1>
+          <h1 className="h-display mt-6">More good years, <span className="text-ai-grad">guided by SI.</span></h1>
           <p className="lede mx-auto mt-5 max-w-[62ch]">Biongevity connects your labs, genome, wearables and care team in one record — and Biongevity SI explains it in plain words. Built for adults 40–65 and the families who look after them.</p>
         </div>
 
@@ -94,13 +94,7 @@ export function AIHero() {
 
           {/* Suggested questions — each one asks Biongevity SI directly */}
           <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
-            {CARDS.map((c) => (
-              <button key={c.q} onClick={() => ask(c.q)} className="group flex items-center gap-3 rounded-2xl bg-white/80 p-3 text-left ring-1 ring-ink/[0.07] backdrop-blur transition hover:-translate-y-0.5 hover:ring-ai/35 sm:p-3.5">
-                <span className="grid h-10 w-10 shrink-0 place-items-center icon-tile ring-1 ring-ai/15"><Icon name={c.icon} size={19} weight="duotone" /></span>
-                <span className="min-w-0 flex-1 text-[14.5px] font-medium leading-snug">{c.q}</span>
-                <Icon name="arrow-right" size={15} className="shrink-0 text-ai transition-transform group-hover:translate-x-0.5" />
-              </button>
-            ))}
+            {CARDS.map((c) => <PromptCard key={c.q} {...c} />)}
           </div>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <button onClick={() => setOpen(true)} className="btn-ai h-12 px-6"><XevyoOrb size={22} />Talk to Biongevity SI</button>
