@@ -201,7 +201,7 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 @keyframes haloPulse { 0% { transform: scale(.85); opacity: .9; } 100% { transform: scale(1.35); opacity: 0; } }
 .fx-calm .orb::before, .fx-calm .orb-halo { animation: none; }
 
-/* ───── Xevyo mark (AI chip + heart) ───── */
+/* ───── Biongevity SI mark (AI chip + heart) ───── */
 .xv-halo { position: absolute; inset: -4px; border-radius: 30%; pointer-events: none; border: 1.5px solid rgb(var(--c-ai-2) / .45); animation: haloPulse 2.6s ease-out infinite; }
 .xv .xv-glow { opacity: .55; }
 .xv-live .xv-heart { animation: xvBeat 1.25s cubic-bezier(.3,.6,.4,1) infinite; }
