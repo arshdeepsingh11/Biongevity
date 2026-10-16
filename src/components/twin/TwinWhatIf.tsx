@@ -31,3 +31,10 @@ function heat(v: In): Record<string, number> {
     gut: c01(0.45 * al + 0.3 * sl + 0.25 * wt), joints: c01(0.7 * wt + 0.2 * mv), skin: c01(0.5 * sm + 0.3 * sl),
   };
 }
+function lowRisk(v: In) {
+  const smoke = v.smoke === "never" ? 1 : v.smoke === "former" ? 0.5 : 0;
+  const bmi = v.bmi >= 18.5 && v.bmi < 25 ? 1 : v.bmi < 30 ? 0.5 : 0;
+  const move = v.steps >= 7500 ? 1 : v.steps >= 5000 ? 0.5 : 0;
+  const alc = v.drinks <= (v.sex === "women" ? 7 : 14) ? 1 : 0;
+  return smoke + bmi + move + alc + 0.5; // diet held at "partly" (not asked here)
+}
