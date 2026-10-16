@@ -23,7 +23,7 @@ export default function LoginPage() {
         <div>
           <div className="flex items-center gap-3"><XevyoOrb size={44} live halo /><Logo size={26} /></div>
           <h1 className="h-display mt-6 max-w-[14ch]">Welcome back.</h1>
-          <p className="lede mt-4 max-w-[52ch]">Your digital twin, results, plan and Xevyo coach live in the Biongevity app. Choose how you sign in — you&apos;ll continue on <span className="font-semibold text-ink">{env.appUrl.replace(/^https?:\/\//, "")}</span>.</p>
+          <p className="lede mt-4 max-w-[52ch]">Your digital twin, results, plan and Biongevity SI coach live in the Biongevity app. Choose how you sign in — you&apos;ll continue on <span className="font-semibold text-ink">{env.appUrl.replace(/^https?:\/\//, "")}</span>.</p>
           <div className="mt-8 grid gap-3">
             {PORTALS.map((p) => (
               <a key={p.id} href={env.appUrl} className="group flex items-center gap-4 rounded-[22px] bg-white p-4 shadow-card ring-1 ring-ink/[0.07] transition hover:-translate-y-0.5 hover:ring-ai/35 sm:p-5">
