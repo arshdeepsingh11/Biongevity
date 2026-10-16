@@ -14,10 +14,10 @@ const EXAMPLES = ["I'm tired all the time and gaining weight", "my blood pressur
 
 /** Suggested questions (Biongevity SI answers them; nothing is pre-written). Written for adults 40–65 and their families. */
 const CARDS = [
-  { q: "Explain an ApoB of 1.1 g/L in simple words", icon: "droplet" },
-  { q: "Which test should I start with at 50?", icon: "flask" },
-  { q: "How can I keep an eye on my parent's heart health?", icon: "users" },
-  { q: "What is a healthspan baseline and why does it matter?", icon: "hourglass" },
+  { q: "Explain an ApoB of 1.1 g/L in simple words", icon: "droplet", d: "What ApoB counts, where 1.1 g/L sits against common targets, and which questions to bring to your doctor.", covers: ["Lipids", "Heart risk", "Next test"] },
+  { q: "Which test should I start with at 50?", icon: "flask", d: "A short, ranked starting set for your age — what each test answers, roughly what it costs in CAD, and what can wait.", covers: ["BioAro tests", "Prices", "Order of tests"] },
+  { q: "How can I keep an eye on my parent's heart health?", icon: "users", d: "Home blood pressure, warning signs, which visits matter and how family care lets you follow along with consent.", covers: ["Family care", "Cardiology", "Home BP"] },
+  { q: "What is a healthspan baseline and why does it matter?", icon: "hourglass", d: "The handful of measures that set your starting line, and how re-testing shows whether changes are working.", covers: ["Biological age", "Baseline", "Re-testing"] },
 ];
 
 /** Hero — the AI is the front door: an Ask Biongevity SI bar, suggested questions, and a live on-device intent engine. */
