@@ -128,3 +128,15 @@ function BookCover({ title, count }: { title: string; count: number }) {
     </div>
   );
 }
+
+function BookPage({ t }: { t: (typeof LAB_TESTS)[number] }) {
+  const intel = TEST_INTEL.find((x) => x.t.handle === t.handle);
+  return (
+    <div className="flex h-full flex-col rounded-[18px] p-4 text-left shadow-card ring-1 ring-ink/[0.06] sm:p-5" style={{ background: "rgb(var(--c-surface))" }}>
+      <div className="flex items-center gap-2"><span className="icon-tile h-9 w-9"><Icon name={t.icon} size={17} /></span><span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ai">{collectionOf(t)?.title}</span></div>
+      <div className="mt-2 text-[15px] font-semibold leading-snug sm:text-[18px]">{t.title}</div>
+      <p className="mt-1 line-clamp-3 text-[12px] text-muted sm:text-[13px]">{intel?.reveals ?? t.bestFor ?? t.summary}</p>
+      <div className="mt-auto flex items-end justify-between pt-2"><span className="text-[18px] font-semibold text-ai">{formatMoney(t.price)}</span>{intel && <span className="text-[11px] text-faint">{RETEST_LABEL(intel.retest)}</span>}</div>
+    </div>
+  );
+}
