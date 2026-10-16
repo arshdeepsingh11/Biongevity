@@ -133,6 +133,8 @@ export function GoalPipeline() {
           <button onClick={() => { if (step === 5) setStep(0); setPlay((p) => !p); }} className="inline-flex items-center gap-1.5 font-semibold text-ai"><Icon name={play ? "stop" : "play"} size={14} />{play ? "Pause" : "Play the path"}</button>
           <span>Built on your device from our catalogue · {step + 1}/6</span>
         </div>
+        <Reasoning step={step} chosen={[g.label, test.title, g.reveals, formula.title, g.program, dept.name]}
+          alts={[GOAL_PATHS.filter((x) => x.id !== g.id).slice(0, 2).map((x) => x.label), (alt?.tests ?? []).map((r) => r.x.title).filter((t) => t !== test.title).slice(0, 2), [], (alt?.formulas ?? []).map((r) => r.x.title).filter((t) => t !== formula.title).slice(0, 2), [], (alt?.depts ?? []).map((r) => r.x.short).filter((t) => t !== dept.short).slice(0, 2)]} />
       </div>
     </div>
   );
