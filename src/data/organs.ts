@@ -16,3 +16,4 @@ export interface Part { id: string; label: string; tone: Tone; shapes: Shape[]; 
 export interface Organ { id: OrganId; name: string; blurb: string; parts: Part[] }
 
 const coil = (): V3[] => Array.from({ length: 70 }, (_, i) => { const t = i / 69; return [Math.sin(t * Math.PI * 7) * 0.42 * (1 - t * 0.2), 0.15 - t * 0.75, Math.cos(t * Math.PI * 7) * 0.22] as V3; });
+const arc = (c: V3, rx: number, ry: number, a0: number, a1: number, n = 24, z = 0): V3[] => Array.from({ length: n }, (_, i) => { const a = a0 + ((a1 - a0) * i) / (n - 1); return [c[0] + Math.cos(a) * rx, c[1] + Math.sin(a) * ry, c[2] + z] as V3; });
