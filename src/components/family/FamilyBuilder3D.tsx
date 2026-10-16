@@ -35,3 +35,4 @@ const blank = (rel: RelId, i: number): M => {
 /** Sensible order when someone asks for N members: closest relatives first, then up the tree. */
 const ORDER: RelId[] = ["parent", "parent", "gp-p", "gp-p", "gp-m", "gp-m", "sibling", "partner", "child", "child", "aunt-p", "aunt-m", "sibling", "cousin", "grandchild", "child"];
 const avatar = (m: { age: number; sex: "f" | "m" }) => (m.age < 3 ? "baby" : m.age < 18 ? "person" : m.sex === "f" ? "venus" : "mars");
+const findTest = (k: string) => LAB_TESTS.find((t) => t.title.toLowerCase().startsWith(k.toLowerCase()));
