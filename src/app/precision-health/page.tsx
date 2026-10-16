@@ -7,6 +7,7 @@ import { AuroraText } from "@/components/fx/AuroraText";
 import { DEPARTMENTS, DEPT_GROUPS } from "@/data/departments";
 import { DisciplineExplorer } from "@/components/home/DisciplineExplorer";
 import { JsonLd, breadcrumb } from "@/lib/seo";
+import { DeptBeam } from "@/components/fx3d/Showcases";
 
 export const metadata: Metadata = {
   title: "Precision Health — cardiology, endocrinology, internal medicine, genomics",
