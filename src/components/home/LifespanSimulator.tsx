@@ -92,7 +92,7 @@ export function LifespanSimulator() {
   };
 
   const max = L.five;
-  const bars = [{ k: "Baseline", v: L.zero, base: 0 }, ...LIFESTYLE_FACTORS.map((f, i) => ({ k: f.label, v: per * h[f.id], base: L.zero + per * LIFESTYLE_FACTORS.slice(0, i).reduce((a, g) => a + h[g.id], 0), id: f.id }))];
+  const bars: { k: string; v: number; base: number; id?: string }[] = [{ k: "Baseline", v: L.zero, base: 0 }, ...LIFESTYLE_FACTORS.map((f, i) => ({ k: f.label, v: per * h[f.id], base: L.zero + per * LIFESTYLE_FACTORS.slice(0, i).reduce((a, g) => a + h[g.id], 0), id: f.id }))];
 
   return (
     <div className="grid grid-cols-1 gap-5 lg:grid-cols-[400px_minmax(0,1fr)]">
