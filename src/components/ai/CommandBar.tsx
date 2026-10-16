@@ -99,7 +99,7 @@ export function CommandBar() {
                     {head && <div className="hud-label px-3 pb-1 pt-2.5">{head}</div>}
                     <button onMouseEnter={() => setIdx(i)} onClick={r.run}
                       className={`flex w-full items-center gap-3 rounded-2xl px-3 py-2.5 text-left transition-colors ${i === active ? "bg-accent-light" : ""}`}>
-                      {r.group === "AI" || r.group === "Ask Xevyo" ? <XevyoOrb size={36} /> : <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-canvas text-accent"><Icon name={r.icon} size={18} weight="duotone" /></span>}
+                      {r.group === "AI" || r.group === "Ask Biongevity SI" ? <XevyoOrb size={36} /> : <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-canvas text-accent"><Icon name={r.icon} size={18} weight="duotone" /></span>}
                       <span className="min-w-0 flex-1"><span className="block truncate text-[14.5px] font-semibold">{r.label}</span><span className="block truncate text-[12px] text-muted">{r.sub}</span></span>
                       {i === active && <Icon name="arrow-right" size={15} className="text-accent" />}
                     </button>
