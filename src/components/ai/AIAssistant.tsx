@@ -82,6 +82,9 @@ export function AIAssistant() {
                     {!connected && <div className="mt-3 rounded-xl bg-gold-soft/60 px-3 py-2 text-[12px] text-gold-deep" dir="ltr">Biongevity SI isn&apos;t connected in this build yet. Set <code className="font-semibold">NEXT_PUBLIC_XEVYO_URL</code> (see docs/XEVYO_PROXY.md).</div>}
                   </div>
 
+                  <AnimatePresence initial={false}>
+                  {hub && (
+                  <motion.div key="hub" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ type: "spring", stiffness: 300, damping: 32 }} className="space-y-3 overflow-hidden">
                   <div role="tablist" aria-label="Explore" className="grid grid-cols-3 gap-1 rounded-full bg-canvas p-1 text-[12.5px] font-semibold">
                     {([["discover", "BioAro family"], ["new", "What's new"], ["tests", "Top tests"]] as const).map(([id, l]) => (
                       <button key={id} role="tab" aria-selected={tab === id} onClick={() => setTab(id)} className={`rounded-full py-1.5 transition ${tab === id ? "bg-white text-ai shadow-card" : "text-muted hover:text-ink"}`}>{l}</button>
