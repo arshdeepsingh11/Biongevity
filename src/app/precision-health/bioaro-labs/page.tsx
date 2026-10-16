@@ -5,6 +5,7 @@ import { LabsHub } from "@/components/bioaro/LabsHub";
 import { TestNavigator } from "@/components/labs/TestNavigator";
 import { TestsIn3D } from "@/components/fx3d/TestsIn3D";
 import { Head } from "@/components/home/HomeSections";
+import { ShopCatalog } from "@/components/labs/ShopCatalog";
 import { JsonLd, breadcrumb } from "@/lib/seo";
 
 export const metadata: Metadata = {
