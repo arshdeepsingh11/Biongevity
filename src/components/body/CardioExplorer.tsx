@@ -31,3 +31,21 @@ function smooth(p: V3[], per = 6): V3[] {
   out.push(p[p.length - 1]);
   return out;
 }
+
+/** Heart as a dense, shaded point volume: tapered ventricles (apex down-left) + two atria. */
+function buildHeart() {
+  let s = 3; const r = () => ((s = (s * 16807) % 2147483647) / 2147483647);
+  const pts: number[] = [], side: number[] = [];
+  const rot = (x: number, y: number, z: number): V3 => { const a = -0.55, c = Math.cos(a), sn = Math.sin(a); return [x * c - y * sn, x * sn + y * c, z]; };
+  const HS = 1.35;
+  for (let i = 0; i < 2200; i++) {
+    const u = r() * 2 - 1, t = r() * Math.PI * 2, k = Math.cbrt(r()) * 0.55 + 0.45, q = Math.sqrt(1 - u * u);
+    const y = u * 0.052 * HS, taper = 0.62 + 0.38 * ((u + 1) / 2);
+    const x = Math.cos(t) * q * 0.043 * HS * taper * k, z = Math.sin(t) * q * 0.038 * HS * taper * k;
+    const p = rot(x, y * k, z); pts.push(p[0], p[1], p[2]); side.push(p[0] > -0.004 ? 1 : 0);
+  }
+  for (const [cx, cy, cz, rr, sd] of [[-0.03, 0.054, -0.016, 0.032, 0], [0.022, 0.062, -0.03, 0.028, 1]] as const) {
+    for (let i = 0; i < 380; i++) { const u = r() * 2 - 1, t = r() * Math.PI * 2, q = Math.sqrt(1 - u * u), k = Math.cbrt(r()) * 0.5 + 0.5; pts.push(cx + Math.cos(t) * q * rr * k, cy + u * rr * 0.85 * k, cz + Math.sin(t) * q * rr * k); side.push(sd); }
+  }
+  return { pts: new Float32Array(pts), side: new Uint8Array(side) };
+}
