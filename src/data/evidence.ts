@@ -5,3 +5,4 @@
  * Summaries are paraphrased; always check the original paper. Last reviewed: October 2026.
  */
 export type Grade = "High" | "Moderate" | "Low" | "Very low";
+export type Topic = "Heart" | "Lifestyle" | "Biomarkers" | "Supplements";
