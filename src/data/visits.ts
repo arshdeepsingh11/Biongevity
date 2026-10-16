@@ -11,3 +11,7 @@ export type Tone = "glass" | "olive" | "wood" | "white" | "ink" | "teal" | "gold
 export interface Room { id: string; label: string; x: number; z: number; w: number; d: number; door: "front" | "back" | "both" | "open"; dx?: number }
 export interface Prop { x: number; z: number; w: number; d: number; h: number; y?: number; tone: Tone; kind?: "screen" | "bed" | "plant" }
 export interface Staff { x: number; z: number; face: number; role: string; coat: "white" | "olive" | "teal" }
+export interface Step {
+  id: string; t: string; room: string; at: [number, number]; face: number; icon: IconName; mins: number;
+  d: string; bring?: string[]; check?: string[]; ask: string;
+}
