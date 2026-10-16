@@ -29,8 +29,10 @@ interface AIState {
   closeCmd: () => void;
   setOpen: (v: boolean | ((o: boolean) => boolean)) => void;
   ask: (q: string, o?: AskOptions) => void;
-  /** "Xevyo reads this page": summarise the visible page text (cached for the session). */
+  /** "Biongevity SI reads this page": summarise the visible page text (cached for the session). */
   summarise: () => void;
+  /** Translate a text into another supported language (answer comes from Biongevity SI). */
+  translate: (text: string, to: XevyoLanguage) => void;
   reset: () => void;
 }
 
