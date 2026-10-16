@@ -27,6 +27,15 @@ function landPoints() {
 }
 const rad = (d: number) => (d * Math.PI) / 180;
 
+type View = "light" | "satellite" | "dark";
+/** BioAro constellation — illustrative orbits (names are ours, the orbits are drawn for the story). */
+const SATS = [
+  { id: "genome", name: "BioAro Genome-1", role: "Relays sequencing runs between Calgary and Almelo labs", inc: 52, alt: 0.24, speed: 0.11, phase: 0 },
+  { id: "labs", name: "BioAro Labs-2", role: "Carries lab results into each patient's one record", inc: -28, alt: 0.32, speed: 0.08, phase: 2.1 },
+  { id: "care", name: "BioAro Care-3", role: "Links Virtual Clinic visits across Calgary, Dubai and Almelo", inc: 74, alt: 0.4, speed: 0.06, phase: 4.2 },
+  { id: "si", name: "BioAro SI-4", role: "Biongevity SI relay — answers in EN · FR · AR · FA", inc: 12, alt: 0.18, speed: 0.14, phase: 1.1 },
+] as const;
+
 /**
  * Global clinic — a 3D globe you can spin. Pick a clinic and the globe flies there,
  * then zooms into the building and the clinic's floor (see BuildingView).
