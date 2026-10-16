@@ -79,7 +79,7 @@ export default function BioELRPage() {
         <div className="container-x grid items-center gap-8 lg:grid-cols-2">
           <div>
             <h2 className="h-section">Questions before a demo?</h2>
-            <p className="lede mt-4">Ask Xevyo about modules, integration or rollout. For pricing and contracts, request a proposal.</p>
+            <p className="lede mt-4">Ask Biongevity SI about modules, integration or rollout. For pricing and contracts, request a proposal.</p>
             <Link href={`/contact/?interest=${encodeURIComponent("BioELR proposal")}`} className="btn-dark mt-6 h-12 px-6">Request a proposal<Icon name="arrow-right" size={15} /></Link>
           </div>
           <AIPanel title="Ask about BioELR" context="BioELR health record system for clinics" prompts={["What modules does BioELR include?", "How does BioELR connect to labs and devices?", "Can BioELR run several clinics?"]} />
