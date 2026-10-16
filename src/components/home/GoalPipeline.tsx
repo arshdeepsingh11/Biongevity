@@ -57,6 +57,27 @@ export function GoalPipeline() {
 
   return (
     <div className="space-y-5">
+      <form onSubmit={(e) => { e.preventDefault(); if (say.trim()) routeIt(say); }} className="relative flex flex-col gap-2 rounded-[24px] bg-white p-2 shadow-card ring-1 ring-ai/15 sm:flex-row sm:items-center">
+        <span className="hidden pl-1 sm:block"><XevyoOrb size={34} live halo={!!say} /></span>
+        <input value={say} onChange={(e) => setSay(e.target.value)} aria-label="Describe your goal" placeholder="Or tell SI in your words — “I'm 52, tired and my dad had a heart attack”"
+          className="h-11 min-w-0 flex-1 bg-transparent px-3 text-[15px] outline-none placeholder:text-faint" />
+        <button className="btn-ai h-11 shrink-0 px-5"><Icon name="route" size={16} />Route my goal</button>
+      </form>
+      <AnimatePresence>
+        {route && (
+          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
+            <div className="flex flex-wrap items-center gap-2 rounded-2xl bg-ai-soft/60 px-4 py-2.5 text-[12.5px]">
+              <span className="font-semibold text-ai">✦ SI routed</span>
+              {route.conf ? <>
+                <span>“{route.q.slice(0, 60)}{route.q.length > 60 ? "…" : ""}” → <b>{g.label}</b></span>
+                <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-20 overflow-hidden rounded-full bg-white"><motion.span className="block h-full bg-ai" initial={{ width: 0 }} animate={{ width: `${route.conf}%` }} /></span>{route.conf}% match</span>
+                <span className="flex flex-wrap gap-1">{route.signals.map((w) => <span key={w} className="rounded bg-white px-1.5 font-mono text-[10.5px] text-ai">{w}</span>)}</span>
+              </> : <span className="text-muted">No clear signal yet — try naming a symptom, organ or goal. Showing the default path.</span>}
+              <button type="button" onClick={() => ask(route.q)} className="ml-auto font-semibold text-ai hover:underline">Ask SI for a written answer →</button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div role="tablist" aria-label="Choose a goal" className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 py-2 md:mx-0 md:grid md:grid-cols-4 md:overflow-visible md:px-0 lg:grid-cols-8">
         {GOAL_PATHS.map((x) => {
           const on = gid === x.id;
