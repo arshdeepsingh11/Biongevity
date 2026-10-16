@@ -23,7 +23,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       setTheme(t);
       const d = document.documentElement;
       d.setAttribute("data-theme", t);
-      d.style.colorScheme = t === "midnight" ? "dark" : "light";
+      d.style.colorScheme = "light";
       const meta = THEMES.find((x) => x.id === t)!.meta;
       document.querySelectorAll('meta[name="theme-color"]').forEach((m) => m.setAttribute("content", meta));
     };
