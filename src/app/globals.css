@@ -127,8 +127,10 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 [data-theme="olive"] .hud-label, [data-theme="olive"] .eyebrow { letter-spacing: .14em; }
 
 /* Floating glass top bar (same items, now a soft pill). */
-[data-theme="olive"] header { border-bottom: 0 !important; background: transparent !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; padding-top: calc(var(--safe-top) + 10px) !important; }
-[data-theme="olive"] header > div { width: calc(100% - 24px); max-width: 1240px; height: 58px; border-radius: 20px; padding-inline: 14px 10px;
+[data-theme="olive"] .site-header { padding-top: calc(var(--safe-top) + 10px) !important; }
+[data-theme="olive"] .site-bar { border-bottom: 0 !important; background: transparent !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+[data-theme="olive"] .site-inner, [data-theme="olive"] .float-logo { width: calc(100% - 24px); max-width: 1240px; padding-inline: 14px 10px; }
+[data-theme="olive"] .site-inner { height: 58px; border-radius: 20px;
   background: rgb(255 255 255 / .72); border: 1px solid rgb(255 255 255 / .95);
   -webkit-backdrop-filter: blur(24px) saturate(1.8); backdrop-filter: blur(24px) saturate(1.8);
   box-shadow: 0 1px 2px rgb(var(--c-ink) / .04), 0 12px 32px -14px rgb(var(--c-ink) / .14), 0 0 0 1px rgb(var(--c-ink) / .03); }
