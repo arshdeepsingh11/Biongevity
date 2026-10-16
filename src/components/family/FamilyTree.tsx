@@ -19,9 +19,9 @@ const PEOPLE: { id: Rel; label: string; degree: 1 | 2; female: boolean }[] = [
   { id: "sibling", label: "Brother or sister", degree: 1, female: false },
 ];
 
-interface Cond { id: string; label: string; icon: IconName; tests: string[]; clinic: string; dept: string; why: string }
+export interface Cond { id: string; label: string; icon: IconName; tests: string[]; clinic: string; dept: string; why: string }
 /** Conditions and what they suggest. General education — a clinician confirms what applies to you. */
-const CONDS: Cond[] = [
+export const CONDS: Cond[] = [
   { id: "heart", label: "Heart disease", icon: "heart", tests: ["hs-CRP", "Disease-Based DNA Test"], clinic: "Lipid panel with ApoB and a one-time Lp(a)", dept: "cardiology", why: "Heart disease in a parent or sibling — especially before 55 in men or 65 in women — raises your own risk and is a reason to check cholesterol particles early." },
   { id: "bp", label: "High blood pressure", icon: "activity", tests: ["Cystatin C"], clinic: "Home or 24-hour blood-pressure monitoring", dept: "cardiology", why: "Blood pressure runs in families; home readings catch it years before symptoms." },
   { id: "stroke", label: "Stroke", icon: "brain", tests: ["hs-CRP", "PAI-1"], clinic: "Blood pressure, lipids and carotid ultrasound if advised", dept: "cardiology", why: "A family history of stroke makes blood pressure and artery health the first things to check." },
