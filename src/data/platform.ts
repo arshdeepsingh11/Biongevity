@@ -17,7 +17,7 @@ export const PLATFORM_LAYERS: { n: string; t: string; d: string; icon: IconName 
   { n: "03", t: "Longevity digital twin", d: "A personal model of your biological ageing, resilience and healthspan trajectory.", icon: "fingerprint" },
   { n: "04", t: "Risk & trajectory models", d: "Direction and speed of change with uncertainty — not deterministic predictions.", icon: "trend" },
   { n: "05", t: "Intervention engine", d: "Turns signals into prioritised, explainable actions and the right follow-up tests.", icon: "route" },
-  { n: "06", t: "AI longevity coach", d: "Xevyo: multilingual (English and Japanese) education, check-ins and habit coaching, with clinician escalation.", icon: "sparkle" },
+  { n: "06", t: "AI longevity coach", d: "Biongevity SI: multilingual education, check-ins and habit coaching, with clinician escalation.", icon: "sparkle" },
   { n: "07", t: "Clinician & family centre", d: "Clinician review and override, family permissions per data domain, alerts and longitudinal reports.", icon: "users" },
 ];
 
