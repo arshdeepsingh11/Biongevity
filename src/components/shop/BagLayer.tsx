@@ -78,7 +78,7 @@ export function BagLayer() {
               <div className="mt-5"><div className="hud-label">What happens next</div>
                 <ol className="relative mt-3 space-y-3 border-l border-accent/25 pl-5">{item.next.map((x, i) => <li key={x} className="relative text-[14px]"><span className="absolute -left-[27px] grid h-5 w-5 place-items-center rounded-full bg-accent text-[10px] font-bold text-white">{i + 1}</span>{x}</li>)}</ol>
               </div>
-              <button onClick={() => ask(`Is ${item.title} right for me? What would it tell me and how should I prepare?`)} className="mt-5 flex w-full items-center justify-between rounded-2xl bg-accent-light px-4 py-3 text-left text-[13.5px] font-semibold text-accent"><span className="flex items-center gap-2"><Icon name="sparkle" size={16} weight="duotone" />Is this right for me? Ask Xevyo</span><Icon name="arrow-up-right" size={15} /></button>
+              <button onClick={() => ask(`Is ${item.title} right for me? What would it tell me and how should I prepare?`)} className="mt-5 flex w-full items-center justify-between rounded-2xl bg-accent-light px-4 py-3 text-left text-[13.5px] font-semibold text-accent"><span className="flex items-center gap-2"><Icon name="sparkle" size={16} weight="duotone" />Is this right for me? Ask Biongevity SI</span><Icon name="arrow-up-right" size={15} /></button>
               {item.url && <a href={item.url} target="_blank" rel="noopener" className="mt-3 inline-flex items-center gap-1 text-[13px] text-muted hover:text-accent">Full product page<Icon name="arrow-up-right" size={13} /></a>}
             </div>
             <div className="border-t border-ink/[0.06] p-4">
