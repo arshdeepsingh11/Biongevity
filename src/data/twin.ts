@@ -21,7 +21,7 @@ export const TWIN_SYSTEMS: { id: string; label: string; status: string; tone: To
 export const STATUS_WORDS = [
   { t: "Excellent", d: "Better than your own usual range. Keep doing what you're doing.", tone: "good" as Tone },
   { t: "Good", d: "Inside your normal range. Nothing to act on.", tone: "good" as Tone },
-  { t: "Needs attention", d: "Moved away from your baseline. Xevyo explains why; your care team decides if anything should change.", tone: "attention" as Tone },
+  { t: "Needs attention", d: "Moved away from your baseline. Biongevity SI explains why; your care team decides if anything should change.", tone: "attention" as Tone },
 ];
 
 export interface TourStep { id: string; n: string; s: string; t: string; icon: IconName; where: string; plain: string; points: string[] }
