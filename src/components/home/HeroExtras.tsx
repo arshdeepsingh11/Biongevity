@@ -77,3 +77,16 @@ function MarkerOrbit({ on }: { on: boolean }) {
     </svg>
   );
 }
+
+function FormulaRing({ on }: { on: boolean }) {
+  return (
+    <svg viewBox="0 0 40 40" className="h-10 w-10 -rotate-90">
+      <circle cx="20" cy="20" r="16" fill="none" stroke="rgb(var(--c-ai) / .15)" strokeWidth="4" />
+      {DRUG_PRODUCTS.map((p, i) => {
+        const seg = (2 * Math.PI * 16) / DRUG_PRODUCTS.length;
+        return <motion.circle key={p.handle} cx="20" cy="20" r="16" fill="none" stroke="rgb(var(--c-ai))" strokeWidth="4" strokeDasharray={`${seg - 2} ${2 * Math.PI * 16}`} strokeDashoffset={-seg * i}
+          initial={{ opacity: 0.25 }} animate={{ opacity: on ? 1 : 0.25 + (i / DRUG_PRODUCTS.length) * 0.6 }} transition={{ delay: on ? i * 0.06 : 0 }} />;
+      })}
+    </svg>
+  );
+}
