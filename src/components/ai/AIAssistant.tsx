@@ -144,6 +144,9 @@ export function AIAssistant() {
                       )}
                     </motion.div>
                   </AnimatePresence>
+                  </motion.div>
+                  )}
+                  </AnimatePresence>
                 </div>
               )}
 
