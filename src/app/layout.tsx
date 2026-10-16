@@ -37,7 +37,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="champagne" suppressHydrationWarning>
+    <html lang="en" data-theme="olive" suppressHydrationWarning>
       <head>
         {/* Applies the saved theme before first paint — no flash between themes. */}
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
