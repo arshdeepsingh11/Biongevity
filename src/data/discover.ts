@@ -34,3 +34,12 @@ export const FAMILY: DiscoverItem[] = [
 ];
 
 export interface NewItem { t: string; d: string; icon: IconName; href: string; tag: "New" | "Updated" }
+export const WHATS_NEW: NewItem[] = [
+  { t: "Heart & vessels in 3D", d: "Spin a beating heart and the main arteries and veins — hover any part to learn what it does.", icon: "heart", href: "/precision-health/cardiology/#cardio3d", tag: "New" },
+  { t: "Twin heat map", d: "Move sleep, steps and blood pressure and watch organs glow and healthy years change.", icon: "radar", href: "/twin/#whatif", tag: "New" },
+  { t: "12-month care plan", d: "Pick a goal; get tests, re-test dates, formulas, visits and a total in CAD — download or send it.", icon: "calendar", href: "/plan/", tag: "New" },
+  { t: "Family health tree", d: "Add parents and grandparents; see which tests and departments matter for you and your siblings.", icon: "users", href: "/family/#tree", tag: "New" },
+  { t: "Evidence engine", d: "Every number with its studies, people, effect size and evidence grade.", icon: "microscope", href: "/evidence/", tag: "New" },
+  { t: "3D clinic map", d: "Fly to Calgary, Dubai or Almelo, then into the building and the floor.", icon: "globe", href: "/#clinics", tag: "Updated" },
+  { t: "Talk in four languages", d: "English, Français, العربية and فارسی — type or speak, and translate any answer.", icon: "globe", href: "/ai/", tag: "New" },
+];
