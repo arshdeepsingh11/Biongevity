@@ -65,9 +65,9 @@ export function AIHero() {
         <div className="relative mx-auto mt-9 max-w-[860px]">
           <div className="relative flex items-center gap-2 rounded-full bg-white p-1.5 shadow-lift ai-ring focus-within:ring-2 focus-within:ring-ai/40 sm:gap-3 sm:p-2">
             <XevyoOrb size={44} live halo className="ml-0.5" />
-            <input value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.key === "Enter" && submit()} aria-label="Ask Xevyo what you want to understand or improve"
-              placeholder={ph ? `Ask Xevyo — ${ph}` : "Ask Xevyo — what would you like to improve about your health?"} className="h-11 min-w-0 flex-1 bg-transparent text-[16px] outline-none placeholder:text-faint sm:text-[18px]" />
-            <button onClick={submit} className="btn-ai h-11 shrink-0 px-4 sm:h-12 sm:px-6"><span className="hidden sm:inline">Ask Xevyo</span><Icon name="arrow-right" size={17} weight="bold" /></button>
+            <input value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.key === "Enter" && submit()} aria-label="Ask Biongevity SI what you want to understand or improve"
+              placeholder={ph ? `Ask Biongevity SI — ${ph}` : "Ask Biongevity SI — what would you like to improve about your health?"} className="h-11 min-w-0 flex-1 bg-transparent text-[16px] outline-none placeholder:text-faint sm:text-[18px]" />
+            <button onClick={submit} className="btn-ai h-11 shrink-0 px-4 sm:h-12 sm:px-6"><span className="hidden sm:inline">Ask Biongevity SI</span><Icon name="arrow-right" size={17} weight="bold" /></button>
           </div>
 
           <AnimatePresence>
