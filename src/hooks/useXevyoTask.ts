@@ -17,7 +17,7 @@ export function useXevyoTask(page: string) {
   const run = useCallback(async (message: string, grounding?: string) => {
     ctrl.current?.abort();
     setText(""); setError("");
-    if (!xevyoEnabled) { setError("Xevyo isn't connected in this build yet. Your on-device results above still work."); return; }
+    if (!xevyoEnabled) { setError("Biongevity SI isn't connected in this build yet. Your on-device results above still work."); return; }
     setBusy(true);
     ctrl.current = new AbortController();
     try {
