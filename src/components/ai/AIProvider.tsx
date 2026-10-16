@@ -133,8 +133,8 @@ export function AIProvider({ children }: { children: ReactNode }) {
       if ((e as Error).name === "AbortError") return;
       const local = process.env.NODE_ENV !== "production" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
       const dev = local && e instanceof XevyoError ? `\n\n[Setup check] ${e.reason}` : "";
-      if (e instanceof XevyoError) console.error("[Xevyo]", e.reason);
-      setMsgs((m) => { const c = [...m]; c[c.length - 1] = { role: "notice", text: `Xevyo is unavailable right now. Please try again shortly, or contact the care team.${dev}` }; return c; });
+      if (e instanceof XevyoError) console.error("[Biongevity SI]", e.reason);
+      setMsgs((m) => { const c = [...m]; c[c.length - 1] = { role: "notice", text: `Biongevity SI is unavailable right now. Please try again shortly, or contact the care team.${dev}` }; return c; });
     } finally { busyRef.current = false; setBusy(false); }
   }, [context, section, msgs, language]);
 
