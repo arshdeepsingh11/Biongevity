@@ -16,7 +16,7 @@ export interface AskOptions { label?: string; grounding?: string; retrieve?: boo
 
 interface AIState {
   open: boolean; busy: boolean; msgs: Msg[]; context: string; connected: boolean;
-  /** Heading of the section in view — sent to Xevyo as context. */
+  /** Heading of the section in view — sent to Biongevity SI as context. */
   section: string;
   /** Smart questions for the current page + section. */
   prompts: string[];
