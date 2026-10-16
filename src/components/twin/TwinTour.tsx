@@ -38,7 +38,7 @@ export function TwinTour() {
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute inset-x-4 bottom-16 z-[4] rounded-2xl bg-white/90 p-4 shadow-lift ring-1 ring-ink/[0.06] backdrop-blur-xl">
               <div className="flex items-center gap-2"><span className={`h-2.5 w-2.5 rounded-full ${s.tone === "good" ? "bg-teal" : "bg-ai-2"}`} /><b className="text-[15px]">{s.label}</b><span className="text-[12.5px] text-muted">· {s.status}</span><button onClick={() => setSys(null)} className="ml-auto text-faint" aria-label="Close"><Icon name="x" size={14} /></button></div>
               <p className="mt-1 text-[13px] text-muted">{s.why}</p>
-              <button onClick={() => ask(`In my Biongevity digital twin, ${s.label} shows "${s.status}". What does that status mean and what could I do?`, { label: `✦ What does “${s.status}” mean for ${s.label}?` })} className="mt-2 text-[12.5px] font-semibold text-ai">✦ Ask Xevyo what this means</button>
+              <button onClick={() => ask(`In my Biongevity digital twin, ${s.label} shows "${s.status}". What does that status mean and what could I do?`, { label: `✦ What does “${s.status}” mean for ${s.label}?` })} className="mt-2 text-[12.5px] font-semibold text-ai">✦ Ask Biongevity SI what this means</button>
             </motion.div>
           )}
         </AnimatePresence>
