@@ -12,7 +12,7 @@ import { ScanResults } from "./ScanResults";
 /**
  * AI Healthspan Scan — 12 one-tap questions, then an on-device profile with charts,
  * a ranked BioAro Labs test plan (buy on bioarolabs.com), formulas (buy on bioarodrugs.com) and a re-test timeline.
- * Answers stay in this browser tab. Xevyo is called only if you press "Explain my scan".
+ * Answers stay in this browser tab. Biongevity SI is called only if you press "Explain my scan".
  */
 export function HealthspanScan() {
   const [a, setA] = useState<Answers>(EMPTY_ANSWERS);
