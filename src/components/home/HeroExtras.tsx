@@ -97,3 +97,35 @@ const STATS = [
   { n: MARKERS.length, l: "biomarkers connected", h: "#constellation", icon: "wave", V: MarkerOrbit, sub: "Each linked to body systems and evidence", list: MARKERS.slice(0, 6).map((m) => m.short) },
   { n: DRUG_PRODUCTS.length, l: "AI-matched formulas", h: "/precision-health/bioaro-drugs/", icon: "tablets", V: FormulaRing, sub: "Matched to your goals, not picked off a shelf", list: DRUG_PRODUCTS.slice(0, 4).map((p) => p.title.split(" ")[0]) },
 ] as const;
+
+export function HeroStats() {
+  const [hover, setHover] = useState<number | null>(null);
+  return (
+    <div className="mx-auto mt-10 grid max-w-[980px] grid-cols-2 gap-3 sm:grid-cols-4">
+      {STATS.map((s, i) => (
+        <Link key={s.l} href={s.h} onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)} onFocus={() => setHover(i)} onBlur={() => setHover(null)}
+          className="group relative overflow-hidden rounded-[22px] bg-white/70 p-4 ring-1 ring-ink/[0.06] backdrop-blur transition-transform hover:-translate-y-1 hover:ring-ai/30">
+          <span aria-hidden className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-ai/10 blur-2xl transition-opacity group-hover:opacity-100 sm:opacity-60" />
+          <div className="relative flex items-start justify-between gap-2">
+            <span className="icon-tile h-8 w-8"><Icon name={s.icon} size={15} /></span>
+            <s.V on={hover === i} />
+          </div>
+          <div className="relative mt-3 text-[32px] font-semibold leading-none tracking-tight tabular-nums"><NumberTicker value={s.n} duration={1800} /></div>
+          <div className="relative mt-1 hud-label !text-muted">{s.l}</div>
+          <AnimatePresence initial={false} mode="wait">
+            {hover === i ? (
+              <motion.div key="on" initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="relative mt-2 flex flex-wrap gap-1">
+                {s.list.map((x) => <span key={x} className="rounded-full bg-ai-soft px-1.5 py-px text-[10.5px] font-medium text-ai">{x}</span>)}
+              </motion.div>
+            ) : (
+              <motion.p key="off" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="relative mt-2 text-[11.5px] leading-snug text-faint">{s.sub}</motion.p>
+            )}
+          </AnimatePresence>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+/* ── Life film: a video plays inside the words; the age caption follows the film ── */
+const STAGES = [[0, "Born", "Newborn screening, family history begins"], [8, "Childhood", "Growth, vaccines, paediatric rheumatology"], [25, "Adulthood", "Baseline labs and genome, habits that compound"], [45, "Midlife", "Heart, hormones and metabolism — the window that matters most"], [65, "Later life", "Memory, mobility, medicines that fit your genes"], [90, "Long life", "More good years, shared with family"]] as const;
