@@ -67,8 +67,14 @@ export default function HomePage() {
       </Section>
       <Section ai="BioAro ecosystem" className="bg-canvas/50">
         <div className="container-x">
-          <Head n="09" label="Ecosystem" title={<>One AI across <AuroraText>the BioAro family.</AuroraText></>} lede="Labs, formulas, the member app, clinic software and partner care — each with its own site, all connected by Xevyo here." />
+          <Head n="09" label="Ecosystem" title={<>One AI across <AuroraText>the BioAro family.</AuroraText></>} lede="Labs, formulas, the member app, clinic software and partner care — each with its own site, all connected by Biongevity SI here." />
           <div className="mt-10"><Ecosystem /></div>
+        </div>
+      </Section>
+      <Section ai="BioAro tests in 3D" id="tests-3d">
+        <div className="container-x">
+          <Head n="3D" label="BioAro tests" title={<>Tests you can <AuroraText>pick up and turn.</AuroraText></>} lede="47 BioAro Labs tests as a cascade, a 3D ring, glass coins, a tilt gallery, a book and a beam circle. Biongevity SI explains each one." />
+          <div className="mt-10"><TestsIn3D /></div>
         </div>
       </Section>
       <BrandFilm />
