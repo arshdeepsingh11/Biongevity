@@ -7,7 +7,7 @@ import { MARKERS, GOAL_PATHS } from "@/data/intelligence";
  * On-device intent matcher — ranks departments, tests, formulas and biomarkers against free text.
  * Transparent keyword scoring over the site's own data; nothing leaves the browser.
  */
-const STOP = new Set(["the", "and", "for", "with", "my", "i", "a", "an", "to", "of", "in", "is", "am", "want", "have", "get", "how", "what", "can", "do", "be", "about", "more", "better", "feel"]);
+const STOP = new Set(["the", "and", "for", "with", "my", "i", "a", "an", "to", "of", "in", "is", "am", "want", "have", "get", "how", "what", "can", "do", "be", "about", "more", "better", "feel", "always", "really", "just", "cant", "dont", "since", "very"]);
 const SYN: Record<string, string[]> = {
   tired: ["fatigue", "energy"], energy: ["fatigue"], sleep: ["sleep", "apnea", "snoring"], heart: ["cardio", "chest", "palpitation"],
   bp: ["blood pressure", "hypertension"], pressure: ["hypertension"], sugar: ["diabetes", "a1c", "glucose"], weight: ["obesity", "metabolic", "bmi"],
