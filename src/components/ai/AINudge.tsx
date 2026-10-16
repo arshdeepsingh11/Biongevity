@@ -36,7 +36,7 @@ export function AINudge() {
           <XevyoOrb size={34} live />
           <div className="min-w-0 flex-1">
             <div className="text-[13.5px] font-semibold leading-snug">Want the 30-second version?</div>
-            <div className="mt-0.5 text-[12px] text-muted">Xevyo can summarise this page in plain words.</div>
+            <div className="mt-0.5 text-[12px] text-muted">Biongevity SI can summarise this page in plain words.</div>
             <button onClick={() => { done(); summarise(); }} className="mt-2 rounded-full bg-ai px-3 py-1.5 text-[12px] font-semibold text-on-ai">✦ Summarise</button>
           </div>
           <button onClick={done} aria-label="Dismiss" className="grid h-7 w-7 place-items-center rounded-full text-faint hover:bg-ink/[0.05]"><Icon name="x" size={13} /></button>
