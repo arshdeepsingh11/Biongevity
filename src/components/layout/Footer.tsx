@@ -46,8 +46,8 @@ export function Footer() {
         </div>
       </div>
       <div className="container-x flex flex-wrap items-center justify-center gap-x-3 gap-y-1 border-t border-ink/[0.06] py-4 text-[12px] text-muted">
-        <span className="inline-flex items-center gap-1.5 font-semibold text-ai"><XevyoOrb size={16} />✦ = powered by Xevyo AI</span>
-        <span>Answers come from Xevyo, cite our pages and are never stored by this site.</span>
+        <span className="inline-flex items-center gap-1.5 font-semibold text-ai"><XevyoOrb size={16} />✦ = powered by Biongevity SI</span>
+        <span>Answers come from Biongevity SI, cite our pages and are never stored by this site.</span>
         <Link href="/ai/" className="font-semibold underline hover:text-ai">How our AI works</Link>
       </div>
       <div className="border-t border-ink/[0.06] py-5 text-center text-[12px] text-faint">© {new Date().getFullYear()} Biongevity · BioAro Inc. Educational information, not medical advice.</div>
