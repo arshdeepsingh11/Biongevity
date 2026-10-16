@@ -6,7 +6,7 @@ import { ShineBorder } from "@/components/fx/ShineBorder";
 import { Icon } from "@/components/ui/Icon";
 import { deptById, scoreDepartments } from "@/data/health";
 
-/** Starting point — keyword match from your words to departments; follow-up questions go to Xevyo. */
+/** Starting point — keyword match from your words to departments; follow-up questions go to Biongevity SI. */
 export function Triage() {
   const { ask } = useAI();
   const [q, setQ] = useState("");
