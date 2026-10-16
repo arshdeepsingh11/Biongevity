@@ -23,6 +23,12 @@ export default function FamilyPage() {
         <div className="flex flex-wrap gap-2"><AIBadge /><AIBadge label="For adult children" /><AIBadge label="Parent stays in control" /></div>
       </PageHero>
       <Section ai="Family care planner" className="!pt-0" chip={false}><div className="container-x"><FamilyPlanner /></div></Section>
+      <Section ai="Family builder" id="builder" className="scroll-mt-20">
+        <div className="container-x">
+          <Head n="3D" label="Build your family, live" title="Tell SI who is in your family. Watch the tree grow." lede="Say how many relatives, then add each one — a grandparent aged 80 appears at the top with their name and icon as you type. Biongevity SI reads the pattern beside it." />
+          <div className="mt-10"><FamilyBuilder3D /></div>
+        </div>
+      </Section>
       <Section ai="Family health tree" id="tree" className="scroll-mt-20">
         <div className="container-x">
           <Head n="★" label="Family health tree" title="Your family's history, turned into next steps." lede="Add grandparents, parents and siblings with what you know. Biongevity SI weighs close relatives and early diagnoses, then shows which tests and departments matter for you — and your brothers and sisters." />
