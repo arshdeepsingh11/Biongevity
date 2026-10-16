@@ -30,6 +30,7 @@ export function AIAssistant() {
   const list = useRef<HTMLDivElement>(null);
   useEffect(() => { list.current?.scrollTo({ top: 1e6, behavior: "smooth" }); }, [msgs]);
   const send = () => { ask(input); setInput(""); };
+  const go = () => setOpen(false);
 
   return (
     <>
