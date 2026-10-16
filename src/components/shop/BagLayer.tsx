@@ -127,8 +127,8 @@ export function BagLayer() {
                     {review.state === "busy" && <button onClick={() => stop.current?.abort()} className="text-[12px] text-muted hover:text-accent">Stop</button>}
                   </div>
                   {review.state === "idle" && <p className="mt-2 text-[12.5px] leading-relaxed text-muted">Get a quick AI check: gaps, overlaps and the best order to start. Your care team still confirms everything.</p>}
-                  {review.state === "off" && <p className="mt-2 rounded-xl bg-gold-soft/50 px-3 py-2 text-[12.5px] text-gold-deep">Xevyo isn&apos;t connected in this build yet — request your plan and our care team will review it.</p>}
-                  {review.state === "error" && <p className="mt-2 text-[12.5px] text-gold-deep">Xevyo is unavailable right now. Please try again shortly.</p>}
+                  {review.state === "off" && <p className="mt-2 rounded-xl bg-gold-soft/50 px-3 py-2 text-[12.5px] text-gold-deep">Biongevity SI isn&apos;t connected in this build yet — request your plan and our care team will review it.</p>}
+                  {review.state === "error" && <p className="mt-2 text-[12.5px] text-gold-deep">Biongevity SI is unavailable right now. Please try again shortly.</p>}
                   {(review.state === "busy" || review.state === "done") && (
                     <div className="mt-3 whitespace-pre-wrap text-[13.5px] leading-relaxed text-ink/90">
                       {review.text || <span className="inline-flex gap-1">{[0, 1, 2].map((k) => <span key={k} className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-accent" style={{ animationDelay: `${k * 0.2}s` }} />)}</span>}
