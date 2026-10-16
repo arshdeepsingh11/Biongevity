@@ -73,3 +73,10 @@ export function lungBranches(): Vessel[] {
   }
   return out;
 }
+
+/** Coronary arteries drawn on the heart surface (relative to the heart centre; scaled with the beat). */
+export const CORONARY: Vessel[] = [
+  { info: "coronary", r: 0.0035, pts: [[-0.004, 0.035, 0.03], [0.012, 0.01, 0.042], [0.02, -0.02, 0.04], [0.026, -0.05, 0.022]] },
+  { info: "coronary", r: 0.0035, pts: [[-0.01, 0.034, 0.028], [-0.035, 0.012, 0.025], [-0.038, -0.02, 0.0], [-0.02, -0.04, -0.03]] },
+  { info: "coronary", r: 0.003, pts: [[0.0, 0.035, 0.03], [0.03, 0.02, 0.02], [0.04, -0.01, -0.01]] },
+];
