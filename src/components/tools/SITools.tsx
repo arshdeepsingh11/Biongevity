@@ -133,3 +133,15 @@ type GradeW = "High" | "Moderate" | "Low" | "None";
 interface Iv { id: string; t: string; icon: IconName; benefit: number; grade: GradeW; cost: 0 | 1 | 2 | 3; costL: string; effort: number; src: string; applies: (p: Prof) => number; dept?: string }
 interface Prof { age: number; smoker: boolean; sbp: number; steps: number; sleep: number; diet: 0 | 1 | 2; ldl: "high" | "ok" | "unknown"; tg: boolean }
 const GW: Record<GradeW, number> = { High: 1, Moderate: 0.75, Low: 0.5, None: 0 };
+const IVS: Iv[] = [
+  { id: "quit", t: "Stop smoking", icon: "no-smoking", benefit: 1, grade: "Moderate", cost: 1, costL: "Free–$ (support, NRT)", effort: 4, src: "Doll 2004: up to ≈10 years regained", applies: (p) => (p.smoker ? 1 : 0), dept: "respiratory-medicine" },
+  { id: "bp", t: "Bring blood pressure toward 120", icon: "heart", benefit: 0.8, grade: "High", cost: 1, costL: "$ (home cuff ~$60 + visit)", effort: 2, src: "Ettehad 2016: −20% events per 10 mmHg", applies: (p) => Math.min(1, Math.max(0, (p.sbp - 122) / 20)), dept: "cardiology" },
+  { id: "ldl", t: "Know & lower LDL / ApoB (statin talk)", icon: "droplet", benefit: 0.75, grade: "High", cost: 1, costL: "$ (lipid panel, visit)", effort: 2, src: "CTT 2010: −22% events per 1 mmol/L", applies: (p) => (p.ldl === "high" ? 1 : p.ldl === "unknown" ? (p.age >= 40 ? 0.7 : 0.4) : 0.15), dept: "cardiology" },
+  { id: "steps", t: "Walk toward 8,000+ steps", icon: "steps", benefit: 0.7, grade: "Low", cost: 0, costL: "Free", effort: 2, src: "Paluch 2022: HR 0.47 top vs bottom quartile", applies: (p) => Math.min(1, Math.max(0, (8000 - p.steps) / 5000)) },
+  { id: "fit", t: "Build fitness (Zone 2 + intervals)", icon: "dumbbell", benefit: 0.75, grade: "Low", cost: 0, costL: "Free–$", effort: 3, src: "Mandsager 2018: low vs elite fitness HR 5.0", applies: (p) => (p.steps < 9000 ? 0.8 : 0.4) },
+  { id: "diet", t: "Mediterranean-style eating", icon: "salad", benefit: 0.6, grade: "Moderate", cost: 1, costL: "$ (groceries)", effort: 3, src: "PREDIMED 2018: HR 0.69", applies: (p) => (p.diet === 0 ? 1 : p.diet === 1 ? 0.5 : 0.1), dept: "nutrition" },
+  { id: "sleep", t: "Protect 7–8 hours of sleep", icon: "moon", benefit: 0.35, grade: "Low", cost: 0, costL: "Free", effort: 3, src: "Cappuccio 2010: short sleep RR 1.12", applies: (p) => (p.sleep < 7 ? Math.min(1, (7 - p.sleep) / 1.5) : 0.05), dept: "respiratory-medicine" },
+  { id: "lpa", t: "Check Lp(a) once", icon: "test-tube", benefit: 0.3, grade: "Moderate", cost: 1, costL: "$ (one blood test)", effort: 1, src: "ERFC 2009: inherited, test once", applies: (p) => (p.age >= 30 ? 0.8 : 0.4), dept: "cardiology" },
+  { id: "epa", t: "High-dose EPA (if triglycerides high on a statin)", icon: "pill", benefit: 0.45, grade: "Moderate", cost: 3, costL: "$$$ (prescription)", effort: 1, src: "REDUCE-IT 2019: HR 0.75", applies: (p) => (p.tg ? 1 : 0), dept: "cardiology" },
+  { id: "vitd", t: "Vitamin D pills for heart protection", icon: "sun", benefit: 0, grade: "None", cost: 1, costL: "$", effort: 1, src: "VITAL 2019: no heart benefit (High certainty)", applies: () => 1 },
+];
