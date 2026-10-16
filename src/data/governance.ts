@@ -2,10 +2,10 @@ import type { IconName } from "@/components/ui/icons";
 
 /** How Biongevity's AI works — governance content for /ai/ (spec section 15). Plain statements of what is true today. */
 export const AI_PRINCIPLES: { t: string; d: string; icon: IconName }[] = [
-  { t: "AI explains, clinicians decide", d: "Xevyo educates and drafts. It does not diagnose, prescribe or replace your clinician.", icon: "stethoscope" },
-  { t: "You start every AI call", d: "Nothing is sent to Xevyo on page load. A request goes only when you press Ask, Send or Explain.", icon: "sparkle" },
+  { t: "AI explains, clinicians decide", d: "Biongevity SI educates and drafts. It does not diagnose, prescribe or replace your clinician.", icon: "stethoscope" },
+  { t: "You start every AI call", d: "Nothing is sent to Biongevity SI on page load. A request goes only when you press Ask, Send or Explain.", icon: "sparkle" },
   { t: "Your words stay yours", d: "This website does not store what you type into AI tools. Health values are sent only after you tick the consent line.", icon: "lock" },
-  { t: "Answers cite our pages", d: "Before asking Xevyo, your device finds the most relevant Biongevity passages and sends them as context, so answers can show sources.", icon: "book" },
+  { t: "Answers cite our pages", d: "Before asking Biongevity SI, your device finds the most relevant Biongevity passages and sends them as context, so answers can show sources.", icon: "book" },
   { t: "Uncertainty is shown", d: "Ranges and confidence, never one number presented as a verdict. Illustrative data is labelled.", icon: "gauge" },
   { t: "Escalation first", d: "Urgent symptoms are pointed to emergency services and clinicians — the AI does not try to triage emergencies.", icon: "siren" },
 ];
