@@ -36,13 +36,13 @@ export function AIAssistant() {
     <>
       <AnimatePresence>
         {open && (
-          <motion.aside role="dialog" aria-label="Xevyo · Biongevity AI"
+          <motion.aside role="dialog" aria-label="Biongevity SI"
             initial={{ opacity: 0, y: 24, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 24, scale: 0.97 }}
             transition={{ type: "spring", stiffness: 340, damping: 30 }}
-            className="fixed inset-x-2 bottom-[calc(150px+var(--safe-bottom))] top-[calc(70px+var(--safe-top))] z-[95] flex flex-col overflow-hidden rounded-[26px] bg-white shadow-lift ring-1 ring-ai/20 backdrop-blur-2xl
-              sm:inset-x-auto sm:right-4 sm:top-auto sm:h-[min(640px,calc(100vh-200px))] sm:w-[410px] lg:bottom-24">
+            className="si-panel fixed inset-x-2 bottom-[calc(150px+var(--safe-bottom))] top-[calc(70px+var(--safe-top))] z-[95] flex flex-col overflow-hidden rounded-[26px] bg-white shadow-lift ring-1 ring-ai/20 backdrop-blur-2xl
+              sm:inset-x-auto sm:right-4 sm:top-auto sm:h-[min(680px,calc(100vh-190px))] sm:w-[430px] lg:bottom-24">
             <BorderBeam colorFrom="rgb(var(--c-ai-hi))" colorTo="rgb(var(--c-ai-2))" />
-            <header className="relative flex items-center gap-3 overflow-hidden border-b border-ink/[0.06] px-4 py-3.5">
+            <header className="relative flex items-center gap-2.5 overflow-hidden border-b border-ink/[0.06] px-4 py-3.5">
               <div aria-hidden className="ai-glow -left-10 -top-16 h-32 w-48 !opacity-[0.18]" />
               <XevyoOrb size={40} live halo={busy} />
               <div className="relative min-w-0 flex-1">
