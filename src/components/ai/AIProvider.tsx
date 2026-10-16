@@ -153,8 +153,8 @@ export function AIProvider({ children }: { children: ReactNode }) {
   const reset = useCallback(() => { abort.current?.abort(); setMsgs([]); busyRef.current = false; setBusy(false); }, []);
 
   const prompts = useMemo(() => pagePrompts(path, section), [path, section]);
-  const value = useMemo(() => ({ open, busy, msgs, context, section, prompts, language, setLanguage, cmd, openCmd, closeCmd, connected: xevyoEnabled, setOpen, ask, summarise, reset }),
-    [open, busy, msgs, context, section, prompts, language, setLanguage, cmd, openCmd, closeCmd, ask, summarise, reset]);
+  const value = useMemo(() => ({ open, busy, msgs, context, section, prompts, language, setLanguage, cmd, openCmd, closeCmd, connected: xevyoEnabled, setOpen, ask, summarise, translate, reset }),
+    [open, busy, msgs, context, section, prompts, language, setLanguage, cmd, openCmd, closeCmd, ask, summarise, translate, reset]);
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 
