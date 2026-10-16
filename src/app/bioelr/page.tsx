@@ -48,7 +48,7 @@ export default function BioELRPage() {
 
       <Section ai="BioELR configurator" id="configure" className="scroll-mt-20 bg-canvas/50" chip={false}>
         <div className="container-x">
-          <Head n="01" label="Modules" title="Pick what your clinic needs." lede="Sixteen modules across operations, specialties and patient experience. Choose specialties and Xevyo suggests matching modules — on your device." />
+          <Head n="01" label="Modules" title="Pick what your clinic needs." lede="Sixteen modules across operations, specialties and patient experience. Choose specialties and Biongevity SI suggests matching modules — on your device." />
           <div className="mt-10"><Configurator /></div>
         </div>
       </Section>
