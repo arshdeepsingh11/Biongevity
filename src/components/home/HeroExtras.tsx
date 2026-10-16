@@ -54,3 +54,13 @@ function DeptDots({ on }: { on: boolean }) {
     </div>
   );
 }
+
+function TestBars({ on }: { on: boolean }) {
+  const counts = LAB_COLLECTIONS.map((c) => LAB_TESTS.filter((t) => t.category === c.handle).length);
+  const max = Math.max(...counts);
+  return (
+    <div className="flex h-9 items-end gap-[3px]">
+      {counts.map((n, i) => <motion.span key={i} title={`${LAB_COLLECTIONS[i].title}: ${n}`} className="w-2 rounded-t-[3px] bg-ai/70" initial={{ height: 3 }} animate={{ height: on ? `${(n / max) * 100}%` : `${(n / max) * 55}%` }} transition={{ type: "spring", stiffness: 200, damping: 18, delay: i * 0.03 }} />)}
+    </div>
+  );
+}
