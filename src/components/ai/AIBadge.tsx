@@ -16,7 +16,7 @@ export function AIBadge({ label = "Biongevity SI", className, tone = "soft" }: {
 export function AIScope({ device, className }: { device?: boolean; className?: string }) {
   return (
     <span className={cn("inline-flex items-center gap-1 text-[11px] font-medium text-faint", className)}>
-      <span aria-hidden className="text-ai">✦</span>{device ? "Matched on your device · nothing sent" : "Answer from Xevyo AI · education, not a diagnosis"}
+      <span aria-hidden className="text-ai">✦</span>{device ? "Matched on your device · nothing sent" : "Answer from Biongevity SI · education, not a diagnosis"}
     </span>
   );
 }
