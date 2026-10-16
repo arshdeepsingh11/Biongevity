@@ -31,7 +31,7 @@ export default function HomePage() {
       </Section>
       <Section ai="Fusion engine" className="bg-canvas/50">
         <div className="container-x">
-          <Head n="03" label="Data fusion engine" title={<>Five streams. <AuroraText>One intelligence.</AuroraText></>} lede="Every signal — from your genome to your blood pressure — flows into one record that AI reads as a whole, measured against your own baseline. Hover any node for the data; click it and Xevyo answers." />
+          <Head n="03" label="Data fusion engine" title={<>Five streams. <AuroraText>One intelligence.</AuroraText></>} lede="Every signal — from your genome to your blood pressure — flows into one record that AI reads as a whole, measured against your own baseline. Hover any node for the data; click it and Biongevity SI answers." />
           <div className="mt-10"><FusionEngine /></div>
         </div>
       </Section>
