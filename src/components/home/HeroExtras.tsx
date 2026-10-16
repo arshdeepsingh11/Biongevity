@@ -64,3 +64,16 @@ function TestBars({ on }: { on: boolean }) {
     </div>
   );
 }
+
+function MarkerOrbit({ on }: { on: boolean }) {
+  const N = MARKERS.length;
+  return (
+    <svg viewBox="-24 -24 48 48" className="h-10 w-10">
+      <circle r="19" fill="none" stroke="rgb(var(--c-ai) / .18)" strokeDasharray="2 3" />
+      <motion.g animate={{ rotate: 360 }} transition={{ duration: on ? 6 : 24, repeat: Infinity, ease: "linear" }}>
+        {MARKERS.map((m, i) => { const a = (i / N) * Math.PI * 2; return <circle key={m.id} cx={Math.cos(a) * 19} cy={Math.sin(a) * 19} r={i % 3 ? 1.4 : 2.1} fill="rgb(var(--c-ai))" />; })}
+      </motion.g>
+      <circle r="6" fill="rgb(var(--c-ai) / .15)" /><circle r="2.5" fill="rgb(var(--c-ai))" />
+    </svg>
+  );
+}
