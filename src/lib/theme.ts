@@ -8,16 +8,15 @@ export const THEMES = [
 ] as const;
 
 export type ThemeId = (typeof THEMES)[number]["id"];
-/** What the visitor picked: a theme, or "auto" (follow the device: light → Champagne, dark → Midnight). */
+/** What the visitor picked: a theme, or "auto" (both themes are light, so auto = Olive). */
 export type ThemeChoice = ThemeId | "auto";
-export const THEME_KEY = "biongevity.theme.v1";
-export const DEFAULT_THEME: ThemeId = "champagne";
+export const THEME_KEY = "biongevity.theme.v2";
+export const DEFAULT_THEME: ThemeId = "olive";
 
-export const resolveTheme = (c: ThemeChoice): ThemeId =>
-  c === "auto" ? (typeof matchMedia !== "undefined" && matchMedia("(prefers-color-scheme: dark)").matches ? "midnight" : "champagne") : c;
+export const resolveTheme = (c: ThemeChoice): ThemeId => (c === "auto" ? DEFAULT_THEME : c);
 
 /** Runs in <head> before paint. Kept tiny and dependency-free. */
-export const THEME_INIT = `(function(){var d=document.documentElement,t="${DEFAULT_THEME}";try{var c=localStorage.getItem("${THEME_KEY}")||"${DEFAULT_THEME}";if(c==="auto")c=matchMedia("(prefers-color-scheme: dark)").matches?"midnight":"champagne";if(["champagne","midnight","mono","aurora"].indexOf(c)>-1)t=c}catch(e){}d.setAttribute("data-theme",t);d.style.colorScheme=t==="midnight"?"dark":"light"})()`;
+export const THEME_INIT = `(function(){var d=document.documentElement,t="${DEFAULT_THEME}";try{var c=localStorage.getItem("${THEME_KEY}");if(["olive","mono"].indexOf(c)>-1)t=c}catch(e){}d.setAttribute("data-theme",t);d.style.colorScheme="light"})()`;
 
 /** "r g b" of a theme token, read live from CSS (for canvas and libraries that cannot use CSS variables). */
 export function themeRgb(name: string): [number, number, number] {
