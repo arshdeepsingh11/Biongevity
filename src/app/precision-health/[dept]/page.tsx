@@ -8,8 +8,10 @@ import { KeywordStream } from "@/components/fx/KeywordStream";
 import { TextAnimate } from "@/components/fx/TextAnimate";
 import { DeptTabs } from "@/components/dept/DeptTabs";
 import { PageSummary } from "@/components/ai/PageSummary";
-import { DeptTests } from "@/components/labs/DeptTests";
+import { DeptTests, deptHasTests } from "@/components/labs/DeptTests";
 import { DeptBody } from "@/components/dept/DeptBody";
+import { CardioExplorer } from "@/components/body/CardioExplorer";
+import { Head } from "@/components/home/HomeSections";
 import { DEPARTMENTS } from "@/data/departments";
 import { JsonLd, breadcrumb, faqPage, medicalPage } from "@/lib/seo";
 
