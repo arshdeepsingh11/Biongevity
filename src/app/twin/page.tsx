@@ -42,9 +42,16 @@ export default function TwinPage() {
 
       <Section ai="Digital Twin tour" className="!pt-0" chip={false}><div className="container-x"><TwinTour /></div></Section>
 
+      <Section ai="Twin heat map" id="whatif" className="scroll-mt-20">
+        <div className="container-x">
+          <Head n="★" label="Heat map simulator" title={<>What if you changed <span className="text-ai-grad">one thing?</span></>} lede="The website version of the app's Heat Map Simulator. Move sleep, steps or blood pressure and watch each organ glow hotter or calmer — with healthy years and risk updating live from published studies." />
+          <div className="mt-10"><TwinWhatIf /></div>
+        </div>
+      </Section>
+
       <Section ai="How the twin works" className="bg-canvas/50">
         <div className="container-x">
-          <Head n="01" label="How it works" title="From your data to one clear next step." lede="The twin learns your own normal over weeks. When something moves, Xevyo explains it in plain words and your clinician decides what to do." />
+          <Head n="01" label="How it works" title="From your data to one clear next step." lede="The twin learns your own normal over weeks. When something moves, Biongevity SI explains it in plain words and your clinician decides what to do." />
           <div className="relative mt-10 grid grid-cols-1 gap-3 md:grid-cols-4">
             <div aria-hidden className="absolute left-[12%] right-[12%] top-[44px] hidden h-[2px] bg-ai bg-ai-grad opacity-40 md:block" />
             {FLOW.map((f, i) => (
