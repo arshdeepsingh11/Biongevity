@@ -25,7 +25,7 @@ export default function HomePage() {
       </Section>
       <Section ai="AI evidence board" className="bg-canvas/50">
         <div className="container-x">
-          <Head n="02" label="AI evidence board" title={<>What the research says, <AuroraText>in four charts.</AuroraText></>} lede="Published findings from large studies, drawn as charts. Every chart has an AI insight and an Explain button — Xevyo walks you through it." />
+          <Head n="02" label="AI evidence board" title={<>What the research says, <AuroraText>in four charts.</AuroraText></>} lede="Published findings from large studies, drawn as charts. Every chart has an AI insight and an Explain button — Biongevity SI walks you through it." />
           <div className="mt-10"><EvidenceBoard /></div>
         </div>
       </Section>
