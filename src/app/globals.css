@@ -116,19 +116,19 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
   radial-gradient(1100px 700px at 100% 0%, rgb(var(--c-ai-hi) / .07), transparent 60%),
   radial-gradient(900px 600px at 0% 100%, rgb(var(--c-ai-2) / .05), transparent 60%),
   rgb(var(--c-pearl)); background-attachment: fixed; }
-[data-theme="aurora"] .grid-bg, [data-theme="aurora"] .ai-glow, [data-theme="aurora"] canvas[data-ai-fx]:not(.fixed), [data-theme="aurora"] .bg-iri[data-ai-fx] { display: none !important; }
-[data-theme="aurora"] section[class*="bg-canvas/"] { background-color: transparent !important; }
+[data-theme="olive"] .grid-bg, [data-theme="olive"] .ai-glow, [data-theme="olive"] canvas[data-ai-fx]:not(.fixed), [data-theme="olive"] .bg-iri[data-ai-fx] { display: none !important; }
+[data-theme="olive"] section[class*="bg-canvas/"] { background-color: transparent !important; }
 
 /* Type: lighter weights and calmer sizes read as premium. */
-[data-theme="aurora"] .h-display, [data-theme="aurora"] .h-section { text-wrap: balance; }
-[data-theme="aurora"] .h-display { font-weight: 600; font-size: clamp(40px, 6vw, 76px); line-height: 1.04; letter-spacing: -0.035em; }
-[data-theme="aurora"] .h-section { font-weight: 600; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.028em; }
-[data-theme="aurora"] .lede { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.6; }
-[data-theme="aurora"] .hud-label, [data-theme="aurora"] .eyebrow { letter-spacing: .14em; }
+[data-theme="olive"] .h-display, [data-theme="olive"] .h-section { text-wrap: balance; }
+[data-theme="olive"] .h-display { font-weight: 600; font-size: clamp(40px, 6vw, 76px); line-height: 1.04; letter-spacing: -0.035em; }
+[data-theme="olive"] .h-section { font-weight: 600; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.028em; }
+[data-theme="olive"] .lede { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.6; }
+[data-theme="olive"] .hud-label, [data-theme="olive"] .eyebrow { letter-spacing: .14em; }
 
 /* Floating glass top bar (same items, now a soft pill). */
-[data-theme="aurora"] header { border-bottom: 0 !important; background: transparent !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; padding-top: calc(var(--safe-top) + 10px) !important; }
-[data-theme="aurora"] header > div { width: calc(100% - 24px); max-width: 1240px; height: 58px; border-radius: 20px; padding-inline: 14px 10px;
+[data-theme="olive"] header { border-bottom: 0 !important; background: transparent !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; padding-top: calc(var(--safe-top) + 10px) !important; }
+[data-theme="olive"] header > div { width: calc(100% - 24px); max-width: 1240px; height: 58px; border-radius: 20px; padding-inline: 14px 10px;
   background: rgb(255 255 255 / .72); border: 1px solid rgb(255 255 255 / .95);
   -webkit-backdrop-filter: blur(24px) saturate(1.8); backdrop-filter: blur(24px) saturate(1.8);
   box-shadow: 0 1px 2px rgb(var(--c-ink) / .04), 0 12px 32px -14px rgb(var(--c-ink) / .14), 0 0 0 1px rgb(var(--c-ink) / .03); }
