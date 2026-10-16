@@ -9,6 +9,7 @@ import { Ladder } from "@/components/shop/Ladder";
 import { TrustStrip } from "@/components/shop/TrustStrip";
 import { CATALOG } from "@/lib/catalog";
 import { JsonLd, breadcrumb } from "@/lib/seo";
+import { PackageCascade } from "@/components/fx3d/Showcases";
 import { SITE } from "@/data/site";
 
 export const metadata: Metadata = {
