@@ -134,6 +134,7 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
   background: rgb(255 255 255 / .72); border: 1px solid rgb(255 255 255 / .95);
   -webkit-backdrop-filter: blur(24px) saturate(1.8); backdrop-filter: blur(24px) saturate(1.8);
   box-shadow: 0 1px 2px rgb(var(--c-ink) / .04), 0 12px 32px -14px rgb(var(--c-ink) / .14), 0 0 0 1px rgb(var(--c-ink) / .03); }
+[data-theme="olive"] .float-logo { padding-top: 10px; height: 68px; }
 
 /* Glass: white hairline edge, soft spread shadow, faint sheen. No coloured outlines. */
 [data-theme="olive"] [class*="bg-white"]:not(input):not(textarea):not(select):not(.btn-light) { background-color: var(--glass) !important; }
