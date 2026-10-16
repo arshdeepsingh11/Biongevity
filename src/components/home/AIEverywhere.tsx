@@ -4,7 +4,7 @@ import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { AIBadge } from "@/components/ai/AIBadge";
 
 const CARDS = [
-  { href: "/platform/", icon: "fingerprint", k: "For you", t: "Your digital twin", d: "Labs, genome and wearables learned into one model of your healthspan — with Xevyo explaining every change.", cta: "See the platform" },
+  { href: "/platform/", icon: "fingerprint", k: "For you", t: "Your digital twin", d: "Labs, genome and wearables learned into one model of your healthspan — with Biongevity SI explaining every change.", cta: "See the platform" },
   { href: "/tools/", icon: "flask", k: "Free tools", t: "AI health tools", d: "Explain lab results, prepare a visit brief, find the right specialist. Nothing stored.", cta: "Try the tools" },
   { href: "/bioelr/", icon: "layers", k: "For clinics", t: "BioELR", d: "The longevity health record with AI built in — for clinics, resorts and communities.", cta: "Configure BioELR" },
 ];
