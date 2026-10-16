@@ -18,7 +18,7 @@ export function AppButtons({ center }: { center?: boolean }) {
   );
 }
 
-/** Seven layers as a stack: hover or tap a layer to read it; each layer can be explained by Xevyo. */
+/** Seven layers as a stack: hover or tap a layer to read it; each layer can be explained by Biongevity SI. */
 export function LayerStack() {
   const [on, setOn] = useState(5);
   const { ask } = useAI();
