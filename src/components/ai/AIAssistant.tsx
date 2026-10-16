@@ -186,8 +186,8 @@ export function AIAssistant() {
           {open ? <span className="grid h-11 w-11 place-items-center rounded-full bg-canvas"><Icon name="x" size={18} className="text-ink" /></span> : <XevyoOrb size={44} live halo />}
         </span>
         <span className="hidden text-left leading-tight sm:block">
-          <span className="block text-[14px] font-semibold">Ask Xevyo</span>
-          <span className="block text-[11px] text-ai">✦ Biongevity AI</span>
+          <span className="block text-[14px] font-semibold">Ask Biongevity SI</span>
+          <span className="block text-[11px] text-ai">✦ EN · FR · AR · FA</span>
         </span>
       </button>
     </>
