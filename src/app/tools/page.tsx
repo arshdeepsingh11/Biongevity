@@ -4,6 +4,8 @@ import { LabExplainer } from "@/components/tools/LabExplainer";
 import { VisitPrep } from "@/components/tools/VisitPrep";
 import { SpecialistRouter } from "@/components/tools/SpecialistRouter";
 import { AIBadge } from "@/components/ai/AIBadge";
+import { FitnessAge, GenesVsLifestyle, InterventionRanking } from "@/components/tools/SITools";
+import { Head } from "@/components/home/HomeSections";
 import { JsonLd, breadcrumb } from "@/lib/seo";
 
 export const metadata: Metadata = {
