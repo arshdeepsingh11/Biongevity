@@ -32,6 +32,7 @@ export default function PrecisionHealthPage() {
       <PageHero eyebrow="Precision Health" title={<>Care built on <AuroraText>your biology.</AuroraText></>}
         lede={`${DEPARTMENTS.length} departments, onsite diagnostics and BioAro testing — every result connected in one record and explained by AI.`} />
       <Section ai="Find a department" className="!pt-0"><div className="container-x max-w-[900px]"><Triage /></div></Section>
+      <Section ai="Departments on one record" className="!pt-0"><div className="container-x"><h2 className="text-[28px] font-semibold tracking-tight">{DEPARTMENTS.length} departments, one record</h2><p className="mt-1 text-[15px] text-muted">Tap a department on the beam circle to see what it covers.</p><div className="mt-6"><DeptBeam /></div></div></Section>
       <Section ai="Evidence" className="!pt-0"><div className="container-x"><h2 className="text-[28px] font-semibold tracking-tight">Why each department matters</h2><p className="mt-1 text-[15px] text-muted">Hover a department for the evidence behind it.</p><div className="mt-6"><DisciplineExplorer /></div></div></Section>
       {DEPT_GROUPS.map((g) => (
         <Section key={g} ai={g} className="!pt-0">
