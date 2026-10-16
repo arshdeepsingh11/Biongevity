@@ -17,10 +17,10 @@ export const EVIDENCE_LEVELS = [
 ] as const;
 
 /** Model cards for every AI or on-device model the website uses. */
-export const MODEL_CARDS: { name: string; kind: "Xevyo" | "On-device"; use: string; inputs: string; outputs: string; limits: string }[] = [
-  { name: "Xevyo chat", kind: "Xevyo", use: "Plain-language answers about our services, tests and health topics.", inputs: "Your question, page and section name, up to 3 passages from our pages, chosen language.", outputs: "Text answer with source links.", limits: "General education only; can be wrong; not medical advice." },
-  { name: "Page summary", kind: "Xevyo", use: "Summarise the page you are reading.", inputs: "Visible text of the page (on click).", outputs: "Short summary and follow-up questions.", limits: "Summarises our page only; may omit detail." },
-  { name: "Grounding search (BM25)", kind: "On-device", use: "Finds the 3 most relevant passages from our site index before a Xevyo call.", inputs: "Your question.", outputs: "Ranked passages and links.", limits: "Keyword based; may miss synonyms." },
+export const MODEL_CARDS: { name: string; kind: "Biongevity SI" | "On-device"; use: string; inputs: string; outputs: string; limits: string }[] = [
+  { name: "Biongevity SI chat", kind: "Biongevity SI", use: "Plain-language answers about our services, tests and health topics.", inputs: "Your question, page and section name, up to 3 passages from our pages, chosen language.", outputs: "Text answer with source links.", limits: "General education only; can be wrong; not medical advice." },
+  { name: "Page summary", kind: "Biongevity SI", use: "Summarise the page you are reading.", inputs: "Visible text of the page (on click).", outputs: "Short summary and follow-up questions.", limits: "Summarises our page only; may omit detail." },
+  { name: "Grounding search (BM25)", kind: "On-device", use: "Finds the 3 most relevant passages from our site index before a Biongevity SI call.", inputs: "Your question.", outputs: "Ranked passages and links.", limits: "Keyword based; may miss synonyms." },
   { name: "Intent matcher", kind: "On-device", use: "Matches what you type to departments, tests, formulas and biomarkers.", inputs: "Your words.", outputs: "Ranked matches with a strength bar.", limits: "Keyword scoring, not understanding." },
   { name: "Lab value flagger", kind: "On-device", use: "Reads pasted lab text and compares values with general adult reference ranges.", inputs: "Text you paste (never stored).", outputs: "Low / in range / high flags.", limits: "Labs use different ranges and units; your clinician interprets results." },
   { name: "Specialist router", kind: "On-device", use: "Suggests a department and test from a description.", inputs: "Your description.", outputs: "Up to 3 departments and tests.", limits: "A coordinator confirms the right service." },
