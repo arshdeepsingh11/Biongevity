@@ -77,7 +77,7 @@ export function FinalCTA() {
         <div data-reveal className="mt-8 flex flex-wrap justify-center gap-3">
           <Link href="/contact/" className="btn-dark h-12 px-6">Book a consultation</Link>
           <Link href="/shop/#studio" className="btn-light h-12 px-6"><Icon name="sparkle" size={16} weight="duotone" className="text-accent" />Plan Studio</Link>
-          <button onClick={() => ask("Where should I start with Biongevity?")} className="btn-light h-12 px-6"><Icon name="sparkle" size={16} weight="duotone" className="text-accent" />Ask Xevyo</button>
+          <button onClick={() => ask("Where should I start with Biongevity?")} className="btn-light h-12 px-6"><Icon name="sparkle" size={16} weight="duotone" className="text-accent" />Ask Biongevity SI</button>
         </div>
       </div>
     </Section>
