@@ -19,8 +19,8 @@ export default function ToolsPage() {
     <>
       <JsonLd data={breadcrumb([["AI tools", "/tools/"]])} />
       <PageHero eyebrow="AI health tools" ai="AI tools" title={<>Understand more. <span className="text-ai-grad">Act earlier.</span></>}
-        lede="Three free tools powered by Xevyo AI. Matching runs on your device; Xevyo is called only when you press a button, and nothing you type is stored.">
-        <div className="flex flex-wrap gap-2"><AIBadge /><AIBadge label="Nothing stored" /><AIBadge label="English · 日本語" /></div>
+        lede="Three free tools powered by Biongevity SI. Matching runs on your device; Biongevity SI is called only when you press a button, and nothing you type is stored.">
+        <div className="flex flex-wrap gap-2"><AIBadge /><AIBadge label="Nothing stored" /><AIBadge label="EN · FR · AR · FA" /></div>
       </PageHero>
       <Section ai="Lab-result explainer" id="labs" className="!pt-0" chip={false}><div className="container-x"><LabExplainer /></div></Section>
       <Section ai="Visit prep" id="visit" className="!pt-0" chip={false}><div className="container-x"><VisitPrep /></div></Section>
