@@ -41,6 +41,11 @@ export default async function ClinicSubPage({ params }: P) {
         </div>
       </section>
 
+      {(c.id === "virtual" || c.id === "uae") && (
+        <Section ai={`${c.short} 3D visit`} id="visit-3d" className="!pt-0 scroll-mt-20">
+          <div className="container-x"><VisitSection id={c.id} /></div>
+        </Section>
+      )}
       <Section ai={`${c.short} details`} className="!pt-0"><div className="container-x"><ClinicTabs id={c.id} /></div></Section>
 
       <section className="relative z-[1] pb-20">
