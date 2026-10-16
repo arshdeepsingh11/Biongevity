@@ -112,7 +112,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
       } catch { /* ignore */ }
     }
     if (!xevyoEnabled) {
-      setMsgs((m) => [...m, { role: "user", text: shown }, { role: "notice", text: "Xevyo isn't connected yet. Our care team can answer this — book a consultation or call 403-250-2221." }]);
+      setMsgs((m) => [...m, { role: "user", text: shown }, { role: "notice", text: "Biongevity SI isn't connected yet. Our care team can answer this — book a consultation or call 403-250-2221." }]);
       return;
     }
     busyRef.current = true; setBusy(true);
