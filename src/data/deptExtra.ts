@@ -6,3 +6,5 @@ import type { IconName } from "@/components/ui/icons";
  * (NEYU Health, ARC Network, NEA Precision Skin, BioGut Clinic) and BioAro Labs. Reviewed October 2026.
  * Confirm services and availability with the care team; nothing here is a price promise unless it is a BioAro Labs list price.
  */
+
+export type OrganId = "lungs" | "skin" | "brain" | "gut" | "thyroid" | "kidneys" | "tooth" | "knee" | "uterus" | "prostate" | "liver";
