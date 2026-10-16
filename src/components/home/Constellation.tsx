@@ -15,7 +15,7 @@ const MK_POS = Object.fromEntries(MARKERS.map((m, i) => [m.id, ring(i, MARKERS.l
 
 /**
  * Biomarker constellation — how markers, body systems and departments connect.
- * Hover to trace connections; click to ask Xevyo. Every link and figure comes from cited data.
+ * Hover to trace connections; click to ask Biongevity SI. Every link and figure comes from cited data.
  */
 export function Constellation() {
   const { ask } = useAI();
