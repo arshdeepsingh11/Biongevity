@@ -91,7 +91,7 @@ export function CommandBar() {
               <kbd className="hidden rounded-md bg-canvas px-1.5 py-0.5 font-mono text-[11px] text-muted sm:block">Esc</kbd>
             </div>
             <div className="max-h-[min(60vh,440px)] overflow-y-auto p-2">
-              {q.trim() && !rows.length && <div className="px-3 py-2 text-[12.5px] text-muted">No matching page or product — Xevyo can still help.</div>}
+              {q.trim() && !rows.length && <div className="px-3 py-2 text-[12.5px] text-muted">No matching page or product — Biongevity SI can still help.</div>}
               {all.map((r, i) => {
                 const head = r.group !== lastGroup ? r.group : ""; lastGroup = r.group;
                 return (
