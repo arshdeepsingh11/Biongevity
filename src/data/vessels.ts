@@ -29,3 +29,4 @@ export const VESSEL_INFO: VesselInfo[] = [
   { id: "portal", name: "Portal vein", kind: "portal", what: "Carries nutrient-rich blood from the gut to the liver before it returns to the heart.", fact: "Lets the liver process sugars, fats and medicines first.", dept: "gut-health" },
   { id: "heart", name: "Heart", kind: "artery", what: "A four-chamber muscular pump: the right side sends blood to the lungs, the left side to the whole body.", fact: "About 100,000 beats a day and roughly 5 litres of blood a minute at rest.", check: "ECG, echocardiogram, stress echo, blood pressure, ApoB.", dept: "cardiology" },
 ];
+export const vesselInfo = (id: string) => VESSEL_INFO.find((v) => v.id === id);
