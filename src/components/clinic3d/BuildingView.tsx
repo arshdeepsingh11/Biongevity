@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Icon } from "@/components/ui/Icon";
+import { City3D } from "./City3D";
 
 type Site = { floors: number; floor: number; suite: string; building: string; note: string };
 
