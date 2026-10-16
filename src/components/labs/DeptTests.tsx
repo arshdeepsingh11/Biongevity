@@ -33,7 +33,7 @@ export function DeptTests({ dept, name }: { dept: string; name: string }) {
       <div className="relative flex flex-wrap items-center gap-3">
         <XevyoOrb size={38} live />
         <div className="min-w-[200px] flex-1"><div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ai">✦ AI test match · BioAro Labs</div><div className="text-[18px] font-semibold tracking-tight">Tests that often help in {name}</div></div>
-        <button onClick={() => ask(`Which BioAro Labs tests are most useful before a ${name} visit, and what should I bring to the appointment?`, { label: `✦ Tests before ${name}` })} className="text-[13px] font-semibold text-ai underline">Ask Xevyo</button>
+        <button onClick={() => ask(`Which BioAro Labs tests are most useful before a ${name} visit, and what should I bring to the appointment?`, { label: `✦ Tests before ${name}` })} className="text-[13px] font-semibold text-ai underline">Ask Biongevity SI</button>
       </div>
       <div className="relative mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
         {picks.map((x) => (
