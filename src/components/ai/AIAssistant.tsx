@@ -7,6 +7,10 @@ import { XevyoOrb } from "./XevyoOrb";
 import { Icon } from "@/components/ui/Icon";
 import { BorderBeam } from "@/components/fx/BorderBeam";
 import { useVoice } from "@/hooks/useVoice";
+import { LANGUAGES, UI, langById, type SILanguage } from "@/lib/languages";
+import { FAMILY, WHATS_NEW } from "@/data/discover";
+import { LAB_TESTS } from "@/data/labs";
+import { formatMoney } from "@/lib/utils";
 
 /** Render [1] [2] [3] citations as small superscript chips. */
 function withCites(text: string) {
