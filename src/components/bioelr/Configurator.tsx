@@ -70,7 +70,7 @@ export function Configurator() {
             <div className="mt-4 grid gap-2">
               <Link href={`/contact/?interest=${encodeURIComponent("BioELR proposal")}&plan=${encodeURIComponent(plan)}`} className="btn-dark h-11"><Icon name="file" size={16} />Request proposal</Link>
               <button disabled={ai.busy} onClick={() => ai.run(`We are a ${org} with ${sites} site(s), specialties: ${specs.join(", ")}. Selected BioELR modules: ${chosen.map((m) => m.t).join(", ")}. In plain words: how would this setup help our team and patients, what should we roll out first, and what questions should we ask in a demo? Avoid compliance or outcome guarantees.`)}
-                className="btn-ai h-11 disabled:opacity-50"><Icon name="sparkle" size={16} />Review my setup with Xevyo</button>
+                className="btn-ai h-11 disabled:opacity-50"><Icon name="sparkle" size={16} />Review my setup with Biongevity SI</button>
             </div>
           </div>
           <AIOutput {...ai} />
