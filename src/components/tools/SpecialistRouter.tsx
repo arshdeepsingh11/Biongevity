@@ -10,7 +10,7 @@ import { AIOutput } from "./AIOutput";
 
 const EXAMPLES = ["Tired, gaining weight, poor sleep", "My mother keeps forgetting things", "Chest tightness when climbing stairs", "Bloating and reflux after meals"];
 
-/** Specialist router: on-device department + test match as you type; Xevyo explains "why" on click. */
+/** Specialist router: on-device department + test match as you type; Biongevity SI explains "why" on click. */
 export function SpecialistRouter() {
   const [q, setQ] = useState("");
   const depts = useMemo(() => (q.trim().length > 3 ? scoreDepartments(q).map(deptById) : []), [q]);
