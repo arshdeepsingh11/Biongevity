@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 import { XevyoOrb } from "./XevyoOrb";
 
-/** "✦ Xevyo AI" chip — marks anything powered by Xevyo. Same look in every theme, so AI is easy to spot. */
-export function AIBadge({ label = "Xevyo AI", className, tone = "soft" }: { label?: string; className?: string; tone?: "soft" | "solid" }) {
+/** "✦ Biongevity SI" chip — marks anything powered by Biongevity SI. Same look in every theme, so AI is easy to spot. */
+export function AIBadge({ label = "Biongevity SI", className, tone = "soft" }: { label?: string; className?: string; tone?: "soft" | "solid" }) {
   return (
     <span className={cn("inline-flex h-6 items-center gap-1.5 whitespace-nowrap rounded-full pl-1 pr-2.5 text-[11px] font-semibold tracking-[0.02em]",
       tone === "solid" ? "bg-ai text-on-ai shadow-ai" : "bg-ai-soft text-ai ring-1 ring-ai/20", className)}>
