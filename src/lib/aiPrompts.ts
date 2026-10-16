@@ -2,7 +2,7 @@ import { DEPARTMENTS } from "@/data/departments";
 
 /**
  * Smart questions — ready prompts for the page (and section) the visitor is on.
- * These are only QUESTIONS; every answer comes from Xevyo.
+ * These are only QUESTIONS; every answer comes from Biongevity SI.
  */
 const PAGE: Record<string, string[]> = {
   home: ["Which test should I start with at 50?", "What is a healthspan baseline?", "How is Biongevity different from a regular clinic?"],
