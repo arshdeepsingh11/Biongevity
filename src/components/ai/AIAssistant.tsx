@@ -166,11 +166,11 @@ export function AIAssistant() {
               {prompts.map((q) => <button key={q} onClick={() => ask(q)} className="chip shrink-0 border-ai/20 bg-ai-soft/50 text-[13px] hover:border-ai/40 hover:text-ai"><span aria-hidden className="text-ai">✦</span>{q}</button>)}
             </div>
             <div className="flex items-center gap-2 border-t border-ink/[0.06] p-3">
-              <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder={voice.listening ? "Listening…" : language === "ja" ? "Xevyoに質問する" : "Message Xevyo"}
-                aria-label="Message Xevyo" className="h-11 min-w-0 flex-1 rounded-full border border-ink/10 bg-canvas px-4 text-[15px] outline-none focus:border-ai focus:bg-white" />
+              <input value={input} dir="auto" onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()} placeholder={voice.listening ? ui.listening : ui.placeholder}
+                aria-label="Message Biongevity SI" className="h-11 min-w-0 flex-1 rounded-full border border-ink/10 bg-canvas px-4 text-[15px] outline-none focus:border-ai focus:bg-white" />
               {voice.supported && (
-                <button onClick={voice.toggle} aria-label={voice.listening ? "Stop listening" : "Ask by voice"} className={`grid h-11 w-11 shrink-0 place-items-center rounded-full ${voice.listening ? "animate-pulse bg-ai text-on-ai" : "bg-canvas text-ai hover:bg-ai-soft"}`}>
-                  <Icon name={voice.listening ? "stop" : "mic"} size={18} weight="duotone" />
+                <button onClick={voice.toggle} aria-label={voice.listening ? "Stop listening" : `Ask by voice (${lang.native})`} title={`Speak in ${lang.native}`} className={`grid h-11 w-11 shrink-0 place-items-center rounded-full ${voice.listening ? "animate-pulse bg-ai text-on-ai" : "bg-canvas text-ai hover:bg-ai-soft"}`}>
+                  <Icon name={voice.listening ? "stop" : "mic"} size={18} />
                 </button>
               )}
               <button onClick={send} aria-label="Send" disabled={busy || !input.trim()} className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-ai text-on-ai disabled:opacity-40"><Icon name="arrow-up" size={18} /></button>
