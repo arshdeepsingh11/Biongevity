@@ -1,7 +1,7 @@
 "use client";
 import { XevyoOrb } from "@/components/ai/XevyoOrb";
 
-/** Streams a Xevyo answer inside a tool, with the standard AI label and safety line. */
+/** Streams a Biongevity SI answer inside a tool, with the standard AI label and safety line. */
 export function AIOutput({ text, busy, error }: { text: string; busy: boolean; error: string }) {
   if (!text && !busy && !error) return null;
   return (
