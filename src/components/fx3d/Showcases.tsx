@@ -78,3 +78,21 @@ export function FormulaCoins() {
     </div>
   );
 }
+
+/** Membership packages as a 3D cascade. */
+export function PackageCascade() {
+  return (
+    <div className="-my-4 overflow-hidden py-4"><CascadeSlider items={PACKAGES} label="Biongevity programs" render={(p, on) => (
+      <Tilt max={6} className="h-full">
+        <div className={`flex h-full flex-col rounded-[26px] p-6 shadow-card ring-1 ${on ? "ring-ai/40" : "ring-ink/[0.06]"}`} style={{ background: "rgb(var(--c-surface))" }}>
+          <div className="flex items-center justify-between gap-2"><span className="icon-tile h-11 w-11"><Icon name={p.handle === "elite" ? "crown" : p.handle === "precision" ? "target" : "sprout"} size={20} /></span>{p.featured && <span className="rounded-full bg-ai px-2 py-0.5 text-[10.5px] font-bold uppercase tracking-wider text-on-ai">Most complete</span>}</div>
+          <div className="mt-4 text-[20px] font-semibold">{p.name}</div>
+          <div className="text-[13px] text-muted">{p.cadence}</div>
+          <div className="mt-3 text-[30px] font-semibold tracking-tight">{formatMoney(p.price)} <span className="text-[13px] font-medium text-muted">{p.currency}</span></div>
+          <ul className="mt-3 space-y-1.5">{p.diagnostics.slice(0, 4).map((x) => <li key={x} className="flex gap-1.5 text-[12.5px] leading-snug"><Icon name="check" size={13} className="mt-0.5 shrink-0 text-ai" /><span className="line-clamp-2">{x}</span></li>)}</ul>
+          <a href={p.url} className="btn-dark mt-auto h-10 justify-center text-[13.5px]">Choose {p.name.replace("Biongevity ", "")}</a>
+        </div>
+      </Tilt>
+    )} /></div>
+  );
+}
