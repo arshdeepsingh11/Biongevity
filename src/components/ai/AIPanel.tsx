@@ -23,7 +23,7 @@ export function AIPanel({ title, prompts, context, className }: { title: string;
           className="h-10 min-w-0 flex-1 rounded-full border border-ink/10 bg-white px-4 text-[14px] outline-none focus:border-ai" />
         <button onClick={() => send(q)} aria-label="Ask" className="grid h-10 w-10 place-items-center rounded-full bg-ai text-on-ai"><Icon name="arrow-up" size={16} weight="bold" /></button>
       </div>
-      <p className="mt-2 text-[11px] text-faint">Answers from Xevyo AI, with sources · education, not a diagnosis.</p>
+      <p className="mt-2 text-[11px] text-faint">Answers from Biongevity SI, with sources · education, not a diagnosis.</p>
     </AISurface>
   );
 }
