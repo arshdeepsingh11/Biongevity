@@ -1,7 +1,8 @@
 import { env, xevyoEnabled } from "./env";
+import { langById, type SILanguage } from "./languages";
 
 /**
- * Xevyo — Biongevity's in-house AI. This client holds NO answers of its own.
+ * Biongevity SI — Biongevity's in-house AI. This client holds NO answers of its own.
  *
  * Request  (POST NEXT_PUBLIC_XEVYO_URL, JSON):
  *   { message, history: [{ role: "user" | "assistant", content }], context: { page, section }, sessionId }
