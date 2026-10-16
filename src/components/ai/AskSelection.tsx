@@ -46,7 +46,7 @@ export function AskSelection() {
           onMouseDown={(e) => e.preventDefault()} onClick={go}
           style={{ left: pick.x, top: pick.y }}
           className="fixed z-[110] flex items-center gap-1.5 whitespace-nowrap rounded-full bg-white px-3.5 py-2 text-[12.5px] font-semibold text-ink shadow-lift ring-1 ring-ai/30">
-          <XevyoOrb size={18} />✦ Explain with Xevyo
+          <XevyoOrb size={18} />✦ Explain with Biongevity SI
           <kbd className="ml-1 hidden rounded bg-canvas px-1 text-muted font-mono text-[10px] sm:inline">Ctrl X</kbd>
         </motion.button>
       )}
