@@ -7,3 +7,4 @@ export const LANGUAGES: { id: SILanguage; label: string; native: string; dir: "l
   { id: "ar", label: "Arabic", native: "العربية", dir: "rtl", speech: "ar-AE" },
   { id: "fa", label: "Persian", native: "فارسی", dir: "rtl", speech: "fa-IR" },
 ];
+export const langById = (id: SILanguage) => LANGUAGES.find((l) => l.id === id) ?? LANGUAGES[0];
