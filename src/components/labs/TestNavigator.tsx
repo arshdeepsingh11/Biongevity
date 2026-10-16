@@ -162,7 +162,7 @@ export function TestNavigator() {
           <motion.div initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 40, opacity: 0 }}
             className="sticky bottom-[calc(96px+var(--safe-bottom))] z-[30] rounded-[24px] bg-white/95 p-4 shadow-lift ring-1 ring-ai/30 backdrop-blur-xl">
             <div className="flex flex-wrap items-center gap-2"><XevyoOrb size={26} /><div className="flex-1 text-[14px] font-semibold">Compare {compared.length} test{compared.length > 1 ? "s" : ""}</div>
-              {compared.length > 1 && <button onClick={() => ask(`Compare these BioAro Labs tests for me: ${compared.map((c) => `${c.t.title} ($${c.t.price}, ${c.evidence})`).join("; ")}. Which suits which person, and is there overlap?`, { label: "✦ Compare with Xevyo" })} className="btn-ai h-9 px-4 text-[13px]">Compare with Xevyo</button>}
+              {compared.length > 1 && <button onClick={() => ask(`Compare these BioAro Labs tests for me: ${compared.map((c) => `${c.t.title} ($${c.t.price}, ${c.evidence})`).join("; ")}. Which suits which person, and is there overlap?`, { label: "✦ Compare with Biongevity SI" })} className="btn-ai h-9 px-4 text-[13px]">Compare with Biongevity SI</button>}
               <button onClick={() => setCmp([])} className="text-[12px] text-faint underline">Clear</button></div>
             <div className="no-scrollbar mt-3 overflow-x-auto">
               <table className="w-full min-w-[520px] text-[12.5px]">
