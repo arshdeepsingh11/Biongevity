@@ -10,8 +10,8 @@ const STORES = {
  * Buy button for partner stores. Purchases happen on the partner site:
  * the button opens the real product page (new tab) — this website never takes payment.
  */
-export function BuyButton({ href, store, price, className, size = "md", label }: {
-  href: string; store: keyof typeof STORES; price?: number; className?: string; size?: "sm" | "md"; label?: string;
+export function BuyButton({ href, store, price, className, size = "md", label, hideStore }: {
+  href: string; store: keyof typeof STORES; price?: number; className?: string; size?: "sm" | "md"; label?: string; hideStore?: boolean;
 }) {
   const s = STORES[store];
   return (
