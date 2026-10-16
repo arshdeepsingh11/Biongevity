@@ -96,7 +96,7 @@ export function AIHero() {
             )}
           </AnimatePresence>
 
-          {/* Suggested questions — each one asks Xevyo directly */}
+          {/* Suggested questions — each one asks Biongevity SI directly */}
           <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
             {CARDS.map((c) => (
               <button key={c.q} onClick={() => ask(c.q)} className="group flex items-center gap-3 rounded-2xl bg-white/80 p-3 text-left ring-1 ring-ink/[0.07] backdrop-blur transition hover:-translate-y-0.5 hover:ring-ai/35 sm:p-3.5">
