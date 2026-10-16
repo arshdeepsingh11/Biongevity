@@ -36,7 +36,7 @@ export default function TwinPage() {
         <div className="flex flex-wrap items-center gap-3">
           <a href={url} className="btn-ai h-12 px-6"><Icon name="fingerprint" size={18} />Open my Digital Twin<Icon name="arrow-up-right" size={14} /></a>
           <PageSummary className="h-12" />
-          <span className="flex gap-2"><AIBadge label="3D · 360°" /><AIBadge label="Explained by Xevyo" /></span>
+          <span className="flex gap-2"><AIBadge label="3D · 360°" /><AIBadge label="Explained by Biongevity SI" /></span>
         </div>
       </PageHero>
 
