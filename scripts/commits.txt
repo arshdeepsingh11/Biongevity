@@ -1,20 +1,8 @@
-fix(home): restore the original home layout|src/app/page.tsx
-fix(header): restore the original top bar|src/components/layout/Header.tsx
-fix(scan): restore the original scan card|src/components/scan/HealthspanScan.tsx
-fix(hero): restore the original hero|src/components/home/AIHero.tsx
-feat(aurora): minimal white background and glass surface tokens|src/styles/themes.css@1
-feat(aurora): slate text colours for main and secondary text|src/styles/themes.css@2
-feat(aurora): primary and deep orange brand tokens|src/styles/themes.css@3
-feat(aurora): AI colours from deep orange to amber|src/styles/themes.css@4
-feat(aurora): calm status colours that sit with warm orange|src/styles/themes.css@5
-feat(aurora): warm shadows and scrim|src/styles/themes.css@6
-feat(aurora): chart palette in orange, amber, peach and slate|src/styles/themes.css@7
-feat(aurora): orange gradients lit through glass|src/styles/themes.css@8
-feat(aurora): clear glass surface, border and header translucency|src/styles/themes.css@9
-docs(aurora): describe the white glass theme|src/styles/themes.css
-feat(aurora): theme picker swatch and note for white glass|src/lib/theme.ts
-feat(aurora): minimal white background with only tiny particles, no grids or glows|src/app/globals.css@10
-feat(aurora): clear frosted glass cards with a bright top edge and warm shadow|src/app/globals.css@11
-feat(aurora): soft orange tint for inner surfaces and lifted cards|src/app/globals.css@12
-feat(aurora): glossy orange tabs and buttons, glass light buttons|src/app/globals.css
+style(aurora): white background with a barely-there warm light in two corners|src/app/globals.css@1
+style(aurora): lighter heading weights, calmer sizes and balanced line breaks|src/app/globals.css@2
+style(aurora): top bar becomes a floating glass pill with the same items|src/app/globals.css@3
+style(aurora): glass cards with a white hairline edge, soft spread shadow and sheen|src/app/globals.css@4
+style(aurora): softer peach glass icon tiles|src/app/globals.css@5
+style(aurora): active tabs are soft peach glass with orange text|src/app/globals.css@6
+style(aurora): deep glossy orange buttons and borderless glass secondary buttons|src/app/globals.css
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt
