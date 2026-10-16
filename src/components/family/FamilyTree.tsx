@@ -32,3 +32,4 @@ const CONDS: Cond[] = [
   { id: "dementia", label: "Dementia / Alzheimer's", icon: "brain", tests: ["Brain Health"], clinic: "Memory review; manage blood pressure, hearing and sleep", dept: "geriatric-medicine", why: "Family history adds some risk, but blood pressure, activity, hearing and sleep are powerful levers." },
   { id: "bones", label: "Osteoporosis / hip fracture", icon: "bone", tests: ["Vitamin D, 25-Hydroxy", "Vitamin K1"], clinic: "Bone density scan if advised", dept: "geriatric-medicine", why: "A parent's hip fracture is a recognised risk factor for your own bone health." },
 ];
+const findTest = (k: string) => LAB_TESTS.find((t) => t.title.toLowerCase().startsWith(k.toLowerCase()));
