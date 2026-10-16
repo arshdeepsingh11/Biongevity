@@ -46,7 +46,7 @@ export function VisitPrep() {
           <dl className="mt-3 grid grid-cols-[110px_1fr] gap-x-3 gap-y-2">
             {([["For", f.who], ["Service", dept || auto || "—"], ["Reason", f.reason || "—"], ["Symptoms", f.symptoms || "—"], ["Since", f.since || "—"], ["Medications", f.meds || "—"], ["Questions", f.questions || "—"]] as const).map(([k, v]) => <Fragment key={k}><dt className="font-semibold text-muted">{k}</dt><dd className="whitespace-pre-wrap">{v}</dd></Fragment>)}
           </dl>
-          {ai.text && <div className="mt-4 border-t border-ink/10 pt-3"><div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ai">✦ Summary drafted by Xevyo AI</div><div className="mt-1 whitespace-pre-wrap">{ai.text}</div></div>}
+          {ai.text && <div className="mt-4 border-t border-ink/10 pt-3"><div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ai">✦ Summary drafted by Biongevity SI</div><div className="mt-1 whitespace-pre-wrap">{ai.text}</div></div>}
           <p className="mt-4 text-[10.5px] text-muted">Prepared by the patient with Biongevity tools. Education, not a diagnosis.</p>
         </div>
       </div>
