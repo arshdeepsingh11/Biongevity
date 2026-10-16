@@ -1,6 +1,6 @@
 /**
  * Public runtime configuration (static export → only NEXT_PUBLIC_* values exist in the browser).
- * Never put secrets here. Xevyo and Shopify must expose browser-safe, rate-limited endpoints/tokens.
+ * Never put secrets here. Biongevity SI and Shopify must expose browser-safe, rate-limited endpoints/tokens.
  */
 export const env = {
   xevyoUrl: process.env.NEXT_PUBLIC_XEVYO_URL ?? "",
