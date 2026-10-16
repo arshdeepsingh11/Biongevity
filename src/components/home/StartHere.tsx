@@ -6,7 +6,7 @@ import { ScanTeaser } from "@/components/scan/HealthspanScan";
 export function StartHere() {
   const side = [
     { href: "/family/", icon: "users", k: "For a parent", t: "Family care planner", d: "Pick what worries you about Mum or Dad. Get a checklist, the right specialist and tests." },
-    { href: "/tools/", icon: "flask", k: "Have results already?", t: "Explain my lab results", d: "Paste results; see each value on a range bar; ask Xevyo what it means." },
+    { href: "/tools/", icon: "flask", k: "Have results already?", t: "Explain my lab results", d: "Paste results; see each value on a range bar; ask Biongevity SI what it means." },
     { href: "/precision-health/bioaro-labs/#navigator", icon: "test-tubes", k: "Ready to test?", t: "AI Test Navigator", d: "All BioAro Labs tests ranked for your goals, with a value map and buy links." },
   ];
   return (
