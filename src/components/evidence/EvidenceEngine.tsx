@@ -33,3 +33,11 @@ function Forest({ r }: { r: NonNullable<EvidenceCard["ratio"]> }) {
     </div>
   );
 }
+
+function GradePill({ g }: { g: Grade }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-canvas px-2 py-0.5 text-[11px] font-semibold" title="GRADE certainty of evidence">
+      <span className="flex gap-0.5">{[1, 2, 3, 4].map((k) => <span key={k} className={cn("h-1.5 w-1.5 rounded-full", k <= G_N[g] ? "bg-ai" : "bg-ink/15")} />)}</span>{g}
+    </span>
+  );
+}
