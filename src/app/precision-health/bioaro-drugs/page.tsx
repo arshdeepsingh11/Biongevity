@@ -4,6 +4,8 @@ import { AuroraText } from "@/components/fx/AuroraText";
 import { DrugsHub } from "@/components/bioaro/DrugsHub";
 import { ProtocolStudio } from "@/components/drugs/ProtocolStudio";
 import { JsonLd, breadcrumb } from "@/lib/seo";
+import { FormulaCoins } from "@/components/fx3d/Showcases";
+import { Head } from "@/components/home/HomeSections";
 
 export const metadata: Metadata = {
   title: "BioAro Drugs — AI-guided bioactive protocols",
