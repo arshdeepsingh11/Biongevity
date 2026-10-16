@@ -97,7 +97,7 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 .bg-navy [class*="ring-white"], .bg-navy [class*="border-white"] { --tw-ring-color: rgb(var(--c-accent) / 0.15); border-color: rgb(var(--c-accent) / 0.15); }
 .bg-navy .text-teal-soft { color: var(--teal); }
 
-/* ───── Futuristic HUD primitives (light champagne) ───── */
+/* ───── Futuristic HUD primitives ───── */
 .hud-label { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
 .grid-bg { background-image: linear-gradient(rgb(var(--c-accent) / .07) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--c-accent) / .07) 1px, transparent 1px); background-size: 32px 32px; }
 .hud { position: relative; }
