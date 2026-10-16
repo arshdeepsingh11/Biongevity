@@ -7,6 +7,7 @@ import { AIPanel } from "@/components/ai/AIPanel";
 import { PageSummary } from "@/components/ai/PageSummary";
 import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { TwinTour } from "@/components/twin/TwinTour";
+import { TwinWhatIf } from "@/components/twin/TwinWhatIf";
 import { APP_MAP, TWIN_GLOSSARY, TWIN_PATH } from "@/data/twin";
 import { DEVICES } from "@/data/platform";
 import { env } from "@/lib/env";
