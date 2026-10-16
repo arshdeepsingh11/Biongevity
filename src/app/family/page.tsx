@@ -18,7 +18,7 @@ export default function FamilyPage() {
     <>
       <JsonLd data={breadcrumb([["Family care", "/family/"]])} />
       <PageHero eyebrow="Family care" ai="Family care" title={<>Look after Mum and Dad, <span className="text-ai-grad">even from far away.</span></>}
-        lede="Pick what worries you. Xevyo turns it into a checklist, the right specialists and tests, and — with your parent's permission — a shared view of their trends in the Biongevity app.">
+        lede="Pick what worries you. Biongevity SI turns it into a checklist, the right specialists and tests, and — with your parent's permission — a shared view of their trends in the Biongevity app.">
         <div className="flex flex-wrap gap-2"><AIBadge /><AIBadge label="For adult children" /><AIBadge label="Parent stays in control" /></div>
       </PageHero>
       <Section ai="Family care planner" className="!pt-0" chip={false}><div className="container-x"><FamilyPlanner /></div></Section>
