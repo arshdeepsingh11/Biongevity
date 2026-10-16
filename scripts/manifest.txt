@@ -186,6 +186,7 @@ src/lib/aiPrompts.ts
 src/lib/body.ts
 src/lib/catalog.ts
 src/lib/commerce.ts
+src/lib/deptGoals.ts
 src/lib/env.ts
 src/lib/intent.ts
 src/lib/interest.ts
