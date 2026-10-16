@@ -134,13 +134,41 @@ export function ClinicGlobe() {
         ctx.strokeStyle = rgba(col.ai2, 0.8 * (1 - pulse)); ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, 6 + pulse * 18, 0, Math.PI * 2); ctx.stroke();
         ctx.fillStyle = rgba(col.ai, 1); ctx.beginPath(); ctx.arc(x, y, 5.5, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = rgba(col.surface, 1); ctx.beginPath(); ctx.arc(x, y, 2.2, 0, Math.PI * 2); ctx.fill();
-        ctx.font = "600 12px 'DM Sans Variable', system-ui, sans-serif"; ctx.fillStyle = rgba(col.ink, 0.9); ctx.fillText(o.city, x + 10, y - 8);
+        ctx.font = "600 12px 'DM Sans Variable', system-ui, sans-serif";
+        const lw = ctx.measureText(o.city).width;
+        ctx.fillStyle = dark || sat ? "rgba(10,16,30,0.72)" : "rgba(255,255,255,0.85)"; ctx.beginPath(); ctx.roundRect(x + 9, y - 21, lw + 14, 20, 10); ctx.fill();
+        ctx.fillStyle = dark || sat ? "#fff" : rgba(col.ink, 0.9); ctx.fillText(o.city, x + 16, y - 7);
+        hit.push({ id: o.city, kind: "city", x, y });
       });
+      // BioAro satellites on inclined orbits; beam down to a clinic when one is in view
+      SATS.forEach((S) => {
+        const orbit = (a: number) => { const ci = Math.cos(rad(S.inc)), si = Math.sin(rad(S.inc)); const lat = Math.asin(si * Math.sin(a)) * 180 / Math.PI, lon = Math.atan2(ci * Math.sin(a), Math.cos(a)) * 180 / Math.PI + 20; return project(lon, lat, S.alt); };
+        ctx.beginPath(); let first = true;
+        for (let a = 0; a <= Math.PI * 2 + 0.01; a += 0.06) { const [x, y, z] = orbit(a); if (z < -0.25) { first = true; continue; } if (first) ctx.moveTo(x, y); else ctx.lineTo(x, y); first = false; }
+        ctx.strokeStyle = dark || sat ? "rgba(170,210,255,0.22)" : rgba(col.ai2, 0.22); ctx.lineWidth = 1; ctx.setLineDash([2, 5]); ctx.stroke(); ctx.setLineDash([]);
+        const [x, y, z] = orbit(t * S.speed + S.phase); if (z < -0.25) return;
+        const near = OFFICES.map((o) => project(o.loc[1], o.loc[0])).filter((q) => q[2] > 0.2).sort((a, b) => Math.hypot(a[0] - x, a[1] - y) - Math.hypot(b[0] - x, b[1] - y))[0];
+        if (near && Math.hypot(near[0] - x, near[1] - y) < R * 0.75) { const bg = ctx.createLinearGradient(x, y, near[0], near[1]); bg.addColorStop(0, "rgba(255,255,255,0.0)"); bg.addColorStop(1, dark || sat ? "rgba(140,220,255,0.55)" : rgba(col.ai, 0.45)); ctx.strokeStyle = bg; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(near[0], near[1]); ctx.stroke(); }
+        const sc = 0.7 + z * 0.3, on = selSat.current === S.id;
+        ctx.save(); ctx.translate(x, y); ctx.rotate(t * 0.3 + S.phase); ctx.scale(sc, sc);
+        ctx.fillStyle = dark || sat ? "rgba(120,190,255,0.85)" : rgba(col.ai2, 0.85); ctx.fillRect(-15, -3, 9, 6); ctx.fillRect(6, -3, 9, 6);
+        ctx.fillStyle = dark || sat ? "#e9eef7" : rgba(col.ink, 0.85); ctx.fillRect(-4, -4, 8, 8);
+        ctx.restore();
+        if (on) { ctx.strokeStyle = dark || sat ? "#9fe0ff" : rgba(col.ai, 0.9); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(x, y, 14, 0, Math.PI * 2); ctx.stroke(); }
+        ctx.font = "600 10.5px 'DM Sans Variable', system-ui, sans-serif"; ctx.fillStyle = dark || sat ? `rgba(220,235,255,${0.5 + z * 0.4})` : rgba(col.ink, 0.45 + z * 0.4); ctx.fillText(S.name, x + 14, y + 14);
+        hit.push({ id: S.id, kind: "sat", x, y });
+      });
+      hits.current = hit;
     };
     raf = requestAnimationFrame(frame);
-    const down = (e: PointerEvent) => { const v = cam.current; v.drag = true; v.lx = e.clientX; v.ly = e.clientY; v.idle = 0; c.setPointerCapture(e.pointerId); };
-    const move = (e: PointerEvent) => { const v = cam.current; if (!v.drag) return; v.tLon -= (e.clientX - v.lx) * 0.35 / v.zoom; v.tLat = Math.max(-60, Math.min(70, v.tLat + (e.clientY - v.ly) * 0.3 / v.zoom)); v.lon = v.tLon; v.lat = v.tLat; v.lx = e.clientX; v.ly = e.clientY; };
-    const up = () => { cam.current.drag = false; };
+    let sx = 0, sy = 0;
+    const pick = (e: PointerEvent) => { const r = c.getBoundingClientRect(), px = e.clientX - r.left, py = e.clientY - r.top; return hits.current.filter((h) => Math.hypot(h.x - px, h.y - py) < (h.kind === "city" ? 20 : 16)).sort((a, b) => Math.hypot(a.x - px, a.y - py) - Math.hypot(b.x - px, b.y - py))[0]; };
+    const down = (e: PointerEvent) => { const v = cam.current; v.drag = true; v.lx = sx = e.clientX; v.ly = sy = e.clientY; v.idle = 0; c.setPointerCapture(e.pointerId); };
+    const move = (e: PointerEvent) => { const v = cam.current; if (!v.drag) { const h = pick(e); c.style.cursor = h ? "pointer" : "grab"; setHover(h ? h.id : null); return; } v.tLon -= (e.clientX - v.lx) * 0.35 / v.zoom; v.tLat = Math.max(-60, Math.min(70, v.tLat + (e.clientY - v.ly) * 0.3 / v.zoom)); v.lon = v.tLon; v.lat = v.tLat; v.lx = e.clientX; v.ly = e.clientY; };
+    const up = (e: PointerEvent) => {
+      cam.current.drag = false;
+      if (Math.hypot(e.clientX - sx, e.clientY - sy) < 6) { const h = pick(e); if (h?.kind === "city") flyRef.current(h.id); else if (h?.kind === "sat") { selSat.current = selSat.current === h.id ? null : h.id; setSat(selSat.current); } }
+    };
     c.addEventListener("pointerdown", down); c.addEventListener("pointermove", move); c.addEventListener("pointerup", up); c.addEventListener("pointercancel", up);
     return () => { cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); off(); c.removeEventListener("pointerdown", down); c.removeEventListener("pointermove", move); c.removeEventListener("pointerup", up); c.removeEventListener("pointercancel", up); };
   }, [land]);
