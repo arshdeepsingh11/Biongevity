@@ -11,3 +11,4 @@ export type Shape =
   | { k: "ell"; c: V3; r: V3; n?: number; w?: number }
   | { k: "tube"; path: V3[]; r: number; n?: number; taper?: number }
   | { k: "slab"; c: V3; s: V3; n?: number };
+export type Tone = "ai" | "ai-hi" | "ai-2" | "artery" | "vein" | "warn" | "teal" | "gold" | "muted";
