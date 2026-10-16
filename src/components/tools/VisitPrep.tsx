@@ -9,7 +9,7 @@ import { AIOutput } from "./AIOutput";
 
 const EMPTY = { reason: "", symptoms: "", since: "", meds: "", questions: "", who: "Me" };
 
-/** Visit-prep brief: your notes become a one-page summary to print or save as PDF. Xevyo can tidy it (on click). */
+/** Visit-prep brief: your notes become a one-page summary to print or save as PDF. Biongevity SI can tidy it (on click). */
 export function VisitPrep() {
   const [f, setF] = useState(EMPTY);
   const set = (k: keyof typeof EMPTY) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => setF((s) => ({ ...s, [k]: e.target.value }));
