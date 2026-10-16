@@ -29,7 +29,7 @@ export function LabExplainer() {
 
   return (
     <AISurface kicker="Tool 1 · Lab results" title="Explain my lab results">
-      <p className="text-[14px] text-muted">Paste results from a lab report or portal. Values are read and flagged <b className="text-ink">on your device</b>. Xevyo explains them only when you ask.</p>
+      <p className="text-[14px] text-muted">Paste results from a lab report or portal. Values are read and flagged <b className="text-ink">on your device</b>. Biongevity SI explains them only when you ask.</p>
       <div className="mt-4 grid gap-4 lg:grid-cols-2">
         <div>
           <textarea value={text} onChange={(e) => setText(e.target.value)} rows={9} aria-label="Paste your lab results"
