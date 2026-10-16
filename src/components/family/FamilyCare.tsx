@@ -73,7 +73,7 @@ export function FamilyViewDemo() {
         <a href={env.appUrl} className="btn-dark mt-4 h-10 w-full text-[14px]">Set up family access in the app<Icon name="arrow-up-right" size={14} /></a>
       </div>
       <AIChartFrame kicker="Shared trend" title="Dad's home blood pressure, 8 weeks" illustrative data={FAMILY_BP}
-        insight={<>Average systolic fell <b>{drop} mmHg</b> and is now near the home target of 135/85. Xevyo flags trends for the care team — it never changes medicines.</>}>
+        insight={<>Average systolic fell <b>{drop} mmHg</b> and is now near the home target of 135/85. Biongevity SI flags trends for the care team — it never changes medicines.</>}>
         {dom.find((d) => d.id === "bp")?.on
           ? <LineChart labels={FAMILY_BP.labels} series={[{ name: "Systolic", values: FAMILY_BP.sys }, { name: "Diastolic", values: FAMILY_BP.dia, dashed: true }]} refLine={{ value: 135, label: "Home target 135" }} height={210} />
           : <div className="grid h-[210px] place-items-center rounded-2xl bg-canvas text-[13px] text-muted">Hidden — your parent turned off blood-pressure sharing.</div>}
