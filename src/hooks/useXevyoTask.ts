@@ -26,7 +26,7 @@ export function useXevyoTask(page: string) {
     } catch (e) {
       if ((e as Error).name === "AbortError") return;
       const local = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-      setError(`Xevyo is unavailable right now. Please try again shortly.${local && e instanceof XevyoError ? ` [Setup check] ${e.reason}` : ""}`);
+      setError(`Biongevity SI is unavailable right now. Please try again shortly.${local && e instanceof XevyoError ? ` [Setup check] ${e.reason}` : ""}`);
     } finally { setBusy(false); }
   }, [page, language]);
 
