@@ -20,7 +20,7 @@ export function BuyButton({ href, store, price, className, size = "md", label, h
         size === "sm" ? "h-8 px-3 text-[12px]" : "h-10 px-4 text-[13.5px]", className)}>
       <Icon name="bag" size={size === "sm" ? 13 : 15} />
       <span>{label ?? "Buy"}{price !== undefined && <span className="ml-1 opacity-80">${price % 1 ? price.toFixed(2) : price}</span>}</span>
-      <span className="hidden opacity-70 sm:inline">· {s.name}</span>
+      {!hideStore && <span className="hidden opacity-70 sm:inline">· {s.name}</span>}
       <Icon name="arrow-up-right" size={size === "sm" ? 12 : 14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
     </a>
   );
