@@ -8,3 +8,12 @@ import type { IconName } from "@/components/ui/icons";
  */
 
 export type OrganId = "lungs" | "skin" | "brain" | "gut" | "thyroid" | "kidneys" | "tooth" | "knee" | "uterus" | "prostate" | "liver";
+
+export interface DeptExtra {
+  organ?: OrganId;
+  offer: { t: string; d: string; icon: IconName }[];
+  links: { t: string; d: string }[];
+  numbers?: { v: string; l: string }[];
+  partner?: { name: string; url: string; line: string };
+  sources: { name: string; url: string }[];
+}
