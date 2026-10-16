@@ -6,6 +6,7 @@ import { askXevyo, sessionId, xevyoEnabled, XevyoError, type XevyoLanguage, type
 import { pageLabel, pagePrompts } from "@/lib/aiPrompts";
 import { groundingText, retrieve } from "@/lib/retrieve";
 import { recordVisit } from "@/lib/interest";
+import { isLanguage, langById } from "@/lib/languages";
 
 export interface Source { title: string; url: string }
 export interface Msg { role: "user" | "ai" | "notice"; text: string; sources?: Source[] }
