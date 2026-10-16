@@ -179,6 +179,7 @@ export function ClinicGlobe() {
     v.tLon = v.lon + d; v.tLat = Math.min(60, o.loc[0]); v.tZoom = 2.2; v.idle = 0; setSel(city); setStage("globe");
     setTimeout(() => setStage("building"), 1500);
   };
+  flyRef.current = fly;
   const back = () => { const v = cam.current; v.tZoom = 1; setStage("globe"); setSel(null); };
   const o = OFFICES.find((x) => x.city === sel), site = sel ? SITES[sel] : null;
   const time = (tz: string) => (now ? now.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: tz }) : "--:--");
