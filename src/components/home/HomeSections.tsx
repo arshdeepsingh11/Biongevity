@@ -46,7 +46,7 @@ export function StoriesSection() {
 
 export function GlobalClinic() {
   return (
-    <Section ai="Global clinic">
+    <Section ai="Global clinic" id="clinics">
       <div className="container-x">
         <Head n="12" label="Global clinic" title={<TextAnimate animation="blurIn">Your longevity clinic, anywhere in the world.</TextAnimate>} />
         <div className="mt-10 grid gap-6 lg:grid-cols-5">
