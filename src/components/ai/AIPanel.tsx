@@ -4,7 +4,7 @@ import { useAI } from "./AIProvider";
 import { AISurface } from "./AISurface";
 import { Icon } from "@/components/ui/Icon";
 
-/** Inline AI panel — a Xevyo entry point placed beside content. Prompts open the chat with context. */
+/** Inline AI panel — a Biongevity SI entry point placed beside content. Prompts open the chat with context. */
 export function AIPanel({ title, prompts, context, className }: { title: string; prompts: string[]; context: string; className?: string }) {
   const { ask } = useAI();
   const [q, setQ] = useState("");
