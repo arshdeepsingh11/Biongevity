@@ -107,7 +107,15 @@ export function ClinicGlobe() {
       const ds = Math.max(1.1, R / 170);
       for (const [lon, lat] of land) {
         const [x, y, z] = project(lon, lat); if (z < 0.02) continue;
-        ctx.fillStyle = rgba(col.ink, 0.12 + z * 0.4); ctx.fillRect(x - ds / 2, y - ds / 2, ds, ds);
+        if (sat) { const a = Math.abs(lat); ctx.fillStyle = a > 62 ? `rgba(235,240,245,${0.5 + z * 0.5})` : a > 14 && a < 34 ? `rgba(196,164,104,${0.45 + z * 0.55})` : `rgba(74,128,62,${0.45 + z * 0.55})`; ctx.fillRect(x - ds * 0.7, y - ds * 0.7, ds * 1.4, ds * 1.4); }
+        else if (dark) { const lit = (Math.sin(lon * 3.1 + lat * 1.7) + 1) / 2; ctx.fillStyle = lit > 0.62 ? `rgba(255,205,120,${0.45 + z * 0.55})` : `rgba(130,160,215,${0.18 + z * 0.32})`; ctx.fillRect(x - ds / 2, y - ds / 2, ds, ds); }
+        else { ctx.fillStyle = rgba(col.ink, 0.12 + z * 0.4); ctx.fillRect(x - ds / 2, y - ds / 2, ds, ds); }
+      }
+      // drifting clouds (satellite view)
+      if (sat) for (let k = 0; k < 9; k++) {
+        const [x, y, z] = project(-170 + k * 41 + t * 2.2, -40 + ((k * 37) % 90), 0.02); if (z < 0.05) continue;
+        const cg = ctx.createRadialGradient(x, y, 0, x, y, R * 0.16); cg.addColorStop(0, `rgba(255,255,255,${0.32 * z})`); cg.addColorStop(1, "rgba(255,255,255,0)");
+        ctx.fillStyle = cg; ctx.beginPath(); ctx.ellipse(x, y, R * 0.2, R * 0.08, 0.3, 0, Math.PI * 2); ctx.fill();
       }
       // routes
       const pts = OFFICES.map((o) => o.loc);
