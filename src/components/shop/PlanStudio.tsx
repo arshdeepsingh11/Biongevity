@@ -128,7 +128,7 @@ export function PlanStudio() {
 
           <div className="mt-5 flex flex-wrap items-center gap-3">
             <button onClick={addAll} disabled={!active.length} className="btn-dark disabled:opacity-40"><Icon name="bag" size={16} weight="duotone" />Add plan to bag</button>
-            <button onClick={() => ask(`Review my plan: ${active.map((s) => s.item!.title).join(", ")}. Goals: ${goals.join(", ")}${text ? `; I said: "${text}"` : ""}. Budget ${budget} CAD. Is this the right order to start?`)} className="btn-light"><Icon name="sparkle" size={16} weight="duotone" className="text-accent" />Ask Xevyo to review</button>
+            <button onClick={() => ask(`Review my plan: ${active.map((s) => s.item!.title).join(", ")}. Goals: ${goals.join(", ")}${text ? `; I said: "${text}"` : ""}. Budget ${budget} CAD. Is this the right order to start?`)} className="btn-light"><Icon name="sparkle" size={16} weight="duotone" className="text-accent" />Ask Biongevity SI to review</button>
             <span className="text-[11.5px] text-faint">Built on your device from our catalogue. Education, not diagnosis.</span>
           </div>
         </div>
