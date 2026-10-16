@@ -82,7 +82,7 @@ export function CommandBar() {
             <div className="flex items-center gap-3 border-b border-ink/[0.06] px-4">
               <XevyoOrb size={30} live />
               <input ref={input} value={q} onChange={(e) => { setQ(e.target.value); setIdx(0); }} onKeyDown={key} placeholder="Search tests, departments, pages — or ask anything"
-                aria-label="Search or ask Xevyo" className="h-[58px] min-w-0 flex-1 bg-transparent text-[16px] outline-none placeholder:text-faint focus-visible:outline-none" />
+                aria-label="Search or ask Biongevity SI" className="h-[58px] min-w-0 flex-1 bg-transparent text-[16px] outline-none placeholder:text-faint focus-visible:outline-none" />
               {voice.supported && (
                 <button onClick={voice.toggle} aria-label={voice.listening ? "Stop listening" : "Ask by voice"} className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${voice.listening ? "animate-pulse bg-accent text-white" : "bg-canvas text-accent hover:bg-accent-light"}`}>
                   <Icon name={voice.listening ? "stop" : "mic"} size={17} weight="duotone" />
