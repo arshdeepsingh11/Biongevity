@@ -10,7 +10,7 @@ export function AIPanel({ title, prompts, context, className }: { title: string;
   const [q, setQ] = useState("");
   const send = (text: string) => { if (text.trim()) { ask(`${text} (about: ${context})`, { label: text }); setQ(""); } };
   return (
-    <AISurface kicker="Ask Xevyo" title={title} className={className} badge={false}>
+    <AISurface kicker="Ask Biongevity SI" title={title} className={className} badge={false}>
       <div className="space-y-1.5">
         {prompts.map((p) => (
           <button key={p} onClick={() => send(p)} className="flex w-full items-center justify-between gap-2 rounded-xl bg-canvas px-3 py-2.5 text-left text-[13.5px] transition-colors hover:bg-ai-soft hover:text-ai">
