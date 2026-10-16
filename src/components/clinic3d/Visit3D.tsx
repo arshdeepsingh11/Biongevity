@@ -26,3 +26,19 @@ function box(out: Face[], x0: number, y0: number, z0: number, x1: number, y1: nu
     const pts = f.map((i) => c[i]); out.push({ pts, col, a, d: 0, n: nrm(cross(sub(pts[1], pts[0]), sub(pts[2], pts[0]))) });
   }
 }
+
+/** A person built from boxes: legs and arms swing with `phase` while walking. */
+function person(out: Face[], x: number, z: number, face: number, phase: number, walking: boolean, cloth: number[], skin: number[], hair: number[], pants: number[], wave = 0) {
+  const cy = Math.cos(face), sy = Math.sin(face);
+  const place = (p: V): V => [x + p[0] * cy + p[2] * sy, p[1], z - p[0] * sy + p[2] * cy];
+  const limb = (px: number, py: number, ang: number) => (p: V): V => { const dy = p[1] - py, c = Math.cos(ang), s = Math.sin(ang); return place([p[0], py + dy * c - p[2] * s, dy * s + p[2] * c]); };
+  const sw = walking ? Math.sin(phase) * 0.55 : 0;
+  box(out, -0.17, 0, -0.08, -0.02, 0.82, 0.08, pants, 1, limb(0, 0.82, sw));
+  box(out, 0.02, 0, -0.08, 0.17, 0.82, 0.08, pants, 1, limb(0, 0.82, -sw));
+  box(out, -0.22, 0.8, -0.13, 0.22, 1.42, 0.13, cloth, 1, place);
+  box(out, -0.32, 0.86, -0.07, -0.22, 1.4, 0.07, cloth, 1, limb(0, 1.38, -sw * 0.8 - wave));
+  box(out, 0.22, 0.86, -0.07, 0.32, 1.4, 0.07, cloth, 1, limb(0, 1.38, sw * 0.8));
+  box(out, -0.06, 1.42, -0.06, 0.06, 1.5, 0.06, skin, 1, place);
+  box(out, -0.13, 1.5, -0.13, 0.13, 1.78, 0.13, skin, 1, place);
+  box(out, -0.14, 1.7, -0.14, 0.14, 1.82, 0.14, hair, 1, place);
+}
