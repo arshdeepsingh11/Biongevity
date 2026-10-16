@@ -14,7 +14,7 @@ const TONE: Record<Flag, string> = { low: "bg-warn/10 text-warn", high: "bg-warn
 
 /**
  * Lab-result explainer: paste text → values flagged ON YOUR DEVICE against general adult ranges →
- * "Explain with Xevyo" sends only the parsed values, after consent. Nothing is stored.
+ * "Explain with Biongevity SI" sends only the parsed values, after consent. Nothing is stored.
  */
 export function LabExplainer() {
   const [text, setText] = useState("");
