@@ -58,7 +58,7 @@ export function LabExplainer() {
       </div>
       <label className="mt-4 flex items-start gap-2.5 text-[12.5px] text-muted">
         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 h-4 w-4 accent-[rgb(var(--c-ai))]" />
-        I agree to send these values (not my name) to Xevyo AI for an explanation. The site does not store them.
+        I agree to send these values (not my name) to Biongevity SI for an explanation. The site does not store them.
       </label>
       <div className="mt-3 flex flex-wrap gap-2">
         <button disabled={!rows.length || !consent || ai.busy} onClick={() => ai.run(`Explain these lab results in plain words for ${age ? `a ${age}-year-old adult` : "an adult"}. For each: what it measures, what this value may mean, and what lifestyle factors influence it. Then list 3 questions to ask my clinician. Do not diagnose.\n\n${summary}`)}
