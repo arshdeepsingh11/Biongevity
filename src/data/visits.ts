@@ -15,3 +15,4 @@ export interface Step {
   id: string; t: string; room: string; at: [number, number]; face: number; icon: IconName; mins: number;
   d: string; bring?: string[]; check?: string[]; ask: string;
 }
+export interface Visit { id: string; place: string; floor: string; rooms: Room[]; props: Prop[]; staff: Staff[]; steps: Step[]; size: [number, number] }
