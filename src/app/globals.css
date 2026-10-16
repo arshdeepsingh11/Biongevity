@@ -183,7 +183,7 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
   .no-print { display: none !important; }
 }
 
-/* ───── Xevyo orb — the face of the AI (glass sphere, colours from the theme) ───── */
+/* ───── Biongevity SI orb — the face of the AI (glass sphere, colours from the theme) ───── */
 .orb { position: relative; display: inline-block; flex-shrink: 0; border-radius: 9999px; isolation: isolate; overflow: hidden;
   background:
     radial-gradient(circle at 30% 26%, rgb(255 255 255 / .95) 0 7%, rgb(255 255 255 / 0) 24%),
