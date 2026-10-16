@@ -14,10 +14,10 @@ export function Header() {
       <div className="mx-auto flex h-[60px] max-w-[1280px] items-center gap-2 px-3 sm:gap-3 sm:px-6">
         <Link href="/" aria-label="Biongevity home" className="shrink-0"><Logo size={24} /></Link>
         <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
-          <button onClick={() => openCmd()} aria-label="Search or ask Xevyo (Ctrl X)"
+          <button onClick={() => openCmd()} aria-label="Search or ask Biongevity SI (Ctrl X)"
             className="group flex h-9 items-center gap-2 rounded-full bg-white/80 pl-1 pr-1 text-[13px] text-muted ring-1 ring-ai/20 transition hover:text-ai hover:ring-ai/40 md:w-[250px] md:pr-2.5">
             <XevyoOrb size={28} />
-            <span className="hidden flex-1 text-left md:inline">Ask Xevyo or search</span>
+            <span className="hidden flex-1 text-left md:inline">Ask SI or search</span>
             <kbd className="hidden rounded-md bg-canvas px-1.5 py-0.5 font-mono text-[10.5px] text-faint md:inline">Ctrl X</kbd>
           </button>
           <ThemeSwitcher />
