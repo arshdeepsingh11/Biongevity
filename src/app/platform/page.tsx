@@ -39,7 +39,7 @@ export default function PlatformPage() {
 
       <Section ai="Seven layers" className="bg-canvas/50">
         <div className="container-x">
-          <Head n="01" label="Architecture" title="Seven layers, one picture of you." lede="From raw data to a decision you can understand. Hover a layer; ask Xevyo for an example." />
+          <Head n="01" label="Architecture" title="Seven layers, one picture of you." lede="From raw data to a decision you can understand. Hover a layer; ask Biongevity SI for an example." />
           <div className="mt-10"><LayerStack /></div>
         </div>
       </Section>
