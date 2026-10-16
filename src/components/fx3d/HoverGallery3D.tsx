@@ -23,3 +23,12 @@ export function Tilt({ children, className, max = 12 }: { children: ReactNode; c
     </div>
   );
 }
+
+/** 3D hover gallery — a responsive grid where every card tilts in 3D and the hovered one rises above the rest. */
+export function HoverGallery3D<T>({ items, render, className }: { items: T[]; render: (item: T, i: number) => ReactNode; className?: string }) {
+  return (
+    <div className={cn("hover-gallery grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4", className)}>
+      {items.map((it, i) => <Tilt key={i} className="hg-item transition-[opacity,filter,transform] duration-300">{render(it, i)}</Tilt>)}
+    </div>
+  );
+}
