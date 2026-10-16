@@ -6,3 +6,5 @@ import type { V3 } from "@/lib/body";
  * education — not a diagnosis. Illustrative model, not to scale.
  */
 export type VesselKind = "artery" | "vein" | "pulmonary-artery" | "pulmonary-vein" | "portal" | "coronary";
+
+export interface VesselInfo { id: string; name: string; kind: VesselKind; what: string; fact: string; check?: string; dept?: string }
