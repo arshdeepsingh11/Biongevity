@@ -45,7 +45,7 @@ export function pagePrompts(path: string, section?: string): string[] {
   return [...sec, ...base].slice(0, 4);
 }
 
-/** Readable page label for Xevyo's context. */
+/** Readable page label for Biongevity SI's context. */
 export function pageLabel(path: string): string {
   const key = pageKey(path);
   return DEPARTMENTS.find((d) => d.id === key)?.name ?? key;
