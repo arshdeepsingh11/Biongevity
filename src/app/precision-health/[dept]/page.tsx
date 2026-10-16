@@ -68,8 +68,16 @@ export default async function DeptPage({ params }: P) {
         </div>
       </section>
       {!d.calm && <section className="relative z-[1]"><KeywordStream words={[...d.keywords, ...d.keywords]} /></section>}
+      {(d.id === "cardiology" || d.id === "heart-failure") && (
+        <Section ai="Heart and vessels in 3D" id="cardio3d" className="!pt-10 scroll-mt-20">
+          <div className="container-x">
+            <Head n="3D" label="Heart & vessels" title="Your heart and every major vessel, live." lede="A beating heart pumping blood through the arteries, veins and lungs. Spin it, zoom in, change the heart rate and tap any part to learn what it does and how it is checked." />
+            <div className="mt-8"><CardioExplorer /></div>
+          </div>
+        </Section>
+      )}
       <Section ai={`${d.short} details`} className="!pt-10"><div className="container-x"><DeptTabs id={d.id} /></div></Section>
-      <Section ai={`${d.short} tests`} className="!pt-0" chip={false}><div className="container-x"><DeptTests dept={d.id} name={d.name} /></div></Section>
+      {deptHasTests(d.id) && <Section ai={`${d.short} tests`} className="!pt-0" chip={false}><div className="container-x"><DeptTests dept={d.id} name={d.name} /></div></Section>}
       <section className="relative z-[1] pb-20">
         <div className="container-x flex justify-between gap-3">
           <Link href={`/precision-health/${prev.id}/`} className="btn-light"><Icon name="chevron-left" size={15} />{prev.short}</Link>
