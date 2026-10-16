@@ -59,6 +59,12 @@ export default function ShopPage() {
           <div className="mt-8"><Ladder /></div>
         </div>
       </Section>
+      <Section ai="Programs in 3D" id="programs-3d" className="scroll-mt-20">
+        <div className="container-x">
+          <Head n="3D" label="Programs in 3D" title={<>Swipe the <AuroraText>programs.</AuroraText></>} lede="Core, Precision and Elite side by side — swipe or drag the cascade, tilt a card for a closer look." />
+          <div className="mt-8"><PackageCascade /></div>
+        </div>
+      </Section>
       <Section ai="Browse" id="browse" className="scroll-mt-20">
         <div className="container-x">
           <Head n="03" label="Browse everything" title={<>Everything, <AuroraText>one bag.</AuroraText></>} lede="Search across programs, packages, BioAro Labs tests and BioAro Drugs formulas. Open any item for details and what happens next." />
