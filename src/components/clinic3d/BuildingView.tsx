@@ -31,9 +31,9 @@ const ROOMS: Record<string, { id: string; t: string; d: string; x: number; y: nu
   ],
 };
 
-/** Zoom from the globe into the building: a 3D tower with the clinic floor lit, an illustrative floor plan, and a live map. */
+/** Zoom from the globe into the city, then the building: a stylised 3D city, a 3D tower with the clinic floor lit, an illustrative floor plan and a satellite map. */
 export function BuildingView({ city, address, phone, tel, site, onBack }: { city: string; address: string; phone: string; tel: string; site: Site; onBack: () => void }) {
-  const [tab, setTab] = useState<"tower" | "floor" | "map">("tower");
+  const [tab, setTab] = useState<"city" | "tower" | "floor" | "map">("city");
   const [rot, setRot] = useState(-38);
   const [room, setRoom] = useState<string | null>(null);
   const drag = useRef<{ x: number; r: number } | null>(null);
