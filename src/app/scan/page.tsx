@@ -19,7 +19,7 @@ export default function ScanPage() {
           <div className="mx-auto mb-8 max-w-[760px] text-center">
             <div className="flex justify-center gap-2"><AIBadge label="AI Healthspan Scan" /><AIBadge label="2 minutes" /></div>
             <h1 className="h-display mt-5">Know where <span className="text-ai-grad">to start.</span></h1>
-            <p className="lede mx-auto mt-4 max-w-[56ch]">Twelve one-tap questions. Your answers stay on this device; Xevyo explains the result only if you ask.</p>
+            <p className="lede mx-auto mt-4 max-w-[56ch]">Twelve one-tap questions. Your answers stay on this device; Biongevity SI explains the result only if you ask.</p>
           </div>
           <HealthspanScan />
         </div>
