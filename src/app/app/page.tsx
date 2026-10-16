@@ -19,7 +19,7 @@ export default function AppPage() {
           <div>
             <Eyebrow>BioELR</Eyebrow>
             <h2 className="h-section mt-3 max-w-[16ch]">Track your vitals with AI.</h2>
-            <p data-reveal className="lede mt-4">Heart rate, blood pressure, oxygen and sleep from your wearables and home devices — read by Xevyo AI against your own baseline, with personalised tips and your care team one tap away.</p>
+            <p data-reveal className="lede mt-4">Heart rate, blood pressure, oxygen and sleep from your wearables and home devices — read by Biongevity SI against your own baseline, with personalised tips and your care team one tap away.</p>
             <div className="mt-8"><AppSignup /></div>
           </div>
           <div className="card space-y-5 p-6">
