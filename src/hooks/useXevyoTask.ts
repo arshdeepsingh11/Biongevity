@@ -4,7 +4,7 @@ import { askXevyo, sessionId, xevyoEnabled, XevyoError } from "@/lib/xevyo";
 import { useAI } from "@/components/ai/AIProvider";
 
 /**
- * One-off Xevyo request rendered inside a tool (not the chat panel). Streams into `text`.
+ * One-off Biongevity SI request rendered inside a tool (not the chat panel). Streams into `text`.
  * Only runs when `run()` is called from a click — never on page load. Nothing is stored.
  */
 export function useXevyoTask(page: string) {
