@@ -43,10 +43,10 @@ Information on this site is educational and not a diagnosis. For emergencies cal
 - [Family care](https://biongevity.com/family/): planner for adult children caring for an ageing parent, plus a permissioned family view in the app
 - [AI Test Navigator](https://biongevity.com/precision-health/bioaro-labs/#navigator): every BioAro Labs test scored for evidence, actionability, cost and goal match
 - [AI Protocol Studio](https://biongevity.com/precision-health/bioaro-drugs/#studio): daily dose clock and ingredient-overlap check for BioAro Drugs formulas
-- [AI health tools](https://biongevity.com/tools/): lab-result explainer, visit-prep brief, specialist router (on-device matching; Xevyo on request; nothing stored)
+- [AI health tools](https://biongevity.com/tools/): lab-result explainer, visit-prep brief, specialist router (on-device matching; Biongevity SI on request; nothing stored)
 - [BioELR](https://biongevity.com/bioelr/): longevity-focused health record system for clinics, resorts and communities — AI clinical support, voice notes, scheduling, billing, inventory, cardiac/derma/dental modules, HL7, SNOMED CT and ICD
-- [How our AI works](https://biongevity.com/ai/): principles, evidence levels and model cards for Xevyo and on-device models
-- [Site index for AI](https://biongevity.com/site-index.json): passages used to ground Xevyo answers
+- [How our AI works](https://biongevity.com/ai/): principles, evidence levels and model cards for Biongevity SI and on-device models
+- [Site index for AI](https://biongevity.com/site-index.json): passages used to ground Biongevity SI answers
 
 ## Contact
 
