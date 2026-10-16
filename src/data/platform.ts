@@ -62,7 +62,7 @@ export const WHY_EXAMPLE = [
 ];
 
 export const ROADMAP = [
-  { k: "Now", d: "Wearables and lab results in one longitudinal record, domain scores, personal baseline, Xevyo coach, clinician view." },
+  { k: "Now", d: "Wearables and lab results in one longitudinal record, domain scores, personal baseline, Biongevity SI coach, clinician view." },
   { k: "Next", d: "Genome and microbiome in the record, epigenetic age, intervention response, family portal, dynamic re-testing." },
   { k: "Later", d: "The full digital twin, multimodal risk models, imaging, personal simulations and research mode." },
 ];
