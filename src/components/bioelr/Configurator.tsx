@@ -66,7 +66,7 @@ export function Configurator() {
             <div className="mt-2 text-[20px] font-semibold tracking-tight">{org} · {sites} site{sites > 1 ? "s" : ""}</div>
             <div className="mt-1 text-[13px] text-muted">{specs.join(" · ") || "No specialty yet"}</div>
             <ul className="mt-3 space-y-1">{chosen.map((m) => <li key={m.id} className="flex items-center gap-2 text-[13.5px]"><Icon name="check" size={14} className="text-teal" />{m.t}</li>)}</ul>
-            <div className="mt-3 rounded-xl bg-white p-3 text-[12px] text-muted">Always included: Xevyo AI layer, HL7 integration, SNOMED CT / ICD coding, wearable and IoT data, analytics.</div>
+            <div className="mt-3 rounded-xl bg-white p-3 text-[12px] text-muted">Always included: Biongevity SI layer, HL7 integration, SNOMED CT / ICD coding, wearable and IoT data, analytics.</div>
             <div className="mt-4 grid gap-2">
               <Link href={`/contact/?interest=${encodeURIComponent("BioELR proposal")}&plan=${encodeURIComponent(plan)}`} className="btn-dark h-11"><Icon name="file" size={16} />Request proposal</Link>
               <button disabled={ai.busy} onClick={() => ai.run(`We are a ${org} with ${sites} site(s), specialties: ${specs.join(", ")}. Selected BioELR modules: ${chosen.map((m) => m.t).join(", ")}. In plain words: how would this setup help our team and patients, what should we roll out first, and what questions should we ask in a demo? Avoid compliance or outcome guarantees.`)}
