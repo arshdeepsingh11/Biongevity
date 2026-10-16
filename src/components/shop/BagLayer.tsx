@@ -122,7 +122,7 @@ export function BagLayer() {
               {c.lines.length > 0 && (
                 <div className="hud relative overflow-hidden rounded-2xl bg-white p-4 ring-1 ring-accent/20">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="hud-label flex items-center gap-1.5"><span className={`h-1.5 w-1.5 rounded-full ${review.state === "busy" ? "animate-pulseDot bg-accent" : "bg-teal"}`} />Xevyo plan review</span>
+                    <span className="hud-label flex items-center gap-1.5"><span className={`h-1.5 w-1.5 rounded-full ${review.state === "busy" ? "animate-pulseDot bg-accent" : "bg-teal"}`} />Biongevity SI plan review</span>
                     {review.state !== "busy" && <button onClick={runReview} className="flex items-center gap-1 rounded-full bg-accent-light px-3 py-1.5 text-[12px] font-semibold text-accent hover:bg-accent/15"><Icon name="sparkle" size={13} weight="duotone" />{review.state === "done" ? "Review again" : "Review my plan"}</button>}
                     {review.state === "busy" && <button onClick={() => stop.current?.abort()} className="text-[12px] text-muted hover:text-accent">Stop</button>}
                   </div>
