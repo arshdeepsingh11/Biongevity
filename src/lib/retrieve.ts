@@ -47,6 +47,6 @@ export async function retrieve(q: string, k = 3): Promise<Passage[]> {
   return out;
 }
 
-/** Grounding block for the system prompt: numbered passages Xevyo can cite as [1]…[3]. */
+/** Grounding block for the system prompt: numbered passages Biongevity SI can cite as [1]…[3]. */
 export const groundingText = (ps: Passage[]) =>
   ps.length ? `Biongevity information:\n${ps.map((p, i) => `[${i + 1}] ${p.title} (${p.url}): ${p.text}`).join("\n")}` : "";
