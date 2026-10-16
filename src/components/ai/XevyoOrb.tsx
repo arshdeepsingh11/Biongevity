@@ -2,7 +2,7 @@ import { useId } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Xevyo mark — the face of Biongevity's AI: a neural chip with a beating heart and a live ECG trace.
+ * Biongevity SI mark — the face of Biongevity's AI: a neural chip with a beating heart and a live ECG trace.
  * Drawn in SVG (no image). The chip outline follows the text colour (currentColor); the heart uses the
  * theme's AI colours and slowly shifts between them. `live` adds the heartbeat, ECG sweep, signal pins and a
  * tiny "thinking" vibration; `halo` adds a pulse ring. Exported as XevyoOrb for compatibility.
