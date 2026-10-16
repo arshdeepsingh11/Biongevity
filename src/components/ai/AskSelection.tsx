@@ -6,7 +6,7 @@ import { XevyoOrb } from "./XevyoOrb";
 
 /**
  * Highlight to ask — select any text on a page (e.g. "hs-CRP") and an
- * "Explain with Xevyo" chip appears under it. Ignored inside fields, the chat and dialogs.
+ * "Explain with Biongevity SI" chip appears under it. Ignored inside fields, the chat and dialogs.
  */
 export function AskSelection() {
   const { ask } = useAI();
