@@ -180,7 +180,7 @@ export function AIAssistant() {
         )}
       </AnimatePresence>
 
-      <button onClick={() => setOpen((o) => !o)} aria-label={open ? "Close Xevyo AI" : "Ask Xevyo AI"} aria-expanded={open}
+      <button onClick={() => setOpen((o) => !o)} aria-label={open ? "Close Biongevity SI" : "Ask Biongevity SI"} aria-expanded={open}
         className="fixed bottom-[calc(84px+var(--safe-bottom))] right-3 z-[96] flex items-center gap-2.5 rounded-full bg-white/90 p-1.5 pr-1.5 shadow-lift ring-1 ring-ai/25 backdrop-blur-xl transition-transform hover:-translate-y-0.5 sm:pr-4 xl:bottom-6 xl:right-6">
         <span className="relative grid h-11 w-11 place-items-center">
           {open ? <span className="grid h-11 w-11 place-items-center rounded-full bg-canvas"><Icon name="x" size={18} className="text-ink" /></span> : <XevyoOrb size={44} live halo />}
