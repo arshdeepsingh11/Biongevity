@@ -32,6 +32,18 @@ export function GoalPipeline() {
   const program = PACKAGES.find((p) => g.program.includes(p.name.replace("Biongevity ", "")));
 
   useEffect(() => { setStep(0); setPlay(true); }, [gid]);
+
+  // SI routing: describe a goal in your own words → the on-device matcher picks the path and shows its reasoning.
+  const [say, setSay] = useState("");
+  const [route, setRoute] = useState<{ q: string; conf: number; signals: string[] } | null>(null);
+  const routeIt = (q: string) => {
+    const r = matchIntent(q);
+    if (!r) { setRoute({ q, conf: 0, signals: [] }); return; }
+    const best = r.goal ?? GOAL_PATHS.find((x) => r.depts.some((d) => d.x.id === x.dept)) ?? GOAL_PATHS[0];
+    setGid(best.id); setRoute({ q, conf: r.confidence, signals: r.t.slice(0, 6) });
+  };
+  // Alternatives the engine weighed for this goal (transparent keyword scoring over our own catalogue)
+  const alt = matchIntent(`${g.label} ${g.reveals} ${dept.name}`);
   useEffect(() => { if (!play) return; const id = setTimeout(() => (step < 5 ? setStep(step + 1) : setPlay(false)), 1700); return () => clearTimeout(id); }, [play, step]);
 
   const nodes = [
