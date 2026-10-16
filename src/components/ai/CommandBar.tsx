@@ -109,7 +109,7 @@ export function CommandBar() {
             </div>
             <div className="flex items-center justify-between border-t border-ink/[0.06] px-4 py-2 text-[11px] text-faint">
               <span className="hidden items-center gap-3 sm:flex"><span>↑↓ move</span><span>↵ open</span><span>Ctrl X close</span></span>
-              <span><span className="text-ai">✦</span> Search runs on your device · answers from Xevyo, with sources</span>
+              <span><span className="text-ai">✦</span> Search runs on your device · answers from Biongevity SI, with sources</span>
             </div>
           </motion.div>
         </>
