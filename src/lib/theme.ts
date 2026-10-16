@@ -3,10 +3,8 @@
  * The inline <head> script (THEME_INIT) applies the saved theme before first paint (no flash).
  */
 export const THEMES = [
-  { id: "champagne", label: "Champagne", note: "Warm · default", swatch: ["#FFFDF9", "#8F6838", "#5E7F62"], meta: "#FFFDF9" },
-  { id: "midnight", label: "Midnight", note: "Dark · AI lab", swatch: ["#0F0E0C", "#D4AA66", "#8DB592"], meta: "#0F0E0C" },
+  { id: "olive", label: "Olive", note: "Glass · olive · default", swatch: ["#F3F1F0", "#A1AB54", "#1E221B"], meta: "#F3F1F0" },
   { id: "mono", label: "Mono", note: "Black & white", swatch: ["#FFFFFF", "#111111", "#8F8F8F"], meta: "#FFFFFF" },
-  { id: "aurora", label: "Aurora", note: "White glass · orange", swatch: ["#FFFFFF", "#F36B32", "#25313C"], meta: "#FFFFFF" },
 ] as const;
 
 export type ThemeId = (typeof THEMES)[number]["id"];
