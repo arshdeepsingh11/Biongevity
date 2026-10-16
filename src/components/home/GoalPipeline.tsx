@@ -13,6 +13,7 @@ import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { Icon } from "@/components/ui/Icon";
 import { BuyButton } from "@/components/commerce/BuyButton";
 import { EvidencePill } from "@/components/labs/EvidencePill";
+import { matchIntent } from "@/lib/intent";
 
 /**
  * From goal to plan — one goal flows through six steps: Goal → Measure → Reveal → Support → Program → Care.
