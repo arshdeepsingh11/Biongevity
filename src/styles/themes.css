@@ -1,7 +1,7 @@
 /*
  * Biongevity themes — the ONLY place colours are defined.
  * Values are space-separated RGB so Tailwind alpha works: rgb(var(--c-ink) / .5).
- * Switch with <html data-theme="champagne | midnight | mono | aurora">.
+ * Switch with <html data-theme="olive | mono">.
  * Contrast-checked (WCAG 2.1): ink, muted, faint and accent text all ≥ 4.5 on bg and surface.
  *
  *   --c-ai / --c-ai-2 / --c-ai-hi = the AI signature (orb, beams, ✦). Used ONLY for AI.
