@@ -70,7 +70,7 @@ export const ROADMAP = [
 export const DEVICES = ["Apple Health", "Health Connect", "Garmin", "Oura", "WHOOP", "Fitbit", "Polar", "CGM", "Home BP cuff"];
 
 export const PORTALS = [
-  { id: "member", t: "Member", d: "Your twin, results, plan and Xevyo coach.", icon: "user" as IconName },
+  { id: "member", t: "Member", d: "Your twin, results, plan and Biongevity SI coach.", icon: "user" as IconName },
   { id: "clinician", t: "Clinician", d: "Review AI insights, accept, edit or dismiss, and plan follow-up.", icon: "stethoscope" as IconName },
   { id: "family", t: "Family", d: "A permissioned view of a parent's or partner's trends.", icon: "users" as IconName },
 ];
