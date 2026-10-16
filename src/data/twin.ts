@@ -36,8 +36,8 @@ export const TOUR: TourStep[] = [
     points: ["Switch metric with the tabs", "Change the time range", "Look for the trend, not one bad day"] },
   { id: "simulate", n: "05", s: "What-if", t: "Simulations & heat map", icon: "radar", where: "Sidebar → Simulations, Heat Map Simulator", plain: "Ask “what if?”. Move a habit — more sleep, more steps — and see which body systems the change touches and how your scores may respond.",
     points: ["Educational estimates, clearly labelled", "The heat map shows where the effect lands", "Share a scenario with your clinician"] },
-  { id: "coach", n: "06", s: "AI Coach", t: "AI Insight & Coach", icon: "sparkle", where: "AI Insight card and Coach", plain: "Xevyo turns the numbers into one plain-language insight and a small next step. Chat with the Coach any time; it escalates anything clinical to your care team.",
-    points: ["English and Japanese", "Explains why a status changed", "Never diagnoses or prescribes"] },
+  { id: "coach", n: "06", s: "AI Coach", t: "AI Insight & Coach", icon: "sparkle", where: "AI Insight card and Coach", plain: "Biongevity SI turns the numbers into one plain-language insight and a small next step. Chat with the Coach any time; it escalates anything clinical to your care team.",
+    points: ["Multilingual coaching", "Explains why a status changed", "Never diagnoses or prescribes"] },
 ];
 
 /** Example values shaped like the real Overview (labelled "Example"). */
