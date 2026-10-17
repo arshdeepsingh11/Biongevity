@@ -79,6 +79,8 @@ export function Header() {
   const { openCmd } = useAI();
   const [search, setSearch] = useState(false);
   const hidden = useHideOnScroll(search);
+  // section tab bars read this to sit right under the header, or move up when it hides
+  useEffect(() => { document.documentElement.dataset.header = hidden ? "hidden" : "shown"; }, [hidden]);
 
   return (
     <>
