@@ -27,6 +27,22 @@ const LABS = { name: "BioAro Labs", url: "https://bioarolabs.com/shop" };
 
 export const DEPT_EXTRA: Record<string, DeptExtra> = {
   cardiology: {
+    packages: [
+      { name: "Heart Health Check", for: "Family history of heart disease, high blood pressure or cholesterol — or peace of mind", clinic: ["Cardiology consultation", "Electrocardiogram (ECG)", "Echocardiography"], labs: ["hs-CRP", "PAI-1 Total"], labPrice: "$165" },
+      { name: "Executive Health", for: "Busy professionals who want the complete picture in one morning", clinic: ["Internal medicine assessment", "Exercise stress echocardiogram", "Carotid ultrasound", "24-hour ambulatory blood pressure"], labs: ["Inflammation, kidney and vitamin D panel"], labPrice: "$833.99" },
+      { name: "Precision Genomics", for: "Family history, medicine safety, or a lifelong genetic reference", clinic: ["Genetic results review with a physician"], labs: ["Whole Genome Sequencing 30X", "Pharmacogenomics Test"], labPrice: "$1,198" },
+    ],
+    program: { name: "Virtual Hypertension Clinic", for: "Diagnosed high blood pressure, high home readings, on medication but not at target — or not sure", steps: [
+      { t: "Enrol", d: "A short intake; a physician reviews your history." },
+      { t: "Measure", d: "Two readings morning and evening for 7 days with a validated upper-arm cuff." },
+      { t: "Coaching", d: "Biongevity SI explains your readings and the habits that move them, between visits." },
+      { t: "Physician review", d: "Your physician reviews the 7-day average and adjusts the plan." },
+      { t: "Keep improving", d: "Regular check-ins until your home average reaches 135/85 or lower — and stays there." },
+    ], note: "Home target 135/85 mmHg (Hypertension Canada). Included in membership plans; the team confirms details before you start." },
+    faq: [
+      { q: "What is a stress echo?", a: "An ultrasound of the heart at rest and straight after exercise, to see how the heart muscle and valves respond when they are asked to work harder. It is done onsite, in the same visit." },
+      { q: "Why measure blood pressure at home?", a: "One clinic reading can be high from nerves or low by chance. A 7-day home average is a truer picture and is what treatment is tuned to." },
+    ],
     offer: [
       { icon: "heart", t: "Onsite exercise stress echo", d: "One of Alberta's first onsite exercise stress echocardiogram programs — the heart is imaged at rest and straight after exercise, in the same visit." },
       { icon: "wave", t: "Echo, Holter and ambulatory BP", d: "Echocardiography for valves and pumping; multi-day rhythm and blood-pressure recording to catch what one clinic reading misses." },
