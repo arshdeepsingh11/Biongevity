@@ -229,3 +229,24 @@ export function AppTwin() {
     </div>
   );
 }
+
+/** How the app works, in three steps. */
+export function AppHowItWorks() {
+  const steps = [
+    { icon: "wifi", t: "Connect", d: "Link your watch or ring, and your BioAro lab results land in your BioELR record automatically." },
+    { icon: "cpu", t: "Your twin updates", d: "Biongevity SI compares every new number with your own baseline and marks each body system." },
+    { icon: "care", t: "Act with your team", d: "One plain-language insight, a small next step, and your clinician one tap away when something moves." },
+  ];
+  return (
+    <ol className="relative grid gap-3 md:grid-cols-3">
+      <span aria-hidden className="absolute left-[16%] right-[16%] top-9 hidden h-px bg-gradient-to-r from-transparent via-ai/40 to-transparent md:block" />
+      {steps.map((x, k) => (
+        <li key={x.t} className="relative rounded-[24px] bg-white/75 p-5 ring-1 ring-ink/[0.06] backdrop-blur-xl">
+          <div className="flex items-center gap-3"><span className="icon-tile h-11 w-11"><Icon name={x.icon} size={20} /></span><span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ai">Step {k + 1}</span></div>
+          <div className="mt-3 text-[17px] font-semibold">{x.t}</div>
+          <p className="mt-1 text-[13.5px] leading-relaxed text-muted">{x.d}</p>
+        </li>
+      ))}
+    </ol>
+  );
+}
