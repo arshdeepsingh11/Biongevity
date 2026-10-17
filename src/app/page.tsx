@@ -74,7 +74,7 @@ export default function HomePage() {
       <Section ai="BioAro tests in 3D" id="tests-3d">
         <div className="container-x">
           <Head n="3D" label="BioAro test book" title={<>Every test, <AuroraText>in one book.</AuroraText></>} lede="Pick a category and turn the pages: every BioAro Labs test with its photo, what it measures and its price in CAD — buy on bioarolabs.com, or ask Biongevity SI." />
-          <div className="mt-10"><TestsIn3D /></div>
+          <div className="mt-6"><TestsIn3D compact /></div>
         </div>
       </Section>
       <BrandFilm />
