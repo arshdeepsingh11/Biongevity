@@ -72,7 +72,7 @@ export function NextStep() {
               <span className="min-w-0 flex-1"><span className="block text-[14.5px] font-semibold">{s.t}</span><span className="block text-[12.5px] leading-snug text-muted">{s.d}</span></span>
               <Icon name={s.ext ? "arrow-up-right" : "arrow-right"} size={15} className="mt-1 text-faint" /></>);
             const cls = "card flex items-start gap-3 p-4 hover:-translate-y-0.5";
-            return s.ext ? <a key={s.href} href={s.href} className={cls}>{body}</a> : <Link key={s.href} href={s.href} className={cls}>{body}</Link>;
+            return s.ext ? <a key={s.href} href={s.href} target="_blank" rel="noopener" className={cls}>{body}</a> : <Link key={s.href} href={s.href} className={cls}>{body}</Link>;
           })}
           <button onClick={() => ask("Based on this page, what should my next step be? I'm interested in my healthspan.", { label: "✦ What should my next step be?" })}
             className="relative flex items-start gap-3 overflow-hidden rounded-4xl bg-white p-4 text-left ai-ring transition hover:-translate-y-0.5">
