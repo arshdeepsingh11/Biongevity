@@ -33,7 +33,7 @@ function useHideOnScroll(lock: boolean) {
 }
 
 /** Expandable search: an icon that grows into a field with a spring, focuses itself, and gives focus back on close. */
-function ExpandSearch({ open, setOpen }: { open: boolean; setOpen: (o: boolean) => void }) {
+function ExpandSearch({ open, setOpen, floating }: { open: boolean; setOpen: (o: boolean) => void; floating?: boolean }) {
   const { openCmd, ask } = useAI();
   const [q, setQ] = useState("");
   const input = useRef<HTMLInputElement>(null);
