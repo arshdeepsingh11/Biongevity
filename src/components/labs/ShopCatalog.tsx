@@ -40,6 +40,17 @@ function Motif({ cat }: { cat: string }) {
   }
 }
 
+/** The test's own icon from bioarolabs.com, on a glass tile; our line icon if it cannot load. */
+export function ShopIcon({ t, size = 40 }: { t: CatalogProduct; size?: number }) {
+  const [bad, setBad] = useState(false);
+  const src = shopIcon(shopSlug(t.title));
+  return (
+    <span className="icon-tile overflow-hidden bg-white/90 backdrop-blur" style={{ width: size, height: size }}>
+      {src && !bad ? <img src={src} alt="" onError={() => setBad(true)} className="h-[78%] w-[78%] object-contain" loading="lazy" /> : <Icon name={t.icon} size={size * 0.48} />}
+    </span>
+  );
+}
+
 const seed = (h: string) => [...h].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
 export function TestHero({ t, className }: { t: CatalogProduct; className?: string }) {
   const id = `sh-${t.handle}`, k = seed(t.handle), rot = (k % 24) - 12, dx = (k % 40) - 20, sc = 0.86 + ((k >> 3) % 20) / 100;
