@@ -57,7 +57,12 @@ export function ServicesRing({ dept }: { dept: string }) {
 export function FormulaCoins() {
   const items: BookItem[] = DRUG_SHOP.map((p) => ({
     id: p.handle, category: p.category, title: p.title, kicker: p.tagline, image: p.image, icon: DRUG_SHOP_CATEGORIES.find((c) => c.id === p.category)?.icon ?? "tablets",
-    summary: p.summary, price: p.price, meta: p.dose, url: drugShopUrl(p.handle), store: "bioarodrugs.com",
+    summary: p.summary, price: p.price, meta: p.dose, url: drugShopUrl(p.handle), store: "bioarodrugs.com", tagline: p.tagline,
+    ...((d) => d ? {
+      measureTitle: "How to use", measure: d.use,
+      facts: [{ icon: "box", label: "Pack", value: d.format }, { icon: "calendar", label: "Servings", value: d.servings }, { icon: "tablets", label: "Serving", value: p.dose.replace(/^Per /, "") }, { icon: "shield", label: "Label", value: "Every active disclosed" }],
+      table: { title: "Active ingredients · per serving", rows: d.actives },
+    } : {})(drugDetail(p.handle)),
   }));
   return <CatalogBook brand="BioAro Drugs" categories={DRUG_SHOP_CATEGORIES} items={items} />;
 }
