@@ -3,13 +3,15 @@ import { useEffect, useId, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Video Text — a film plays *inside* the letters. The words are real text in the site font: a page-coloured
- * layer with the text cut out (mix-blend "screen") sits over the film, so only the letters show it.
- * Source: a YouTube id (embedded, muted, looping) or an mp4 path. Nothing plays until it is on screen.
+ * Video Text — the film plays only inside the letters; everything around them stays the page (no box, no background).
+ * The letters are cut with an SVG clip-path drawn in the site font, measured from the real text, so it stays sharp at
+ * any size. Source: a YouTube id (embedded, muted, looping, starting mid-film) or an mp4 path.
  */
-export function VideoText({ children, youtube, mp4, className, start = 0 }: { children: ReactNode; youtube?: string; mp4?: string; className?: string; start?: number }) {
+export function VideoText({ text, youtube, mp4, className, start = 0 }: { text: string; youtube?: string; mp4?: string; className?: string; start?: number }) {
   const box = useRef<HTMLSpanElement>(null);
-  const [size, setSize] = useState({ w: 0, h: 0 });
+  const raw = useId().replace(/:/g, "");
+  const clip = `vt-${raw}`;
+  const [m, setM] = useState<{ w: number; h: number; base: number; font: string; ls: string } | null>(null);
   const [on, setOn] = useState(false);
 
   useEffect(() => {
