@@ -39,3 +39,5 @@ const expand = (q: string) => {
   const lower = q.toLowerCase(), extra = MEANS.filter(([r]) => r.test(lower)).map(([, g]) => GOALS.find((x) => x.label === g)!.q);
   return [...lower.split(/\s+/).filter((w) => !FILLER.has(w)), ...extra].join(" ");
 };
+
+const hay = (i: ShopItem) => `${i.title} ${i.summary} ${i.category} ${i.tags.join(" ")} ${(i.includes ?? []).join(" ")}`.toLowerCase();
