@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero, Section, Eyebrow } from "@/components/ui/Section";
 import { AppShowcase, AppSignup } from "@/components/pages/AppDock";
+import { AppTwin, AppHowItWorks } from "@/components/pages/AppTwin";
 import { AnimatedList } from "@/components/fx/AnimatedList";
 import { AuroraText } from "@/components/fx/AuroraText";
 import { ProgressRing } from "@/components/fx/ProgressRing";
