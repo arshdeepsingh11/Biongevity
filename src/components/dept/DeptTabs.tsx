@@ -209,6 +209,7 @@ export function DeptTabs({ id }: { id: string }) {
                   </div>
                 ))}
               </div>
+              </div>
             )}
 
             {tab === "path" && (
