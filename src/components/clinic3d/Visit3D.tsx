@@ -27,20 +27,42 @@ function box(out: Face[], x0: number, y0: number, z0: number, x1: number, y1: nu
   }
 }
 
-/** A person built from boxes: legs and arms swing with `phase` while walking. */
-function person(out: Face[], x: number, z: number, face: number, phase: number, walking: boolean, cloth: number[], skin: number[], hair: number[], pants: number[], wave = 0) {
-  const cy = Math.cos(face), sy = Math.sin(face);
-  const place = (p: V): V => [x + p[0] * cy + p[2] * sy, p[1], z - p[0] * sy + p[2] * cy];
-  const limb = (px: number, py: number, ang: number) => (p: V): V => { const dy = p[1] - py, c = Math.cos(ang), s = Math.sin(ang); return place([p[0], py + dy * c - p[2] * s, dy * s + p[2] * c]); };
-  const sw = walking ? Math.sin(phase) * 0.55 : 0;
-  box(out, -0.17, 0, -0.08, -0.02, 0.82, 0.08, pants, 1, limb(0, 0.82, sw));
-  box(out, 0.02, 0, -0.08, 0.17, 0.82, 0.08, pants, 1, limb(0, 0.82, -sw));
-  box(out, -0.22, 0.8, -0.13, 0.22, 1.42, 0.13, cloth, 1, place);
-  box(out, -0.32, 0.86, -0.07, -0.22, 1.4, 0.07, cloth, 1, limb(0, 1.38, -sw * 0.8 - wave));
-  box(out, 0.22, 0.86, -0.07, 0.32, 1.4, 0.07, cloth, 1, limb(0, 1.38, sw * 0.8));
-  box(out, -0.06, 1.42, -0.06, 0.06, 1.5, 0.06, skin, 1, place);
-  box(out, -0.13, 1.5, -0.13, 0.13, 1.78, 0.13, skin, 1, place);
-  box(out, -0.14, 1.7, -0.14, 0.14, 1.82, 0.14, hair, 1, place);
+/** A smooth human figure: joints are placed in 3D and drawn as shaded, round-capped limbs with a lit head. */
+type Fig = { x: number; z: number; face: number; phase: number; walking: boolean; cloth: number[]; skin: number[]; hair: number[]; pants: number[]; wave: number; you?: boolean };
+type Proj = (p: V) => readonly [number, number, number];
+function drawFig(ctx: CanvasRenderingContext2D, project: Proj, F: number, g: Fig) {
+  const fw: V = [Math.sin(g.face), 0, Math.cos(g.face)], rt: V = [Math.cos(g.face), 0, -Math.sin(g.face)];
+  const at = (side: number, up: number, fwd = 0): V => [g.x + rt[0] * side + fw[0] * fwd, up, g.z + rt[2] * side + fw[2] * fwd];
+  const sw = g.walking ? Math.sin(g.phase) * 0.5 : 0, bob = g.walking ? Math.abs(Math.cos(g.phase)) * 0.03 : 0;
+  const leg = (side: number, a: number) => { const hip = at(side, 0.94 + bob), knee = at(side, 0.94 + bob - Math.cos(a) * 0.45, Math.sin(a) * 0.45 + Math.max(0, -a) * 0.08), foot = at(side, Math.max(0.05, 0.94 + bob - Math.cos(a) * 0.9), Math.sin(a) * 0.86); return [hip, knee, foot] as V[]; };
+  const arm = (side: number, a: number, lift = 0) => { const sh = at(side, 1.43 + bob), el = at(side * 1.08, 1.43 + bob - Math.cos(a) * 0.3 + lift * 0.2, Math.sin(a) * 0.3), hand = at(side * 1.1, 1.43 + bob - Math.cos(a) * 0.58 + lift * 0.6, Math.sin(a) * 0.56 + lift * 0.1); return [sh, el, hand] as V[]; };
+  const P = (v: V) => project(v), d0 = P([g.x, 1, g.z])[2];
+  const w = (t: number) => Math.max(1, (t * F) / d0);
+  const c = (k: number[], m = 1) => `rgb(${Math.round(k[0] * m)},${Math.round(k[1] * m)},${Math.round(k[2] * m)})`;
+  const limb = (pts: V[], col: number[], t: number) => {
+    const q = pts.map(P);
+    ctx.lineCap = "round"; ctx.lineJoin = "round";
+    ctx.strokeStyle = c(col, 0.78); ctx.lineWidth = w(t); ctx.beginPath(); ctx.moveTo(q[0][0], q[0][1]); q.slice(1).forEach((p) => ctx.lineTo(p[0], p[1])); ctx.stroke();
+    ctx.strokeStyle = c(col, 1.05); ctx.lineWidth = w(t) * 0.55; ctx.beginPath(); ctx.moveTo(q[0][0] - w(t) * 0.12, q[0][1]); q.slice(1).forEach((p) => ctx.lineTo(p[0] - w(t) * 0.12, p[1])); ctx.stroke();
+  };
+  const L = leg(-0.1, sw), R = leg(0.1, -sw);
+  const AL = arm(-0.23, -sw * 0.8, g.wave), AR = arm(0.23, sw * 0.8);
+  const far = P(AL[0])[2] > P(AR[0])[2];
+  // shadow
+  const sh = P([g.x, 0.01, g.z]); ctx.fillStyle = "rgba(0,0,0,0.12)"; ctx.beginPath(); ctx.ellipse(sh[0], sh[1], w(0.32), w(0.1), 0, 0, Math.PI * 2); ctx.fill();
+  limb(far ? AL : AR, g.cloth, 0.11);
+  limb(far ? L : R, g.pants, 0.15); limb(far ? R : L, g.pants, 0.15);
+  [L[2], R[2]].forEach((f) => { const q = P(f); ctx.fillStyle = "#2a2a2a"; ctx.beginPath(); ctx.ellipse(q[0], q[1], w(0.09), w(0.05), 0, 0, Math.PI * 2); ctx.fill(); });
+  limb([at(0, 0.98 + bob), at(0, 1.42 + bob)], g.cloth, 0.38);
+  limb([at(-0.2, 1.42 + bob), at(0.2, 1.42 + bob)], g.cloth, 0.14);
+  limb(far ? AR : AL, g.cloth, 0.11);
+  [AL[2], AR[2]].forEach((h) => { const q = P(h); ctx.fillStyle = c(g.skin); ctx.beginPath(); ctx.arc(q[0], q[1], w(0.05), 0, Math.PI * 2); ctx.fill(); });
+  limb([at(0, 1.45 + bob), at(0, 1.55 + bob)], g.skin, 0.09);
+  const hd = P(at(0, 1.67 + bob)), r = w(0.125);
+  const grd = ctx.createRadialGradient(hd[0] - r * 0.35, hd[1] - r * 0.35, r * 0.2, hd[0], hd[1], r); grd.addColorStop(0, c(g.skin, 1.12)); grd.addColorStop(1, c(g.skin, 0.8));
+  ctx.fillStyle = grd; ctx.beginPath(); ctx.arc(hd[0], hd[1], r, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = c(g.hair); ctx.beginPath(); ctx.arc(hd[0], hd[1] - r * 0.1, r * 1.02, Math.PI * 1.05, Math.PI * 1.95); ctx.fill();
+  if (g.you) { ctx.strokeStyle = "rgba(255,255,255,0.9)"; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(sh[0], sh[1], w(0.42), w(0.14), 0, 0, Math.PI * 2); ctx.stroke(); }
 }
 
 const TONES: Record<Tone, number[]> = { glass: [255, 255, 255], olive: [0, 0, 0], wood: [196, 164, 124], white: [246, 246, 242], ink: [40, 44, 40], teal: [0, 0, 0], gold: [0, 0, 0], soft: [236, 238, 230] };
