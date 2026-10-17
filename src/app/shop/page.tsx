@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Section } from "@/components/ui/Section";
 import { AuroraText } from "@/components/fx/AuroraText";
-import { Icon } from "@/components/ui/Icon";
 import { Head } from "@/components/home/HomeSections";
 import { PlanStudio } from "@/components/shop/PlanStudio";
 import { Catalogue } from "@/components/shop/Catalogue";
