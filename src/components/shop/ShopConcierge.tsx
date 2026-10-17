@@ -139,3 +139,27 @@ export function ShopConcierge() {
     </div>
   );
 }
+
+/** Four doors into the store — tap one to see just that kind below. */
+export function ShopKinds() {
+  const kinds: Kind[] = ["test", "formula", "package", "program"];
+  return (
+    <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      {kinds.map((k) => {
+        const list = CATALOG.filter((i) => i.kind === k), lo = Math.min(...list.map((i) => i.price));
+        return (
+          <button key={k} onClick={() => browse(k)} className="group relative overflow-hidden rounded-[26px] bg-white/75 p-4 text-left ring-1 ring-ink/[0.06] backdrop-blur-xl transition hover:-translate-y-0.5 hover:shadow-card hover:ring-ai/30 sm:p-5">
+            <span aria-hidden className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-ai/10 blur-2xl transition-opacity group-hover:opacity-100 sm:opacity-60" />
+            <span className="icon-tile relative h-11 w-11"><Icon name={KIND_META[k].icon} size={21} weight="duotone" /></span>
+            <div className="relative mt-4 text-[16px] font-semibold leading-tight sm:text-[18px]">{KIND_META[k].plural}</div>
+            <p className="relative mt-1 line-clamp-2 text-[12.5px] leading-snug text-muted">{KIND_META[k].blurb}</p>
+            <div className="relative mt-3 flex items-center justify-between text-[12px]">
+              <span className="text-muted"><b className="font-semibold text-ink">{list.length}</b> · from {formatMoney(lo)}</span>
+              <Icon name="arrow-right" size={15} className="text-ai transition-transform group-hover:translate-x-0.5" />
+            </div>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
