@@ -53,3 +53,4 @@ export const DRUG_SHOP: ShopFormula[] = [
 ];
 
 export const drugShopUrl = (handle: string) => `${STORE}/products/${handle}`;
+export const drugImage = (handle: string) => DRUG_SHOP.find((x) => x.handle === handle)?.image;
