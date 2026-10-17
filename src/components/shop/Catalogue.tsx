@@ -25,6 +25,12 @@ export function Catalogue() {
   const [q, setQ] = useState("");
   const [sort, setSort] = useState<keyof typeof SORTS>("relevance");
   const [more, setMore] = useState(false);
+  // the concierge and the "shop by kind" tiles at the top of the page jump here with a kind or a search
+  useEffect(() => {
+    const on = (e: Event) => { const d = (e as CustomEvent<{ kind: Kind | "all"; q: string }>).detail; setKind(d.kind); setQ(d.q); setMore(false); };
+    window.addEventListener("shop:browse", on);
+    return () => window.removeEventListener("shop:browse", on);
+  }, []);
 
   const list = useMemo(() => {
     const t = tokens(q);
