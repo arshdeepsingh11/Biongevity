@@ -67,11 +67,14 @@ export async function askXevyo(
     });
   } catch (e) {
     if ((e as Error).name === "AbortError") throw e;
-    throw new XevyoError("NETWORK", "Request blocked or unreachable — usually CORS (Biongevity SI must allow this site's origin) or a wrong URL.");
+    throw new XevyoError("NETWORK", "Request blocked or unreachable — check NEXT_PUBLIC_XEVYO_URL (Xevyo's API is https://chat.xevyo.com/xevyo/v1/chat/completions) or that the proxy is running.");
   }
   if (!res.ok) {
-    const detail = (await res.text().catch(() => "")).slice(0, 200);
-    const why = res.status === 401 || res.status === 403 ? "key rejected or not allowed for this origin" : res.status === 404 ? "endpoint URL not found" : res.status === 400 || res.status === 422 ? "request format not accepted" : "server error";
+    const raw = await res.text().catch(() => "");
+    let detail = raw.slice(0, 200);
+    try { const j = JSON.parse(raw) as { detail?: string; error?: string | { message?: string } }; detail = j.detail ?? (typeof j.error === "string" ? j.error : j.error?.message) ?? detail; } catch { /* not JSON */ }
+    if (/<html/i.test(detail)) detail = "the address answered with a web page, not the Xevyo API";
+    const why = res.status === 401 || res.status === 403 ? "key rejected or not allowed" : res.status === 404 || res.status === 405 ? "wrong endpoint URL" : res.status === 400 || res.status === 422 ? "request format not accepted" : res.status === 429 ? "rate or monthly token limit reached" : "server error";
     throw new XevyoError(`HTTP_${res.status}`, `HTTP ${res.status} — ${why}${detail ? `: ${detail}` : ""}`);
   }
   const type = res.headers.get("content-type") ?? "";
