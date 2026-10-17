@@ -22,7 +22,7 @@ export default function LabsPage() {
         lede="Genome, biomarkers and microbiome — measured in CLIA-registered labs, connected by BioAro Intelligence and explained in plain language." />
       <Section ai="Tests in 3D" id="explore-3d" className="!pt-0" chip={false}>
         <div className="container-x">
-          <Head n="01" label="Explore in 3D" title={<>Every test, <AuroraText>in your hands.</AuroraText></>} lede="Spin the ring, swipe the cascade, flip the book or tap a collection on the beam circle. Biongevity SI explains any test; checkout happens on bioarolabs.com." />
+          <Head n="01" label="Test book" title={<>Every test, <AuroraText>in one book.</AuroraText></>} lede="Pick a category and turn the pages — each test with its photo, what it measures and its CAD price. Checkout happens on bioarolabs.com; Biongevity SI explains any page." />
           <div className="mt-10"><TestsIn3D /></div>
         </div>
       </Section>
