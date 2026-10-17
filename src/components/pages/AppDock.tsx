@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AppleDock } from "@/components/fx/AppleDock";
 import { Icon } from "@/components/ui/Icon";
 import { fireConfetti } from "@/components/fx/Confetti";
