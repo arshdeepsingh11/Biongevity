@@ -1,7 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Icon } from "./Icon";
+import { cn } from "@/lib/utils";
 
 export interface TabDef { id: string; label: string; icon: string }
 
