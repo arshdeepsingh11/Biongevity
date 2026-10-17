@@ -265,7 +265,7 @@ export function DeptTabs({ id }: { id: string }) {
             <div className="text-[14px] font-semibold">Related care</div>
             <div className="mt-3 space-y-1">{related.map((r) => <Link key={r.id} href={`/precision-health/${r.id}/`} className="flex items-center gap-3 rounded-xl px-2 py-2 text-[14px] hover:bg-canvas"><Icon name={r.icon} size={18} weight="duotone" className="text-accent" />{r.short}<Icon name="arrow-right" size={14} className="ml-auto text-faint" /></Link>)}</div>
           </div>
-          <Link href={`/contact/?interest=${encodeURIComponent(d.name)}`} className="btn-dark w-full">Book {d.short}<Icon name="arrow-right" size={16} /></Link>
+          <a href={BOOK_URL} target="_blank" rel="noopener" className="btn-dark w-full">Book {d.short}<Icon name="arrow-up-right" size={15} /></a>
         </aside>
       </div>
     </div>
