@@ -88,7 +88,7 @@ export function ShopCatalog() {
 
   return (
     <div>
-      <div className="sticky top-[calc(64px+var(--safe-top))] z-20 -mx-4 space-y-2 bg-gradient-to-b from-[rgb(var(--c-pearl))] via-[rgb(var(--c-pearl)/.92)] to-transparent px-4 pb-4 pt-2">
+      <div className="sub-nav sticky z-20 -mx-4 space-y-2 bg-gradient-to-b from-[rgb(var(--c-pearl))] via-[rgb(var(--c-pearl)/.92)] to-transparent px-4 pb-4 pt-2">
         <div className="no-scrollbar flex gap-1.5 overflow-x-auto">
           {[{ handle: "all", title: "All tests", icon: "test-tubes" }, ...LAB_COLLECTIONS].map((c) => {
             const n = c.handle === "all" ? LAB_TESTS.length : LAB_TESTS.filter((t) => t.category === c.handle).length;
