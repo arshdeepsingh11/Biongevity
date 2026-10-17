@@ -151,6 +151,9 @@ export const DEPT_EXTRA: Record<string, DeptExtra> = {
     sources: [{ name: "BioGut Nutrition Clinic", url: "https://neaprecisionskin.com/our-biogut-nutrition-clinic/" }, LABS],
   },
   endocrinology: {
+    packages: [
+      { name: "Metabolic & Hormone", for: "Fatigue, weight change, prediabetes or hormone questions", clinic: ["Endocrinology or internal medicine consultation"], labs: ["Hormone Health", "Essential Vitamin Health", "Cortisol"], labPrice: "$977.99" },
+    ],
     organ: "thyroid",
     offer: [
       { icon: "test-tube", t: "Hormone panels", d: "Hormone Health and Ultra Hormone Health panels ($499 CAD each, BioAro Labs)." },
