@@ -132,8 +132,8 @@ export function ShopCatalog() {
                       <article className="group flex h-full flex-col overflow-hidden rounded-[22px] bg-white shadow-card ring-1 ring-ink/[0.06]">
                         <div className="relative aspect-[16/10] w-full overflow-hidden">
                           <TestHero t={t} />
-                          <span className="absolute left-3 top-3 icon-tile h-10 w-10"><Icon name={t.icon} size={19} /></span>
-                          <span aria-hidden className="absolute -bottom-3 -right-2 text-ai opacity-[0.12] transition-transform duration-700 group-hover:-rotate-6 group-hover:scale-110"><Icon name={t.icon} size={84} /></span>
+                          <span className="absolute left-3 top-3"><ShopIcon t={t} /></span>
+                          {meta && <span className="absolute bottom-3 left-3 rounded-full bg-black/45 px-2 py-0.5 text-[10.5px] font-semibold tracking-wide text-white backdrop-blur-md">{meta.badge}</span>}
                           <span className="absolute right-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[12.5px] font-semibold shadow-card backdrop-blur">{formatMoney(t.price)}</span>
                           {pick && <span className="absolute bottom-3 left-3 rounded-full bg-ai px-2 py-0.5 text-[10.5px] font-bold uppercase tracking-wider text-on-ai">✦ SI match {m}%</span>}
                         </div>
