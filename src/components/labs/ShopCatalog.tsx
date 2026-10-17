@@ -140,7 +140,8 @@ export function ShopCatalog() {
                         <div className="flex flex-1 flex-col p-4">
                           <div className="flex items-center justify-between gap-2"><span className="text-[10.5px] font-semibold uppercase tracking-[0.12em] text-ai">{c.title.split(" & ")[0]}</span><EvidencePill e={x.evidence} /></div>
                           <h4 className="mt-1 text-[15.5px] font-semibold leading-snug">{t.title}</h4>
-                          <p className="mt-1 line-clamp-3 text-[12.5px] leading-snug text-muted">{t.bestFor ?? x.reveals}</p>
+                          {meta && <div className="mt-1.5 flex flex-wrap gap-1">{meta.tags.map((g) => <span key={g} className="rounded-full bg-ai-soft px-2 py-0.5 text-[10.5px] font-semibold text-ai">{g}</span>)}</div>}
+                          <p className="mt-1.5 line-clamp-3 text-[12.5px] leading-snug text-muted">{t.bestFor ?? x.reveals}</p>
                           <div className="mt-2 flex items-center gap-1.5 text-[11px] text-faint"><Icon name="clock" size={12} />{RETEST_LABEL(x.retest)}</div>
                           <div className="mt-auto flex items-center gap-2 pt-3">
                             <BuyButton href={t.url} store="labs" price={t.price} size="sm" className="flex-1" hideStore />
