@@ -64,7 +64,7 @@ function ExpandSearch({ open, setOpen, floating }: { open: boolean; setOpen: (o:
         {open && (
           <motion.div key="f" className="flex min-w-0 flex-1 items-center gap-1 pr-1" initial={{ opacity: 0, x: 12 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 8 }} transition={{ duration: 0.16 }}>
             <input id="site-search" ref={input} value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search tests, care, pages…" aria-label="Search Biongevity"
-              className="h-9 min-w-0 flex-1 !border-0 !bg-transparent text-[13.5px] !shadow-none outline-none !ring-0 placeholder:text-faint" />
+              className="h-9 min-w-0 flex-1 !border-0 !bg-transparent text-[13.5px] !shadow-none outline-none !ring-0 placeholder:text-faint focus-visible:!outline-none" />
             {q && <button type="button" onClick={() => { ask(q); setQ(""); setOpen(false); }} className="hidden h-7 shrink-0 items-center gap-1 rounded-full bg-ai-soft px-2 text-[11.5px] font-semibold text-ai sm:flex"><XevyoOrb size={14} />Ask SI</button>}
             <button type="button" onClick={close} aria-label="Close search" className="grid h-7 w-7 shrink-0 place-items-center rounded-full text-faint hover:bg-canvas hover:text-ink"><Icon name="x" size={13} /></button>
           </motion.div>
