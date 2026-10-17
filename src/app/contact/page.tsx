@@ -51,5 +51,6 @@ export default function ContactPage() {
         <Suspense><ContactForm /></Suspense>
       </div>
     </Section>
+    </>
   );
 }
