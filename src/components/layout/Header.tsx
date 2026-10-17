@@ -54,8 +54,8 @@ function ExpandSearch({ open, setOpen, floating }: { open: boolean; setOpen: (o:
   return (
     <motion.form ref={wrap} role="search" onSubmit={submit} layout transition={SPRING}
       onKeyDown={(e) => { if (e.key === "Escape") { e.preventDefault(); close(); } }}
-      className="relative flex h-9 items-center overflow-hidden rounded-full bg-white/80 ring-1 ring-ai/20 hover:ring-ai/40"
-      animate={{ width: open ? "min(360px, calc(100vw - 110px))" : 36 }} initial={false}>
+      className={`relative flex h-9 items-center overflow-hidden rounded-full bg-white/90 ring-1 ring-ai/25 backdrop-blur-xl focus-within:ring-2 focus-within:ring-ai/50 hover:ring-ai/45 ${floating ? "shadow-lift" : ""}`}
+      animate={{ width: open ? "min(420px, calc(100vw - 170px))" : 36 }} initial={false}>
       <button ref={trigger} type={open ? "submit" : "button"} onClick={() => !open && setOpen(true)} aria-label={open ? "Search" : "Open search (Ctrl X)"} aria-expanded={open} aria-controls="site-search"
         className="grid h-9 w-9 shrink-0 place-items-center text-ai">
         <motion.span animate={{ rotate: open ? 90 : 0, scale: open ? 0.9 : 1 }} transition={SPRING}><Icon name="search" size={17} weight="bold" /></motion.span>
