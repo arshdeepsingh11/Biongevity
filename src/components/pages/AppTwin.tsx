@@ -65,3 +65,16 @@ function Spark({ data, color, h = 60 }: { data: number[]; color: string; h?: num
     </svg>
   );
 }
+
+/** A tile in the dark dashboard: click it to have the explainer below tell you what it is for. */
+function Tile({ part, on, set, className, children }: { part: Part; on: Part; set: (p: Part) => void; className?: string; children: React.ReactNode }) {
+  return (
+    <div onClick={() => set(part)}
+      className={cn("relative cursor-pointer rounded-2xl p-3 text-left transition sm:p-4", className)}
+      style={{ background: C.panel, boxShadow: on === part ? `0 0 0 1.5px ${C.accent}, 0 0 28px -6px ${C.accent}` : `inset 0 0 0 1px ${C.line}` }}>
+      {children}
+      <button type="button" onClick={(e) => { e.stopPropagation(); set(part); }} aria-label={`What is ${PARTS[part].t}?`} aria-pressed={on === part}
+        className="absolute right-2.5 top-2.5 grid h-5 w-5 place-items-center rounded-full text-[10px] font-bold" style={{ background: on === part ? C.accent : "rgba(255,255,255,.08)", color: on === part ? C.bg : C.dim }}>?</button>
+    </div>
+  );
+}
