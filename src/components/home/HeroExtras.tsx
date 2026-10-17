@@ -131,6 +131,8 @@ export function HeroStats() {
 const LINES = ["More good years,", "Longer healthspan,", "Stronger decades,", "Sharper later years,", "Healthier families,", "Earlier answers,"];
 /** The life-cycle film behind "guided by SI." (YouTube id). Change it here. */
 export const LIFE_FILM_YOUTUBE = "egeDXHcNeNw";
+/** Start the film from the middle of life (seconds). */
+export const LIFE_FILM_START = 50;
 
 export function HeroHeadline() {
   const [i, setI] = useState(0);
