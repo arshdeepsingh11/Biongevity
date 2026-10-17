@@ -36,7 +36,7 @@ function ItemIcon({ it, size = 44 }: { it: BookItem; size?: number }) {
  * is a spread: its real photo on the left, everything you need to decide on the right (icon, what it is, tags,
  * price) with a link to buy on the real store and Ask SI. Turn pages by clicking, swiping, arrows or the keyboard.
  */
-export function CatalogBook({ brand, categories, items, buyLabel = "Buy" }: { brand: string; categories: BookCategory[]; items: BookItem[]; buyLabel?: string }) {
+export function CatalogBook({ brand, categories, items, buyLabel = "Buy", compact = false }: { brand: string; categories: BookCategory[]; items: BookItem[]; buyLabel?: string; /** smaller book (home page) */ compact?: boolean }) {
   const { ask } = useAI();
   const [cat, setCat] = useState(categories[0].id);
   const [idx, setIdx] = useState(0);
