@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BOOK_URL } from "@/lib/env";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/Section";
