@@ -12,3 +12,4 @@ const HEART_INT = M("9f48eaa481cc4a43baeb9e1f03882cff", "Inside the heart", "Int
 const LUNGS = M("825a5e22137648bea50c700be7ba34bc", "Lungs & pleura", "The Lungs and Pleura", "theanatomycode", "theanatomycode");
 const BREATH = M("50216e5e7716436c8153ad05a732fecb", "Breathing in motion", "Human Respiratory System Breathing Animation", "Brave.Pixel", "Brave.Pixel");
 const SKIN = M("2c902649de1843e9b2e004a99a9ab923", "Skin layers", "Human skin – integumentary system", "Ebers", "Ebers");
+const BRAIN = M("b2aac93ee4c440ed911f5765158edc9f", "Regions of the brain", "Regions of the brain", "University of Dundee, CAHID", "anatomy_dundee");
