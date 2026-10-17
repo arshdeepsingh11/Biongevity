@@ -198,8 +198,8 @@ export function ClinicTabs({ id }: { id: string }) {
         <div role="tablist" className="no-scrollbar flex gap-1 overflow-x-auto rounded-full bg-white p-1 shadow-card ring-1 ring-ink/[0.06] sm:inline-flex">
           {tabs.map((t) => (
             <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => go(t.id)} className="relative flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2.5 text-[13.5px] font-semibold">
-              {tab === t.id && <motion.span layoutId={`ct-${id}`} className="absolute inset-0 rounded-full bg-navy" transition={{ type: "spring", stiffness: 400, damping: 34 }} />}
-              <span className={`relative flex items-center gap-1.5 ${tab === t.id ? "text-white" : "text-muted hover:text-ink"}`}><Icon name={t.icon} size={15} />{t.label}</span>
+              {tab === t.id && <motion.span layoutId={`ct-${id}`} className="absolute inset-0 rounded-full bg-ai" transition={{ type: "spring", stiffness: 400, damping: 34 }} />}
+              <span className={`relative flex items-center gap-1.5 ${tab === t.id ? "text-on-ai" : "text-muted hover:text-ink"}`}><Icon name={t.icon} size={15} />{t.label}</span>
             </button>
           ))}
         </div>
