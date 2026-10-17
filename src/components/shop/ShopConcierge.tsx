@@ -41,3 +41,19 @@ const expand = (q: string) => {
 };
 
 const hay = (i: ShopItem) => `${i.title} ${i.summary} ${i.category} ${i.tags.join(" ")} ${(i.includes ?? []).join(" ")}`.toLowerCase();
+
+/** One pick per kind first (test → formula → package → program), so the answer reads like a plan, not a list. */
+function pick(q: string) {
+  const t = tokens(expand(q));
+  if (!t.length) return { t, items: CATALOG.filter((i) => i.featured || i.kind === "package").slice(0, 4), hits: new Map<string, string[]>() };
+  const hits = new Map<string, string[]>();
+  const ranked = CATALOG.map((i) => {
+    const h = hay(i), w = t.filter((x) => new RegExp(`\\b${x.replace(/[^a-z0-9-]/g, "")}`).test(h));
+    hits.set(i.id, w);
+    return { i, s: w.reduce((a, x) => a + (x.length > 5 ? 2 : 1), 0) };
+  }).filter((r) => r.s > 0).sort((a, b) => b.s - a.s || a.i.price - b.i.price);
+  const out: ShopItem[] = [];
+  for (const k of ["test", "formula", "package", "program"] as Kind[]) { const r = ranked.find((x) => x.i.kind === k); if (r) out.push(r.i); }
+  for (const r of ranked) if (out.length < 3 && !out.includes(r.i)) out.push(r.i);
+  return { t, items: out.slice(0, 4), hits };
+}
