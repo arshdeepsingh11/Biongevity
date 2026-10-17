@@ -40,14 +40,24 @@ export function VideoText({ text, youtube, mp4, className, start = 0 }: { text: 
     : undefined;
 
   return (
-    <span ref={box} className={cn("video-text relative inline-block isolate overflow-hidden align-bottom", className)}>
-      <span aria-hidden className="absolute inset-[0.05em] overflow-hidden" style={{ background: "#0b0d0a" }}>
-        {on && size.w > 0 && (youtube
-          ? <iframe title="" src={src} allow="autoplay; encrypted-media; picture-in-picture" tabIndex={-1} loading="lazy"
-              className="pointer-events-none absolute left-1/2 top-1/2 max-w-none border-0" style={{ width: fw, height: fh, transform: "translate(-50%, -50%)" }} />
-          : mp4 ? <video src={mp4} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" /> : null)}
-      </span>
-      <span className="relative block bg-[rgb(var(--c-pearl))] px-[0.08em] pb-[0.08em] text-black mix-blend-screen">{children}</span>
+    <span ref={box} className={cn("video-text relative inline-block whitespace-nowrap", className)}>
+      {/* the real text keeps the layout, selection and screen readers; it is hidden once the film is cut into it */}
+      <span className={m ? "opacity-0" : ""}>{text}</span>
+      {m && (
+        <>
+          <svg aria-hidden width="0" height="0" className="absolute">
+            <clipPath id={clip} clipPathUnits="userSpaceOnUse">
+              <text x={m.w / 2} y={m.base} textAnchor="middle" style={{ font: m.font, letterSpacing: m.ls }}>{text}</text>
+            </clipPath>
+          </svg>
+          <span aria-hidden className="absolute inset-0 overflow-hidden" style={{ clipPath: `url(#${clip})`, WebkitClipPath: `url(#${clip})`, background: "linear-gradient(120deg, rgb(var(--c-ai-2)), rgb(var(--c-ai)) 55%, rgb(var(--c-ai-hi)))" }}>
+            {on && (youtube
+              ? <iframe title="" src={src} allow="autoplay; encrypted-media; picture-in-picture" tabIndex={-1}
+                  className="pointer-events-none absolute left-1/2 top-1/2 max-w-none border-0" style={{ width: fw, height: fh, transform: "translate(-50%, -50%)" }} />
+              : mp4 ? <video src={mp4} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" /> : null)}
+          </span>
+        </>
+      )}
     </span>
   );
 }
