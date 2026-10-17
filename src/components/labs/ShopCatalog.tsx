@@ -54,7 +54,8 @@ export function ShopIcon({ t, size = 40 }: { t: CatalogProduct; size?: number })
 const seed = (h: string) => [...h].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
 export function TestHero({ t, className }: { t: CatalogProduct; className?: string }) {
   const id = `sh-${t.handle}`, k = seed(t.handle), rot = (k % 24) - 12, dx = (k % 40) - 20, sc = 0.86 + ((k >> 3) % 20) / 100;
-  if (t.image) return <img src={t.image} alt="" className={cn("h-full w-full object-cover", className)} loading="lazy" />;
+  const [bad, setBad] = useState(false);
+  if (t.image && !bad) return <img src={t.image} alt={`${t.title} — BioAro Labs`} onError={() => setBad(true)} className={cn("h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]", className)} loading="lazy" />;
   return (
     <svg viewBox="0 0 240 150" className={cn("h-full w-full", className)} aria-hidden preserveAspectRatio="xMidYMid slice">
       <defs>
