@@ -72,6 +72,64 @@ const ROWS: Row[] = [
   ["Ultra Amino Acid Profile", 249.99, "amino-acids-metabolism"],
 ];
 
+/** From bioarolabs.com/shop (Oct 2026): each test's badge and descriptors. Product photos and icons are served by
+ *  bioarolabs.com (BioAro group) — /pdp/heroes/<slug>.jpg and /explore/icons/<slug>.png. */
+export const SHOP_META: Record<string, { badge: string; tags: string[] }> = {
+  "advanced-inflammation-aging": { badge: "BioAging", tags: ["Immune & Cardiometabolic Health", "Cellular Stress"] },
+  "androstenedione": { badge: "BioHormone", tags: ["Androgen Balance", "Adrenal & Sex Hormones"] },
+  "beta-amyloid-40-42": { badge: "BioBrain", tags: ["Alzheimer's-Related Biomarker"] },
+  "brain-health": { badge: "BioBrain", tags: ["Alzheimer's-Related Biomarkers", "Memory & Cognition"] },
+  "comprehensive-cell-free-dna-analysis": { badge: "BioGenome", tags: ["Circulating DNA", "Molecular Profiling"] },
+  "core-inflammation-aging": { badge: "BioAging", tags: ["Immune Signaling", "Cardiometabolic Health"] },
+  "cortisol": { badge: "BioHormone", tags: ["Stress Response", "Adrenal Health"] },
+  "cystatin-c": { badge: "BioVascular", tags: ["Kidney Function"] },
+  "dhea-s": { badge: "BioHormone", tags: ["Adrenal Health", "Androgen Balance"] },
+  "dht-dihydrotestosterone": { badge: "BioHormone", tags: ["Androgen Health", "Testosterone Metabolism"] },
+  "disease-based-dna-test": { badge: "BioGenome", tags: ["Inherited Conditions", "Targeted Genetics"] },
+  "essential-vitamin-health": { badge: "BioNutrition", tags: ["Fat-Soluble Vitamins", "Nutrient Status"] },
+  "estradiol-e2": { badge: "BioHormone", tags: ["Estrogen Balance", "Fertility & Menopause"] },
+  "gdf-15": { badge: "BioAging", tags: ["Cellular Stress", "Cardiometabolic Health"] },
+  "genome-testing": { badge: "BioGenome", tags: ["High-Depth Sequencing", "Genome-Wide Analysis"] },
+  "high-sensitive-crp-hs-crp": { badge: "BioAging", tags: ["Heart Health", "Systemic Inflammation"] },
+  "hormone-health": { badge: "BioHormone", tags: ["Adrenal & Sex Hormones", "Hormone Balance"] },
+  "il-10": { badge: "BioAging", tags: ["Immune Regulation", "Inflammatory Balance"] },
+  "il-6": { badge: "BioAging", tags: ["Immune Activation", "Systemic Inflammation"] },
+  "interleukin-6-il-6": { badge: "BioAging", tags: ["TNF Signaling", "Inflammatory Activity"] },
+  "mcp-1-ccl2": { badge: "BioAging", tags: ["Immune Signaling", "Metabolic Health"] },
+  "p-tau-217": { badge: "BioBrain", tags: ["Alzheimer's-Related Biomarker"] },
+  "pai-1-total": { badge: "BioVascular", tags: ["Blood Clot Regulation", "Metabolic Health"] },
+  "pharmacogenomics-test": { badge: "BioGenome", tags: ["Medication Response", "Drug-Gene Insights"] },
+  "progesterone": { badge: "BioHormone", tags: ["Ovulation & Fertility", "Menstrual Health"] },
+  "resveratrol": { badge: "BioNutrition", tags: ["Healthy Aging", "Antioxidant Health"] },
+  "shbg-sex-hormone-binding-globulin": { badge: "BioHormone", tags: ["Sex Hormone Availability", "Hormone Balance"] },
+  "telomere-length-testing": { badge: "BioAging", tags: ["Cellular Aging", "Longevity Science"] },
+  "testosterone": { badge: "BioHormone", tags: ["Androgen Health"] },
+  "the-biodental-test": { badge: "BioDental", tags: ["Oral Health", "Gum Health"] },
+  "the-biofemme-test": { badge: "BioFemme", tags: ["Vaginal Health", "Women's Microbiome"] },
+  "the-biogut-test": { badge: "BioGut", tags: ["Digestive Health", "Gut Wellness"] },
+  "the-bioskin-test": { badge: "BioSkin", tags: ["Skin Health", "Microbial Balance"] },
+  "timp-1": { badge: "BioVascular", tags: ["Tissue Remodeling", "Organ Stress"] },
+  "tnf-alpha": { badge: "BioAging", tags: ["Immune Activation", "TNF Signaling"] },
+  "ultra-hormone-health": { badge: "BioHormone", tags: ["Androgen & Estrogen Balance", "Adrenal & Reproductive Health"] },
+  "ultra-inflammation-aging": { badge: "BioAging", tags: ["Immune & Organ Health", "Kidney & Vascular Health"] },
+  "vitamin-a-retinol": { badge: "BioNutrition", tags: ["Antioxidant Nutrition"] },
+  "vitamin-d2-d3": { badge: "BioNutrition", tags: ["Bone Health", "Immune Health"] },
+  "vitamin-e-α-γ": { badge: "BioNutrition", tags: ["Antioxidant Status", "Nutrient Balance"] },
+  "vitamin-k1": { badge: "BioNutrition", tags: ["Bone & Clotting Health", "Nutrient Status"] },
+  "whole-exome-sequencing-100x": { badge: "BioGenome", tags: ["Inherited Conditions", "Protein-Coding DNA"] },
+  "whole-genome-sequencing-30x": { badge: "BioGenome", tags: ["Genome-Wide Analysis", "Genetic Insights"] },
+  "β2-microglobulin-b2m": { badge: "BioVascular", tags: ["Immune Activity", "Kidney Function"] },
+  "core-amino-acid-balance": { badge: "BioNutrition", tags: ["Amino Acids", "Metabolic Balance"] },
+  "advanced-amino-acid-metabolism": { badge: "BioNutrition", tags: ["Amino Acid Metabolism", "Protein Status"] },
+  "ultra-amino-acid-profile": { badge: "BioNutrition", tags: ["Full Amino Acid Profile", "Metabolic Health"] },
+};
+/** Tests without a product photo on bioarolabs.com use their icon. */
+const NO_HERO = new Set(["vitamin-e-α-γ", "β2-microglobulin-b2m", "core-amino-acid-balance", "advanced-amino-acid-metabolism", "ultra-amino-acid-profile"]);
+const ICON_FILE: Record<string, string> = { "β2-microglobulin-b2m": "b2m" };
+export const shopSlug = (title: string) => SLUGS[title];
+export const shopHero = (slug?: string) => (slug && !NO_HERO.has(slug) ? `${LABS_URL}/pdp/heroes/${encodeURIComponent(slug)}.jpg` : undefined);
+export const shopIcon = (slug?: string) => (slug ? `${LABS_URL}/explore/icons/${encodeURIComponent(ICON_FILE[slug] ?? slug)}.png` : undefined);
+
 const colIcon = (h: string): IconName => LAB_COLLECTIONS.find((c) => c.handle === h)?.icon ?? "flask";
 
 export const LAB_TESTS: CatalogProduct[] = ROWS.map(([title, price, category, bestFor]) => ({
