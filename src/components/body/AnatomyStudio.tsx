@@ -29,6 +29,8 @@ export function AnatomyStudio({ dept, name }: { dept: string; name: string }) {
   ];
   const [cur, setCur] = useState(views[0]?.key);
   const [loaded, setLoaded] = useState<Record<string, boolean>>({});
+  const [opened, setOpened] = useState<Record<string, boolean>>({});
+  useEffect(() => { if (cur) setOpened((o) => (o[cur] ? o : { ...o, [cur]: true })); }, [cur]);
   if (!views.length) return null;
   const v = views.find((x) => x.key === cur) ?? views[0];
   const m = models.find((x) => x.id === v.id);
