@@ -7,6 +7,7 @@ import { Carousel3D } from "./Carousel3D";
 import { CascadeSlider } from "./CascadeSlider";
 import { CatalogBook, type BookItem } from "./CatalogBook";
 import { DRUG_SHOP, DRUG_SHOP_CATEGORIES, drugShopUrl } from "@/data/drugShop";
+import { drugDetail } from "@/data/drugDetails";
 import { BeamCircle } from "./BeamCircle";
 import { Tilt } from "./HoverGallery3D";
 import { Icon } from "@/components/ui/Icon";
