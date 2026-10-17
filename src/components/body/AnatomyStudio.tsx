@@ -37,6 +37,10 @@ export function AnatomyStudio({ dept, name }: { dept: string; name: string }) {
 
   return (
     <div className="space-y-4">
+      {/* warm up the 3D viewer's servers before the frame asks for them */}
+      <link rel="preconnect" href="https://sketchfab.com" />
+      <link rel="preconnect" href="https://static.sketchfab.com" crossOrigin="" />
+      <link rel="preconnect" href="https://media.sketchfab.com" crossOrigin="" />
       <div className="flex flex-wrap items-center gap-2">
         <div role="tablist" aria-label="Anatomy views" className="no-scrollbar flex gap-1 overflow-x-auto rounded-full bg-white p-1 shadow-card ring-1 ring-ink/[0.06]">
           {views.map((x) => (
