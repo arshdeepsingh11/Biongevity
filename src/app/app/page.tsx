@@ -1,21 +1,52 @@
 import type { Metadata } from "next";
 import { PageHero, Section, Eyebrow } from "@/components/ui/Section";
+import { Head } from "@/components/home/HomeSections";
+import { Icon } from "@/components/ui/Icon";
+import { AIBadge } from "@/components/ai/AIBadge";
+import { AIPanel } from "@/components/ai/AIPanel";
+import { PageSummary } from "@/components/ai/PageSummary";
+import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { AppShowcase, AppSignup } from "@/components/pages/AppDock";
-import { AppTwin, AppHowItWorks } from "@/components/pages/AppTwin";
-import { AnimatedList } from "@/components/fx/AnimatedList";
+import { AppTwin } from "@/components/pages/AppTwin";
+import { TwinTour } from "@/components/twin/TwinTour";
+import { TwinWhatIf } from "@/components/twin/TwinWhatIf";
 import { AuroraText } from "@/components/fx/AuroraText";
-import { ProgressRing } from "@/components/fx/ProgressRing";
-import { INSIGHTS } from "@/data/dashboard";
+import { APP_MAP, TWIN_GLOSSARY, TWIN_PATH } from "@/data/twin";
+import { DEVICES } from "@/data/platform";
+import { env } from "@/lib/env";
+import { JsonLd, breadcrumb, faqPage } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Biongevity App" };
+export const metadata: Metadata = {
+  title: "Biongevity App & Digital Twin",
+  description: "The Biongevity app and your Digital Twin in one place: Health and Recovery scores, live monitor, a model of your body, trends, what-if simulations, the AI coach and your BioELR record — explained in plain words.",
+  alternates: { canonical: "/app/" },
+};
 
+const FLOW = [
+  { t: "Your data", d: "Labs, wearables, genome, visits", icon: "layers" },
+  { t: "Your baseline", d: "What normal looks like for you", icon: "fingerprint" },
+  { t: "Biongevity SI", d: "Spots changes and explains them", icon: "sparkle" },
+  { t: "You & your clinician", d: "Decide the next small step", icon: "users" },
+];
+
+/** One page for the Biongevity app and the Digital Twin inside it (the twin is the app's main screen). */
 export default function AppPage() {
+  const url = `${env.appUrl}${TWIN_PATH}`;
   return (
     <>
-      <PageHero eyebrow="Biongevity App" title={<>Your all-in-one health <AuroraText>companion.</AuroraText></>}
-        lede="AI-powered health monitoring, seamless appointment booking and your BioELR record — healthcare at your fingertips. Tap an icon to explore, then look inside the app below." />
+      <JsonLd data={[breadcrumb([["Biongevity App & Digital Twin", "/app/"]]), faqPage(TWIN_GLOSSARY.map((g) => ({ q: `What is ${g.t}?`, a: g.d })))]} />
+      <PageHero eyebrow="Biongevity App · Digital Twin" ai="Biongevity App" summary={false} title={<>Your health, <AuroraText>as a living twin.</AuroraText></>}
+        lede="The Biongevity app is where your Digital Twin lives: scores, live signals, a model of your body, trends, what-if simulations, your AI coach, bookings and your BioELR record. Here is what you'll see — and how it works.">
+        <div className="flex flex-wrap items-center gap-3">
+          <a href={url} target="_blank" rel="noopener" className="btn-ai h-12 px-6"><Icon name="fingerprint" size={18} />Open my Digital Twin<Icon name="arrow-up-right" size={14} /></a>
+          <PageSummary className="h-12" />
+          <span className="flex gap-2"><AIBadge label="Explained by Biongevity SI" /></span>
+        </div>
+      </PageHero>
+
       <Section ai="App features" className="!pt-0"><div className="container-x"><AppShowcase /></div></Section>
-      <Section ai="Inside the app" id="inside">
+
+      <Section ai="Inside the app" id="twin" className="scroll-mt-20">
         <div className="container-x">
           <Eyebrow>Inside the app · Digital Twin</Eyebrow>
           <h2 className="h-section mt-3 max-w-[20ch]">What you’ll see when you open it.</h2>
