@@ -103,7 +103,15 @@ export function Header() {
   const [search, setSearch] = useState(false);
   const hidden = useHideOnScroll(search);
   // section tab bars read this to sit right under the header, or move up when it hides
-  useEffect(() => { document.documentElement.dataset.header = hidden ? "hidden" : "shown"; }, [hidden]);
+  useEffect(() => { document.documentElement.dataset.header = hidden ? "hidden" : "shown"; syncSubnav(); }, [hidden]);
+  // a section bar that is stuck to the top moves up into the header's place; keep it clear of the floating logo and search
+  useEffect(() => {
+    let raf = 0;
+    const on = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(syncSubnav); };
+    addEventListener("scroll", on, { passive: true }); addEventListener("resize", on);
+    const t = setInterval(syncSubnav, 400); // follows the bar while its top animates
+    return () => { removeEventListener("scroll", on); removeEventListener("resize", on); clearInterval(t); cancelAnimationFrame(raf); };
+  }, []);
 
   return (
     <>
