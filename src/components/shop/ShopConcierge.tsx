@@ -57,3 +57,85 @@ function pick(q: string) {
   for (const r of ranked) if (out.length < 3 && !out.includes(r.i)) out.push(r.i);
   return { t, items: out.slice(0, 4), hits };
 }
+
+/**
+ * Shop concierge — the first thing on the shop page. Say a goal (or tap one); the matcher on this device picks a
+ * test, a formula, a package and a program from the real catalogue, with the words that matched. Add in one tap,
+ * or send them to Biongevity SI to explain. Nothing here is invented: every card is a real product and price.
+ */
+export function ShopConcierge() {
+  const cart = useCart();
+  const { ask } = useAI();
+  const [q, setQ] = useState("");
+  const [goal, setGoal] = useState<string | null>(null);
+  const query = goal ? GOALS.find((g) => g.label === goal)!.q : q;
+  const { t, items, hits } = useMemo(() => pick(query), [query]);
+  const active = t.length > 0;
+
+  return (
+    <div className="relative overflow-hidden rounded-[32px] bg-white/70 p-4 shadow-[0_30px_80px_-40px_rgb(var(--c-ink)/.35)] ring-1 ring-white/70 backdrop-blur-2xl backdrop-saturate-150 sm:p-6">
+      <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-ai/15 blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute -bottom-28 -left-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
+
+      <form onSubmit={(e) => { e.preventDefault(); setGoal(null); }} className="relative flex h-14 items-center gap-3 rounded-2xl bg-white px-3 shadow-card ring-1 ring-ink/[0.06] focus-within:ring-2 focus-within:ring-ai/40">
+        <XevyoOrb size={30} />
+        <input value={goal ? "" : q} onChange={(e) => { setQ(e.target.value); setGoal(null); }} placeholder={goal ? `Showing: ${goal}` : "What do you want to improve?"} aria-label="What do you want to improve"
+          className="h-full min-w-0 flex-1 !border-0 !bg-transparent text-[16px] !shadow-none outline-none !ring-0 placeholder:text-faint focus-visible:!outline-none" />
+        {(q || goal) && <button type="button" onClick={() => { setQ(""); setGoal(null); }} aria-label="Clear" className="grid h-8 w-8 place-items-center rounded-full text-faint hover:bg-canvas hover:text-ink"><Icon name="x" size={14} /></button>}
+      </form>
+
+      <div className="no-scrollbar relative -mx-4 mt-3 flex gap-1.5 overflow-x-auto px-4 sm:mx-0 sm:flex-wrap sm:px-0">
+        {GOALS.map((g) => (
+          <button key={g.label} onClick={() => { setGoal(goal === g.label ? null : g.label); setQ(""); }} aria-pressed={goal === g.label}
+            className={cn("flex h-9 shrink-0 items-center gap-1.5 rounded-full px-3 text-[13px] font-semibold ring-1 transition", goal === g.label ? "bg-ai text-on-ai ring-ai" : "bg-white/80 text-ink/80 ring-ink/[0.07] hover:ring-ai/40")}>
+            <Icon name={g.icon} size={14} />{g.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="relative mt-5 flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2 text-[11.5px] font-semibold uppercase tracking-[0.14em] text-ai">
+          <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ai/60" /><span className="relative inline-flex h-2 w-2 rounded-full bg-ai" /></span>
+          {active ? `${items.length} picks for “${goal ?? q}”` : "Popular starting points"}
+        </div>
+        {active && items.length > 0 && <button onClick={() => browse("all", query)} className="text-[12.5px] font-semibold text-ai hover:underline">See all matches →</button>}
+      </div>
+
+      <div className="no-scrollbar relative -mx-4 mt-3 flex snap-x snap-mandatory gap-2.5 overflow-x-auto px-4 pb-1 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4">
+        <AnimatePresence mode="popLayout" initial={false}>
+          {items.map((i, k) => {
+            const inBag = cart.has(i.id), why = hits.get(i.id) ?? [];
+            return (
+              <motion.div key={i.id} layout initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96 }} transition={{ duration: 0.28, delay: k * 0.05 }}
+                className="flex w-[78%] shrink-0 snap-start flex-col rounded-[22px] bg-white/90 p-4 ring-1 sm:w-auto ring-ink/[0.06] backdrop-blur">
+                <button onClick={() => cart.setView(i.id)} className="text-left">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="icon-tile h-10 w-10"><Icon name={i.icon} size={19} weight="duotone" /></span>
+                    <span className="rounded-full bg-ai-soft px-2 py-0.5 text-[10.5px] font-bold uppercase tracking-wider text-ai">{KIND_META[i.kind].label}</span>
+                  </div>
+                  <div className="mt-3 line-clamp-2 text-[15px] font-semibold leading-snug">{i.title}</div>
+                  <div className="mt-1 line-clamp-2 text-[12.5px] leading-snug text-muted">{i.summary}</div>
+                </button>
+                {why.length > 0 && <div className="mt-2 flex flex-wrap gap-1">{why.slice(0, 3).map((w) => <span key={w} className="rounded-full bg-canvas px-1.5 py-px text-[10.5px] font-medium text-muted">matches “{w}”</span>)}</div>}
+                <div className="flex-1" />
+                <div className="mt-3 flex items-center justify-between gap-2">
+                  <span className="text-[16px] font-semibold tabular-nums">{formatMoney(i.price)}<span className="ml-1 text-[11px] font-normal text-faint">{i.billing === "term" ? "/ 12 mo" : "CAD"}</span></span>
+                  <button onClick={() => (inBag ? cart.setOpen(true) : cart.add(i.id))} className={cn("flex h-9 items-center gap-1 rounded-full px-3.5 text-[12.5px] font-semibold transition", inBag ? "bg-ai-soft text-ai" : "bg-accent text-on-accent hover:brightness-110")}>
+                    <Icon name={inBag ? "check" : "plus"} size={13} weight="bold" />{inBag ? "In plan" : "Add"}
+                  </button>
+                </div>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
+        {active && !items.length && <div className="col-span-full rounded-2xl bg-white/80 p-5 text-center text-[14px] text-muted">Nothing in the catalogue matches that yet — ask Biongevity SI, or try a goal above.</div>}
+      </div>
+
+      <div className="relative mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-ink/[0.06] pt-4">
+        <p className="text-[12px] text-faint">Matched on your device from our real catalogue. Not a diagnosis — a clinician confirms every plan.</p>
+        <button onClick={() => ask(active ? `I want to work on: ${goal ?? q}. You suggested ${items.map((i) => `${i.title} (${KIND_META[i.kind].label}, ${formatMoney(i.price)} CAD)`).join("; ")}. Explain in plain words what each does and which to start with.` : "Help me choose where to start in the Biongevity shop: a single test, a package or a full program?", { label: "✦ Shop help" })}
+          className="btn-ai h-10 px-4 text-[13px]"><XevyoOrb size={18} />{active ? "Ask SI to explain these" : "Not sure? Ask SI"}</button>
+      </div>
+    </div>
+  );
+}
