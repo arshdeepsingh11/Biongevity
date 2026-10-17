@@ -61,8 +61,8 @@ export async function askXevyo(
   try {
     res = await fetch(env.xevyoUrl, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json, text/event-stream", ...(env.xevyoKey ? { Authorization: `Bearer ${env.xevyoKey}` } : {}) },
-      body: JSON.stringify({ message: input.message, history: input.history, context: { ...input.context, language: input.language ?? "en" }, sessionId: input.sessionId, messages, ...(env.xevyoModel ? { model: env.xevyoModel } : {}) }),
+      headers: { "Content-Type": "application/json", Accept: "text/event-stream, application/json", ...(env.xevyoKey ? { Authorization: `Bearer ${env.xevyoKey}` } : {}) },
+      body: JSON.stringify(body),
       signal,
     });
   } catch (e) {
