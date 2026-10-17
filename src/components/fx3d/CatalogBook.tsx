@@ -9,6 +9,10 @@ export interface BookCategory { id: string; title: string; icon: string; line?: 
 export interface BookItem {
   id: string; category: string; title: string; kicker?: string; image?: string; iconUrl?: string; icon: string;
   summary: string; tags?: string[]; price: number; meta?: string; url: string; store: string;
+  /** optional richer page: a one-line tagline, "what it measures", who it suits and quick facts */
+  tagline?: string; measure?: string; measureTitle?: string; who?: string[]; facts?: { icon: string; label: string; value: string }[];
+  /** e.g. active ingredients and amounts */
+  table?: { title: string; rows: [string, string][] };
 }
 
 /** A photo that quietly falls back to a soft gradient with the item's icon if it cannot load. */
