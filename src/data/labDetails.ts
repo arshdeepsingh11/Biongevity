@@ -4,3 +4,5 @@
  * Keyed by the exact test title used in labs.ts. Educational information, not a diagnosis.
  */
 export interface LabDetail { tag: string; about: string; measure: string; who: string[]; sample: string; prep: string; results: string; markers: string }
+
+type Row = [tag: string, about: string, measure: string, who: string[], sample: string, prep: string, results: string, markers: string];
