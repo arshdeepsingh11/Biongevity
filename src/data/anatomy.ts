@@ -19,3 +19,4 @@ const THYROID = M("37ca10b0c9df4484b017826d4b48362b", "Thyroid gland", "Thyroid 
 const KIDNEYS = M("acab057d3f5b4d86be475a2be0c8d0c7", "Kidneys", "Human kidneys for Medical Education", "parvin8borhan", "parvin8borhan");
 const TOOTH = M("9cc281349c314cc4859e26af238f9cd5", "Tooth cross-section", "Tooth cross-section", "Ebers", "Ebers");
 const KNEE = M("1e947b39c2e545128dad5d66b391b4d8", "Knee: bones & cartilage", "Knee anatomy: bones and cartilage", "University of Dundee, CAHID", "anatomy_dundee");
+const FEMALE = M("5e15cc97ef674446bf9f3e527c38d646", "Female reproductive organs", "Female Reproductive Organs", "Stanford Medicine EdTech", "stanfordedtech");
