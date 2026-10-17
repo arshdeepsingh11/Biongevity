@@ -46,16 +46,7 @@ export function DeptTabs({ id }: { id: string }) {
 
   return (
     <div>
-      <div className="sticky top-[calc(64px+var(--safe-top))] z-20 -mx-4 bg-pearl/85 px-4 py-2 backdrop-blur-xl sm:mx-0 sm:rounded-full sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
-        <div role="tablist" aria-label={`${d.short} sections`} className="no-scrollbar flex gap-1 overflow-x-auto rounded-full bg-white p-1 shadow-card ring-1 ring-ink/[0.06] sm:inline-flex">
-          {TABS.map((t) => (
-            <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => go(t.id)} className="relative flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2.5 text-[13.5px] font-semibold">
-              {tab === t.id && <motion.span layoutId={`dt-${id}`} className="absolute inset-0 rounded-full bg-accent" transition={{ type: "spring", stiffness: 400, damping: 34 }} />}
-              <span className={`relative flex items-center gap-1.5 ${tab === t.id ? "text-white" : "text-muted hover:text-ink"}`}><Icon name={t.icon} size={16} />{t.label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
+      <TabBar tabs={TABS} active={tab} onChange={(t) => go(t as never)} id={`dt-${id}`} />
 
       <div className={`mt-8 grid gap-6 ${tab === "anatomy" ? "" : "lg:grid-cols-[minmax(0,1fr)_320px]"}`}>
         <AnimatePresence mode="wait">
