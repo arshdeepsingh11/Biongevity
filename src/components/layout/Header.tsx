@@ -1,4 +1,5 @@
 "use client";
+import { BOOK_URL } from "@/lib/env";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
