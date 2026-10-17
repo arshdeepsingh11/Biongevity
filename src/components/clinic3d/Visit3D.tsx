@@ -174,10 +174,17 @@ export function Visit3D({ visit, title }: { visit: Visit; title: string }) {
         const toCam = sub(C, [cx, cy, cz]);
         if (f.a >= 1 && f.n[0] * toCam[0] + f.n[1] * toCam[1] + f.n[2] * toCam[2] <= 0) continue;
         const p = f.pts.map(project); if (p.some((q) => q[2] < 0.2)) continue;
-        f.d = Math.hypot(toCam[0], toCam[1], toCam[2]); drawn.push({ f, p });
+        // floors always go down first, so people and furniture stand on them
+        const flat = Math.max(...f.pts.map((q) => q[1])) <= 0.02;
+        f.d = Math.hypot(toCam[0], toCam[1], toCam[2]) + (flat ? 1e6 : 0); drawn.push({ f, p });
       }
-      drawn.sort((a, b) => b.f.d - a.f.d);
-      for (const { f, p } of drawn) {
+      type Item = { d: number; face?: { f: Face; p: (readonly [number, number, number])[] }; fig?: Fig };
+      const items: Item[] = drawn.map((x) => ({ d: x.f.d, face: x }));
+      figs.forEach((g) => { const toCam = sub(C, [g.x, 0.9, g.z]); items.push({ d: Math.hypot(toCam[0], toCam[1], toCam[2]) - 0.25, fig: g }); });
+      items.sort((a, b) => b.d - a.d);
+      for (const it of items) {
+        if (it.fig) { drawFig(ctx, project, F, it.fig); continue; }
+        const { f, p } = it.face!;
         const lit = 0.62 + 0.38 * Math.max(0, f.n[0] * L[0] + f.n[1] * L[1] + f.n[2] * L[2]);
         ctx.fillStyle = `rgba(${Math.round(f.col[0] * lit)},${Math.round(f.col[1] * lit)},${Math.round(f.col[2] * lit)},${f.a})`;
         ctx.beginPath(); ctx.moveTo(p[0][0], p[0][1]); for (let i = 1; i < 4; i++) ctx.lineTo(p[i][0], p[i][1]); ctx.closePath(); ctx.fill();
