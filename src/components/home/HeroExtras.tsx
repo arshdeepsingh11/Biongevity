@@ -127,29 +127,33 @@ export function HeroStats() {
   );
 }
 
-/* ── Life film: a video plays inside the words; the age caption follows the film ── */
-const STAGES = [[0, "Born", "Newborn screening, family history begins"], [8, "Childhood", "Growth, vaccines, paediatric rheumatology"], [25, "Adulthood", "Baseline labs and genome, habits that compound"], [45, "Midlife", "Heart, hormones and metabolism — the window that matters most"], [65, "Later life", "Memory, mobility, medicines that fit your genes"], [90, "Long life", "More good years, shared with family"]] as const;
+/* ── Hero headline: the first line keeps changing; "guided by SI." plays the life film inside its letters ── */
+const LINES = ["More good years,", "Longer healthspan,", "Stronger decades,", "Sharper later years,", "Healthier families,", "Earlier answers,"];
+/** The life-cycle film behind "guided by SI." (YouTube id). Change it here. */
+export const LIFE_FILM_YOUTUBE = "egeDXHcNeNw";
 
-export function LifeFilm() {
-  const [p, setP] = useState(0);
-  const onTime = useCallback((x: number) => setP(x), []);
-  const age = Math.round(p * 95);
-  const stage = [...STAGES].reverse().find((s) => age >= s[0]) ?? STAGES[0];
+export function HeroHeadline() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => setI((x) => (x + 1) % LINES.length), 3200);
+    return () => clearInterval(id);
+  }, []);
   return (
-    <div className="mx-auto mt-12 max-w-[1100px]">
-      <VideoText text="every age." className="h-[clamp(110px,18vw,230px)]" onTime={onTime} />
-      <div className="mx-auto mt-2 flex max-w-[760px] flex-col items-center gap-3 sm:flex-row">
-        <div className="flex items-baseline gap-1.5 font-mono"><span className="text-[28px] font-semibold tabular-nums text-ai">{String(age).padStart(2, "0")}</span><span className="text-[11px] uppercase tracking-[0.16em] text-faint">yrs</span></div>
-        <div className="relative h-1.5 w-full flex-1 overflow-hidden rounded-full bg-ink/[0.06]">
-          <div className="absolute inset-y-0 left-0 rounded-full bg-ai" style={{ width: `${p * 100}%` }} />
-          {STAGES.map((s) => <span key={s[1]} className="absolute top-1/2 h-2.5 w-px -translate-y-1/2 bg-ink/25" style={{ left: `${(s[0] / 95) * 100}%` }} />)}
-        </div>
-        <AnimatePresence mode="wait">
-          <motion.div key={stage[1]} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} className="min-w-[220px] text-center sm:text-left">
-            <div className="text-[13px] font-semibold">{stage[1]}</div><div className="text-[11.5px] text-muted">{stage[2]}</div>
-          </motion.div>
+    <h1 className="h-display mt-6">
+      <span className="sr-only">More good years, guided by SI.</span>
+      <span aria-hidden className="relative block h-[1.08em] overflow-hidden">
+        <AnimatePresence mode="popLayout" initial={false}>
+          <motion.span key={LINES[i]} className="absolute inset-x-0 top-0 block whitespace-nowrap"
+            initial={{ y: "70%", opacity: 0, filter: "blur(10px)" }} animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }} exit={{ y: "-70%", opacity: 0, filter: "blur(10px)" }}
+            transition={{ type: "spring", stiffness: 160, damping: 22 }}>
+            {LINES[i]}
+          </motion.span>
         </AnimatePresence>
-      </div>
-    </div>
+      </span>
+      <span aria-hidden className="mt-1 block">
+        <VideoText youtube={LIFE_FILM_YOUTUBE} className="text-[1.22em] font-extrabold leading-[1.1] tracking-[-0.045em]">guided by SI.</VideoText>
+      </span>
+    </h1>
   );
 }
