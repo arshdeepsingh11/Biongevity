@@ -81,7 +81,7 @@ const RAW: Omit<CatalogProduct, "url">[] = [
   },
 ];
 
-export const DRUG_PRODUCTS: CatalogProduct[] = RAW.map((p) => ({ ...p, url: `${DRUGS_URL}/products/${p.handle}` }));
+export const DRUG_PRODUCTS: CatalogProduct[] = RAW.map((p) => ({ ...p, url: `${DRUGS_URL}/products/${p.handle}`, image: drugImage(p.handle) }));
 
 export const PRINCIPLES = [
   { n: "01", t: "AI-guided personalization", d: "BioAro Drugs AI turns what you want to improve into a starting protocol, so you are not choosing from a shelf on instinct." },
