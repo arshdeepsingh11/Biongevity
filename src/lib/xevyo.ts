@@ -102,13 +102,10 @@ export async function askXevyo(
     const { done, value } = await reader.read();
     if (done) break;
     const chunk = dec.decode(value, { stream: true });
-    if (type.includes("event-stream")) {
-      for (const line of chunk.split("\n")) {
-        if (!line.startsWith("data:")) continue;
-        const data = line.slice(5).trim();
-        if (data === "[DONE]") continue;
-        try { const j = JSON.parse(data) as { token?: string; delta?: string; text?: string; choices?: { delta?: { content?: string } }[] }; acc += j.token ?? j.delta ?? j.text ?? j.choices?.[0]?.delta?.content ?? ""; } catch { acc += data; }
-      }
+    if (sse) {
+      buf += chunk;
+      const lines = buf.split("\n"); buf = lines.pop() ?? ""; // keep a partial line for the next chunk
+      lines.forEach(eat);
     } else acc += chunk;
     onToken?.(acc);
   }
