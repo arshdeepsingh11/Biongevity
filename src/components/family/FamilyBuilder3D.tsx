@@ -63,7 +63,7 @@ export function FamilyBuilder3D() {
   }, [people, me]);
   const pos = useMemo(() => {
     const out: Record<string, { x: number; y: number }> = {}, n = tiers.length;
-    tiers.forEach((t, ti) => t.list.forEach((m, i) => { out[m.id] = { x: ((i + 1) / (t.list.length + 1)) * 100, y: n === 1 ? 50 : 12 + (ti / (n - 1)) * 76 }; }));
+    tiers.forEach((t, ti) => t.list.forEach((m, i) => { out[m.id] = { x: ((i + 1) / (t.list.length + 1)) * 100, y: n === 1 ? 45 : 13 + (ti / (n - 1)) * 74 }; }));
     return out;
   }, [tiers]);
   const links = useMemo(() => {
@@ -157,55 +157,7 @@ export function FamilyBuilder3D() {
 
       {/* ── Live 3D tree ── */}
       <div className="space-y-3">
-        <div className="relative h-[560px] select-none overflow-hidden rounded-[32px] bg-white ring-1 ring-ink/[0.07]" style={{ perspective: "1400px" }}
-          onPointerDown={(e) => { drag.current = { x: e.clientX, y: e.clientY }; (e.target as Element).setPointerCapture?.(e.pointerId); }}
-          onPointerMove={(e) => { if (!drag.current) return; const dx = e.clientX - drag.current.x, dy = e.clientY - drag.current.y; drag.current = { x: e.clientX, y: e.clientY }; setRot((r) => ({ x: Math.max(0, Math.min(40, r.x - dy * 0.15)), y: Math.max(-35, Math.min(35, r.y + dx * 0.2)) })); }}
-          onPointerUp={() => (drag.current = null)} onPointerCancel={() => (drag.current = null)}>
-          <div aria-hidden className="absolute inset-0" style={{ background: "radial-gradient(70% 60% at 50% 40%, rgb(var(--c-ai-hi) / .14), transparent 70%)" }} />
-          <div className="absolute left-3 top-3 z-10 rounded-full bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ai ring-1 ring-ink/[0.06] backdrop-blur">Live family tree · drag to tilt</div>
-          <div className="absolute inset-[4%] transition-transform duration-300 ease-out" style={{ transformStyle: "preserve-3d", transform: `rotateX(${rot.x}deg) rotateY(${rot.y}deg)` }}>
-            {/* tiers */}
-            {tiers.map((t, ti) => {
-              const y = tiers.length === 1 ? 50 : 12 + (ti / (tiers.length - 1)) * 76;
-              return (
-                <div key={t.g} className="absolute inset-x-0 h-[17%] rounded-[28px] ring-1 ring-white/70 transition-[top] duration-500"
-                  style={{ top: `${y}%`, transform: `translateY(-50%) translateZ(${-t.g * 40}px)`, background: "linear-gradient(180deg, rgb(255 255 255 / .55), rgb(var(--c-ai-soft) / .35))", boxShadow: "0 20px 40px -24px rgb(var(--c-ai-2) / .45)" }}>
-                  <span className="absolute left-3 top-2 text-[9.5px] font-semibold uppercase tracking-[0.16em] text-ai/70">{GEN_LABEL[t.g]}</span>
-                </div>
-              );
-            })}
-            {/* connectors */}
-            <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none" style={{ transform: "translateZ(6px)" }}>
-              {links.map(([a, b, hot], i) => { const A = pos[a], B = pos[b]; if (!A || !B) return null; const my = (A.y + B.y) / 2; const d = `M${A.x},${A.y} C${A.x},${my} ${B.x},${my} ${B.x},${B.y}`; return (
-                <g key={`${a}-${b}-${i}`}>
-                  <path d={d} fill="none" stroke={`rgb(var(--c-ai) / ${hot ? 0.35 : 0.18})`} strokeWidth={hot ? 0.5 : 0.3} vectorEffect="non-scaling-stroke" style={{ strokeWidth: hot ? 2 : 1.2 }} />
-                  <path d={d} fill="none" stroke="rgb(var(--c-ai-hi))" strokeDasharray="4 30" className="beam-dash" vectorEffect="non-scaling-stroke" style={{ strokeWidth: 2, animationDelay: `${i * -0.3}s` }} />
-                </g>); })}
-            </svg>
-            {/* people */}
-            <AnimatePresence>
-              {tiers.flatMap((t) => t.list).map((m) => {
-                const p = pos[m.id]; if (!p) return null;
-                const isMe = m.id === "me", risk = !isMe && m.conds.length > 0;
-                return (
-                  <div key={m.id} className="absolute transition-[left,top] duration-500 ease-out" style={{ left: `${p.x}%`, top: `${p.y}%`, transform: `translate(-50%, -50%) translateZ(${isMe ? 70 : 40}px)`, transformStyle: "preserve-3d" }}>
-                  <motion.button onClick={() => !isMe && setOpen(m.id)} initial={{ opacity: 0, scale: 0.3 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.3 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                    className="flex flex-col items-center" aria-label={`${m.name || "Relative"}, ${m.age}`}>
-                    <span className={cn("relative grid place-items-center rounded-[18px] shadow-lift ring-1 backdrop-blur-xl", isMe ? "h-14 w-14 bg-ai text-on-ai ring-ai" : "h-12 w-12 bg-white/90 text-ai ring-white", !m.alive && "opacity-60 grayscale", open === m.id && "ring-2 ring-ai")}>
-                      <Icon name={avatar(m)} size={isMe ? 24 : 20} />
-                      {risk && <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-warn px-1 text-[10px] font-bold text-white">{m.conds.length}</span>}
-                      {isMe && <span className="absolute -inset-1.5 animate-ping rounded-[22px] ring-2 ring-ai/30" />}
-                    </span>
-                    <span className="mt-1 max-w-[110px] truncate rounded-full bg-white/90 px-2 py-0.5 text-[11px] font-semibold shadow-card">{m.name || RELS.find((r) => r.id === m.rel)?.label.split(" (")[0]}{!m.alive && " †"}</span>
-                    <span className="text-[10px] text-muted">{m.age} yrs</span>
-                  </motion.button>
-                  </div>
-                );
-              })}
-            </AnimatePresence>
-          </div>
-        </div>
+        <TreeStage tiers={tiers} pos={pos} links={links} open={open} setOpen={setOpen} />
 
         {/* SI reading */}
         <div className="rounded-[24px] bg-white p-4 shadow-card ring-1 ring-ink/[0.06]">
