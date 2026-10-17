@@ -31,10 +31,10 @@ export function VideoText({ text, youtube, mp4, className, start = 0 }: { text: 
     const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) setOn(true); }, { rootMargin: "200px" });
     io.observe(el);
     return () => { ro.disconnect(); io.disconnect(); };
-  }, []);
+  }, [text]);
 
-  // cover the text box with a 16:9 film, slightly over-scaled to crop the player chrome
-  const fw = Math.max(size.w, (size.h * 16) / 9) * 1.18, fh = (fw * 9) / 16;
+  // cover the text box with a 16:9 film, over-scaled to crop the player chrome
+  const fw = m ? Math.max(m.w, (m.h * 16) / 9) * 1.25 : 0, fh = (fw * 9) / 16;
   const src = youtube
     ? `https://www.youtube-nocookie.com/embed/${youtube}?autoplay=1&mute=1&loop=1&playlist=${youtube}&controls=0&disablekb=1&modestbranding=1&playsinline=1&rel=0&iv_load_policy=3&fs=0&start=${start}`
     : undefined;
