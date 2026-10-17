@@ -9,16 +9,28 @@ import { Stat } from "@/components/charts/Charts";
 import { EvidenceChart } from "@/components/charts/EvidenceChart";
 import { MagicCard } from "@/components/fx/MagicCard";
 import { AIPanel } from "@/components/ai/AIPanel";
+import { AnatomyStudio } from "@/components/body/AnatomyStudio";
+import { ServicesRing } from "@/components/fx3d/Showcases";
+import { Tilt } from "@/components/fx3d/HoverGallery3D";
+import { XevyoOrb } from "@/components/ai/XevyoOrb";
+import { useAI } from "@/components/ai/AIProvider";
+import { ANATOMY } from "@/data/anatomy";
+import { DEPT_EXTRA } from "@/data/deptExtra";
 
-const TABS = [
+const ALL = [
+  { id: "anatomy", label: "3D anatomy", icon: "orbit" },
   { id: "overview", label: "Overview", icon: "eye" },
+  { id: "offer", label: "What we offer", icon: "sparkle" },
   { id: "conditions", label: "Conditions", icon: "clipboard" },
   { id: "services", label: "Tests & services", icon: "microscope" },
+  { id: "programs", label: "Programs & prices", icon: "crown" },
   { id: "path", label: "Care path", icon: "route" },
+  { id: "connected", label: "Connected care", icon: "network" },
   { id: "evidence", label: "Evidence", icon: "bars" },
   { id: "faq", label: "FAQ", icon: "message" },
+  { id: "sources", label: "Sources", icon: "book" },
 ] as const;
-type Tab = (typeof TABS)[number]["id"];
+type Tab = (typeof ALL)[number]["id"];
 
 /** Department detail — six tabs of clinical content, cited evidence and an AI panel. */
 export function DeptTabs({ id }: { id: string }) {
