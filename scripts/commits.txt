@@ -1,45 +1,15 @@
-fix(tabs): section bars move up into the header's place instead of hiding|src/app/globals.css
-feat(header): keep stuck section bars clear of the floating logo and search|src/components/layout/Header.tsx@1
-feat(header): follow stuck section bars on scroll and resize|src/components/layout/Header.tsx@2
-fix(header): floating logo steps aside on phones when a bar is at the top|src/components/layout/Header.tsx@3
-refactor(header): mark the floating search|src/components/layout/Header.tsx
-feat(labs): add LabDetail (labDetails)|src/data/labDetails.ts@4
-feat(labs): add Row|src/data/labDetails.ts@5
-feat(labs): add WB|src/data/labDetails.ts@6
-feat(labs): add PROACTIVE|src/data/labDetails.ts@7
-feat(labs): add ROWS|src/data/labDetails.ts@8
-feat(labs): add LAB_DETAILS|src/data/labDetails.ts@9
-feat(labs): add labDetail|src/data/labDetails.ts
-feat(drugs): add DrugDetail (drugDetails)|src/data/drugDetails.ts@10
-feat(drugs): add R|src/data/drugDetails.ts@11
-feat(drugs): add DRUG_DETAILS|src/data/drugDetails.ts@12
-feat(drugs): add drugDetail|src/data/drugDetails.ts
-feat(book): richer pages: tagline, what it measures, who it suits, facts, table|src/components/fx3d/CatalogBook.tsx@13
-feat(book): compact size option|src/components/fx3d/CatalogBook.tsx@14
-feat(book): facts and who it suits under the photo; full page on phones; no grey band|src/components/fx3d/CatalogBook.tsx@15
-fix(book): category chips centred in the compact book|src/components/fx3d/CatalogBook.tsx@16
-fix(book): constant size for the full and compact book|src/components/fx3d/CatalogBook.tsx@17
-fix(book): taller phone page so details fit|src/components/fx3d/CatalogBook.tsx
-refactor(labs): test details import|src/components/fx3d/TestsIn3D.tsx@18
-feat(labs): every test page shows bioarolabs.com details|src/components/fx3d/TestsIn3D.tsx@19
-feat(labs): compact test book|src/components/fx3d/TestsIn3D.tsx
-refactor(drugs): label details import|src/components/fx3d/Showcases.tsx@20
-feat(drugs): pack, servings, how to use and active ingredients on every page|src/components/fx3d/Showcases.tsx
-fix(home): smaller test book, tighter gap|src/app/page.tsx
-chore(app): drop the separate how-it-works strip|src/components/pages/AppTwin.tsx
-refactor(app): imports for the combined app and twin page|src/app/app/page.tsx@21
-feat(app): one page for the app and the Digital Twin|src/app/app/page.tsx@22
-feat(app): twin tour, heat map, how it works, app map and glossary|src/app/app/page.tsx
-refactor(twin): twin address shows the combined app page|src/app/twin/page.tsx
-fix(links): next step twin link|src/components/ai/NextStep.tsx
-fix(app): dock resizes cleanly on phones|src/components/pages/AppDock.tsx
-fix(links): hero twin link|src/components/home/AIHero.tsx
-fix(links): discover twin link|src/data/discover.ts@23
-fix(links): heat map link|src/data/discover.ts
-fix(links): twin links go to the app page|src/app/platform/page.tsx
-chore(seo): twin lives on the app page|src/app/sitemap.ts
-fix(links): nav Digital Twin opens the app page|src/data/site.ts
-fix(si): site index points the twin to the app page|src/lib/siteIndex.ts
-fix(links): home twin card link|src/components/home/AIEverywhere.tsx
-fix(links): platform twin link|src/components/platform/PlatformParts.tsx
+fix(si): send Xevyo's own request shape to its chat completions API|src/lib/xevyo.ts@1
+fix(si): ask for a streamed answer|src/lib/xevyo.ts@2
+fix(si): clearer setup message and error details|src/lib/xevyo.ts@3
+fix(si): parse streamed tokens across chunk boundaries|src/lib/xevyo.ts@4
+fix(si): keep partial stream lines for the next chunk|src/lib/xevyo.ts@5
+fix(si): flush the last streamed line|src/lib/xevyo.ts
+docs(si): the Xevyo API address|.env.example@6
+docs(si): default upstream for the proxy|.env.example@7
+docs(si): default model name|.env.example
+fix(si): worker sends Xevyo's request shape|deploy/xevyo-worker.js@8
+fix(si): worker forwards the cleaned request|deploy/xevyo-worker.js
+docs(si): proxy upstream example|docs/XEVYO_PROXY.md
+fix(nav): drop the Digital Twin item; it lives in the App page|src/data/site.ts
+fix(si): local proxy sends Xevyo's request shape|scripts/xevyo-proxy.mjs
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt
