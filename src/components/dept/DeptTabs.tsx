@@ -266,7 +266,7 @@ export function DeptTabs({ id }: { id: string }) {
           </motion.div>
         </AnimatePresence>
 
-        <aside className="space-y-4 lg:sticky lg:top-[140px] lg:self-start">
+        <aside className={`space-y-4 lg:sticky lg:top-[140px] lg:self-start ${tab === "anatomy" ? "hidden" : ""}`}>
           <AIPanel title={`Ask about ${d.short}`} prompts={d.prompts} context={d.name} />
           <div className="rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]">
             <div className="text-[14px] font-semibold">Related care</div>
