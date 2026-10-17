@@ -1,7 +1,7 @@
 "use client";
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { LAB_COLLECTIONS, LAB_TESTS } from "@/data/labs";
+import { LAB_COLLECTIONS, LAB_TESTS, SHOP_META, shopSlug, shopIcon } from "@/data/labs";
 import type { CatalogProduct } from "@/data/types";
 import { GOAL_TAGS, TEST_INTEL, goalMatch, RETEST_LABEL, type GoalId } from "@/lib/testIntel";
 import { Icon } from "@/components/ui/Icon";
