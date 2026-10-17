@@ -173,6 +173,11 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
   box-shadow: 0 0 0 1px rgb(var(--c-ink) / .05), 0 8px 20px -12px rgb(var(--c-ink) / .2), inset 0 1px 0 rgb(255 255 255 / 1); }
 [data-theme="olive"] .btn-light:hover { color: rgb(var(--c-accent)); box-shadow: 0 0 0 1px rgb(var(--c-ai-2) / .2), 0 10px 24px -12px rgb(var(--c-ai-2) / .4), inset 0 1px 0 rgb(255 255 255 / 1); }
 
+/* Feature panels are light in both themes — white text on them becomes ink so nothing disappears. */
+.bg-navy.text-white, .bg-navy .text-white:not(.bg-ai *):not(.btn-ai *):not([class*="bg-white/1"]) { color: rgb(var(--c-ink)) !important; }
+.bg-navy [class*="text-white/"] { color: rgb(var(--c-muted)) !important; }
+.bg-navy .bg-white\/10 { background-color: rgb(var(--c-ai) / .1) !important; color: rgb(var(--c-ink)) !important; }
+
 /* ───── AI signature: anything Biongevity SI powers ───── */
 .text-ai-grad { background: var(--g-ai); -webkit-background-clip: text; background-clip: text; color: transparent; }
 [data-theme="mono"] .text-ai-grad { background: none; color: var(--ink); }
