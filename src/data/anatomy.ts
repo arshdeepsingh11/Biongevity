@@ -21,3 +21,20 @@ const TOOTH = M("9cc281349c314cc4859e26af238f9cd5", "Tooth cross-section", "Toot
 const KNEE = M("1e947b39c2e545128dad5d66b391b4d8", "Knee: bones & cartilage", "Knee anatomy: bones and cartilage", "University of Dundee, CAHID", "anatomy_dundee");
 const FEMALE = M("5e15cc97ef674446bf9f3e527c38d646", "Female reproductive organs", "Female Reproductive Organs", "Stanford Medicine EdTech", "stanfordedtech");
 const PROSTATE = M("9d16d219525846d29734ed1d09ffd945", "Bladder & prostate", "Bladder And Prostate Anatomy", "Nima", "h3ydari96");
+
+export const ANATOMY: Record<string, AnatomyModel[]> = {
+  cardiology: [HEART_EXT, HEART_INT],
+  "heart-failure": [HEART_INT, HEART_EXT],
+  "respiratory-medicine": [LUNGS, BREATH],
+  "skin-health": [SKIN],
+  "geriatric-medicine": [BRAIN, KNEE],
+  "mental-health": [BRAIN],
+  "gut-health": [GUT, LIVER],
+  nutrition: [GUT, LIVER],
+  endocrinology: [THYROID, KIDNEYS],
+  "internal-medicine": [KIDNEYS, LIVER, HEART_EXT],
+  dental: [TOOTH],
+  "pediatric-rheumatology": [KNEE],
+  "womens-health": [FEMALE],
+  "mens-health": [PROSTATE],
+};
