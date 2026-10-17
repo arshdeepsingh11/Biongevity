@@ -220,7 +220,7 @@ export function Visit3D({ visit, title }: { visit: Visit; title: string }) {
     <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
       <div className="relative h-[460px] overflow-hidden rounded-[28px] ring-1 ring-ink/[0.07] sm:h-[560px]">
         <canvas ref={cv} aria-label={`${title}: 3D walkthrough of a visit. Drag to look around.`} className="absolute inset-0 h-full w-full cursor-grab touch-none active:cursor-grabbing" />
-        <div className="absolute left-3 top-3 flex flex-wrap items-center gap-2">
+        <div className="absolute left-3 top-3 flex flex-wrap items-center gap-2 max-sm:hidden">
           <span className="rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ai ring-1 ring-ink/[0.06] backdrop-blur">3D visit · {visit.floor}</span>
           <span className="hidden rounded-full bg-white/80 px-3 py-1 text-[11.5px] text-muted ring-1 ring-ink/[0.06] backdrop-blur sm:inline">{visit.place}</span>
         </div>
