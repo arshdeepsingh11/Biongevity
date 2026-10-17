@@ -109,6 +109,7 @@ export async function askXevyo(
     } else acc += chunk;
     onToken?.(acc);
   }
+  if (sse && buf) { eat(buf); onToken?.(acc); }
   return { reply: acc };
 }
 
