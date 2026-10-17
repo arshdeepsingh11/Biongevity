@@ -4,7 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform, type MotionValue } fro
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 
-export interface DockItem { icon: string; label: string; active?: boolean; onClick?: () => void; badge?: number }
+export interface DockItem { icon: string; label: string; active?: boolean; onClick?: () => void; badge?: number; /** app-icon gradient, e.g. ["#5eead4", "#0ea5e9"] */ tint?: [string, string] }
 
 /** Apple Dock — icons magnify by cursor proximity (macOS behaviour). */
 export function AppleDock({ items, base = 50, magnify = 1.7, className }: { items: DockItem[]; base?: number; magnify?: number; className?: string }) {
