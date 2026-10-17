@@ -102,7 +102,7 @@ export function Header() {
               <Link href="/login/" aria-label="Sign in" className="flex h-9 items-center gap-1.5 rounded-full bg-white/80 px-2.5 text-[13px] font-semibold ring-1 ring-ink/[0.08] hover:text-accent sm:px-3.5"><Icon name="user" size={15} /><span className="hidden sm:inline">Sign in</span></Link>
               <Link href="/contact/" className="flex h-9 items-center rounded-full bg-accent bg-btn-grad px-3 text-[13px] font-semibold text-on-accent shadow-[0_6px_18px_rgb(var(--c-accent)/.26)] hover:brightness-110 sm:px-3.5">Book<span className="hidden sm:inline">&nbsp;consult</span></Link>
               </div>
-              <ExpandSearch open={search} setOpen={setSearch} />
+              <span aria-hidden className="w-9 shrink-0" />
             </div>
           </div>
         </motion.div>
