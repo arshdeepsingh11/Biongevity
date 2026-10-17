@@ -6,3 +6,4 @@
 import type { IconName } from "@/components/ui/icons";
 
 const STORE = "https://bioarodrugs.com/us";
+const CDN = "https://cdn.shopify.com/s/files/1/0677/0724/0551/files/";
