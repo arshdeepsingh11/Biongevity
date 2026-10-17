@@ -14,3 +14,4 @@ const BREATH = M("50216e5e7716436c8153ad05a732fecb", "Breathing in motion", "Hum
 const SKIN = M("2c902649de1843e9b2e004a99a9ab923", "Skin layers", "Human skin – integumentary system", "Ebers", "Ebers");
 const BRAIN = M("b2aac93ee4c440ed911f5765158edc9f", "Regions of the brain", "Regions of the brain", "University of Dundee, CAHID", "anatomy_dundee");
 const GUT = M("2d3771dd6b8940ffa2312bd97aca6fc3", "Digestive system", "Digestive system", "bioilustra", "bioilustra");
+const LIVER = M("362a402b367e4b16bd9682b3e6541df4", "Liver & gallbladder", "Anatomy – Human Liver and Gallbladder", "FrancescoMilanese", "FrancescoMilanese");
