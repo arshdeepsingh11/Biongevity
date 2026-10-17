@@ -17,10 +17,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/shop/" },
 };
 
-const DOORS = [
-  { href: "#studio", icon: "sparkle", t: "I have a goal", d: "Plan Studio assembles a plan around it, live." },
-  { href: "#depth", icon: "crown", t: "I want a complete plan", d: "Compare tests, packages and programs side by side." },
-  { href: "#browse", icon: "search", t: "I know what I need", d: `Search all ${CATALOG.length} items and add in one tap.` },
+const STEPS = [
+  { t: "Say your goal", d: "Type it or tap one — picks appear instantly." },
+  { t: "Add to your plan", d: "One bag for tests, formulas and programs." },
+  { t: "A clinician confirms", d: "Nothing ships before a care-team review." },
 ];
 
 const itemList = { "@context": "https://schema.org", "@type": "ItemList", name: "Biongevity store", itemListElement: CATALOG.slice(0, 30).map((i, k) => ({ "@type": "ListItem", position: k + 1, item: { "@type": "Product", name: i.title, description: i.summary, offers: { "@type": "Offer", price: i.price, priceCurrency: "CAD", url: `${SITE.url}/shop/` } } })) };
