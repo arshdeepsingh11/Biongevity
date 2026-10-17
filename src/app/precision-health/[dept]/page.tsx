@@ -67,31 +67,7 @@ export default async function DeptPage({ params }: P) {
         </div>
       </section>
       {!d.calm && <section className="relative z-[1]"><KeywordStream words={[...d.keywords, ...d.keywords]} /></section>}
-      {(d.id === "cardiology" || d.id === "heart-failure") && (
-        <Section ai="Heart and vessels in 3D" id="cardio3d" className="!pt-10 scroll-mt-20">
-          <div className="container-x">
-            <Head n="3D" label="Heart & vessels" title="Your heart and every major vessel, live." lede="A beating heart pumping blood through the arteries, veins and lungs. Spin it, zoom in, change the heart rate and tap any part to learn what it does and how it is checked." />
-            <div className="mt-8"><CardioExplorer /></div>
-          </div>
-        </Section>
-      )}
-      {DEPT_EXTRA[d.id] && (
-        <Section ai={`${d.short} in depth`} id="in-depth" className="!pt-10 scroll-mt-20">
-          <div className="container-x">
-            <Head n="✦" label={DEPT_EXTRA[d.id].organ ? "3D anatomy & what we offer" : "What we offer"} title={DEPT_EXTRA[d.id].organ ? `${ORGANS[DEPT_EXTRA[d.id].organ!].name}, in 3D.` : `${d.short}, in practice.`} lede={DEPT_EXTRA[d.id].organ ? "Turn the model, pull it apart, or x-ray it. Tap any part to learn what it does and how we check it — then see what this department offers and where it connects." : "What this department offers in practice, how it connects to the rest of your record, and where the information comes from."} />
-            <div className="mt-8"><DeptDeepDive dept={d.id} /></div>
-          </div>
-        </Section>
-      )}
-      {d.services.length >= 3 && (
-        <Section ai={`${d.short} services in 3D`} id="services-3d" className="!pt-10 scroll-mt-20">
-          <div className="container-x">
-            <Head n="3D" label="Services in 3D" title={`Every ${d.short.toLowerCase()} service, on one ring.`} lede="Drag the ring or let it turn. The service in front opens on the right — what happens, how long it takes and how to prepare." />
-            <div className="mt-8"><ServicesRing dept={d.id} /></div>
-          </div>
-        </Section>
-      )}
-      <Section ai={`${d.short} details`} className="!pt-10"><div className="container-x"><DeptTabs id={d.id} /></div></Section>
+      <Section ai={`${d.short} details`} id="details" className="!pt-10 scroll-mt-24"><div className="container-x"><DeptTabs id={d.id} /></div></Section>
       {deptHasTests(d.id) && <Section ai={`${d.short} tests`} className="!pt-0" chip={false}><div className="container-x"><DeptTests dept={d.id} name={d.name} /></div></Section>}
       <section className="relative z-[1] pb-20">
         <div className="container-x flex justify-between gap-3">
