@@ -17,3 +17,12 @@ function Photo({ src, icon, alt, className }: { src?: string; icon: string; alt:
   if (src && !bad) return <img src={src} alt={alt} onError={() => setBad(true)} draggable={false} className={cn("h-full w-full object-cover", className)} loading="lazy" />;
   return <div className={cn("grid h-full w-full place-items-center", className)} style={{ background: "radial-gradient(120% 90% at 30% 20%, rgb(var(--c-surface)), rgb(var(--c-ai-soft)))" }}><Icon name={icon} size={64} className="text-ai/50" /></div>;
 }
+
+function ItemIcon({ it, size = 44 }: { it: BookItem; size?: number }) {
+  const [bad, setBad] = useState(false);
+  return (
+    <span className="icon-tile shrink-0 overflow-hidden bg-white" style={{ width: size, height: size }}>
+      {it.iconUrl && !bad ? <img src={it.iconUrl} alt="" onError={() => setBad(true)} className="h-[78%] w-[78%] object-contain" /> : <Icon name={it.icon} size={size * 0.46} />}
+    </span>
+  );
+}
