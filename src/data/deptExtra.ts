@@ -123,6 +123,12 @@ export const DEPT_EXTRA: Record<string, DeptExtra> = {
     sources: [{ name: "NEA Precision Skin — Treatments", url: "https://neaprecisionskin.com/treatments/" }, { name: "NEA — Microbiome testing", url: "https://neaprecisionskin.com/our-treatments-microbiome-testing/" }, LABS],
   },
   "gut-health": {
+    program: { name: "BioGut pathway", steps: [
+      { t: "Test at home", d: "BioGut stool kit — collected at home, posted to the lab." },
+      { t: "Results", d: "Diversity, balance and metabolic efficiency, in your record." },
+      { t: "Dietitian consult", d: "Foods to add and reduce, built on your result." },
+      { t: "Re-test", d: "Usually around 6 months, to see the change." },
+    ] },
     organ: "gut",
     offer: [
       { icon: "gut", t: "At-home gut microbiome test", d: "BioGut ($279 CAD, BioAro Labs) — diversity, balance and metabolic efficiency." },
