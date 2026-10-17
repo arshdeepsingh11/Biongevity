@@ -17,3 +17,4 @@ const GUT = M("2d3771dd6b8940ffa2312bd97aca6fc3", "Digestive system", "Digestive
 const LIVER = M("362a402b367e4b16bd9682b3e6541df4", "Liver & gallbladder", "Anatomy – Human Liver and Gallbladder", "FrancescoMilanese", "FrancescoMilanese");
 const THYROID = M("37ca10b0c9df4484b017826d4b48362b", "Thyroid gland", "Thyroid Gland", "Tecdes SA", "tecdessa");
 const KIDNEYS = M("acab057d3f5b4d86be475a2be0c8d0c7", "Kidneys", "Human kidneys for Medical Education", "parvin8borhan", "parvin8borhan");
+const TOOTH = M("9cc281349c314cc4859e26af238f9cd5", "Tooth cross-section", "Tooth cross-section", "Ebers", "Ebers");
