@@ -20,3 +20,9 @@ const GOALS = [
   { label: "Brain", icon: "brain", q: "brain memory cognitive focus" },
   { label: "My DNA", icon: "dna", q: "genome genetic sequencing pharmacogenomics" },
 ];
+
+/** Tells the catalogue further down to show a kind (or a search) and scrolls to it. */
+export const browse = (kind: Kind | "all", q = "") => {
+  window.dispatchEvent(new CustomEvent("shop:browse", { detail: { kind, q } }));
+  document.getElementById("browse")?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
