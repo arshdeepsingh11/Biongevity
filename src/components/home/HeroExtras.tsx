@@ -154,7 +154,7 @@ export function HeroHeadline() {
         </AnimatePresence>
       </span>
       <span aria-hidden className="mt-1 block">
-        <VideoText youtube={LIFE_FILM_YOUTUBE} className="text-[1.22em] font-extrabold leading-[1.1] tracking-[-0.045em]">guided by SI.</VideoText>
+        <VideoText youtube={LIFE_FILM_YOUTUBE} start={LIFE_FILM_START} text="guided by SI." className="text-[min(1.22em,13.2vw)] font-extrabold leading-[1.12] tracking-[-0.045em]" />
       </span>
     </h1>
   );
