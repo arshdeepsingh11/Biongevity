@@ -51,3 +51,5 @@ export const DRUG_SHOP: ShopFormula[] = [
   { handle: "vitalgreens", title: "VitalGreens", tagline: "Daily Wellness / Greens", price: 29.99, category: "daily-foundations", dose: "1 Scoop (11.4g)", summary: "A nutrient-dense superfood blend combining organic greens, antioxidant-rich fruits, and probiotics to support daily nutrition, digestive health, and immune function.", image: CDN + "Vital_Green.png?v=1786881100" },
   { handle: "womens-vitalprime", title: "Women's VitalPrime", tagline: "Daily Wellness / Women", price: 19.99, category: "hormonal-health", dose: "2 Capsules", summary: "A comprehensive women's multivitamin providing vitamins, minerals, antioxidants, and botanical blends to support energy, immunity, bone health, and overall wellness.", image: CDN + "hf_20260816_095026_0a5ba50b-facd-43fe-af5c-462389321e57.png?v=1787053295" },
 ];
+
+export const drugShopUrl = (handle: string) => `${STORE}/products/${handle}`;
