@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { LAB_COLLECTIONS } from "@/data/labs";
 import type { CatalogProduct } from "@/data/types";
