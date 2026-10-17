@@ -11,12 +11,6 @@ import { PageSummary } from "@/components/ai/PageSummary";
 import { DeptTests } from "@/components/labs/DeptTests";
 import { deptHasTests } from "@/lib/deptGoals";
 import { DeptBody } from "@/components/dept/DeptBody";
-import { CardioExplorer } from "@/components/body/CardioExplorer";
-import { ServicesRing } from "@/components/fx3d/Showcases";
-import { DeptDeepDive } from "@/components/dept/DeptDeepDive";
-import { DEPT_EXTRA } from "@/data/deptExtra";
-import { ORGANS } from "@/data/organs";
-import { Head } from "@/components/home/HomeSections";
 import { DEPARTMENTS } from "@/data/departments";
 import { JsonLd, breadcrumb, faqPage, medicalPage } from "@/lib/seo";
 
