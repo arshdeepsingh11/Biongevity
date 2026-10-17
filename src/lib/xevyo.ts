@@ -51,6 +51,12 @@ export async function askXevyo(
     ...input.history.map((h) => ({ role: h.role, content: h.content })),
     { role: "user", content: input.message },
   ];
+  // Xevyo's own API is OpenAI-style (POST …/xevyo/v1/chat/completions, streamed). Send exactly that shape there;
+  // other endpoints (a proxy or a custom server) also get the Biongevity fields.
+  const openai = /\/chat\/completions\/?$/.test(env.xevyoUrl);
+  const body = openai
+    ? { model: env.xevyoModel || "xevyo", messages, stream: true, assistant_name: "Biongevity SI", company_name: "Biongevity" }
+    : { message: input.message, history: input.history, context: { ...input.context, language: input.language ?? "en" }, sessionId: input.sessionId, messages, stream: true, ...(env.xevyoModel ? { model: env.xevyoModel } : {}) };
   let res: Response;
   try {
     res = await fetch(env.xevyoUrl, {
