@@ -38,7 +38,7 @@ export function TestFace({ t, compact = false, className }: { t: CatalogProduct;
   return (
     <div className={cn("relative flex h-full flex-col overflow-hidden rounded-[22px] text-left shadow-card ring-1 ring-ink/[0.06]", className)} style={{ background: "rgb(var(--c-surface))" }}>
       <div className="relative aspect-[16/10] w-full">
-        <TestArt t={t} />
+        {t.image && !bad ? <img src={t.image} alt="" draggable={false} onError={() => setBad(true)} className="absolute inset-0 h-full w-full object-cover" loading="lazy" /> : <TestArt t={t} />}
         <span className="absolute left-3 top-3"><span className="icon-tile h-10 w-10"><Icon name={t.icon} size={19} /></span></span>
         <span className="absolute right-3 top-3 rounded-full bg-white/85 px-2 py-0.5 text-[11px] font-semibold text-ink shadow-card backdrop-blur">{formatMoney(t.price)}</span>
       </div>
