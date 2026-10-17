@@ -29,26 +29,35 @@ export default function ShopPage() {
   return (
     <>
       <JsonLd data={[breadcrumb([["Shop", "/shop/"]]), itemList]} />
-      <section data-ai="Shop" className="relative z-[1] overflow-hidden pb-10 pt-[calc(100px+var(--safe-top))] sm:pt-[130px]">
+      <section data-ai="Shop" className="relative z-[1] overflow-hidden pb-8 pt-[calc(100px+var(--safe-top))] sm:pt-[130px]">
         <div aria-hidden className="grid-bg absolute inset-0 [mask-image:radial-gradient(70%_60%_at_50%_20%,#000,transparent)]" />
+        <div aria-hidden className="absolute left-1/2 top-20 h-[420px] w-[820px] max-w-[120vw] -translate-x-1/2 rounded-full bg-ai/10 blur-[110px]" />
         <div className="container-x relative">
-          <div className="hud-label">Shop · CAD</div>
-          <h1 className="h-display mt-4 max-w-[16ch]">Build your plan, <AuroraText>not a cart.</AuroraText></h1>
-          <p className="lede mt-5 max-w-[60ch]">Programs, health packages, BioAro tests and formulas in one place — assembled around your goal, explained by AI and confirmed by our care team.</p>
-          <div className="mt-8 grid gap-3 md:grid-cols-3">
-            {DOORS.map((d) => (
-              <a key={d.href} href={d.href} className="hud group flex items-center gap-4 rounded-[24px] bg-white/85 p-5 shadow-card ring-1 ring-ink/[0.06] backdrop-blur transition-transform hover:-translate-y-0.5">
-                <span className="grid h-12 w-12 shrink-0 place-items-center icon-tile"><Icon name={d.icon} size={24} weight="duotone" /></span>
-                <span className="flex-1"><span className="block text-[17px] font-semibold">{d.t}</span><span className="block text-[13px] text-muted">{d.d}</span></span>
-                <Icon name="arrow-right" size={18} className="text-accent transition-transform group-hover:translate-x-1" />
-              </a>
-            ))}
+          <div className="mx-auto max-w-[760px] text-center">
+            <div className="hud-label">Shop · prices in CAD</div>
+            <h1 className="h-display mt-4">Tell us the goal. <AuroraText>We’ll show what fits.</AuroraText></h1>
+            <p className="lede mx-auto mt-4 max-w-[56ch]">Tests, formulas, health packages and longevity programs — matched to what you want to improve, explained by Biongevity SI and confirmed by a clinician.</p>
           </div>
+          <div className="mx-auto mt-8 max-w-[1100px]"><ShopConcierge /></div>
+          <ol className="mx-auto mt-6 grid max-w-[1100px] gap-2 text-[13px] sm:grid-cols-3">
+            {STEPS.map((x, k) => (
+              <li key={x.t} className="flex items-center gap-3 rounded-2xl bg-white/55 px-4 py-3 ring-1 ring-ink/[0.05] backdrop-blur">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-ai text-[12px] font-bold text-on-ai">{k + 1}</span>
+                <span><b className="block font-semibold">{x.t}</b><span className="text-muted">{x.d}</span></span>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
+      <Section ai="Shop by kind" id="kinds" className="!pt-4">
+        <div className="container-x">
+          <Head n="01" label="Shop by kind" title={<>Four ways in, <AuroraText>one plan.</AuroraText></>} lede="Start small with one test, or go all in with a program. Tap a door to see just those." />
+          <div className="mt-8"><ShopKinds /></div>
+        </div>
+      </Section>
       <Section ai="Plan Studio" id="studio" className="!pt-6 scroll-mt-20">
         <div className="container-x">
-          <Head n="01" label="Plan Studio" title={<>Your goal, <AuroraText>assembled live.</AuroraText></>} lede="Tap goals or describe them, choose a depth and a budget. The board builds a plan from real tests, formulas, packages and programs — swap anything, then add it all in one tap." />
+          <Head n="02" label="Plan Studio" title={<>Your goal, <AuroraText>assembled live.</AuroraText></>} lede="Tap goals or describe them, choose a depth and a budget. The board builds a plan from real tests, formulas, packages and programs — swap anything, then add it all in one tap." />
           <div className="mt-8"><PlanStudio /></div>
         </div>
       </Section>
