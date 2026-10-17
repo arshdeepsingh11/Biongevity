@@ -167,10 +167,10 @@ export function CatalogBook({ brand, categories, items, buyLabel = "Buy", compac
         })}
       </div>
 
-      <div ref={box} tabIndex={0} aria-label={`${brand} book: ${c.title}. Use the arrow keys to turn pages.`} className="mx-auto w-full max-w-[1040px] outline-none"
+      <div ref={box} tabIndex={0} aria-label={`${brand} book: ${c.title}. Use the arrow keys to turn pages.`} className={cn("mx-auto w-full outline-none", compact ? "max-w-[880px]" : "max-w-[1040px]")}
         onPointerDown={(e) => (x0.current = e.clientX)} onPointerUp={(e) => { if (x0.current !== null) { const d = e.clientX - x0.current; if (d < -40) flip(1); if (d > 40) flip(-1); } x0.current = null; }}>
         {/* desktop: a two-page spread with a real turning sheet */}
-        <div className="relative hidden aspect-[16/9.4] w-full sm:block" style={{ perspective: "2600px" }}>
+        <div className={cn("relative hidden w-full sm:block", compact ? "aspect-[16/10.2]" : "aspect-[16/9.6]")} style={{ perspective: "2600px" }}>
           <div className="absolute inset-0 rounded-[28px] shadow-lift ring-1 ring-ink/[0.06]" style={{ background: "rgb(var(--c-surface))" }} />
           {/* static halves */}
           <div className="absolute inset-y-0 left-0 w-1/2 overflow-hidden rounded-l-[28px]">{turn?.dir === -1 ? left(nextS) : left(idx)}</div>
