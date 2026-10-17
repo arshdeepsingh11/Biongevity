@@ -80,6 +80,13 @@ export const DEPT_EXTRA: Record<string, DeptExtra> = {
     sources: [{ name: "NEYU Health — Care", url: "https://neyuhealth.com/care" }, LABS],
   },
   "respiratory-medicine": {
+    program: { name: "Sleep apnea pathway", for: "Loud snoring, pauses in breathing, daytime sleepiness or high blood pressure", steps: [
+      { t: "Sleep consultation", d: "History, questionnaires and an airway exam." },
+      { t: "Sleep study", d: "A home sleep test or an in-lab study, depending on what you need." },
+      { t: "Results", d: "How many breathing pauses an hour, oxygen dips and what that means." },
+      { t: "CPAP set-up", d: "Choosing the machine and mask, fitting and a first-night plan." },
+      { t: "Follow-up", d: "Therapy data reviewed until it is comfortable and working." },
+    ], note: "Home oxygen and lung function testing are part of the same network." },
     organ: "lungs",
     offer: [
       { icon: "bed", t: "Sleep apnea diagnosis", d: "Sleep consultation with home or in-lab sleep studies to confirm obstructive sleep apnea and its severity." },
