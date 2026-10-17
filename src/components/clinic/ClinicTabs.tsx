@@ -12,6 +12,10 @@ import { MagicCard } from "@/components/fx/MagicCard";
 import { ProgressRing } from "@/components/fx/ProgressRing";
 import { BorderBeam } from "@/components/fx/BorderBeam";
 import { BPTracker } from "./BPTracker";
+import { Visit3D } from "@/components/clinic3d/Visit3D";
+import { CALGARY_VISIT, DUBAI_VISIT, type Visit } from "@/data/visits";
+import { useAI } from "@/components/ai/AIProvider";
+import { XevyoOrb } from "@/components/ai/XevyoOrb";
 
 type T = { id: string; label: string; icon: string; body: ReactNode };
 
