@@ -101,6 +101,13 @@ export const DEPT_EXTRA: Record<string, DeptExtra> = {
     sources: [{ name: "ARC Network", url: "https://www.arcnetwork.ca/" }, { name: "Benjafield et al., Lancet Respir Med 2019", url: "https://doi.org/10.1016/S2213-2600(19)30198-5" }],
   },
   "skin-health": {
+    program: { name: "Precision skin plan", steps: [
+      { t: "Free 15-minute consultation", d: "In person, by phone or online booking — what you want to change." },
+      { t: "Skin & microbiome assessment", d: "Clinical assessment, with BioSkin microbiome testing ($279 CAD) when useful." },
+      { t: "Your plan", d: "Laser, peels, injectables or microneedling — and medical-grade skincare for home." },
+      { t: "Inside out", d: "Registered Dietitian support when gut and diet are part of the story." },
+      { t: "Review", d: "Photos and follow-up to see what is working." },
+    ] },
     organ: "skin",
     offer: [
       { icon: "microscope", t: "Microbiome-guided skin plans", d: "BioSkin microbiome testing ($279 CAD, BioAro Labs) with DNA and lifestyle data used to tailor treatment." },
