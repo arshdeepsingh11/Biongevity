@@ -54,29 +54,34 @@ export function AnatomyStudio({ dept, name }: { dept: string; name: string }) {
         <button onClick={() => ask(`Using the 3D anatomy of ${v.label.toLowerCase()} as a guide, explain how it works, what changes with age, and how ${name} at Biongevity checks it.`, { label: `✦ ${v.label}` })} className="btn-ai ml-auto h-9 px-3.5 text-[12.5px]"><XevyoOrb size={16} />Ask SI to walk me through it</button>
       </div>
 
+      {/* 3D models: the preview picture shows at once, the live viewer fades in over it when ready.
+          Models already opened stay mounted, so switching back is instant. */}
+      {models.filter((x) => x.id === m?.id || opened[x.id]).map((x) => (
+        <div key={x.id} hidden={v.kind !== "model" || x.id !== m?.id} className="relative overflow-hidden rounded-[28px] ring-1 ring-ink/[0.07]" style={{ background: "radial-gradient(90% 80% at 50% 40%, #ffffff 0%, rgb(var(--c-pearl)) 60%, rgb(var(--c-ai-soft)) 100%)" }}>
+          <div className="relative aspect-[4/3] w-full sm:aspect-[16/9]">
+            <img src={x.thumb} alt="" aria-hidden fetchPriority="high" className={cn("absolute inset-0 h-full w-full object-contain transition-opacity duration-700", loaded[x.id] && "opacity-0")} />
+            {!loaded[x.id] && (
+              <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-white/85 px-3 py-1.5 text-[12px] font-medium text-muted shadow-card ring-1 ring-ink/[0.06] backdrop-blur-md">
+                <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-ai/20 border-t-ai" />Opening the 3D model…
+              </div>
+            )}
+            <iframe title={`3D model: ${x.title}`} src={sketchfabEmbed(x.id)} onLoad={() => setLoaded((l) => ({ ...l, [x.id]: true }))}
+              allow="autoplay; fullscreen; xr-spatial-tracking" allowFullScreen className={cn("absolute inset-0 h-full w-full border-0 transition-opacity duration-700", loaded[x.id] ? "opacity-100" : "opacity-0")} />
+          </div>
+          <div className="pointer-events-none absolute left-3 top-3 rounded-full bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ai ring-1 ring-ink/[0.06] backdrop-blur-md">3D anatomy · {x.label}</div>
+          <div className="flex flex-wrap items-center justify-between gap-2 border-t border-ink/[0.06] bg-white/70 px-4 py-2 text-[11.5px] text-muted backdrop-blur-md">
+            <span>Drag to rotate · scroll or pinch to zoom · tap a number for its label</span>
+            <span>Model: <a href={`https://sketchfab.com/models/${x.id}`} target="_blank" rel="noopener noreferrer" className="underline hover:text-ai">{x.title}</a> by <a href={x.authorUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-ai">{x.author}</a> · Sketchfab</span>
+          </div>
+        </div>
+      ))}
       <AnimatePresence mode="wait">
-        <motion.div key={v.key} initial={{ opacity: 0, y: 10, scale: 0.99 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.3 }}>
-          {v.kind === "model" && m && (
-            <div className="relative overflow-hidden rounded-[28px] ring-1 ring-ink/[0.07]" style={{ background: "radial-gradient(90% 80% at 50% 40%, #ffffff 0%, rgb(var(--c-pearl)) 60%, rgb(var(--c-ai-soft)) 100%)" }}>
-              <div className="relative aspect-[4/3] w-full sm:aspect-[16/9]">
-                {!loaded[m.id] && (
-                  <div className="absolute inset-0 grid place-items-center text-muted">
-                    <div className="flex flex-col items-center gap-3"><span className="h-10 w-10 animate-spin rounded-full border-2 border-ai/15 border-t-ai" /><span className="text-[12.5px]">Loading 3D model…</span></div>
-                  </div>
-                )}
-                <iframe title={`3D model: ${m.title}`} src={sketchfabEmbed(m.id)} onLoad={() => setLoaded((l) => ({ ...l, [m.id]: true }))}
-                  allow="autoplay; fullscreen; xr-spatial-tracking" allowFullScreen loading="lazy" className="absolute inset-0 h-full w-full border-0" />
-              </div>
-              <div className="pointer-events-none absolute left-3 top-3 rounded-full bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ai ring-1 ring-ink/[0.06] backdrop-blur-md">3D anatomy · {m.label}</div>
-              <div className="flex flex-wrap items-center justify-between gap-2 border-t border-ink/[0.06] bg-white/70 px-4 py-2 text-[11.5px] text-muted backdrop-blur-md">
-                <span>Drag to rotate · scroll or pinch to zoom · tap a number for its label</span>
-                <span>Model: <a href={`https://sketchfab.com/models/${m.id}`} target="_blank" rel="noopener noreferrer" className="underline hover:text-ai">{m.title}</a> by <a href={m.authorUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-ai">{m.author}</a> · Sketchfab</span>
-              </div>
-            </div>
-          )}
-          {v.kind === "live" && <CardioExplorer />}
-          {v.kind === "parts" && organ && <Organ3D organ={organ} />}
-        </motion.div>
+        {v.kind !== "model" && (
+          <motion.div key={v.key} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }}>
+            {v.kind === "live" && <CardioExplorer />}
+            {v.kind === "parts" && organ && <Organ3D organ={organ} />}
+          </motion.div>
+        )}
       </AnimatePresence>
     </div>
   );
