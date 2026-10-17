@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { CARE_PATH, DEPARTMENTS, deptById } from "@/data/departments";
 import { DEPT_EVIDENCE } from "@/data/stats";
 import { Icon } from "@/components/ui/Icon";
+import { TabBar } from "@/components/ui/Tabs";
 import { Stat } from "@/components/charts/Charts";
 import { EvidenceChart } from "@/components/charts/EvidenceChart";
 import { MagicCard } from "@/components/fx/MagicCard";
