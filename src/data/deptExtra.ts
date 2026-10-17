@@ -16,6 +16,11 @@ export interface DeptExtra {
   numbers?: { v: string; l: string }[];
   partner?: { name: string; url: string; line: string };
   sources: { name: string; url: string }[];
+  /** Packages a department runs (clinic services are quoted by the team; lab prices are BioAro list prices, CAD). */
+  packages?: { name: string; for: string; clinic: string[]; labs: string[]; labPrice?: string }[];
+  /** A step-by-step program the department runs. */
+  program?: { name: string; for?: string; steps: { t: string; d: string }[]; note?: string };
+  faq?: { q: string; a: string }[];
 }
 
 const LABS = { name: "BioAro Labs", url: "https://bioarolabs.com/shop" };
