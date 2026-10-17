@@ -44,7 +44,6 @@ export const NAV: NavItem[] = [
   {
     id: "discover", label: "Discover", icon: "orbit",
     menu: [
-      { href: "/app/#twin", label: "Digital Twin", icon: "fingerprint", desc: "A 3D guided tour of your twin — then open it in the app." },
       { href: "/plan/", label: "Care plan builder", icon: "calendar", desc: "Pick a goal: a 12-month plan with tests, re-tests, formulas and a CAD total." },
       { href: "/evidence/", label: "Evidence engine", icon: "microscope", desc: "Every number with its studies, people, effect and GRADE certainty." },
       { href: "/scan/", label: "AI Healthspan Scan", icon: "radar", desc: "2 minutes: 9 health domains, your test plan and re-test timeline." },
