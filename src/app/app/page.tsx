@@ -13,8 +13,23 @@ export default function AppPage() {
   return (
     <>
       <PageHero eyebrow="Biongevity App" title={<>Your all-in-one health <AuroraText>companion.</AuroraText></>}
-        lede="AI-powered health monitoring, seamless appointment booking and your BioELR record — healthcare at your fingertips. Hover the dock to explore." />
+        lede="AI-powered health monitoring, seamless appointment booking and your BioELR record — healthcare at your fingertips. Tap an icon to explore, then look inside the app below." />
       <Section ai="App features" className="!pt-0"><div className="container-x"><AppShowcase /></div></Section>
+      <Section ai="Inside the app" id="inside">
+        <div className="container-x">
+          <Eyebrow>Inside the app · Digital Twin</Eyebrow>
+          <h2 className="h-section mt-3 max-w-[20ch]">What you’ll see when you open it.</h2>
+          <p data-reveal className="lede mt-4 max-w-[62ch]">This is the Digital Twin overview — your scores, live signals, a model of your body and your trends on one screen. Tap any part to learn what it is for. The numbers here are examples.</p>
+          <div className="mt-10"><AppTwin /></div>
+        </div>
+      </Section>
+      <Section ai="How the app works" className="!pt-0">
+        <div className="container-x">
+          <Eyebrow>How it works</Eyebrow>
+          <h2 className="h-section mt-3 max-w-[20ch]">Connect. Understand. Act.</h2>
+          <div className="mt-8"><AppHowItWorks /></div>
+        </div>
+      </Section>
       <Section ai="BioELR in your pocket" className="!pt-0">
         <div className="container-x grid items-center gap-8 lg:grid-cols-2">
           <div>
