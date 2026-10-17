@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ANATOMY, sketchfabEmbed } from "@/data/anatomy";
 import { DEPT_EXTRA } from "@/data/deptExtra";
