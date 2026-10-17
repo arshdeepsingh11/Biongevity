@@ -12,9 +12,7 @@ import { Tilt } from "./HoverGallery3D";
 import { Icon } from "@/components/ui/Icon";
 import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { useAI } from "@/components/ai/AIProvider";
-import { BuyButton } from "@/components/commerce/BuyButton";
 import { DEPARTMENTS, deptById } from "@/data/departments";
-import { DRUG_PRODUCTS } from "@/data/drugs";
 import { PACKAGES } from "@/data/health";
 import { formatMoney } from "@/lib/utils";
 
