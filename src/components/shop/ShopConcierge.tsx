@@ -35,3 +35,7 @@ const MEANS: [RegExp, string][] = [
   [/aging|ageing|older|longevity|wrinkle|age well|live longer/, "Ageing well"], [/dna|gene|genetic|family history|inherit/, "My DNA"],
 ];
 const FILLER = new Set(["feel", "feeling", "time", "always", "want", "more", "better", "really", "like", "make", "need", "help", "very", "much", "lot", "lately", "every", "days"]);
+const expand = (q: string) => {
+  const lower = q.toLowerCase(), extra = MEANS.filter(([r]) => r.test(lower)).map(([, g]) => GOALS.find((x) => x.label === g)!.q);
+  return [...lower.split(/\s+/).filter((w) => !FILLER.has(w)), ...extra].join(" ");
+};
