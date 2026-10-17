@@ -26,3 +26,11 @@ export const browse = (kind: Kind | "all", q = "") => {
   window.dispatchEvent(new CustomEvent("shop:browse", { detail: { kind, q } }));
   document.getElementById("browse")?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
+
+/** Everyday words → the goal they usually mean, so "I'm always tired" finds energy, not random text matches. */
+const MEANS: [RegExp, string][] = [
+  [/tired|fatigu|exhaust|energy|sluggish|drained/, "Energy"], [/sleep|insomnia|stress|anxi|burnout|calm/, "Sleep & stress"],
+  [/heart|cholesterol|blood pressure|cardio|chest/, "Heart"], [/memory|focus|brain|fog|forget|concentrat/, "Brain"],
+  [/gut|bloat|digest|stomach|ibs|constipat/, "Gut"], [/hormon|menopaus|testosterone|libido|thyroid|period/, "Hormones"],
+  [/aging|ageing|older|longevity|wrinkle|age well|live longer/, "Ageing well"], [/dna|gene|genetic|family history|inherit/, "My DNA"],
+];
