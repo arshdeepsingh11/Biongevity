@@ -52,30 +52,13 @@ export function ServicesRing({ dept }: { dept: string }) {
   );
 }
 
-/** BioAro Drugs formulas as glass coins. */
+/** Every BioAro Drugs formula as a book — real product photos, by category, linked to bioarodrugs.com. */
 export function FormulaCoins() {
-  const { ask } = useAI();
-  const [pick, setPick] = useState(DRUG_PRODUCTS[0]);
-  const coins: Coin[] = DRUG_PRODUCTS.map((p) => ({ id: p.handle, icon: p.icon, title: p.title, value: formatMoney(p.price), back: p.tagline ?? p.summary.slice(0, 70) }));
-  return (
-    <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
-      <div className="overflow-hidden"><GlassCoinCarousel coins={coins} onPick={(c) => setPick(DRUG_PRODUCTS.find((p) => p.handle === c.id) ?? DRUG_PRODUCTS[0])} /></div>
-      <AnimatePresence mode="wait">
-        <motion.div key={pick.handle} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-          <ElectricBorder radius={24} color="rgb(var(--c-ai))">
-            <div className="rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]">
-              <div className="flex items-center gap-3"><span className="icon-tile h-11 w-11"><Icon name={pick.icon} size={20} /></span><div><div className="text-[17px] font-semibold">{pick.title}</div><div className="text-[12px] text-muted">{pick.tagline}</div></div></div>
-              <p className="mt-3 text-[13px] leading-relaxed text-muted">{pick.summary}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <BuyButton href={pick.url} store="drugs" price={pick.price} size="sm" />
-                <button onClick={() => ask(`Explain ${pick.title} in plain words: what is in it, who it may suit, and what to check with my clinician first.`, { label: `✦ ${pick.title}` })} className="btn-ai h-8 px-3 text-[12px]"><XevyoOrb size={16} />Ask SI</button>
-              </div>
-            </div>
-          </ElectricBorder>
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
+  const items: BookItem[] = DRUG_SHOP.map((p) => ({
+    id: p.handle, category: p.category, title: p.title, kicker: p.tagline, image: p.image, icon: DRUG_SHOP_CATEGORIES.find((c) => c.id === p.category)?.icon ?? "tablets",
+    summary: p.summary, price: p.price, meta: p.dose, url: drugShopUrl(p.handle), store: "bioarodrugs.com",
+  }));
+  return <CatalogBook brand="BioAro Drugs" categories={DRUG_SHOP_CATEGORIES} items={items} />;
 }
 
 /** Membership packages as a 3D cascade. */
