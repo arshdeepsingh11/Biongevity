@@ -127,7 +127,7 @@ export function ShopCatalog() {
               <motion.div layout className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 <AnimatePresence>
                   {list.map((t) => {
-                    const x = intel.get(t.handle)!, m = goalMatch(x, goals), pick = goals.length > 0 && m >= 60;
+                    const x = intel.get(t.handle)!, m = goalMatch(x, goals), pick = goals.length > 0 && m >= 60, meta = SHOP_META[shopSlug(t.title) ?? ""];
                     const card = (
                       <article className="group flex h-full flex-col overflow-hidden rounded-[22px] bg-white shadow-card ring-1 ring-ink/[0.06]">
                         <div className="relative aspect-[16/10] w-full overflow-hidden">
