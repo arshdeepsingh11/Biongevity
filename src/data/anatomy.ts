@@ -38,3 +38,6 @@ export const ANATOMY: Record<string, AnatomyModel[]> = {
   "womens-health": [FEMALE],
   "mens-health": [PROSTATE],
 };
+
+export const sketchfabEmbed = (id: string) =>
+  `https://sketchfab.com/models/${id}/embed?autostart=1&preload=1&transparent=1&ui_theme=dark&ui_infos=0&ui_watermark_link=0&ui_help=0&ui_settings=0&ui_vr=0&ui_ar=0&ui_inspector=0&ui_annotations=1&dnt=1&autospin=0.12`;
