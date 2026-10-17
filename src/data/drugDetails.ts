@@ -37,3 +37,4 @@ const R: Record<string, [string, string, string, [string, string][]]> = {
 };
 
 export const DRUG_DETAILS: Record<string, DrugDetail> = Object.fromEntries(Object.entries(R).map(([k, [format, use, servings, actives]]) => [k, { format, use, servings, actives }]));
+export const drugDetail = (handle: string): DrugDetail | undefined => DRUG_DETAILS[handle];
