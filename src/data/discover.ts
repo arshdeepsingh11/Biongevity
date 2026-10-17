@@ -30,7 +30,7 @@ export const FAMILY: DiscoverItem[] = [
     stat: { v: "Online", l: "booking" }, icon: "heart", href: "https://advanced.bioemr.com/", external: true, ask: "How do I book advanced cardiology testing?" },
   { id: "app", name: "Biongevity App", kicker: "Members", line: "Your digital twin, live wearable data, health scores, trends, simulations and an AI coach in your pocket.",
     points: ["3D twin with a status for every body system", "Recovery, HRV and sleep from your watch or ring", "What-if simulations and a heat map"],
-    stat: { v: "3D", l: "digital twin" }, icon: "fingerprint", href: "/twin/", ask: "What can I do in the Biongevity app and the digital twin?" },
+    stat: { v: "3D", l: "digital twin" }, icon: "fingerprint", href: "/app/#twin", ask: "What can I do in the Biongevity app and the digital twin?" },
 ];
 
 export interface NewItem { t: string; d: string; icon: IconName; href: string; tag: "New" | "Updated" }
