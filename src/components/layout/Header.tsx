@@ -150,7 +150,7 @@ export function Header() {
               </motion.div>
             )}
           </AnimatePresence>
-          <div className="pointer-events-auto ml-auto"><ExpandSearch open={search} setOpen={setSearch} floating={hidden} /></div>
+          <div data-float-search className="pointer-events-auto ml-auto"><ExpandSearch open={search} setOpen={setSearch} floating={hidden} /></div>
         </div>
       </div>
     </>
