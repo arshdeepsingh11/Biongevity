@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { LAB_COLLECTIONS, LAB_TESTS, SHOP_META, shopIcon, shopSlug } from "@/data/labs";
 import { TEST_INTEL, RETEST_LABEL } from "@/lib/testIntel";
 import { CatalogBook, type BookItem } from "./CatalogBook";
+import { labDetail } from "@/data/labDetails";
 
 /**
  * BioAro Labs as a book — category tabs, then one spread per test: the real product photo, its icon, what it
