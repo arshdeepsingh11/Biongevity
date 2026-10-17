@@ -5,6 +5,9 @@ import { Icon } from "@/components/ui/Icon";
 import { fireConfetti } from "@/components/fx/Confetti";
 import { APP_FEATURES } from "@/data/health";
 
+/** App-icon colours, one per feature (like a phone home screen). */
+const TINTS: [string, string][] = [["#fb7185", "#e11d48"], ["#60a5fa", "#2563eb"], ["#5eead4", "#0d9488"], ["#bef264", "#65a30d"], ["#7dd3fc", "#0284c7"], ["#fdba74", "#ea580c"]];
+
 export function AppShowcase() {
   const [i, setI] = useState(0);
   const f = APP_FEATURES[i];
