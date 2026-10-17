@@ -7,7 +7,7 @@
  * server side, forwards the request to Xevyo and streams the answer back with the right CORS headers.
  *
  * Setup (.env.local — git-ignored, never committed):
- *   XEVYO_UPSTREAM_URL=https://<your-xevyo-endpoint>      # the real Xevyo URL
+ *   XEVYO_UPSTREAM_URL=https://chat.xevyo.com/xevyo/v1/chat/completions
  *   XEVYO_API_KEY=<secret key>                             # optional; sent as "Authorization: Bearer …"
  *   NEXT_PUBLIC_XEVYO_URL=http://localhost:8787            # the site talks to this proxy
  * Run in a second terminal:  npm run si:proxy
@@ -30,6 +30,15 @@ const ALLOWED = (process.env.XEVYO_ALLOWED_ORIGINS || "http://localhost:3000,htt
 
 if (!UPSTREAM) { console.error("✖ Set XEVYO_UPSTREAM_URL in .env.local (the real Xevyo endpoint)."); process.exit(1); }
 
+/** Xevyo's API is OpenAI-style: forward only the fields it expects. */
+const toXevyo = (raw, upstream) => {
+  if (!/\/chat\/completions\/?$/.test(upstream)) return raw;
+  try {
+    const j = JSON.parse(raw);
+    return JSON.stringify({ model: j.model || "xevyo", messages: j.messages, stream: j.stream !== false, assistant_name: j.assistant_name || "Biongevity SI", company_name: j.company_name || "Biongevity" });
+  } catch { return raw; }
+};
+
 const cors = (origin) => ({
   "Access-Control-Allow-Origin": ALLOWED.includes(origin) ? origin : ALLOWED[0],
   "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -50,7 +59,7 @@ http.createServer(async (req, res) => {
     const up = await fetch(UPSTREAM, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: req.headers.accept || "application/json, text/event-stream", ...(KEY ? { Authorization: `Bearer ${KEY}` } : {}) },
-      body,
+      body: toXevyo(body.toString("utf8"), UPSTREAM),
     });
     res.writeHead(up.status, { ...cors(origin), "Content-Type": up.headers.get("content-type") || "application/json", "Cache-Control": "no-store" });
     if (!up.body) return res.end();
