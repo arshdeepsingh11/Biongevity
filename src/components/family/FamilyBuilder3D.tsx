@@ -182,3 +182,103 @@ export function FamilyBuilder3D() {
     </div>
   );
 }
+
+/* ───────────────────────── Tree stage ───────────────────────── */
+type Node = { id: string; rel: string; name: string; age: number; sex: "f" | "m"; alive: boolean; conds: string[]; gen: number };
+
+/** The live tree: glass orbs on generation rails, light running down the bloodlines, a gentle 3D tilt that follows the pointer. */
+function TreeStage({ tiers, pos, links, open, setOpen }: { tiers: { g: number; list: Node[] }[]; pos: Record<string, { x: number; y: number }>; links: [string, string, boolean][]; open: string | null; setOpen: (id: string | null) => void }) {
+  const stage = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [hot, setHot] = useState<string | null>(null);
+  const focus = hot ?? open;
+  const lit = useMemo(() => {
+    if (!focus) return new Set<string>();
+    const up = new Set<string>([focus]), q = [focus];
+    while (q.length) { const n = q.shift()!; for (const [a, b] of links) { if (b === n && !up.has(a)) { up.add(a); q.push(a); } if (a === n && !up.has(b) && n === focus) up.add(b); } }
+    return up;
+  }, [focus, links]);
+  const all = tiers.flatMap((t) => t.list);
+  const sel = all.find((m) => m.id === focus && m.id !== "me");
+
+  return (
+    <div ref={stage} className="relative h-[680px] select-none overflow-hidden rounded-[32px] ring-1 ring-white/80"
+      style={{ perspective: "1600px", background: "radial-gradient(80% 70% at 50% 35%, rgb(255 255 255 / .95), rgb(var(--c-pearl) / .9) 55%, rgb(var(--c-ai-soft) / .7))", boxShadow: "inset 0 1px 0 rgb(255 255 255), 0 30px 60px -36px rgb(var(--c-ai-2) / .45)" }}
+      onPointerMove={(e) => { if (e.pointerType !== "mouse") return; const r = stage.current!.getBoundingClientRect(); setTilt({ x: ((e.clientY - r.top) / r.height - 0.5) * -8, y: ((e.clientX - r.left) / r.width - 0.5) * 10 }); }}
+      onPointerLeave={() => setTilt({ x: 0, y: 0 })}>
+      {/* soft light and drifting motes */}
+      <div aria-hidden className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-ai/10 blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-ai-hi/20 blur-3xl" />
+      <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ai ring-1 ring-ink/[0.05] backdrop-blur"><span className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-ai" />Live family tree</div>
+      <div className="absolute right-4 top-4 z-10 rounded-full bg-white/70 px-3 py-1 text-[11px] text-muted ring-1 ring-ink/[0.05] backdrop-blur">{all.length} people · {tiers.length} generations</div>
+
+      <div className="absolute inset-x-[3%] bottom-[4%] top-[9%] transition-transform duration-500 ease-out" style={{ transformStyle: "preserve-3d", transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}>
+        {/* generation rails */}
+        {tiers.map((t, ti) => {
+          const y = tiers.length === 1 ? 45 : 13 + (ti / (tiers.length - 1)) * 74;
+          return (
+            <div key={t.g} className="absolute inset-x-0 transition-[top] duration-700" style={{ top: `${y}%`, transform: `translateZ(${-t.g * 30}px)` }}>
+              <div className="h-px w-full bg-gradient-to-r from-transparent via-ai/25 to-transparent" />
+              <span className="absolute -top-5 left-1 text-[9.5px] font-semibold uppercase tracking-[0.2em] text-ai/60">{GEN_LABEL[t.g]}</span>
+            </div>
+          );
+        })}
+        {/* bloodlines */}
+        <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="fam-line" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="rgb(var(--c-ai-hi))" /><stop offset="1" stopColor="rgb(var(--c-ai))" /></linearGradient>
+          </defs>
+          {links.map(([a, b, close], i) => {
+            const A = pos[a], B = pos[b]; if (!A || !B) return null;
+            const ay = A.y + 9, by = B.y - 5, my = (ay + by) / 2;
+            const d = `M${A.x},${ay} C${A.x},${my} ${B.x},${my} ${B.x},${by}`;
+            const on = lit.has(a) && lit.has(b);
+            return (
+              <g key={`${a}-${b}-${i}`} style={{ opacity: focus && !on ? 0.25 : 1, transition: "opacity .4s" }}>
+                <path d={d} fill="none" stroke="url(#fam-line)" vectorEffect="non-scaling-stroke" style={{ strokeWidth: on ? 2.6 : close ? 1.8 : 1.2, strokeOpacity: close ? 0.95 : 0.6, transition: "stroke-width .3s" }} />
+                <path d={d} fill="none" stroke="white" vectorEffect="non-scaling-stroke" strokeLinecap="round" strokeDasharray="0.5 22" className="fam-flow" style={{ strokeWidth: 3.5, animationDelay: `${i * -0.4}s` }} />
+              </g>
+            );
+          })}
+        </svg>
+        {/* people */}
+        {all.map((m) => {
+          const p = pos[m.id]; if (!p) return null;
+          const isMe = m.id === "me", on = !focus || lit.has(m.id), size = isMe ? 72 : 60;
+          const ring = Math.min(1, m.age / 100);
+          return (
+            <div key={m.id} className="absolute transition-[left,top,opacity] duration-700 ease-[cubic-bezier(.2,.8,.2,1)]"
+              style={{ left: `${p.x}%`, top: `${p.y}%`, transform: `translate(-50%, -50%) translateZ(${isMe ? 60 : 30 - m.gen * 10}px)`, opacity: on ? 1 : 0.35 }}>
+              <motion.button initial={{ opacity: 0, scale: 0.2, filter: "blur(8px)" }} animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }} transition={{ type: "spring", stiffness: 220, damping: 18 }}
+                onMouseEnter={() => setHot(m.id)} onMouseLeave={() => setHot(null)} onClick={() => setOpen(isMe ? null : m.id === open ? null : m.id)}
+                className="group flex flex-col items-center outline-none" aria-label={`${m.name || "Relative"}, ${m.age} years`}>
+                <span className="relative grid place-items-center rounded-full" style={{ width: size, height: size, background: `conic-gradient(rgb(var(--c-ai)) ${ring * 360}deg, rgb(var(--c-ai) / .12) 0)`, boxShadow: isMe ? "0 0 0 6px rgb(var(--c-ai) / .12), 0 18px 40px -12px rgb(var(--c-ai) / .7)" : "0 14px 30px -14px rgb(var(--c-ai-2) / .6)" }}>
+                  <span className={cn("grid place-items-center rounded-full backdrop-blur-xl transition-transform duration-300 group-hover:scale-105", isMe ? "bg-ai text-on-ai" : "bg-white/95 text-ai", !m.alive && "grayscale")} style={{ width: size - 8, height: size - 8, boxShadow: "inset 0 1px 0 rgb(255 255 255 / .9), inset 0 -8px 16px rgb(var(--c-ai) / .08)" }}>
+                    <Icon name={avatar(m)} size={isMe ? 28 : 22} />
+                  </span>
+                  {m.conds.length > 0 && <span className="absolute -right-0.5 -top-0.5 grid h-5 min-w-5 place-items-center rounded-full bg-warn px-1 text-[10px] font-bold text-white ring-2 ring-white">{m.conds.length}</span>}
+                  {isMe && <span className="absolute inset-[-10px] animate-ping rounded-full ring-1 ring-ai/30 [animation-duration:2.4s]" />}
+                </span>
+                <span className="mt-1.5 max-w-[120px] truncate rounded-full bg-white/90 px-2.5 py-0.5 text-[11.5px] font-semibold shadow-card ring-1 ring-ink/[0.04]">{m.name || RELS.find((r) => r.id === m.rel)?.label.split(" (")[0] || "You"}{!m.alive && " †"}</span>
+                <span className="mt-0.5 text-[10.5px] tabular-nums text-muted">{m.age} yrs</span>
+              </motion.button>
+            </div>
+          );
+        })}
+      </div>
+
+      <AnimatePresence>
+        {sel && (
+          <motion.div key={sel.id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }} transition={{ type: "spring", stiffness: 300, damping: 26 }}
+            className="absolute bottom-4 left-4 right-4 z-10 mx-auto max-w-[420px] rounded-2xl bg-white/90 p-3.5 shadow-lift ring-1 ring-white backdrop-blur-xl">
+            <div className="flex items-center gap-3">
+              <span className="icon-tile h-10 w-10"><Icon name={avatar(sel)} size={18} /></span>
+              <div className="min-w-0 flex-1"><div className="truncate text-[14.5px] font-semibold">{sel.name || "Relative"} · {sel.age} yrs{!sel.alive && " · passed away"}</div><div className="text-[11.5px] text-muted">{RELS.find((r) => r.id === sel.rel)?.label}</div></div>
+            </div>
+            <div className="mt-2 flex flex-wrap gap-1">{sel.conds.length ? sel.conds.map((c) => <span key={c} className="rounded-full bg-warn/10 px-2 py-0.5 text-[11px] font-semibold text-warn">{CONDS.find((x) => x.id === c)?.label}</span>) : <span className="text-[11.5px] text-faint">No conditions added — open them in the form.</span>}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
