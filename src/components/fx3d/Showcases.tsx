@@ -44,7 +44,7 @@ export function ServicesRing({ dept }: { dept: string }) {
           {s.prep?.length ? <ul className="mt-3 space-y-1">{s.prep.map((p) => <li key={p} className="flex gap-1.5 text-[12.5px]"><Icon name="check" size={13} className="mt-0.5 shrink-0 text-ai" />{p}</li>)}</ul> : null}
           <div className="mt-4 flex flex-wrap gap-2">
             <button onClick={() => ask(`What happens during "${s.t}" in ${d.name} at Biongevity, how should I prepare, and what will I learn?`, { label: `✦ ${s.t}` })} className="btn-ai h-9 px-3.5 text-[13px]"><XevyoOrb size={18} />Ask SI</button>
-            <a href={`/contact/?interest=${encodeURIComponent(`${d.name}: ${s.t}`)}`} className="btn-light h-9 px-3.5 text-[13px]">Book this</a>
+            <a href={BOOK_URL} target="_blank" rel="noopener" className="btn-light h-9 px-3.5 text-[13px]">Book this</a>
           </div>
         </motion.div>
       </AnimatePresence>
