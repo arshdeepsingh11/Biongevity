@@ -8,7 +8,7 @@ import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { AIBadge } from "@/components/ai/AIBadge";
 import { Icon } from "@/components/ui/Icon";
 import { BeamFlow } from "@/components/fx/BeamFlow";
-import { PromptCard, HeroStats, LifeFilm } from "@/components/home/HeroExtras";
+import { PromptCard, HeroStats, HeroHeadline } from "@/components/home/HeroExtras";
 
 const EXAMPLES = ["I'm tired all the time and gaining weight", "my blood pressure is high at home", "I want to age slower", "my dad has a family history of heart disease", "poor sleep since my late 40s"];
 
