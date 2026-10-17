@@ -62,6 +62,13 @@ export const DEPT_EXTRA: Record<string, DeptExtra> = {
     sources: [{ name: "NEYU Health — Diagnostics", url: "https://neyuhealth.com/diagnostics" }, { name: "NEYU Health — Virtual Hypertension Clinic", url: "https://neyuhealth.com/hypertension-clinic" }, LABS],
   },
   "heart-failure": {
+    program: { name: "Heart failure follow-up", steps: [
+      { t: "Baseline", d: "Echo for pumping function, kidney function and potassium, symptoms and weight." },
+      { t: "Daily at home", d: "Weight, blood pressure and breathlessness logged each morning." },
+      { t: "Early warning", d: "A rise of about 2 kg in 3 days or new swelling is flagged to the team." },
+      { t: "Titrate", d: "Guideline medicines adjusted step by step with blood tests in between." },
+      { t: "Review", d: "Repeat echo to see how the heart has responded." },
+    ] },
     offer: [
       { icon: "heart-half", t: "Pumping function on echo", d: "Ejection fraction and chamber size followed over time on echocardiography." },
       { icon: "gauge", t: "Home monitoring", d: "Weight, blood pressure and symptoms tracked at home so changes are caught early." },
