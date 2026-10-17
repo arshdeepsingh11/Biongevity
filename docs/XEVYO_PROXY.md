@@ -9,7 +9,7 @@ right CORS headers.
 
 1. Create or edit `.env.local` in the project folder (it is git-ignored):
    ```
-   XEVYO_UPSTREAM_URL=https://<the real Xevyo endpoint>
+   XEVYO_UPSTREAM_URL=https://chat.xevyo.com/xevyo/v1/chat/completions
    XEVYO_API_KEY=<the key, if Xevyo needs one>
    NEXT_PUBLIC_XEVYO_URL=http://localhost:8787
    ```
