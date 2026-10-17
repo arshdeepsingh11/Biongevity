@@ -189,6 +189,8 @@ export function DeptTabs({ id }: { id: string }) {
             )}
 
             {tab === "services" && (
+              <div className="space-y-6">
+              {d.services.length >= 3 && <ServicesRing dept={id} />}
               <div className="grid gap-4 md:grid-cols-2">
                 {d.services.map((s) => (
                   <div key={s.t} className="flex h-full flex-col rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]">
