@@ -63,14 +63,8 @@ export default function ShopPage() {
       </Section>
       <Section ai="Choose your depth" id="depth" className="scroll-mt-20 bg-canvas/50">
         <div className="container-x">
-          <Head n="02" label="Choose your depth" title={<>Test. Package. <AuroraText>Program.</AuroraText></>} lede="Three ways in, from one question to a full longevity program. Programs run 3, 6 or 12 months." />
+          <Head n="03" label="Choose your depth" title={<>Test. Package. <AuroraText>Program.</AuroraText></>} lede="Three ways in, from one question to a full longevity program. Programs run 3, 6 or 12 months." />
           <div className="mt-8"><Ladder /></div>
-        </div>
-      </Section>
-      <Section ai="Programs in 3D" id="programs-3d" className="scroll-mt-20">
-        <div className="container-x">
-          <Head n="3D" label="Programs in 3D" title={<>Swipe the <AuroraText>programs.</AuroraText></>} lede="Core, Precision and Elite side by side — swipe or drag the cascade, tilt a card for a closer look." />
-          <div className="mt-8"><PackageCascade /></div>
         </div>
       </Section>
       <Section ai="Browse" id="browse" className="scroll-mt-20">
