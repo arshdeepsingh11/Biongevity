@@ -27,7 +27,7 @@ export function ServicesRing({ dept }: { dept: string }) {
   if (!d || d.services.length < 3) return null;
   const s = d.services[front % d.services.length];
   return (
-    <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+    <div className="grid items-center gap-6 2xl:grid-cols-[minmax(0,1fr)_320px]">
       <Carousel3D items={d.services} radius={Math.max(300, d.services.length * 62)} cardWidth={220} height={340} onFront={setFront}
         render={(x, on) => (
           <div className={`flex h-full flex-col rounded-[22px] p-5 shadow-card ring-1 transition ${on ? "ring-ai/40" : "ring-ink/[0.06]"}`} style={{ background: "rgb(var(--c-surface))" }}>
