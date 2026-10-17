@@ -21,5 +21,5 @@ export function TestsIn3D({ compact = false }: { compact?: boolean }) {
     };
   }), []);
   const cats = LAB_COLLECTIONS.map((c) => ({ id: c.handle, title: c.title.replace(/ &.*$/, "").replace(/ Panels$/, ""), icon: c.icon, line: c.description }));
-  return <CatalogBook brand="BioAro Labs" categories={cats} items={items} />;
+  return <CatalogBook brand="BioAro Labs" categories={cats} items={items} compact={compact} />;
 }
