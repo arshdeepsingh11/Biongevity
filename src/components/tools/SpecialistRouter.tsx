@@ -1,4 +1,5 @@
 "use client";
+import { BOOK_URL } from "@/lib/env";
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { AISurface } from "@/components/ai/AISurface";
