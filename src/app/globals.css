@@ -272,3 +272,6 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
   [data-print], [data-print] * { visibility: visible !important; }
   [data-print] { position: absolute !important; left: 0; top: 0; width: 100%; box-shadow: none !important; }
 }
+
+/* app page: digital twin scan line */
+@keyframes twinScan { 0%, 100% { transform: translateY(14px); opacity: 0; } 10%, 90% { opacity: 1; } 50% { transform: translateY(426px); } }
