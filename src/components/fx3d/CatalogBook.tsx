@@ -153,8 +153,8 @@ export function CatalogBook({ brand, categories, items, buyLabel = "Buy", compac
   const nextS = turn ? idx + turn.dir : idx;
 
   return (
-    <div className="space-y-5">
-      <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4 sm:mx-0 sm:flex-wrap sm:px-0" role="tablist" aria-label="Categories">
+    <div className={compact ? "space-y-4" : "space-y-5"}>
+      <div className={cn("no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4 sm:mx-0 sm:flex-wrap sm:px-0", compact && "sm:justify-center")} role="tablist" aria-label="Categories">
         {categories.map((x) => {
           const n = items.filter((i) => i.category === x.id).length;
           return (
