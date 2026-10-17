@@ -33,6 +33,28 @@ function useHideOnScroll(lock: boolean) {
   return hidden && !lock;
 }
 
+/** Marks section bars that are stuck to the top, and how much room they leave for the floating logo (left) and search (right). */
+function syncSubnav() {
+  const root = document.documentElement, up = root.dataset.header === "hidden";
+  const logo = document.querySelector(".site-inner a[aria-label='Biongevity home']")?.getBoundingClientRect();
+  const search = document.querySelector("[data-float-search]")?.getBoundingClientRect();
+  let any = false;
+  document.querySelectorAll<HTMLElement>(".sub-nav").forEach((el) => {
+    const r = el.getBoundingClientRect(), top = parseFloat(getComputedStyle(el).top) || 0;
+    const stuck = r.height > 0 && Math.abs(r.top - top) < 2 && r.bottom > 0;
+    el.classList.toggle("is-stuck", stuck);
+    if (!stuck) return;
+    any = true;
+    const inner = (el.firstElementChild as HTMLElement | null)?.getBoundingClientRect() ?? r;
+    const phone = innerWidth < 640;
+    const l = !phone && logo ? Math.max(0, Math.ceil(logo.right + 12 - (inner.left - (parseFloat(el.style.getPropertyValue("--sn-l")) || 0)))) : 0;
+    const right = inner.right + (parseFloat(el.style.getPropertyValue("--sn-r")) || 0);
+    const rr = search ? Math.max(0, Math.ceil(right - (search.left - 10))) : 0;
+    el.style.setProperty("--sn-l", `${l}px`); el.style.setProperty("--sn-r", `${rr}px`);
+  });
+  root.dataset.subnav = any && up ? "top" : "";
+}
+
 /** Expandable search: an icon that grows into a field with a spring, focuses itself, and gives focus back on close. */
 function ExpandSearch({ open, setOpen, floating }: { open: boolean; setOpen: (o: boolean) => void; floating?: boolean }) {
   const { openCmd, ask } = useAI();
