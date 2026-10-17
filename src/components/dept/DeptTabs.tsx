@@ -34,9 +34,12 @@ type Tab = (typeof ALL)[number]["id"];
 
 /** Department detail — six tabs of clinical content, cited evidence and an AI panel. */
 export function DeptTabs({ id }: { id: string }) {
-  const d = deptById(id), ev = DEPT_EVIDENCE[id];
-  const [tab, setTab] = useState<Tab>("overview");
-  useEffect(() => { const h = location.hash.slice(1) as Tab; if (TABS.some((t) => t.id === h)) setTab(h); }, []);
+  const d = deptById(id), ev = DEPT_EVIDENCE[id], x = DEPT_EXTRA[id];
+  const { ask } = useAI();
+  const has: Record<Tab, boolean> = { anatomy: !!ANATOMY[id]?.length, overview: true, offer: !!x, conditions: true, services: true, programs: !!(x?.packages || x?.program), path: true, connected: !!x, evidence: true, faq: true, sources: !!x };
+  const TABS = ALL.filter((t) => has[t.id]);
+  const [tab, setTab] = useState<Tab>(TABS[0].id);
+  useEffect(() => { const h = location.hash.slice(1) as Tab; if (ALL.some((t) => t.id === h) && has[h]) setTab(h); }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const go = (t: Tab) => { setTab(t); history.replaceState(null, "", `#${t}`); };
   const related = DEPARTMENTS.filter((x) => x.id !== id && x.group === d.group).slice(0, 4);
 
