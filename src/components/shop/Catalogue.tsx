@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { CATALOG, KIND_META, type Kind } from "@/lib/catalog";
 import { tokens } from "@/lib/intent";
