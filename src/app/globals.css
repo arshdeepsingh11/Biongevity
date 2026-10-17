@@ -137,7 +137,9 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 [data-theme="olive"] .float-row { margin-top: 10px; height: 58px; padding-inline: 15px 11px; }
 
 /* Section tab bars stick right under the header and follow it up when it hides. */
-.sub-nav { top: calc(var(--safe-top) + 64px); transition: top .35s cubic-bezier(.2,.8,.2,1); }
+.sub-nav { top: calc(var(--safe-top) + 64px); transition: top .35s cubic-bezier(.2,.8,.2,1), transform .38s cubic-bezier(.2,.8,.2,1), opacity .25s ease; will-change: transform; }
+/* scrolling down: the section bar slides up and away with the header; scrolling up brings both back */
+[data-header="hidden"] .sub-nav { transform: translateY(calc(-100% - 90px)); opacity: 0; pointer-events: none; }
 [data-header="hidden"] .sub-nav { top: calc(var(--safe-top) + 60px); }
 [data-theme="olive"] .sub-nav { top: calc(var(--safe-top) + 74px); }
 [data-theme="olive"][data-header="hidden"] .sub-nav { top: calc(var(--safe-top) + 70px); }
