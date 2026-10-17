@@ -59,3 +59,7 @@ const ROWS: Record<string, Row> = {
   "Advanced Amino Acid Metabolism": ["Muscle metabolism and cardiometabolic pathways.", "A broader look at amino acids and related metabolites in nutrition, muscle maintenance, protein turnover, energy and cardiometabolic health.", "Measures 32 amino acids and metabolites across muscle, one-carbon and sulfur metabolism, and glucose-related pathways.", ["Deeper insight beyond a basic amino acid test", "Muscle health, exercise, recovery or protein use", "Cardiometabolic health and healthy ageing"], "Blood", "No special preparation", W23, "8 biomarkers"],
   "Ultra Amino Acid Profile": ["The most complete amino acid picture.", "A comprehensive look at amino acid metabolism and specialised biochemical pathways.", "Measures 48 amino acids and metabolites across lysine, sulfur and methylation pathways, muscle and connective tissue, and neurometabolic patterns.", ["The most complete amino acid assessment", "Complex nutritional, metabolic or muscle concerns", "When a provider advises an expanded profile"], "Blood", "No special preparation", W23, "11 biomarkers"],
 };
+
+export const LAB_DETAILS: Record<string, LabDetail> = Object.fromEntries(
+  Object.entries(ROWS).map(([k, [tag, about, measure, who, sample, prep, results, markers]]) => [k, { tag, about, measure, who, sample, prep, results, markers }]),
+);
