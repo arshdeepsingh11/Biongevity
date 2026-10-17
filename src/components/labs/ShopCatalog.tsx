@@ -115,7 +115,7 @@ export function ShopCatalog() {
         </div>
       </div>
 
-      <div className="mt-2 space-y-12">
+      <div className="mt-6 space-y-12">
         {cats.map((c) => {
           const list = order(LAB_TESTS.filter((t) => t.category === c.handle));
           if (!list.length) return null;
