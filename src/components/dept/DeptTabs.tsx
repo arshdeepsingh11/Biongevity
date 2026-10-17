@@ -56,9 +56,98 @@ export function DeptTabs({ id }: { id: string }) {
         </div>
       </div>
 
-      <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <div className={`mt-8 grid gap-6 ${tab === "anatomy" ? "" : "lg:grid-cols-[minmax(0,1fr)_320px]"}`}>
         <AnimatePresence mode="wait">
           <motion.div key={tab} role="tabpanel" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.22 }} className="min-w-0">
+            {tab === "anatomy" && <AnatomyStudio dept={id} name={d.name} />}
+
+            {tab === "offer" && x && (
+              <div className="space-y-5">
+                {x.numbers && <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">{x.numbers.map((n, k) => <Stat key={n.l} v={n.v} l={n.l} accent={k === 0} />)}</div>}
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {x.offer.map((o, k) => (
+                    <motion.div key={o.t} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: k * 0.05 }}>
+                      <Tilt max={6} className="h-full">
+                        <button onClick={() => ask(`Tell me about "${o.t}" in ${d.name} at Biongevity: ${o.d} Who is it for and what happens?`, { label: `✦ ${o.t}` })} className="group flex h-full w-full flex-col rounded-[24px] bg-white p-5 text-left shadow-card ring-1 ring-ink/[0.06] transition hover:ring-ai/30">
+                          <span className="icon-tile h-11 w-11"><Icon name={o.icon} size={20} /></span>
+                          <span className="mt-3 text-[16px] font-semibold leading-snug">{o.t}</span>
+                          <span className="mt-1 text-[13.5px] leading-relaxed text-muted">{o.d}</span>
+                          <span className="mt-auto inline-flex items-center gap-1 pt-3 text-[12px] font-semibold text-ai opacity-70 transition group-hover:opacity-100"><XevyoOrb size={14} />Ask SI</span>
+                        </button>
+                      </Tilt>
+                    </motion.div>
+                  ))}
+                </div>
+                {x.partner && (
+                  <div className="flex flex-wrap items-center gap-4 rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]">
+                    <span className="icon-tile h-12 w-12"><Icon name="building" size={22} /></span>
+                    <div className="min-w-0 flex-1"><div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ai">BioAro group clinic</div><div className="text-[17px] font-semibold">{x.partner.name}</div><p className="text-[13.5px] text-muted">{x.partner.line}</p></div>
+                    <a href={x.partner.url} target="_blank" rel="noopener noreferrer" className="btn-light h-10 px-4 text-[13px]">Visit<Icon name="arrow-up-right" size={13} /></a>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {tab === "programs" && x && (
+              <div className="space-y-6">
+                {x.program && (
+                  <div className="rounded-[28px] bg-white p-6 shadow-card ring-1 ring-ink/[0.06]">
+                    <div className="flex flex-wrap items-end justify-between gap-2"><div><div className="eyebrow">Program</div><div className="text-[22px] font-semibold tracking-tight">{x.program.name}</div>{x.program.for && <p className="mt-1 text-[13.5px] text-muted">For: {x.program.for}</p>}</div>
+                      <button onClick={() => ask(`Walk me through the ${x.program!.name} at Biongevity step by step, and whether it suits me.`, { label: `✦ ${x.program!.name}` })} className="btn-ai h-9 px-3.5 text-[12.5px]"><XevyoOrb size={16} />Is it for me?</button></div>
+                    <ol className="relative mt-5 grid gap-3 md:grid-cols-5">
+                      <div aria-hidden className="absolute left-0 right-0 top-[22px] hidden h-[2px] bg-gradient-to-r from-ai/10 via-ai/50 to-ai/10 md:block" />
+                      {x.program.steps.map((st, k) => (
+                        <motion.li key={st.t} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 * k }} className="relative">
+                          <span className="relative z-[1] grid h-11 w-11 place-items-center rounded-full bg-ai text-[14px] font-bold text-on-ai ring-4 ring-pearl">{k + 1}</span>
+                          <div className="mt-2 text-[14.5px] font-semibold">{st.t}</div><p className="mt-0.5 text-[12.5px] leading-snug text-muted">{st.d}</p>
+                        </motion.li>
+                      ))}
+                    </ol>
+                    {x.program.note && <p className="mt-4 rounded-2xl bg-ai-soft/60 px-4 py-2.5 text-[12.5px] text-ai">{x.program.note}</p>}
+                  </div>
+                )}
+                {x.packages && (
+                  <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    {x.packages.map((p) => (
+                      <Tilt key={p.name} max={5} className="h-full">
+                        <div className="flex h-full flex-col rounded-[26px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]">
+                          <div className="flex items-start justify-between gap-2"><span className="icon-tile h-11 w-11"><Icon name="clipboard" size={20} /></span>{p.labPrice && <div className="text-right"><div className="text-[22px] font-semibold tracking-tight">{p.labPrice}</div><div className="text-[10.5px] text-faint">labs, CAD</div></div>}</div>
+                          <div className="mt-3 text-[17px] font-semibold">{p.name}</div><p className="text-[12.5px] text-muted">{p.for}</p>
+                          <div className="mt-3 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-faint">Clinic</div>
+                          <ul className="mt-1 space-y-1">{p.clinic.map((c) => <li key={c} className="flex gap-1.5 text-[12.5px]"><Icon name="check" size={13} className="mt-0.5 shrink-0 text-ai" />{c}</li>)}</ul>
+                          <div className="mt-3 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-faint">BioAro Labs</div>
+                          <div className="mt-1 flex flex-wrap gap-1">{p.labs.map((l) => <span key={l} className="rounded-full bg-ai-soft px-2 py-0.5 text-[11px] font-semibold text-ai">{l}</span>)}</div>
+                          <Link href={`/contact/?interest=${encodeURIComponent(p.name)}`} className="btn-dark mt-auto h-10 justify-center text-[13px]" style={{ marginTop: 16 }}>Ask about {p.name}</Link>
+                        </div>
+                      </Tilt>
+                    ))}
+                  </div>
+                )}
+                <p className="text-[11.5px] text-faint">Lab prices are BioAro Labs list prices in CAD; clinic services are quoted by the care team. No payment is taken on this site.</p>
+              </div>
+            )}
+
+            {tab === "connected" && x && (
+              <div className="grid gap-3 md:grid-cols-2">
+                {x.links.map((l, k) => (
+                  <motion.div key={l.t} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: k * 0.06 }} className="relative overflow-hidden rounded-[24px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]">
+                    <div className="flex items-center gap-2 text-[16px] font-semibold"><span className="grid h-8 w-8 place-items-center rounded-full bg-ai text-on-ai"><Icon name="network" size={15} /></span>{l.t}</div>
+                    <p className="mt-2 text-[14px] leading-relaxed text-muted">{l.d}</p>
+                  </motion.div>
+                ))}
+                <p className="text-[12.5px] text-muted md:col-span-2">Every department writes to the same record, so these links are checked together — not in separate silos.</p>
+              </div>
+            )}
+
+            {tab === "sources" && x && (
+              <div className="rounded-[24px] bg-white p-6 shadow-card ring-1 ring-ink/[0.06]">
+                <div className="text-[17px] font-semibold">Where this information comes from</div>
+                <ul className="mt-3 space-y-2">{x.sources.map((src) => <li key={src.url} className="flex items-start gap-2 text-[14px]"><Icon name="external" size={15} className="mt-0.5 shrink-0 text-ai" /><a href={src.url} target="_blank" rel="noopener noreferrer" className="underline decoration-ink/20 underline-offset-2 hover:text-ai">{src.name}</a></li>)}</ul>
+                {ANATOMY[id] && <p className="mt-4 text-[12.5px] text-muted">3D anatomy models: {ANATOMY[id].map((m) => `${m.title} by ${m.author}`).join(" · ")} (Sketchfab).</p>}
+                <p className="mt-2 text-[12px] text-faint">Written in our own words and reviewed October 2026. Services and availability are confirmed by the care team.</p>
+              </div>
+            )}
+
             {tab === "overview" && (
               <div className="space-y-5">
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
