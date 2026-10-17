@@ -54,8 +54,8 @@ export default async function DeptPage({ params }: P) {
             <p data-reveal className="mt-3 text-[20px] font-medium text-accent">{d.tag}</p>
             <p data-reveal className="lede mt-4 max-w-[60ch]">{d.summary}</p>
             <div data-reveal className="mt-8 grid grid-cols-2 items-center gap-2.5 sm:flex sm:flex-wrap">
-              <Link href={`/contact/?interest=${encodeURIComponent(d.name)}`} className="btn-dark col-span-2 h-12 px-6">Book {d.short}</Link>
-              <AskButton q={`What happens in ${d.name} at Biongevity?`} className="h-12">Ask Biongevity SI</AskButton>
+              <a href={BOOK_URL} target="_blank" rel="noopener" className="btn-dark col-span-2 h-12 px-6">Book {d.short}</a>
+              <AskButton q={`What happens in ${d.name} at Biongevity?`} className="h-12"><span className="sm:hidden">Ask SI</span><span className="max-sm:hidden">Ask Biongevity SI</span></AskButton>
               <PageSummary compact className="h-12 justify-center" />
             </div>
             <div data-reveal className="mt-8 grid max-w-[560px] grid-cols-2 gap-2 sm:grid-cols-4">
