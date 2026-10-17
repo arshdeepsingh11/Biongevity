@@ -51,3 +51,17 @@ function Ring({ v, size = 92, color, label }: { v: number; size?: number; color:
     </div>
   );
 }
+
+function Spark({ data, color, h = 60 }: { data: number[]; color: string; h?: number }) {
+  const max = Math.max(...data), min = Math.min(...data), W = 260;
+  const pts = data.map((v, i) => [(i / (data.length - 1)) * W, h - 6 - ((v - min) / (max - min || 1)) * (h - 14)] as const);
+  const d = pts.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)},${y.toFixed(1)}`).join(" ");
+  return (
+    <svg viewBox={`0 0 ${W} ${h}`} preserveAspectRatio="none" className="h-[60px] w-full">
+      <defs><linearGradient id={`sp-${color.slice(1)}`} x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor={color} stopOpacity=".35" /><stop offset="1" stopColor={color} stopOpacity="0" /></linearGradient></defs>
+      <path d={`${d} L${W},${h} L0,${h} Z`} fill={`url(#sp-${color.slice(1)})`} />
+      <path d={d} fill="none" stroke={color} strokeWidth="2" strokeLinejoin="round" />
+      {pts.map(([x, y], i) => <circle key={i} cx={x} cy={y} r={i === pts.length - 1 ? 3.5 : 0} fill={color} />)}
+    </svg>
+  );
+}
