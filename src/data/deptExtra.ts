@@ -165,6 +165,10 @@ export const DEPT_EXTRA: Record<string, DeptExtra> = {
     sources: [{ name: "NEYU Health — Care", url: "https://neyuhealth.com/care" }, LABS],
   },
   "internal-medicine": {
+    packages: [
+      { name: "Executive Health", for: "A complete picture and a plan in one morning", clinic: ["Internal medicine assessment", "Exercise stress echocardiogram", "Carotid ultrasound", "24-hour ambulatory blood pressure"], labs: ["Inflammation, kidney and vitamin D panel"], labPrice: "$833.99" },
+      { name: "Longevity Baseline", for: "Anyone starting a longevity plan", clinic: ["Longevity consultation", "Body and blood-pressure assessment"], labs: ["Advanced Inflammation Aging", "Telomere Length Testing"], labPrice: "$1,128.99" },
+    ],
     organ: "kidneys",
     offer: [
       { icon: "stethoscope", t: "One physician, the whole picture", d: "Several conditions read together, with one coordinated plan." },
