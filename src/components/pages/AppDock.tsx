@@ -11,11 +11,13 @@ const TINTS: [string, string][] = [["#fb7185", "#e11d48"], ["#60a5fa", "#2563eb"
 export function AppShowcase() {
   const [i, setI] = useState(0);
   const f = APP_FEATURES[i];
+  const [base, setBase] = useState(54);
+  useEffect(() => { const fit = () => setBase(innerWidth < 420 ? 42 : 54); fit(); addEventListener("resize", fit); return () => removeEventListener("resize", fit); }, []);
   return (
     <div className="flex flex-col items-center">
-      <AppleDock items={APP_FEATURES.map((a, k) => ({ icon: a.icon, label: a.t, active: k === i, onClick: () => setI(k) }))} base={54} magnify={1.6} />
+      <AppleDock items={APP_FEATURES.map((a, k) => ({ icon: a.icon, label: a.t, active: k === i, onClick: () => setI(k), tint: TINTS[k % TINTS.length] }))} base={base} magnify={1.5} className="max-w-full" />
       <div key={f.t} className="card mt-10 flex max-w-[560px] items-center gap-5 p-6 animate-[float_5s_ease-in-out_infinite]">
-        <span className="grid h-16 w-16 shrink-0 place-items-center icon-tile"><Icon name={f.icon} size={30} /></span>
+        <span className="relative grid h-16 w-16 shrink-0 place-items-center rounded-[24%] text-white shadow-[0_12px_26px_-10px_rgb(0_0_0/.5),inset_0_1px_0_rgb(255_255_255/.45)]" style={{ background: `linear-gradient(160deg, ${TINTS[i % TINTS.length][0]}, ${TINTS[i % TINTS.length][1]})` }}><Icon name={f.icon} size={30} weight="fill" /></span>
         <div><div className="text-[22px] font-semibold">{f.t}</div><div className="text-[15px] text-muted">{f.d}</div></div>
       </div>
     </div>
