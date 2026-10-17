@@ -91,7 +91,7 @@ export function Header() {
           <div className="site-inner mx-auto flex h-[60px] max-w-[1280px] items-center gap-2 px-3 sm:gap-3 sm:px-6">
             <Link href="/" aria-label="Biongevity home" className="shrink-0"><Logo size={24} /></Link>
             <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
-              <div className={`flex items-center gap-1.5 sm:gap-2 ${search ? "max-md:hidden" : ""}`}>
+              <div className={`flex items-center gap-1.5 transition-opacity sm:gap-2 ${search ? "pointer-events-none opacity-0" : ""}`}>
               <button onClick={() => openCmd()} aria-label="Ask Biongevity SI (Ctrl X)"
                 className="group flex h-9 items-center gap-2 rounded-full bg-white/80 pl-1 pr-1 text-[13px] text-muted ring-1 ring-ai/20 transition hover:text-ai hover:ring-ai/40 md:pr-3">
                 <XevyoOrb size={28} />
