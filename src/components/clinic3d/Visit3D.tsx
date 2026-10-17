@@ -161,8 +161,9 @@ export function Visit3D({ visit, title }: { visit: Visit; title: string }) {
         if (p.kind === "screen") { const glow = (Math.sin(now / 600 + p.x) + 1) / 2; box(faces, p.x - p.w / 2, y, p.z - p.d / 2, p.x + p.w / 2, y + p.h, p.z + p.d / 2, [cl[0] + glow * 30, cl[1] + glow * 60, cl[2] + glow * 40]); return; }
         box(faces, p.x - p.w / 2, y, p.z - p.d / 2, p.x + p.w / 2, y + p.h, p.z + p.d / 2, cl);
       });
-      visit.staff.forEach((st, i) => person(faces, st.x, st.z, st.face, 0, false, coat(st.coat), [214, 170, 136], [52, 40, 32], [70, 74, 86], Math.max(0, Math.sin(now / 900 + i) * 0.25)));
-      person(faces, s.px, s.pz, s.face, s.phase, walking, col.ai, [196, 150, 118], [36, 30, 26], [58, 64, 80]);
+      const SKIN = [[224, 182, 150], [198, 150, 118], [150, 104, 76], [236, 198, 170]], HAIR = [[52, 40, 32], [30, 26, 24], [120, 88, 60], [180, 170, 160]];
+      const figs: Fig[] = visit.staff.map((st, i) => ({ x: st.x, z: st.z, face: st.face, phase: 0, walking: false, cloth: coat(st.coat), skin: SKIN[i % 4], hair: HAIR[i % 4], pants: [70, 74, 86], wave: Math.max(0, Math.sin(now / 900 + i) * 0.35) }));
+      figs.push({ x: s.px, z: s.pz, face: s.face, phase: s.phase, walking, cloth: col.ai, skin: [190, 142, 110], hair: [36, 30, 26], pants: [58, 64, 80], wave: 0, you: true });
 
       // sort & draw
       ctx.clearRect(0, 0, W, H);
