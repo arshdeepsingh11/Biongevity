@@ -69,13 +69,13 @@ export default function ShopPage() {
       </Section>
       <Section ai="Browse" id="browse" className="scroll-mt-20">
         <div className="container-x">
-          <Head n="03" label="Browse everything" title={<>Everything, <AuroraText>one bag.</AuroraText></>} lede="Search across programs, packages, BioAro Labs tests and BioAro Drugs formulas. Open any item for details and what happens next." />
+          <Head n="04" label="Browse everything" title={<>Everything, <AuroraText>one bag.</AuroraText></>} lede="Search across programs, packages, BioAro Labs tests and BioAro Drugs formulas. Open any item for details and what happens next." />
           <div className="mt-8"><Catalogue /></div>
         </div>
       </Section>
       <Section ai="After you buy" className="bg-canvas/50">
         <div className="container-x">
-          <Head n="04" label="After you buy" title={<>Clear from <AuroraText>order to plan.</AuroraText></>} />
+          <Head n="05" label="After you buy" title={<>Clear from <AuroraText>order to plan.</AuroraText></>} />
           <div className="mt-8"><TrustStrip /></div>
         </div>
       </Section>
