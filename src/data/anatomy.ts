@@ -18,3 +18,4 @@ const LIVER = M("362a402b367e4b16bd9682b3e6541df4", "Liver & gallbladder", "Anat
 const THYROID = M("37ca10b0c9df4484b017826d4b48362b", "Thyroid gland", "Thyroid Gland", "Tecdes SA", "tecdessa");
 const KIDNEYS = M("acab057d3f5b4d86be475a2be0c8d0c7", "Kidneys", "Human kidneys for Medical Education", "parvin8borhan", "parvin8borhan");
 const TOOTH = M("9cc281349c314cc4859e26af238f9cd5", "Tooth cross-section", "Tooth cross-section", "Ebers", "Ebers");
+const KNEE = M("1e947b39c2e545128dad5d66b391b4d8", "Knee: bones & cartilage", "Knee anatomy: bones and cartilage", "University of Dundee, CAHID", "anatomy_dundee");
