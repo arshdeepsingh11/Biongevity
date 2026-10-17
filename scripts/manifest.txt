@@ -175,6 +175,7 @@ src/data/dashboard.ts
 src/data/departments.ts
 src/data/deptExtra.ts
 src/data/discover.ts
+src/data/drugDetails.ts
 src/data/drugShop.ts
 src/data/drugs.ts
 src/data/evidence.ts
@@ -183,6 +184,7 @@ src/data/governance.ts
 src/data/health.ts
 src/data/intelligence.ts
 src/data/journal.ts
+src/data/labDetails.ts
 src/data/labRanges.ts
 src/data/labs.ts
 src/data/organs.ts
