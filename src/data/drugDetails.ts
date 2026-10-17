@@ -35,3 +35,5 @@ const R: Record<string, [string, string, string, [string, string][]]> = {
   vitalgreens: ["Strawberry watermelon greens", "1 scoop in 8–12 oz of water.", "30", [["Organic wheat grass", "6,000 mg"], ["Organic spirulina", "1,000 mg"], ["Fruit & beet powders", "10 mg each"], ["L. acidophilus", "1 mg"]]],
   "womens-vitalprime": ["60 capsules", "2 capsules in the morning with a meal.", "30", [["Female support blend", "192 mg"], ["Vitamin C", "150 mg"], ["Immune support blend", "115 mg"], ["Calcium", "50 mg"], ["Vitamin B12", "27 mcg"], ["Vitamin A", "600 mcg RAE"]]],
 };
+
+export const DRUG_DETAILS: Record<string, DrugDetail> = Object.fromEntries(Object.entries(R).map(([k, [format, use, servings, actives]]) => [k, { format, use, servings, actives }]));
