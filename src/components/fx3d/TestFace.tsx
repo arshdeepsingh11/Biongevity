@@ -34,6 +34,7 @@ export function TestArt({ t, className }: { t: CatalogProduct; className?: strin
 /** Front face used by every 3D test component. */
 export function TestFace({ t, compact = false, className }: { t: CatalogProduct; compact?: boolean; className?: string }) {
   const c = collectionOf(t);
+  const [bad, setBad] = useState(false);
   return (
     <div className={cn("relative flex h-full flex-col overflow-hidden rounded-[22px] text-left shadow-card ring-1 ring-ink/[0.06]", className)} style={{ background: "rgb(var(--c-surface))" }}>
       <div className="relative aspect-[16/10] w-full">
