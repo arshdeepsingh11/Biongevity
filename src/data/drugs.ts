@@ -1,5 +1,6 @@
 import type { CatalogProduct, Collection } from "./types";
 import type { IconName } from "@/components/ui/icons";
+import { drugImage } from "./drugShop";
 
 /* Content: bioarodrugs.com/us (home, shop, protocols). Amounts as listed Oct 2026, shown in the store currency (CAD) — confirm CAD pricing before launch.
    Each product links to its real page: https://bioarodrugs.com/us/products/<handle> */
