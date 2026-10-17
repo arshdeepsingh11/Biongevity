@@ -6,3 +6,5 @@
 export interface AnatomyModel { id: string; title: string; author: string; authorUrl: string; label: string }
 
 const M = (id: string, label: string, title: string, author: string, handle: string): AnatomyModel => ({ id, label, title, author, authorUrl: `https://sketchfab.com/${handle}` });
+
+const HEART_EXT = M("10472481071e4375b8233289c277d411", "Outside the heart", "External Human Heart Anatomy", "University of Dundee, CAHID", "anatomy_dundee");
