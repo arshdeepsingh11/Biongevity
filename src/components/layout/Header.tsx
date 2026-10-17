@@ -108,16 +108,20 @@ export function Header() {
         </motion.div>
       </header>
 
-      {/* While the bar is away, only the logo floats (no background) and still goes home. */}
-      <AnimatePresence>
-        {hidden && (
-          <motion.div key="float-logo" className="pointer-events-none fixed inset-x-0 top-0 z-[81] pt-[var(--safe-top)]" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={SPRING}>
-            <div className="float-logo mx-auto flex h-[60px] max-w-[1280px] items-center px-3 sm:px-6">
-              <Link href="/" aria-label="Biongevity home" className="pointer-events-auto rounded-xl p-1 drop-shadow-[0_2px_10px_rgb(255_255_255/.9)] transition-transform hover:scale-[1.04]"><Logo size={24} /></Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Always on top: the logo floats alone while the bar is away (no background, still goes home),
+          and the expandable search stays in the right corner in both states. */}
+      <div className="pointer-events-none fixed inset-x-0 top-0 z-[81] pt-[var(--safe-top)]">
+        <div className="float-row mx-auto flex h-[60px] max-w-[1280px] items-center px-3 sm:px-6">
+          <AnimatePresence>
+            {hidden && (
+              <motion.div key="float-logo" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={SPRING}>
+                <Link href="/" aria-label="Biongevity home" className="pointer-events-auto block rounded-xl p-1 drop-shadow-[0_2px_10px_rgb(255_255_255/.9)] transition-transform hover:scale-[1.04]"><Logo size={24} /></Link>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <div className="pointer-events-auto ml-auto"><ExpandSearch open={search} setOpen={setSearch} floating={hidden} /></div>
+        </div>
+      </div>
     </>
   );
 }
