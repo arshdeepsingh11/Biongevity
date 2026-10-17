@@ -15,3 +15,4 @@ const SKIN = M("2c902649de1843e9b2e004a99a9ab923", "Skin layers", "Human skin â€
 const BRAIN = M("b2aac93ee4c440ed911f5765158edc9f", "Regions of the brain", "Regions of the brain", "University of Dundee, CAHID", "anatomy_dundee");
 const GUT = M("2d3771dd6b8940ffa2312bd97aca6fc3", "Digestive system", "Digestive system", "bioilustra", "bioilustra");
 const LIVER = M("362a402b367e4b16bd9682b3e6541df4", "Liver & gallbladder", "Anatomy â€“ Human Liver and Gallbladder", "FrancescoMilanese", "FrancescoMilanese");
+const THYROID = M("37ca10b0c9df4484b017826d4b48362b", "Thyroid gland", "Thyroid Gland", "Tecdes SA", "tecdessa");
