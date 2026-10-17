@@ -84,9 +84,20 @@ export async function askXevyo(
     onToken?.(reply);
     return { reply, sources: j.sources };
   }
-  // Stream: SSE or plain chunks
+  // Stream: server-sent events (OpenAI-style "data: {json}" lines) or plain text chunks.
   const reader = res.body!.getReader(), dec = new TextDecoder();
-  let acc = "";
+  const sse = type.includes("event-stream") || openai;
+  let acc = "", buf = "";
+  const eat = (line: string) => {
+    const t = line.trim();
+    if (!t.startsWith("data:")) return;
+    const data = t.slice(5).trim();
+    if (!data || data === "[DONE]") return;
+    try {
+      const j = JSON.parse(data) as { token?: string; delta?: string; text?: string; content?: string; choices?: { delta?: { content?: string }; message?: { content?: string } }[] };
+      acc += j.choices?.[0]?.delta?.content ?? j.choices?.[0]?.message?.content ?? j.token ?? j.delta ?? j.text ?? j.content ?? "";
+    } catch { acc += data; }
+  };
   for (;;) {
     const { done, value } = await reader.read();
     if (done) break;
