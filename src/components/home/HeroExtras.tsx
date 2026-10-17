@@ -144,7 +144,7 @@ export function HeroHeadline() {
   return (
     <h1 className="h-display mt-6">
       <span className="sr-only">More good years, guided by SI.</span>
-      <span aria-hidden className="relative block h-[1.08em] overflow-hidden">
+      <span aria-hidden className="relative block h-[1.12em] overflow-hidden text-[min(1em,9.4vw)]">
         <AnimatePresence mode="popLayout" initial={false}>
           <motion.span key={LINES[i]} className="absolute inset-x-0 top-0 block whitespace-nowrap"
             initial={{ y: "70%", opacity: 0, filter: "blur(10px)" }} animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }} exit={{ y: "-70%", opacity: 0, filter: "blur(10px)" }}
