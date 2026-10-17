@@ -47,6 +47,7 @@ src/components/bioaro/DrugsHub.tsx
 src/components/bioaro/HealthPackages.tsx
 src/components/bioaro/LabsHub.tsx
 src/components/bioelr/Configurator.tsx
+src/components/body/AnatomyStudio.tsx
 src/components/body/BodyHologram.tsx
 src/components/body/CardioExplorer.tsx
 src/components/body/Organ3D.tsx
@@ -60,10 +61,8 @@ src/components/clinic3d/BuildingView.tsx
 src/components/clinic3d/City3D.tsx
 src/components/clinic3d/ClinicGlobe.tsx
 src/components/clinic3d/Visit3D.tsx
-src/components/clinic3d/VisitSection.tsx
 src/components/commerce/BuyButton.tsx
 src/components/dept/DeptBody.tsx
-src/components/dept/DeptDeepDive.tsx
 src/components/dept/DeptTabs.tsx
 src/components/drugs/ProtocolStudio.tsx
 src/components/evidence/EvidenceEngine.tsx
@@ -164,6 +163,7 @@ src/components/ui/icons.ts
 src/config/media.ts
 src/config/shopify.ts
 src/config/store.ts
+src/data/anatomy.ts
 src/data/bioelr.ts
 src/data/catalog.ts
 src/data/clinic.ts
