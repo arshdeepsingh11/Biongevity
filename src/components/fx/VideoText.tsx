@@ -16,8 +16,18 @@ export function VideoText({ text, youtube, mp4, className, start = 0 }: { text: 
 
   useEffect(() => {
     const el = box.current; if (!el) return;
-    const ro = new ResizeObserver(([e]) => setSize({ w: e.contentRect.width, h: e.contentRect.height }));
-    ro.observe(el);
+    const measure = () => {
+      const cs = getComputedStyle(el), r = el.getBoundingClientRect();
+      const font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+      const c = document.createElement("canvas").getContext("2d")!; c.font = font;
+      const tm = c.measureText(text);
+      const asc = tm.fontBoundingBoxAscent || parseFloat(cs.fontSize) * 0.92, desc = tm.fontBoundingBoxDescent || parseFloat(cs.fontSize) * 0.24;
+      const base = (r.height - (asc + desc)) / 2 + asc;
+      setM({ w: r.width, h: r.height, base, font, ls: cs.letterSpacing });
+    };
+    measure();
+    const ro = new ResizeObserver(measure); ro.observe(el);
+    document.fonts?.ready.then(measure).catch(() => {});
     const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) setOn(true); }, { rootMargin: "200px" });
     io.observe(el);
     return () => { ro.disconnect(); io.disconnect(); };
