@@ -94,26 +94,54 @@ export function CatalogBook({ brand, categories, items, buyLabel = "Buy", compac
       <div className="mt-2 text-right text-[10.5px] text-faint">1</div>
     </div>
   );
-  const photoPage = (it: BookItem) => (
+  const photo = (it: BookItem) => (
     <div className="relative h-full overflow-hidden">
       <Photo src={it.image} icon={it.icon} alt={`${it.title} — ${it.store}`} />
-      <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/45 to-transparent" />
       <span className="absolute left-4 top-4"><ItemIcon it={it} size={44} /></span>
-      {it.kicker && <span className="absolute bottom-4 left-4 rounded-full bg-white/85 px-2.5 py-1 text-[11px] font-semibold text-ink backdrop-blur">{it.kicker}</span>}
     </div>
   );
-  const details = (it: BookItem, n: number) => (
-    <div className="flex h-full flex-col p-5 sm:p-7" style={{ background: "rgb(var(--c-surface))" }}>
-      <div className="flex items-center gap-2.5"><ItemIcon it={it} size={36} /><span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ai">{c.title}</span></div>
-      <div className="mt-3 text-[20px] font-semibold leading-tight tracking-tight sm:text-[24px]">{it.title}</div>
+  const who = (it: BookItem) => it.who?.length ? (
+    <div><div className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-faint">Who it's for</div>
+      <ul className="mt-1 space-y-0.5">{it.who.map((w) => <li key={w} className="flex gap-1.5 text-[12.5px] leading-snug text-muted"><Icon name="check" size={13} className="mt-0.5 shrink-0 text-ai" />{w}</li>)}</ul></div>
+  ) : null;
+  const facts = (it: BookItem) => it.facts?.length ? (
+    <div className="grid grid-cols-2 gap-1.5">
+      {it.facts.map((f) => <div key={f.label} className="flex min-w-0 items-center gap-2 rounded-xl bg-canvas px-2.5 py-1.5"><Icon name={f.icon} size={14} className="shrink-0 text-ai" /><span className="min-w-0"><span className="block text-[9.5px] font-semibold uppercase tracking-[0.12em] text-faint">{f.label}</span><span className="block truncate text-[12px] font-semibold" title={f.value}>{f.value}</span></span></div>)}
+    </div>
+  ) : null;
+  const table = (it: BookItem) => it.table?.rows.length ? (
+    <div><div className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-faint">{it.table.title}</div>
+      <dl className="mt-1 divide-y divide-ink/[0.06]">{it.table.rows.map(([k, v]) => <div key={k} className="flex items-baseline justify-between gap-3 py-1 text-[12.5px]"><dt className="min-w-0 truncate text-ink/80" title={k}>{k}</dt><dd className="shrink-0 font-semibold tabular-nums">{v}</dd></div>)}</dl></div>
+  ) : null;
+  /** desktop left page: the photo, and under it the quick facts and who it suits */
+  const photoPage = (it: BookItem) => {
+    const info = !!(it.facts?.length || it.who?.length), light = !it.who?.length;
+    return (
+      <div className="flex h-full flex-col" style={{ background: "rgb(var(--c-surface))" }}>
+        <div className={info ? (light ? "h-[64%]" : compact ? "h-[46%]" : "h-[50%]") : "h-full"}>{photo(it)}</div>
+        {info && <div className={cn("flex min-h-0 flex-1 flex-col gap-3 overflow-hidden", compact ? "p-4" : "p-5 sm:p-6")}>{facts(it)}{who(it)}</div>}
+      </div>
+    );
+  };
+  const details = (it: BookItem, n: number, full = false) => (
+    <div className={cn("flex h-full flex-col overflow-hidden", compact ? "p-4 sm:p-5" : "p-5 sm:p-7")} style={{ background: "rgb(var(--c-surface))" }}>
+      <div className="flex items-center gap-2.5"><ItemIcon it={it} size={compact ? 30 : 36} /><span className="min-w-0 truncate text-[11px] font-semibold uppercase tracking-[0.14em] text-ai">{c.title}</span>{it.kicker && <span className="ml-auto shrink-0 rounded-full bg-canvas px-2 py-0.5 text-[10.5px] font-semibold text-muted">{it.kicker}</span>}</div>
+      <div className={cn("mt-2.5 font-semibold leading-tight tracking-tight", compact ? "text-[18px] sm:text-[20px]" : "text-[20px] sm:text-[24px]")}>{it.title}</div>
+      {it.tagline && <div className="mt-1 text-[13px] font-medium text-ai">{it.tagline}</div>}
       {it.tags?.length ? <div className="mt-2 flex flex-wrap gap-1">{it.tags.slice(0, 3).map((g) => <span key={g} className="rounded-full bg-ai-soft px-2 py-0.5 text-[11px] font-semibold text-ai">{g}</span>)}</div> : null}
-      <p className="mt-3 line-clamp-5 text-[13.5px] leading-relaxed text-muted">{it.summary}</p>
-      <div className="mt-auto">
+      <div className="no-scrollbar mt-3 min-h-0 flex-1 space-y-2.5 overflow-y-auto pr-1 text-[13px] leading-relaxed">
+        <p className="text-ink/80">{it.summary}</p>
+        {it.measure && <div><div className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-faint">{it.measureTitle ?? "What it measures"}</div><p className="mt-0.5 text-muted">{it.measure}</p></div>}
+        {full && who(it)}
+        {table(it)}
+      </div>
+      {full && it.facts?.length ? <div className="mt-3">{facts(it)}</div> : null}
+      <div className="mt-3">
         <div className="flex items-end justify-between gap-2">
-          <div><div className="text-[28px] font-semibold tracking-tight">{formatMoney(it.price)}</div><div className="text-[11px] text-faint">CAD{it.meta ? ` · ${it.meta}` : ""}</div></div>
+          <div><div className={cn("font-semibold tracking-tight", compact ? "text-[22px]" : "text-[26px]")}>{formatMoney(it.price)}</div><div className="text-[11px] text-faint">CAD{it.meta ? ` · ${it.meta}` : ""}</div></div>
           <span className="text-[10.5px] text-faint">{n}</span>
         </div>
-        <div className="mt-3 flex flex-wrap gap-2" onClick={(e) => e.stopPropagation()}>
+        <div className="mt-2.5 flex flex-wrap gap-2" onClick={(e) => e.stopPropagation()}>
           <a href={it.url} target="_blank" rel="noopener" className="btn-dark h-10 flex-1 justify-center whitespace-nowrap px-4 text-[13.5px]"><Icon name="bag" size={15} />{buyLabel}<span className="max-[400px]:hidden">&nbsp;on {it.store}</span><Icon name="arrow-up-right" size={13} /></a>
           <button onClick={() => ask(`Explain ${it.title} (${it.store}, ${formatMoney(it.price)} CAD) in plain words: what it is, who it suits, and what to check first. ${it.summary}`, { label: `✦ ${it.title}` })} className="btn-ai h-10 px-4 text-[13px]"><XevyoOrb size={18} />Ask SI</button>
         </div>
