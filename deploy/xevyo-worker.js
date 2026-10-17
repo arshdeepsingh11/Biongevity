@@ -38,7 +38,7 @@ export default {
     const up = await fetch(env.XEVYO_UPSTREAM_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: request.headers.get("Accept") || "application/json, text/event-stream", ...(env.XEVYO_API_KEY ? { Authorization: `Bearer ${env.XEVYO_API_KEY}` } : {}) },
-      body,
+      body: toXevyo(body, env.XEVYO_UPSTREAM_URL),
     });
     const headers = new Headers(cors);
     headers.set("Content-Type", up.headers.get("Content-Type") || "application/json");
