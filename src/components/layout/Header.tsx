@@ -145,7 +145,7 @@ export function Header() {
         <div className="float-row mx-auto flex h-[60px] max-w-[1280px] items-center px-3 sm:px-6">
           <AnimatePresence>
             {hidden && (
-              <motion.div key="float-logo" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={SPRING}>
+              <motion.div key="float-logo" className="float-logo transition-opacity" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={SPRING}>
                 <Link href="/" aria-label="Biongevity home" className="pointer-events-auto block rounded-xl p-1 drop-shadow-[0_2px_10px_rgb(255_255_255/.9)] transition-transform hover:scale-[1.04]"><Logo size={24} /></Link>
               </motion.div>
             )}
