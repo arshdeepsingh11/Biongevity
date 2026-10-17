@@ -88,24 +88,30 @@ export function ShopCatalog() {
 
   return (
     <div>
-      <div className="sub-nav sticky z-20 -mx-4 space-y-2 bg-gradient-to-b from-[rgb(var(--c-pearl))] via-[rgb(var(--c-pearl)/.92)] to-transparent px-4 pb-4 pt-2">
-        <div className="no-scrollbar flex gap-1.5 overflow-x-auto">
-          {[{ handle: "all", title: "All tests", icon: "test-tubes" }, ...LAB_COLLECTIONS].map((c) => {
-            const n = c.handle === "all" ? LAB_TESTS.length : LAB_TESTS.filter((t) => t.category === c.handle).length;
-            return (
-              <button key={c.handle} onClick={() => setCat(c.handle)} aria-pressed={cat === c.handle}
-                className={cn("flex shrink-0 items-center gap-1.5 rounded-full py-1.5 pl-1.5 pr-3 text-[12.5px] font-semibold ring-1 transition", cat === c.handle ? "bg-ink text-pearl ring-ink" : "bg-white text-ink ring-ink/[0.07] hover:ring-ai/40")}>
-                <span className="icon-tile h-6 w-6"><Icon name={c.icon} size={12} /></span>{c.title.replace(" & ", " & ")}<span className="opacity-60">{n}</span>
-              </button>
-            );
-          })}
-        </div>
-        <div className="flex flex-wrap items-center gap-1.5">
-          <span className="flex items-center gap-1 text-[11.5px] font-semibold text-ai"><XevyoOrb size={16} />SI match:</span>
-          {GOAL_TAGS.map((g) => <button key={g.id} onClick={() => toggle(g.id)} aria-pressed={goals.includes(g.id)} className={cn("rounded-full px-2.5 py-1 text-[11.5px] font-semibold ring-1 transition", goals.includes(g.id) ? "bg-ai text-on-ai ring-ai" : "bg-white/80 text-muted ring-ink/[0.07] hover:text-ai")}>{g.label}</button>)}
-          <select value={sort} onChange={(e) => setSort(e.target.value as typeof sort)} aria-label="Sort tests" className="ml-auto h-8 rounded-full bg-white px-3 text-[12px] font-semibold outline-none ring-1 ring-ink/[0.07]">
-            <option value="featured">Sort: SI ranking</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option>
-          </select>
+      {/* One glass filter bar: categories on top, Biongevity SI matching + sort below. Slides away while scrolling down. */}
+      <div className="sub-nav sticky z-20 -mx-2 sm:mx-0">
+        <div className="space-y-1.5 rounded-[22px] bg-white/75 p-1.5 shadow-[0_10px_34px_-14px_rgb(var(--c-ink)/.22)] ring-1 ring-ink/[0.07] backdrop-blur-2xl backdrop-saturate-150">
+          <div className="no-scrollbar flex gap-1 overflow-x-auto [mask-image:linear-gradient(90deg,#000_92%,transparent)]" role="toolbar" aria-label="Test categories">
+            {[{ handle: "all", title: "All tests", icon: "test-tubes" }, ...LAB_COLLECTIONS].map((c) => {
+              const n = c.handle === "all" ? LAB_TESTS.length : LAB_TESTS.filter((t) => t.category === c.handle).length;
+              const short = c.title.split(" & ")[0];
+              return (
+                <button key={c.handle} onClick={() => setCat(c.handle)} aria-pressed={cat === c.handle} title={c.title}
+                  className={cn("flex h-9 shrink-0 items-center gap-1.5 rounded-full pl-1 pr-3 text-[12.5px] font-semibold transition", cat === c.handle ? "bg-ai text-on-ai shadow-[0_6px_16px_-6px_rgb(var(--c-ai)/.6)]" : "text-ink/75 hover:bg-ink/[0.04] hover:text-ink")}>
+                  <span className={cn("grid h-7 w-7 place-items-center rounded-full", cat === c.handle ? "bg-white/20" : "icon-tile")}><Icon name={c.icon} size={13} /></span>{short}<span className="tabular-nums opacity-60">{n}</span>
+                </button>
+              );
+            })}
+          </div>
+          <div className="flex items-center gap-1.5 border-t border-ink/[0.06] px-1 pt-1.5">
+            <span className="flex shrink-0 items-center gap-1 text-[11.5px] font-semibold text-ai"><XevyoOrb size={16} /><span className="max-sm:hidden">Match my goals</span></span>
+            <div className="no-scrollbar flex min-w-0 flex-1 gap-1 overflow-x-auto [mask-image:linear-gradient(90deg,#000_90%,transparent)]">
+              {GOAL_TAGS.map((g) => <button key={g.id} onClick={() => toggle(g.id)} aria-pressed={goals.includes(g.id)} className={cn("h-7 shrink-0 rounded-full px-2.5 text-[11.5px] font-semibold ring-1 transition", goals.includes(g.id) ? "bg-ai-soft text-ai ring-ai/40" : "text-muted ring-transparent hover:text-ai")}>{goals.includes(g.id) && "✓ "}{g.label}</button>)}
+            </div>
+            <select value={sort} onChange={(e) => setSort(e.target.value as typeof sort)} aria-label="Sort tests" className="h-7 w-[104px] shrink-0 rounded-full bg-canvas px-2.5 text-[11.5px] font-semibold outline-none ring-1 ring-ink/[0.06]">
+              <option value="featured">SI ranking</option><option value="low">Price ↑</option><option value="high">Price ↓</option>
+            </select>
+          </div>
         </div>
       </div>
 
