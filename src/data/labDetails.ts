@@ -8,3 +8,4 @@ export interface LabDetail { tag: string; about: string; measure: string; who: s
 type Row = [tag: string, about: string, measure: string, who: string[], sample: string, prep: string, results: string, markers: string];
 
 const WB = "Whole Blood", REF = "Referral needed (USA only)", W46 = "4–6 weeks", W23 = "2–3 weeks", W34 = "3–4 weeks", NONE = "No special instructions", NOAB = "No antibiotics in the prior 2 months";
+const PROACTIVE = ["People who want proactive insight into their health", "Anyone discussing specific concerns with their physician"];
