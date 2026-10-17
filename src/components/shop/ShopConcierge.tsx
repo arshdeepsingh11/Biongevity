@@ -34,3 +34,4 @@ const MEANS: [RegExp, string][] = [
   [/gut|bloat|digest|stomach|ibs|constipat/, "Gut"], [/hormon|menopaus|testosterone|libido|thyroid|period/, "Hormones"],
   [/aging|ageing|older|longevity|wrinkle|age well|live longer/, "Ageing well"], [/dna|gene|genetic|family history|inherit/, "My DNA"],
 ];
+const FILLER = new Set(["feel", "feeling", "time", "always", "want", "more", "better", "really", "like", "make", "need", "help", "very", "much", "lot", "lately", "every", "days"]);
