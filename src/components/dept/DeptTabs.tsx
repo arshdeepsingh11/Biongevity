@@ -249,7 +249,7 @@ export function DeptTabs({ id }: { id: string }) {
 
             {tab === "faq" && (
               <div className="space-y-3">
-                {d.faq.map((f, k) => (
+                {[...d.faq, ...(x?.faq ?? [])].map((f, k) => (
                   <details key={f.q} open={k === 0} className="group rounded-2xl bg-white p-5 shadow-card ring-1 ring-ink/[0.06] open:ring-accent/25">
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-[16px] font-semibold">{f.q}<Icon name="plus" size={18} className="shrink-0 text-accent transition-transform group-open:rotate-45" /></summary>
                     <p className="mt-3 text-[15px] leading-relaxed text-muted">{f.a}</p>
