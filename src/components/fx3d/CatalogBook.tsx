@@ -190,10 +190,10 @@ export function CatalogBook({ brand, categories, items, buyLabel = "Buy", compac
         </div>
 
         {/* phones: one constant-size page, photo above details */}
-        <div className="relative aspect-[3/4.6] w-full overflow-hidden rounded-[26px] shadow-lift ring-1 ring-ink/[0.06] sm:hidden" style={{ perspective: "1600px", background: "rgb(var(--c-surface))" }}>
+        <div className="relative aspect-[3/5.2] w-full overflow-hidden rounded-[26px] shadow-lift ring-1 ring-ink/[0.06] sm:hidden" style={{ perspective: "1600px", background: "rgb(var(--c-surface))" }}>
           <div key={`${cat}-${idx}`} className="book-page-in absolute inset-0 flex flex-col">
             {idx === 0 ? <><div className="h-[46%]">{cover()}</div><div className="min-h-0 flex-1">{contents()}</div></>
-              : <><div className="h-[40%]">{photoPage(list[idx - 1])}</div><div className="min-h-0 flex-1">{details(list[idx - 1], idx + 1)}</div></>}
+              : <><div className="h-[30%]">{photo(list[idx - 1])}</div><div className="min-h-0 flex-1">{details(list[idx - 1], idx + 1, true)}</div></>}
           </div>
         </div>
 
