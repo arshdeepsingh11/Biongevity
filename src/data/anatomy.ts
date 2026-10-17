@@ -11,3 +11,4 @@ const HEART_EXT = M("10472481071e4375b8233289c277d411", "Outside the heart", "Ex
 const HEART_INT = M("9f48eaa481cc4a43baeb9e1f03882cff", "Inside the heart", "Internal Human Heart Anatomy", "University of Dundee, CAHID", "anatomy_dundee");
 const LUNGS = M("825a5e22137648bea50c700be7ba34bc", "Lungs & pleura", "The Lungs and Pleura", "theanatomycode", "theanatomycode");
 const BREATH = M("50216e5e7716436c8153ad05a732fecb", "Breathing in motion", "Human Respiratory System Breathing Animation", "Brave.Pixel", "Brave.Pixel");
+const SKIN = M("2c902649de1843e9b2e004a99a9ab923", "Skin layers", "Human skin – integumentary system", "Ebers", "Ebers");
