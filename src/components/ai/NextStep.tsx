@@ -26,7 +26,7 @@ function pick(top: string | undefined): Step[] {
   if (dept) {
     const goal = GOAL_PATHS.find((g) => g.dept === dept.id);
     return [
-      { href: `/contact/?interest=${encodeURIComponent(dept.name)}`, t: `Book ${dept.short}`, d: "A coordinator confirms the right visit.", icon: "calendar" },
+      { href: BOOK_URL, t: `Book ${dept.short}`, d: "Pick a consultation in the Biongevity app.", icon: "calendar", ext: true },
       goal ? { href: "/precision-health/bioaro-labs/#navigator", t: goal.program, d: `Start with ${goal.test}.`, icon: "crown" } : DEFAULTS[0],
       { href: "/tools/#router", t: "Not sure it's the right service?", d: "The specialist router suggests one.", icon: "route" },
     ];
