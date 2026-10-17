@@ -48,8 +48,6 @@ export function FamilyBuilder3D() {
   const [count, setCount] = useState(4);
   const [people, setPeople] = useState<M[]>(() => ORDER.slice(0, 4).map((r, i) => ({ ...blank(r, i), name: ["Mum", "Dad", "Grandpa", "Grandma"][i] ?? "", sex: (["f", "m", "m", "f"] as const)[i], age: [72, 75, 94, 90][i], alive: i < 2, conds: [["diabetes"], ["heart", "bp"], ["heart"], ["bones"]][i], onset: [58, 52, 60, 78][i] })));
   const [open, setOpen] = useState<string | null>(null);
-  const [rot, setRot] = useState({ x: 16, y: -8 });
-  const drag = useRef<{ x: number; y: number } | null>(null);
 
   const setN = (n: number) => {
     const k = Math.max(1, Math.min(16, n)); setCount(k);
