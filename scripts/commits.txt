@@ -1,71 +1,27 @@
-feat(labs): BioAro shop badges, descriptors, photos and icons|src/data/labs.ts@1
-feat(labs): every test carries its product photo|src/data/labs.ts
-feat(3d): import state for photo fallback|src/components/fx3d/TestFace.tsx@2
-feat(3d): remember failed photos|src/components/fx3d/TestFace.tsx@3
-feat(3d): BioAro product photos on every 3D test card|src/components/fx3d/TestFace.tsx
-feat(labs): import shop metadata|src/components/labs/ShopCatalog.tsx@4
-feat(labs): real BioAro test icons|src/components/labs/ShopCatalog.tsx@5
-feat(labs): BioAro product photos with fallback art|src/components/labs/ShopCatalog.tsx@6
-feat(labs): read badge and descriptors per test|src/components/labs/ShopCatalog.tsx@7
-feat(labs): icon and badge on each card|src/components/labs/ShopCatalog.tsx@8
-feat(labs): descriptor tags on each card|src/components/labs/ShopCatalog.tsx
-fix(hero): video text uses the site font and a film behind real letters|src/components/fx/VideoText.tsx
-refactor(hero): imports|src/components/home/HeroExtras.tsx@9
-feat(hero): rotating headline with the life-cycle film inside guided by SI|src/components/home/HeroExtras.tsx
-refactor(hero): import the new headline|src/components/home/AIHero.tsx@10
-feat(hero): changing first line and guided by SI in video|src/components/home/AIHero.tsx@11
-fix(hero): remove the broken every age block|src/components/home/AIHero.tsx
-refactor(media): drop the unused life film slot|src/config/media.ts
-feat(anatomy): add AnatomyModel (anatomy)|src/data/anatomy.ts@12
-feat(anatomy): add M|src/data/anatomy.ts@13
-feat(anatomy): add HEART_EXT|src/data/anatomy.ts@14
-feat(anatomy): add HEART_INT|src/data/anatomy.ts@15
-feat(anatomy): add LUNGS|src/data/anatomy.ts@16
-feat(anatomy): add BREATH|src/data/anatomy.ts@17
-feat(anatomy): add SKIN|src/data/anatomy.ts@18
-feat(anatomy): add BRAIN|src/data/anatomy.ts@19
-feat(anatomy): add GUT|src/data/anatomy.ts@20
-feat(anatomy): add LIVER|src/data/anatomy.ts@21
-feat(anatomy): add THYROID|src/data/anatomy.ts@22
-feat(anatomy): add KIDNEYS|src/data/anatomy.ts@23
-feat(anatomy): add TOOTH|src/data/anatomy.ts@24
-feat(anatomy): add KNEE|src/data/anatomy.ts@25
-feat(anatomy): add FEMALE|src/data/anatomy.ts@26
-feat(anatomy): add PROSTATE|src/data/anatomy.ts@27
-feat(anatomy): add ANATOMY|src/data/anatomy.ts@28
-feat(anatomy): add sketchfabEmbed|src/data/anatomy.ts
-feat(dept): packages, programs and FAQs in department data|src/data/deptExtra.ts@29
-content(cardiology): heart check, executive health, genomics and the hypertension program|src/data/deptExtra.ts@30
-content(heart-failure): follow-up program|src/data/deptExtra.ts@31
-content(respiratory): sleep apnea pathway|src/data/deptExtra.ts@32
-content(skin): precision skin plan|src/data/deptExtra.ts@33
-content(gut): BioGut pathway|src/data/deptExtra.ts@34
-content(endocrinology): metabolic and hormone package|src/data/deptExtra.ts@35
-content(internal-medicine): executive health and longevity baseline|src/data/deptExtra.ts
-feat(anatomy): add AnatomyStudio|src/components/body/AnatomyStudio.tsx
-fix(3d): services ring fits inside tabs|src/components/fx3d/Showcases.tsx
-feat(dept): imports for anatomy, offers and programs tabs|src/components/dept/DeptTabs.tsx@36
-feat(dept): eleven tabs, shown when a department has the content|src/components/dept/DeptTabs.tsx@37
-feat(dept): 3D anatomy, what we offer, programs, connected care and sources tabs|src/components/dept/DeptTabs.tsx@38
-feat(dept): services ring inside Tests and services|src/components/dept/DeptTabs.tsx@39
-fix(dept): close the services wrapper|src/components/dept/DeptTabs.tsx@40
-feat(dept): department FAQs include partner clinic answers|src/components/dept/DeptTabs.tsx@41
-feat(dept): anatomy tab uses the full width|src/components/dept/DeptTabs.tsx
-refactor(dept): content moves into the department tabs|src/app/precision-health/[dept]/page.tsx@42
-refactor(dept): one tabbed section holds 3D anatomy, offers, programs and more|src/app/precision-health/[dept]/page.tsx
-feat(visit): smooth human figures instead of blocks|src/components/clinic3d/Visit3D.tsx@43
-feat(visit): staff and patient drawn as people|src/components/clinic3d/Visit3D.tsx@44
-fix(visit): floors draw first so people stand on them|src/components/clinic3d/Visit3D.tsx
-feat(clinic): imports for the 3D visit and SI prep|src/components/clinic/ClinicTabs.tsx@45
-feat(clinic): Before you come checklist and Your day timeline|src/components/clinic/ClinicTabs.tsx@46
-feat(clinic): Visit in 3D, Your day and Before you come tabs|src/components/clinic/ClinicTabs.tsx@47
-fix(clinic): active tab label is readable in Olive|src/components/clinic/ClinicTabs.tsx
-refactor(clinic): 3D visit moves into the clinic tabs|src/app/clinic/[slug]/page.tsx@48
-refactor(clinic): drop the separate 3D visit section|src/app/clinic/[slug]/page.tsx
-fix(theme): readable text on light feature panels|src/app/globals.css@49
-feat(family): flowing light along family bloodlines|src/app/globals.css
-refactor(family): remove the old tilt state|src/components/family/FamilyBuilder3D.tsx@50
-fix(family): generations spaced evenly|src/components/family/FamilyBuilder3D.tsx@51
-feat(family): new live tree stage|src/components/family/FamilyBuilder3D.tsx@52
-feat(family): glass orbs with age rings, glowing bloodlines and lineage highlight|src/components/family/FamilyBuilder3D.tsx
+refactor(tabs): imports|src/components/ui/Tabs.tsx@1
+fix(tabs): glass tab bar with fades, arrows and active tab kept in view|src/components/ui/Tabs.tsx
+feat(header): search knows when it floats|src/components/layout/Header.tsx@2
+fix(header): search grows without covering the logo; clean focus ring|src/components/layout/Header.tsx@3
+fix(header): no extra outline inside the search field|src/components/layout/Header.tsx@4
+feat(header): tell tab bars whether the header is shown|src/components/layout/Header.tsx@5
+fix(header): other buttons fade while searching|src/components/layout/Header.tsx@6
+refactor(header): keep room for the search in the bar|src/components/layout/Header.tsx@7
+fix(header): expandable search stays in the corner when the header hides|src/components/layout/Header.tsx
+fix(header): floating row lines up with the header in Olive|src/app/globals.css@8
+fix(tabs): section tab bars sit under the header and follow it when it hides|src/app/globals.css
+refactor(dept): use the shared tab bar|src/components/dept/DeptTabs.tsx@9
+fix(dept): every tab reachable, bar never covers the 3D model|src/components/dept/DeptTabs.tsx
+refactor(clinic): use the shared tab bar|src/components/clinic/ClinicTabs.tsx@10
+fix(clinic): solid scrollable tab bar instead of see-through sticky pills|src/components/clinic/ClinicTabs.tsx
+refactor(hero): video text imports|src/components/fx/VideoText.tsx@11
+docs(hero): video plays only inside the letters|src/components/fx/VideoText.tsx@12
+fix(hero): clip the film to the real letters in the site font|src/components/fx/VideoText.tsx@13
+fix(hero): cover the letters and start the film mid-way|src/components/fx/VideoText.tsx@14
+fix(hero): no background box around guided by SI|src/components/fx/VideoText.tsx
+fix(labs): category bar follows the header|src/components/labs/ShopCatalog.tsx
+feat(hero): start the life film from the middle|src/components/home/HeroExtras.tsx@15
+fix(hero): rotating line fits phone screens|src/components/home/HeroExtras.tsx@16
+fix(hero): guided by SI uses the clipped video text|src/components/home/HeroExtras.tsx
+fix(visit): floor label no longer collides with camera switch on phones|src/components/clinic3d/Visit3D.tsx
+fix(home): member card stacks on phones|src/components/home/AIEverywhere.tsx
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt
