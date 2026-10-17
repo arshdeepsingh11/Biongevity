@@ -104,7 +104,6 @@ export function AIHero() {
         </div>
 
         <HeroStats />
-        <LifeFilm />
       </div>
     </section>
   );
