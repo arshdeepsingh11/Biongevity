@@ -4,3 +4,5 @@
  * Photos are served by BioAro Drugs' Shopify CDN; each card links to the real product page.
  */
 import type { IconName } from "@/components/ui/icons";
+
+const STORE = "https://bioarodrugs.com/us";
