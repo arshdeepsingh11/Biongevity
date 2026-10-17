@@ -6,6 +6,7 @@ import { CLINICS, OFFICES, VIRTUAL, UAE } from "@/data/clinic";
 import { CARE_PHASES, DEPARTMENTS, PACKAGES } from "@/data/health";
 import { STREAMS } from "@/data/stats";
 import { Icon } from "@/components/ui/Icon";
+import { TabBar } from "@/components/ui/Tabs";
 import { LineChart, Radar, Stat } from "@/components/charts/Charts";
 import { FilmPlayer } from "@/components/media/FilmPlayer";
 import { MagicCard } from "@/components/fx/MagicCard";
