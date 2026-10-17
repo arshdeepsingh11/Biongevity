@@ -1,4 +1,5 @@
 "use client";
+import { BOOK_URL } from "@/lib/env";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { DiaTextReveal } from "@/components/fx/DiaTextReveal";
