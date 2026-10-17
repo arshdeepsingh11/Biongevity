@@ -239,7 +239,9 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
   box-shadow: inset 0 1px 0 rgb(255 255 255 / .85), inset 0 -6px 12px rgb(var(--c-ai) / .06), 0 0 0 1px rgb(var(--c-ai) / .14), 0 10px 24px -8px rgb(var(--c-ai) / .35); }
 .icon-tile::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(160deg, rgb(255 255 255 / .9), rgb(var(--c-ai-2) / .35)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
 
-@keyframes vtShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+.fam-flow { animation: famFlow 2.6s linear infinite; }
+@keyframes famFlow { from { stroke-dashoffset: 22.5; } to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .fam-flow { animation: none; } }
 
 /* ───── 3D components ───── */
 .coin-face { background: radial-gradient(120% 120% at 30% 20%, rgb(255 255 255 / .95), rgb(var(--c-ai-soft) / .9) 55%, rgb(var(--c-ai-hi) / .55));
