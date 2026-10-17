@@ -9,6 +9,15 @@
  *   Set ALLOWED_ORIGINS in wrangler.toml [vars], e.g. "https://biongevity.com,https://www.biongevity.com"
  *   npx wrangler deploy  → then set NEXT_PUBLIC_XEVYO_URL to the Worker URL and rebuild the site.
  */
+/** Xevyo's API is OpenAI-style: forward only the fields it expects. */
+const toXevyo = (raw, upstream) => {
+  if (!/\/chat\/completions\/?$/.test(upstream)) return raw;
+  try {
+    const j = JSON.parse(raw);
+    return JSON.stringify({ model: j.model || "xevyo", messages: j.messages, stream: j.stream !== false, assistant_name: j.assistant_name || "Biongevity SI", company_name: j.company_name || "Biongevity" });
+  } catch { return raw; }
+};
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
