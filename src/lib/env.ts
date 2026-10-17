@@ -13,5 +13,8 @@ export const env = {
   appUrl: (process.env.NEXT_PUBLIC_APP_URL || "https://app.biongevity.com").replace(/\/$/, ""),
 };
 
+/** Book a consultation — the member app's consultation categories (one place for every booking). */
+export const BOOK_URL = `${env.appUrl}/en/patient/cons-categories`;
+
 export const xevyoEnabled = Boolean(env.xevyoUrl);
 export const shopifyEnabled = Boolean(env.shopifyDomain);
