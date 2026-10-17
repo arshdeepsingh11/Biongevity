@@ -37,3 +37,17 @@ function smooth(pts: [number, number][]) {
 }
 const RIGHT: [number, number][] = [[108, 62], [111, 76], [128, 82], [146, 90], [154, 104], [157, 140], [161, 182], [166, 222], [170, 246], [165, 256], [157, 248], [151, 222], [145, 186], [139, 148], [134, 168], [131, 204], [137, 236], [137, 290], [133, 350], [129, 404], [134, 424], [114, 428], [111, 400], [109, 340], [105, 282], [100, 262]];
 const BODY = smooth([...RIGHT, ...RIGHT.slice(0, -1).reverse().map(([x, y]) => [200 - x, y] as [number, number])]);
+
+function Ring({ v, size = 92, color, label }: { v: number; size?: number; color: string; label: string }) {
+  const r = size / 2 - 7, L = 2 * Math.PI * r;
+  return (
+    <div className="relative grid place-items-center" style={{ width: size, height: size }}>
+      <svg width={size} height={size} className="-rotate-90">
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(255,255,255,.08)" strokeWidth="7" />
+        <motion.circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth="7" strokeLinecap="round" strokeDasharray={L}
+          initial={{ strokeDashoffset: L }} whileInView={{ strokeDashoffset: L * (1 - v / 100) }} viewport={{ once: true }} transition={{ duration: 1.4, ease: "easeOut" }} style={{ filter: `drop-shadow(0 0 6px ${color})` }} />
+      </svg>
+      <div className="absolute text-center"><div className="text-[24px] font-semibold leading-none" style={{ color: C.text }}>{v}</div><div className="mt-1 text-[9.5px] uppercase tracking-[0.14em]" style={{ color: C.dim }}>{label}</div></div>
+    </div>
+  );
+}
