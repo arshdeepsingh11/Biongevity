@@ -26,7 +26,7 @@ export function AIEverywhere() {
           <span className="relative mt-auto inline-flex items-center gap-1.5 pt-6 text-[14px] font-semibold text-ai">{c.cta}<Icon name="arrow-right" size={15} className="transition-transform group-hover:translate-x-0.5" /></span>
         </Link>
       ))}
-      <a href="/twin/" className="card group flex flex-wrap items-center gap-4 p-5 lg:col-span-2">
+      <a href="/app/#twin" className="card group flex flex-wrap items-center gap-4 p-5 lg:col-span-2">
         <span className="grid h-12 w-12 place-items-center icon-tile"><Icon name="user" size={22} /></span>
         <span className="min-w-[180px] flex-1"><span className="block text-[17px] font-semibold">Already a member?</span><span className="block text-[13.5px] text-muted">Take the 3D tour of your Digital Twin, then open it in the Biongevity app.</span></span>
         <span className="btn-dark h-10 px-4 text-[14px] max-sm:w-full max-sm:justify-center">Open my twin<Icon name="arrow-up-right" size={14} /></span>
