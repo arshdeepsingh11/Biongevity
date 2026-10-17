@@ -63,3 +63,4 @@ const ROWS: Record<string, Row> = {
 export const LAB_DETAILS: Record<string, LabDetail> = Object.fromEntries(
   Object.entries(ROWS).map(([k, [tag, about, measure, who, sample, prep, results, markers]]) => [k, { tag, about, measure, who, sample, prep, results, markers }]),
 );
+export const labDetail = (title: string): LabDetail | undefined => LAB_DETAILS[title];
