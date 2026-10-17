@@ -144,6 +144,7 @@ export const LAB_TESTS: CatalogProduct[] = ROWS.map(([title, price, category, be
   bestFor,
   summary: bestFor ?? LAB_COLLECTIONS.find((c) => c.handle === category)?.description ?? "",
   icon: colIcon(category),
+  image: shopHero(SLUGS[title]),
 }));
 
 export const labCategoryUrl = (c: string) => `${LABS_URL}/explore-tests/${c}`;
