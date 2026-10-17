@@ -195,16 +195,7 @@ export function ClinicTabs({ id }: { id: string }) {
   const cur = tabs.find((t) => t.id === tab) ?? tabs[0];
   return (
     <div>
-      <div className="sticky top-[calc(64px+var(--safe-top))] z-20 -mx-4 bg-white/80 px-4 py-2 backdrop-blur-xl sm:mx-0 sm:rounded-full sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
-        <div role="tablist" className="no-scrollbar flex gap-1 overflow-x-auto rounded-full bg-white p-1 shadow-card ring-1 ring-ink/[0.06] sm:inline-flex">
-          {tabs.map((t) => (
-            <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => go(t.id)} className="relative flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2.5 text-[13.5px] font-semibold">
-              {tab === t.id && <motion.span layoutId={`ct-${id}`} className="absolute inset-0 rounded-full bg-ai" transition={{ type: "spring", stiffness: 400, damping: 34 }} />}
-              <span className={`relative flex items-center gap-1.5 ${tab === t.id ? "text-on-ai" : "text-muted hover:text-ink"}`}><Icon name={t.icon} size={15} />{t.label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
+      <TabBar tabs={tabs} active={tab} onChange={(t) => go(t as never)} id={`ct-${id}`} />
       <AnimatePresence mode="wait">
         <motion.div key={cur.id} role="tabpanel" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.22 }} className="mt-8">{cur.body}</motion.div>
       </AnimatePresence>
