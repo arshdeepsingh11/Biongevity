@@ -1,27 +1,89 @@
-refactor(tabs): imports|src/components/ui/Tabs.tsx@1
-fix(tabs): glass tab bar with fades, arrows and active tab kept in view|src/components/ui/Tabs.tsx
-feat(header): search knows when it floats|src/components/layout/Header.tsx@2
-fix(header): search grows without covering the logo; clean focus ring|src/components/layout/Header.tsx@3
-fix(header): no extra outline inside the search field|src/components/layout/Header.tsx@4
-feat(header): tell tab bars whether the header is shown|src/components/layout/Header.tsx@5
-fix(header): other buttons fade while searching|src/components/layout/Header.tsx@6
-refactor(header): keep room for the search in the bar|src/components/layout/Header.tsx@7
-fix(header): expandable search stays in the corner when the header hides|src/components/layout/Header.tsx
-fix(header): floating row lines up with the header in Olive|src/app/globals.css@8
-fix(tabs): section tab bars sit under the header and follow it when it hides|src/app/globals.css
-refactor(dept): use the shared tab bar|src/components/dept/DeptTabs.tsx@9
-fix(dept): every tab reachable, bar never covers the 3D model|src/components/dept/DeptTabs.tsx
-refactor(clinic): use the shared tab bar|src/components/clinic/ClinicTabs.tsx@10
-fix(clinic): solid scrollable tab bar instead of see-through sticky pills|src/components/clinic/ClinicTabs.tsx
-refactor(hero): video text imports|src/components/fx/VideoText.tsx@11
-docs(hero): video plays only inside the letters|src/components/fx/VideoText.tsx@12
-fix(hero): clip the film to the real letters in the site font|src/components/fx/VideoText.tsx@13
-fix(hero): cover the letters and start the film mid-way|src/components/fx/VideoText.tsx@14
-fix(hero): no background box around guided by SI|src/components/fx/VideoText.tsx
-fix(labs): category bar follows the header|src/components/labs/ShopCatalog.tsx
-feat(hero): start the life film from the middle|src/components/home/HeroExtras.tsx@15
-fix(hero): rotating line fits phone screens|src/components/home/HeroExtras.tsx@16
-fix(hero): guided by SI uses the clipped video text|src/components/home/HeroExtras.tsx
-fix(visit): floor label no longer collides with camera switch on phones|src/components/clinic3d/Visit3D.tsx
-fix(home): member card stacks on phones|src/components/home/AIEverywhere.tsx
+feat(booking): one booking link to the member app consultation categories|src/lib/env.ts
+refactor(header): booking link import|src/components/layout/Header.tsx@1
+feat(header): Book consult opens the app booking|src/components/layout/Header.tsx
+refactor(home): booking link import|src/components/home/HomeSections.tsx@2
+feat(home): Book a consultation opens the app booking|src/components/home/HomeSections.tsx
+refactor(dept): booking link import|src/components/dept/DeptTabs.tsx@3
+feat(dept): Book button opens the app booking|src/components/dept/DeptTabs.tsx
+refactor(dept): booking link import on department pages|src/app/precision-health/[dept]/page.tsx@4
+feat(dept): hero Book opens the app booking; short Ask SI label on phones|src/app/precision-health/[dept]/page.tsx
+refactor(clinic): booking link import|src/app/clinic/[slug]/page.tsx@5
+feat(clinic): Book a visit opens the app booking|src/app/clinic/[slug]/page.tsx
+refactor(tools): booking link import|src/components/tools/SpecialistRouter.tsx@6
+feat(tools): router Book button opens the app booking|src/components/tools/SpecialistRouter.tsx
+refactor(si): booking link import in next steps|src/components/ai/NextStep.tsx@7
+feat(si): next step Book opens the app booking|src/components/ai/NextStep.tsx@8
+feat(si): shop next step books in the app|src/components/ai/NextStep.tsx@9
+fix(si): external next steps open in a new tab|src/components/ai/NextStep.tsx
+fix(tabs): section bars slide away on scroll down and return on scroll up|src/app/globals.css@10
+feat(book): page entrance on phones|src/app/globals.css@11
+feat(app): twin scan line|src/app/globals.css
+feat(labs): one glass filter bar with categories, goal match and sort|src/components/labs/ShopCatalog.tsx@12
+fix(labs): spacing under the filter bar|src/components/labs/ShopCatalog.tsx
+feat(drugs): add drugShop|src/data/drugShop.ts@13
+feat(drugs): add STORE|src/data/drugShop.ts@14
+feat(drugs): add CDN|src/data/drugShop.ts@15
+feat(drugs): add ShopFormula|src/data/drugShop.ts@16
+feat(drugs): add DRUG_SHOP_CATEGORIES|src/data/drugShop.ts@17
+feat(drugs): add DRUG_SHOP|src/data/drugShop.ts@18
+feat(drugs): add drugShopUrl|src/data/drugShop.ts@19
+feat(drugs): add drugImage|src/data/drugShop.ts
+refactor(drugs): product photo lookup|src/data/drugs.ts@20
+feat(drugs): real product photos from bioarodrugs.com|src/data/drugs.ts
+feat(book): add BookCategory (CatalogBook)|src/components/fx3d/CatalogBook.tsx@21
+feat(book): add BookItem|src/components/fx3d/CatalogBook.tsx@22
+feat(book): add Photo|src/components/fx3d/CatalogBook.tsx@23
+feat(book): add ItemIcon|src/components/fx3d/CatalogBook.tsx@24
+feat(book): add CatalogBook|src/components/fx3d/CatalogBook.tsx
+feat(labs): test book replaces the 3D modes|src/components/fx3d/TestsIn3D.tsx
+refactor(3d): booking link import|src/components/fx3d/Showcases.tsx@25
+refactor(3d): formulas use the catalogue book|src/components/fx3d/Showcases.tsx@26
+chore(3d): drop unused imports|src/components/fx3d/Showcases.tsx@27
+feat(dept): Book this opens the app booking|src/components/fx3d/Showcases.tsx@28
+feat(drugs): every formula in one book with real photos and bioarodrugs.com links|src/components/fx3d/Showcases.tsx
+copy(home): every test, in one book|src/app/page.tsx
+copy(drugs): every formula, in one book|src/app/precision-health/bioaro-drugs/page.tsx
+copy(labs): every test, in one book|src/app/precision-health/bioaro-labs/page.tsx
+perf(anatomy): preview image for every 3D model|src/data/anatomy.ts
+refactor(anatomy): imports|src/components/body/AnatomyStudio.tsx@29
+perf(anatomy): remember opened models|src/components/body/AnatomyStudio.tsx@30
+perf(anatomy): preconnect to the 3D viewer|src/components/body/AnatomyStudio.tsx@31
+perf(anatomy): instant preview, viewer fades in, models stay loaded|src/components/body/AnatomyStudio.tsx
+feat(shop): add GOALS (ShopConcierge)|src/components/shop/ShopConcierge.tsx@32
+feat(shop): add browse|src/components/shop/ShopConcierge.tsx@33
+feat(shop): add MEANS|src/components/shop/ShopConcierge.tsx@34
+feat(shop): add FILLER|src/components/shop/ShopConcierge.tsx@35
+feat(shop): add expand|src/components/shop/ShopConcierge.tsx@36
+feat(shop): add hay|src/components/shop/ShopConcierge.tsx@37
+feat(shop): add pick|src/components/shop/ShopConcierge.tsx@38
+feat(shop): add ShopConcierge|src/components/shop/ShopConcierge.tsx@39
+feat(shop): add ShopKinds|src/components/shop/ShopConcierge.tsx
+refactor(shop): imports|src/components/shop/Catalogue.tsx@40
+feat(shop): catalogue follows the concierge and kind tiles|src/components/shop/Catalogue.tsx
+chore(shop): drop unused import|src/app/shop/page.tsx@41
+refactor(shop): concierge import|src/app/shop/page.tsx@42
+copy(shop): three steps from goal to plan|src/app/shop/page.tsx@43
+feat(shop): goal-first hero with the shop concierge|src/app/shop/page.tsx@44
+copy(shop): renumber depth section|src/app/shop/page.tsx@45
+copy(shop): renumber browse section|src/app/shop/page.tsx@46
+copy(shop): renumber after-you-buy section|src/app/shop/page.tsx
+feat(dock): optional app-icon colours|src/components/fx/AppleDock.tsx@47
+feat(dock): glossy app icons|src/components/fx/AppleDock.tsx
+refactor(app): imports|src/components/pages/AppDock.tsx@48
+feat(app): app icon colours|src/components/pages/AppDock.tsx@49
+feat(app): real app icons in the dock, sized for phones|src/components/pages/AppDock.tsx
+feat(app): add smooth (AppTwin)|src/components/pages/AppTwin.tsx@50
+feat(app): add RIGHT|src/components/pages/AppTwin.tsx@51
+feat(app): add BODY|src/components/pages/AppTwin.tsx@52
+feat(app): add Ring|src/components/pages/AppTwin.tsx@53
+feat(app): add Spark|src/components/pages/AppTwin.tsx@54
+feat(app): add Tile|src/components/pages/AppTwin.tsx@55
+feat(app): add AppTwin|src/components/pages/AppTwin.tsx@56
+feat(app): add AppHowItWorks|src/components/pages/AppTwin.tsx
+refactor(app): twin imports|src/app/app/page.tsx@57
+feat(app): inside the app and how it works|src/app/app/page.tsx
+feat(contact): add ContactFlow|src/components/pages/ContactFlow.tsx
+refactor(contact): imports|src/app/contact/page.tsx@58
+feat(contact): book in the app, route graph and offices|src/app/contact/page.tsx@59
+fix(contact): close the page fragment|src/app/contact/page.tsx
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt

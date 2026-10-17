@@ -97,6 +97,7 @@ src/components/fx/WorldMap.tsx
 src/components/fx3d/BeamCircle.tsx
 src/components/fx3d/Carousel3D.tsx
 src/components/fx3d/CascadeSlider.tsx
+src/components/fx3d/CatalogBook.tsx
 src/components/fx3d/GlassCoinCarousel.tsx
 src/components/fx3d/HoverGallery3D.tsx
 src/components/fx3d/MagneticCursor.tsx
@@ -127,7 +128,9 @@ src/components/layout/SparkleNav.tsx
 src/components/media/FilmPlayer.tsx
 src/components/media/Stories.tsx
 src/components/pages/AppDock.tsx
+src/components/pages/AppTwin.tsx
 src/components/pages/AskButton.tsx
+src/components/pages/ContactFlow.tsx
 src/components/pages/ContactForm.tsx
 src/components/pages/Dashboard.tsx
 src/components/pages/JournalList.tsx
@@ -144,6 +147,7 @@ src/components/shop/Catalogue.tsx
 src/components/shop/FormulasTab.tsx
 src/components/shop/Ladder.tsx
 src/components/shop/PlanStudio.tsx
+src/components/shop/ShopConcierge.tsx
 src/components/shop/TrustStrip.tsx
 src/components/theme/ThemeProvider.tsx
 src/components/theme/ThemeSwitcher.tsx
@@ -171,6 +175,7 @@ src/data/dashboard.ts
 src/data/departments.ts
 src/data/deptExtra.ts
 src/data/discover.ts
+src/data/drugShop.ts
 src/data/drugs.ts
 src/data/evidence.ts
 src/data/family.ts
