@@ -15,3 +15,5 @@ export const metadata: Metadata = {
   description: "Create your Biongevity account: your Digital Twin, results, personal plan, AI coach, consultations and family sharing in one patient app.",
   alternates: { canonical: "/join/" },
 };
+
+const SIGNUP = `${env.appUrl}/en/auth/signup`;
