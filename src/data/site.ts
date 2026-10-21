@@ -6,7 +6,7 @@ export const SITE = {
   tagline: "AI-guided longevity and healthspan care",
   parent: "BioAro",
   description:
-    "AI-guided longevity and precision health for adults 40–65 and their families: Biongevity SI, a longitudinal healthspan platform, cardiology with onsite exercise stress echo, internal medicine, endocrinology, whole genome sequencing, microbiome and biomarker testing, virtual care and AI-guided plans — Calgary, Dubai and Almelo.",
+    "AI-guided longevity and precision health for more good years — for you and your family: Biongevity SI, a longitudinal healthspan platform, cardiology with onsite exercise stress echo, internal medicine, endocrinology, whole genome sequencing, microbiome and biomarker testing, virtual care and AI-guided plans — Calgary, Dubai and Almelo.",
   url: "https://biongevity.com",
 };
 
