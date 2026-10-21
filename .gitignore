@@ -10,3 +10,5 @@ android
 .DS_Store
 scripts/stages/
 scripts/.final/
+.env.production
+.env*.local
