@@ -11,6 +11,7 @@ src/app/family/page.tsx
 src/app/globals.css
 src/app/icon.svg
 src/app/insights/page.tsx
+src/app/join/page.tsx
 src/app/layout.tsx
 src/app/life/page.tsx
 src/app/login/page.tsx
@@ -127,6 +128,7 @@ src/components/layout/Header.tsx
 src/components/layout/SparkleNav.tsx
 src/components/media/FilmPlayer.tsx
 src/components/media/Stories.tsx
+src/components/pages/AboutParts.tsx
 src/components/pages/AppDock.tsx
 src/components/pages/AppTwin.tsx
 src/components/pages/AskButton.tsx

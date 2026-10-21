@@ -1,15 +1,32 @@
-fix(si): send Xevyo's own request shape to its chat completions API|src/lib/xevyo.ts@1
-fix(si): ask for a streamed answer|src/lib/xevyo.ts@2
-fix(si): clearer setup message and error details|src/lib/xevyo.ts@3
-fix(si): parse streamed tokens across chunk boundaries|src/lib/xevyo.ts@4
-fix(si): keep partial stream lines for the next chunk|src/lib/xevyo.ts@5
-fix(si): flush the last streamed line|src/lib/xevyo.ts
-docs(si): the Xevyo API address|.env.example@6
-docs(si): default upstream for the proxy|.env.example@7
-docs(si): default model name|.env.example
-fix(si): worker sends Xevyo's request shape|deploy/xevyo-worker.js@8
-fix(si): worker forwards the cleaned request|deploy/xevyo-worker.js
-docs(si): proxy upstream example|docs/XEVYO_PROXY.md
-fix(nav): drop the Digital Twin item; it lives in the App page|src/data/site.ts
-fix(si): local proxy sends Xevyo's request shape|scripts/xevyo-proxy.mjs
+feat(about): add EcosystemOrbit (AboutParts)|src/components/pages/AboutParts.tsx@1
+feat(about): add ProtocolLoop|src/components/pages/AboutParts.tsx@2
+feat(about): add DataStack|src/components/pages/AboutParts.tsx
+feat(join): add metadata (page)|src/app/join/page.tsx@3
+feat(join): add SIGNUP|src/app/join/page.tsx@4
+feat(join): add PATIENT|src/app/join/page.tsx@5
+feat(join): add LOGIN|src/app/join/page.tsx@6
+feat(join): add GET|src/app/join/page.tsx@7
+feat(join): add STEPS|src/app/join/page.tsx@8
+feat(join): add JoinPage|src/app/join/page.tsx
+feat(header): Join opens the join page|src/components/layout/Header.tsx
+copy(si): no age range in section questions|src/components/ai/AskAboutChip.tsx
+copy(home): question list note|src/components/home/AIHero.tsx@9
+copy(home): hero lede about the goal, not an age range|src/components/home/AIHero.tsx@10
+feat(home): About us button in the hero|src/components/home/AIHero.tsx
+copy(seo): drop the age range from keywords|src/app/layout.tsx
+copy(si): Biongevity SI describes the goal, not an age range|src/lib/xevyo.ts
+feat(deploy): add .env.production|.env.production.example
+chore: keep production env files out of git|.gitignore
+feat(deploy): add wrangler|deploy/wrangler.toml
+feat(docs): add DEPLOY|docs/DEPLOY.md
+refactor(about): imports|src/app/about/page.tsx@11
+feat(about): hero, who we are, mission, vision and leadership|src/app/about/page.tsx@12
+feat(about): what we do, how we do it, four questions, data layers, principles and CTA|src/app/about/page.tsx
+feat(seo): add the join page to the sitemap|src/app/sitemap.ts
+copy(seo): site description without an age range|src/data/site.ts@13
+copy(nav): About describes who we are, what we do and how|src/data/site.ts
+feat(si): site index knows the join page|src/lib/siteIndex.ts
+copy(si): no age range in chart questions|src/components/charts/AICharts.tsx
+copy(si): no age range in evidence questions|src/components/charts/EvidenceChart.tsx
+copy(si): no age range in department questions|src/components/home/DeptIntelligence.tsx
 chore(scripts): commit plan and manifest|scripts/commits.txt scripts/manifest.txt
