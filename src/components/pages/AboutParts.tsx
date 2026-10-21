@@ -139,3 +139,38 @@ const LAYERS = [
   { t: "Wearables", d: "Sleep, HRV, heart rate, steps", icon: "wave" },
   { t: "Clinic & lifestyle", d: "Visits, plans and what changed", icon: "stethoscope" },
 ] as const;
+
+export function DataStack() {
+  const [open, setOpen] = useState(false);
+  const [hi, setHi] = useState<number | null>(null);
+  return (
+    <div className="grid items-center gap-10 lg:grid-cols-2">
+      <div className="relative mx-auto h-[360px] w-full max-w-[460px] overflow-x-clip sm:h-[420px]" style={{ perspective: "1400px" }} onMouseEnter={() => setOpen(true)} onMouseLeave={() => { setOpen(false); setHi(null); }} onClick={() => setOpen((o) => !o)}>
+        <div className="absolute inset-0" style={{ transformStyle: "preserve-3d", transform: "rotateX(58deg) rotateZ(-38deg)" }}>
+          {LAYERS.map((l, k) => {
+            const z = (LAYERS.length - 1 - k) * (open ? 46 : 22);
+            return (
+              <div key={l.t} onMouseEnter={() => setHi(k)}
+                className={cn("absolute left-1/2 top-1/2 flex h-[190px] w-[190px] -translate-x-1/2 -translate-y-1/2 items-end rounded-[26px] p-4 ring-1 backdrop-blur-md transition-all duration-500 sm:h-[220px] sm:w-[220px]", hi === k ? "ring-ai" : "ring-ai/25")}
+                style={{ transform: `translateZ(${z}px)`, background: `linear-gradient(135deg, rgb(var(--c-ai) / ${0.1 + k * 0.06}), rgb(var(--c-surface) / .7))`, boxShadow: "0 30px 40px -30px rgb(0 0 0 / .35)" }}>
+                <span className="flex items-center gap-2 text-[12px] font-semibold text-ai"><Icon name={l.icon} size={16} />{l.t}</span>
+              </div>
+            );
+          })}
+        </div>
+        <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 text-[11.5px] text-faint">Hover or tap to open the layers</div>
+      </div>
+      <div>
+        <ul className="space-y-2">
+          {LAYERS.map((l, k) => (
+            <li key={l.t} onMouseEnter={() => { setOpen(true); setHi(k); }} className={cn("flex items-center gap-3 rounded-2xl p-3 transition", hi === k ? "bg-white/80 shadow-card" : "")}>
+              <span className="icon-tile h-10 w-10"><Icon name={l.icon} size={18} /></span>
+              <span><span className="block text-[15.5px] font-semibold">{l.t}</span><span className="block text-[13px] text-muted">{l.d}</span></span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 text-[14.5px] leading-relaxed text-muted">Each layer is useful alone. Stacked over months and years, they show what no single test can: <b className="text-ink">how your healthspan is changing, why, what can change — and whether it worked.</b></p>
+      </div>
+    </div>
+  );
+}
