@@ -86,7 +86,7 @@ export function DeptIntelligence() {
               <div className="mt-4 grid grid-cols-1 gap-1.5 sm:grid-cols-2">{d.services.slice(0, 4).map((s) => <div key={s.t} className="flex items-center gap-2 rounded-xl bg-canvas px-3 py-2 text-[12.5px] font-medium"><Icon name={s.icon} size={15} className="shrink-0 text-accent" /><span className="truncate">{s.t}</span></div>)}</div>
               <div className="mt-5 flex flex-wrap gap-2">
                 <Link href={`/precision-health/${d.id}/`} className="btn-dark h-10 px-4 text-[14px]">Open {d.short}<Icon name="arrow-right" size={14} /></Link>
-                <button onClick={() => ask(`What does ${d.name} at Biongevity look after, and when should a 40–65-year-old consider it?`, { label: `✦ About ${d.name}` })} className="btn-light h-10 px-4 text-[14px]"><XevyoOrb size={20} />Ask Biongevity SI</button>
+                <button onClick={() => ask(`What does ${d.name} at Biongevity look after, and when should someone consider it?`, { label: `✦ About ${d.name}` })} className="btn-light h-10 px-4 text-[14px]"><XevyoOrb size={20} />Ask Biongevity SI</button>
               </div>
             </div>
             {ev && <div className="rounded-[26px] bg-white p-5 ring-1 ring-ink/[0.07]"><EvidenceChart spec={ev.chart} compact /></div>}
