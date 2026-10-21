@@ -36,6 +36,7 @@ export function buildSiteIndex(): Passage[] {
   add("platform:scores", "Domain scores & Healthspan Index", "/platform/", "Not one opaque score: domain scores plus a transparent Healthspan Index with uncertainty. " + DOMAIN_SCORES.map((s) => `${s.t}: ${s.d}`).join(" "));
   add("platform:roadmap", "Platform roadmap", "/platform/", ROADMAP.map((r) => `${r.k}: ${r.d}`).join(" "));
   add("login", "Sign in to the Biongevity app", "/login/", "Members, clinicians and family members sign in to the Biongevity app at app.biongevity.com to see the digital twin, results, plan and coach.");
+  add("join", "Join Biongevity — the patient app", "/join/", "Create a Biongevity account at app.biongevity.com: Digital Twin, results and reports, a personal plan, the Biongevity SI coach, consultations and permissioned family sharing. Steps: create your account, connect your data, book your baseline.");
 
   add("bioelr", "BioELR — longevity health record for clinics", "/bioelr/", "BioELR is a longevity-focused health record system for clinics, resorts and communities. " + BIOELR_AI.map((a) => `${a.t}: ${a.d}`).join(" "));
   add("bioelr:modules", "BioELR modules", "/bioelr/", BIOELR_MODULES.map((m) => `${m.t}: ${m.d}`).join(" "));
