@@ -46,32 +46,54 @@ const SERVE = [
 export default function AboutPage() {
   return (
     <>
-      <PageHero eyebrow="About Biongevity" title={<>Longevity with <AuroraText>biology.</AuroraText></>} lede={ABOUT.intro} />
-      <Section ai="Mission & vision" className="!pt-0">
-        <div className="container-x grid gap-4 md:grid-cols-2">
-          {[["Our mission", ABOUT.mission, "target"], ["Our vision", ABOUT.vision, "eye"]].map(([t, d, i]) => (
-            <div key={t} data-reveal data-scan className="card p-8">
-              <span className="grid h-12 w-12 place-items-center icon-tile"><Icon name={i} size={22} /></span>
-              <div className="mt-6 text-[24px] font-semibold tracking-tight">{t}</div>
-              <p className="mt-3 text-[17px] leading-relaxed text-muted">{d}</p>
-            </div>
-          ))}
+      <JsonLd data={[breadcrumb([["About", "/about/"]]), { "@context": "https://schema.org", "@type": "Organization", name: "Biongevity", parentOrganization: { "@type": "Organization", name: "BioAro Inc." }, url: "https://biongevity.com", description: ABOUT.intro, founder: { "@type": "Person", name: FOUNDER.name } }]} />
+
+      {/* Hero */}
+      <section data-ai="About Biongevity" className="relative z-[1] overflow-hidden pb-12 pt-[calc(108px+var(--safe-top))] sm:pt-[150px]">
+        <div aria-hidden className="grid-bg absolute inset-0 opacity-60 [mask-image:radial-gradient(70%_60%_at_50%_30%,#000,transparent)]" />
+        <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[960px] max-w-[140vw] -translate-x-1/2 rounded-full bg-ai/15 blur-[120px]" />
+        <div className="container-x relative text-center">
+          <div className="flex justify-center"><AIBadge label="About Biongevity · part of BioAro" /></div>
+          <h1 className="h-display mx-auto mt-6 max-w-[17ch]">We’re building <AuroraText>more good years.</AuroraText></h1>
+          <p className="lede mx-auto mt-5 max-w-[60ch]">Longevity, for us, means healthspan — more years of good health, not just more years. We measure where you are, plan what to change, follow it over time and explain every step in plain words.</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <a href={BOOK_URL} target="_blank" rel="noopener" className="btn-dark h-12 px-6"><Icon name="calendar" size={17} />Book a consultation<Icon name="arrow-up-right" size={14} /></a>
+            <Link href="/join/" className="btn-light h-12 px-6"><Icon name="user" size={16} />Join the app</Link>
+          </div>
+          <div className="mt-5 flex justify-center"><PageSummary /></div>
+          {/* who / what / how jump strip */}
+          <div className="mx-auto mt-12 grid max-w-[880px] gap-3 sm:grid-cols-3">
+            {[["Who we are", "#who", "LogoMark"], ["What we do", "#what", "grid"], ["How we do it", "#how", "route"]].map(([t, h, i]) => (
+              <a key={t} href={h} className="group flex items-center gap-3 rounded-[22px] bg-white/75 p-4 text-left ring-1 ring-ink/[0.06] backdrop-blur-xl transition hover:-translate-y-0.5 hover:ring-ai/30">
+                <span className="icon-tile h-11 w-11">{i === "LogoMark" ? <LogoMark size={22} /> : <Icon name={i} size={20} />}</span>
+                <span className="flex-1 text-[16px] font-semibold">{t}</span>
+                <Icon name="arrow-right" size={16} className="text-ai transition-transform group-hover:translate-x-0.5" />
+              </a>
+            ))}
+          </div>
         </div>
-      </Section>
-      <Section ai="BioAro group" className="!pt-0">
-        <div className="container-x grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {ABOUT_FACTS.map((f) => <div key={f.k} data-reveal className="card p-6"><div className="text-[13px] text-faint">{f.k}</div><div className="mt-2 text-[22px] font-semibold tracking-tight"><TextAnimate animation="blurIn">{f.v}</TextAnimate></div></div>)}
-        </div>
-      </Section>
-      <Section ai="Founder" className="!pt-0">
-        <div className="container-x">
-          <div data-reveal className="card grid items-center gap-8 p-8 md:grid-cols-[auto_1fr]">
-            <span className="grid h-28 w-28 place-items-center rounded-[32px] bg-accent-light"><LogoMark size={64} /></span>
-            <div>
-              <Eyebrow>Leadership</Eyebrow>
-              <div className="mt-2 text-[26px] font-semibold tracking-tight">{FOUNDER.name}</div>
-              <div className="text-[14px] text-muted">{FOUNDER.role}</div>
-              <p className="mt-4 text-[17px] leading-relaxed text-ink/80">Biongevity is part of BioAro — a Calgary-based genomics and precision health group — with clinics and offices in Canada, the UAE and Europe.</p>
+      </section>
+
+      {/* Who we are */}
+      <Section ai="Who we are" id="who" className="scroll-mt-20 !pt-4">
+        <div className="container-x grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
+          <div>
+            <Eyebrow>01 · Who we are</Eyebrow>
+            <h2 className="h-section mt-3 max-w-[20ch]">Doctors, scientists and engineers with one goal.</h2>
+            <p data-reveal className="lede mt-4">{ABOUT.intro}</p>
+            <p className="mt-4 text-[16px] leading-relaxed text-muted">Biongevity is the longevity brand of <b className="text-ink">BioAro Inc.</b>, a Calgary-based genomics and precision-health group. Our family brings clinics, CLIA-registered laboratories, transparent formulas, a member app and BioELR — the longevity-focused health record — together around one person: you.</p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {[["Our mission", ABOUT.mission, "target"], ["Our vision", ABOUT.vision, "eye"]].map(([t, d, i]) => (
+              <div key={t} data-reveal className="rounded-[26px] bg-white/80 p-6 shadow-card ring-1 ring-ink/[0.06] backdrop-blur-xl">
+                <span className="icon-tile h-11 w-11"><Icon name={i} size={20} /></span>
+                <div className="mt-4 text-[19px] font-semibold tracking-tight">{t}</div>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-muted">{d}</p>
+              </div>
+            ))}
+            <div className="flex items-center gap-4 rounded-[26px] bg-white/80 p-5 shadow-card ring-1 ring-ink/[0.06] backdrop-blur-xl sm:col-span-2">
+              <span className="grid h-16 w-16 shrink-0 place-items-center rounded-[20px] bg-ai-soft"><LogoMark size={36} /></span>
+              <div><div className="text-[17px] font-semibold">{FOUNDER.name}</div><div className="text-[13px] text-muted">{FOUNDER.role}</div></div>
             </div>
           </div>
         </div>
