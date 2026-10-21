@@ -1,0 +1,7 @@
+# Cloudflare Worker for Biongevity SI (Xevyo). Secrets are set with `wrangler secret put`, never written here.
+name = "biongevity-si"
+main = "xevyo-worker.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://biongevity.com,https://www.biongevity.com"
