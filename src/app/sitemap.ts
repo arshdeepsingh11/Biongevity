@@ -26,6 +26,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/tools/", 0.8),
     page("/bioelr/", 0.8),
     page("/ai/", 0.6),
-    ...["/life/", "/app/", "/insights/", "/about/", "/contact/"].map((p) => page(p, 0.6)),
+    ...["/life/", "/app/", "/insights/", "/about/", "/join/", "/contact/"].map((p) => page(p, 0.6)),
   ];
 }
