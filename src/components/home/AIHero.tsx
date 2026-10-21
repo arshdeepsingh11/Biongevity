@@ -54,7 +54,7 @@ export function AIHero() {
         <div className="mx-auto max-w-[920px] text-center">
           <div className="flex justify-center"><AIBadge label="Biongevity intelligence · live" /></div>
           <HeroHeadline />
-          <p className="lede mx-auto mt-5 max-w-[62ch]">Biongevity connects your labs, genome, wearables and care team in one record — and Biongevity SI explains it in plain words. Built for adults 40–65 and the families who look after them.</p>
+          <p className="lede mx-auto mt-5 max-w-[62ch]">Biongevity connects your labs, genome, wearables and care team in one record — and Biongevity SI explains it in plain words. Know your baseline, change what can be changed, and add more good years.</p>
         </div>
 
         {/* Ask bar — the AI is the front door */}
