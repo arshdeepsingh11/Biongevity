@@ -16,7 +16,7 @@ export function AIChartFrame({ title, kicker, insight, data, source, children, c
   title: string; kicker?: string; insight?: ReactNode; data?: unknown; source?: string; children: ReactNode; className?: string; illustrative?: boolean;
 }) {
   const { ask } = useAI();
-  const explain = () => ask(`Explain the chart "${title}" in plain words: what it shows, what stands out, and what it means for an adult aged 40–65.`, {
+  const explain = () => ask(`Explain the chart "${title}" in plain words: what it shows, what stands out, and what it means for me.`, {
     label: `✦ Explain chart: ${title}`, grounding: data ? `Chart data (JSON): ${JSON.stringify(data).slice(0, 3500)}` : undefined,
   });
   return (
