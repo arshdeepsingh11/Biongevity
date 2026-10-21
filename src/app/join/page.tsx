@@ -18,3 +18,4 @@ export const metadata: Metadata = {
 
 const SIGNUP = `${env.appUrl}/en/auth/signup`;
 const PATIENT = `${env.appUrl}/en/patient`;
+const LOGIN = `${env.appUrl}/en/auth/login`;
