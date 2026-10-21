@@ -100,6 +100,7 @@ export function AIHero() {
             <button onClick={() => setOpen(true)} className="btn-ai h-12 px-6"><XevyoOrb size={22} />Talk to Biongevity SI</button>
             <Link href="/app/#twin" className="btn-light h-12 px-6"><Icon name="fingerprint" size={17} className="text-accent" />Digital Twin tour</Link>
             <Link href="/scan/" className="btn-light h-12 px-6"><Icon name="radar" size={17} className="text-accent" />2-minute AI scan</Link>
+            <Link href="/about/" className="btn-light h-12 px-6"><Icon name="info" size={17} className="text-accent" />About us</Link>
           </div>
         </div>
 
