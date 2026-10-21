@@ -54,7 +54,7 @@ export const NAV: NavItem[] = [
       { href: "/life/", label: "Biongevity Life", icon: "globe", desc: "Longevity at resorts, homes, offices, cities and schools." },
       { href: "/app/", label: "Biongevity App", icon: "phone", desc: "Wearables, AI coach and your record in your pocket." },
       { href: "/insights/", label: "Insights", icon: "book", desc: "Longevity science, explained plainly." },
-      { href: "/about/", label: "About", icon: "info", desc: "Mission, vision and the BioAro group." },
+      { href: "/about/", label: "About", icon: "info", desc: "Who we are, what we do and how we do it." },
       { href: "/ai/", label: "How our AI works", icon: "shield", desc: "What Biongevity SI does and doesn't do, with model cards." },
       { href: "/dashboard/", label: "Member dashboard", icon: "user", desc: "Illustrative demo of your BioELR record." },
     ],
