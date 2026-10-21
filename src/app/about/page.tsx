@@ -98,10 +98,101 @@ export default function AboutPage() {
           </div>
         </div>
       </Section>
-      <Section ai="Reach" className="!pt-0">
+
+      {/* What we do */}
+      <Section ai="What we do" id="what" className="scroll-mt-20 bg-canvas/50">
+        <div className="container-x">
+          <Head n="02" label="What we do" title={<>One record. <AuroraText>A whole family of care.</AuroraText></>} lede="Everything we offer connects to your healthspan record, so each test, visit and formula adds to the same picture. Tap any part to see what it does." />
+          <div className="mt-10"><EcosystemOrbit /></div>
+        </div>
+      </Section>
+
+      {/* How we do it */}
+      <Section ai="How we do it" id="how" className="scroll-mt-20">
+        <div className="container-x">
+          <Head n="03" label="How we do it" title={<>Measure. Plan. Follow. <AuroraText>Repeat.</AuroraText></>} lede="Our protocol is a loop, not a one-off check-up. Every round starts from what was measured last time." />
+          <div className="mt-10"><ProtocolLoop /></div>
+        </div>
+      </Section>
+
+      {/* Four questions */}
+      <Section ai="Four questions" className="bg-canvas/50">
+        <div className="container-x">
+          <Head n="04" label="What we answer" title={<>Four questions, <AuroraText>asked again and again.</AuroraText></>} lede="Everything we build keeps answering the same four questions for you — honestly, with ranges and uncertainty, never one magic score." />
+          <div className="relative mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div aria-hidden className="absolute left-[12%] right-[12%] top-[38px] hidden h-[2px] bg-gradient-to-r from-ai/10 via-ai/50 to-ai/10 lg:block" />
+            {QUESTIONS.map((x, k) => (
+              <div key={x.q} data-reveal className="relative rounded-[26px] bg-white/80 p-5 shadow-card ring-1 ring-ink/[0.06] backdrop-blur-xl">
+                <span className="relative grid h-12 w-12 place-items-center rounded-2xl bg-ai text-on-ai shadow-lift"><Icon name={x.icon} size={20} /><span className="absolute -right-2 -top-2 grid h-6 w-6 place-items-center rounded-full bg-white font-mono text-[11px] font-bold text-ai ring-1 ring-ai/30">{k + 1}</span></span>
+                <div className="mt-4 text-[17px] font-semibold leading-snug">{x.q}</div>
+                <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted">{x.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* Data stack (3D) */}
+      <Section ai="Your data over time">
+        <div className="container-x">
+          <Head n="05" label="What makes it different" title={<>Your data, <AuroraText>layered over time.</AuroraText></>} lede="A single test is a snapshot. Our strength is the record that builds with you — layer on layer, year after year." />
+          <div className="mt-10"><DataStack /></div>
+        </div>
+      </Section>
+
+      {/* Principles */}
+      <Section ai="Our principles" className="bg-canvas/50">
+        <div className="container-x">
+          <Head n="06" label="How we work" title={<>Four promises <AuroraText>we keep.</AuroraText></>} />
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {PRINCIPLES.map((p) => (
+              <div key={p.t} data-reveal className="flex gap-4 rounded-[26px] bg-white/80 p-6 shadow-card ring-1 ring-ink/[0.06] backdrop-blur-xl">
+                <span className="icon-tile h-12 w-12 shrink-0"><Icon name={p.icon} size={21} /></span>
+                <span><span className="block text-[18px] font-semibold">{p.t}</span><span className="mt-1 block text-[14.5px] leading-relaxed text-muted">{p.d}</span></span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* Who we serve */}
+      <Section ai="Who we serve">
+        <div className="container-x">
+          <Head n="07" label="Who we serve" title={<>Built for people — <AuroraText>and the people around them.</AuroraText></>} />
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {SERVE.map((s) => (
+              <div key={s.t} data-reveal className="rounded-[26px] bg-white/80 p-5 ring-1 ring-ink/[0.06] backdrop-blur-xl">
+                <span className="icon-tile h-11 w-11"><Icon name={s.icon} size={20} /></span>
+                <div className="mt-3 text-[17px] font-semibold">{s.t}</div>
+                <p className="mt-1 text-[13.5px] leading-relaxed text-muted">{s.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* Where */}
+      <Section ai="Where we are" className="bg-canvas/50">
         <div className="container-x text-center">
-          <h2 className="h-section mx-auto max-w-[18ch]"><DiaTextReveal text="Three regions. One record." /></h2>
+          <Eyebrow>08 · Where we are</Eyebrow>
+          <h2 className="h-section mx-auto mt-3 max-w-[18ch]"><DiaTextReveal text="Three regions. One record." /></h2>
           <div className="mt-8 text-left"><WorldMap /></div>
+        </div>
+      </Section>
+
+      {/* CTA */}
+      <Section ai="Start with Biongevity">
+        <div className="container-x">
+          <div className="relative overflow-hidden rounded-[34px] bg-white/80 p-8 text-center shadow-lift ring-1 ring-ai/20 backdrop-blur-xl sm:p-12">
+            <div aria-hidden className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-ai/15 blur-3xl" />
+            <div className="relative mx-auto w-fit"><XevyoOrb size={56} live halo /></div>
+            <h2 className="h-section relative mx-auto mt-4 max-w-[20ch]">Start with your baseline.</h2>
+            <p className="lede relative mx-auto mt-3 max-w-[52ch]">Book a consultation, join the app, or ask Biongevity SI where to begin.</p>
+            <div className="relative mt-7 flex flex-wrap justify-center gap-3">
+              <a href={BOOK_URL} target="_blank" rel="noopener" className="btn-dark h-12 px-6"><Icon name="calendar" size={17} />Book a consultation</a>
+              <Link href="/join/" className="btn-light h-12 px-6">Join the app<Icon name="arrow-right" size={15} /></Link>
+            </div>
+          </div>
         </div>
       </Section>
     </>
