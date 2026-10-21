@@ -93,3 +93,49 @@ const STEPS = [
   { t: "Monitoring", icon: "wave", d: "Follow-ups, re-tests and wearables over months. Biongevity SI watches the trends against your own baseline." },
   { t: "Holistic care", icon: "users", d: "A multidisciplinary team, education and community — and family who can follow along with your permission." },
 ] as const;
+
+export function ProtocolLoop() {
+  const [i, setI] = useState(0);
+  useEffect(() => { if (matchMedia("(prefers-reduced-motion: reduce)").matches) return; const t = setInterval(() => setI((x) => (x + 1) % STEPS.length), 3000); return () => clearInterval(t); }, []);
+  const R = 120, C = 2 * Math.PI * R;
+  return (
+    <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.1fr]">
+      <div className="relative mx-auto aspect-square w-full max-w-[400px]">
+        <svg viewBox="-160 -160 320 320" className="absolute inset-0 h-full w-full -rotate-90" aria-hidden>
+          <circle r={R} fill="none" stroke="rgb(var(--c-ai) / .14)" strokeWidth="14" />
+          <circle r={R} fill="none" stroke="rgb(var(--c-ai))" strokeWidth="14" strokeLinecap="round" strokeDasharray={`${C / 4 - 10} ${C}`} strokeDashoffset={-(C / 4) * i - 5} style={{ transition: "stroke-dashoffset .8s cubic-bezier(.2,.8,.2,1)" }} />
+        </svg>
+        {STEPS.map((s, k) => {
+          const a = (k / 4) * Math.PI * 2 - Math.PI / 2 + Math.PI / 4;
+          return (
+            <button key={s.t} onClick={() => setI(k)} aria-pressed={i === k} className="absolute -translate-x-1/2 -translate-y-1/2" style={{ left: `${50 + Math.cos(a) * 37.5}%`, top: `${50 + Math.sin(a) * 37.5}%` }}>
+              <span className={cn("grid h-12 w-12 place-items-center rounded-full shadow-card ring-4 transition-all", i === k ? "scale-110 bg-ai text-on-ai ring-ai/25" : "bg-white text-ai ring-white/60")}><Icon name={s.icon} size={20} /></span>
+            </button>
+          );
+        })}
+        <div className="absolute inset-0 grid place-items-center text-center">
+          <div><div className="font-mono text-[11px] uppercase tracking-[0.2em] text-faint">Step {i + 1} of 4</div><div className="mt-1 text-[22px] font-semibold tracking-tight">{STEPS[i].t}</div><div className="mt-1 text-[12px] text-muted">…and round again</div></div>
+        </div>
+      </div>
+      <ol className="space-y-2.5">
+        {STEPS.map((s, k) => (
+          <li key={s.t}>
+            <button onClick={() => setI(k)} className={cn("flex w-full gap-4 rounded-[22px] p-4 text-left ring-1 transition", i === k ? "bg-white/85 shadow-card ring-ai/30 backdrop-blur" : "ring-transparent hover:bg-white/50")}>
+              <span className={cn("grid h-9 w-9 shrink-0 place-items-center rounded-full font-mono text-[13px] font-bold", i === k ? "bg-ai text-on-ai" : "bg-ai-soft text-ai")}>{k + 1}</span>
+              <span><span className="block text-[17px] font-semibold">{s.t}</span><span className="mt-0.5 block text-[14px] leading-relaxed text-muted">{s.d}</span></span>
+            </button>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+/* ── What makes it different: the data that builds up over time, as a 3D stack ── */
+const LAYERS = [
+  { t: "Genome", d: "Read once, useful for life", icon: "dna" },
+  { t: "Labs & biomarkers", d: "Re-tested to show direction", icon: "test-tubes" },
+  { t: "Microbiome", d: "Gut, skin and oral ecosystems", icon: "gut" },
+  { t: "Wearables", d: "Sleep, HRV, heart rate, steps", icon: "wave" },
+  { t: "Clinic & lifestyle", d: "Visits, plans and what changed", icon: "stethoscope" },
+] as const;
