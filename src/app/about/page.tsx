@@ -1,16 +1,47 @@
 import type { Metadata } from "next";
-import { PageHero, Section, Eyebrow } from "@/components/ui/Section";
-
-import { DiaTextReveal } from "@/components/fx/DiaTextReveal";
+import Link from "next/link";
+import { Section, Eyebrow } from "@/components/ui/Section";
+import { Head } from "@/components/home/HomeSections";
 import { AuroraText } from "@/components/fx/AuroraText";
+import { DiaTextReveal } from "@/components/fx/DiaTextReveal";
 import { WorldMap } from "@/components/fx/WorldMap";
-import { TextAnimate } from "@/components/fx/TextAnimate";
 import { Icon } from "@/components/ui/Icon";
 import { LogoMark } from "@/components/ui/Logo";
-import { ABOUT, OFFICES } from "@/data/clinic";
-import { ABOUT_FACTS, FOUNDER } from "@/data/site";
+import { XevyoOrb } from "@/components/ai/XevyoOrb";
+import { AIBadge } from "@/components/ai/AIBadge";
+import { PageSummary } from "@/components/ai/PageSummary";
+import { EcosystemOrbit, ProtocolLoop, DataStack } from "@/components/pages/AboutParts";
+import { ABOUT } from "@/data/clinic";
+import { FOUNDER } from "@/data/site";
+import { BOOK_URL } from "@/lib/env";
+import { JsonLd, breadcrumb } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "About" };
+export const metadata: Metadata = {
+  title: "About Biongevity — who we are, what we do and how",
+  description: "Biongevity is the longevity and precision-health brand of BioAro Inc. We help people add more good years: a measured baseline, a personal plan, ongoing monitoring and a care team — connected in one record and explained by Biongevity SI.",
+  alternates: { canonical: "/about/" },
+};
+
+const QUESTIONS = [
+  { q: "How is my healthspan changing?", d: "Domain scores and trends over time — not one opaque number.", icon: "trend" },
+  { q: "Why is it changing?", d: "Labs, genome, wearables and visits read together.", icon: "network" },
+  { q: "What can I change?", d: "The few steps most likely to matter for you, first.", icon: "target" },
+  { q: "Did it work?", d: "Re-test and compare with your own baseline.", icon: "check" },
+];
+
+const PRINCIPLES = [
+  { t: "AI explains. Clinicians decide.", d: "Biongevity SI turns data into plain words and priorities. It never diagnoses or prescribes on its own.", icon: "stethoscope" },
+  { t: "Transparent by default", d: "Every score shows its parts, every formula its ingredients and amounts, every claim its evidence.", icon: "eye" },
+  { t: "Your data stays yours", d: "One record you own and share by permission — with your clinician, your family, or no one.", icon: "lock" },
+  { t: "Measured, not guessed", d: "We start from a baseline and re-test, so every change can be seen and judged.", icon: "chart" },
+];
+
+const SERVE = [
+  { t: "People", d: "Who want to act before problems appear and keep the years ahead healthy and active.", icon: "user" },
+  { t: "Families", d: "Who look after a parent or partner and want one clear, shared view.", icon: "users" },
+  { t: "Clinicians", d: "Who want a longitudinal picture across labs and devices, with AI drafts they control.", icon: "stethoscope" },
+  { t: "Clinics & communities", d: "Who run longevity care at scale on BioELR.", icon: "building" },
+];
 
 export default function AboutPage() {
   return (
