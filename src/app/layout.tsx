@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   description: SITE.description,
   metadataBase: new URL(SITE.url),
   applicationName: SITE.name,
-  keywords: ["healthspan", "longevity clinic", "AI health assistant", "digital twin health", "longevity for adults 40-65", "precision health", "biological age", "whole genome sequencing", "pharmacogenomics", "gut microbiome test", "stress echocardiogram Calgary", "cardiology Calgary", "endocrinology", "executive health", "virtual care", "hypertension clinic", "BioAro Labs", "BioAro Drugs", "NAD+ booster"],
+  keywords: ["healthspan", "longevity clinic", "AI health assistant", "digital twin health", "healthspan care", "precision health", "biological age", "whole genome sequencing", "pharmacogenomics", "gut microbiome test", "stress echocardiogram Calgary", "cardiology Calgary", "endocrinology", "executive health", "virtual care", "hypertension clinic", "BioAro Labs", "BioAro Drugs", "NAD+ booster"],
   alternates: { canonical: "/" },
   openGraph: { title: SITE.name, description: SITE.description, type: "website", siteName: SITE.name, locale: "en_CA", url: SITE.url },
   twitter: { card: "summary_large_image", title: SITE.name, description: SITE.description },
