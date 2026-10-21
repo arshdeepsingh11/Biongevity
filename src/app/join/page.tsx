@@ -28,3 +28,9 @@ const GET = [
   { t: "Consultations", d: "Book virtual or in-person visits with the care team in a few taps.", icon: "calendar" },
   { t: "Family sharing", d: "Give a parent, partner or child a permissioned view — you choose what they see.", icon: "users" },
 ];
+
+const STEPS = [
+  { t: "Create your account", d: "Email, Google or Apple — about a minute.", icon: "user" },
+  { t: "Connect your data", d: "Link a watch or ring; your BioAro results arrive automatically.", icon: "wifi" },
+  { t: "Book your baseline", d: "Pick a consultation; your twin starts learning your normal.", icon: "calendar" },
+];
