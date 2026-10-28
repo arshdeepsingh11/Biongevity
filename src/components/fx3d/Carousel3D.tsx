@@ -23,8 +23,12 @@ export function Carousel3D<T>({ items, render, radius = 420, cardWidth = 230, he
 
   useEffect(() => {
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let raf = 0, last = performance.now();
+    let raf = 0, last = performance.now(), seen = true;
+    // only animate while the ring is on screen
+    const io = new IntersectionObserver(([e]) => { seen = e.isIntersecting; if (seen && !raf) { last = performance.now(); raf = requestAnimationFrame(tick); } }, { rootMargin: "120px" });
+    if (ring.current) io.observe(ring.current);
     const tick = (t: number) => {
+      if (!seen || document.hidden) { raf = 0; return; }
       const dt = Math.min(48, t - last); last = t; const s = st.current;
       if (s.target !== null) { s.a += (s.target - s.a) * 0.12; if (Math.abs(s.target - s.a) < 0.05) { s.a = s.target; s.target = null; } }
       else if (!s.drag) { s.a += s.v; s.v *= 0.93; if (!reduced && !s.hover && Math.abs(s.v) < 0.02) s.a -= speed * dt * 0.06; }
