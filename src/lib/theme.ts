@@ -3,7 +3,8 @@
  * The inline <head> script (THEME_INIT) applies the saved theme before first paint (no flash).
  */
 export const THEMES = [
-  { id: "olive", label: "Olive", note: "Glass · olive · default", swatch: ["#F3F1F0", "#A1AB54", "#1E221B"], meta: "#F3F1F0" },
+  { id: "sand", label: "Sand", note: "Black & white · warm sand · default", swatch: ["#FFFFFF", "#0A0A0A", "#C9A96E"], meta: "#FFFFFF" },
+  { id: "olive", label: "Olive", note: "Glass · olive", swatch: ["#F3F1F0", "#A1AB54", "#1E221B"], meta: "#F3F1F0" },
   { id: "mono", label: "Mono", note: "Black & white", swatch: ["#FFFFFF", "#111111", "#8F8F8F"], meta: "#FFFFFF" },
 ] as const;
 
