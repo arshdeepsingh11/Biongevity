@@ -16,8 +16,12 @@ export function MagneticCursor() {
     let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y, w = 34, h = 34, tw = 34, th = 34, rad = 999, raf = 0;
     let target: HTMLElement | null = null;
     const SEL = "[data-magnetic], .btn-ai, .btn-dark";
+    const calm = () => document.documentElement.dataset.theme === "sand";
+    const wake = () => { if (!raf) raf = requestAnimationFrame(loop); };
     const move = (e: PointerEvent) => {
       if (e.pointerType !== "mouse") return;
+      if (calm()) { if (r.style.opacity !== "0") leave(); return; }
+      wake();
       x = e.clientX; y = e.clientY; r.style.opacity = "1"; d.style.opacity = "1";
       const el = (e.target as HTMLElement | null)?.closest?.(SEL) as HTMLElement | null;
       if (el !== target) { if (target) target.style.translate = ""; target = el; }
