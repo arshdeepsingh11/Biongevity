@@ -9,10 +9,10 @@ export const THEMES = [
 ] as const;
 
 export type ThemeId = (typeof THEMES)[number]["id"];
-/** What the visitor picked: a theme, or "auto" (both themes are light, so auto = Olive). */
+/** What the visitor picked: a theme, or "auto" (all themes are light, so auto = Sand). */
 export type ThemeChoice = ThemeId | "auto";
 export const THEME_KEY = "biongevity.theme.v2";
-export const DEFAULT_THEME: ThemeId = "olive";
+export const DEFAULT_THEME: ThemeId = "sand";
 
 export const resolveTheme = (c: ThemeChoice): ThemeId => (c === "auto" ? DEFAULT_THEME : c);
 
