@@ -27,7 +27,7 @@ export function BeamCircle({ nodes, center, className, onSelect, active }: { nod
   const pos = (k: number) => { const a = ((k / n) * 360 + spin - 90) * (Math.PI / 180); return { x: 50 + Math.cos(a) * 40, y: 50 + Math.sin(a) * 40 }; };
 
   return (
-    <div className={cn("relative mx-auto aspect-square w-full max-w-[560px]", className)}>
+    <div ref={box} className={cn("relative mx-auto aspect-square w-full max-w-[560px]", className)}>
       <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full overflow-visible" aria-hidden>
         <defs>
           <linearGradient id="beam-g" x1="0" x2="1"><stop offset="0" style={{ stopColor: "rgb(var(--c-ai-hi))", stopOpacity: 0 }} /><stop offset=".5" style={{ stopColor: "rgb(var(--c-ai-2))" }} /><stop offset="1" style={{ stopColor: "rgb(var(--c-ai))", stopOpacity: 0 }} /></linearGradient>
