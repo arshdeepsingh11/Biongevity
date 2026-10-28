@@ -13,11 +13,15 @@ export interface BeamNode { id: string; label: string; icon: IconName; sub?: str
 export function BeamCircle({ nodes, center, className, onSelect, active }: { nodes: BeamNode[]; center: ReactNode; className?: string; onSelect?: (id: string) => void; active?: string | null }) {
   const [hot, setHot] = useState<string | null>(null);
   const [spin, setSpin] = useState(0);
+  const box = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let raf = 0; const t0 = performance.now();
-    const f = (t: number) => { setSpin(((t - t0) / 1000) * 3); raf = requestAnimationFrame(f); };
-    raf = requestAnimationFrame(f); return () => cancelAnimationFrame(raf);
+    // slow spin, only while on screen
+    let raf = 0, seen = false, base = 0, t0 = performance.now();
+    const f = (t: number) => { if (!seen || document.hidden) { base += ((t - t0) / 1000) * 3; raf = 0; return; } setSpin(base + ((t - t0) / 1000) * 3); raf = requestAnimationFrame(f); };
+    const io = new IntersectionObserver(([e]) => { seen = e.isIntersecting; if (seen && !raf) { t0 = performance.now(); raf = requestAnimationFrame(f); } }, { rootMargin: "120px" });
+    if (box.current) io.observe(box.current);
+    return () => { cancelAnimationFrame(raf); io.disconnect(); };
   }, []);
   const n = nodes.length, focus = hot ?? active ?? null;
   const pos = (k: number) => { const a = ((k / n) * 360 + spin - 90) * (Math.PI / 180); return { x: 50 + Math.cos(a) * 40, y: 50 + Math.sin(a) * 40 }; };
