@@ -27,7 +27,7 @@ export function ParticleField() {
     const FOV = 1.8;
 
     let COLORS = TOKENS.map((t) => themeRgb(t).join(","));
-    const offTheme = onThemeChange(() => { COLORS = TOKENS.map((t) => themeRgb(t).join(",")); if (reduced) draw(0.016, 0); });
+    const offTheme = onThemeChange(() => { COLORS = TOKENS.map((t) => themeRgb(t).join(",")); if (reduced) draw(0.016, 0); else if (!raf && !document.hidden) raf = requestAnimationFrame(frame); });
     const rand = (a: number, b: number) => a + Math.random() * (b - a);
     const ps: P[] = Array.from({ length: N }, () => ({ x: rand(-R, R), y: rand(-R, R), z: rand(-R, R), s: rand(0.6, 1.6), c: (Math.random() * TOKENS.length) | 0, ph: rand(0, Math.PI * 2), sp: rand(0.6, 1.4) }));
 
