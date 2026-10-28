@@ -58,6 +58,7 @@ export function ParticleField() {
     };
 
     const draw = (dt: number, t: number) => {
+      if (quiet()) { ctx.clearRect(0, 0, W, H); return; }
       angle += dt * 0.02;                               // continuous rotation
       mouse.x += (mouse.tx - mouse.x) * 0.02; mouse.y += (mouse.ty - mouse.y) * 0.02;
       const ay = angle + mouse.x * 0.15, ax = 0.25 + mouse.y * 0.1;
