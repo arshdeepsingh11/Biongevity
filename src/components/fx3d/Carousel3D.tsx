@@ -34,7 +34,7 @@ export function Carousel3D<T>({ items, render, radius = 420, cardWidth = 230, he
       else if (!s.drag) { s.a += s.v; s.v *= 0.93; if (!reduced && !s.hover && Math.abs(s.v) < 0.02) s.a -= speed * dt * 0.06; }
       setAngle(s.a); raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick); return () => cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(tick); return () => { cancelAnimationFrame(raf); io.disconnect(); };
   }, [speed]);
 
   const front = ((Math.round(-angle / step) % n) + n) % n;
