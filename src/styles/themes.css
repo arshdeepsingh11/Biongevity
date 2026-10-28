@@ -113,6 +113,61 @@
   --c-vein: 58 92 176;
 }
 
+
+/* 3 · SAND — Mono's black and white with one warm sand tone for cards and a gold-to-black AI gradient. Calm, solid, premium. (default) */
+:root[data-theme="sand"] {
+  --c-pearl: 255 255 255;
+  --c-canvas: 250 247 241;
+  --c-surface: 255 255 255;
+  --c-feature: 247 243 236;
+  --c-feature-2: 239 231 218;
+  --c-ink: 10 10 10;
+  --c-muted: 85 80 73;
+  --c-faint: 110 104 95;
+  --c-accent: 10 10 10;
+  --c-accent-soft: 138 106 59;
+  --c-accent-light: 247 243 236;
+  --c-accent-deep: 0 0 0;
+  --c-on-accent: 255 255 255;
+  --c-teal: 95 110 90;
+  --c-teal-soft: 140 150 132;
+  --c-teal-light: 238 240 234;
+  --c-gold: 184 148 74;
+  --c-gold-soft: 247 240 226;
+  --c-gold-deep: 122 90 40;
+  --c-ai: 10 10 10;
+  --c-ai-2: 138 106 59;        /* sand-bronze */
+  --c-ai-hi: 201 169 110;      /* sand-gold highlight */
+  --c-on-ai: 255 255 255;
+  --c-ai-soft: 247 243 236;
+  --c-warn: 150 100 20;
+  --c-tangerine: 190 130 60;
+  --c-danger: 176 48 40;
+  --c-shadow: 40 30 15;
+  --c-scrim: 10 10 10;
+  --c-chart-1: 10 10 10;
+  --c-chart-2: 201 169 110;
+  --c-chart-3: 138 106 59;
+  --c-chart-4: 120 114 105;
+  --c-chart-5: 225 210 182;
+  --c-chart-6: 60 56 50;
+  --c-chart-7: 95 110 90;
+  --c-artery: 196 52 58;
+  --c-vein: 58 92 176;
+  --g-iri: linear-gradient(135deg, #C9A96E, #8A6A3B 52%, #0A0A0A);
+  --g-iri-x: linear-gradient(90deg, #C9A96E, #0A0A0A);
+  --g-text: linear-gradient(95deg, #8A6A3B, #C9A96E 40%, #0A0A0A 100%);
+  --g-feature: linear-gradient(160deg, #ffffff 0%, #f7f3ec 100%);
+  --g-btn: linear-gradient(#0a0a0a, #0a0a0a);
+  --g-ai: linear-gradient(110deg, #B8944A 0%, #8A6A3B 40%, #0A0A0A 100%);
+  --header-alpha: 0.86;
+  --heading-track: -0.035em;
+  --glass: rgb(255 255 255 / .94);
+  --glass-strong: rgb(255 255 255 / .97);
+  --glass-border: rgb(0 0 0 / .06);
+  color-scheme: light;
+}
+
 /* Legacy names (kept so older styles keep working) */
 :root {
   --bg: rgb(var(--c-pearl));
