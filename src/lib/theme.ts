@@ -17,7 +17,7 @@ export const DEFAULT_THEME: ThemeId = "sand";
 export const resolveTheme = (c: ThemeChoice): ThemeId => (c === "auto" ? DEFAULT_THEME : c);
 
 /** Runs in <head> before paint. Kept tiny and dependency-free. */
-export const THEME_INIT = `(function(){var d=document.documentElement,t="${DEFAULT_THEME}";try{var c=localStorage.getItem("${THEME_KEY}");if(["olive","mono"].indexOf(c)>-1)t=c}catch(e){}d.setAttribute("data-theme",t);d.style.colorScheme="light"})()`;
+export const THEME_INIT = `(function(){var d=document.documentElement,t="${DEFAULT_THEME}";try{var c=localStorage.getItem("${THEME_KEY}");if(["sand","olive","mono"].indexOf(c)>-1)t=c}catch(e){}d.setAttribute("data-theme",t);d.style.colorScheme="light"})()`;
 
 /** "r g b" of a theme token, read live from CSS (for canvas and libraries that cannot use CSS variables). */
 export function themeRgb(name: string): [number, number, number] {
