@@ -5,7 +5,7 @@ import { THEMES } from "@/lib/theme";
 import { useTheme } from "./ThemeProvider";
 import { Icon } from "@/components/ui/Icon";
 
-/** Header palette button → Olive or Mono. The bottom navbar is not touched. */
+/** Header palette button → Sand, Olive or Mono. The bottom navbar is not touched. */
 export function ThemeSwitcher() {
   const { choice, theme, setChoice } = useTheme();
   const [open, setOpen] = useState(false);
