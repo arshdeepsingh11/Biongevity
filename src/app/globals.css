@@ -191,6 +191,47 @@ body { padding-bottom: calc(var(--safe-bottom) + 88px); }
 /* ───── AI signature: anything Biongevity SI powers ───── */
 .text-ai-grad { background: var(--g-ai); -webkit-background-clip: text; background-clip: text; color: transparent; }
 [data-theme="mono"] .text-ai-grad { background: none; color: var(--ink); }
+
+/* ───── Sand: solid, calm, premium. Mono's structure + one warm tone. Built to scroll smoothly:
+   no page-wide particles, no decorative canvases, blur only on the header and pop-ups. ───── */
+[data-theme="sand"] .grid-bg, [data-theme="sand"] .ai-glow, [data-theme="sand"] canvas[data-ai-fx]:not(.fixed), [data-theme="sand"] .bg-iri[data-ai-fx], [data-theme="sand"] [data-ai-fx] { display: none !important; }
+[data-theme="sand"] section[class*="bg-canvas/"] { background-color: rgb(var(--c-canvas)) !important; }
+/* type */
+[data-theme="sand"] .h-display, [data-theme="sand"] .h-section { text-wrap: balance; }
+[data-theme="sand"] .h-display { font-weight: 600; font-size: clamp(40px, 6vw, 78px); line-height: 1.03; letter-spacing: -0.04em; }
+[data-theme="sand"] .h-section { font-weight: 600; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.03em; }
+[data-theme="sand"] .lede { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.6; color: rgb(var(--c-muted)); }
+[data-theme="sand"] .hud-label, [data-theme="sand"] .eyebrow { letter-spacing: .14em; color: rgb(var(--c-ai-2)); }
+/* blur off everywhere in the page body (the expensive part of scrolling); surfaces become solid */
+[data-theme="sand"] main *, [data-theme="sand"] footer * { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+[data-theme="sand"] main .card, [data-theme="sand"] main .glass { background-color: rgb(255 255 255) !important; }
+[data-theme="sand"] main [class*="bg-white/"]:not(input):not(textarea):not(select) { background-color: rgb(255 255 255 / .96) !important; }
+[data-theme="sand"] .sub-nav > * { background-color: rgb(255 255 255 / .97) !important; }
+/* surfaces: hairline border + one soft shadow, the same everywhere */
+[data-theme="sand"] .card { border-color: rgb(0 0 0 / .06); box-shadow: 0 1px 2px rgb(0 0 0 / .04), 0 12px 32px -20px rgb(var(--c-shadow) / .22); transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s cubic-bezier(.2,.8,.2,1); }
+[data-theme="sand"] .card:hover { box-shadow: 0 1px 2px rgb(0 0 0 / .05), 0 22px 44px -22px rgb(var(--c-shadow) / .3); }
+[data-theme="sand"] .shadow-card { box-shadow: 0 1px 2px rgb(0 0 0 / .04), 0 12px 32px -20px rgb(var(--c-shadow) / .22) !important; }
+[data-theme="sand"] .shadow-lift { box-shadow: 0 1px 2px rgb(0 0 0 / .05), 0 24px 56px -28px rgb(var(--c-shadow) / .32) !important; }
+[data-theme="sand"] .bg-canvas, [data-theme="sand"] [class*="bg-canvas/"]:not(section) { background-color: rgb(var(--c-feature)) !important; }
+[data-theme="sand"] [class*="bg-ai-soft"] { background-color: rgb(var(--c-feature-2) / .7) !important; }
+/* icons: sand tiles, black line icons */
+[data-theme="sand"] .icon-tile { background: rgb(var(--c-feature)); color: rgb(var(--c-ink)); box-shadow: inset 0 0 0 1px rgb(var(--c-ai-2) / .14); }
+[data-theme="sand"] .icon-tile::before { display: none; }
+/* buttons: solid black primary, white secondary with a hairline */
+[data-theme="sand"] .btn-ai, [data-theme="sand"] .btn-dark { background: #0a0a0a !important; color: #fff !important; box-shadow: 0 1px 2px rgb(0 0 0 / .1), 0 8px 20px -10px rgb(0 0 0 / .45) !important; transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, background-color .25s ease; }
+[data-theme="sand"] .btn-ai:hover, [data-theme="sand"] .btn-dark:hover { background: #262421 !important; filter: none; transform: translateY(-1px); }
+[data-theme="sand"] .btn-light { background-color: #fff !important; border-color: rgb(0 0 0 / .1); box-shadow: 0 1px 2px rgb(0 0 0 / .04); }
+[data-theme="sand"] .btn-light:hover { border-color: rgb(var(--c-ai-2) / .45); color: rgb(var(--c-ink)); }
+/* the AI signature: gold-to-black text on headlines, gold for small accents */
+[data-theme="sand"] .text-ai-grad, [data-theme="sand"] .text-iri { background: var(--g-ai); -webkit-background-clip: text; background-clip: text; color: transparent; }
+[data-theme="sand"] .text-ai { color: rgb(var(--c-ink)); }
+[data-theme="sand"] .ring-ai\/25, [data-theme="sand"] .ring-ai\/30, [data-theme="sand"] .ring-ai\/35, [data-theme="sand"] .ring-ai\/40 { --tw-ring-color: rgb(var(--c-ai-2) / .35) !important; }
+/* header: crisp white bar */
+[data-theme="sand"] .site-bar { border-bottom-color: rgb(0 0 0 / .06) !important; }
+/* app icons: one family of black icons with a hint of sand light, not a rainbow */
+[data-theme="sand"] .dock-app { background: linear-gradient(160deg, #3a3631, #0a0a0a 70%) !important; }
+[data-theme="sand"] .dock-app[aria-pressed="true"] { background: linear-gradient(160deg, #C9A96E, #8A6A3B 60%, #3a2c16) !important; }
+[data-theme="sand"] .animate-aurora { animation: none !important; background-position: 0% 50% !important; }
 .ai-ring { box-shadow: 0 0 0 1px rgb(var(--c-ai) / .22), 0 10px 30px rgb(var(--c-ai) / .12); }
 .ai-glow { position: absolute; pointer-events: none; border-radius: 9999px; filter: blur(60px); opacity: .22; background: var(--g-ai); }
 @keyframes orbSpin { to { transform: rotate(360deg); } }
