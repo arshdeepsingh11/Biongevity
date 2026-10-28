@@ -3,7 +3,8 @@ import { useEffect, useRef } from "react";
 
 /**
  * Magnetic cursor — a soft ring follows the mouse; primary buttons (and anything with data-magnetic) gently pull
- * toward the pointer and the ring wraps them. Mouse only, off for touch and reduced motion.
+ * toward the pointer and the ring wraps them. Mouse only, off for touch, reduced motion and the calm Sand theme.
+ * The loop only runs while the ring is still moving, so an idle page does no work.
  */
 export function MagneticCursor() {
   const ring = useRef<HTMLDivElement>(null);
