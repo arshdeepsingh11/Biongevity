@@ -38,7 +38,9 @@ export function MagneticCursor() {
       w += (tw - w) * 0.2; h += (th - h) * 0.2;
       r.style.transform = `translate(${rx - w / 2}px, ${ry - h / 2}px)`; r.style.width = `${w}px`; r.style.height = `${h}px`; r.style.borderRadius = `${rad}px`;
       d.style.transform = `translate(${x - 3}px, ${y - 3}px)`;
-      raf = requestAnimationFrame(loop);
+      // stop when settled; the next pointer move wakes it up again
+      const settled = !target && Math.abs(x - rx) < 0.3 && Math.abs(y - ry) < 0.3 && Math.abs(tw - w) < 0.3 && Math.abs(th - h) < 0.3;
+      raf = settled ? 0 : requestAnimationFrame(loop);
     };
     addEventListener("pointermove", move, { passive: true }); document.addEventListener("pointerleave", leave);
     raf = requestAnimationFrame(loop);
