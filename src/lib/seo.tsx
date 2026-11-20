@@ -1,5 +1,5 @@
 import { SITE } from "@/data/site";
-import { OFFICES } from "@/data/clinic";
+import { UAE_CLINIC } from "@/content/contact";
 
 /**
  * Structured data (schema.org JSON-LD) for search engines and AI answer engines.
@@ -19,15 +19,12 @@ export const organization = () => ({
   url: SITE.url,
   logo: abs("/icon.svg"),
   description: SITE.description,
-  slogan: "Precision Health. Shared Longevity.",
-  parentOrganization: { "@type": "Organization", name: "BioAro Inc." },
-  medicalSpecialty: ["Cardiovascular", "Endocrine", "Genetic", "Gastroenterologic", "Dermatologic", "Pulmonary", "Geriatric", "PrimaryCare"],
-  knowsAbout: ["Precision medicine", "Longevity medicine", "Whole genome sequencing", "Pharmacogenomics", "Gut microbiome", "Biological age", "Preventive cardiology"],
-  department: OFFICES.map((o) => ({
-    "@type": "MedicalClinic", name: `${SITE.name} ${o.city}`, telephone: o.phone, email: o.email ?? undefined,
-    address: { "@type": "PostalAddress", streetAddress: o.address, addressLocality: o.city },
-    geo: { "@type": "GeoCoordinates", latitude: o.loc[0], longitude: o.loc[1] },
-  })),
+  knowsAbout: ["Longevity medicine", "Precision health", "Dermatology", "Aesthetic medicine", "IV therapy", "Preventive health", "Genetic testing", "Telehealth"],
+  department: [{
+    "@type": "MedicalClinic", "@id": abs("/uae/#clinic"), name: UAE_CLINIC.name, url: abs("/uae/"), telephone: UAE_CLINIC.phone, email: UAE_CLINIC.email,
+    address: { "@type": "PostalAddress", streetAddress: `${UAE_CLINIC.address[0]}, ${UAE_CLINIC.address[1]}`, addressLocality: "Dubai", addressCountry: "AE" },
+    hasMap: UAE_CLINIC.mapUrl,
+  }],
 });
 
 export const website = () => ({
@@ -47,7 +44,13 @@ export const faqPage = (faq: { q: string; a: string }[]) => ({
 
 export const medicalPage = (o: { name: string; description: string; path: string; about: string[]; procedures?: string[] }) => ({
   "@context": "https://schema.org", "@type": "MedicalWebPage", name: o.name, description: o.description, url: abs(o.path),
-  publisher: { "@id": abs("/#org") }, lastReviewed: "2026-10-10", audience: { "@type": "Patient" },
+  publisher: { "@id": abs("/#org") }, lastReviewed: "2026-11-20", audience: { "@type": "Patient" },
   about: o.about.map((a) => ({ "@type": "MedicalCondition", name: a })),
   ...(o.procedures ? { mentions: o.procedures.map((p) => ({ "@type": "MedicalProcedure", name: p })) } : {}),
+});
+
+/** BreadcrumbList from explicit [name, path] pairs (no implied home). */
+export const crumbsLd = (items: [string, string][]) => ({
+  "@context": "https://schema.org", "@type": "BreadcrumbList",
+  itemListElement: items.map(([name, path], i) => ({ "@type": "ListItem", position: i + 1, name, item: abs(path) })),
 });

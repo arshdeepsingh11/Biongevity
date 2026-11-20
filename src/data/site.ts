@@ -3,10 +3,10 @@ import { DEPARTMENTS } from "./departments";
 
 export const SITE = {
   name: "Biongevity",
-  tagline: "AI-guided longevity and healthspan care",
-  parent: "BioAro",
+  tagline: "Longevity and precision health",
+  parent: "Biongevity",
   description:
-    "AI-guided longevity and precision health for more good years — for you and your family: Biongevity SI, a longitudinal healthspan platform, cardiology with onsite exercise stress echo, internal medicine, endocrinology, whole genome sequencing, microbiome and biomarker testing, virtual care and AI-guided plans — Calgary, Dubai and Almelo.",
+    "Biongevity is a longevity and precision health company. In Dubai: a clinic for dermatology and aesthetics, IV therapy and wellness, general practice, longevity testing, diagnostics, dental care, home healthcare and telehealth. In the United States: telehealth and the Biongevity app, launching March 2027.",
   url: "https://biongevity.com",
 };
 

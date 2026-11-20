@@ -14,6 +14,9 @@ export function Analytics() {
   const path = usePathname();
   const first = useRef(true);
 
+  // Region follows the URL: /uae/… is the Dubai clinic site, everything else is International.
+  useEffect(() => { document.documentElement.dataset.region = path.startsWith("/uae") ? "uae" : "intl"; }, [path]);
+
   useEffect(() => {
     if (first.current) { first.current = false; if (env.gtmId) return; } // GTM records the first page view itself
     track("page_view", { page_title: document.title });
@@ -24,9 +27,11 @@ export function Analytics() {
       const a = (e.target as Element | null)?.closest<HTMLAnchorElement>("a[href]");
       if (!a) return;
       const text = (a.innerText || a.getAttribute("aria-label") || "").trim().slice(0, 40), placement = placementOf(a);
-      if (a.hasAttribute("data-book")) track(a.closest("[data-ai-cta]") ? "ai_book_click" : "book_click", { placement, text });
-      else if (a.href.startsWith("https://wa.me/")) track(a.closest("[data-ai-cta]") ? "ai_book_click" : "whatsapp_click", { placement, text, channel: "whatsapp" });
-      else if (a.href.startsWith("tel:")) track("call_click", { placement, text });
+      // data-item = the service or department the button is about (e.g. "HydraFacial"), so ads can be tied to services.
+      const item = a.closest<HTMLElement>("[data-item]")?.dataset.item;
+      if (a.hasAttribute("data-book")) track(a.closest("[data-ai-cta]") ? "ai_book_click" : "book_click", { placement, text, item, channel: a.href.startsWith("https://wa.me/") ? "whatsapp" : "link" });
+      else if (a.href.startsWith("https://wa.me/")) track(a.closest("[data-ai-cta]") ? "ai_book_click" : "whatsapp_click", { placement, text, item, channel: "whatsapp" });
+      else if (a.href.startsWith("tel:")) track("call_click", { placement, text, item });
     };
     document.addEventListener("click", on, { capture: true });
     return () => document.removeEventListener("click", on, { capture: true });
