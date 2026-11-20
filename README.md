@@ -24,6 +24,13 @@
 - All content in `src/content/`; theme `clinic` in `src/styles/themes.css`; details in **[docs/V6_UAE_RELEASE.md](docs/V6_UAE_RELEASE.md)**.
 - The sections below describe the earlier version and are kept for reference.
 
+## ◆ v6.1 — Arabic + AI assistant (Nov 2026)
+
+- **Arabic Dubai site** at `/ar/uae/…` (right-to-left, same pages and slugs), EN / ع switch in the header.
+- **Biongevity AI** infrastructure on Dubai pages: launcher, chat panel, highlight-to-ask, knowledge files, hand-off. The AI itself is connected by the AI team → [`docs/AI_INTEGRATION.md`](docs/AI_INTEGRATION.md).
+- **Treatment finder**, redesigned **International** page, **GTM-PH9BZ2TR** built in → [`docs/TRACKING.md`](docs/TRACKING.md).
+- Full notes: [`docs/V6_UAE_RELEASE.md`](docs/V6_UAE_RELEASE.md).
+
 ## ◆ At a glance
 
 | | | | |

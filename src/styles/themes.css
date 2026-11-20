@@ -209,3 +209,30 @@
 [data-dept="diagnostics-laboratory"] { --dept: 100 114 168; --dept-deep: 64 78 126;   --dept-soft: 231 233 244; } /* slate blue */
 [data-dept="home-healthcare"]        { --dept: 196 120 84;  --dept-deep: 146 80 52;   --dept-soft: 247 231 223; } /* terracotta */
 [data-dept="telehealth"]             { --dept: 52 140 158;  --dept-deep: 30 102 118;  --dept-soft: 224 240 243; } /* teal */
+
+/*
+ * International site palette (v6.1). Set on <html data-region="intl"> before first paint (layout.tsx).
+ * Calmer and cooler than the Dubai clinic: midnight indigo for depth, a soft aurora mint for light and data,
+ * cool pearl for reading. The Dubai pages keep the warm clinic palette above.
+ */
+:root[data-theme="clinic"][data-region="intl"] {
+  --c-pearl: 247 248 250;      /* #F7F8FA cool pearl page */
+  --c-canvas: 237 241 246;     /* #EDF1F6 mist panels */
+  --c-feature: 8 17 38;        /* #081126 midnight */
+  --c-feature-2: 18 34 72;     /* #122248 */
+  --c-ink: 14 22 40;           /* #0E1628 */
+  --c-muted: 74 84 104;        /* #4A5468 */
+  --c-faint: 98 108 128;       /* #626C80 */
+  --c-accent: 22 48 104;       /* #163068 cobalt buttons, links */
+  --c-accent-deep: 12 28 66;
+  --c-gold: 98 214 190;        /* #62D6BE aurora mint (glows, data) */
+  --c-gold-soft: 226 246 241;
+  --c-gold-deep: 12 112 108;   /* #0C706C deep teal text on light */
+  --c-teal: 116 128 255;       /* #7480FF soft violet-blue (second glow) */
+  --c-teal-light: 230 233 255;
+  --c-ai-hi: 140 228 210;      /* #8CE4D2 italic accents on dark */
+  --c-shadow: 8 17 38;
+  --c-scrim: 6 12 28;
+  --g-feature: radial-gradient(120% 90% at 85% 0%, #142A5C 0%, #0B1834 45%, #081126 100%);
+  --g-btn: linear-gradient(180deg, #1E3F82 0%, #163068 60%, #0F2350 100%);
+}

@@ -134,3 +134,129 @@ textarea.in6 { height: auto; min-height: 110px; padding: 14px 16px; resize: vert
 .hr6 { height: 1px; background: rgb(var(--c-ink) / .08); }
 .sec-dark .hr6 { background: rgb(255 255 255 / .12); }
 .anchor6 { scroll-margin-top: 110px; }
+
+/* ───────────── v6.1: Arabic, motion details and the AI assistant ───────────── */
+
+/* Arabic: IBM Plex Sans Arabic for everything; Latin brand names keep DM Sans. Headings use a heavier weight, no italics. */
+[lang="ar"] body, [lang="ar"] { font-family: "IBM Plex Sans Arabic", "DM Sans Variable", "DM Sans", sans-serif; }
+[lang="ar"] .t-hero, [lang="ar"] .t-h1, [lang="ar"] .t-h2, [lang="ar"] .font-display { font-family: "IBM Plex Sans Arabic", "Fraunces Variable", serif; font-weight: 600; letter-spacing: 0; line-height: 1.3; }
+[lang="ar"] .t-hero { font-size: clamp(36px, 5.4vw, 66px); line-height: 1.22; }
+[lang="ar"] .t-italic, [lang="ar"] .t-tag, [lang="ar"] .t-quote { font-style: normal; }
+[lang="ar"] .t-eyebrow, [lang="ar"] .shine6 { letter-spacing: 0; text-transform: none; font-size: 14px; }
+[lang="ar"] .t-lede, [lang="ar"] .t-body, [lang="ar"] .t-read { line-height: 1.85; }
+[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
+[dir="rtl"] .link6:hover .flip-rtl { transform: scaleX(-1); }
+
+.t-tag { font-family: "Fraunces Variable", "Fraunces", Georgia, serif; font-style: italic; font-size: clamp(22px, 2vw, 26px); line-height: 1.3; }
+.t-read { font-size: 18px; line-height: 1.75; color: rgb(var(--c-ink) / .8); }
+.t-quote { font-family: "Fraunces Variable", "Fraunces", Georgia, serif; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.3; }
+
+/* Shiny badge (hero eyebrow): a slow light sweep across a soft pill. */
+.shine6 { position: relative; display: inline-flex; align-items: center; gap: 9px; height: 34px; padding: 0 14px; border-radius: 999px; font-size: 12.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--c-gold-deep)); background: rgb(255 255 255 / .7); border: 1px solid rgb(var(--c-gold) / .35); overflow: hidden; }
+.shine6::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / .9) 50%, transparent 65%); transform: translateX(-120%); animation: shine6 5.5s ease-in-out infinite 1.2s; }
+.shine6-dot { width: 7px; height: 7px; border-radius: 50%; background: rgb(var(--c-wa)); box-shadow: 0 0 0 4px rgb(var(--c-wa) / .18); }
+@keyframes shine6 { 0%, 60% { transform: translateX(-120%); } 85%, 100% { transform: translateX(120%); } }
+
+/* Looping words */
+.loop6 { display: inline-block; }
+.loop6-word { display: inline-block; animation: loop6 .55s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes loop6 { from { opacity: 0; transform: translateY(.35em); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+.fade6 { animation: loop6 .45s cubic-bezier(.2,.8,.2,1) both; }
+
+/* Border beam: a thin light that travels around a card's edge. */
+.beam6 { position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none; background: conic-gradient(from var(--beam-a, 0deg), transparent 0 78%, rgb(var(--c-gold) / .9) 88%, transparent 96%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: beam6 7s linear infinite; }
+@property --beam-a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes beam6 { to { --beam-a: 360deg; } }
+
+/* Spotlight: a soft glow that follows the pointer on cards (position set by Spotlight in Floating.tsx). */
+.spot6 { position: relative; isolation: isolate; }
+.spot6::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; opacity: 0; transition: opacity .35s; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(var(--dept, var(--c-gold)) / .14), transparent 60%); }
+.spot6:hover::before { opacity: 1; }
+@media (hover: none) { .spot6::before { display: none; } }
+
+/* Fine grid behind dark sections. */
+.grid6 { position: absolute; inset: 0; pointer-events: none; opacity: .5; background-image: linear-gradient(rgb(255 255 255 / .05) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / .05) 1px, transparent 1px); background-size: 56px 56px; -webkit-mask: radial-gradient(ellipse at 70% 20%, #000, transparent 70%); mask: radial-gradient(ellipse at 70% 20%, #000, transparent 70%); }
+
+/* Hero prompt bar */
+.ask6 { display: flex; align-items: center; gap: 8px; height: 60px; padding: 6px 6px 6px 8px; border-radius: 999px; background: rgb(255 255 255 / .9); border: 1px solid rgb(var(--c-ink) / .1); box-shadow: 0 18px 40px -26px rgb(var(--c-shadow) / .55); transition: border-color .25s, box-shadow .25s; }
+.ask6:focus-within { border-color: rgb(var(--c-gold) / .7); box-shadow: 0 0 0 4px rgb(var(--c-gold) / .14), 0 18px 40px -26px rgb(var(--c-shadow) / .55); }
+.ask6-mark { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 999px; flex: none; color: rgb(var(--c-gold)); background: rgb(var(--c-feature)); }
+.ask6-in { flex: 1; min-width: 0; height: 100%; background: transparent; outline: none; font-size: 16px; color: rgb(var(--c-ink)); }
+.ask6-in::placeholder { color: rgb(var(--c-faint)); }
+.ask6-go { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 999px; flex: none; color: rgb(255 255 255); background: rgb(var(--c-accent)); transition: transform .2s; }
+.ask6-go:hover { transform: scale(1.05); }
+
+/* AI launcher: sits above the WhatsApp button (same corner, both languages). */
+.ailaunch6 { position: fixed; z-index: 95; right: 16px; bottom: calc(158px + var(--safe-bottom)); display: flex; align-items: center; gap: 10px; height: 54px; min-width: 54px; padding: 0 15px; border-radius: 999px; color: rgb(var(--c-gold)); background: rgb(var(--c-feature)); box-shadow: 0 16px 34px -14px rgb(var(--c-shadow) / .8), inset 0 1px 0 rgb(255 255 255 / .12); transition: transform .25s; }
+.ailaunch6:hover { transform: translateY(-2px); }
+.ailaunch6-label { display: none; font-size: 15px; font-weight: 600; color: rgb(255 255 255); }
+.ailaunch6-ring { position: absolute; inset: -4px; border-radius: inherit; border: 1px solid rgb(var(--c-gold) / .45); animation: ring6 3.2s ease-out infinite; pointer-events: none; }
+@keyframes ring6 { 0% { opacity: .9; transform: scale(.96); } 70%, 100% { opacity: 0; transform: scale(1.12); } }
+@media (min-width: 1024px) { .ailaunch6 { right: 28px; bottom: 100px; padding: 0 20px 0 16px; } .ailaunch6-label { display: inline; } }
+
+/* Highlight-to-ask chip */
+.aichip6 { position: fixed; z-index: 120; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 14px; border-radius: 999px; font-size: 14px; font-weight: 600; color: rgb(255 255 255); background: rgb(var(--c-feature)); box-shadow: 0 12px 28px -12px rgb(var(--c-shadow) / .9); animation: loop6 .25s both; white-space: nowrap; }
+.aichip6 svg { color: rgb(var(--c-gold)); }
+
+/* Panel: a side sheet on desktop (end side), a bottom sheet on phones. */
+.aipanel6-wrap { position: fixed; inset: 0; z-index: 130; background: rgb(var(--c-scrim, 10 18 30) / .32); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); animation: fadein6 .2s both; }
+.aipanel6 { position: absolute; inset: auto 0 0 0; height: min(86dvh, 760px); display: flex; flex-direction: column; background: rgb(var(--c-pearl)); border-radius: 26px 26px 0 0; box-shadow: 0 -20px 60px -20px rgb(var(--c-shadow) / .5); animation: up6 .32s cubic-bezier(.2,.8,.2,1) both; padding-bottom: var(--safe-bottom); }
+@media (min-width: 768px) { .aipanel6 { inset: 16px 16px 16px auto; width: 440px; height: auto; border-radius: 26px; animation-name: side6; } [dir="rtl"] .aipanel6 { inset: 16px auto 16px 16px; } }
+@keyframes up6 { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes side6 { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes fadein6 { from { opacity: 0; } to { opacity: 1; } }
+.dots6 { display: inline-flex; gap: 3px; }
+.dots6 i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; animation: dot6 1s infinite ease-in-out; }
+.dots6 i:nth-child(2) { animation-delay: .15s; } .dots6 i:nth-child(3) { animation-delay: .3s; }
+@keyframes dot6 { 0%, 80%, 100% { opacity: .25; } 40% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .shine6::after, .beam6, .ailaunch6-ring, .loop6-word, .fade6, .aichip6, .aipanel6, .aipanel6-wrap { animation: none !important; }
+}
+/* Language switch */
+.lang6 { display: inline-flex; align-items: center; height: 40px; padding: 3px; border-radius: 999px; border: 1px solid rgb(var(--c-ink) / .14); background: rgb(255 255 255 / .7); font-size: 13px; font-weight: 600; }
+.lang6 span { display: grid; place-items: center; min-width: 34px; height: 32px; padding: 0 8px; border-radius: 999px; color: rgb(var(--c-muted)); transition: background-color .2s, color .2s; }
+.lang6 span:last-child { font-family: "IBM Plex Sans Arabic", sans-serif; font-size: 15px; }
+.lang6 span.is-on { background: rgb(var(--c-feature)); color: rgb(255 255 255); }
+.lang6:hover span:not(.is-on) { color: rgb(var(--c-ink)); }
+
+/* ───────────── International (v6.1) ───────────── */
+.aurora6 { position: absolute; inset: -20%; background:
+  radial-gradient(40% 35% at 78% 22%, rgb(var(--c-gold) / .28), transparent 70%),
+  radial-gradient(35% 30% at 18% 85%, rgb(var(--c-teal) / .26), transparent 70%),
+  radial-gradient(30% 25% at 55% 55%, rgb(var(--c-gold) / .08), transparent 70%);
+  filter: blur(10px); animation: aurora6 18s ease-in-out infinite alternate; }
+@keyframes aurora6 { to { transform: translate3d(-3%, 2%, 0) scale(1.06); } }
+.shine6-dark { color: rgb(var(--c-ai-hi)); background: rgb(255 255 255 / .06); border-color: rgb(255 255 255 / .16); }
+.shine6-dark::after { background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / .25) 50%, transparent 65%); }
+.status6 { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid rgb(var(--c-faint)); flex: none; }
+.status6.is-on { border: 0; background: rgb(var(--c-gold-deep)); box-shadow: 0 0 0 5px rgb(var(--c-gold) / .22); animation: pulse6 2.4s ease-out infinite; }
+@keyframes pulse6 { 0% { box-shadow: 0 0 0 0 rgb(var(--c-gold) / .45); } 80%, 100% { box-shadow: 0 0 0 10px rgb(var(--c-gold) / 0); } }
+
+/* Orbit visual */
+.orbit6-ring { position: absolute; border-radius: 50%; border: 1px solid rgb(255 255 255 / .12); }
+.orbit6-ring.is-dashed { border-style: dashed; border-color: rgb(var(--c-gold) / .35); }
+.orbit6-core { position: absolute; inset: 36%; border-radius: 50%; display: grid; place-content: center; text-align: center; color: rgb(255 255 255);
+  background: radial-gradient(circle at 35% 30%, rgb(var(--c-feature-2)), rgb(var(--c-feature)) 70%); border: 1px solid rgb(var(--c-gold) / .4);
+  box-shadow: 0 0 60px -6px rgb(var(--c-gold) / .45), inset 0 1px 0 rgb(255 255 255 / .1); }
+.orbit6-spin { position: absolute; inset: 0; animation: spin6 60s linear infinite; }
+.orbit6-node { position: absolute; transform: translate(-50%, -50%); }
+.orbit6-chip { display: inline-flex; align-items: center; gap: 7px; height: 36px; padding: 0 13px; border-radius: 999px; white-space: nowrap; font-size: 13px; font-weight: 600; color: rgb(255 255 255);
+  background: rgb(255 255 255 / .08); border: 1px solid rgb(255 255 255 / .16); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); animation: spin6 60s linear infinite reverse; }
+.orbit6-chip svg { color: rgb(var(--c-gold)); }
+@keyframes spin6 { to { transform: rotate(360deg); } }
+.orbit6-node .orbit6-chip { transform-origin: center; }
+@media (max-width: 480px) { .orbit6-chip { height: 30px; padding: 0 10px; font-size: 11.5px; } }
+
+/* Loop track: a thin line joins the five steps on wide screens. */
+@media (min-width: 768px) { .loop6-track { position: relative; } .loop6-track::before { content: ""; position: absolute; left: 4%; right: 4%; top: 48px; height: 1px; background: linear-gradient(90deg, transparent, rgb(var(--c-gold-deep) / .4), transparent); z-index: 0; } .loop6-track > li { z-index: 1; } }
+
+.map6-pulse { transform-box: fill-box; transform-origin: center; animation: mappulse6 2.6s ease-out infinite; }
+@keyframes mappulse6 { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(2.2); opacity: 0; } }
+.map6-arc { animation: dash6 3s linear infinite; }
+@keyframes dash6 { to { stroke-dashoffset: -4.8; } }
+
+@media (prefers-reduced-motion: reduce) { .aurora6, .orbit6-spin, .orbit6-chip, .status6.is-on, .map6-pulse, .map6-arc { animation: none !important; } }
+
+/* Grid children never grow wider than their track (a scrolling chip row inside a grid cell stays inside the screen). */
+main .grid > *, footer .grid > * { min-width: 0; }

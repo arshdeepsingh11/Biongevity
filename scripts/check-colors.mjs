@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 
 // fileURLToPath decodes %20 etc., so paths with spaces work (URL.pathname does not).
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
-const ALLOW_FILES = ["src/styles/themes.css", "src/lib/theme.ts", "src/app/icon.svg", "src/app/layout.tsx", "src/app/globals.css"];
+const ALLOW_FILES = ["src/styles/themes.css", "src/lib/theme.ts", "src/app/icon.svg", "src/components/layout/SiteShell.tsx", "src/app/globals.css"];
 const ALLOW_VALUES = ["#000", "#fff", "#ffffff", "#FF5F57", "#FEBC2E", "#28C840"]; // masks, print, terminal dots
 const HEX = /#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b/g;
 
