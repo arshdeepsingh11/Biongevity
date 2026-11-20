@@ -28,4 +28,10 @@ export const FOUNDER = {
   linkedin: "https://www.linkedin.com/in/dr-anmol-kapoor-373631a",
 };
 
+export const FOUNDER_AR = {
+  title: "طبيب · مؤسس بيونجيفيتي",
+  bio: "مؤسس بيونجيفيتي طبيب يتمحور عمله حول الوقاية الدقيقة: قراءة الجينات ومؤشرات الدم والقياسات اليومية معًا، لإدارة المخاطر قبل أن تتحوّل إلى مرض.",
+  name: "د. أنمول س. كابور",
+};
+
 export const doctorsFor = (dept?: string) => (dept ? UAE_DOCTORS.filter((d) => d.depts.includes(dept)) : UAE_DOCTORS);

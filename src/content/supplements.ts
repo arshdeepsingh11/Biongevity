@@ -17,6 +17,14 @@ export const UAE_SUPPLEMENTS: Supplement[] = [
   { id: "creagen", name: "Creagen", line: "Creatine formulas for energy, focus and performance", detail: "Five Creagen formulas are available in the UAE. Ask us which one suits your goals." },
 ];
 
+/** Arabic text for the UAE list (same ids). */
+export const UAE_SUPPLEMENTS_AR: Record<string, { line: string; detail: string }> = {
+  "longevity-plus": { line: "طاقة الخلايا والتقدّم الصحي في العمر", detail: "NMN والريسفيراترول والإنزيم المساعد Q10 والكركمين وفيتامين D3 وفيتامين B12 في تركيبة يومية واحدة." },
+  "cellomega-plus": { line: "أوميغا 3 للقلب والدماغ والخلايا", detail: "تستخدم النسخة المتوفرة في الإمارات أوميغا 3 من زيت السمك." },
+  creagen: { line: "تركيبات الكرياتين للطاقة والتركيز والأداء", detail: "تتوفر في الإمارات خمس تركيبات من كرياجين. اسألنا عن الأنسب لأهدافك." },
+};
+export const uaeSupplements = (l: "en" | "ar") => (l === "ar" ? UAE_SUPPLEMENTS.map((s) => ({ ...s, ...UAE_SUPPLEMENTS_AR[s.id] })) : UAE_SUPPLEMENTS);
+
 export const INTL_SUPPLEMENTS: Supplement[] = [
   { id: "longevity-plus", name: "LONgevity+", line: "Cellular energy and healthy ageing", detail: "NMN, resveratrol, CoQ10, curcumin, vitamin D3 and vitamin B12.", storeHandle: "longevity-plus" },
   { id: "cellomega-plus", name: "CellOmega+", line: "Omega-3 for heart, brain and cells", detail: "Omega-3 with antioxidants and essential nutrients.", storeHandle: "cellomega-plus" },
