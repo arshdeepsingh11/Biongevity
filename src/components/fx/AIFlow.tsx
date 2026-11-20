@@ -14,7 +14,28 @@ export function AIFlow({ inputs, core, outputs, height = 340 }: { inputs: Node[]
   const W = 1000, H = height, cx = W / 2, cy = H / 2;
   const yAt = (i: number, n: number) => (H / (n + 1)) * (i + 1);
   return (
-    <div className="relative w-full" style={{ aspectRatio: `${W} / ${H}` }}>
+    <>
+    {/* Phones: the same flow stacked top to bottom, so every label is readable. */}
+    <div className="flex flex-col items-center gap-3 sm:hidden">
+      <div className="flex flex-wrap justify-center gap-2">
+        {inputs.map((n, i) => (
+          <span key={n.label} className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-xl bg-white px-2.5 py-1.5 text-[12.5px] font-semibold shadow-card ring-1 transition-all duration-300 ${hot === i ? "text-accent ring-accent/50" : "ring-ink/[0.06]"}`}>
+            <Icon name={n.icon} size={16} weight="duotone" className="shrink-0 text-accent" />{n.label}
+          </span>
+        ))}
+      </div>
+      <Icon name="arrow-up" size={16} className="rotate-180 text-accent/60" />
+      <div className="inline-flex items-center gap-2 rounded-full bg-iri px-4 py-2 text-[13px] font-semibold text-white shadow-glow"><Icon name="sparkle" size={16} weight="duotone" />{core}</div>
+      <Icon name="arrow-up" size={16} className="rotate-180 text-teal/60" />
+      <div className="flex flex-wrap justify-center gap-2">
+        {outputs.map((n) => (
+          <span key={n.label} className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-xl bg-white px-2.5 py-1.5 text-[12.5px] font-semibold shadow-card ring-1 ring-teal/25">
+            <Icon name={n.icon} size={16} weight="duotone" className="shrink-0 text-teal" />{n.label}
+          </span>
+        ))}
+      </div>
+    </div>
+    <div className="relative hidden w-full sm:block" style={{ aspectRatio: `${W} / ${H}` }}>
       <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 h-full w-full" aria-hidden>
         <defs>
           <linearGradient id="af-l" x1="0" x2="1"><stop offset="0" stopColor="rgb(var(--c-gold))" stopOpacity=".25" /><stop offset="1" stopColor="rgb(var(--c-accent))" /></linearGradient>
@@ -49,5 +70,6 @@ export function AIFlow({ inputs, core, outputs, height = 340 }: { inputs: Node[]
         </div>
       ))}
     </div>
+    </>
   );
 }

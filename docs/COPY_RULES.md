@@ -31,4 +31,5 @@ Short rules for every page, prompt and AI system message. When in doubt, choose 
 - Xevyo is called only on a click/send — never on page load.
 - Health values are sent only after a consent tick, and never stored by the site.
 - Answers prefer our pages (grounding) and cite them as [1]–[3].
-- Reply language: English or Japanese (です・ます調).
+- Reply language: English, French, Arabic or Persian (`src/lib/languages.ts`).
+- The safety rules above are also enforced by the SI proxy (`deploy/si-policy.mjs`), so the browser cannot remove them.

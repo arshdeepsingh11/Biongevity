@@ -116,12 +116,12 @@ export function LifespanSimulator() {
         </div>
         <div className="space-y-2">
           {LIFESTYLE_FACTORS.map((f) => (
-            <div key={f.id} onMouseEnter={() => setFocus(f.id)} onMouseLeave={() => setFocus(null)} className="flex items-center gap-3 rounded-2xl bg-canvas px-3 py-2">
+            <div key={f.id} onMouseEnter={() => setFocus(f.id)} onMouseLeave={() => setFocus(null)} className="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-2xl bg-canvas px-3 py-2 sm:flex-nowrap">
               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-accent ring-1 ring-ink/[0.05]"><Icon name={f.icon} size={18} /></span>
-              <span className="min-w-0 flex-1"><span className="block text-[13.5px] font-semibold leading-tight">{f.label}</span><span className="block truncate text-[11px] text-muted">{f.detail}</span></span>
-              <div role="radiogroup" aria-label={f.label} className="relative grid shrink-0 grid-cols-3 rounded-full bg-white p-0.5 ring-1 ring-ink/[0.06]">
+              <span className="min-w-0 flex-1"><span className="block text-[13.5px] font-semibold leading-tight">{f.label}</span><span className="block text-[11px] text-muted sm:truncate">{f.detail}</span></span>
+              <div role="radiogroup" aria-label={f.label} className="relative grid w-full shrink-0 grid-cols-3 rounded-full bg-white p-0.5 ring-1 ring-ink/[0.06] sm:w-auto">
                 <motion.span layout aria-hidden className="absolute inset-y-0.5 w-1/3 rounded-full bg-ai" style={{ left: `calc(${(h[f.id] * 2) / 3 * 100}% + ${h[f.id] === 0 ? 2 : h[f.id] === 1 ? -2 : 0}px)` }} transition={{ type: "spring", stiffness: 500, damping: 35 }} />
-                {LEVELS.map((l) => <button key={l.l} role="radio" aria-checked={h[f.id] === l.v} onClick={() => setH((s) => ({ ...s, [f.id]: l.v }))} className={`relative z-[1] w-[46px] py-1 text-[11px] font-semibold transition-colors ${h[f.id] === l.v ? "text-on-ai" : "text-muted"}`}>{l.l}</button>)}
+                {LEVELS.map((l) => <button key={l.l} role="radio" aria-checked={h[f.id] === l.v} onClick={() => setH((s) => ({ ...s, [f.id]: l.v }))} className={`relative z-[1] py-1.5 text-[11px] sm:w-[46px] sm:py-1 font-semibold transition-colors ${h[f.id] === l.v ? "text-on-ai" : "text-muted"}`}>{l.l}</button>)}
               </div>
             </div>
           ))}
@@ -145,10 +145,10 @@ export function LifespanSimulator() {
               <Big k="Healthy years on the table" v={onTable} unit="yrs" sub="with all five habits" ai />
               <Big k="Risk from your numbers" v={+(sleepRR * bpRR * (stepsRR / 0.47 > 1 ? stepsRR / 0.47 : 1)).toFixed(2)} unit="×" sub="combined, vs best band" />
             </div>
-            <div className="relative mt-5 flex items-start gap-3 rounded-2xl bg-ai-soft/70 p-3.5">
+            <div className="relative mt-5 flex flex-wrap items-start gap-3 rounded-2xl bg-ai-soft/70 p-3.5 sm:flex-nowrap">
               <XevyoOrb size={30} live />
-              <div className="min-w-0 flex-1 text-[14px]"><b className="text-ai">Biggest lever · </b>{lever.t}</div>
-              <button onClick={() => ask(`My week: habits ${JSON.stringify(h)}, sleep ${sleep} h, systolic ${sbp}, ${steps} steps. Explain my biggest longevity lever and a realistic 4-week plan. Population data only — not a diagnosis.`, { label: "✦ Plan my biggest lever" })} className="shrink-0 rounded-full bg-ai px-3 py-1.5 text-[12px] font-semibold text-on-ai">Plan it</button>
+              <div className="min-w-0 flex-1 text-[14px] max-sm:basis-[calc(100%-42px)]"><b className="text-ai">Biggest lever · </b>{lever.t}</div>
+              <button onClick={() => ask(`My week: habits ${JSON.stringify(h)}, sleep ${sleep} h, systolic ${sbp}, ${steps} steps. Explain my biggest longevity lever and a realistic 4-week plan. Population data only — not a diagnosis.`, { label: "✦ Plan my biggest lever" })} className="shrink-0 max-sm:ml-[42px] rounded-full bg-ai px-3 py-1.5 text-[12px] font-semibold text-on-ai">Plan it</button>
             </div>
           </div>
 

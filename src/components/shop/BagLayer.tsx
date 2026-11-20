@@ -49,7 +49,7 @@ export function BagLayer() {
       <AnimatePresence>
         {c.lines.length > 0 && !c.open && (
           <motion.button initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }} onClick={() => c.setOpen(true)} aria-label={`Open my plan, ${c.lines.length} items`}
-            className="fixed bottom-[calc(84px+var(--safe-bottom))] left-3 z-[90] flex items-center gap-2.5 rounded-full bg-white/95 p-1.5 pr-4 shadow-lift ring-1 ring-accent/20 backdrop-blur xl:bottom-6 xl:left-6">
+            className="fixed bottom-[calc(80px+var(--safe-bottom))] left-3 z-[90] flex items-center gap-2.5 rounded-full bg-white/95 p-1.5 pr-4 shadow-lift ring-1 ring-accent/20 backdrop-blur lg:bottom-6 lg:left-6">
             <span className="relative grid h-11 w-11 place-items-center rounded-full bg-iri text-white"><Icon name="bag" size={20} weight="duotone" /><span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-teal px-1 text-[11px] font-bold text-white">{c.lines.length}</span></span>
             <span className="text-left leading-tight"><span className="block text-[13px] font-semibold">My plan</span><span className="block text-[12px] tabular-nums text-muted">{formatMoney(c.total)}{c.quoted ? " + quote" : ""} CAD</span></span>
           </motion.button>

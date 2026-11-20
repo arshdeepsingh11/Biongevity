@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookBand } from "@/components/ui/BookNow";
 import { PageHero, Section } from "@/components/ui/Section";
 import { AuroraText } from "@/components/fx/AuroraText";
 import { LabsHub } from "@/components/bioaro/LabsHub";
@@ -34,6 +35,7 @@ export default function LabsPage() {
       </Section>
       <Section ai="AI Test Navigator" id="navigator" className="!pt-0 scroll-mt-20" chip={false}><div className="container-x"><TestNavigator /></div></Section>
       <Section ai="BioAro Labs" className="!pt-0"><div className="container-x"><LabsHub /></div></Section>
+      <BookBand title="Testing with a clinician behind it." lede="Book a consultation to choose the right tests, or message us on WhatsApp with what you'd like to understand." text="Hi Biongevity, I'd like to ask about BioAro Labs testing." />
     </>
   );
 }

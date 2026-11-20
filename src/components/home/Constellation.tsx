@@ -9,7 +9,9 @@ import { useAI } from "@/components/ai/AIProvider";
 import { Icon } from "@/components/ui/Icon";
 
 const W = 1000, H = 640, CX = W / 2, CY = H / 2;
-const ring = (i: number, n: number, rx: number, ry: number, off = 0) => { const a = -Math.PI / 2 + off + (i / n) * Math.PI * 2; return { x: CX + Math.cos(a) * rx, y: CY + Math.sin(a) * ry }; };
+// Rounded to 4 decimals so the server (Node) and the browser agree on the last digit — raw cos/sin differs by 1e-15 and trips hydration.
+const r4 = (v: number) => Math.round(v * 1e4) / 1e4;
+const ring = (i: number, n: number, rx: number, ry: number, off = 0) => { const a = -Math.PI / 2 + off + (i / n) * Math.PI * 2; return { x: r4(CX + Math.cos(a) * rx), y: r4(CY + Math.sin(a) * ry) }; };
 const SYS_POS = Object.fromEntries(SYSTEMS.map((s, i) => [s.id, ring(i, SYSTEMS.length, 190, 150)]));
 const MK_POS = Object.fromEntries(MARKERS.map((m, i) => [m.id, ring(i, MARKERS.length, 430, 275, Math.PI / MARKERS.length)]));
 

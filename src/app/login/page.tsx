@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function LoginPage() {
   return (
     <Section ai="Sign in" chip={false} className="pt-[calc(100px+var(--safe-top))] sm:pt-[140px]">
-      <div className="container-x grid gap-10 lg:grid-cols-[1.1fr_1fr]">
+      <div className="container-x grid gap-10 lg:grid-cols-[1.1fr_1fr] [&>*]:min-w-0">
         <div>
           <div className="flex items-center gap-3"><XevyoOrb size={44} live halo /><Logo size={26} /></div>
           <h1 className="h-display mt-6 max-w-[14ch]">Welcome back.</h1>
@@ -28,8 +28,9 @@ export default function LoginPage() {
             {PORTALS.map((p) => (
               <a key={p.id} href={env.appUrl} className="group flex items-center gap-4 rounded-[22px] bg-white p-4 shadow-card ring-1 ring-ink/[0.07] transition hover:-translate-y-0.5 hover:ring-ai/35 sm:p-5">
                 <span className="grid h-12 w-12 shrink-0 place-items-center icon-tile"><Icon name={p.icon} size={22} weight="duotone" /></span>
-                <span className="flex-1"><span className="block text-[18px] font-semibold">{p.t}</span><span className="block text-[14px] text-muted">{p.d}</span></span>
-                <span className="btn-dark h-10 px-4 text-[14px]">Continue<Icon name="arrow-up-right" size={14} /></span>
+                <span className="min-w-0 flex-1"><span className="block text-[18px] font-semibold">{p.t}</span><span className="block text-[14px] text-muted">{p.d}</span></span>
+                {/* On small phones the whole row is the link; the pill shrinks to its arrow. */}
+                <span className="btn-dark h-10 shrink-0 px-4 text-[14px] max-[399px]:w-10 max-[399px]:px-0"><span className="max-[399px]:sr-only">Continue</span><Icon name="arrow-up-right" size={14} /></span>
               </a>
             ))}
           </div>

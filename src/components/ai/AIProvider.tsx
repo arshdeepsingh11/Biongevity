@@ -116,7 +116,8 @@ export function AIProvider({ children }: { children: ReactNode }) {
       return;
     }
     busyRef.current = true; setBusy(true);
-    const history: XevyoTurn[] = msgs.filter((m) => m.role !== "notice").slice(-8).map((m) => ({ role: m.role === "user" ? "user" : "assistant", content: m.text }));
+    // Trimmed so long answers never push a request past the proxy's size limits (deploy/si-policy.mjs).
+    const history: XevyoTurn[] = msgs.filter((m) => m.role !== "notice").slice(-8).map((m) => ({ role: m.role === "user" ? "user" : "assistant", content: m.text.slice(0, 3000) }));
     setMsgs((m) => [...m, { role: "user", text: shown }, { role: "ai", text: "" }]);
     abort.current = new AbortController();
     try {
@@ -147,7 +148,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
 
   const translate = useCallback((text: string, to: XevyoLanguage) => {
     const l = langById(to);
-    ask(`Translate the text below into ${l.label}. Keep the meaning, numbers and formatting. Reply with the translation only.\n\n${text}`, { label: `✦ Translate to ${l.native}`, retrieve: false });
+    ask(`Translate the text below into ${l.label}. Keep the meaning, numbers and formatting. Reply with the translation only.\n\n${text.slice(0, 6000)}`, { label: `✦ Translate to ${l.native}`, retrieve: false });
   }, [ask]);
 
   const reset = useCallback(() => { abort.current?.abort(); setMsgs([]); busyRef.current = false; setBusy(false); }, []);

@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Prop, Staff, Tone, Visit } from "@/data/visits";
-import { onThemeChange, themeRgb } from "@/lib/theme";
+import { GLOBE, onThemeChange, themeRgb } from "@/lib/theme";
 import { Icon } from "@/components/ui/Icon";
 import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { useAI } from "@/components/ai/AIProvider";
@@ -52,7 +52,7 @@ function drawFig(ctx: CanvasRenderingContext2D, project: Proj, F: number, g: Fig
   const sh = P([g.x, 0.01, g.z]); ctx.fillStyle = "rgba(0,0,0,0.12)"; ctx.beginPath(); ctx.ellipse(sh[0], sh[1], w(0.32), w(0.1), 0, 0, Math.PI * 2); ctx.fill();
   limb(far ? AL : AR, g.cloth, 0.11);
   limb(far ? L : R, g.pants, 0.15); limb(far ? R : L, g.pants, 0.15);
-  [L[2], R[2]].forEach((f) => { const q = P(f); ctx.fillStyle = "#2a2a2a"; ctx.beginPath(); ctx.ellipse(q[0], q[1], w(0.09), w(0.05), 0, 0, Math.PI * 2); ctx.fill(); });
+  [L[2], R[2]].forEach((f) => { const q = P(f); ctx.fillStyle = GLOBE.shadow; ctx.beginPath(); ctx.ellipse(q[0], q[1], w(0.09), w(0.05), 0, 0, Math.PI * 2); ctx.fill(); });
   limb([at(0, 0.98 + bob), at(0, 1.42 + bob)], g.cloth, 0.38);
   limb([at(-0.2, 1.42 + bob), at(0.2, 1.42 + bob)], g.cloth, 0.14);
   limb(far ? AR : AL, g.cloth, 0.11);

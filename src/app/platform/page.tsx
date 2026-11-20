@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookBand } from "@/components/ui/BookNow";
 import { PageHero, Section } from "@/components/ui/Section";
 import { Head } from "@/components/home/HomeSections";
 import { Icon } from "@/components/ui/Icon";
@@ -102,6 +103,7 @@ export default function PlatformPage() {
           <AIPanel title="Ask about the platform" context="Healthspan platform and digital twin" prompts={["What is my digital twin?", "How is the Healthspan Index calculated?", "Can my family see my results?"]} />
         </div>
       </Section>
+      <BookBand title="Start your baseline." text="Hi Biongevity, I'd like to start a healthspan baseline." />
     </>
   );
 }

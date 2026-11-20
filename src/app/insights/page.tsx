@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookBand } from "@/components/ui/BookNow";
 import { PageHero, Section } from "@/components/ui/Section";
 import { JournalList } from "@/components/pages/JournalList";
 
@@ -9,6 +10,7 @@ export default function InsightsPage() {
     <>
       <PageHero eyebrow="Insights" title="Learn with us." lede="Longevity, genomics, the microbiome and AI — explained plainly, with AI key points you can scan in seconds." />
       <Section ai="Articles" className="!pt-0"><div className="container-x"><JournalList /></div></Section>
+      <BookBand />
     </>
   );
 }

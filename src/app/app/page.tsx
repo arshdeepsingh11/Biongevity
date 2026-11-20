@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookBand } from "@/components/ui/BookNow";
 import { PageHero, Section, Eyebrow } from "@/components/ui/Section";
 import { Head } from "@/components/home/HomeSections";
 import { Icon } from "@/components/ui/Icon";
@@ -121,6 +122,7 @@ export default function AppPage() {
           <div className="card p-6"><AppSignup /></div>
         </div>
       </Section>
+      <BookBand title="Book through the app, or right here." />
     </>
   );
 }

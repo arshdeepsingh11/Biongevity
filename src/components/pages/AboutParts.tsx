@@ -151,8 +151,9 @@ export function DataStack() {
             const z = (LAYERS.length - 1 - k) * (open ? 46 : 22);
             return (
               <div key={l.t} onMouseEnter={() => setHi(k)}
-                className={cn("absolute left-1/2 top-1/2 flex h-[190px] w-[190px] -translate-x-1/2 -translate-y-1/2 items-end rounded-[26px] p-4 ring-1 backdrop-blur-md transition-all duration-500 sm:h-[220px] sm:w-[220px]", hi === k ? "ring-ai" : "ring-ai/25")}
-                style={{ transform: `translateZ(${z}px)`, background: `linear-gradient(135deg, rgb(var(--c-ai) / ${0.1 + k * 0.06}), rgb(var(--c-surface) / .7))`, boxShadow: "0 30px 40px -30px rgb(0 0 0 / .35)" }}>
+                className={cn("absolute left-1/2 top-1/2 flex h-[190px] w-[190px] items-end rounded-[26px] p-4 ring-1 backdrop-blur-md transition-all duration-500 sm:h-[220px] sm:w-[220px]", hi === k ? "ring-ai" : "ring-ai/25")}
+                // Centring lives in the same transform as the depth: a Tailwind translate class would be overridden by it.
+                style={{ transform: `translate(-50%, -50%) translateZ(${z}px)`, background: `linear-gradient(135deg, rgb(var(--c-ai) / ${0.1 + k * 0.06}), rgb(var(--c-surface) / .7))`, boxShadow: "0 30px 40px -30px rgb(0 0 0 / .35)" }}>
                 <span className="flex items-center gap-2 text-[12px] font-semibold text-ai"><Icon name={l.icon} size={16} />{l.t}</span>
               </div>
             );

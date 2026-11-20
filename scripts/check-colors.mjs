@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 /**
  * Guard rail for the theme system: fails if a hard-coded hex colour appears in src/ outside the allow-list.
- * All colours belong in src/styles/themes.css (4 themes). Run: npm run check:colors
+ * All colours belong in src/styles/themes.css (3 themes: Sand, Olive, Mono). Run: npm run check:colors
  */
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
+// fileURLToPath decodes %20 etc., so paths with spaces work (URL.pathname does not).
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const ALLOW_FILES = ["src/styles/themes.css", "src/lib/theme.ts", "src/app/icon.svg", "src/app/layout.tsx", "src/app/globals.css"];
 const ALLOW_VALUES = ["#000", "#fff", "#ffffff", "#FF5F57", "#FEBC2E", "#28C840"]; // masks, print, terminal dots
 const HEX = /#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b/g;

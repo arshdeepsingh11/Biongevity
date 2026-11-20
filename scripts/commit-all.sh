@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
-# Biongevity - one commit per small change. Run from repo root: bash scripts/commit-all.sh
+# Biongevity - one commit per small change. Run from repo root: bash scripts/commit-all.sh [--prune]
 # commits.txt: "message|path path@N ..."  ("path@N" = copy scripts/stages/N/path first; plain path = final version)
+# --prune deletes files in src/ not listed in scripts/manifest.txt. Off by default: new files would be lost.
+git rev-parse --is-inside-work-tree >/dev/null 2>&1 || { echo "Not a git repository - run this from the repo root."; exit 1; }
 pruned=0
 while IFS= read -r f; do
-  grep -qxF "$f" scripts/manifest.txt || { rm -f -- "$f"; pruned=$((pruned+1)); echo "- pruned $f"; }
+  grep -qxF "$f" scripts/manifest.txt && continue
+  if [ "${1:-}" = "--prune" ]; then rm -f -- "$f"; pruned=$((pruned+1)); echo "- pruned $f"
+  else echo "  ? $f (not in scripts/manifest.txt - kept; re-run with --prune to delete)"; fi
 done < <(find src -type f)
-find src -type d -empty -delete
+[ "${1:-}" = "--prune" ] && find src -type d -empty -delete
 echo "Pruned $pruned stale files."
 final=scripts/.final
 while IFS='|' read -r msg files; do

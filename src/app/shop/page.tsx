@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { BookBand } from "@/components/ui/BookNow";
 import { Section } from "@/components/ui/Section";
 import { AuroraText } from "@/components/fx/AuroraText";
 import { Head } from "@/components/home/HomeSections";
 import { PlanStudio } from "@/components/shop/PlanStudio";
 import { Catalogue } from "@/components/shop/Catalogue";
+import { LiveStore } from "@/components/shop/LiveStore";
 import { Ladder } from "@/components/shop/Ladder";
 import { TrustStrip } from "@/components/shop/TrustStrip";
 import { CATALOG } from "@/lib/catalog";
@@ -49,6 +51,12 @@ export default function ShopPage() {
           </ol>
         </div>
       </section>
+      <Section ai="Live store" id="store" className="!pt-4 scroll-mt-20">
+        <div className="container-x">
+          <Head n="00" label="Live store" title={<>Available <AuroraText>now.</AuroraText></>} lede="Live products and prices from our central store. Secure checkout is handled by Shopify." />
+          <div className="mt-8"><LiveStore /></div>
+        </div>
+      </Section>
       <Section ai="Shop by kind" id="kinds" className="!pt-4">
         <div className="container-x">
           <Head n="01" label="Shop by kind" title={<>Four ways in, <AuroraText>one plan.</AuroraText></>} lede="Start small with one test, or go all in with a program. Tap a door to see just those." />
@@ -79,6 +87,7 @@ export default function ShopPage() {
           <div className="mt-8"><TrustStrip /></div>
         </div>
       </Section>
+      <BookBand title="Start with a consultation." lede="Every program begins with a clinician. Book online, or message us on WhatsApp to choose the right depth." text="Hi Biongevity, I'd like to ask about your longevity programs." />
     </>
   );
 }

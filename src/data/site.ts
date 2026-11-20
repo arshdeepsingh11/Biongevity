@@ -13,7 +13,7 @@ export const SITE = {
 export interface NavLink { href: string; label: string; icon: IconName; desc?: string; external?: boolean; group?: string }
 export interface NavItem { id: string; label: string; icon: IconName; href?: string; menu?: NavLink[] }
 
-/** Bottom Sparkle Navbar — hover opens a live preview panel. */
+/** Site map used by the footer's Explore column (the top navigation is MENU below). */
 export const NAV: NavItem[] = [
   { id: "home", label: "Home", icon: "home", href: "/" },
   {
@@ -27,6 +27,7 @@ export const NAV: NavItem[] = [
   {
     id: "clinic", label: "Clinic", icon: "pin", href: "/clinic/",
     menu: [
+      { href: "/uae/", label: "Biongevity Dubai (UAE)", icon: "pin" },
       { href: "/clinic/journey/", label: "Longevity Journey", icon: "route" },
       { href: "/clinic/virtual/", label: "Virtual Clinic", icon: "video" },
       { href: "/clinic/uae/", label: "UAE Precision Clinic", icon: "pin" },
@@ -60,6 +61,51 @@ export const NAV: NavItem[] = [
     ],
   },
   { id: "contact", label: "Contact", icon: "message", href: "/contact/" },
+];
+
+/**
+ * Business WhatsApp — the fixed button at the bottom right and every "WhatsApp us" link.
+ * Default: the clinic's business WhatsApp, +971 50 528 2566. NEXT_PUBLIC_WHATSAPP_NUMBER (country code + number, digits only) overrides it.
+ */
+export const WHATSAPP = {
+  number: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "971505282566").replace(/\D/g, ""),
+  message: "Hi Biongevity, I'd like to book a consultation.",
+};
+export const waLink = (text?: string) => `https://wa.me/${WHATSAPP.number}?text=${encodeURIComponent(text ?? WHATSAPP.message)}`;
+
+export interface MenuItem { id: string; label: string; href: string; kind?: "services" | "clinics" | "more" }
+
+/** Top navigation (desktop bar and phone drawer). Services and Clinics open menus; the rest are links. */
+export const MENU: MenuItem[] = [
+  { id: "services", label: "Services", href: "/precision-health/", kind: "services" },
+  { id: "clinics", label: "Clinics", href: "/clinic/", kind: "clinics" },
+  { id: "programs", label: "Programs & pricing", href: "/shop/#depth" },
+  { id: "how", label: "How it works", href: "/#how-it-works" },
+  { id: "about", label: "About", href: "/about/" },
+  { id: "contact", label: "Contact", href: "/contact/" },
+  { id: "more", label: "More", href: "/explore/", kind: "more" },
+];
+
+/** The "More" menu: tools and reading, grouped. */
+export const MORE_LINKS: { group: string; links: NavLink[] }[] = [
+  { group: "Tools", links: [
+    { href: "/explore/", label: "Explore the science", icon: "orbit", desc: "Interactive charts, 3D body and the longevity lab." },
+    { href: "/scan/", label: "AI Healthspan Scan", icon: "radar", desc: "2 minutes: your domains and test plan." },
+    { href: "/plan/", label: "Care plan builder", icon: "calendar", desc: "A 12-month plan with tests and a total." },
+    { href: "/tools/", label: "Explain my lab results", icon: "flask", desc: "Paste results; see what they mean." },
+    { href: "/family/", label: "Family care", icon: "users", desc: "Caring for a parent, with one shared view." },
+  ] },
+  { group: "Platform", links: [
+    { href: "/platform/", label: "Healthspan platform", icon: "fingerprint", desc: "Your digital twin and AI coach." },
+    { href: "/app/", label: "Biongevity App", icon: "phone", desc: "Wearables, coach and your record." },
+    { href: "/bioelr/", label: "BioELR for clinics", icon: "layers", desc: "The record system clinics use." },
+    { href: "/ai/", label: "How our AI works", icon: "shield", desc: "What Biongevity SI does and doesn't do." },
+  ] },
+  { group: "Read", links: [
+    { href: "/insights/", label: "Insights", icon: "book", desc: "Longevity science, explained plainly." },
+    { href: "/evidence/", label: "Evidence engine", icon: "microscope", desc: "Every number with its studies." },
+    { href: "/life/", label: "Biongevity Life", icon: "globe", desc: "Longevity at resorts, homes and offices." },
+  ] },
 ];
 
 export const CONTACTS = {

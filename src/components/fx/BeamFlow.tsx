@@ -65,7 +65,7 @@ export function BeamFlow({ className }: { className?: string }) {
       raf = requestAnimationFrame(loop);
       if (!visible) return;
       mouse.x += (mouse.tx - mouse.x) * 0.05; mouse.y += (mouse.ty - mouse.y) * 0.05;
-      gl.uniform2f(uR, c.width, c.height); gl.uniform1f(uT, reduced ? 4 : (now - t0) / 1000); gl.uniform2f(uM, mouse.x, mouse.y);
+      gl.uniform2f(uR, c.width, c.height); gl.uniform1f(uT, reduced ? 4 : Math.max(0, now - t0) / 1000); gl.uniform2f(uM, mouse.x, mouse.y);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
     raf = requestAnimationFrame(loop);

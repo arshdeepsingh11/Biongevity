@@ -12,3 +12,6 @@ scripts/stages/
 scripts/.final/
 .env.production
 .env*.local
+
+# Local screenshots from design reviews
+scratchpad/

@@ -3,17 +3,14 @@ import type { Metadata, Viewport } from "next";
 import { Providers } from "./providers";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { SparkleNav } from "@/components/layout/SparkleNav";
-import { AIAssistant } from "@/components/ai/AIAssistant";
-import { BagLayer } from "@/components/shop/BagLayer";
+import { MobileCta } from "@/components/layout/MobileCta";
+import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
+import { Analytics } from "@/components/layout/Analytics";
+import { LazyBackground, LazyOverlays } from "@/components/layout/LazyOverlays";
+import { Preloader } from "@/components/layout/Preloader";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { AIInteractionLayer } from "@/components/ai/AIInteractionLayer";
-import { CommandBar } from "@/components/ai/CommandBar";
-import { AskSelection } from "@/components/ai/AskSelection";
-import { ParticleField } from "@/components/fx/ParticleField";
-import { AINudge } from "@/components/ai/AINudge";
-import { MagneticCursor } from "@/components/fx3d/MagneticCursor";
 import { NextStep } from "@/components/ai/NextStep";
-import { THEME_INIT } from "@/lib/theme";
 import { SITE } from "@/data/site";
 import { JsonLd, organization, website } from "@/lib/seo";
 
@@ -32,32 +29,27 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#FFFDF9",
+  width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#101510",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="sand" suppressHydrationWarning>
-      <head>
-        {/* Applies the saved theme before first paint — no flash between themes. */}
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
-      </head>
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
       <body>
         <JsonLd data={[organization(), website()]} />
         <Providers>
-          <ParticleField />
+          <Preloader />
+          <SmoothScroll />
+          <LazyBackground />
           <AIInteractionLayer />
           <Header />
           <main className="relative z-[1]">{children}</main>
           <NextStep />
           <Footer />
-          <SparkleNav />
-          <AIAssistant />
-          <BagLayer />
-          <CommandBar />
-          <AskSelection />
-          <AINudge />
-          <MagneticCursor />
+          <MobileCta />
+          <WhatsAppButton />
+          <Analytics />
+          <LazyOverlays />
         </Providers>
       </body>
     </html>

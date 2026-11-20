@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookBand } from "@/components/ui/BookNow";
 import { PageHero, Section } from "@/components/ui/Section";
 import { LabExplainer } from "@/components/tools/LabExplainer";
 import { VisitPrep } from "@/components/tools/VisitPrep";
@@ -34,6 +35,7 @@ export default function ToolsPage() {
       <Section ai="Genes vs lifestyle" id="genes" className="scroll-mt-20">
         <div className="container-x"><Head n="06" label="Genes vs lifestyle" title="Your genes are not your fate." lede="Four habits against inherited heart risk. In a study of 55,685 people, a favourable lifestyle was linked with about half the coronary risk — even at high genetic risk." /><div className="mt-10"><GenesVsLifestyle /></div></div>
       </Section>
+      <BookBand title="Ready to talk to a clinician?" text="Hi Biongevity, I used your AI tools and would like to book." />
     </>
   );
 }

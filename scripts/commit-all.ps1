@@ -1,22 +1,28 @@
 # Biongevity - one commit per small change.
-# Run from repo root:  powershell -ExecutionPolicy Bypass -File scripts\commit-all.ps1
-# 1) prune:  delete files in src/ that are not part of this version (scripts/manifest.txt)
+# Run from repo root:  powershell -ExecutionPolicy Bypass -File scripts\commit-all.ps1 [-Prune]
+# 1) prune:  ONLY with -Prune — delete files in src/ that are not listed in scripts/manifest.txt.
+#            Off by default: any new file not yet in the manifest would otherwise be deleted.
 # 2) commit: one commit per line of scripts/commits.txt   (message|path path@stage ...)
 #            "path@N" first copies scripts/stages/N/path over path, so one file can get several small commits.
 #            A plain "path" restores the final version of that file.
 # 3) clean:  remove the staging folders and commit anything left so the tree is clean
+param([switch]$Prune)
 $ErrorActionPreference = "Continue"
+git rev-parse --is-inside-work-tree 2>$null | Out-Null
+if ($LASTEXITCODE -ne 0) { Write-Host "Not a git repository - run this from the repo root."; exit 1 }
 $root = (Get-Location).Path
 $keep = @{}; foreach ($m in Get-Content "scripts/manifest.txt") { if ($m.Trim()) { $keep[$m.Trim()] = $true } }
-$pruned = 0
-Get-ChildItem -LiteralPath "src" -Recurse -File | ForEach-Object {
-  $rel = $_.FullName.Substring($root.Length + 1).Replace("\", "/")
-  if (-not $keep.ContainsKey($rel)) { Remove-Item -LiteralPath $_.FullName -Force; $pruned++; Write-Host "- pruned $rel" }
+$stale = Get-ChildItem -LiteralPath "src" -Recurse -File | ForEach-Object { $_.FullName.Substring($root.Length + 1).Replace("\", "/") } | Where-Object { -not $keep.ContainsKey($_) }
+if ($stale -and -not $Prune) {
+  Write-Host "Files in src/ not listed in scripts/manifest.txt (kept; add them to the manifest, or re-run with -Prune to delete):"
+  $stale | ForEach-Object { Write-Host "  ? $_" }
+} elseif ($stale) {
+  $stale | ForEach-Object { Remove-Item -LiteralPath (Join-Path $root $_) -Force; Write-Host "- pruned $_" }
+  Get-ChildItem -LiteralPath "src" -Recurse -Directory | Sort-Object { $_.FullName.Length } -Descending | ForEach-Object {
+    if (-not (Get-ChildItem -LiteralPath $_.FullName -Force)) { Remove-Item -LiteralPath $_.FullName -Force }
+  }
+  Write-Host "Pruned $(@($stale).Count) stale files."
 }
-Get-ChildItem -LiteralPath "src" -Recurse -Directory | Sort-Object { $_.FullName.Length } -Descending | ForEach-Object {
-  if (-not (Get-ChildItem -LiteralPath $_.FullName -Force)) { Remove-Item -LiteralPath $_.FullName -Force }
-}
-Write-Host "Pruned $pruned stale files."
 
 function Ensure-Dir($rel) { [System.IO.Directory]::CreateDirectory((Join-Path $root (Split-Path $rel -Parent))) | Out-Null }
 

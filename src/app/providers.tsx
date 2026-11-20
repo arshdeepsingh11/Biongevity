@@ -1,9 +1,9 @@
 "use client";
 import type { ReactNode } from "react";
-import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { AIProvider } from "@/components/ai/AIProvider";
 import { CartProvider } from "@/components/shop/CartProvider";
+import { RegionProvider } from "@/components/region/RegionProvider";
 
 export function Providers({ children }: { children: ReactNode }) {
-  return <ThemeProvider><AIProvider><CartProvider>{children}</CartProvider></AIProvider></ThemeProvider>;
+  return <RegionProvider><AIProvider><CartProvider>{children}</CartProvider></AIProvider></RegionProvider>;
 }

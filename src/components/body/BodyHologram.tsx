@@ -55,7 +55,7 @@ export function BodyHologram({ hotspots = [], selected = null, onSelect, intensi
     const frame = (now: number) => {
       raf = requestAnimationFrame(frame);
       if (!visible || document.hidden) return;
-      const v = view.current, P = props.current, t = (now - t0) / 1000;
+      const v = view.current, P = props.current, t = Math.max(0, now - t0) / 1000;
       if (!v.drag) { v.idle += 1; if (P.autoRotate && !reduced && v.idle > 90 && !P.selected) v.tYaw += 0.0045; }
       v.yaw += (v.tYaw - v.yaw) * 0.08; v.zoom += (v.tZoom - v.zoom) * 0.07; v.focusY += (v.tFocusY - v.focusY) * 0.07;
       const cy = Math.cos(v.yaw), sy = Math.sin(v.yaw), cp = Math.cos(v.pitch), sp = Math.sin(v.pitch);
@@ -168,7 +168,7 @@ export function BodyHologram({ hotspots = [], selected = null, onSelect, intensi
           </button>
         );
       })}
-      <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full bg-white/80 p-1 shadow-card ring-1 ring-ink/[0.08] backdrop-blur-md">
+      <div className="absolute bottom-3 left-1/2 flex w-max max-w-[calc(100%-1rem)] -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full bg-white/80 p-1 shadow-card ring-1 ring-ink/[0.08] backdrop-blur-md">
         <button onClick={() => turn(0)} className="rounded-full px-2.5 py-1 text-[11.5px] font-semibold hover:bg-ink/[0.05]">Front</button>
         <button onClick={() => turn(Math.PI / 2)} className="rounded-full px-2.5 py-1 text-[11.5px] font-semibold hover:bg-ink/[0.05]">Side</button>
         <button onClick={() => turn(Math.PI)} className="rounded-full px-2.5 py-1 text-[11.5px] font-semibold hover:bg-ink/[0.05]">Back</button>

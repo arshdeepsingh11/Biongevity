@@ -4,4 +4,14 @@ main = "xevyo-worker.js"
 compatibility_date = "2026-10-01"
 
 [vars]
-ALLOWED_ORIGINS = "https://biongevity.com,https://www.biongevity.com"
+# Website + the iOS (capacitor://localhost) and Android (https://localhost) apps built with Capacitor.
+ALLOWED_ORIGINS = "https://biongevity.com,https://www.biongevity.com,capacitor://localhost,https://localhost"
+XEVYO_MODEL = "xevyo"
+# Optional cap on answer length (tokens). Leave empty if the Xevyo API rejects max_tokens.
+XEVYO_MAX_TOKENS = ""
+
+# Per-visitor limit: 10 questions per minute per IP. Cloudflare allows period = 10 or 60 (seconds).
+[[ratelimits]]
+name = "SI_RATE_LIMIT"
+namespace_id = "1001"
+simple = { limit = 10, period = 60 }

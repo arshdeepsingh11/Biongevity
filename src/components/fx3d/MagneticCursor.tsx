@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 
 /**
  * Magnetic cursor — a soft ring follows the mouse; primary buttons (and anything with data-magnetic) gently pull
- * toward the pointer and the ring wraps them. Mouse only, off for touch, reduced motion and the calm Sand theme.
+ * toward the pointer and the ring wraps them. Mouse only, off for touch and reduced motion.
  * The loop only runs while the ring is still moving, so an idle page does no work.
  */
 export function MagneticCursor() {
@@ -16,11 +16,9 @@ export function MagneticCursor() {
     let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y, w = 34, h = 34, tw = 34, th = 34, rad = 999, raf = 0;
     let target: HTMLElement | null = null;
     const SEL = "[data-magnetic], .btn-ai, .btn-dark";
-    const calm = () => document.documentElement.dataset.theme === "sand";
     const wake = () => { if (!raf) raf = requestAnimationFrame(loop); };
     const move = (e: PointerEvent) => {
       if (e.pointerType !== "mouse") return;
-      if (calm()) { if (r.style.opacity !== "0") leave(); return; }
       wake();
       x = e.clientX; y = e.clientY; r.style.opacity = "1"; d.style.opacity = "1";
       const el = (e.target as HTMLElement | null)?.closest?.(SEL) as HTMLElement | null;

@@ -18,13 +18,15 @@ export function BeamCircle({ nodes, center, className, onSelect, active }: { nod
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     // slow spin, only while on screen
     let raf = 0, seen = false, base = 0, t0 = performance.now();
-    const f = (t: number) => { if (!seen || document.hidden) { base += ((t - t0) / 1000) * 3; raf = 0; return; } setSpin(base + ((t - t0) / 1000) * 3); raf = requestAnimationFrame(f); };
+    const f = (t: number) => { if (!seen || document.hidden) { base += (Math.max(0, t - t0) / 1000) * 3; raf = 0; return; } setSpin(base + (Math.max(0, t - t0) / 1000) * 3); raf = requestAnimationFrame(f); };
     const io = new IntersectionObserver(([e]) => { seen = e.isIntersecting; if (seen && !raf) { t0 = performance.now(); raf = requestAnimationFrame(f); } }, { rootMargin: "120px" });
     if (box.current) io.observe(box.current);
     return () => { cancelAnimationFrame(raf); io.disconnect(); };
   }, []);
   const n = nodes.length, focus = hot ?? active ?? null;
-  const pos = (k: number) => { const a = ((k / n) * 360 + spin - 90) * (Math.PI / 180); return { x: 50 + Math.cos(a) * 40, y: 50 + Math.sin(a) * 40 }; };
+  // Rounded to 4 decimals so the server (Node) and the browser agree on the last digit — raw cos/sin differs by 1e-15 and trips hydration.
+  const r4 = (v: number) => Math.round(v * 1e4) / 1e4;
+  const pos = (k: number) => { const a = ((k / n) * 360 + spin - 90) * (Math.PI / 180); return { x: r4(50 + Math.cos(a) * 40), y: r4(50 + Math.sin(a) * 40) }; };
 
   return (
     <div ref={box} className={cn("relative mx-auto aspect-square w-full max-w-[560px]", className)}>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BookBand } from "@/components/ui/BookNow";
 import type { Metadata } from "next";
 import { PageHero, Section } from "@/components/ui/Section";
 import { Triage } from "@/components/pages/Triage";
@@ -53,6 +54,7 @@ export default function PrecisionHealthPage() {
           </div>
         </div>
       </Section>
+      <BookBand title="Not sure which department?" lede="Book a consultation and we'll point you to the right specialist — or message us on WhatsApp first." />
     </>
   );
 }

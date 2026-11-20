@@ -12,7 +12,7 @@ export function NumberTicker({ value, decimals = 0, duration = 1400, from = 0, p
     if (!inView) return;
     let raf = 0; const t0 = performance.now(), start = cur.current;
     const tick = (t: number) => {
-      const k = Math.min(1, (t - t0) / duration), e = 1 - Math.pow(1 - k, 4);
+      const k = Math.min(1, Math.max(0, t - t0) / duration), e = 1 - Math.pow(1 - k, 4);
       cur.current = start + (value - start) * e; setN(cur.current);
       if (k < 1) raf = requestAnimationFrame(tick);
     };

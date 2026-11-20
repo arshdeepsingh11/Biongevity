@@ -176,8 +176,8 @@ export function CarePlanBuilder() {
           <div className="rounded-[26px] bg-white p-5 shadow-card ring-1 ring-ink/[0.06]">
             <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ai">Order after approval</div>
             <div className="mt-3 space-y-2">
-              {plan.tests.map((t) => <div key={t.handle} className="flex items-center justify-between gap-2 text-[12.5px]"><span className="min-w-0 truncate font-medium">{t.title}</span><BuyButton href={t.url} store="labs" price={t.price} size="sm" /></div>)}
-              {plan.formula && months > 0 && <div className="flex items-center justify-between gap-2 text-[12.5px]"><span className="min-w-0 truncate font-medium">{plan.formula.title}</span><BuyButton href={plan.formula.url} store="drugs" price={plan.formula.price} size="sm" /></div>}
+              {plan.tests.map((t) => <div key={t.handle} className="flex items-center justify-between gap-2 text-[12.5px]"><span className="min-w-0 font-medium leading-snug">{t.title}</span><BuyButton href={t.url} store="labs" price={t.price} size="sm" /></div>)}
+              {plan.formula && months > 0 && <div className="flex items-center justify-between gap-2 text-[12.5px]"><span className="min-w-0 font-medium leading-snug">{plan.formula.title}</span><BuyButton href={plan.formula.url} store="drugs" price={plan.formula.price} size="sm" /></div>}
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { WORLD_DOTS } from "@/data/worldmap";
 import { OFFICES } from "@/data/clinic";
-import { onThemeChange, themeRgb } from "@/lib/theme";
+import { GLOBE, onThemeChange, themeRgb } from "@/lib/theme";
 import { Icon } from "@/components/ui/Icon";
 import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { useAI } from "@/components/ai/AIProvider";
@@ -71,7 +71,7 @@ export function ClinicGlobe() {
     const frame = (now: number) => {
       raf = requestAnimationFrame(frame);
       if (!visible || document.hidden) return;
-      const v = cam.current, t = (now - t0) / 1000;
+      const v = cam.current, t = Math.max(0, now - t0) / 1000;
       if (!v.drag && !reduced) { v.idle++; if (v.idle > 120 && v.tZoom <= 1.01) v.tLon += 0.08; }
       v.lon += (v.tLon - v.lon) * 0.06; v.lat += (v.tLat - v.lat) * 0.06; v.zoom += (v.tZoom - v.zoom) * 0.06;
       const R = Math.min(W, H) * 0.42 * v.zoom, cx = W / 2, cy = H / 2;
@@ -87,7 +87,7 @@ export function ClinicGlobe() {
       ctx.clearRect(0, 0, W, H);
       // space backdrop + stars for the satellite and dark views
       if (dark || sat) {
-        ctx.fillStyle = dark ? "#04060c" : "#020814"; ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = dark ? GLOBE.skyDark : GLOBE.skySat; ctx.fillRect(0, 0, W, H);
         for (let i = 0; i < 140; i++) { const sx = (i * 9301 + 49297) % 233280 / 233280 * W, sy = (i * 4253 + 1931) % 104729 / 104729 * H, tw = 0.35 + 0.35 * Math.sin(t * 1.5 + i); ctx.fillStyle = `rgba(255,255,255,${tw * 0.6})`; ctx.fillRect(sx, sy, 1.2, 1.2); }
       }
       // atmosphere
@@ -95,8 +95,8 @@ export function ClinicGlobe() {
       g.addColorStop(0, dark ? "rgba(90,140,255,0.22)" : sat ? "rgba(120,180,255,0.35)" : rgba(col.ai2, 0.18)); g.addColorStop(1, "rgba(0,0,0,0)");
       ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, R * 1.25, 0, Math.PI * 2); ctx.fill();
       const sea = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.4, R * 0.1, cx, cy, R);
-      if (sat) { sea.addColorStop(0, "#1d5fa8"); sea.addColorStop(0.7, "#0b3a74"); sea.addColorStop(1, "#05214a"); }
-      else if (dark) { sea.addColorStop(0, "#111a2e"); sea.addColorStop(1, "#060a14"); }
+      if (sat) { sea.addColorStop(0, GLOBE.seaSat[0]); sea.addColorStop(0.7, GLOBE.seaSat[1]); sea.addColorStop(1, GLOBE.seaSat[2]); }
+      else if (dark) { sea.addColorStop(0, GLOBE.seaDark[0]); sea.addColorStop(1, GLOBE.seaDark[1]); }
       else { sea.addColorStop(0, rgba(col.surface, 0.95)); sea.addColorStop(1, rgba(col.hi, 0.18)); }
       ctx.fillStyle = sea; ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
       ctx.strokeStyle = dark || sat ? "rgba(140,190,255,0.35)" : rgba(col.ai2, 0.25); ctx.lineWidth = 1; ctx.stroke();
@@ -152,9 +152,9 @@ export function ClinicGlobe() {
         const sc = 0.7 + z * 0.3, on = selSat.current === S.id;
         ctx.save(); ctx.translate(x, y); ctx.rotate(t * 0.3 + S.phase); ctx.scale(sc, sc);
         ctx.fillStyle = dark || sat ? "rgba(120,190,255,0.85)" : rgba(col.ai2, 0.85); ctx.fillRect(-15, -3, 9, 6); ctx.fillRect(6, -3, 9, 6);
-        ctx.fillStyle = dark || sat ? "#e9eef7" : rgba(col.ink, 0.85); ctx.fillRect(-4, -4, 8, 8);
+        ctx.fillStyle = dark || sat ? GLOBE.marker : rgba(col.ink, 0.85); ctx.fillRect(-4, -4, 8, 8);
         ctx.restore();
-        if (on) { ctx.strokeStyle = dark || sat ? "#9fe0ff" : rgba(col.ai, 0.9); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(x, y, 14, 0, Math.PI * 2); ctx.stroke(); }
+        if (on) { ctx.strokeStyle = dark || sat ? GLOBE.markerRing : rgba(col.ai, 0.9); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(x, y, 14, 0, Math.PI * 2); ctx.stroke(); }
         ctx.font = "600 10.5px 'DM Sans Variable', system-ui, sans-serif"; ctx.fillStyle = dark || sat ? `rgba(220,235,255,${0.5 + z * 0.4})` : rgba(col.ink, 0.45 + z * 0.4); ctx.fillText(S.name, x + 14, y + 14);
         hit.push({ id: S.id, kind: "sat", x, y });
       });
@@ -199,7 +199,7 @@ export function ClinicGlobe() {
         <button onClick={() => ask("Which Biongevity location should I choose, and can I start with a virtual visit?", { label: "✦ Which location suits me?" })} className="mt-1 flex items-center gap-2 rounded-[22px] bg-ai-soft/70 p-3.5 text-left text-[13px] font-semibold text-ai ring-1 ring-ai/15"><XevyoOrb size={26} live />Which location suits me?</button>
       </div>
 
-      <div className={`relative h-[560px] overflow-hidden rounded-[32px] ring-1 ring-ink/[0.07] transition-colors duration-500 ${view === "light" ? "bg-white" : "bg-[#03060d]"}`}>
+      <div className={`relative h-[560px] overflow-hidden rounded-[32px] ring-1 ring-ink/[0.07] transition-colors duration-500 ${view === "light" ? "bg-white" : ""}`} style={view === "light" ? undefined : { background: GLOBE.frame }}>
         <canvas ref={canvas} aria-label="3D globe with Biongevity clinics. Drag to spin." className={`absolute inset-0 h-full w-full cursor-grab touch-pan-y transition-opacity duration-500 active:cursor-grabbing ${stage === "building" ? "opacity-0" : "opacity-100"}`} />
         {stage === "globe" && !sel && <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white/80 px-3 py-1.5 text-[12px] font-medium text-muted ring-1 ring-ink/[0.06] backdrop-blur">Drag to spin · tap a city or a satellite</div>}
         {stage === "globe" && (

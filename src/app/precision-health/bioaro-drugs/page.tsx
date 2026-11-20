@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookBand } from "@/components/ui/BookNow";
 import { PageHero, Section } from "@/components/ui/Section";
 import { AuroraText } from "@/components/fx/AuroraText";
 import { DrugsHub } from "@/components/bioaro/DrugsHub";
@@ -27,6 +28,7 @@ export default function DrugsPage() {
         </div>
       </Section>
       <Section ai="BioAro Drugs" className="!pt-0"><div className="container-x"><DrugsHub /></div></Section>
+      <BookBand title="Check the fit before you start." lede="Book a consultation to match formulas to your results and medication, or ask us on WhatsApp." text="Hi Biongevity, I'd like to ask about BioAro Drugs formulas." />
     </>
   );
 }

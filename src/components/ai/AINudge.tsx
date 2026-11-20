@@ -32,7 +32,7 @@ export function AINudge() {
     <AnimatePresence>
       {show && (
         <motion.div role="status" initial={{ opacity: 0, y: 12, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 12 }}
-          className="fixed bottom-[calc(146px+var(--safe-bottom))] right-3 z-[94] flex max-w-[300px] items-start gap-3 rounded-2xl bg-white p-3 pr-2 shadow-lift ring-1 ring-ai/25 xl:bottom-[88px] xl:right-6">
+          className="fixed bottom-[calc(212px+var(--safe-bottom))] right-3 z-[94] flex max-w-[300px] items-start gap-3 rounded-2xl bg-white p-3 pr-2 shadow-lift ring-1 ring-ai/25 lg:bottom-[160px] lg:right-6">
           <XevyoOrb size={34} live />
           <div className="min-w-0 flex-1">
             <div className="text-[13.5px] font-semibold leading-snug">Want the 30-second version?</div>

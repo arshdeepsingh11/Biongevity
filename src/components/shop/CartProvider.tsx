@@ -1,9 +1,9 @@
 "use client";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { itemById, type ShopItem } from "@/lib/catalog";
-import { TERM_PRICES, type Term } from "@/config/store";
+import type { Term } from "@/config/store";
+import { linePrice, parseLines, type Line } from "@/lib/bag";
 
-export interface Line { id: string; term?: Term }
 interface Cart {
   lines: (Line & { item: ShopItem; price: number | null })[];
   add: (id: string, term?: Term) => void; remove: (id: string) => void; setTerm: (id: string, t: Term) => void; clear: () => void;
@@ -13,20 +13,15 @@ interface Cart {
 const Ctx = createContext<Cart | null>(null);
 const KEY = "biongevity.bag.v1";
 
-/** Price for a line: programs depend on term (12 months = published price; null = care-team quote). */
-export const linePrice = (item: ShopItem, term?: Term): number | null => {
-  if (item.kind !== "program" || !term || term === 12) return item.price;
-  const v = TERM_PRICES[item.handle]?.[term];
-  return v === undefined ? null : v;
-};
-
 /** "My plan" bag — one cart for programs, packages, tests and formulas. Remembered in this browser. */
 export function CartProvider({ children }: { children: ReactNode }) {
   const [raw, setRaw] = useState<Line[]>([]);
   const [open, setOpen] = useState(false);
   const [view, setView] = useState<string | null>(null);
-  useEffect(() => { try { const s = localStorage.getItem(KEY); if (s) setRaw(JSON.parse(s)); } catch { /* storage unavailable */ } }, []);
-  useEffect(() => { try { localStorage.setItem(KEY, JSON.stringify(raw)); } catch { /* storage unavailable */ } }, [raw]);
+  // Save only after the saved bag has been read; otherwise the first (empty) render overwrites it.
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => { try { setRaw(parseLines(localStorage.getItem(KEY))); } catch { /* storage unavailable */ } setLoaded(true); }, []);
+  useEffect(() => { if (!loaded) return; try { localStorage.setItem(KEY, JSON.stringify(raw)); } catch { /* storage unavailable */ } }, [raw, loaded]);
 
   const add = useCallback((id: string, term?: Term) => {
     const it = itemById(id); if (!it) return;

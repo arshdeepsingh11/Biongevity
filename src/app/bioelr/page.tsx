@@ -20,7 +20,7 @@ export default function BioELRPage() {
   return (
     <>
       <JsonLd data={[breadcrumb([["BioELR", "/bioelr/"]]), { "@context": "https://schema.org", "@type": "SoftwareApplication", name: "BioELR", applicationCategory: "BusinessApplication", applicationSubCategory: "Electronic health record", description: "Longevity-focused health record system for clinics and institutions.", publisher: { "@type": "Organization", name: "BioAro Inc." } }]} />
-      <PageHero eyebrow="BioELR · for clinics & institutions" ai="BioELR" title={<>The longevity record, <span className="text-ai-grad">with AI built in.</span></>}
+      <PageHero book={false} eyebrow="BioELR · for clinics & institutions" ai="BioELR" title={<>The longevity record, <span className="text-ai-grad">with AI built in.</span></>}
         lede="One system for longitudinal care: multi-omic and wearable data, AI that drafts and flags for clinicians, and the operations a modern clinic runs on — from one site to a whole community.">
         <div className="flex flex-wrap gap-3">
           <Link href="#configure" className="btn-dark h-12 px-6"><Icon name="layers" size={17} />Configure BioELR</Link>

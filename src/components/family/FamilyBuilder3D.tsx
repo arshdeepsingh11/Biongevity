@@ -219,7 +219,8 @@ function TreeStage({ tiers, pos, links, open, setOpen }: { tiers: { g: number; l
           return (
             <div key={t.g} className="absolute inset-x-0 transition-[top] duration-700" style={{ top: `${y}%`, transform: `translateZ(${-t.g * 30}px)` }}>
               <div className="h-px w-full bg-gradient-to-r from-transparent via-ai/25 to-transparent" />
-              <span className="absolute -top-5 left-1 text-[9.5px] font-semibold uppercase tracking-[0.2em] text-ai/60">{GEN_LABEL[t.g]}</span>
+              {/* Phones: the nodes sit on top of this caption in 3D and each person is named anyway, so it shows from sm up. */}
+              <span className="absolute -top-5 left-1 z-10 hidden whitespace-nowrap rounded-full bg-[rgb(var(--c-surface)/.8)] px-1.5 sm:block text-[9.5px] font-semibold uppercase tracking-[0.2em] text-ai/70 backdrop-blur-sm">{GEN_LABEL[t.g]}</span>
             </div>
           );
         })}

@@ -11,6 +11,7 @@ import { LANGUAGES, UI, langById, type SILanguage } from "@/lib/languages";
 import { FAMILY, WHATS_NEW } from "@/data/discover";
 import { LAB_TESTS } from "@/data/labs";
 import { formatMoney } from "@/lib/utils";
+import { BookNow, WhatsAppLink } from "@/components/ui/BookNow";
 
 /** Render [1] [2] [3] citations as small superscript chips. */
 function withCites(text: string) {
@@ -41,8 +42,8 @@ export function AIAssistant() {
           <motion.aside role="dialog" aria-label="Biongevity SI"
             initial={{ opacity: 0, y: 24, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 24, scale: 0.97 }}
             transition={{ type: "spring", stiffness: 340, damping: 30 }}
-            className="si-panel fixed inset-x-2 bottom-[calc(150px+var(--safe-bottom))] top-[calc(70px+var(--safe-top))] z-[95] flex flex-col overflow-hidden rounded-[26px] bg-white shadow-lift ring-1 ring-ai/20 backdrop-blur-2xl
-              sm:inset-x-auto sm:right-4 sm:top-auto sm:h-[min(680px,calc(100vh-190px))] sm:w-[430px] lg:bottom-24">
+            className="si-panel fixed inset-x-2 bottom-[calc(212px+var(--safe-bottom))] top-[calc(78px+var(--safe-top))] z-[95] flex flex-col overflow-hidden rounded-[26px] bg-white shadow-lift ring-1 ring-ai/20 backdrop-blur-2xl
+              sm:inset-x-auto sm:right-4 sm:top-auto sm:h-[min(680px,calc(100vh-250px))] sm:w-[430px] lg:bottom-[160px]">
             <BorderBeam colorFrom="rgb(var(--c-ai-hi))" colorTo="rgb(var(--c-ai-2))" />
             <header className="relative flex items-center gap-2.5 overflow-hidden border-b border-ink/[0.06] px-4 py-3.5">
               <div aria-hidden className="ai-glow -left-10 -top-16 h-32 w-48 !opacity-[0.18]" />
@@ -156,6 +157,13 @@ export function AIAssistant() {
                   <div dir="auto" className={`max-w-[90%] whitespace-pre-wrap rounded-2xl px-3.5 py-2.5 text-[14px] leading-relaxed ${m.role === "user" ? "bg-accent text-on-accent" : m.role === "notice" ? "bg-gold-soft/60 text-gold-deep" : "bg-canvas text-ink"}`}>
                     {m.text ? (m.role === "ai" ? withCites(m.text) : m.text) : <span className="inline-flex gap-1">{[0, 1, 2].map((k) => <span key={k} className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-ai" style={{ animationDelay: `${k * 0.2}s` }} />)}</span>}
                   </div>
+                  {m.role === "ai" && m.text && !busy && i === msgs.length - 1 && (
+                    <div data-ai-cta className="mt-2 flex max-w-[90%] flex-wrap items-center gap-2 rounded-2xl bg-ai-soft/50 p-2 ring-1 ring-ai/15">
+                      <span className="px-1 text-[12px] font-semibold text-ai">Ready for the next step?</span>
+                      <BookNow size="sm" className="!h-9 !px-3.5 !text-[13px]" />
+                      <WhatsAppLink size="sm" label="WhatsApp" className="!h-9 !px-3.5 !text-[13px]" text="Hi Biongevity, I was chatting with Biongevity SI and would like to book." />
+                    </div>
+                  )}
                   {m.role === "ai" && m.text && !(busy && i === msgs.length - 1) && (
                     <div className="mt-1 flex flex-wrap items-center gap-1 px-1">
                       <Icon name="globe" size={11} className="text-faint" /><span className="text-[10.5px] text-faint">{ui.translate}:</span>
@@ -192,7 +200,7 @@ export function AIAssistant() {
       </AnimatePresence>
 
       <button onClick={() => setOpen((o) => !o)} aria-label={open ? "Close Biongevity SI" : "Ask Biongevity SI"} aria-expanded={open}
-        className="fixed bottom-[calc(84px+var(--safe-bottom))] right-3 z-[96] flex items-center gap-2.5 rounded-full bg-white/90 p-1.5 pr-1.5 shadow-lift ring-1 ring-ai/25 backdrop-blur-xl transition-transform hover:-translate-y-0.5 sm:pr-4 xl:bottom-6 xl:right-6">
+        className="fixed bottom-[calc(146px+var(--safe-bottom))] right-3 z-[96] flex items-center gap-2.5 rounded-full bg-white/90 p-1.5 pr-1.5 shadow-lift ring-1 ring-ai/25 backdrop-blur-xl transition-transform hover:-translate-y-0.5 sm:pr-4 lg:bottom-[92px] lg:right-6">
         <span className="relative grid h-11 w-11 place-items-center">
           {open ? <span className="grid h-11 w-11 place-items-center rounded-full bg-canvas"><Icon name="x" size={18} className="text-ink" /></span> : <XevyoOrb size={44} live halo />}
         </span>

@@ -26,8 +26,35 @@ export function Ladder() {
     { k: "program", t: "Longevity program", icon: "crown", price: `${formatMoney(MIN("program"))}–${formatMoney(MAX("program"))}`, unit: "per 12 months · 3 & 6 mo available" },
   ];
   const cell = (v: boolean | string) => v === true ? <Icon name="check" size={18} weight="bold" className="mx-auto text-teal" /> : v === false ? <span className="text-faint">—</span> : <span className="text-[12.5px]">{v}</span>;
+  const programs = CATALOG.filter((i) => i.kind === "program");
   return (
-    <div className="overflow-x-auto rounded-[28px] bg-white shadow-card ring-1 ring-ink/[0.06]">
+    <>
+    {/* Phones: one card per depth, with every row of the table listed inside it. */}
+    <div className="grid gap-3 md:hidden">
+      {cols.map((c, i) => (
+        <div key={c.k} className={`rounded-[24px] p-5 shadow-card ring-1 ring-ink/[0.06] ${i === 2 ? "bg-navy" : "bg-white"}`}>
+          <div className="flex items-center gap-3">
+            <span className="grid h-11 w-11 shrink-0 place-items-center icon-tile"><Icon name={c.icon} size={22} weight="duotone" /></span>
+            <div className="min-w-0">
+              <div className="text-[16px] font-semibold">{c.t}</div>
+              <div className="text-[15px] font-semibold text-accent">{c.price} <span className="text-[11px] font-normal text-muted">CAD · {c.unit}</span></div>
+            </div>
+          </div>
+          <dl className="mt-4 divide-y divide-ink/[0.05] text-[13.5px]">
+            {ROWS.map((row) => (
+              <div key={row.k} className="flex items-center justify-between gap-4 py-2.5">
+                <dt className="min-w-0 text-muted">{row.k}</dt>
+                <dd className="max-w-[55%] text-right">{cell(row.v[i])}</dd>
+              </div>
+            ))}
+          </dl>
+          {c.k === "program" && (
+            <div className="mt-3 flex flex-wrap gap-1.5">{programs.map((p) => <button key={p.id} onClick={() => setView(p.id)} className="rounded-full bg-white px-3 py-1.5 text-[12px] font-semibold ring-1 ring-accent/20 hover:text-accent">{p.title.replace("Biongevity ", "")}</button>)}</div>
+          )}
+        </div>
+      ))}
+    </div>
+    <div className="hidden overflow-x-auto rounded-[28px] bg-white shadow-card ring-1 ring-ink/[0.06] md:block">
       <table className="w-full min-w-[640px] text-[14px]">
         <thead>
           <tr>
@@ -48,5 +75,6 @@ export function Ladder() {
         </tbody>
       </table>
     </div>
+    </>
   );
 }

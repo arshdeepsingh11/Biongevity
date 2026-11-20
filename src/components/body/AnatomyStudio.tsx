@@ -57,7 +57,7 @@ export function AnatomyStudio({ dept, name }: { dept: string; name: string }) {
       {/* 3D models: the preview picture shows at once, the live viewer fades in over it when ready.
           Models already opened stay mounted, so switching back is instant. */}
       {models.filter((x) => x.id === m?.id || opened[x.id]).map((x) => (
-        <div key={x.id} hidden={v.kind !== "model" || x.id !== m?.id} className="relative overflow-hidden rounded-[28px] ring-1 ring-ink/[0.07]" style={{ background: "radial-gradient(90% 80% at 50% 40%, #ffffff 0%, rgb(var(--c-pearl)) 60%, rgb(var(--c-ai-soft)) 100%)" }}>
+        <div key={x.id} hidden={v.kind !== "model" || x.id !== m?.id} className="relative overflow-hidden rounded-[28px] ring-1 ring-ink/[0.07]" style={{ background: "radial-gradient(90% 80% at 50% 40%, var(--stage-hi, #ffffff) 0%, rgb(var(--c-pearl)) 60%, rgb(var(--c-ai-soft)) 100%)" }}>
           <div className="relative aspect-[4/3] w-full sm:aspect-[16/9]">
             <img src={x.thumb} alt="" aria-hidden fetchPriority="high" className={cn("absolute inset-0 h-full w-full object-contain transition-opacity duration-700", loaded[x.id] && "opacity-0")} />
             {!loaded[x.id] && (

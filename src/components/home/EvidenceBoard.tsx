@@ -63,9 +63,10 @@ function Curve({ pts, x, setX, xMin, xMax, yMin, yMax, fmtX, fmtY, zones, pts2, 
 
 function Slider({ v, set, min, max, step, label, fmt }: { v: number; set: (n: number) => void; min: number; max: number; step: number; label: string; fmt: (n: number) => string }) {
   return (
-    <label className="mt-2 flex items-center gap-3 text-[12px] text-muted">
-      <span className="w-24 shrink-0">{label}</span>
-      <input type="range" min={min} max={max} step={step} value={v} onChange={(e) => set(Number(e.target.value))} className="h-1.5 flex-1 cursor-pointer accent-[rgb(var(--c-ai))]" />
+    // On phones the label takes its own line so the slider keeps a usable length and the value stays in view.
+    <label className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-muted sm:flex-nowrap">
+      <span className="w-full shrink-0 sm:w-24">{label}</span>
+      <input type="range" min={min} max={max} step={step} value={v} onChange={(e) => set(Number(e.target.value))} className="h-1.5 min-w-0 flex-1 cursor-pointer accent-[rgb(var(--c-ai))]" />
       <span className="w-16 shrink-0 text-right font-semibold tabular-nums text-ink">{fmt(v)}</span>
     </label>
   );

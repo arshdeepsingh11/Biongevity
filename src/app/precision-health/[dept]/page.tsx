@@ -1,18 +1,20 @@
 import Link from "next/link";
-import { BOOK_URL } from "@/lib/env";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { BookNow, WhatsAppLink, BookBand } from "@/components/ui/BookNow";
 import { Section } from "@/components/ui/Section";
 import { Icon } from "@/components/ui/Icon";
 import { AskButton } from "@/components/pages/AskButton";
-import { KeywordStream } from "@/components/fx/KeywordStream";
 import { TextAnimate } from "@/components/fx/TextAnimate";
 import { DeptTabs } from "@/components/dept/DeptTabs";
+import { ServiceLanding } from "@/components/dept/ServiceLanding";
 import { PageSummary } from "@/components/ai/PageSummary";
 import { DeptTests } from "@/components/labs/DeptTests";
 import { deptHasTests } from "@/lib/deptGoals";
 import { DeptBody } from "@/components/dept/DeptBody";
 import { DEPARTMENTS } from "@/data/departments";
+import { DEPT_EXTRA } from "@/data/deptExtra";
+import { teamFor } from "@/data/team";
 import { JsonLd, breadcrumb, faqPage, medicalPage } from "@/lib/seo";
 
 type P = { params: Promise<{ dept: string }> };
@@ -24,28 +26,37 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
   const d = DEPARTMENTS.find((x) => x.id === k);
   if (!d) return {};
   return {
-    title: `${d.name} — ${d.services.slice(0, 3).map((s) => s.t).join(", ")}`,
-    description: d.summary,
-    keywords: [...d.keywords, d.name, `${d.name} Calgary`, "precision health"],
+    title: `${d.name} — ${d.services.slice(0, 3).map((s) => s.t).join(", ")} | Book in Calgary, Dubai or online`,
+    description: `${d.tag} ${d.summary} What's included, who it's for, pricing and how to book.`,
+    keywords: [...d.keywords, d.name, `${d.name} Calgary`, `${d.name} Dubai`, "precision health", "book consultation"],
     alternates: { canonical: `/precision-health/${d.id}/` },
     openGraph: { title: `${d.name} · Biongevity`, description: d.tag },
   };
 }
 
+const JUMP = [["included", "What's included"], ["for-you", "Is it for you?"], ["pricing", "Pricing"], ["team", "Care team"], ["faq", "FAQ"], ["details", "Explore in depth"]] as const;
+
+/**
+ * Service page — a complete landing page for one department: hero with Book now, what's included, who it's for,
+ * pricing, care team, how it works, FAQ, then the interactive deep dive and the booking band.
+ */
 export default async function DeptPage({ params }: P) {
   const { dept } = await params;
   const i = DEPARTMENTS.findIndex((x) => x.id === dept);
   if (i < 0) notFound();
   const d = DEPARTMENTS[i], N = DEPARTMENTS.length, prev = DEPARTMENTS[(i + N - 1) % N], next = DEPARTMENTS[(i + 1) % N];
   const path = `/precision-health/${d.id}/`;
+  const packages = DEPT_EXTRA[d.id]?.packages?.length ?? 0;
+  const doctors = teamFor(d.id);
+  const facts = [[d.services.length, "tests & services"], [d.when.length, "reasons to come"], [packages || "Quote", packages ? "packages" : "on request"], [doctors.length ? `${doctors.length}` : "Team", doctors.length === 1 ? "named doctor" : "specialists"]] as const;
   return (
     <>
       <JsonLd data={[breadcrumb([["Precision Health", "/precision-health/"], [d.name, path]]), faqPage(d.faq), medicalPage({ name: d.name, description: d.summary, path, about: d.areas.map((a) => a.t), procedures: d.services.map((s) => s.t) })]} />
       <section data-ai={d.name} className="relative z-[1] overflow-hidden pb-8 pt-[calc(96px+var(--safe-top))] sm:pt-[120px]">
-        <div aria-hidden className="pointer-events-none absolute -top-40 right-0 h-[420px] w-[620px] rounded-full bg-gold-soft blur-[110px]" />
+        <div aria-hidden className="pointer-events-none absolute -top-40 right-0 h-[420px] w-[620px] rounded-full bg-accent/10 blur-[110px]" />
         <div className="container-x relative grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
           <div>
-            <Link href="/precision-health/" className="inline-flex items-center gap-1 text-[14px] font-medium text-muted hover:text-accent"><Icon name="chevron-left" size={16} />Precision Health</Link>
+            <Link href="/precision-health/" className="inline-flex items-center gap-1 text-[14px] font-medium text-muted hover:text-accent"><Icon name="chevron-left" size={16} />All services</Link>
             <div className="mt-7 flex items-center gap-3">
               <span className="icon-tile h-14 w-14"><Icon name={d.icon} size={26} /></span>
               <span className="rounded-full bg-accent-light px-3 py-1 text-[12px] font-semibold text-accent">{d.group}</span>
@@ -54,26 +65,38 @@ export default async function DeptPage({ params }: P) {
             <p data-reveal className="mt-3 text-[20px] font-medium text-accent">{d.tag}</p>
             <p data-reveal className="lede mt-4 max-w-[60ch]">{d.summary}</p>
             <div data-reveal className="mt-8 grid grid-cols-2 items-center gap-2.5 sm:flex sm:flex-wrap">
-              <a href={BOOK_URL} target="_blank" rel="noopener" className="btn-dark col-span-2 h-12 px-6">Book {d.short}</a>
+              <BookNow className="col-span-2" />
+              <WhatsAppLink className="col-span-2" label="WhatsApp us" text={`Hi Biongevity, I'd like to book ${d.name}.`} />
               <AskButton q={`What happens in ${d.name} at Biongevity?`} className="h-12"><span className="sm:hidden">Ask SI</span><span className="max-sm:hidden">Ask Biongevity SI</span></AskButton>
               <PageSummary compact className="h-12 justify-center" />
             </div>
             <div data-reveal className="mt-8 grid max-w-[560px] grid-cols-2 gap-2 sm:grid-cols-4">
-              {([[d.services.length, "tests & services"], [d.areas.length, "areas of care"], [d.when.length, "reasons to come"], ["24/7", "Biongevity SI"]] as const).map(([v, l]) => (
+              {facts.map(([v, l]) => (
                 <div key={l} className="rounded-2xl bg-white/80 p-3 ring-1 ring-ink/[0.06]"><div className="text-[24px] font-semibold leading-none tracking-tight">{v}</div><div className="mt-1 text-[11.5px] text-muted">{l}</div></div>
               ))}
             </div>
+            <nav aria-label="On this page" data-reveal className="no-scrollbar mt-6 flex gap-2 overflow-x-auto pb-1">
+              {JUMP.map(([id, l]) => (id === "faq" && !d.faq.length ? null : <a key={id} href={`#${id}`} className="shrink-0 rounded-full bg-canvas px-3 py-1.5 text-[12.5px] font-semibold text-muted ring-1 ring-ink/[0.06] hover:text-accent">{l}</a>))}
+            </nav>
           </div>
           <DeptBody dept={d.id} name={d.name} signs={d.signs} />
         </div>
       </section>
-      {!d.calm && <section className="relative z-[1]"><KeywordStream words={[...d.keywords, ...d.keywords]} /></section>}
-      <Section ai={`${d.short} details`} id="details" className="!pt-10 scroll-mt-24"><div className="container-x"><DeptTabs id={d.id} /></div></Section>
+
+      <ServiceLanding d={d} />
+
+      <Section ai={`${d.short} details`} id="details" className="scroll-mt-24 !pt-0">
+        <div className="container-x">
+          <div className="mb-8 max-w-[720px]"><div className="eyebrow flex items-center gap-2.5"><span aria-hidden className="h-px w-6 bg-ai-2/60" />Explore in depth</div><h2 className="h-section mt-4">The science, the evidence, the body.</h2><p className="lede mt-4">3D anatomy, conditions, the care path and the studies behind every claim, with Biongevity SI to explain any of it.</p></div>
+          <DeptTabs id={d.id} />
+        </div>
+      </Section>
       {deptHasTests(d.id) && <Section ai={`${d.short} tests`} className="!pt-0" chip={false}><div className="container-x"><DeptTests dept={d.id} name={d.name} /></div></Section>}
+      <BookBand title={<>Book {d.name}.</>} lede={`Book a ${d.short} consultation online, virtual or in person, or message us on WhatsApp and a coordinator will help you choose.`} text={`Hi Biongevity, I'd like to book ${d.name}.`} className="!pt-0" />
       <section className="relative z-[1] pb-20">
-        <div className="container-x flex justify-between gap-3">
-          <Link href={`/precision-health/${prev.id}/`} className="btn-light"><Icon name="chevron-left" size={15} />{prev.short}</Link>
-          <Link href={`/precision-health/${next.id}/`} className="btn-light">{next.short}<Icon name="chevron-right" size={15} /></Link>
+        <div className="container-x flex flex-wrap justify-between gap-3">
+          <Link href={`/precision-health/${prev.id}/`} className="btn-light whitespace-nowrap"><Icon name="chevron-left" size={15} />{prev.short}</Link>
+          <Link href={`/precision-health/${next.id}/`} className="btn-light ml-auto whitespace-nowrap">{next.short}<Icon name="chevron-right" size={15} /></Link>
         </div>
       </section>
     </>

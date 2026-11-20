@@ -26,9 +26,9 @@
 
 ## ◆ Themes & AI (Biongevity 2.0)
 
-- **4 themes** — Champagne (default), Midnight (dark), Mono (black & white), Aurora (cool, minimal). Switch from the palette button in the top header. Colours live **only** in `src/styles/themes.css`; Tailwind reads them as CSS variables. `npm run check:colors` fails on hard-coded hex.
+- **One theme: Olive** — off-white, olive and soft glass. Theme colours live in `src/styles/themes.css` (Tailwind reads them as CSS variables); fixed mockup palettes live in `src/lib/theme.ts`. `npm run check:colors` fails on hard-coded hex anywhere else.
 - **AI is visible everywhere** — the Xevyo orb (`components/ai/XevyoOrb.tsx`), `AIBadge`, `AISurface`, "✦ Ask about this" on every section, "Summarise this page" on every hero, a 25-second nudge, and "Your next step" at the end of every page.
-- **Grounded answers** — `/site-index.json` is built at `next build`; `lib/retrieve.ts` (BM25, on-device) sends the top 3 passages to Xevyo and the chat shows them as sources. English / 日本語 reply switch in the chat.
+- **Grounded answers** — `/site-index.json` is built at `next build`; `lib/retrieve.ts` (BM25, on-device) sends the top 3 passages to Xevyo and the chat shows them as sources. Reply language switch in the chat: English, French, Arabic, Persian.
 - **New pages** — `/platform/` (digital twin overview → member app), `/tools/` (lab explainer, visit prep, specialist router), `/bioelr/` (modules + configurator → proposal), `/ai/` (governance, model cards), `/login/` (→ member app).
 - **Member app** — `NEXT_PUBLIC_APP_URL` (default `https://app.biongevity.com`). The website never handles passwords.
 - Copy rules: `docs/COPY_RULES.md`.
@@ -41,10 +41,20 @@ flowchart LR
   A --> C[iOS · Android via Capacitor]
   B --> D[(Shopify checkout)]
   B --> E[(AI assistant endpoint)]
-  B --> F[(Contact webhook)]
+  B --> F[(Forms Worker + D1: contact form, /admin)]
 ```
 
-No custom backend. Checkout runs on Shopify, chat on a hosted AI endpoint, everything else ships as static HTML.
+No server of our own to run. Checkout runs on Shopify, chat on a hosted AI endpoint, and contact enquiries on a small Cloudflare Worker that also powers the private `/admin` page (see [docs/ADMIN_FORMS.md](docs/ADMIN_FORMS.md)). Everything else ships as static HTML.
+
+**Theme.** Colours live only in `src/styles/themes.css`: `dark` (the launch palette, set on `<html data-theme>` in the root layout) and `olive` (the earlier light theme). Switching back is that one attribute.
+
+**Regions.** The site has two faces: International (Calgary, CAD) and UAE (Dubai, AED). `src/lib/region.ts` + `components/region/` hold the switch, the region phone and the `<Price>` component; the choice is remembered in the browser, and `/uae/` is the Dubai landing page (it pins the region). AED prices are converted at an indicative rate and marked `*` until the clinic supplies an AED list.
+
+**Trust.** Doctors, roles and credentials come from `src/data/team.ts`; add a profile there (and a photo in `/public/team`) and it appears on the home page, the UAE page and the matching service pages.
+
+**Tracking.** `NEXT_PUBLIC_GTM_ID` loads Google Tag Manager; booking, WhatsApp, call, enquiry and AI-nudge events are documented in [docs/TRACKING.md](docs/TRACKING.md).
+
+**Navigation and booking.** The top bar (`components/layout/Header.tsx`) holds Services, Clinics, Programs & pricing, How it works, About, Contact and More, with Book now on the right; phones get a full-screen menu and a sticky Book bar (`MobileCta.tsx`). A fixed WhatsApp button (`WhatsAppButton.tsx`) sits bottom-right on every page (business WhatsApp +971 50 528 2566; `NEXT_PUBLIC_WHATSAPP_NUMBER` overrides it). `components/ui/BookNow.tsx` is the one place the Book now, WhatsApp and booking-band buttons are defined; every service page ends in a `BookBand`. The home page is service-first (`components/home/premium/`); the interactive AI tools moved to `/explore/`.
 
 ## ◆ Quick start
 
@@ -66,7 +76,7 @@ npm run build      # static site → ./out
 | **Global Clinic** | Journey · Virtual Clinic with 7-day BP tracker · UAE assessments · interactive world map |
 | **Shop** | Plan Studio live plan builder · Test / Package / Program ladder · one search across 63 items · site-wide bag with 3/6/12-month terms · prices in CAD |
 | **Xevyo AI** | Ctrl X command bar · highlight any text to ask · page-aware smart questions · voice ask · AI plan review in the bag |
-| **Design** | Champagne theme · Phosphor icons · SVG charts · floating 3D particle field · Magic UI–style motion |
+| **Design** | Olive theme · Phosphor icons (generated, `npm run icons`) · SVG charts · floating 3D particle field · Magic UI–style motion |
 
 ## ◆ Search & AI discoverability
 

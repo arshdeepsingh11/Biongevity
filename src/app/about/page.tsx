@@ -13,7 +13,7 @@ import { PageSummary } from "@/components/ai/PageSummary";
 import { EcosystemOrbit, ProtocolLoop, DataStack } from "@/components/pages/AboutParts";
 import { ABOUT } from "@/data/clinic";
 import { FOUNDER } from "@/data/site";
-import { BOOK_URL } from "@/lib/env";
+import { BookNow, WhatsAppLink } from "@/components/ui/BookNow";
 import { JsonLd, breadcrumb } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -57,7 +57,7 @@ export default function AboutPage() {
           <h1 className="h-display mx-auto mt-6 max-w-[17ch]">We’re building <AuroraText>more good years.</AuroraText></h1>
           <p className="lede mx-auto mt-5 max-w-[60ch]">Longevity, for us, means healthspan — more years of good health, not just more years. We measure where you are, plan what to change, follow it over time and explain every step in plain words.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a href={BOOK_URL} target="_blank" rel="noopener" className="btn-dark h-12 px-6"><Icon name="calendar" size={17} />Book a consultation<Icon name="arrow-up-right" size={14} /></a>
+            <BookNow /><WhatsAppLink />
             <Link href="/join/" className="btn-light h-12 px-6"><Icon name="user" size={16} />Join the app</Link>
           </div>
           <div className="mt-5 flex justify-center"><PageSummary /></div>
@@ -189,7 +189,7 @@ export default function AboutPage() {
             <h2 className="h-section relative mx-auto mt-4 max-w-[20ch]">Start with your baseline.</h2>
             <p className="lede relative mx-auto mt-3 max-w-[52ch]">Book a consultation, join the app, or ask Biongevity SI where to begin.</p>
             <div className="relative mt-7 flex flex-wrap justify-center gap-3">
-              <a href={BOOK_URL} target="_blank" rel="noopener" className="btn-dark h-12 px-6"><Icon name="calendar" size={17} />Book a consultation</a>
+              <BookNow /><WhatsAppLink />
               <Link href="/join/" className="btn-light h-12 px-6">Join the app<Icon name="arrow-right" size={15} /></Link>
             </div>
           </div>

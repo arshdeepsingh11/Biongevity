@@ -53,7 +53,7 @@ export function Dashboard() {
         </div>
 
         {tab === "overview" && (
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-3">
             <div className="relative overflow-hidden rounded-4xl bg-surface p-6 shadow-card lg:col-span-2">
               <ShineBorder radius={28} />
               <div className="grid gap-6 sm:grid-cols-2">
@@ -119,7 +119,7 @@ export function Dashboard() {
         )}
 
         {tab === "genome" && (
-          <div className="mt-8 grid gap-4 lg:grid-cols-[minmax(0,380px)_1fr]">
+          <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,380px)_1fr]">
             <EvervaultCard text="A-2041" label="Genome · illustrative" />
             <div className="space-y-3">
               {VARIANTS.map((v) => (
@@ -133,7 +133,7 @@ export function Dashboard() {
         )}
 
         {tab === "plan" && (
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-3">
             <div className="card p-5 lg:col-span-2">
               <div className="mb-3 text-[13px] text-warn">Draft · not clinically approved. Review with your clinician.</div>
               {PLAN.map((p, i) => (
@@ -150,7 +150,7 @@ export function Dashboard() {
         )}
 
         {tab === "visits" && (
-          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+          <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2">
             <div className="space-y-3">{visits.map((v, i) => (
               <div key={i} className="card flex items-center gap-4 p-4"><div className="grid h-14 w-14 place-items-center rounded-2xl bg-canvas text-center"><div><div className="text-[11px] font-semibold uppercase text-violet">{v.mo}</div><div className="text-[20px] font-semibold leading-none">{v.day}</div></div></div><div><div className="font-semibold">{v.t}</div><div className="text-[13px] text-muted">{v.time} · {v.where}</div></div></div>
             ))}</div>

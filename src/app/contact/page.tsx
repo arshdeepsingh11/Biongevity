@@ -6,7 +6,7 @@ import { Icon } from "@/components/ui/Icon";
 import { CONTACTS } from "@/data/site";
 import { OFFICES } from "@/data/clinic";
 import { ContactFlow } from "@/components/pages/ContactFlow";
-import { BOOK_URL } from "@/lib/env";
+import { BookNow, WhatsAppLink } from "@/components/ui/BookNow";
 
 export const metadata: Metadata = { title: "Contact" };
 
@@ -20,7 +20,8 @@ export default function ContactPage() {
           <h1 data-reveal className="h-display mt-4">Start with a conversation.</h1>
           <p data-reveal className="lede mt-5 max-w-[52ch]">Book straight into the Biongevity app: pick a consultation category, choose virtual or in person, and your care team takes it from there. Questions first? Write to us below — Biongevity SI suggests the right department as you type.</p>
           <div data-reveal className="mt-7 flex flex-wrap gap-3">
-            <a href={BOOK_URL} target="_blank" rel="noopener" className="btn-dark h-12 px-6"><Icon name="calendar" size={17} />Book a consultation<Icon name="arrow-up-right" size={14} /></a>
+            <BookNow />
+            <WhatsAppLink />
             <a href="#message" className="btn-light h-12 px-6"><Icon name="message" size={16} />Send a message</a>
           </div>
           <ul className="mt-8 grid gap-2 text-[13.5px] text-muted sm:grid-cols-3">

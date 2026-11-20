@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BookBand } from "@/components/ui/BookNow";
 import type { Metadata } from "next";
 import { PageHero, Section } from "@/components/ui/Section";
 import { FilmPlayer } from "@/components/media/FilmPlayer";
@@ -30,6 +31,7 @@ export default function ClinicPage() {
         </div>
       </Section>
       <Section ai="Offices" className="!pt-0"><div className="container-x"><WorldMap /></div></Section>
+      <BookBand title="Book a visit, in clinic or by video." text="Hi Biongevity, I'd like to book a clinic visit." />
     </>
   );
 }

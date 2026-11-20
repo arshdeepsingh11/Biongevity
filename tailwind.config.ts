@@ -3,14 +3,14 @@ import type { Config } from "tailwindcss";
 /** Theme colour from src/styles/themes.css, with Tailwind alpha support (bg-ink/10 etc.). */
 const v = (name: string) => `rgb(var(--c-${name}) / <alpha-value>)`;
 
-/** Four switchable themes (Champagne · Midnight · Mono · Aurora). Colours live in CSS variables only. */
+/** Three switchable themes (Sand · Olive · Mono). Colours live in CSS variables only. */
 export default {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       fontFamily: { sans: ["'DM Sans Variable'", "'DM Sans'", "sans-serif"] },
       colors: {
-        // Every colour reads a CSS variable from src/styles/themes.css (4 themes). Names kept for component stability.
+        // Every colour reads a CSS variable from src/styles/themes.css (3 themes). Names kept for component stability.
         pearl: v("pearl"),
         canvas: v("canvas"),
         surface: v("surface"),

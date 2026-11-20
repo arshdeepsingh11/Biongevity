@@ -19,7 +19,7 @@ export function Triage() {
       <div className="mt-2 text-[24px] font-semibold tracking-tight sm:text-[28px]">Describe what you want to improve.</div>
       <div className="mt-5 flex flex-col gap-2 sm:flex-row">
         <input value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.key === "Enter" && run()} aria-label="Your goal"
-          placeholder="e.g. I sleep badly and my cholesterol is creeping up" className="h-12 flex-1 rounded-full border border-ink/10 bg-canvas px-5 text-[15px] outline-none focus:border-accent focus:bg-surface" />
+          placeholder="e.g. I sleep badly and my cholesterol is creeping up" className="h-12 w-full shrink-0 rounded-full sm:w-auto sm:flex-1 border border-ink/10 bg-canvas px-5 text-[15px] outline-none focus:border-accent focus:bg-surface" />
         <button onClick={run} className="btn-dark h-12 px-6">Match departments</button>
       </div>
       {ids && (

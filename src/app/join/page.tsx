@@ -8,6 +8,7 @@ import { XevyoOrb } from "@/components/ai/XevyoOrb";
 import { AIBadge } from "@/components/ai/AIBadge";
 import { AIPanel } from "@/components/ai/AIPanel";
 import { env } from "@/lib/env";
+import { DEVICE } from "@/lib/theme";
 import { JsonLd, breadcrumb } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -58,30 +59,30 @@ export default function JoinPage() {
           {/* phone preview */}
           <div className="relative mx-auto w-[280px] sm:w-[300px]">
             <div aria-hidden className="absolute -inset-8 rounded-[60px] bg-ai/15 blur-3xl" />
-            <div className="relative rounded-[46px] p-2.5 shadow-[0_40px_80px_-30px_rgba(0,0,0,.55)]" style={{ background: "#05070a" }}>
-              <div className="overflow-hidden rounded-[38px]" style={{ background: "#0a0e13", color: "#e9eef4" }}>
-                <div className="mx-auto mt-2.5 h-5 w-24 rounded-full" style={{ background: "#05070a" }} />
+            <div className="relative rounded-[46px] p-2.5 shadow-[0_40px_80px_-30px_rgba(0,0,0,.55)]" style={{ background: DEVICE.bezel }}>
+              <div className="overflow-hidden rounded-[38px]" style={{ background: DEVICE.bg, color: DEVICE.text }}>
+                <div className="mx-auto mt-2.5 h-5 w-24 rounded-full" style={{ background: DEVICE.bezel }} />
                 <div className="px-4 pb-5 pt-3">
-                  <div className="flex items-center justify-between text-[11px]" style={{ color: "#8a96a5" }}><span>Good morning</span><span className="rounded-full px-2 py-0.5 text-[9px] font-bold uppercase" style={{ background: "rgba(251,191,36,.14)", color: "#fbbf24" }}>Example</span></div>
+                  <div className="flex items-center justify-between text-[11px]" style={{ color: DEVICE.dim }}><span>Good morning</span><span className="rounded-full px-2 py-0.5 text-[9px] font-bold uppercase" style={{ background: DEVICE.warnSoft, color: DEVICE.warn }}>Example</span></div>
                   <div className="mt-1 text-[17px] font-semibold">Your twin today</div>
                   <div className="mt-3 grid grid-cols-2 gap-2">
-                    {[["Health", "82", "#38bdf8"], ["Recovery", "74", "#4ade80"]].map(([l, v, c]) => (
-                      <div key={l} className="rounded-2xl p-3" style={{ background: "#121820", boxShadow: "inset 0 0 0 1px rgba(255,255,255,.07)" }}>
-                        <div className="text-[10px] uppercase tracking-[0.14em]" style={{ color: "#8a96a5" }}>{l}</div>
+                    {[["Health", "82", DEVICE.accent], ["Recovery", "74", DEVICE.good]].map(([l, v, c]) => (
+                      <div key={l} className="rounded-2xl p-3" style={{ background: DEVICE.panel, boxShadow: `inset 0 0 0 1px ${DEVICE.line}` }}>
+                        <div className="text-[10px] uppercase tracking-[0.14em]" style={{ color: DEVICE.dim }}>{l}</div>
                         <div className="mt-1 text-[26px] font-semibold leading-none" style={{ color: c }}>{v}</div>
-                        <div className="mt-2 h-1.5 overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,.08)" }}><div className="h-full rounded-full" style={{ width: `${v}%`, background: c }} /></div>
+                        <div className="mt-2 h-1.5 overflow-hidden rounded-full" style={{ background: DEVICE.track }}><div className="h-full rounded-full" style={{ width: `${v}%`, background: c }} /></div>
                       </div>
                     ))}
                   </div>
-                  <div className="mt-2 rounded-2xl p-3" style={{ background: "#121820", boxShadow: "inset 0 0 0 1px rgba(255,255,255,.07)" }}>
-                    <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.14em]" style={{ color: "#8a96a5" }}><span className="h-1.5 w-1.5 rounded-full" style={{ background: "#4ade80" }} />Live · HRV</div>
-                    <svg viewBox="0 0 200 40" className="mt-1 h-10 w-full"><path d="M0 28 C20 26 30 12 50 16 S80 30 100 22 130 8 150 14 180 26 200 18" fill="none" stroke="#a78bfa" strokeWidth="2" /></svg>
+                  <div className="mt-2 rounded-2xl p-3" style={{ background: DEVICE.panel, boxShadow: `inset 0 0 0 1px ${DEVICE.line}` }}>
+                    <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.14em]" style={{ color: DEVICE.dim }}><span className="h-1.5 w-1.5 rounded-full" style={{ background: DEVICE.good }} />Live · HRV</div>
+                    <svg viewBox="0 0 200 40" className="mt-1 h-10 w-full"><path d="M0 28 C20 26 30 12 50 16 S80 30 100 22 130 8 150 14 180 26 200 18" fill="none" stroke={DEVICE.violet} strokeWidth="2" /></svg>
                   </div>
-                  <div className="mt-2 rounded-2xl p-3 text-[12px] leading-snug" style={{ background: "rgba(56,189,248,.10)", boxShadow: "inset 0 0 0 1px rgba(56,189,248,.25)" }}>
-                    <div className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em]" style={{ color: "#38bdf8" }}>✦ Biongevity SI</div>
+                  <div className="mt-2 rounded-2xl p-3 text-[12px] leading-snug" style={{ background: DEVICE.accentSoft, boxShadow: `inset 0 0 0 1px ${DEVICE.accentLine}` }}>
+                    <div className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em]" style={{ color: DEVICE.accent }}>✦ Biongevity SI</div>
                     Sleep was short two nights in a row. Try an earlier wind-down tonight — your recovery usually bounces back.
                   </div>
-                  <div className="mt-3 grid grid-cols-4 gap-1 text-center text-[9.5px]" style={{ color: "#8a96a5" }}>
+                  <div className="mt-3 grid grid-cols-4 gap-1 text-center text-[9.5px]" style={{ color: DEVICE.dim }}>
                     {[["home", "Home"], ["fingerprint", "Twin"], ["calendar", "Visits"], ["sparkle", "Coach"]].map(([i, l]) => <span key={l} className="flex flex-col items-center gap-1"><Icon name={i} size={16} />{l}</span>)}
                   </div>
                 </div>

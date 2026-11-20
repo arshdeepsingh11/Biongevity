@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BOOK_URL } from "@/lib/env";
+import { BookNow, WhatsAppLink, BookBand } from "@/components/ui/BookNow";
 import { PageSummary } from "@/components/ai/PageSummary";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -34,14 +34,16 @@ export default async function ClinicSubPage({ params }: P) {
           <p data-reveal className="mt-3 text-[20px] font-medium text-accent">{c.tag}</p>
           <p data-reveal className="lede mt-4 max-w-[62ch]">{c.summary}</p>
           <div data-reveal className="mt-8 flex flex-wrap gap-3">
-            <a href={BOOK_URL} target="_blank" rel="noopener" className="btn-dark">{c.id === "uae" ? "Book a visit" : "Book a consultation"}</a>
-            <AskButton q={`How does the ${c.name} work?`}>Ask Biongevity SI</AskButton>
+            <BookNow />
+            <WhatsAppLink text={`Hi Biongevity, I'd like to book the ${c.name}.`} />
+            <AskButton q={`How does the ${c.name} work?`} className="h-12">Ask Biongevity SI</AskButton>
           </div>
           <div data-reveal className="mt-5"><PageSummary /></div>
         </div>
       </section>
 
       <Section ai={`${c.short} details`} className="!pt-0"><div className="container-x"><ClinicTabs id={c.id} /></div></Section>
+      <BookBand title={<>Book the {c.name}.</>} text={`Hi Biongevity, I'd like to book the ${c.name}.`} className="!pt-0" />
 
       <section className="relative z-[1] pb-20">
         <div className="container-x flex flex-wrap justify-center gap-3">

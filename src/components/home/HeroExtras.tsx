@@ -71,7 +71,8 @@ function MarkerOrbit({ on }: { on: boolean }) {
     <svg viewBox="-24 -24 48 48" className="h-10 w-10">
       <circle r="19" fill="none" stroke="rgb(var(--c-ai) / .18)" strokeDasharray="2 3" />
       <motion.g animate={{ rotate: 360 }} transition={{ duration: on ? 6 : 24, repeat: Infinity, ease: "linear" }}>
-        {MARKERS.map((m, i) => { const a = (i / N) * Math.PI * 2; return <circle key={m.id} cx={Math.cos(a) * 19} cy={Math.sin(a) * 19} r={i % 3 ? 1.4 : 2.1} fill="rgb(var(--c-ai))" />; })}
+        {/* Rounded so the server (Node) and the browser agree on the last digit — a raw cos/sin differs by 1e-15 and trips hydration. */}
+        {MARKERS.map((m, i) => { const a = (i / N) * Math.PI * 2; const r3 = (v: number) => Math.round(v * 1000) / 1000; return <circle key={m.id} cx={r3(Math.cos(a) * 19)} cy={r3(Math.sin(a) * 19)} r={i % 3 ? 1.4 : 2.1} fill="rgb(var(--c-ai))" />; })}
       </motion.g>
       <circle r="6" fill="rgb(var(--c-ai) / .15)" /><circle r="2.5" fill="rgb(var(--c-ai))" />
     </svg>
@@ -101,11 +102,10 @@ const STATS = [
 export function HeroStats() {
   const [hover, setHover] = useState<number | null>(null);
   return (
-    <div className="mx-auto mt-10 grid max-w-[980px] grid-cols-2 gap-3 sm:grid-cols-4">
+    <div className="mt-14 grid grid-cols-2 gap-3 border-t border-ink/[0.06] pt-8 sm:grid-cols-4">
       {STATS.map((s, i) => (
         <Link key={s.l} href={s.h} onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)} onFocus={() => setHover(i)} onBlur={() => setHover(null)}
           className="group relative overflow-hidden rounded-[22px] bg-white/70 p-4 ring-1 ring-ink/[0.06] backdrop-blur transition-transform hover:-translate-y-1 hover:ring-ai/30">
-          <span aria-hidden className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-ai/10 blur-2xl transition-opacity group-hover:opacity-100 sm:opacity-60" />
           <div className="relative flex items-start justify-between gap-2">
             <span className="icon-tile h-8 w-8"><Icon name={s.icon} size={15} /></span>
             <s.V on={hover === i} />

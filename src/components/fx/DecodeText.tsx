@@ -12,7 +12,7 @@ export function DecodeText({ text, className, duration = 700 }: { text: string; 
     cancelAnimationFrame(raf.current);
     const t0 = performance.now(), L = text.length;
     const f = (t: number) => {
-      const k = Math.min(1, (t - t0) / duration), n = Math.floor(k * L);
+      const k = Math.min(1, Math.max(0, t - t0) / duration), n = Math.floor(k * L);
       setOut(text.slice(0, n) + Array.from(text.slice(n), (c) => (c === " " ? " " : GLYPHS[(Math.random() * GLYPHS.length) | 0])).join(""));
       if (k < 1) raf.current = requestAnimationFrame(f);
     };

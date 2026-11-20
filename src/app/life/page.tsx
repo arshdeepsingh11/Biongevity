@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookBand } from "@/components/ui/BookNow";
 import { Section, Eyebrow } from "@/components/ui/Section";
 import { OrbitingCircles } from "@/components/fx/OrbitingCircles";
 import { TextAnimate } from "@/components/fx/TextAnimate";
@@ -13,13 +14,13 @@ export default function LifePage() {
   return (
     <>
       <section data-ai="Biongevity Life" className="relative z-[1] overflow-hidden pb-10 pt-[calc(96px+var(--safe-top))] sm:pt-[120px]">
-        <div className="container-x grid items-center gap-6 lg:grid-cols-2">
+        <div className="container-x grid items-center gap-6 lg:grid-cols-2 [&>*]:min-w-0">
           <div>
             <Eyebrow>Biongevity Life</Eyebrow>
             <h1 className="h-display mt-4"><TextAnimate animation="blurIn">Longevity, where life happens.</TextAnimate></h1>
             <p data-reveal className="lede mt-5">Longevity isn&apos;t a luxury — it&apos;s an investment in yourself. We deliver care in the spaces that matter most: resorts, communities, offices, cities and schools.</p>
                       </div>
-          <div className="grid place-items-center"><OrbitingCircles radius={140} duration={36} items={LIFE_PLACES.map((l) => <span key={l.t} className="flex items-center gap-1.5 whitespace-nowrap rounded-full bg-white px-3 py-1.5 text-[13px] font-semibold shadow-card ring-1 ring-ink/[0.06]"><Icon name={l.icon} size={16} weight="duotone" className="text-accent" />{l.t}</span>)}><div className="grid h-28 w-28 place-items-center rounded-full bg-iri text-center text-white shadow-glow"><div><Icon name="hourglass" size={26} weight="duotone" className="mx-auto" /><div className="mt-1 text-[12px] font-semibold">Biongevity Life</div></div></div></OrbitingCircles></div>
+          <div className="grid place-items-center max-[399px]:scale-[0.78]"><OrbitingCircles radius={140} duration={36} items={LIFE_PLACES.map((l) => <span key={l.t} className="flex items-center gap-1.5 whitespace-nowrap rounded-full bg-white px-3 py-1.5 text-[13px] font-semibold shadow-card ring-1 ring-ink/[0.06]"><Icon name={l.icon} size={16} weight="duotone" className="text-accent" />{l.t}</span>)}><div className="grid h-28 w-28 place-items-center rounded-full bg-iri text-center text-white shadow-glow"><div><Icon name="hourglass" size={26} weight="duotone" className="mx-auto" /><div className="mt-1 text-[12px] font-semibold">Biongevity Life</div></div></div></OrbitingCircles></div>
         </div>
       </section>
       <Section ai="Spaces" className="!pt-0">
@@ -43,6 +44,7 @@ export default function LifePage() {
           </div>
         </div>
       </Section>
+      <BookBand title="Bring Biongevity to your space." text="Hi Biongevity, I'd like to ask about Biongevity Life." />
     </>
   );
 }

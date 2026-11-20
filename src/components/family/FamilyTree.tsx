@@ -59,9 +59,10 @@ export function FamilyTree() {
     const n = map[p.id].length, on = open === p.id;
     return (
       <button onClick={() => setOpen(on ? null : p.id)} aria-expanded={on}
-        className={cn("relative flex w-full flex-col items-center rounded-2xl bg-white p-2.5 text-center shadow-card ring-1 transition sm:p-3", on ? "ring-ai/50" : "ring-ink/[0.06] hover:ring-ai/30")}>
+        className={cn("relative flex w-full min-w-0 flex-col items-center rounded-2xl bg-white px-1 py-2.5 text-center shadow-card ring-1 transition sm:p-3", on ? "ring-ai/50" : "ring-ink/[0.06] hover:ring-ai/30")}>
         <span className={cn("grid h-9 w-9 place-items-center rounded-full sm:h-11 sm:w-11", n ? "bg-ai-soft text-ai" : "bg-canvas text-faint")}><Icon name={p.female ? "venus" : "mars"} size={17} /></span>
-        <span className="mt-1.5 text-[11px] font-semibold leading-tight sm:text-[12.5px]">{p.label}</span>
+        {/* Narrow phones: a soft hyphen lets "grandmother" break as grand-mother instead of spilling out of the card. */}
+        <span className="mt-1.5 max-w-full text-[10.5px] font-semibold leading-tight sm:text-[12.5px]">{p.label.replace("grand", "grand\u00AD")}</span>
         <span className="mt-1 flex min-h-[14px] flex-wrap justify-center gap-0.5">{map[p.id].map((c) => <span key={c} className="h-2 w-2 rounded-full bg-ai" title={CONDS.find((x) => x.id === c)?.label} />)}</span>
         {early[p.id] && n > 0 && <span className="absolute -right-1 -top-1 rounded-full bg-gold px-1.5 text-[9.5px] font-bold text-white">early</span>}
       </button>

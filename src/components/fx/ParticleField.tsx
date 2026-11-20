@@ -47,10 +47,7 @@ export function ParticleField() {
     const proj: { x: number; y: number; z: number; k: number; p: P }[] = ps.map((p) => ({ x: 0, y: 0, z: 0, k: 0, p }));
     let raf = 0, last = 0, angle = 0;
 
-    // Sand is solid and calm: no page-wide particles, and no animation loop at all while it is active.
-    const quiet = () => document.documentElement.dataset.theme === "sand";
     const frame = (now: number) => {
-      if (quiet()) { ctx.clearRect(0, 0, W, H); raf = 0; return; }
       raf = requestAnimationFrame(frame);
       if (now - last < 1000 / 40) return; // ~40 fps cap
       const dt = Math.min(0.05, (now - last) / 1000 || 0.016); last = now;
@@ -58,7 +55,6 @@ export function ParticleField() {
     };
 
     const draw = (dt: number, t: number) => {
-      if (quiet()) { ctx.clearRect(0, 0, W, H); return; }
       angle += dt * 0.02;                               // continuous rotation
       mouse.x += (mouse.tx - mouse.x) * 0.02; mouse.y += (mouse.ty - mouse.y) * 0.02;
       const ay = angle + mouse.x * 0.15, ax = 0.25 + mouse.y * 0.1;

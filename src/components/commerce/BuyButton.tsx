@@ -17,11 +17,12 @@ export function BuyButton({ href, store, price, className, size = "md", label, h
   return (
     <a href={href} target="_blank" rel="noopener" aria-label={`${label ?? "Buy"} on ${s.name} (opens ${s.host})`}
       className={cn("group inline-flex items-center justify-center gap-1.5 rounded-full bg-ink font-semibold text-pearl transition hover:brightness-125",
-        size === "sm" ? "h-8 px-3 text-[12px]" : "h-10 px-4 text-[13.5px]", className)}>
-      <Icon name="bag" size={size === "sm" ? 13 : 15} />
-      <span>{label ?? "Buy"}{price !== undefined && <span className="ml-1 opacity-80">${price % 1 ? price.toFixed(2) : price}</span>}</span>
+        // min-height, not a fixed height: a long product name may wrap on a phone and the pill grows with it.
+        size === "sm" ? "min-h-8 px-3 py-1.5 text-[12px] leading-tight" : "min-h-10 px-4 py-2 text-[13.5px] leading-tight", className)}>
+      <Icon name="bag" size={size === "sm" ? 13 : 15} className="shrink-0" />
+      <span className="min-w-0 text-left">{label ?? "Buy"}{price !== undefined && <span className="ml-1 whitespace-nowrap opacity-80">${price % 1 ? price.toFixed(2) : price}</span>}</span>
       {!hideStore && <span className="hidden opacity-70 sm:inline">· {s.name}</span>}
-      <Icon name="arrow-up-right" size={size === "sm" ? 12 : 14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+      <Icon name="arrow-up-right" size={size === "sm" ? 12 : 14} className="shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
     </a>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookBand } from "@/components/ui/BookNow";
 import { PageHero, Section } from "@/components/ui/Section";
 import { AuroraText } from "@/components/fx/AuroraText";
 import { AIBadge } from "@/components/ai/AIBadge";
@@ -20,6 +21,7 @@ export default function EvidencePage() {
         <div className="flex flex-wrap gap-2"><AIBadge label="GRADE-rated" /><AIBadge label="Sources linked" /><AIBadge label="Updated as trials publish" /></div>
       </PageHero>
       <Section ai="Evidence cards" className="!pt-0" chip={false}><div className="container-x"><EvidenceEngine /></div></Section>
+      <BookBand title="Evidence into a plan." text="Hi Biongevity, I'd like to book a consultation." />
     </>
   );
 }

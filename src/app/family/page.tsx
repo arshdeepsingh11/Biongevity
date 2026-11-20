@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookBand } from "@/components/ui/BookNow";
 import { PageHero, Section } from "@/components/ui/Section";
 import { Head } from "@/components/home/HomeSections";
 import { FamilyPlanner, FamilyViewDemo } from "@/components/family/FamilyCare";
@@ -47,6 +48,7 @@ export default function FamilyPage() {
           <AIPanel title="Ask about caring for a parent" context="Family care for an ageing parent" prompts={["How do I talk to my dad about memory problems?", "What should a medication review include?", "How can I help my mum from another city?"]} />
         </div>
       </Section>
+      <BookBand title="Book care for a parent." lede="Book a consultation for your parent — with you in the room or on the call — or message us on WhatsApp first." text="Hi Biongevity, I'd like to book care for a parent." />
     </>
   );
 }

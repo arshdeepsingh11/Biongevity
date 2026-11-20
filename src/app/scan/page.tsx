@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookBand } from "@/components/ui/BookNow";
 import { Section } from "@/components/ui/Section";
 import { HealthspanScan } from "@/components/scan/HealthspanScan";
 import { AIBadge } from "@/components/ai/AIBadge";
@@ -24,6 +25,7 @@ export default function ScanPage() {
           <HealthspanScan />
         </div>
       </Section>
+      <BookBand title="Take the next step with a clinician." text="Hi Biongevity, I took the AI scan and would like to book." />
     </>
   );
 }

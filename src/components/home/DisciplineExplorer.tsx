@@ -21,9 +21,9 @@ export function DisciplineExplorer() {
           const on = x.id === id;
           return (
             <button key={x.id} onMouseEnter={() => setId(x.id)} onFocus={() => setId(x.id)} onClick={() => setId(x.id)} aria-pressed={on}
-              className={`group flex h-[68px] items-center gap-3 rounded-2xl px-3 text-left transition-colors duration-200 ${on ? "bg-accent text-white shadow-glow" : "bg-white ring-1 ring-ink/[0.06] hover:bg-accent-light"}`}>
-              <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${on ? "bg-white/20 text-white" : "bg-accent-light text-accent"}`}><Icon name={x.icon} size={22} weight="duotone" /></span>
-              <span className="min-w-0"><span className="block truncate text-[14px] font-semibold leading-tight">{x.short}</span><span className={`block truncate text-[11.5px] ${on ? "text-white/80" : "text-faint"}`}>{x.group}</span></span>
+              className={`group flex h-[68px] items-center gap-2 rounded-2xl px-2.5 text-left sm:gap-3 sm:px-3 transition-colors duration-200 ${on ? "bg-accent text-white shadow-glow" : "bg-white ring-1 ring-ink/[0.06] hover:bg-accent-light"}`}>
+              <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-xl sm:h-10 sm:w-10 ${on ? "bg-white/20 text-white" : "bg-accent-light text-accent"}`}><Icon name={x.icon} size={22} weight="duotone" /></span>
+              <span className="min-w-0"><span className="line-clamp-2 text-[13.5px] [overflow-wrap:anywhere] max-[359px]:text-[12.5px] font-semibold leading-tight sm:truncate sm:text-[14px]">{x.short}</span><span className={`block truncate text-[11.5px] ${on ? "text-white/80" : "text-faint"}`}>{x.group}</span></span>
             </button>
           );
         })}

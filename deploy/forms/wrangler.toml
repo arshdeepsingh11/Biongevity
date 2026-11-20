@@ -1,0 +1,25 @@
+# Biongevity forms Worker — contact form + admin. Guide: docs/ADMIN_FORMS.md
+name = "biongevity-forms"
+main = "forms-worker.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://biongevity.com,https://www.biongevity.com"
+
+# Fill database_id with the id printed by: npx wrangler d1 create biongevity-forms
+[[d1_databases]]
+binding = "DB"
+database_name = "biongevity-forms"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+# 5 contact messages per visitor per minute.
+[[ratelimits]]
+name = "CONTACT_RATE_LIMIT"
+namespace_id = "1002"
+simple = { limit = 5, period = 60 }
+
+# 5 admin sign-in attempts per visitor per minute.
+[[ratelimits]]
+name = "LOGIN_RATE_LIMIT"
+namespace_id = "1003"
+simple = { limit = 5, period = 60 }

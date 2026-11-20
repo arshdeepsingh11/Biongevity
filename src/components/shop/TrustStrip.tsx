@@ -29,7 +29,7 @@ export function TrustStrip() {
         ))}
       </div>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-        {TRUST.map((t) => <div key={t.t} className="flex items-center gap-3 rounded-2xl bg-navy p-4"><Icon name={t.icon} size={24} weight="duotone" className="shrink-0 text-accent" /><div><div className="text-[14px] font-semibold">{t.t}</div><div className="text-[12px] text-muted">{t.d}</div></div></div>)}
+        {TRUST.map((t) => <div key={t.t} className="flex flex-col items-start gap-2 rounded-2xl bg-navy p-4 sm:flex-row sm:items-center sm:gap-3"><Icon name={t.icon} size={24} weight="duotone" className="shrink-0 text-accent" /><div className="min-w-0"><div className="text-[14px] font-semibold">{t.t}</div><div className="text-[12px] text-muted">{t.d}</div></div></div>)}
       </div>
       {(POLICIES.refunds || POLICIES.shipping || POLICIES.kitRegions) && (
         <div className="rounded-2xl bg-canvas p-4 text-[12.5px] text-muted">{[POLICIES.refunds, POLICIES.shipping, POLICIES.kitRegions].filter(Boolean).join(" · ")}</div>

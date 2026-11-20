@@ -289,7 +289,7 @@ export function CardioExplorer({ height = 640, className }: { height?: number; c
             </motion.div>
           )}
         </AnimatePresence>
-        <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 flex-wrap items-center justify-center gap-1 rounded-full bg-white/85 p-1 shadow-card ring-1 ring-ink/[0.08] backdrop-blur-md">
+        <div className="absolute bottom-3 left-1/2 flex w-max max-w-[calc(100%-1rem)] -translate-x-1/2 flex-wrap items-center justify-center gap-1 whitespace-nowrap rounded-[20px] bg-white/85 p-1 shadow-card ring-1 ring-ink/[0.08] backdrop-blur-md">
           <button onClick={() => turn(0)} className="rounded-full px-2.5 py-1 text-[11.5px] font-semibold hover:bg-ink/[0.05]">Front</button>
           <button onClick={() => turn(Math.PI / 2)} className="rounded-full px-2.5 py-1 text-[11.5px] font-semibold hover:bg-ink/[0.05]">Side</button>
           <button onClick={() => turn(Math.PI)} className="rounded-full px-2.5 py-1 text-[11.5px] font-semibold hover:bg-ink/[0.05]">Back</button>

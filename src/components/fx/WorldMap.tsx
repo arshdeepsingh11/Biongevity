@@ -55,7 +55,7 @@ export function WorldMap() {
     cancelAnimationFrame(anim.current);
     const from = { ...view }, t0 = performance.now(), dur = 700;
     const step = (t: number) => {
-      const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      const k = Math.min(1, Math.max(0, t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
       setView(clamp({ x: from.x + (target.x - from.x) * e, y: from.y + (target.y - from.y) * e, w: from.w + (target.w - from.w) * e }));
       if (k < 1) anim.current = requestAnimationFrame(step);
     };

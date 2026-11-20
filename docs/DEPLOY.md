@@ -27,7 +27,19 @@ Any static host works (Cloudflare Pages, Netlify, Vercel static, S3 + CloudFront
   error_page 404 /404.html;
   ```
 - Point **biongevity.com** (and www → redirect to apex) at the host; HTTPS on.
-- Cache: `/_next/static/*` can be cached for a year (immutable); HTML should be `no-cache`.
+- **Security + cache headers**: `public/_headers` (copied to `out/_headers`) is applied automatically by
+  Cloudflare Pages and Netlify. On nginx, add the same headers:
+  ```nginx
+  add_header X-Content-Type-Options "nosniff" always;
+  add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+  add_header X-Frame-Options "SAMEORIGIN" always;
+  add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+  add_header Permissions-Policy "camera=(self), microphone=(self), geolocation=(), payment=(), usb=()" always;
+  add_header Content-Security-Policy "frame-ancestors 'self'; base-uri 'self'; object-src 'none'; form-action 'self'" always;
+  location /_next/static/ { add_header Cache-Control "public, max-age=31536000, immutable"; }
+  ```
+- Contact form: set `NEXT_PUBLIC_CONTACT_ENDPOINT` to a webhook that accepts JSON and returns 2xx. Without it,
+  "Send request" opens a pre-filled email to info@biongevity.com instead.
 
 ## 3. Environment variables (build time)
 
@@ -45,15 +57,17 @@ Any static host works (Cloudflare Pages, Netlify, Vercel static, S3 + CloudFront
 
 ## 4. Biongevity SI (Xevyo) — Cloudflare Worker
 
-The Xevyo API key must stay server-side. `deploy/xevyo-worker.js` forwards chat requests to Xevyo, adds the key, and
-only allows the site's own domains.
+The Xevyo API key must stay server-side. `deploy/xevyo-worker.js` forwards chat requests to Xevyo, adds the key,
+and applies `deploy/si-policy.mjs`: safety rules first, model fixed by the Worker, size limits, and a
+per-visitor rate limit (10/minute). Details: `docs/XEVYO_PROXY.md`.
 
 ```bash
 npm i -g wrangler && wrangler login
 cd deploy
 npx wrangler secret put XEVYO_API_KEY          # paste the key from the Xevyo console (Keys)
 npx wrangler secret put XEVYO_UPSTREAM_URL     # https://chat.xevyo.com/xevyo/v1/chat/completions
-# ALLOWED_ORIGINS is already set in deploy/wrangler.toml (biongevity.com + www)
+# ALLOWED_ORIGINS, XEVYO_MODEL and the rate limit are set in deploy/wrangler.toml
+# (website + www + the iOS/Android Capacitor apps)
 npx wrangler deploy                            # → note the Worker URL
 ```
 

@@ -43,7 +43,10 @@ export function Carousel3D<T>({ items, render, radius = 420, cardWidth = 230, he
   const bring = (k: number) => { const s = st.current; const cur = Math.round(s.a / step); let d = (-k - cur) % n; if (d > n / 2) d -= n; if (d < -n / 2) d += n; s.target = (cur + d) * step; };
 
   return (
-    <div className={cn("relative select-none touch-pan-y", className)} style={{ height, perspective: "1600px" }}
+    <div className={cn("relative select-none touch-pan-y focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai/40 rounded-3xl", className)} style={{ height, perspective: "1600px" }}
+      role="region" aria-roledescription="carousel" aria-label="Use the left and right arrow keys to turn" tabIndex={0}
+      onKeyDown={(e) => { if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); bring((front + (e.key === "ArrowRight" ? 1 : -1) + n) % n); } }}
+      onFocus={() => { st.current.hover = true; }} onBlur={() => { st.current.hover = false; }}
       onMouseEnter={() => { st.current.hover = true; }} onMouseLeave={() => { st.current.hover = false; }}
       onPointerDown={(e) => { const s = st.current; s.drag = true; s.x = e.clientX; s.target = null; (e.currentTarget as Element).setPointerCapture?.(e.pointerId); }}
       onPointerMove={(e) => { const s = st.current; if (!s.drag) return; const d = (e.clientX - s.x) * 0.25; s.x = e.clientX; s.a += d; s.v = d; }}

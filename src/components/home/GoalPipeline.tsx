@@ -129,9 +129,9 @@ export function GoalPipeline() {
             {step === 5 && <Detail kicker="Care" title={dept.name} body={<span className="text-muted">{dept.tag} {dept.summary.split(". ")[0]}.</span>} action={<div className="flex flex-wrap gap-2"><Link href={`/precision-health/${dept.id}/`} className="btn-dark h-10 px-4 text-[14px]">Open {dept.short}</Link><button onClick={() => ask(`My goal is to ${g.label.toLowerCase()}. Explain why ${test.title} and ${formula.title} fit, and what ${dept.name} would do.`, { label: `✦ Why this path for “${g.label}”?` })} className="btn-ai h-10 px-4 text-[14px]"><XevyoOrb size={20} />Ask Biongevity SI why</button></div>} />}
           </motion.div>
         </AnimatePresence>
-        <div className="relative mt-4 flex items-center justify-between text-[12px] text-muted">
-          <button onClick={() => { if (step === 5) setStep(0); setPlay((p) => !p); }} className="inline-flex items-center gap-1.5 font-semibold text-ai"><Icon name={play ? "stop" : "play"} size={14} />{play ? "Pause" : "Play the path"}</button>
-          <span>Built on your device from our catalogue · {step + 1}/6</span>
+        <div className="relative mt-4 flex items-center justify-between gap-3 text-[12px] text-muted">
+          <button onClick={() => { if (step === 5) setStep(0); setPlay((p) => !p); }} className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap font-semibold text-ai"><Icon name={play ? "stop" : "play"} size={14} />{play ? "Pause" : "Play the path"}</button>
+          <span className="min-w-0 text-right">Built on your device from our catalogue · {step + 1}/6</span>
         </div>
         <Reasoning step={step} chosen={[g.label, test.title, g.reveals, formula.title, g.program, dept.name]}
           alts={[GOAL_PATHS.filter((x) => x.id !== g.id).slice(0, 2).map((x) => x.label), (alt?.tests ?? []).map((r) => r.x.title).filter((t) => t !== test.title).slice(0, 2), [], (alt?.formulas ?? []).map((r) => r.x.title).filter((t) => t !== formula.title).slice(0, 2), [], (alt?.depts ?? []).map((r) => r.x.short).filter((t) => t !== dept.short).slice(0, 2)]} />

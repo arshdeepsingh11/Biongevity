@@ -7,10 +7,9 @@ import { useAI } from "@/components/ai/AIProvider";
 import { TWIN_SYSTEMS, TWIN_EXAMPLE, TWIN_PATH, STATUS_WORDS } from "@/data/twin";
 import { env } from "@/lib/env";
 import { cn } from "@/lib/utils";
+import { DEVICE as C } from "@/lib/theme";
 
 /* ── Inside the app: a working replica of the Digital Twin overview (dark, like the real screen). Example values. ── */
-
-const C = { bg: "#0a0e13", panel: "#121820", line: "rgba(255,255,255,.07)", text: "#e9eef4", dim: "#8a96a5", good: "#4ade80", warn: "#fbbf24", accent: "#38bdf8", violet: "#a78bfa" };
 
 type Part = "score" | "recovery" | "hrv" | "monitor" | "body" | "trends";
 const PARTS: Record<Part, { t: string; icon: string; what: string; from: string; use: string }> = {
@@ -101,7 +100,7 @@ export function AppTwin() {
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_340px] lg:items-start">
       {/* the app screen */}
-      <div className="overflow-hidden rounded-[30px] p-2 shadow-[0_40px_90px_-30px_rgba(0,0,0,.55)]" style={{ background: "#05070a" }}>
+      <div className="overflow-hidden rounded-[30px] p-2 shadow-[0_40px_90px_-30px_rgba(0,0,0,.55)]" style={{ background: C.bezel }}>
         <div className="overflow-hidden rounded-[24px]" style={{ background: C.bg, color: C.text }}>
           {/* app top bar */}
           <div className="flex items-center gap-2 px-4 py-3" style={{ borderBottom: `1px solid ${C.line}` }}>
@@ -141,7 +140,7 @@ export function AppTwin() {
               <div className="relative mx-auto aspect-[200/440] w-full max-w-[230px]">
                 <svg viewBox="0 0 200 440" className="absolute inset-0 h-full w-full">
                   <defs>
-                    <linearGradient id="twin-skin" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#38bdf8" stopOpacity=".38" /><stop offset="1" stopColor="#a78bfa" stopOpacity=".16" /></linearGradient>
+                    <linearGradient id="twin-skin" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor={C.accent} stopOpacity=".38" /><stop offset="1" stopColor={C.violet} stopOpacity=".16" /></linearGradient>
                     <pattern id="twin-grid" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M8 0H0V8" fill="none" stroke="rgba(56,189,248,.16)" strokeWidth=".5" /></pattern>
                   </defs>
                   <ellipse cx="100" cy="434" rx="56" ry="5" fill="rgba(56,189,248,.18)" />
@@ -190,7 +189,7 @@ export function AppTwin() {
                 <div className="text-[11px] uppercase tracking-[0.14em]" style={{ color: C.dim }}>Health trends · weekly</div>
                 <div className="mt-2 flex flex-wrap gap-1" onClick={(e) => e.stopPropagation()}>
                   {(["HRV", "Sleep", "Resting HR", "Steps"] as const).map((m) => (
-                    <span key={m} role="button" tabIndex={0} onClick={() => { setMetric(m); setPart("trends"); }} onKeyDown={(e) => { if (e.key === "Enter") { setMetric(m); setPart("trends"); } }}
+                    <span key={m} role="button" tabIndex={0} aria-pressed={metric === m} onClick={() => { setMetric(m); setPart("trends"); }} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setMetric(m); setPart("trends"); } }}
                       className="cursor-pointer rounded-full px-2 py-0.5 text-[10.5px] font-semibold" style={{ background: metric === m ? C.violet : "rgba(255,255,255,.06)", color: metric === m ? C.bg : C.dim }}>{m}</span>
                   ))}
                 </div>

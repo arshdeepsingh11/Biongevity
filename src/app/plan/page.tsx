@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookBand } from "@/components/ui/BookNow";
 import { PageHero, Section } from "@/components/ui/Section";
 import { AuroraText } from "@/components/fx/AuroraText";
 import { AIBadge } from "@/components/ai/AIBadge";
@@ -20,6 +21,7 @@ export default function PlanPage() {
         <div className="flex flex-wrap gap-2"><AIBadge label="Built on your device" /><AIBadge label="Clinician approves" /><AIBadge label="PDF · calendar · send" /></div>
       </PageHero>
       <Section ai="Care plan" className="!pt-0" chip={false}><div className="container-x"><CarePlanBuilder /></div></Section>
+      <BookBand title="Turn the plan into a booking." lede="A clinician reviews your plan at the first consultation. Book online, or send your plan on WhatsApp." text="Hi Biongevity, I built a care plan and would like to book." />
     </>
   );
 }

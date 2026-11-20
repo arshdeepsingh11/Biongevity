@@ -1,13 +1,13 @@
 /*
  * Biongevity themes — the ONLY place colours are defined.
  * Values are space-separated RGB so Tailwind alpha works: rgb(var(--c-ink) / .5).
- * Switch with <html data-theme="sand | olive | mono">.
+ * Two themes: Dark (launch default, set on <html data-theme="dark"> in the root layout) and Olive (the earlier light theme).
  * Contrast-checked (WCAG 2.1): ink, muted, faint and accent text all ≥ 4.5 on bg and surface.
  *
  *   --c-ai / --c-ai-2 / --c-ai-hi = the AI signature (orb, beams, ✦). Used ONLY for AI.
  */
 
-/* 1 · OLIVE — off-white #F3F1F0, olive #A1AB54, clean glass. Bright and fresh, never dull or dark. (default) */
+/* OLIVE — off-white #F3F1F0, olive #A1AB54, clean glass. Bright and fresh, never dull or dark. */
 :root,
 :root[data-theme="olive"] {
   --c-pearl: 243 241 240;      /* #F3F1F0 background */
@@ -62,112 +62,6 @@
   color-scheme: light;
 }
 
-/* 2 · MONO — the original black-and-white brand. No hue at all. */
-:root[data-theme="mono"] {
-  --c-pearl: 255 255 255;
-  --c-canvas: 245 245 245;
-  --c-surface: 255 255 255;
-  --c-feature: 242 242 242;
-  --c-feature-2: 232 232 232;
-  --c-ink: 10 10 10;
-  --c-muted: 82 82 82;
-  --c-faint: 107 107 107;
-  --c-accent: 17 17 17;
-  --c-accent-soft: 64 64 64;
-  --c-accent-light: 240 240 240;
-  --c-accent-deep: 0 0 0;
-  --c-on-accent: 255 255 255;
-  --c-teal: 64 64 64;
-  --c-teal-soft: 115 115 115;
-  --c-teal-light: 239 239 239;
-  --c-gold: 143 143 143;
-  --c-gold-soft: 240 240 240;
-  --c-gold-deep: 51 51 51;
-  --c-ai: 17 17 17;
-  --c-ai-2: 92 92 92;
-  --c-ai-hi: 214 214 214;
-  --c-on-ai: 255 255 255;
-  --c-ai-soft: 242 242 242;
-  --c-warn: 68 68 68;
-  --c-tangerine: 89 89 89;
-  --c-danger: 10 10 10;
-  --c-shadow: 0 0 0;
-  --c-scrim: 0 0 0;
-  --c-chart-1: 17 17 17;
-  --c-chart-2: 115 115 115;
-  --c-chart-3: 163 163 163;
-  --c-chart-4: 61 61 61;
-  --c-chart-5: 196 196 196;
-  --c-chart-6: 82 82 82;
-  --c-chart-7: 140 140 140;
-  --g-iri: linear-gradient(135deg, #3a3a3a, #111111 52%, #000000);
-  --g-iri-x: linear-gradient(90deg, #6b6b6b, #111111);
-  --g-text: linear-gradient(90deg, #0a0a0a, #0a0a0a);
-  --g-feature: linear-gradient(160deg, #fafafa 0%, #f2f2f2 100%);
-  --g-btn: linear-gradient(#111111, #111111);
-  --g-ai: linear-gradient(120deg, #6b6b6b, #111111 50%, #000000);
-  --header-alpha: 0.82;
-  --heading-track: -0.04em;
-  color-scheme: light;
-  --c-artery: 196 52 58;
-  --c-vein: 58 92 176;
-}
-
-
-/* 3 · SAND — Mono's black and white with one warm sand tone for cards and a gold-to-black AI gradient. Calm, solid, premium. (default) */
-:root[data-theme="sand"] {
-  --c-pearl: 255 255 255;
-  --c-canvas: 250 247 241;
-  --c-surface: 255 255 255;
-  --c-feature: 247 243 236;
-  --c-feature-2: 239 231 218;
-  --c-ink: 10 10 10;
-  --c-muted: 85 80 73;
-  --c-faint: 110 104 95;
-  --c-accent: 10 10 10;
-  --c-accent-soft: 138 106 59;
-  --c-accent-light: 247 243 236;
-  --c-accent-deep: 0 0 0;
-  --c-on-accent: 255 255 255;
-  --c-teal: 95 110 90;
-  --c-teal-soft: 140 150 132;
-  --c-teal-light: 238 240 234;
-  --c-gold: 184 148 74;
-  --c-gold-soft: 247 240 226;
-  --c-gold-deep: 122 90 40;
-  --c-ai: 10 10 10;
-  --c-ai-2: 138 106 59;        /* sand-bronze */
-  --c-ai-hi: 201 169 110;      /* sand-gold highlight */
-  --c-on-ai: 255 255 255;
-  --c-ai-soft: 247 243 236;
-  --c-warn: 150 100 20;
-  --c-tangerine: 190 130 60;
-  --c-danger: 176 48 40;
-  --c-shadow: 40 30 15;
-  --c-scrim: 10 10 10;
-  --c-chart-1: 10 10 10;
-  --c-chart-2: 201 169 110;
-  --c-chart-3: 138 106 59;
-  --c-chart-4: 120 114 105;
-  --c-chart-5: 225 210 182;
-  --c-chart-6: 60 56 50;
-  --c-chart-7: 95 110 90;
-  --c-artery: 196 52 58;
-  --c-vein: 58 92 176;
-  --g-iri: linear-gradient(135deg, #C9A96E, #8A6A3B 52%, #0A0A0A);
-  --g-iri-x: linear-gradient(90deg, #C9A96E, #0A0A0A);
-  --g-text: linear-gradient(95deg, #8A6A3B, #C9A96E 40%, #0A0A0A 100%);
-  --g-feature: linear-gradient(160deg, #ffffff 0%, #f7f3ec 100%);
-  --g-btn: linear-gradient(#0a0a0a, #0a0a0a);
-  --g-ai: linear-gradient(110deg, #B8944A 0%, #8A6A3B 40%, #0A0A0A 100%);
-  --header-alpha: 0.86;
-  --heading-track: -0.035em;
-  --glass: rgb(255 255 255 / .94);
-  --glass-strong: rgb(255 255 255 / .97);
-  --glass-border: rgb(0 0 0 / .06);
-  color-scheme: light;
-}
-
 /* Legacy names (kept so older styles keep working) */
 :root {
   --bg: rgb(var(--c-pearl));
@@ -186,4 +80,58 @@
   --violet: var(--accent);
   --canvas: var(--bg-subtle);
   --iri: var(--g-text);
+}
+
+/* DARK — the launch palette: deep green-charcoal, pearl text, olive and lime as the accents. Inspired by deep clinical tones; olive kept as the signature. */
+:root[data-theme="dark"] {
+  --c-pearl: 16 21 16;         /* #101510 page */
+  --c-canvas: 24 30 24;        /* #181E18 recessed panels, inputs */
+  --c-surface: 29 37 30;       /* #1D251E cards */
+  --c-feature: 24 31 25;
+  --c-feature-2: 44 56 36;
+  --c-ink: 243 241 240;        /* pearl text */
+  --c-muted: 184 191 176;
+  --c-faint: 142 150 136;
+  --c-accent: 197 208 120;     /* light olive: links, labels, solid chips (dark text on it) */
+  --c-accent-soft: 161 171 84; /* brand olive */
+  --c-accent-light: 38 48 30;  /* olive tint for chip backgrounds */
+  --c-accent-deep: 170 182 92;
+  --c-on-accent: 20 26 16;
+  --c-teal: 104 196 150;
+  --c-teal-soft: 140 210 176;
+  --c-teal-light: 24 48 36;
+  --c-gold: 236 190 90;
+  --c-gold-soft: 60 48 22;
+  --c-gold-deep: 246 214 140;
+  --c-ai: 197 208 120;
+  --c-ai-2: 161 171 84;
+  --c-ai-hi: 220 232 150;
+  --c-on-ai: 20 26 16;
+  --c-ai-soft: 40 50 32;
+  --c-warn: 240 176 96;
+  --c-tangerine: 236 160 90;
+  --c-danger: 236 100 92;
+  --c-shadow: 0 0 0;
+  --c-scrim: 0 0 0;
+  --c-chart-1: 161 171 84;
+  --c-chart-2: 243 241 240;
+  --c-chart-3: 236 190 90;
+  --c-chart-4: 142 150 136;
+  --c-chart-5: 220 232 150;
+  --c-chart-6: 197 208 120;
+  --c-chart-7: 104 196 150;
+  --c-artery: 226 84 88;
+  --c-vein: 96 136 226;
+  --g-iri: linear-gradient(135deg, #DCE896, #A1AB54 50%, #7C8A2C);
+  --g-iri-x: linear-gradient(90deg, #DCE896, #A1AB54);
+  --g-text: linear-gradient(95deg, #DCE896, #C5D078 45%, #A1AB54);
+  --g-feature: linear-gradient(160deg, rgb(255 255 255 / .06) 0%, rgb(161 171 84 / .12) 100%);
+  --g-btn: linear-gradient(180deg, #D6E07E 0%, #B7C25F 55%, #A1AB54 100%);
+  --g-ai: linear-gradient(120deg, #DCE896, #C5D078 50%, #A1AB54);
+  --header-alpha: 0.7;
+  --heading-track: -0.035em;
+  --glass: rgb(255 255 255 / .06);
+  --glass-strong: rgb(255 255 255 / .10);
+  --glass-border: rgb(255 255 255 / .12);
+  color-scheme: dark;
 }
