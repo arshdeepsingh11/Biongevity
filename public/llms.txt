@@ -1,55 +1,24 @@
 # Biongevity
 
-> AI-guided longevity and healthspan care by BioAro Inc. for adults about 40–65 and their families. Biongevity SI, the in-house AI, explains results and answers questions with citations to this site. Precision health and longevity medicine: specialty care (cardiology with onsite exercise stress echocardiography, heart failure, internal medicine, endocrinology, respiratory, geriatrics, nutrition, skin, pediatric rheumatology), precision programs (women's, men's, gut, dental, mental health), BioAro Labs testing (47 tests incl. whole genome sequencing, microbiome, hormones, inflammation, brain biomarkers) and BioAro Drugs AI-guided bioactive protocols. Clinics and offices in Calgary (Canada), Dubai (UAE) and Almelo (Netherlands).
+> Biongevity is a longevity and precision health company. Its clinic in Dubai (Biongevity Precision Health and Longevity Clinic, AB Center, Sheikh Zayed Road, Al Barsha 1) offers dermatology and aesthetic medicine, IV therapy and wellness, general practice and preventive health, longevity and precision health testing, diagnostics and laboratory tests, dental care, home healthcare and telehealth. In the United States, Biongevity plans to launch in March 2027 as an online telehealth service with the Biongevity app (no physical clinic). Other countries: coming soon.
 
-Information on this site is educational and not a diagnosis. For emergencies call 911.
+Information on this site is general and educational, not medical advice. In the UAE, in an emergency call 998 (ambulance) or 999.
 
-## Departments
+## Biongevity Dubai (UAE)
 
-- [Cardiology](https://biongevity.com/precision-health/cardiology/): Heart care with onsite exercise stress echo.
-- [Heart Failure Clinic](https://biongevity.com/precision-health/heart-failure/): Steady, proactive care for every day.
-- [Internal Medicine](https://biongevity.com/precision-health/internal-medicine/): Whole-person care for complex and chronic conditions.
-- [Endocrinology](https://biongevity.com/precision-health/endocrinology/): Hormones and metabolism, expertly managed.
-- [Respiratory Medicine](https://biongevity.com/precision-health/respiratory-medicine/): Sleep well. Breathe easy. Live better.
-- [Geriatric Medicine](https://biongevity.com/precision-health/geriatric-medicine/): Independence, safety and quality of life.
-- [Nutrition](https://biongevity.com/precision-health/nutrition/): Evidence-based eating, built around you.
-- [Skin Health](https://biongevity.com/precision-health/skin-health/): Physician-managed skin, laser and wellness.
-- [Pediatric Rheumatology](https://biongevity.com/precision-health/pediatric-rheumatology/): Joint and inflammatory care for young people.
-- [Women's Health](https://biongevity.com/precision-health/womens-health/): Optimal health at every stage of life.
-- [Men's Health](https://biongevity.com/precision-health/mens-health/): Peak health at every stage.
-- [Gut Health & Gastroenterology](https://biongevity.com/precision-health/gut-health/): The foundation of overall wellness.
-- [Dental](https://biongevity.com/precision-health/dental/): Oral health as part of whole health.
-- [Mental Health](https://biongevity.com/precision-health/mental-health/): Lasting emotional wellbeing.
+- [Biongevity Dubai](https://biongevity.com/uae/): Doctor-led clinic for skin, wellness and longevity in Al Barsha, Dubai. Book on WhatsApp +971 50 528 2566 or call +971 4 379 6393. Prices are shared on WhatsApp; 5% VAT applies.
+- [Dermatology & Aesthetic Medicine](https://biongevity.com/uae/dermatology-aesthetics/): HydraFacial, chemical peels, skin boosters, mesotherapy, PRP, exosomes, HIFU, lasers, Botox, fillers, hair and scalp treatments, medical dermatology.
+- [IV Therapy & Wellness](https://biongevity.com/uae/iv-therapy-wellness/): IV drips, functional medicine, nutrition, weight management, wellness programmes, vitamin injections.
+- [General Practice & Preventive Health](https://biongevity.com/uae/general-practice/): GP consultations, chronic disease management, health checks, women's and men's health assessments, vaccinations.
+- [Longevity & Precision Health](https://biongevity.com/uae/longevity-precision-health/): longevity consultation, biological and epigenetic age, whole genome and exome sequencing, pharmacogenomics, microbiome, cell-free DNA.
+- [Diagnostics & Laboratory](https://biongevity.com/uae/diagnostics-laboratory/): blood tests and wellness panels, hormone, thyroid, vitamin and mineral testing.
+- [Dental Care](https://biongevity.com/uae/dental-care/): dental consultation, scaling and polishing, smile care, family dental package.
+- [Home Healthcare](https://biongevity.com/uae/home-healthcare/): doctor and nurse home visits, home blood tests, vital signs, wound care, home IV, post-procedure care.
+- [Telehealth](https://biongevity.com/uae/telehealth/): online GP, follow-ups, results reviews, dermatology, women's health and wellness follow-ups.
+- [Supplements in the UAE](https://biongevity.com/uae/supplements/): LONgevity+, CellOmega+ (fish-oil version), Creagen.
+- [Contact](https://biongevity.com/uae/contact/)
 
-## Testing and protocols
+## International
 
-- [BioAro Labs](https://biongevity.com/precision-health/bioaro-labs/): AI-connected lab tests — genome (30X/100X WGS, exome, pharmacogenomics), ageing, hormones, nutrition, vascular, brain, gut, skin, dental and vaginal microbiome; private health packages
-- [BioAro Drugs](https://biongevity.com/precision-health/bioaro-drugs/): AI-guided bioactive protocols (LONgevity+ NAD+ booster, glutathione, creatine, omega), every ingredient and dose shown
-
-## Clinics and programs
-
-- [Longevity Journey](https://biongevity.com/clinic/journey/): biological age, genomics, microbiome and clinical assessments in one plan
-- [Virtual Clinic](https://biongevity.com/clinic/virtual/): secure video visits and a remote blood-pressure program (home target 135/85, 7 days, morning and evening readings)
-- [UAE Precision Clinic](https://biongevity.com/clinic/uae/): Dubai longevity assessments — VO2 max, spirometry, ankle-brachial index, grip, body composition, HRV, cognition
-- [Shop](https://biongevity.com/shop/): longevity programs (Core, Precision, Elite), health packages and a matching quiz
-
-## Platform, AI and B2B
-
-- [Healthspan platform](https://biongevity.com/platform/): longevity digital twin (biological, physiological, functional, behavioural, clinical and trajectory states), domain scores with a transparent Healthspan Index, multilingual AI coach, clinician and family views. Members sign in at https://app.biongevity.com
-- [Care plan builder](https://biongevity.com/plan/): pick a goal and get a 12-month plan of BioAro tests, re-test dates, formulas, visits and a total in CAD; download, add reminders or send to the clinic for clinician approval.
-- [Evidence engine](https://biongevity.com/evidence/): the studies behind every number, with study counts, people, effect sizes, confidence intervals and GRADE certainty.
-- [Digital Twin tour](https://biongevity.com/twin/): 3D guided tour of the member Digital Twin - scores, live monitor, body systems, trends, simulations, AI coach - then open it at https://app.biongevity.com/en/patient/digital-twin
-- [AI Healthspan Scan](https://biongevity.com/scan/): 12 questions, on-device radar of 9 health domains, sourced population charts, ranked BioAro Labs tests (bought on bioarolabs.com), matched BioAro Drugs formulas and a 12-month re-test timeline
-- [Family care](https://biongevity.com/family/): planner for adult children caring for an ageing parent, plus a permissioned family view in the app
-- [AI Test Navigator](https://biongevity.com/precision-health/bioaro-labs/#navigator): every BioAro Labs test scored for evidence, actionability, cost and goal match
-- [AI Protocol Studio](https://biongevity.com/precision-health/bioaro-drugs/#studio): daily dose clock and ingredient-overlap check for BioAro Drugs formulas
-- [AI health tools](https://biongevity.com/tools/): lab-result explainer, visit-prep brief, specialist router (on-device matching; Biongevity SI on request; nothing stored)
-- [BioELR](https://biongevity.com/bioelr/): longevity-focused health record system for clinics, resorts and communities — AI clinical support, voice notes, scheduling, billing, inventory, cardiac/derma/dental modules, HL7, SNOMED CT and ICD
-- [How our AI works](https://biongevity.com/ai/): principles, evidence levels and model cards for Biongevity SI and on-device models
-- [Site index for AI](https://biongevity.com/site-index.json): passages used to ground Biongevity SI answers
-
-## Contact
-
-- Calgary head office: 403-250-2221 · info@biongevity.com
-- Dubai clinic: +971 4 379 6393 · infodxb@biongevity.com
-- [Contact page](https://biongevity.com/contact/)
+- [Biongevity International](https://biongevity.com/): Longevity measured and followed over time; technology; United States launch in March 2027.
+- [Contact](https://biongevity.com/contact/): info@biongevity.com
