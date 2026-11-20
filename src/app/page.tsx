@@ -59,8 +59,11 @@ export default function InternationalHome() {
 
       {/* HERO — deep, futuristic */}
       <section data-ai="Hero" className="sec-dark relative isolate overflow-hidden pb-20 pt-[calc(120px+var(--safe-top))] lg:pb-28 lg:pt-[170px]">
-        <video aria-hidden className="absolute inset-0 -z-10 h-full w-full object-cover opacity-20" src="/media/brand-loop.mp4" poster="/media/brand-film.jpg" autoPlay muted loop playsInline preload="none" />
-        <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(var(--c-feature)/.55),rgb(var(--c-feature)/.92)_70%,rgb(var(--c-feature)))]" />
+        <div aria-hidden className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute -right-56 -top-64 h-[820px] w-[820px] rounded-full bg-[radial-gradient(closest-side,rgb(var(--c-gold)/.22),transparent)]" />
+          <div className="absolute -bottom-72 -left-40 h-[720px] w-[720px] rounded-full bg-[radial-gradient(closest-side,rgb(var(--c-teal)/.22),transparent)]" />
+          <div className="absolute inset-0 opacity-[.07] [background-image:linear-gradient(rgb(255_255_255)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255)_1px,transparent_1px)] [background-size:64px_64px] [mask-image:radial-gradient(ellipse_at_70%_30%,black,transparent_70%)]" />
+        </div>
         <div className="wrap">
           <div className="t-eyebrow" data-rv>Biongevity · Longevity & precision health</div>
           <h1 className="t-hero mt-6 max-w-[16ch]" data-rv style={{ "--d": "60ms" } as React.CSSProperties}>The future of longevity <span className="t-italic">is personal.</span></h1>
