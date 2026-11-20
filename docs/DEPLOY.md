@@ -1,3 +1,7 @@
+> **v6 (Nov 2026):** the site has two faces: `/uae/…` (Dubai clinic) and `/` (International). `public/_redirects`
+> sends old URLs (precision-health, clinic, shop…) to the new pages on Cloudflare Pages / Netlify; on nginx add the
+> same rules as `return 301`. Optional: a Cloudflare rule to send UAE IPs from `/` to `/uae/`. See `docs/V6_UAE_RELEASE.md`.
+
 # Biongevity website — deploy guide (DevOps)
 
 Repo: `arshdeepsingh11/Biogenvity`, branch **`ai/neural-noir`**.

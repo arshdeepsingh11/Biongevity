@@ -3,14 +3,14 @@
 Set `NEXT_PUBLIC_GTM_ID` (a Google Tag Manager container, `GTM-XXXXXXX`) and rebuild. GTM loads after the page is
 interactive; GA4, Meta Pixel or any other tag is then configured inside GTM, not in the code.
 
-Every event is pushed to `window.dataLayer` with `page_path` and `region` (`intl` or `uae`). Without a GTM id the
+Every event is pushed to `window.dataLayer` with `page_path` and `region` (`uae` on /uae pages, otherwise `intl`). Without a GTM id the
 events still go to the dataLayer, so they can be checked in the browser console: `dataLayer`.
 
 | Event | When | Extra fields |
 |---|---|---|
 | `page_view` | each route change (GTM records the first view itself) | `page_title` |
-| `book_click` | any **Book now** button (`a[data-book]`) | `placement` (section name), `text` |
-| `whatsapp_click` | any WhatsApp link, including the fixed button | `placement`, `text`, `channel` |
+| `book_click` | any **Book now** button (`a[data-book]`; on /uae it opens WhatsApp) | `placement` (section name), `text`, `item` (service, e.g. HydraFacial), `channel` |
+| `whatsapp_click` | any WhatsApp link, including the fixed button | `placement`, `text`, `item`, `channel` |
 | `call_click` | any phone link | `placement`, `text` |
 | `enquiry_submit` | contact form accepted (`via: sent`) or opened as an email draft (`via: mailed`) | `interest` |
 | `ai_book_click` | Book now / WhatsApp pressed inside Biongevity SI's answer | `placement`, `text` |

@@ -17,6 +17,13 @@
 
 ---
 
+## ◆ v6 — Dubai clinic + International (Nov 2026)
+
+- **`/uae/`** — Biongevity Dubai: 8 departments, 83 service pages, Book now on WhatsApp, no prices on the site, 5% VAT note.
+- **`/`** — Biongevity International: longevity, technology, US launch March 2027, no clinic details.
+- All content in `src/content/`; theme `clinic` in `src/styles/themes.css`; details in **[docs/V6_UAE_RELEASE.md](docs/V6_UAE_RELEASE.md)**.
+- The sections below describe the earlier version and are kept for reference.
+
 ## ◆ At a glance
 
 | | | | |
