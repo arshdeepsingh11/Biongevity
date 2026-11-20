@@ -8,7 +8,7 @@ export default {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
-      fontFamily: { sans: ["'DM Sans Variable'", "'DM Sans'", "sans-serif"] },
+      fontFamily: { sans: ["var(--font-sans)", "system-ui", "sans-serif"] },
       colors: {
         // Every colour reads a CSS variable from src/styles/themes.css (3 themes). Names kept for component stability.
         pearl: v("pearl"),

@@ -9,6 +9,7 @@ import { UAE_CLINIC, waLink } from "@/content/contact";
 import { isUaePath, localeFromPath, switchLocalePath, t, uaeBase, type Locale } from "@/i18n";
 import { saveRegion } from "@/lib/regionPref";
 import { cn } from "@/lib/utils";
+import { SmartLink } from "./SmartLink";
 
 const uaeLinks = (l: Locale) => {
   const x = t(l), b = uaeBase(l);
@@ -23,10 +24,10 @@ const uaeLinks = (l: Locale) => {
 function LangSwitch({ path, l, className }: { path: string; l: Locale; className?: string }) {
   const to: Locale = l === "ar" ? "en" : "ar";
   return (
-    <Link href={switchLocalePath(path, to)} hrefLang={to} lang={to} onClick={() => { try { localStorage.setItem("biongevity.lang", to); } catch { /* private mode */ } }}
-      className={cn("lang6", className)} aria-label={to === "ar" ? "العربية — عرض الصفحة بالعربية" : "English — view this page in English"}>
-      <span className={cn(l === "en" && "is-on")}>EN</span><span className={cn(l === "ar" && "is-on")}>ع</span>
-    </Link>
+    <SmartLink from={path} href={switchLocalePath(path, to)} hrefLang={to} lang={to} onClick={() => { try { localStorage.setItem("biongevity.lang", to); } catch { /* private mode */ } }}
+      className={cn("lang6", className)} aria-label={to === "ar" ? "EN ع — العربية: عرض هذه الصفحة بالعربية" : "EN ع — English: view this page in English"} title={to === "ar" ? "العربية" : "English"}>
+      <span className={cn(l === "en" && "is-on")}>EN</span>{" "}<span className={cn(l === "ar" && "is-on")}>ع</span>
+    </SmartLink>
   );
 }
 
@@ -103,7 +104,7 @@ export function Header({ nav }: { nav: NavData }) {
     <>
       <header ref={headerRef} className={cn("hdr6", (solid || mega) && "is-solid", hidden && !drawer && "is-hidden", onDark && "is-ondark")}>
         <div className="wrap relative flex h-[72px] items-center gap-3 lg:h-[84px]">
-          <Link href={uae ? `${base}/` : "/"} className="flex shrink-0 items-center gap-2.5" aria-label={uae ? (l === "ar" ? "بيونجيفيتي دبي — الرئيسية" : "Biongevity Dubai home") : "Biongevity home"}>
+          <Link href={uae ? `${base}/` : "/"} className="flex shrink-0 items-center gap-2.5" title={uae ? (l === "ar" ? "بيونجيفيتي دبي — الرئيسية" : "Biongevity Dubai home") : "Biongevity home"}>
             <Logo size={uae ? 23 : 25} className={onDark ? "text-white" : undefined} />
             {uae && <span className="hidden border-s border-ink/15 ps-2.5 text-[12px] font-semibold uppercase tracking-[.18em] text-gold-deep sm:inline">{x.dubai}</span>}
           </Link>
@@ -122,7 +123,7 @@ export function Header({ nav }: { nav: NavData }) {
           <div className="ms-auto flex items-center gap-2">
             {uae ? (
               <>
-                <Link href="/" onClick={() => saveRegion("intl")} className="nav6-link hidden !text-[14px] xl:inline-flex" title={x.biongevityInternational}><Icon name="globe" size={16} />{x.international}</Link>
+                <SmartLink from={path} href="/" onClick={() => saveRegion("intl")} className="nav6-link hidden !text-[14px] xl:inline-flex" title={x.biongevityInternational}><Icon name="globe" size={16} />{x.international}</SmartLink>
                 <LangSwitch path={path} l={l} />
                 <a href={waLink(x.wa.general)} target="_blank" rel="noopener" aria-label={x.whatsappUs} data-item="Header WhatsApp" className="hidden h-11 w-11 place-items-center rounded-full border border-ink/15 text-[rgb(var(--c-wa-deep))] transition hover:bg-white sm:grid"><Icon name="whatsapp" size={21} weight="fill" /></a>
                 <a href={waLink(x.wa.general)} target="_blank" rel="noopener" data-book data-item="Header" className="btn6 btn6-primary btn6-sm hidden sm:inline-flex"><Icon name="calendar" size={16} />{x.bookNow}</a>
@@ -166,7 +167,7 @@ export function Header({ nav }: { nav: NavData }) {
       </header>
 
       {drawer && (
-        <div className="drawer6 lg:hidden" role="dialog" aria-modal="true" aria-label={x.menu}>
+        <div className="drawer6 lg:hidden" role="dialog" aria-modal="true" aria-label={x.menu} onClick={(e) => { if ((e.target as Element).closest("a")) setDrawer(false); }}>
           <div className="wrap flex h-[72px] items-center justify-between pt-[var(--safe-top)]">
             <Logo size={23} />
             {uae && <LangSwitch path={path} l={l} className="ms-auto me-2" />}
@@ -192,7 +193,7 @@ export function Header({ nav }: { nav: NavData }) {
             <ul className="mt-6 grid border-t border-ink/10">
               {links.map((k) => <li key={k.href}><Link href={k.href} className="flex items-center justify-between border-b border-ink/10 py-4 text-[18px] font-semibold">{k.label}<Icon name="arrow-right" size={16} className="text-faint flip-rtl" /></Link></li>)}
               {uae
-                ? <li><Link href="/" onClick={() => saveRegion("intl")} className="flex items-center justify-between border-b border-ink/10 py-4 text-[16px] font-medium text-muted"><span className="flex items-center gap-2"><Icon name="globe" size={17} />{x.biongevityInternational}</span><Icon name="arrow-right" size={16} className="text-faint flip-rtl" /></Link></li>
+                ? <li><SmartLink from={path} href="/" onClick={() => saveRegion("intl")} className="flex items-center justify-between border-b border-ink/10 py-4 text-[16px] font-medium text-muted"><span className="flex items-center gap-2"><Icon name="globe" size={17} />{x.biongevityInternational}</span><Icon name="arrow-right" size={16} className="text-faint flip-rtl" /></SmartLink></li>
                 : <li><Link href="/uae/" onClick={() => saveRegion("uae")} className="flex items-center justify-between border-b border-ink/10 py-4 text-[18px] font-semibold">Dubai clinic<Icon name="arrow-right" size={16} className="text-faint" /></Link></li>}
             </ul>
             {uae && (

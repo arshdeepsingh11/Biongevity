@@ -8,16 +8,16 @@ import { cn } from "@/lib/utils";
 
 const delay = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
 
-/** Department card with photo, accent and service count. Hover: soft spotlight that follows the pointer. */
-export function DeptCard({ d, l = "en", big, className, i = 0 }: { d: Department; l?: Locale; big?: boolean; className?: string; i?: number }) {
+/** Department card with photo, accent and service count. All department cards are the same size. Hover: soft spotlight. */
+export function DeptCard({ d, l = "en", className, i = 0 }: { d: Department; l?: Locale; className?: string; i?: number }) {
   const n = servicesOf(d).length;
   const x = t(l);
   return (
-    <Link href={deptHref(d, l)} data-dept={d.id} className={cn("card6 spot6 group flex flex-col overflow-hidden", className)} data-rv style={delay((i % 4) * 70)}>
-      <Photo k={d.photo} className={cn("w-full", big ? "aspect-[16/11] lg:aspect-auto lg:flex-1" : "aspect-[16/10]")} w={big ? 900 : 600} sizes={big ? "(min-width:1024px) 50vw, 100vw" : "(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"} />
+    <Link href={deptHref(d, l)} data-dept={d.id} className={cn("card6 spot6 group flex flex-col overflow-hidden", className)} data-rv style={delay((i % 3) * 70)}>
+      <Photo k={d.photo} className="aspect-[16/10] w-full" w={640} sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" />
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-center gap-2 text-[12.5px] font-semibold uppercase tracking-[.12em] text-[rgb(var(--dept-deep))]"><span className="dept-dot" />{x.treatmentsCount(n)}</div>
-        <h3 className={cn("mt-2.5 font-semibold tracking-tight text-ink", big ? "text-[26px] leading-tight" : "text-[19px] leading-snug")}>{d.name}</h3>
+        <h3 className="mt-2.5 text-[20px] font-semibold leading-snug tracking-tight text-ink">{d.name}</h3>
         <p className="mt-2 text-[15px] leading-relaxed text-muted">{d.tagline}</p>
         <span className="link6 mt-auto pt-5 text-[15px]">{x.explore} <Icon name="arrow-right" size={15} /></span>
       </div>

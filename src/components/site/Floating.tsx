@@ -14,13 +14,13 @@ export function Floating() {
   if (!isUaePath(path)) return null;
   const x = t(localeFromPath(path));
   return (
-    <>
+    <aside aria-label={x.whatsappUs}>
       <a href={waLink(x.wa.general)} target="_blank" rel="noopener" aria-label={x.whatsappUs} data-item="Floating WhatsApp" className="wa-fab6">
         <Icon name="whatsapp" size={30} weight="fill" />
         <span className="hidden text-[15px] font-semibold lg:inline">{x.whatsappUs}</span>
       </a>
       <MobileBar />
-    </>
+    </aside>
   );
 }
 
@@ -48,15 +48,19 @@ export function Reveal() {
   const path = usePathname();
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Anything already on screen stays visible (one measurement pass, before hiding the rest) → no flicker at load.
+    const h = innerHeight;
+    document.querySelectorAll("[data-rv]:not(.in)").forEach((el) => { if (el.getBoundingClientRect().top < h * 0.95) el.classList.add("in"); });
     document.documentElement.classList.add("rv-on");
-    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
-    const bind = () => document.querySelectorAll("[data-rv]:not(.in)").forEach((el) => {
-      if (el.getBoundingClientRect().top < innerHeight * 0.95) el.classList.add("in"); else io.observe(el);
-    });
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -6% 0px", threshold: 0.06 });
+    // Observe each remaining [data-rv] element once (no measuring on every DOM change: that forced extra layouts).
+    const seen = new WeakSet<Element>();
+    const bind = () => document.querySelectorAll("[data-rv]:not(.in)").forEach((el) => { if (!seen.has(el)) { seen.add(el); io.observe(el); } });
     bind();
-    const mo = new MutationObserver(bind);
-    mo.observe(document.body, { childList: true, subtree: true });
-    return () => { io.disconnect(); mo.disconnect(); };
+    let queued = 0;
+    const mo = new MutationObserver(() => { if (!queued) queued = requestAnimationFrame(() => { queued = 0; bind(); }); });
+    mo.observe(document.querySelector("main") ?? document.body, { childList: true, subtree: true });
+    return () => { io.disconnect(); mo.disconnect(); cancelAnimationFrame(queued); };
   }, [path]);
   // Spotlight cards (.spot6): the glow follows the pointer. One listener for the whole page.
   useEffect(() => {

@@ -19,9 +19,11 @@ export function serviceMeta(dept: string, slug: string, l: Locale) {
   if (!r) return {};
   const { service: s } = r;
   const path = `/uae/${dept}/${slug}/`;
+  // Titles stay under ~65 characters so Google shows them in full: long service names drop the area name.
+  const fit = (long: string, short: string) => (long.length > 65 ? short : long);
   return l === "ar"
-    ? uaeMeta(l, path, `${s.name} في دبي | عيادة بيونجيفيتي، البرشاء`, `${s.short} ${s.name} في بيونجيفيتي دبي: ما هو، ولمن يناسب، وماذا يشمل، وكيف تحجز عبر واتساب.`)
-    : uaeMeta(l, path, `${s.name} in Dubai | Biongevity Clinic, Al Barsha`, `${s.short} ${s.name} at Biongevity Dubai: what it is, who it suits, what's included and how to book on WhatsApp.`);
+    ? uaeMeta(l, path, fit(`${s.name} في دبي | عيادة بيونجيفيتي، البرشاء`, `${s.name} في دبي | بيونجيفيتي`), `${s.short} ${s.name} في بيونجيفيتي دبي: ما هو، ولمن يناسب، وماذا يشمل، وكيف تحجز عبر واتساب.`)
+    : uaeMeta(l, path, fit(`${s.name} in Dubai | Biongevity Clinic, Al Barsha`, `${s.name} in Dubai | Biongevity`), `${s.short} ${s.name} at Biongevity Dubai: what it is, who it suits, what's included and how to book on WhatsApp.`);
 }
 
 const FACTS: [keyof NonNullable<Service["facts"]>, string][] = [["time", "clock"], ["downtime", "leaf"], ["sessions", "calendar"], ["where", "pin"]];

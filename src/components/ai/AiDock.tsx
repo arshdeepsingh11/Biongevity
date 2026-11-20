@@ -136,7 +136,7 @@ function Dock({ path, l }: { path: string; l: Locale }) {
   const item = typeof document !== "undefined" ? pageItem() : undefined;
 
   return (
-    <>
+    <aside aria-label={x.aiName}>
       {/* Selection chip */}
       {chip && !open && (
         <button type="button" data-no-ask onMouseDown={(e) => e.preventDefault()} onClick={() => { const c = chip; setChip(null); window.getSelection()?.removeAllRanges(); ask(x.aiExplainPrompt(c.text), { selection: c.text, section: c.section }); }}
@@ -158,7 +158,7 @@ function Dock({ path, l }: { path: string; l: Locale }) {
       {open && (
         <div className="aipanel6-wrap" role="presentation" onMouseDown={(e) => { if (e.target === e.currentTarget) close(); }}>
           <section role="dialog" aria-modal="true" aria-label={x.aiName} className="aipanel6" data-ai="AI assistant" data-no-ask dir={l === "ar" ? "rtl" : "ltr"} lang={l}>
-            <header className="flex items-center gap-3 border-b border-ink/[0.07] px-5 py-4">
+            <div className="flex items-center gap-3 border-b border-ink/[0.07] px-5 py-4">
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[rgb(var(--c-feature))] text-[rgb(var(--c-gold))]"><AiMark size={22} /></span>
               <div className="min-w-0 flex-1">
                 <div className="whitespace-nowrap text-[16px] font-semibold leading-tight">{x.aiName}</div>
@@ -166,7 +166,7 @@ function Dock({ path, l }: { path: string; l: Locale }) {
               </div>
               {msgs.length > 0 && <button type="button" onClick={reset} aria-label={x.aiNew} title={x.aiNew} className="grid h-10 w-10 place-items-center rounded-full hover:bg-ink/5"><Icon name="reset" size={17} /></button>}
               <button type="button" onClick={close} aria-label={x.aiClose} title={x.aiClose} className="grid h-10 w-10 place-items-center rounded-full hover:bg-ink/5"><Icon name="x" size={18} /></button>
-            </header>
+            </div>
 
             <div ref={listRef} className="flex-1 overflow-y-auto px-5 py-5" aria-live="polite">
               {msgs.length === 0 ? (
@@ -236,7 +236,7 @@ function Dock({ path, l }: { path: string; l: Locale }) {
           </section>
         </div>
       )}
-    </>
+    </aside>
   );
 }
 

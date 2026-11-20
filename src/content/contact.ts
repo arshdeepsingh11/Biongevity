@@ -6,8 +6,8 @@ export const UAE_CLINIC = {
   name: "Biongevity Precision Health and Longevity Clinic",
   short: "Biongevity Dubai",
   whatsapp: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "971505282566").replace(/\D/g, ""),
-  whatsappDisplay: "+971 50 528 2566",
-  phone: "+971 4 379 6393",
+  whatsappDisplay: "+971\u00A050\u00A0528\u00A02566", // non-breaking spaces: the number never splits over two lines
+  phone: "+971\u00A04\u00A0379\u00A06393",
   tel: "tel:+97143796393",
   email: "infodxb@biongevity.com",
   address: ["AB Center, 3rd floor, Office 302", "Sheikh Zayed Road, Al Barsha 1", "Dubai, United Arab Emirates"],

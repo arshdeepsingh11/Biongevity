@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { Photo } from "@/components/site/Photo";
+import { LazyVideo } from "@/components/site/LazyVideo";
 import { BookNow, WhatsAppBtn } from "@/components/site/Cta";
 import { BookBand, Crumbs, Disclaimer, Head } from "@/components/site/Blocks";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
@@ -77,7 +78,7 @@ export function AboutView({ l }: { l: Locale }) {
               <div className="mt-8 flex flex-wrap gap-3" data-rv><BookNow l={l} size="lg" /><a href={UAE_CLINIC.mapUrl} target="_blank" rel="noopener" className="btn6 btn6-ghost btn6-lg"><Icon name="pin" size={18} />{x.getDirections}</a></div>
             </div>
             <div className="ph6 aspect-[4/3] overflow-hidden rounded-[32px]" data-rv>
-              <video className="absolute inset-0 h-full w-full object-cover" src="/media/clinic-loop.mp4" poster="/media/clinic-loop.jpg" autoPlay muted loop playsInline preload="none" aria-label={brandDubai(l)} />
+              <LazyVideo className="absolute inset-0 h-full w-full object-cover" src="/media/clinic-loop.mp4" poster="/media/clinic-loop.jpg" />
             </div>
           </div>
         </div>
@@ -194,7 +195,7 @@ export function ContactView({ l }: { l: Locale }) {
               {ways.map((w, i) => (
                 <li key={w.icon} data-rv style={dl(i * 60)}>
                   <a href={w.href} target={w.ext ? "_blank" : undefined} rel={w.ext ? "noopener" : undefined} data-item={`Contact: ${w.icon}`} className="card6 flex items-start gap-4 p-5">
-                    <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl ${w.icon === "whatsapp" ? "bg-[rgb(var(--c-wa))] text-white" : "bg-[rgb(var(--c-canvas))] text-gold-deep"}`}><Icon name={w.icon} size={22} weight={w.icon === "whatsapp" ? "fill" : "regular"} /></span>
+                    <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl ${w.icon === "whatsapp" ? "bg-[rgb(var(--c-wa-btn))] text-white" : "bg-[rgb(var(--c-canvas))] text-gold-deep"}`}><Icon name={w.icon} size={22} weight={w.icon === "whatsapp" ? "fill" : "regular"} /></span>
                     <span className="min-w-0 flex-1">
                       <span className="block text-[13px] font-semibold uppercase tracking-[.12em] text-faint">{w.t}</span>
                       <span className="mt-0.5 block break-words text-[18px] font-semibold" dir={w.ltr ? "ltr" : undefined}>{w.v}</span>

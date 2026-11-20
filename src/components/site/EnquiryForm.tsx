@@ -48,7 +48,7 @@ export function EnquiryForm({ mode, interests, defaultInterest, l = "en" }: { mo
   return (
     <form onSubmit={submit} className="card6 grid gap-4 p-6 sm:p-8" data-ai="Enquiry form">
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block"><span className="lbl6">{x.fullName}</span><input className="in6" required autoComplete="name" value={f.name} onChange={set("name")} /></label>
+        <label className="block"><span className="lbl6">{x.fullName}</span><input className="in6" type="text" required autoComplete="name" value={f.name} onChange={set("name")} /></label>
         {mode === "uae"
           ? <label className="block"><span className="lbl6">{x.mobile}</span><input className="in6" dir="ltr" required type="tel" inputMode="tel" autoComplete="tel" placeholder="+971" value={f.phone} onChange={set("phone")} /></label>
           : <label className="block"><span className="lbl6">Email</span><input className="in6" required type="email" autoComplete="email" value={f.email} onChange={set("email")} /></label>}

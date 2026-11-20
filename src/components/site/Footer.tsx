@@ -7,6 +7,7 @@ import type { NavData } from "@/content/uae/nav";
 import { INTERNATIONAL, UAE_CLINIC, addressOf, waLink } from "@/content/contact";
 import { isUaePath, localeFromPath, switchLocalePath, t, uaeBase } from "@/i18n";
 import { saveRegion } from "@/lib/regionPref";
+import { SmartLink } from "./SmartLink";
 
 const head = "text-[12.5px] font-semibold uppercase tracking-[.16em] text-white/50";
 const lnk = "text-[15px] text-white/80 hover:text-white";
@@ -56,8 +57,8 @@ export function Footer({ nav }: { nav: NavData }) {
                   <li><Link href={`${b}/about/`} className={lnk}>{x.clinicDoctors}</Link></li>
                   <li><Link href={`${b}/supplements/`} className={lnk}>{x.supplements}</Link></li>
                   <li><Link href={`${b}/contact/`} className={lnk}>{x.contactLocation}</Link></li>
-                  <li><Link href={switchLocalePath(path, l === "ar" ? "en" : "ar")} lang={l === "ar" ? "en" : "ar"} className={lnk}>{x.otherLang}</Link></li>
-                  <li><Link href="/" onClick={() => saveRegion("intl")} className={`flex items-center gap-2 ${lnk}`}><Icon name="globe" size={15} />{x.international}</Link></li>
+                  <li><SmartLink from={path} href={switchLocalePath(path, l === "ar" ? "en" : "ar")} lang={l === "ar" ? "en" : "ar"} className={lnk}>{x.otherLang}</SmartLink></li>
+                  <li><SmartLink from={path} href="/" onClick={() => saveRegion("intl")} className={`flex items-center gap-2 ${lnk}`}><Icon name="globe" size={15} />{x.international}</SmartLink></li>
                 </ul>
               </div>
             </div>
@@ -68,7 +69,6 @@ export function Footer({ nav }: { nav: NavData }) {
                 <ul className="mt-4 grid gap-2.5">
                   <li><Link href="/#longevity" className={lnk}>Longevity</Link></li>
                   <li><Link href="/#technology" className={lnk}>Technology</Link></li>
-                  <li><Link href="/#programmes" className={lnk}>Programmes</Link></li>
                   <li><Link href="/#united-states" className={lnk}>United States</Link></li>
                   <li><Link href="/contact/" className={lnk}>Contact</Link></li>
                 </ul>

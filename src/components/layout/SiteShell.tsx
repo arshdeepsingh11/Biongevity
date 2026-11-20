@@ -7,6 +7,7 @@ import { AiDock } from "@/components/ai/AiDock";
 import { navData } from "@/content/uae/nav";
 import { SITE } from "@/data/site";
 import { JsonLd, organization, website } from "@/lib/seo";
+import { fontDisplay, fontSans } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: { default: "Biongevity — Longevity & Precision Health", template: "%s · Biongevity" },
@@ -35,13 +36,16 @@ const REGION_PAINT = `(function(){var p=location.pathname;document.documentEleme
  *  • the rest → Biongevity International (no clinic details; US launch March 2027)
  * Header, footer and floating buttons switch on the URL.
  */
-export function SiteShell({ children, lang }: { children: React.ReactNode; lang: "en" | "ar" }) {
+export function SiteShell({ children, lang, fontClass = "" }: { children: React.ReactNode; lang: "en" | "ar"; fontClass?: string }) {
   const nav = navData();
   return (
-    <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"} data-theme="clinic" suppressHydrationWarning>
+    <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"} data-theme="clinic" className={`${fontSans.variable} ${fontDisplay.variable} ${fontClass}`.trim()} suppressHydrationWarning>
       <head>
         {/* Before the first paint: every page gets its region palette (lang and dir are already in the HTML). */}
         <script dangerouslySetInnerHTML={{ __html: REGION_PAINT }} />
+        {/* Stock photos come from Pexels: open the connection early so hero images appear sooner. */}
+        <link rel="preconnect" href="https://images.pexels.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
       <body className="bg-pearl text-ink">
         <JsonLd data={[organization(), website()]} />

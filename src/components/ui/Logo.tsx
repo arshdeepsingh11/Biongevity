@@ -32,7 +32,7 @@ export function Logo({ size = 26, className, wordmark = true }: { size?: number;
   return (
     <svg height={h} width={h * (134 / 39.5)} viewBox="7.5 11.5 134 39.5" fill="currentColor" className={cn("text-ink", className)} role="img" aria-label="Biongevity" direction="ltr" style={{ direction: "ltr" }}>
       {MARK}
-      <text x="42.6" y="43.6" fontSize="21.5" fontWeight="700" letterSpacing="-0.4" textLength="97.5" lengthAdjust="spacingAndGlyphs" direction="ltr" style={{ fontFamily: "'DM Sans Variable', 'DM Sans', sans-serif", unicodeBidi: "isolate" }}>iongevity</text>
+      <text aria-hidden="true" x="42.6" y="43.6" fontSize="21.5" fontWeight="700" letterSpacing="-0.4" textLength="97.5" lengthAdjust="spacingAndGlyphs" direction="ltr" style={{ fontFamily: "var(--font-sans), sans-serif", unicodeBidi: "isolate" }}>iongevity</text>
     </svg>
   );
 }

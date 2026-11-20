@@ -17,6 +17,7 @@ Information on this site is general and educational, not medical advice. In the 
 - [Telehealth](https://biongevity.com/uae/telehealth/): online GP, follow-ups, results reviews, dermatology, women's health and wellness follow-ups.
 - [Supplements in the UAE](https://biongevity.com/uae/supplements/): LONgevity+, CellOmega+ (fish-oil version), Creagen.
 - [Contact](https://biongevity.com/uae/contact/)
+- [Biongevity Dubai in Arabic](https://biongevity.com/ar/uae/): every Dubai page is also available in Arabic under /ar/uae/ (same paths).
 
 ## International
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { Photo } from "@/components/site/Photo";
+import { LazyVideo } from "@/components/site/LazyVideo";
 import { BookNow, WhatsAppBtn } from "@/components/site/Cta";
 import { BookBand, FaqList, Head } from "@/components/site/Blocks";
 import { DeptCard, PopularCard } from "@/components/site/Cards";
@@ -35,7 +36,6 @@ const COPY = {
     lonFor: (a: string) => `Longevity for your ${a.toLowerCase()}`, lonItem: "Longevity consultation",
     steps: [["Message or book", "Tap Book now or WhatsApp us. Tell us what you would like help with."], ["We confirm", "Our team suggests the right service, shares prices and offers, and confirms a time."], ["Your visit", "A doctor-led assessment, then your treatment or test, in clinic, at home or online."], ["Follow-up", "Clear aftercare, results explained and a plan for what comes next."]],
     howA: "Simple from the", howB: "first message.",
-    clinicVideo: "Inside Biongevity Dubai",
     homeVisit: "Home visit", bookHome: "Book a home visit", online: "Online consultation", bookOnline: "Book an online consultation",
     clinicEyebrow: "Our clinic", clinicA: "A calm, modern clinic", clinicB: "in Al Barsha.",
     clinicLede: "Private treatment rooms, a dental suite, laser and skin rooms, and a team of doctors, nurses and therapists working together, so your care feels joined up from the first message to your follow-up.",
@@ -72,7 +72,6 @@ const COPY = {
     lonFor: (a: string) => `طول العمر الصحي: ${a}`, lonItem: "استشارة طول العمر الصحي",
     steps: [["راسلنا أو احجز", "اضغط احجز الآن أو راسلنا على واتساب وأخبرنا بما تحتاجه."], ["نؤكد موعدك", "يقترح فريقنا الخدمة المناسبة ويشارك الأسعار والعروض ويؤكد الموعد."], ["زيارتك", "تقييم بإشراف الطبيب ثم العلاج أو الفحص، في العيادة أو المنزل أو عن بُعد."], ["المتابعة", "تعليمات واضحة بعد العلاج وشرح للنتائج وخطة للخطوة التالية."]],
     howA: "سهل من", howB: "أول رسالة.",
-    clinicVideo: "داخل بيونجيفيتي دبي",
     homeVisit: "زيارة منزلية", bookHome: "احجز زيارة منزلية", online: "استشارة عن بُعد", bookOnline: "احجز استشارة عن بُعد",
     clinicEyebrow: "عيادتنا", clinicA: "عيادة هادئة وحديثة", clinicB: "في البرشاء.",
     clinicLede: "غرف علاج خاصة، وجناح للأسنان، وغرف لليزر والبشرة، وفريق من الأطباء والممرضين والمعالجين يعمل معًا، لتكون رعايتك مترابطة من أول رسالة حتى المتابعة.",
@@ -99,7 +98,7 @@ export function HomeView({ l }: { l: Locale }) {
   const x = t(l);
   const base = uaeBase(l);
   const depts = departments(l);
-  const [first, ...rest] = depts;
+  const first = depts[0];
   const popular = popularServices(l);
   const services = allServices(l);
   const sup = uaeSupplements(l);
@@ -134,7 +133,7 @@ export function HomeView({ l }: { l: Locale }) {
               </div>
             </div>
             <a href={waLink(x.wa.help())} target="_blank" rel="noopener" data-item="Hero: help me choose" className="card6 absolute -bottom-6 end-4 start-4 flex items-center gap-3.5 p-4 sm:start-auto sm:end-6 sm:w-[300px]">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[rgb(var(--c-wa))] text-white"><Icon name="whatsapp" size={22} weight="fill" /></span>
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[rgb(var(--c-wa-btn))] text-white"><Icon name="whatsapp" size={22} weight="fill" /></span>
               <span className="min-w-0"><span className="block text-[15px] font-semibold">{c.notSureT}</span><span className="block text-[13.5px] text-muted">{c.notSureD}</span></span>
             </a>
           </div>
@@ -197,11 +196,11 @@ export function HomeView({ l }: { l: Locale }) {
       <section id="departments" data-ai="Departments" className="sec anchor6">
         <div className="wrap">
           <Head eyebrow={c.deptEyebrow} title={<>{c.deptA} <span className="t-italic">{c.deptB}</span></>} lede={c.deptLede} />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            <DeptCard d={first} l={l} big className="sm:col-span-2 lg:row-span-2" />
-            {rest.map((d, i) => <DeptCard key={d.id} d={d} l={l} i={i + 1} />)}
-            <a href={waLink(x.wa.help())} target="_blank" rel="noopener" data-item="Departments: help me choose" className="sec-dark flex flex-col justify-between rounded-[26px] p-7" data-rv>
-              <span className="grid h-12 w-12 place-items-center rounded-full bg-[rgb(var(--c-wa))] text-white"><Icon name="whatsapp" size={23} weight="fill" /></span>
+          {/* 8 departments + "not sure" = 9 equal cards: 3 × 3 on laptops and PCs, 2 columns on tablets, 1 on phones. Skin first. */}
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {depts.map((d, i) => <DeptCard key={d.id} d={d} l={l} i={i} />)}
+            <a href={waLink(x.wa.help())} target="_blank" rel="noopener" data-item="Departments: help me choose" className="sec-dark flex min-h-[260px] flex-col justify-between rounded-[26px] p-7 sm:col-span-2 lg:col-span-1" data-rv>
+              <span className="grid h-12 w-12 place-items-center rounded-full bg-[rgb(var(--c-wa-btn))] text-white"><Icon name="whatsapp" size={23} weight="fill" /></span>
               <span>
                 <span className="block font-display text-[26px] leading-tight">{c.whichDept}</span>
                 <span className="mt-2 block text-[15px] leading-relaxed text-white/70">{c.whichDeptD}</span>
@@ -257,7 +256,7 @@ export function HomeView({ l }: { l: Locale }) {
           </div>
           <div className="relative" data-rv>
             <div className="ph6 aspect-[4/5] overflow-hidden rounded-[32px] sm:aspect-[5/4] lg:aspect-[4/5]">
-              <video className="absolute inset-0 h-full w-full object-cover" src="/media/clinic-loop.mp4" poster="/media/clinic-loop.jpg" autoPlay muted loop playsInline preload="none" aria-label={c.clinicVideo} />
+              <LazyVideo className="absolute inset-0 h-full w-full object-cover" src="/media/clinic-loop.mp4" poster="/media/clinic-loop.jpg" />
             </div>
             <div className="card6 absolute -bottom-6 -start-2 max-w-[280px] p-5 sm:-start-6">
               <div className="text-[12.5px] font-semibold uppercase tracking-[.14em] text-gold-deep">{x.visitUs}</div>
