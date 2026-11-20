@@ -1,33 +1,21 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/data/site";
-import { DEPARTMENTS } from "@/data/departments";
-import { CLINICS } from "@/data/clinic";
+import { ALL_SERVICES, DEPARTMENTS } from "@/content/uae";
 
 export const dynamic = "force-static";
 
-/** sitemap.xml — every static route, so search engines and AI crawlers index the whole site. */
+/** sitemap.xml — International pages, the Dubai clinic, its 8 departments and every service page. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date("2026-10-14");
+  const now = new Date("2026-11-20");
   const page = (p: string, priority: number, freq: "weekly" | "monthly" = "monthly") => ({ url: `${SITE.url}${p}`, lastModified: now, changeFrequency: freq, priority });
   return [
     page("/", 1, "weekly"),
-    page("/precision-health/", 0.9, "weekly"),
-    ...DEPARTMENTS.map((d) => page(`/precision-health/${d.id}/`, 0.85)),
-    page("/precision-health/bioaro-labs/", 0.85),
-    page("/precision-health/bioaro-drugs/", 0.85),
-    page("/uae/", 0.95, "weekly"),
-    page("/clinic/", 0.8),
-    ...CLINICS.map((c) => page(`/clinic/${c.id}/`, 0.8)),
-    page("/shop/", 0.8, "weekly"),
-    page("/plan/", 0.9),
-    page("/evidence/", 0.8),
-    page("/scan/", 0.9),
-    page("/family/", 0.8),
-    page("/platform/", 0.85),
-    page("/tools/", 0.8),
-    page("/explore/", 0.8),
-    page("/bioelr/", 0.8),
-    page("/ai/", 0.6),
-    ...["/life/", "/app/", "/insights/", "/about/", "/join/", "/contact/"].map((p) => page(p, 0.6)),
+    page("/contact/", 0.5),
+    page("/uae/", 1, "weekly"),
+    page("/uae/about/", 0.7),
+    page("/uae/contact/", 0.8),
+    page("/uae/supplements/", 0.6),
+    ...DEPARTMENTS.map((d) => page(`/uae/${d.id}/`, 0.9, "weekly")),
+    ...ALL_SERVICES.map((r) => page(`/uae/${r.dept.id}/${r.service.slug}/`, 0.8)),
   ];
 }

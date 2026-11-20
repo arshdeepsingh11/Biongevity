@@ -1,9 +1,18 @@
 import Link from "next/link";
+
 export default function NotFound() {
   return (
-    <section className="relative z-[1] grid min-h-[70vh] place-items-center px-4 text-center">
-      <div><div className="text-[96px] font-semibold leading-none tracking-tighter text-iri">404</div><div className="mt-3 text-[22px] font-semibold">This page isn&apos;t in the record.</div>
-        <Link href="/" className="btn-dark mt-6">Back home</Link></div>
+    <section className="relative isolate grid min-h-[78vh] place-items-center px-5 pt-24 text-center">
+      <div className="hero-glow" />
+      <div>
+        <div className="font-display text-[96px] leading-none text-gold-deep">404</div>
+        <h1 className="t-h2 mt-4">This page has moved.</h1>
+        <p className="t-lede mx-auto mt-4 max-w-[46ch]">Our website has a new home for the Dubai clinic and for Biongevity International.</p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Link href="/uae/" className="btn6 btn6-primary">Biongevity Dubai</Link>
+          <Link href="/" className="btn6 btn6-ghost">Biongevity International</Link>
+        </div>
+      </div>
     </section>
   );
 }

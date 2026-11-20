@@ -1,57 +1,41 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
-import { Section, Eyebrow } from "@/components/ui/Section";
-import { ContactForm } from "@/components/pages/ContactForm";
+import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
-import { CONTACTS } from "@/data/site";
-import { OFFICES } from "@/data/clinic";
-import { ContactFlow } from "@/components/pages/ContactFlow";
-import { BookNow, WhatsAppLink } from "@/components/ui/BookNow";
+import { Head } from "@/components/site/Blocks";
+import { EnquiryForm } from "@/components/site/EnquiryForm";
+import { INTERNATIONAL } from "@/content/contact";
 
-export const metadata: Metadata = { title: "Contact" };
+export const metadata: Metadata = {
+  title: "Contact",
+  description: `Contact Biongevity International: ${INTERNATIONAL.email}. For the Dubai clinic, visit Biongevity Dubai.`,
+  alternates: { canonical: "/contact/" },
+};
 
-export default function ContactPage() {
+/** International contact: basic details only (no clinic). Dubai patients are sent to the Dubai clinic site. */
+export default function Contact() {
   return (
-    <>
-    <Section ai="Contact" className="pt-[calc(100px+var(--safe-top))] sm:pt-[140px]">
-      <div className="container-x grid items-center gap-10 lg:grid-cols-[1fr_1.1fr]">
+    <section data-ai="Contact" className="relative isolate overflow-hidden pb-24 pt-[calc(110px+var(--safe-top))] lg:pt-[150px]">
+      <div className="hero-glow" /><div className="grain" />
+      <div className="wrap grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
         <div>
-          <Eyebrow>Contact · Book</Eyebrow>
-          <h1 data-reveal className="h-display mt-4">Start with a conversation.</h1>
-          <p data-reveal className="lede mt-5 max-w-[52ch]">Book straight into the Biongevity app: pick a consultation category, choose virtual or in person, and your care team takes it from there. Questions first? Write to us below — Biongevity SI suggests the right department as you type.</p>
-          <div data-reveal className="mt-7 flex flex-wrap gap-3">
-            <BookNow />
-            <WhatsAppLink />
-            <a href="#message" className="btn-light h-12 px-6"><Icon name="message" size={16} />Send a message</a>
-          </div>
-          <ul className="mt-8 grid gap-2 text-[13.5px] text-muted sm:grid-cols-3">
-            {[["calendar", "Choose a category", "Heart, hormones, skin, family…"], ["video", "Virtual or in person", "Calgary, Dubai or video"], ["shield", "Private by design", "Your record stays yours"]].map(([i, t, d]) => (
-              <li key={t} className="flex gap-2.5 rounded-2xl bg-white/60 p-3 ring-1 ring-ink/[0.05] backdrop-blur"><span className="icon-tile h-8 w-8 shrink-0"><Icon name={i} size={15} /></span><span><b className="block text-[13px] font-semibold text-ink">{t}</b><span className="text-[12px]">{d}</span></span></li>
-            ))}
+          <Head as="h1" eyebrow="Contact" title={<>Talk to <span className="t-italic">Biongevity.</span></>} lede={`Questions about Biongevity, our United States launch in ${INTERNATIONAL.usLaunch}, partnerships or press? Send us a message.`} />
+          <ul className="mt-10 grid gap-3" data-rv>
+            <li><a href={`mailto:${INTERNATIONAL.email}`} className="card6 flex items-center gap-4 p-5">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[rgb(var(--c-canvas))] text-gold-deep"><Icon name="mail" size={22} /></span>
+              <span><span className="block text-[13px] font-semibold uppercase tracking-[.12em] text-faint">Email</span><span className="block text-[18px] font-semibold">{INTERNATIONAL.email}</span></span>
+            </a></li>
+            <li><Link href="/uae/contact/" className="card6 flex items-center gap-4 p-5">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[rgb(var(--c-canvas))] text-gold-deep"><Icon name="pin" size={22} /></span>
+              <span className="flex-1"><span className="block text-[13px] font-semibold uppercase tracking-[.12em] text-faint">Patients in the UAE</span><span className="block text-[18px] font-semibold">Contact Biongevity Dubai</span></span>
+              <Icon name="arrow-right" size={16} className="text-faint" />
+            </Link></li>
           </ul>
         </div>
-        <ContactFlow />
-      </div>
-    </Section>
-    <Section ai="Message and offices" id="message" className="!pt-4 scroll-mt-24">
-      <div className="container-x grid gap-10 lg:grid-cols-2">
-        <div>
-          <Eyebrow>Offices</Eyebrow>
-          <h2 className="h-section mt-3">Or reach us directly.</h2>
-          <div className="mt-6 grid gap-3">
-            {OFFICES.map((o) => (
-              <div key={o.city} className="card p-5">
-                <div className="flex items-center gap-2 text-[17px] font-semibold"><Icon name="pin" size={17} className="text-accent" />{o.city}<span className="text-[12px] font-medium text-faint">· {o.region}</span></div>
-                <div className="mt-1 text-[14px] text-muted">{o.address}</div>
-                <div className="mt-2 flex flex-wrap gap-x-4 text-[14px] font-semibold"><a href={o.tel} className="hover:text-accent">{o.phone}</a>{o.email && <a href={`mailto:${o.email}`} className="hover:text-accent">{o.email}</a>}</div>
-              </div>
-            ))}
-            <div className="text-[13px] text-muted">BioAro Labs support · <a href={CONTACTS.labs.tel} className="font-semibold hover:text-accent">{CONTACTS.labs.phone}</a> · <a href={`mailto:${CONTACTS.labs.email}`} className="font-semibold hover:text-accent">{CONTACTS.labs.email}</a></div>
-          </div>
+        <div id="updates" className="anchor6" data-rv>
+          <h2 className="t-h3 mb-4">Send a message</h2>
+          <EnquiryForm mode="intl" interests={["United States launch", "Other countries", "Partnerships", "Press", "Something else"]} />
         </div>
-        <Suspense><ContactForm /></Suspense>
       </div>
-    </Section>
-    </>
+    </section>
   );
 }
