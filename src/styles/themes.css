@@ -135,3 +135,77 @@
   --glass-border: rgb(255 255 255 / .12);
   color-scheme: dark;
 }
+
+/*
+ * CLINIC — the v6 launch palette (set on <html data-theme="clinic"> in the root layout).
+ * Light, warm and premium: ivory page, deep navy (Prenuvo-like depth) for buttons and dark sections,
+ * champagne gold for highlights. Contrast-checked: ink, muted, faint and gold-deep ≥ 4.5 on ivory and white.
+ */
+:root[data-theme="clinic"] {
+  --c-pearl: 250 247 242;      /* #FAF7F2 ivory page */
+  --c-canvas: 243 238 230;     /* #F3EEE6 warm sand panels */
+  --c-surface: 255 255 255;    /* cards */
+  --c-feature: 14 30 54;       /* #0E1E36 deep navy sections */
+  --c-feature-2: 24 44 76;     /* #182C4C */
+  --c-ink: 21 29 44;           /* #151D2C text */
+  --c-muted: 82 90 106;        /* #525A6A */
+  --c-faint: 104 111 126;      /* #686F7E */
+  --c-accent: 18 40 72;        /* #122848 primary buttons, links */
+  --c-accent-soft: 190 158 104;/* #BE9E68 champagne gold */
+  --c-accent-light: 241 234 221;/* #F1EADD */
+  --c-accent-deep: 9 24 46;    /* #09182E hover */
+  --c-on-accent: 255 255 255;
+  --c-teal: 47 120 128;
+  --c-teal-soft: 120 176 180;
+  --c-teal-light: 226 240 240;
+  --c-gold: 190 158 104;
+  --c-gold-soft: 246 239 226;
+  --c-gold-deep: 128 96 44;    /* #80602C gold text on light */
+  --c-ai: 18 40 72;
+  --c-ai-2: 190 158 104;
+  --c-ai-hi: 214 190 146;
+  --c-on-ai: 255 255 255;
+  --c-ai-soft: 241 234 221;
+  --c-warn: 170 104 14;
+  --c-tangerine: 214 140 72;
+  --c-danger: 186 52 48;
+  --c-shadow: 14 30 54;
+  --c-scrim: 9 18 32;
+  --c-chart-1: 18 40 72;
+  --c-chart-2: 190 158 104;
+  --c-chart-3: 47 120 128;
+  --c-chart-4: 104 111 126;
+  --c-chart-5: 214 190 146;
+  --c-chart-6: 82 90 106;
+  --c-chart-7: 181 101 111;
+  --c-artery: 214 58 64;
+  --c-vein: 64 104 196;
+  --c-wa: 37 211 102;          /* WhatsApp green (brand colour, buttons only) */
+  --c-wa-deep: 18 140 66;
+  --g-iri: linear-gradient(135deg, #E3CFA6, #BE9E68 50%, #80602C);
+  --g-iri-x: linear-gradient(90deg, #E3CFA6, #BE9E68);
+  --g-text: linear-gradient(95deg, #9C7A3E, #BE9E68 45%, #80602C);
+  --g-feature: linear-gradient(160deg, #0E1E36 0%, #182C4C 100%);
+  --g-btn: linear-gradient(180deg, #1C3963 0%, #122848 60%, #0C1D36 100%);
+  --g-ai: linear-gradient(120deg, #1C3963, #122848 50%, #0C1D36);
+  --header-alpha: 0.82;
+  --heading-track: -0.02em;
+  --glass: rgb(255 255 255 / .72);
+  --glass-strong: rgb(255 255 255 / .86);
+  --glass-border: rgb(255 255 255 / .9);
+  color-scheme: light;
+}
+
+/*
+ * Department accents (UAE clinic). Each department page and its service pages set data-dept="<id>".
+ * --dept = accent, --dept-deep = accent for text/buttons on light (AA), --dept-soft = tinted background.
+ */
+[data-dept] { --dept: 190 158 104; --dept-deep: 128 96 44; --dept-soft: 246 239 226; }
+[data-dept="dermatology-aesthetics"] { --dept: 191 112 122; --dept-deep: 142 68 80;  --dept-soft: 248 233 233; } /* rose */
+[data-dept="iv-therapy-wellness"]    { --dept: 62 150 146;  --dept-deep: 36 103 100;  --dept-soft: 226 241 239; } /* soft aqua */
+[data-dept="general-practice"]       { --dept: 112 148 118; --dept-deep: 72 106 80;   --dept-soft: 232 240 230; } /* sage */
+[data-dept="dental-care"]            { --dept: 84 136 186;  --dept-deep: 44 92 138;   --dept-soft: 228 238 247; } /* clean sky */
+[data-dept="longevity-precision-health"] { --dept: 190 158 104; --dept-deep: 128 96 44; --dept-soft: 244 236 221; } /* champagne */
+[data-dept="diagnostics-laboratory"] { --dept: 100 114 168; --dept-deep: 64 78 126;   --dept-soft: 231 233 244; } /* slate blue */
+[data-dept="home-healthcare"]        { --dept: 196 120 84;  --dept-deep: 146 80 52;   --dept-soft: 247 231 223; } /* terracotta */
+[data-dept="telehealth"]             { --dept: 52 140 158;  --dept-deep: 30 102 118;  --dept-soft: 224 240 243; } /* teal */

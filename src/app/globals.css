@@ -1,6 +1,9 @@
 @import "@fontsource-variable/dm-sans";
 @import "@fontsource-variable/dm-sans/wght-italic.css";
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/fraunces/wght-italic.css";
 @import "../styles/themes.css";
+@import "../styles/site.css";
 
 @tailwind base;
 @tailwind components;
@@ -142,19 +145,19 @@ body {
 
 /* ───── Theme details ───── */
 /* Olive: off-white, tiny particles, soft white glass, refined type, olive used with restraint. */
-[data-theme] body { background:
+[data-theme]:not([data-theme="clinic"]) body { background:
   radial-gradient(1100px 700px at 100% 0%, rgb(var(--c-ai-hi) / .07), transparent 60%),
   radial-gradient(900px 600px at 0% 100%, rgb(var(--c-ai-2) / .05), transparent 60%),
   rgb(var(--c-pearl)); background-attachment: fixed; }
-[data-theme] .grid-bg, [data-theme] .ai-glow, [data-theme] canvas[data-ai-fx]:not(.fixed), [data-theme] .bg-iri[data-ai-fx] { display: none !important; }
-[data-theme] section[class*="bg-canvas/"] { background-color: transparent !important; }
+[data-theme]:not([data-theme="clinic"]) .grid-bg, [data-theme]:not([data-theme="clinic"]) .ai-glow, [data-theme]:not([data-theme="clinic"]) canvas[data-ai-fx]:not(.fixed), [data-theme]:not([data-theme="clinic"]) .bg-iri[data-ai-fx] { display: none !important; }
+[data-theme]:not([data-theme="clinic"]) section[class*="bg-canvas/"] { background-color: transparent !important; }
 
 /* Type: lighter weights and calmer sizes read as premium. */
-[data-theme] .h-display, [data-theme] .h-section { text-wrap: balance; }
-[data-theme] .h-display { font-weight: 600; font-size: clamp(40px, 6vw, 76px); line-height: 1.04; letter-spacing: -0.035em; }
-[data-theme] .h-section { font-weight: 600; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.028em; }
-[data-theme] .lede { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.6; }
-[data-theme] .hud-label, [data-theme] .eyebrow { letter-spacing: .14em; }
+[data-theme]:not([data-theme="clinic"]) .h-display, [data-theme]:not([data-theme="clinic"]) .h-section { text-wrap: balance; }
+[data-theme]:not([data-theme="clinic"]) .h-display { font-weight: 600; font-size: clamp(40px, 6vw, 76px); line-height: 1.04; letter-spacing: -0.035em; }
+[data-theme]:not([data-theme="clinic"]) .h-section { font-weight: 600; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.028em; }
+[data-theme]:not([data-theme="clinic"]) .lede { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.6; }
+[data-theme]:not([data-theme="clinic"]) .hud-label, [data-theme]:not([data-theme="clinic"]) .eyebrow { letter-spacing: .14em; }
 
 /* Floating glass top bar: one soft pill that stays in view, with the menu panels hanging under it. */
 .site-header { padding-top: calc(var(--safe-top) + 10px); }
@@ -188,12 +191,12 @@ html.nav-open, html.nav-open body { overflow: hidden !important; }
 .faq details[open] .faq-plus { transform: rotate(45deg); }
 
 /* Glass: white hairline edge, soft spread shadow, faint sheen. No coloured outlines. */
-[data-theme] [class*="bg-white"]:not(input):not(textarea):not(select):not(.btn-light) { background-color: var(--glass) !important; }
+[data-theme]:not([data-theme="clinic"]) [class*="bg-white"]:not(input):not(textarea):not(select):not(.btn-light) { background-color: var(--glass) !important; }
 /* Cards and panels: real frosted glass — blur what is behind, sheen on top, bright top edge. */
-[data-theme] :is([class*="bg-white"][class*="shadow-card"], [class*="bg-white"][class*="rounded-[2"], [class*="bg-white"][class*="rounded-2xl"]):not(input):not(textarea):not(select):not(.btn-light):not(.si-panel) {
+[data-theme]:not([data-theme="clinic"]) :is([class*="bg-white"][class*="shadow-card"], [class*="bg-white"][class*="rounded-[2"], [class*="bg-white"][class*="rounded-2xl"]):not(input):not(textarea):not(select):not(.btn-light):not(.si-panel) {
   background-image: linear-gradient(155deg, rgb(255 255 255 / .78), rgb(255 255 255 / .38) 55%, rgb(var(--c-ai-soft) / .22));
   -webkit-backdrop-filter: blur(18px) saturate(1.7); backdrop-filter: blur(18px) saturate(1.7); }
-[data-theme] .card, [data-theme] .glass, [data-theme] .ai-ring, [data-theme] figure.rounded-\[26px\] {
+[data-theme]:not([data-theme="clinic"]) .card, [data-theme]:not([data-theme="clinic"]) .glass, [data-theme]:not([data-theme="clinic"]) .ai-ring, [data-theme]:not([data-theme="clinic"]) figure.rounded-\[26px\] {
   background-color: transparent !important;
   background-image: linear-gradient(160deg, rgb(255 255 255 / .92), rgb(255 252 249 / .72)) !important;
   -webkit-backdrop-filter: blur(20px) saturate(1.8); backdrop-filter: blur(20px) saturate(1.8);
@@ -201,28 +204,28 @@ html.nav-open, html.nav-open body { overflow: hidden !important; }
   box-shadow: 0 0 0 1px rgb(var(--c-ink) / .045), 0 1px 2px rgb(var(--c-ink) / .04), 0 14px 34px -16px rgb(var(--c-ink) / .14), 0 28px 60px -34px rgb(var(--c-ai-2) / .22), inset 0 1px 0 rgb(255 255 255 / 1) !important;
   transition: box-shadow .35s ease, transform .35s cubic-bezier(.2,.8,.2,1);
 }
-[data-theme] .card:hover { box-shadow: 0 0 0 1px rgb(var(--c-ai-2) / .14), 0 2px 4px rgb(var(--c-ink) / .04), 0 22px 44px -18px rgb(var(--c-ink) / .16), 0 34px 70px -34px rgb(var(--c-ai-2) / .32), inset 0 1px 0 rgb(255 255 255 / 1) !important; }
-[data-theme] .bg-canvas, [data-theme] [class*="bg-canvas/"]:not(section) { background-color: rgb(var(--c-ink) / .025) !important; }
-[data-theme] [class*="bg-ai-soft"] { background-color: rgb(var(--c-ai-2) / .08) !important; }
-[data-theme] .shadow-lift { box-shadow: 0 1px 2px rgb(var(--c-ink) / .04), 0 18px 44px -18px rgb(var(--c-ink) / .16), 0 30px 70px -36px rgb(var(--c-ai-2) / .26) !important; }
+[data-theme]:not([data-theme="clinic"]) .card:hover { box-shadow: 0 0 0 1px rgb(var(--c-ai-2) / .14), 0 2px 4px rgb(var(--c-ink) / .04), 0 22px 44px -18px rgb(var(--c-ink) / .16), 0 34px 70px -34px rgb(var(--c-ai-2) / .32), inset 0 1px 0 rgb(255 255 255 / 1) !important; }
+[data-theme]:not([data-theme="clinic"]) .bg-canvas, [data-theme]:not([data-theme="clinic"]) [class*="bg-canvas/"]:not(section) { background-color: rgb(var(--c-ink) / .025) !important; }
+[data-theme]:not([data-theme="clinic"]) [class*="bg-ai-soft"] { background-color: rgb(var(--c-ai-2) / .08) !important; }
+[data-theme]:not([data-theme="clinic"]) .shadow-lift { box-shadow: 0 1px 2px rgb(var(--c-ink) / .04), 0 18px 44px -18px rgb(var(--c-ink) / .16), 0 30px 70px -36px rgb(var(--c-ai-2) / .26) !important; }
 
 /* Icons: small olive line icons on soft glass tiles. */
-[data-theme] .icon-tile { background: linear-gradient(150deg, rgb(255 255 255), rgb(var(--c-feature-2) / .55)); box-shadow: inset 0 1px 0 rgb(255 255 255), 0 0 0 1px rgb(var(--c-ai-2) / .10), 0 6px 14px -8px rgb(var(--c-ai-2) / .45); }
+[data-theme]:not([data-theme="clinic"]) .icon-tile { background: linear-gradient(150deg, rgb(255 255 255), rgb(var(--c-feature-2) / .55)); box-shadow: inset 0 1px 0 rgb(255 255 255), 0 0 0 1px rgb(var(--c-ai-2) / .10), 0 6px 14px -8px rgb(var(--c-ai-2) / .45); }
 
 /* Tabs: active = soft olive glass pill with olive text (not a solid slab). */
-[data-theme] .bg-ink { background-color: rgb(var(--c-ai-2) / .11) !important; background-image: linear-gradient(180deg, rgb(255 255 255 / .55), rgb(255 255 255 / 0)) !important;
+[data-theme]:not([data-theme="clinic"]) .bg-ink { background-color: rgb(var(--c-ai-2) / .11) !important; background-image: linear-gradient(180deg, rgb(255 255 255 / .55), rgb(255 255 255 / 0)) !important;
   color: rgb(var(--c-accent)) !important; box-shadow: inset 0 1px 0 rgb(255 255 255 / .9), 0 0 0 1px rgb(var(--c-ai-2) / .18), 0 6px 16px -10px rgb(var(--c-ai-2) / .5) !important; }
-[data-theme] .bg-ink.text-pearl, [data-theme] .bg-ink .text-pearl, [data-theme] .bg-ink.text-white { color: rgb(var(--c-accent)) !important; }
-[data-theme] .ring-ink { --tw-ring-color: rgb(var(--c-ai-2) / .25) !important; }
-[data-theme] .border-ink { border-color: rgb(var(--c-ai-2) / .3) !important; }
+[data-theme]:not([data-theme="clinic"]) .bg-ink.text-pearl, [data-theme]:not([data-theme="clinic"]) .bg-ink .text-pearl, [data-theme]:not([data-theme="clinic"]) .bg-ink.text-white { color: rgb(var(--c-accent)) !important; }
+[data-theme]:not([data-theme="clinic"]) .ring-ink { --tw-ring-color: rgb(var(--c-ai-2) / .25) !important; }
+[data-theme]:not([data-theme="clinic"]) .border-ink { border-color: rgb(var(--c-ai-2) / .3) !important; }
 
 /* Buttons: glossy olive primary, borderless white glass secondary. */
-[data-theme] .btn-ai, [data-theme] .btn-dark { background-image: var(--g-btn) !important; color: rgb(var(--c-on-ai)) !important;
+[data-theme]:not([data-theme="clinic"]) .btn-ai, [data-theme]:not([data-theme="clinic"]) .btn-dark { background-image: var(--g-btn) !important; color: rgb(var(--c-on-ai)) !important;
   box-shadow: inset 0 1px 0 rgb(255 255 255 / .35), 0 1px 2px rgb(var(--c-accent-deep) / .25), 0 10px 24px -10px rgb(var(--c-ai-2) / .75) !important; }
-[data-theme] .btn-ai:hover, [data-theme] .btn-dark:hover { filter: brightness(1.05); transform: translateY(-1px); }
-[data-theme] .btn-light { background-color: rgb(255 255 255 / .8); border-color: transparent; -webkit-backdrop-filter: blur(16px) saturate(1.8); backdrop-filter: blur(16px) saturate(1.8);
+[data-theme]:not([data-theme="clinic"]) .btn-ai:hover, [data-theme]:not([data-theme="clinic"]) .btn-dark:hover { filter: brightness(1.05); transform: translateY(-1px); }
+[data-theme]:not([data-theme="clinic"]) .btn-light { background-color: rgb(255 255 255 / .8); border-color: transparent; -webkit-backdrop-filter: blur(16px) saturate(1.8); backdrop-filter: blur(16px) saturate(1.8);
   box-shadow: 0 0 0 1px rgb(var(--c-ink) / .05), 0 8px 20px -12px rgb(var(--c-ink) / .2), inset 0 1px 0 rgb(255 255 255 / 1); }
-[data-theme] .btn-light:hover { color: rgb(var(--c-accent)); box-shadow: 0 0 0 1px rgb(var(--c-ai-2) / .2), 0 10px 24px -12px rgb(var(--c-ai-2) / .4), inset 0 1px 0 rgb(255 255 255 / 1); }
+[data-theme]:not([data-theme="clinic"]) .btn-light:hover { color: rgb(var(--c-accent)); box-shadow: 0 0 0 1px rgb(var(--c-ai-2) / .2), 0 10px 24px -12px rgb(var(--c-ai-2) / .4), inset 0 1px 0 rgb(255 255 255 / 1); }
 
 /* Feature panels are light in both themes — white text on them becomes ink so nothing disappears. */
 .bg-navy.text-white, .bg-navy .text-white:not(.bg-ai *):not(.btn-ai *):not([class*="bg-white/1"]) { color: rgb(var(--c-ink)) !important; }
