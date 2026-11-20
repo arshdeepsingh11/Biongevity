@@ -13,8 +13,11 @@ export const env = {
   formsUrl: (process.env.NEXT_PUBLIC_FORMS_URL ?? "").replace(/\/$/, ""),
   /** Where the contact form posts. Defaults to the forms Worker; empty = open a pre-filled email instead. */
   contactEndpoint: process.env.NEXT_PUBLIC_CONTACT_ENDPOINT || (process.env.NEXT_PUBLIC_FORMS_URL ? `${process.env.NEXT_PUBLIC_FORMS_URL.replace(/\/$/, "")}/contact` : ""),
-  /** Google Tag Manager container (GTM-XXXXXXX). Empty = no tag manager; events still go to window.dataLayer. */
-  gtmId: process.env.NEXT_PUBLIC_GTM_ID ?? "",
+  /**
+   * Google Tag Manager container. Default: Biongevity's GTM-PH9BZ2TR. Set NEXT_PUBLIC_GTM_ID="off" to disable (e.g. local tests).
+   * GA4 (G-GKPG2B7BWE) is added INSIDE GTM as a "Google tag", not in the code, so page views are never counted twice.
+   */
+  gtmId: (process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-PH9BZ2TR") === "off" ? "" : (process.env.NEXT_PUBLIC_GTM_ID || "GTM-PH9BZ2TR"),
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://biongevity.com",
   /** Biongevity member app (digital twin, results, coach). The website only links to it. */
   appUrl: (process.env.NEXT_PUBLIC_APP_URL || "https://app.biongevity.com").replace(/\/$/, ""),

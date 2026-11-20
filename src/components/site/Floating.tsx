@@ -2,20 +2,22 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Icon } from "@/components/ui/Icon";
-import { UAE_CLINIC, WA, waLink } from "@/content/contact";
+import { UAE_CLINIC, waLink } from "@/content/contact";
+import { isUaePath, localeFromPath, t } from "@/i18n";
 
 /**
- * UAE pages only: the fixed WhatsApp button (bottom right, every page) and, on phones, a sticky bar with
+ * Dubai pages only: the fixed WhatsApp button (bottom corner, every page) and, on phones, a sticky bar with
  * Call and Book now so booking is always one tap away. Book now opens WhatsApp with the page's service.
  */
 export function Floating() {
   const path = usePathname() ?? "/";
-  if (!path.startsWith("/uae")) return null;
+  if (!isUaePath(path)) return null;
+  const x = t(localeFromPath(path));
   return (
     <>
-      <a href={waLink(WA.general)} target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" className="wa-fab6">
+      <a href={waLink(x.wa.general)} target="_blank" rel="noopener" aria-label={x.whatsappUs} data-item="Floating WhatsApp" className="wa-fab6">
         <Icon name="whatsapp" size={30} weight="fill" />
-        <span className="hidden text-[15px] font-semibold lg:inline">WhatsApp us</span>
+        <span className="hidden text-[15px] font-semibold lg:inline">{x.whatsappUs}</span>
       </a>
       <MobileBar />
     </>
@@ -23,15 +25,19 @@ export function Floating() {
 }
 
 function MobileBar() {
-  // The page's main service (service pages set data-page-item) pre-fills the booking message.
-  const path = usePathname();
-  const [item, setItem] = useState<string | undefined>();
-  useEffect(() => { setItem(document.querySelector<HTMLElement>("[data-page-item]")?.dataset.pageItem); }, [path]);
+  // The page's main service (service pages set data-page-item / data-page-track) pre-fills the booking message.
+  const path = usePathname() ?? "/";
+  const x = t(localeFromPath(path));
+  const [item, setItem] = useState<{ text?: string; track?: string }>({});
+  useEffect(() => {
+    const el = document.querySelector<HTMLElement>("[data-page-item]");
+    setItem({ text: el?.dataset.pageItem, track: el?.dataset.pageTrack ?? el?.dataset.pageItem });
+  }, [path]);
   return (
-    <div className="mbar6 lg:hidden" data-ai="Mobile bar" data-item={item}>
-      <div className="flex items-center gap-2 pr-[70px]">
-        <a href={UAE_CLINIC.tel} aria-label={`Call ${UAE_CLINIC.phone}`} className="btn6 btn6-ghost h-12 w-12 shrink-0 !px-0"><Icon name="call" size={19} /></a>
-        <a href={waLink(item ? WA.book(item) : WA.general)} target="_blank" rel="noopener" data-book className="btn6 btn6-primary h-12 flex-1 text-[15px]"><Icon name="calendar" size={17} />Book now</a>
+    <div className="mbar6 lg:hidden" data-ai="Mobile bar">
+      <div className="flex items-center gap-2 pe-[70px]">
+        <a href={UAE_CLINIC.tel} aria-label={`${x.call} ${UAE_CLINIC.phone}`} className="btn6 btn6-ghost h-12 w-12 shrink-0 !px-0"><Icon name="call" size={19} /></a>
+        <a href={waLink(item.text ? x.wa.book(item.text) : x.wa.general)} target="_blank" rel="noopener" data-book data-item={item.track ?? "Mobile bar"} className="btn6 btn6-primary h-12 flex-1 text-[15px]"><Icon name="calendar" size={17} />{x.bookNow}</a>
       </div>
     </div>
   );
@@ -52,5 +58,17 @@ export function Reveal() {
     mo.observe(document.body, { childList: true, subtree: true });
     return () => { io.disconnect(); mo.disconnect(); };
   }, [path]);
+  // Spotlight cards (.spot6): the glow follows the pointer. One listener for the whole page.
+  useEffect(() => {
+    const move = (e: PointerEvent) => {
+      const el = (e.target as Element | null)?.closest<HTMLElement>(".spot6");
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      el.style.setProperty("--my", `${e.clientY - r.top}px`);
+    };
+    document.addEventListener("pointermove", move, { passive: true });
+    return () => document.removeEventListener("pointermove", move);
+  }, []);
   return null;
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-export default function NotFound() {
+/** The 404 page body (used by app/global-not-found.tsx). */
+export function NotFoundBody() {
   return (
     <section className="relative isolate grid min-h-[78vh] place-items-center px-5 pt-24 text-center">
       <div className="hero-glow" />

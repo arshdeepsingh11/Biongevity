@@ -4,6 +4,7 @@ import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { env } from "@/lib/env";
 import { placementOf, track } from "@/lib/track";
+import { isUaePath, localeFromPath } from "@/i18n";
 
 /**
  * Loads Google Tag Manager when NEXT_PUBLIC_GTM_ID is set and records the conversion events the site cares about:
@@ -14,8 +15,12 @@ export function Analytics() {
   const path = usePathname();
   const first = useRef(true);
 
-  // Region follows the URL: /uae/… is the Dubai clinic site, everything else is International.
-  useEffect(() => { document.documentElement.dataset.region = path.startsWith("/uae") ? "uae" : "intl"; }, [path]);
+  // Region and language follow the URL: /uae/… and /ar/uae/… are the Dubai clinic site, everything else is International.
+  useEffect(() => {
+    const h = document.documentElement, l = localeFromPath(path);
+    h.dataset.region = isUaePath(path) ? "uae" : "intl";
+    h.lang = l; h.dir = l === "ar" ? "rtl" : "ltr";
+  }, [path]);
 
   useEffect(() => {
     if (first.current) { first.current = false; if (env.gtmId) return; } // GTM records the first page view itself

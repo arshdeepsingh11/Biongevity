@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
   reactStrictMode: true,
+  // Two root layouts (English and Arabic) → the 404 page has its own shell (app/global-not-found.tsx).
+  experimental: { globalNotFound: true },
 };
 
 export default nextConfig;

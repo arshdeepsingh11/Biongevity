@@ -11,7 +11,7 @@ export type TrackEvent = "page_view" | "book_click" | "whatsapp_click" | "call_c
 export function track(event: TrackEvent, params: Record<string, string | number | boolean | undefined> = {}) {
   if (typeof window === "undefined") return;
   const clean = Object.fromEntries(Object.entries(params).filter(([, v]) => v !== undefined && v !== ""));
-  (window.dataLayer ??= []).push({ event, page_path: location.pathname, region: document.documentElement.dataset.region ?? "intl", ...clean });
+  (window.dataLayer ??= []).push({ event, page_path: location.pathname, region: document.documentElement.dataset.region ?? "intl", language: document.documentElement.lang || "en", ...clean });
 }
 
 /** The section a clicked element sits in, for `placement` (e.g. "Hero", "Programs & pricing", "Book"). */

@@ -25,14 +25,14 @@ export function LogoMark({ size = 28, className }: { size?: number; className?: 
   );
 }
 
-/** Full logo: mark + "iongevity" wordmark in one SVG, proportions as the original. */
+/** Full logo: mark + "iongevity" wordmark in one SVG, proportions as the original. Always left-to-right (also on Arabic pages). */
 export function Logo({ size = 26, className, wordmark = true }: { size?: number; className?: string; wordmark?: boolean; mono?: boolean }) {
   if (!wordmark) return <LogoMark size={size} className={cn("text-ink", className)} />;
   const h = size * 1.3;
   return (
-    <svg height={h} width={h * (134 / 39.5)} viewBox="7.5 11.5 134 39.5" fill="currentColor" className={cn("text-ink", className)} role="img" aria-label="Biongevity">
+    <svg height={h} width={h * (134 / 39.5)} viewBox="7.5 11.5 134 39.5" fill="currentColor" className={cn("text-ink", className)} role="img" aria-label="Biongevity" direction="ltr" style={{ direction: "ltr" }}>
       {MARK}
-      <text x="42.6" y="43.6" fontSize="21.5" fontWeight="700" letterSpacing="-0.4" textLength="97.5" lengthAdjust="spacingAndGlyphs" style={{ fontFamily: "inherit" }}>iongevity</text>
+      <text x="42.6" y="43.6" fontSize="21.5" fontWeight="700" letterSpacing="-0.4" textLength="97.5" lengthAdjust="spacingAndGlyphs" direction="ltr" style={{ fontFamily: "'DM Sans Variable', 'DM Sans', sans-serif", unicodeBidi: "isolate" }}>iongevity</text>
     </svg>
   );
 }

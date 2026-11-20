@@ -139,6 +139,8 @@ export const ICON_FILES = {
   stop: "stop-circle",
   command: "command",
   "text-select": "cursor-text",
+  send: "paper-plane-right",
+  "arrow-left": "arrow-left",
 } as const;
 
 export type IconName = keyof typeof ICON_FILES;
